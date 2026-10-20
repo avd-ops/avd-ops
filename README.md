@@ -19,11 +19,12 @@ site/                      # what GitHub Pages serves
 └── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css for this site's layout
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
 docs/never-delete-the-last-copy.md  # the family convention for teardown, logs and data
+docs/never-leave-the-meter-running.md  # the family convention for anything that bills
 tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, standalone Cloud Shell blocks, design system
 .github/workflows/         # ci (tests), pages (publishes site/)
 ```
 
-Family conventions: [never delete the last copy](docs/never-delete-the-last-copy.md), for every teardown, cleanup and agent step that deletes data.
+Family conventions: [never delete the last copy](docs/never-delete-the-last-copy.md), for every teardown, cleanup and agent step that deletes data, and [never leave the meter running](docs/never-leave-the-meter-running.md), for anything that bills.
 
 The site is plain HTML with no build step. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
 
