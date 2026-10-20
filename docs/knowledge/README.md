@@ -20,6 +20,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | partial |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | partial |
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | partial |
+| [repos/avd-assess.md](repos/avd-assess.md) | Foundation, what it should be: an open AVD assessment methodology that links pinned published sources and adds what real runs observed | partial |
 | [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts | partial |
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal | partial |
 | [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, the why: the knowledge base, contract registry and fact register over the environment's life | partial |

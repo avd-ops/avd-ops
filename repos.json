@@ -7,6 +7,7 @@
   ],
   "repos": [
     {"name": "avd-current-state", "repo": "nickprignano/avd-current-state", "branch": "main", "role": "What is there now", "docs": "docs/knowledge/repos/avd-current-state.md"},
+    {"name": "avd-assess", "repo": "nickprignano/avd-assess", "branch": "main", "role": "Foundation: what it should be", "docs": "docs/knowledge/repos/avd-assess.md"},
     {"name": "avd-landing-zone", "repo": "nickprignano/avd-landing-zone", "branch": "master", "role": "How it's built and changed from here", "docs": "docs/knowledge/repos/avd-landing-zone.md"},
     {"name": "avd-swarm", "repo": "nickprignano/avd-swarm", "branch": "main", "role": "On top: the how of operating", "docs": "docs/knowledge/repos/avd-swarm.md"},
     {"name": "avd-second-brain", "repo": "nickprignano/avd-second-brain", "branch": "main", "role": "On top: the why, over the environment's life", "docs": "docs/knowledge/repos/avd-second-brain.md", "generated": [ "wiki/" ]},

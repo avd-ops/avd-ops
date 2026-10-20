@@ -27,7 +27,8 @@ for (const r of family.repos) {
   const next = readme.slice(h1 + 1).find((l) => l.trim());
   if (r.name !== 'avd-ops' && next?.trim() !== family.brand_line) problems.push(`${r.name}: README.md: the line under the title isn't the avd-ops brand line`);
   const files = execFileSync('git', ['-C', path, 'ls-files'], { encoding: 'utf8' }).split('\n').filter(Boolean)
-    .filter((f) => !(r.generated || []).some((g) => f.startsWith(g)));
+    .filter((f) => !(r.generated || []).some((g) => f.startsWith(g)))
+    .filter((f) => !(r.name === 'avd-ops' && f === 'repos.json'));   // the banned list itself
   for (const f of files) {
     let text;
     try { text = readFileSync(join(path, f), 'utf8'); } catch { continue; }

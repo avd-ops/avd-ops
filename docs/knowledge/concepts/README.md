@@ -20,7 +20,7 @@ Each repo answers one question
 |---|---|
 | How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) |
 | What is there now | [avd-current-state](../repos/avd-current-state.md) |
-| What it should be, and why | avd-assess (being specified; not public yet) |
+| What it should be, and why | [avd-assess](../repos/avd-assess.md) |
 
 On top of those sits an intelligence and abstraction layer:
 [avd-second-brain](../repos/avd-second-brain.md) is the why over the environment's whole life, and

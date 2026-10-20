@@ -37,6 +37,12 @@
    "topic": "repos"
   },
   {
+   "id": "repos/avd-assess.md",
+   "title": "avd-assess",
+   "url": "repos/avd-assess.html",
+   "topic": "repos"
+  },
+  {
    "id": "repos/avd-current-state.md",
    "title": "avd-current-state",
    "url": "repos/avd-current-state.html",
@@ -75,6 +81,10 @@
   {
    "source": "concepts/README.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-assess.md"
   },
   {
    "source": "concepts/README.md",
@@ -126,10 +136,26 @@
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/README.md",
    "target": "repos/avd-swarm.md"
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
    "target": "repos/avd-second-brain.md"
   },
   {
@@ -167,6 +193,10 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-assess.md"
   },
   {
    "source": "roadmap/README.md",
