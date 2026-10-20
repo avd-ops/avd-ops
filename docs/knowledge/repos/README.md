@@ -16,6 +16,6 @@ family check both read.
 |---|---|
 | [avd-current-state](avd-current-state.md) | What is there now |
 | [avd-landing-zone](avd-landing-zone.md) | How it's built and changed from here |
-| [avd-liquidware](avd-liquidware.md) | Optional Liquidware tier |
+| avd-assess (not public yet) | What it should be, and why |
 | [avd-swarm](avd-swarm.md) | On top: the how of operating |
 | [avd-second-brain](avd-second-brain.md) | On top: the why, over the environment's life |

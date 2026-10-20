@@ -24,7 +24,6 @@ The repo is the source of truth: [nickprignano/avd-landing-zone](https://github.
 - With [avd-current-state](avd-current-state.md) it forms a self-contained pair that never depends on the layer on top.
 - Can read a C14 target-state manifest from [avd-second-brain](avd-second-brain.md) when one exists, and works without one.
 - Its lessons are recorded in avd-second-brain's knowledge base.
-- [avd-liquidware](avd-liquidware.md) builds on it without changing its default deployment.
 
 ## Read more in the repo
 

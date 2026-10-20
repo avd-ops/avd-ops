@@ -1,7 +1,7 @@
 // Builds site/docs/ (https://avd-ops.dev/docs/) from the knowledge base in docs/knowledge/, which is
 // also an Obsidian vault: the pages link to each other with ordinary relative Markdown links, and
 // the graph on the site is drawn from those same links (decision 0002).
-// Personal project, not for production, as is; not affiliated with the author's employer, Liquidware or Microsoft.
+// Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
 //
 //   node scripts/site/build-docs.mjs           # write site/docs/
 //   node scripts/site/build-docs.mjs --check   # fail if site/docs/ is out of date (CI)
@@ -74,7 +74,7 @@ function render(page) {
 }
 
 const NOTICE = (up) => `<div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
-<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer, Liquidware or Microsoft.</li>
+<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="${up}index.html#contribute">Contribute</a>.</li></ul></div>`;
@@ -101,7 +101,7 @@ function shell({ url, title, summary, content, current }) {
 <div class="wrap"><header class="top"><a class="brand" href="${up}index.html"><img class="mark" src="${up}assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Docs">${nav}</nav></header>
 ${withNotice}
 <footer class="site"><p>These docs are the Markdown in <a href="https://github.com/nickprignano/avd-ops/tree/main/${KB}">${KB}/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>
-<p>Every repo is open source under MIT. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft. Liquidware, ProfileUnity, FlexApp, Stratusphere and CommandCTRL are trademarks of Liquidware.</p></footer></div>
+<p>Every repo is open source under MIT. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p></footer></div>
 </body>
 </html>
 `;

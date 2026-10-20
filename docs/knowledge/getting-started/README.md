@@ -15,7 +15,7 @@ for anything detailed (parameters, scripts, specs, lessons) follow the link into
 docs live here, and how they're kept, is [decision 0002](../decisions/0002-avd-ops-is-the-front-door.md).
 
 Everything here is a personal research project: not for production, provided as is, and not
-affiliated with the author's employer, Liquidware or Microsoft. Use a dedicated lab subscription and
+affiliated with the author's employer or Microsoft. Use a dedicated lab subscription and
 tenant.
 
 ## Pick your starting point
@@ -24,7 +24,6 @@ tenant.
 |---|---|---|
 | See what an existing AVD environment holds, read-only | [avd-current-state](../repos/avd-current-state.md) | Feed its redacted facts to [avd-second-brain](../repos/avd-second-brain.md) |
 | Deploy a new, cloud-native AVD landing zone | [avd-landing-zone](../repos/avd-landing-zone.md) | Check it with [avd-current-state](../repos/avd-current-state.md)'s validator |
-| Add ProfileUnity, FlexApp or Stratusphere UX on top | [avd-liquidware](../repos/avd-liquidware.md) | It reads the landing zone, never changes it |
 | Run the estate through agents a person approves | [avd-swarm](../repos/avd-swarm.md) | Design and spike stage today |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base and handbook |
 

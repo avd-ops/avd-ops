@@ -49,12 +49,6 @@
    "topic": "repos"
   },
   {
-   "id": "repos/avd-liquidware.md",
-   "title": "avd-liquidware",
-   "url": "repos/avd-liquidware.html",
-   "topic": "repos"
-  },
-  {
    "id": "repos/avd-second-brain.md",
    "title": "avd-second-brain",
    "url": "repos/avd-second-brain.html",
@@ -91,10 +85,6 @@
    "target": "repos/avd-swarm.md"
   },
   {
-   "source": "concepts/README.md",
-   "target": "repos/avd-liquidware.md"
-  },
-  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -120,10 +110,6 @@
   },
   {
    "source": "getting-started/README.md",
-   "target": "repos/avd-liquidware.md"
-  },
-  {
-   "source": "getting-started/README.md",
    "target": "repos/avd-swarm.md"
   },
   {
@@ -140,10 +126,6 @@
   },
   {
    "source": "repos/README.md",
-   "target": "repos/avd-liquidware.md"
-  },
-  {
-   "source": "repos/README.md",
    "target": "repos/avd-swarm.md"
   },
   {
@@ -165,14 +147,6 @@
   {
    "source": "repos/avd-landing-zone.md",
    "target": "repos/avd-second-brain.md"
-  },
-  {
-   "source": "repos/avd-landing-zone.md",
-   "target": "repos/avd-liquidware.md"
-  },
-  {
-   "source": "repos/avd-liquidware.md",
-   "target": "repos/avd-landing-zone.md"
   },
   {
    "source": "repos/avd-second-brain.md",
@@ -201,10 +175,6 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-second-brain.md"
-  },
-  {
-   "source": "roadmap/README.md",
-   "target": "repos/avd-liquidware.md"
   },
   {
    "source": "roadmap/README.md",

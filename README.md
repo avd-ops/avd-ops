@@ -1,6 +1,6 @@
 # avd-ops
 
-The front door for the AVD repos, published at **<https://avd-ops.dev/>**: the overview, one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain, avd-liquidware), and the onboarding and user docs for all of them. Each repo stays the source of truth for itself; avd-ops explains how they fit together and links to them ([decision 0002](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md)).
+The front door for the AVD repos, published at **<https://avd-ops.dev/>**: the overview, one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain), and the onboarding and user docs for all of them. Each repo stays the source of truth for itself; avd-ops explains how they fit together and links to them ([decision 0002](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md)).
 
 > [!WARNING]
 > **Personal project. Research and learning only. Not for production. No warranty.**

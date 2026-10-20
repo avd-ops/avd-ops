@@ -25,7 +25,6 @@ Each repo answers one question
 On top of those sits an intelligence and abstraction layer:
 [avd-second-brain](../repos/avd-second-brain.md) is the why over the environment's whole life, and
 [avd-swarm](../repos/avd-swarm.md) is the how of operating it.
-[avd-liquidware](../repos/avd-liquidware.md) stays an optional tier on any landing zone.
 
 Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
 that keeps working with no second brain and no avd-swarm.
@@ -62,13 +61,11 @@ after a person approves it, and every sandbox run comes with a cost estimate and
 Each repo records what a change taught in a knowledge base in the shared format, or says why
 there's nothing to record, and a pull request check asks for it. The format comes from the
 [2ndbrain](https://github.com/nickprignano/2ndbrain) template; the AVD lessons live in
-[avd-second-brain's knowledge base](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge)
-and Liquidware lessons in [avd-liquidware's](https://github.com/nickprignano/avd-liquidware/tree/main/docs/knowledge).
+[avd-second-brain's knowledge base](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge).
 These docs use the same format.
 
 ## What's out of scope
 
-The repos use Bicep, PowerShell and native Azure, Entra and Microsoft 365 tooling only, and
-Liquidware is the only partner they name. Asks outside that lane are referred elsewhere by
+The repos use Bicep, PowerShell and native Azure, Entra and Microsoft 365 tooling only. Asks outside that lane are referred elsewhere by
 avd-second-brain's lane rules
 ([decision 0012](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).

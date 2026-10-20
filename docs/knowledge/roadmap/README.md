@@ -13,9 +13,9 @@ Where each repo stands, in a line. Each repo's own roadmap and build order are t
 | Repo | Today |
 |---|---|
 | [avd-current-state](../repos/avd-current-state.md) | Built: collector, validator and the C11 facts snapshot |
+| avd-assess | Being specified; not public yet |
 | [avd-landing-zone](../repos/avd-landing-zone.md) | Built: the landing zone, its CI and the deployment portal |
 | [avd-second-brain](../repos/avd-second-brain.md) | Built and growing: knowledge base, contracts, docs check and handbook |
-| [avd-liquidware](../repos/avd-liquidware.md) | Slice by slice: Stratusphere UX first |
 | [avd-swarm](../repos/avd-swarm.md) | Design and spike: the S1a spike runs; the write path is designed, not scheduled |
 
 ## Next for these docs
