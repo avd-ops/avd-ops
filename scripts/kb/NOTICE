@@ -1,0 +1,14 @@
+avd-ops knowledge base tooling
+Copyright 2026 Nick Prignano and the avd-ops contributors
+
+The files in this folder (scripts/kb/), scripts/privacy_check.py, the JSON Schemas in
+docs/knowledge/schema/, the workflows .github/workflows/kb-*.yml, privacy.yml and secrets.yml, the
+issue forms and templates in .github/ISSUE_TEMPLATE/, docs/2ndbrain/SPEC.md, the skill in
+.claude/skills/2ndbrain-kb/ and the hooks in .claude/settings.json are licensed under the Apache
+License, Version 2.0 (see LICENSE in this folder), not under the repository's MIT License.
+
+They are adapted from 2ndbrain (https://github.com/nickprignano/2ndbrain), Copyright 2026 Nick
+Prignano, licensed under the Apache License, Version 2.0.
+
+Changes made here: this knowledge base's topics (docs/knowledge/schema/page.schema.json and
+docs/knowledge/kb.toml). The rest of the repository is MIT-licensed; see ../../LICENSE.
