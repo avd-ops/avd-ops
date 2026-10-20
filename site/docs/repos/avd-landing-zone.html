@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-landing-zone | avd-ops docs</title>
-<meta name="description" content="Deploy and operate: a cloud-native AVD landing zone in one Bicep template, with a deployment portal">
+<meta name="description" content="How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/site.css">
@@ -18,7 +18,7 @@
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../../index.html#contribute">Contribute</a>.</li></ul></div>
-<p><strong>Deploy and operate.</strong> An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
+<p><strong>How it&#39;s built and changed from here.</strong> An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
 <p>The repo is the source of truth: <a href="https://github.com/nickprignano/avd-landing-zone">nickprignano/avd-landing-zone</a>. This page says where it fits.</p>
 <h2>What it does</h2>
 <ul>
@@ -29,7 +29,8 @@
 </ul>
 <h2>How it fits</h2>
 <ul>
-<li>Reads a C14 target-state manifest from <a href="avd-second-brain.html">avd-second-brain</a> when one exists.</li>
+<li>With <a href="avd-current-state.html">avd-current-state</a> it forms a self-contained pair that never depends on the layer on top.</li>
+<li>Can read a C14 target-state manifest from <a href="avd-second-brain.html">avd-second-brain</a> when one exists, and works without one.</li>
 <li>Its lessons are recorded in avd-second-brain&#39;s knowledge base.</li>
 <li><a href="avd-liquidware.html">avd-liquidware</a> builds on it without changing its default deployment.</li>
 </ul>

@@ -1,6 +1,6 @@
 ---
 title: "avd-landing-zone"
-summary: "Deploy and operate: a cloud-native AVD landing zone in one Bicep template, with a deployment portal"
+summary: "How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal"
 topic: repos
 status: partial
 last_reviewed: 2026-10-20
@@ -8,7 +8,7 @@ last_reviewed: 2026-10-20
 
 # avd-landing-zone
 
-**Deploy and operate.** An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
+**How it's built and changed from here.** An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
 
 The repo is the source of truth: [nickprignano/avd-landing-zone](https://github.com/nickprignano/avd-landing-zone). This page says where it fits.
 
@@ -21,7 +21,8 @@ The repo is the source of truth: [nickprignano/avd-landing-zone](https://github.
 
 ## How it fits
 
-- Reads a C14 target-state manifest from [avd-second-brain](avd-second-brain.md) when one exists.
+- With [avd-current-state](avd-current-state.md) it forms a self-contained pair that never depends on the layer on top.
+- Can read a C14 target-state manifest from [avd-second-brain](avd-second-brain.md) when one exists, and works without one.
 - Its lessons are recorded in avd-second-brain's knowledge base.
 - [avd-liquidware](avd-liquidware.md) builds on it without changing its default deployment.
 

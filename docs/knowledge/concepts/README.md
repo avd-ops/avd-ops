@@ -11,15 +11,24 @@ last_reviewed: 2026-10-20
 The repos share a handful of ideas. Each is explained in full in the repo that owns it; this page
 is the short version with the links.
 
-## One lifecycle, one repo per stage
+## Three questions, three repos, and a layer on top
 
-| Stage | Repo |
+Each repo answers one question
+([family roles](https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md)):
+
+| Question | Repo |
 |---|---|
-| Inventory and validate | [avd-current-state](../repos/avd-current-state.md) |
-| Deploy and operate | [avd-landing-zone](../repos/avd-landing-zone.md) |
-| Optional Liquidware tier | [avd-liquidware](../repos/avd-liquidware.md) |
-| Act and control | [avd-swarm](../repos/avd-swarm.md) |
-| Remember and learn, under every stage | [avd-second-brain](../repos/avd-second-brain.md) |
+| How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) |
+| What is there now | [avd-current-state](../repos/avd-current-state.md) |
+| What it should be, and why | avd-assess (being specified; not public yet) |
+
+On top of those sits an intelligence and abstraction layer:
+[avd-second-brain](../repos/avd-second-brain.md) is the why over the environment's whole life, and
+[avd-swarm](../repos/avd-swarm.md) is the how of operating it.
+[avd-liquidware](../repos/avd-liquidware.md) stays an optional tier on any landing zone.
+
+Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
+that keeps working with no second brain and no avd-swarm.
 
 ## Contracts, not shared code
 

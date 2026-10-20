@@ -12,10 +12,10 @@ Every repo is public, open source and the source of truth for itself. The list l
 [repos.json](https://github.com/nickprignano/avd-ops/blob/main/repos.json), which the site and the
 family check both read.
 
-| Repo | Stage |
+| Repo | Role |
 |---|---|
-| [avd-current-state](avd-current-state.md) | Inventory and validate |
-| [avd-landing-zone](avd-landing-zone.md) | Deploy and operate |
+| [avd-current-state](avd-current-state.md) | What is there now |
+| [avd-landing-zone](avd-landing-zone.md) | How it's built and changed from here |
 | [avd-liquidware](avd-liquidware.md) | Optional Liquidware tier |
-| [avd-swarm](avd-swarm.md) | Act and control |
-| [avd-second-brain](avd-second-brain.md) | Remember and learn |
+| [avd-swarm](avd-swarm.md) | On top: the how of operating |
+| [avd-second-brain](avd-second-brain.md) | On top: the why, over the environment's life |

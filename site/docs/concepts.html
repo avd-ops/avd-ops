@@ -20,35 +20,35 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div>
 <p>The repos share a handful of ideas. Each is explained in full in the repo that owns it; this page
 is the short version with the links.</p>
-<h2>One lifecycle, one repo per stage</h2>
+<h2>Three questions, three repos, and a layer on top</h2>
+<p>Each repo answers one question
+(<a href="https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md">family roles</a>):</p>
 <table>
 <thead>
 <tr>
-<th>Stage</th>
+<th>Question</th>
 <th>Repo</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Inventory and validate</td>
-<td><a href="repos/avd-current-state.html">avd-current-state</a></td>
-</tr>
-<tr>
-<td>Deploy and operate</td>
+<td>How it&#39;s built and changed from here</td>
 <td><a href="repos/avd-landing-zone.html">avd-landing-zone</a></td>
 </tr>
 <tr>
-<td>Optional Liquidware tier</td>
-<td><a href="repos/avd-liquidware.html">avd-liquidware</a></td>
+<td>What is there now</td>
+<td><a href="repos/avd-current-state.html">avd-current-state</a></td>
 </tr>
 <tr>
-<td>Act and control</td>
-<td><a href="repos/avd-swarm.html">avd-swarm</a></td>
-</tr>
-<tr>
-<td>Remember and learn, under every stage</td>
-<td><a href="repos/avd-second-brain.html">avd-second-brain</a></td>
+<td>What it should be, and why</td>
+<td>avd-assess (being specified; not public yet)</td>
 </tr>
 </tbody></table>
+<p>On top of those sits an intelligence and abstraction layer:
+<a href="repos/avd-second-brain.html">avd-second-brain</a> is the why over the environment&#39;s whole life, and
+<a href="repos/avd-swarm.html">avd-swarm</a> is the how of operating it.
+<a href="repos/avd-liquidware.html">avd-liquidware</a> stays an optional tier on any landing zone.</p>
+<p>Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
+that keeps working with no second brain and no avd-swarm.</p>
 <h2>Contracts, not shared code</h2>
 <p>The repos pass versioned, redacted files to each other instead of importing each other&#39;s code.
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact

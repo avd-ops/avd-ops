@@ -1,6 +1,6 @@
 ---
 title: "avd-current-state"
-summary: "Inventory and validate: read-only PowerShell that collects an AVD estate, checks deployments and writes redacted C11 facts"
+summary: "What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts"
 topic: repos
 status: partial
 last_reviewed: 2026-10-20
@@ -8,7 +8,7 @@ last_reviewed: 2026-10-20
 
 # avd-current-state
 
-**Inventory and validate.** Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.
+**What is there now.** Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.
 
 The repo is the source of truth: [nickprignano/avd-current-state](https://github.com/nickprignano/avd-current-state). This page says where it fits.
 

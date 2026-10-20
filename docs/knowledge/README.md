@@ -20,11 +20,11 @@ add it to the topic page it belongs to instead of starting a new file.
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | partial |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | partial |
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | partial |
-| [repos/avd-current-state.md](repos/avd-current-state.md) | Inventory and validate: read-only PowerShell that collects an AVD estate, checks deployments and writes redacted C11 facts | partial |
-| [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | Deploy and operate: a cloud-native AVD landing zone in one Bicep template, with a deployment portal | partial |
+| [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts | partial |
+| [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal | partial |
 | [repos/avd-liquidware.md](repos/avd-liquidware.md) | Optional tier: ProfileUnity, FlexApp, CommandCTRL and Stratusphere UX on top of a landing zone | partial |
-| [repos/avd-second-brain.md](repos/avd-second-brain.md) | Remember and learn: the knowledge base, contract registry and fact register under every stage | partial |
-| [repos/avd-swarm.md](repos/avd-swarm.md) | Act and control: agents that read freely and change nothing until a person approves the plan | partial |
+| [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, the why: the knowledge base, contract registry and fact register over the environment's life | partial |
+| [repos/avd-swarm.md](repos/avd-swarm.md) | On top, the how of operating: agents that read freely and change nothing until a person approves the plan | partial |
 | [troubleshooting/](troubleshooting/README.md) | Errors hit in this project: symptom, cause, fix and source | partial |
 | [roadmap/](roadmap/README.md) | Where each AVD repo is today and what these docs will cover next | plan |
 | [curation.md](curation.md) | How the KB stays current: the weekly digest, the prior-art check, the feedback loop, the freshness check and family alignment | verified |

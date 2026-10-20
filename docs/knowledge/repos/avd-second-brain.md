@@ -1,6 +1,6 @@
 ---
 title: "avd-second-brain"
-summary: "Remember and learn: the knowledge base, contract registry and fact register under every stage"
+summary: "On top, the why: the knowledge base, contract registry and fact register over the environment's life"
 topic: repos
 status: partial
 last_reviewed: 2026-10-20
@@ -8,7 +8,7 @@ last_reviewed: 2026-10-20
 
 # avd-second-brain
 
-**Remember and learn.** One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.
+**On top: the why, over the environment's life.** One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.
 
 The repo is the source of truth: [nickprignano/avd-second-brain](https://github.com/nickprignano/avd-second-brain). This page says where it fits.
 

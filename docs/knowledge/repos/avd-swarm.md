@@ -1,6 +1,6 @@
 ---
 title: "avd-swarm"
-summary: "Act and control: agents that read freely and change nothing until a person approves the plan"
+summary: "On top, the how of operating: agents that read freely and change nothing until a person approves the plan"
 topic: repos
 status: partial
 last_reviewed: 2026-10-20
@@ -8,7 +8,7 @@ last_reviewed: 2026-10-20
 
 # avd-swarm
 
-**Act and control.** Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.
+**On top: the how of operating.** Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.
 
 The repo is the source of truth: [nickprignano/avd-swarm](https://github.com/nickprignano/avd-swarm). This page says where it fits.
 

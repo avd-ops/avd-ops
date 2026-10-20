@@ -76,15 +76,15 @@
  "links": [
   {
    "source": "concepts/README.md",
-   "target": "repos/avd-current-state.md"
-  },
-  {
-   "source": "concepts/README.md",
    "target": "repos/avd-landing-zone.md"
   },
   {
    "source": "concepts/README.md",
-   "target": "repos/avd-liquidware.md"
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-second-brain.md"
   },
   {
    "source": "concepts/README.md",
@@ -92,7 +92,7 @@
   },
   {
    "source": "concepts/README.md",
-   "target": "repos/avd-second-brain.md"
+   "target": "repos/avd-liquidware.md"
   },
   {
    "source": "decisions/README.md",
@@ -157,6 +157,10 @@
   {
    "source": "repos/avd-current-state.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-landing-zone.md",
+   "target": "repos/avd-current-state.md"
   },
   {
    "source": "repos/avd-landing-zone.md",
