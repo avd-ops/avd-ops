@@ -46,3 +46,6 @@ self-improving, an intelligence and abstraction layer built on the foundation:
   script step or a template that only works when the brain or avd-swarm is there.
 - When you're not sure which repo a piece of work belongs to, ask which of the three questions it
   answers. If it answers none of them, it belongs to the layer on top.
+
+When the answer is an outside tool rather than a new repo, [build or adopt](build-or-adopt.md) decides
+whether we use it.
