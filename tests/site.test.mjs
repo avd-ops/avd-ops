@@ -8,7 +8,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
-const pages = ['site/index.html', ...readdirSync(join(root, 'site/family')).filter((f) => f.endsWith('.html')).map((f) => `site/family/${f}`)];
+const pages = ['site/index.html', 'site/architecture.html', ...readdirSync(join(root, 'site/family')).filter((f) => f.endsWith('.html')).map((f) => `site/family/${f}`)];
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
