@@ -69,6 +69,20 @@ test('the design system defines every token for light and dark and serves its ow
   assert.doesNotMatch(read('site/assets/site.css'), /#[0-9a-fA-F]{3,6}\b/, 'hex in site.css');
 });
 
+test('the portal components share the version, use only tokens and touch only .portal pages', () => {
+  const base = read('site/assets/avd-ops.css');
+  const css = read('site/assets/avd-ops-portal.css');
+  const v = (t, re) => (t.match(re) || [])[1];
+  const version = v(base, /^\/\* avd-ops design system (v\d+\.\d+\.\d+) /);
+  assert.equal(v(css, /^\/\* avd-ops portal components (v\d+\.\d+\.\d+) /), version, 'one version for both files');
+  assert.doesNotMatch(css, /#[0-9a-fA-F]{3,6}\b|rgba?\(|:root|@font-face/, 'colors and fonts come from avd-ops.css');
+  const defined = new Set([...base.matchAll(/(--[\w-]+):/g)].map((m) => m[1]));
+  for (const [, t] of css.matchAll(/var\((--[\w-]+)/g)) assert.ok(defined.has(t), `${t} is not an avd-ops token`);
+  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[^{]+\{/g, '').split('}').map((r) => r.split('{')[0].trim()).filter(Boolean);
+  for (const sel of rules.flatMap((r) => r.split(/,(?![^(]*\))/))) assert.match(sel.trim(), /^(body)?\.portal\b/, `unscoped selector: ${sel.trim()}`);
+  for (const f of pages) assert.doesNotMatch(read(f), /class="portal"/, `${f}: the avd-ops.dev pages are not portals`);
+});
+
 test('relative links resolve to files in site/', () => {
   for (const f of pages) {
     for (const [, href] of read(f).matchAll(/(?:href|src)="([^"]+)"/g)) {
