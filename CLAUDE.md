@@ -17,7 +17,7 @@ node --test "tests/*.test.mjs"
 - `site/docs/` is generated: edit the Markdown in `docs/knowledge/`, never the HTML. Links between pages are relative Markdown links, not `[[wikilinks]]`, so the same files work in the validator, on GitHub, on the site and in Obsidian. Every page links or is linked (the test fails on an orphan).
 - `repos.json` is the one list of public AVD repos. A new public repo gets an entry, a page in `docs/knowledge/repos/` and the avd-ops line under its README title. Private repos stay unbranded and off the site.
 - The AVD repos never name the projects listed in `repos.json` `banned`; the tests check this repo and `family.yml` checks the others weekly.
-- Liquidware is the only partner named; no Nerdio, Login VSI, Goliath or HCL tooling (Terraform, Packer).
+- The site names no partner for now: no Liquidware or avd-liquidware (Nick, 2026-10-20; the family-wide rule stays that Liquidware is the only partner), and no Nerdio, Login VSI, Goliath or HCL tooling (Terraform, Packer). `tests/site.test.mjs` checks it.
 - No tenant, subscription or object IDs, domains other than avd-ops.dev and github.com, emails, secrets, or employer or customer names.
 - Personal project, not for production, as is, not affiliated with the author's employer, Liquidware or Microsoft. The README warning and LICENSE stay.
 - American English.

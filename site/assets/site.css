@@ -1,11 +1,9 @@
-/* avd-ops.dev layout on top of avd-ops.css: the lifecycle runs as a strip of stages, the brain as the band under them. */
+/* avd-ops.dev layout on top of avd-ops.css: the three questions run as a strip of cards, the layer built on top of them as bands. */
 .lifecycle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-4)}
 .stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.35rem;min-width:0}
 .stage h3 a{text-decoration:none;color:var(--fg)} .stage h3 a:hover{color:var(--accent)}
 .stage p{margin:0;font-size:.95rem;color:var(--muted)}
-.brainband{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
-.tierband{grid-column:1/-1;background:var(--tier-soft);border-color:transparent}
-.tierband .eyebrow{color:var(--tier)}
+.layerband{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4) var(--space-5);padding:0;list-style:none}
 .principles li strong{display:block;font-family:var(--display)}
 td:first-child{white-space:nowrap}

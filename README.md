@@ -19,6 +19,7 @@ site/                      # what GitHub Pages serves
 ├── family/<repo>.html     # one page per public repo
 ├── docs/                  # generated from docs/knowledge/: start here, concepts, repos, roadmap, decisions, graph
 └── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css and graph.js for this site
+docs/family-roles.md       # the family convention: the foundation's three questions, the layer on top, and which way they depend
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
 repos.json                 # the public AVD repos avd-ops fronts, read by the tests and the family check
 scripts/site/build-docs.mjs  # docs/knowledge/ -> site/docs/, with backlinks and graph.json
@@ -38,6 +39,8 @@ A page here explains and links; a detail belongs in the repo that owns it. Every
 
 > Part of [avd-ops](https://avd-ops.dev/), the open toolkit for Azure Virtual Desktop.
 
+Which repo answers which question, and why the foundation never depends on the layer built on top of it: [three questions, three repos](docs/family-roles.md).
+
 ## Publishing
 
 `pages.yml` publishes `site/` on every push to `main` that changes it, or when run by hand from the Actions tab. The domain's DNS is on Cloudflare; GitHub Pages hosts the site and issues its HTTPS certificate. One-time setup, in this order:
@@ -51,7 +54,7 @@ A page here explains and links; a detail belongs in the repo that owns it. Every
 
 ## Contributing
 
-Fork it, open an issue or a pull request. Run `npm ci`, `node --test "tests/*.test.mjs"` and the knowledge base checks in [AGENTS.md](AGENTS.md) before pushing (CI runs the same). Keep the notice on every page, name no partner but Liquidware, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
+Fork it, open an issue or a pull request. Run `npm ci`, `node --test "tests/*.test.mjs"` and the knowledge base checks in [AGENTS.md](AGENTS.md) before pushing (CI runs the same). Keep the notice on every page, name no partner product on the site, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
 
 ## License and disclaimer
 

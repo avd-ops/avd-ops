@@ -1,6 +1,6 @@
 // The avd-ops site (site/, published at https://avd-ops.dev/ by .github/workflows/pages.yml).
 // Every page keeps the research-only notice and the invitation to contribute and fork, every relative link
-// resolves, and the site names no partner but Liquidware.
+// resolves, and the site names no partner product and no HCL tooling.
 // Run: node --test "tests/*.test.mjs"
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +14,7 @@ const pages = walk('site').filter((f) => f.endsWith('.html'));
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
-  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-swarm', 'avd-second-brain', 'avd-liquidware']) {
+  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain']) {
     assert.ok(pages.includes(`site/family/${r}.html`), r);
   }
 });
@@ -79,9 +79,9 @@ test('relative links resolve to files in site/', () => {
   }
 });
 
-test('the site names no partner but Liquidware and no HCL tooling', () => {
-  for (const f of pages) {
-    assert.doesNotMatch(read(f), /nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
+test('the site names no partner product and no HCL tooling (no Liquidware for now)', () => {
+  for (const f of [...pages, 'site/assets/site.css']) {
+    assert.doesNotMatch(read(f), /liquidware|nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
   }
 });
 
