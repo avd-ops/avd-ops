@@ -60,7 +60,7 @@ test('the design system defines every token for light and dark and serves its ow
   assert.deepEqual(darkMedia, darkAttr, 'the two dark blocks match');
   for (const [, src] of css.matchAll(/url\("([^"]+)"\)/g)) assert.ok(existsSync(join(root, 'site/assets', src)), src);
   assert.ok(existsSync(join(root, 'site/assets/fonts/LICENSE')), 'font licenses');
-  assert.ok(existsSync(join(root, 'site/assets/brand/mark.svg')), 'logo slot');
+  assert.ok(existsSync(join(root, 'site/assets/brand/mark.svg')), 'the mark');
   // Colors live in tokens only: no hex outside the token blocks, in the shared file or the site's own.
   const rest = css.replace(/\n:root\{[\s\S]*?\n\}|@media \(prefers-color-scheme:dark\)\{[\s\S]*?\}\}|:root\[data-theme="dark"\]\{[\s\S]*?\}/g, '');
   assert.doesNotMatch(rest, /#[0-9a-fA-F]{3,6}\b/, 'hex outside the tokens in avd-ops.css');

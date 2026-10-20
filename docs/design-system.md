@@ -25,7 +25,8 @@ Private repos stay out of it.
 | Group | Tokens | Use |
 |---|---|---|
 | Neutrals | `--bg` `--surface` `--sunken` `--fg` `--muted` `--line` `--line-strong` | page, cards, wells, text, borders |
-| Accent | `--accent` `--accent-hover` `--on-accent` `--accent-soft` `--focus` | links, primary actions, selected rows, focus rings |
+| Accent | `--accent` `--accent-hover` `--on-accent` `--accent-soft` `--focus` | teal: links, primary actions, selected rows, focus rings |
+| Brand | `--brand` (#1ca998) `--brand-ink` (#0d1015) | the logo's teal and shield; brand surfaces only, not text on light backgrounds (the accent is the readable teal) |
 | Tier | `--tier` `--tier-soft` | the optional Liquidware tier only |
 | Results | `--good` `--caution` `--bad` and their `-soft` backgrounds | latency, preflight and verify results; never decoration |
 | Notice | `--warn-bg` `--warn-line` `--warn-fg` | the research-only notice |
@@ -40,7 +41,7 @@ Private repos stay out of it.
 
 | Class | What it is |
 |---|---|
-| `header.top` | The top bar. `.brand` holds the logo slot (`img.mark`) and the word avd-ops; a page may follow it with `.sep` and its own title (the portal: avd-ops / AVD deployment portal), then `nav` or its own links. |
+| `header.top` | The top bar. `.brand` holds the mark (`img.mark`, `brand/mark.svg`) and the word avd-ops; a page may follow it with `.sep` and its own title (the portal: avd-ops / AVD deployment portal), then `nav` or its own links. |
 | `.warn` | The research-only notice box. |
 | `.eyebrow` | Small mono uppercase label above a title or card. |
 | `.chip`, `.chips` | Contract and tag chips. |
@@ -51,9 +52,17 @@ Private repos stay out of it.
 | `pre`, `code` | Code; command blocks still follow the standalone Cloud Shell rule. |
 | `footer.site` | Footer with the license and trademark lines. |
 
-## Logo slot
+## Logo
 
-The brand is `site/assets/brand/mark.svg`, a square mark shown at 26px beside the word "avd-ops", and `favicon.svg`. Both are a placeholder until the real logo lands. To swap it in, replace those two files (square SVG, legible at 16px, works on the light and the dark top bar) and copy them to the repos that vendor `assets/`. A wider wordmark, if there is one, goes in `brand/wordmark.svg`; the top bar keeps the square mark.
+The mark is a shield holding a desktop with a cloud, and the >< of a remote session (Nick's logo, 2026-10-20, rebuilt as vector; tagline "Deploy quietly"). Files in `site/assets/brand/`:
+
+| File | Use |
+|---|---|
+| `mark.svg` | Full-color square mark: teal field, ink shield. The top bar shows it at 26px beside the word "avd-ops". |
+| `favicon.svg` | The same mark with rounded corners, for the browser tab. |
+| `mark-white.svg` | One-color white shield, for dark backgrounds (stickers, slides, social images). |
+
+The mark needs no text; where a page names the brand, it sets "avd-ops" in `--display` beside the mark rather than using an image of the word. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
 
 ## Use it in another repo
 

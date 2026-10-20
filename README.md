@@ -16,8 +16,8 @@ The website for the AVD repos, published at **<https://avd-ops.dev/>**: one over
 site/                      # what GitHub Pages serves
 ├── index.html             # the overview
 ├── family/<repo>.html     # one page per public repo
-└── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (logo slot); site.css for this site's layout
-docs/design-system.md      # tokens, components, logo slot, and how other repos vendor assets/
+└── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css for this site's layout
+docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
 tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, standalone Cloud Shell blocks, design system
 .github/workflows/         # ci (tests), pages (publishes site/)
 ```
