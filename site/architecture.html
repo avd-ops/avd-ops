@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="wrap wide"><header class="top"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="index.html">Overview</a><a href="architecture.html" aria-current="page">Architecture</a><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-current-state.html">avd-current-state</a><a href="https://github.com/nickprignano/avd-assess">avd-assess</a><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a></nav></header>
+<div class="wrap wide"><header class="top"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="index.html">Overview</a><a href="docs/index.html">Docs</a><a href="architecture.html" aria-current="page">Architecture</a><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-current-state.html">avd-current-state</a><a href="family/avd-assess.html">avd-assess</a><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a></nav></header>
 <p class="eyebrow kicker">Architecture</p>
 <h1>How the AVD repos fit together</h1>
 <p class="lede">Three repos are the foundation: what it is, what it should be, and how we build it. Two more sit on top and automate it, so it gets smarter over time. Nothing in the foundation needs the layer above it.</p>
@@ -37,7 +37,7 @@
 <div class="layer l-base"><span class="eyebrow">Foundation</span>
 <div class="row3">
 <div class="piece"><p class="q">What it is: <a class="repo" href="family/avd-current-state.html">avd-current-state</a></p><p>Read-only collection and validation, offline: what is in the environment today, and whether a deployment landed correctly.</p></div>
-<div class="piece"><p class="q">What it should be: <a class="repo" href="https://github.com/nickprignano/avd-assess">avd-assess</a></p><p>The target, and why: a research index that links out to Microsoft's published guidance, pinned, and writes new method only for a gap.</p></div>
+<div class="piece"><p class="q">What it should be: <a class="repo" href="family/avd-assess.html">avd-assess</a></p><p>The target, and why: a research index that links out to Microsoft's published guidance, pinned, and writes new method only for a gap.</p></div>
 <div class="piece"><p class="q">How we build it: <a class="repo" href="family/avd-landing-zone.html">avd-landing-zone</a></p><p>Builds the landing zone in Bicep and changes it from here, through the portal-guided Cloud Shell flow, with preflight checks, cleanup and same-tenant DR.</p></div>
 </div>
 <p class="pairnote">What it is and How we build it work on their own, with no brain and no swarm.</p></div>

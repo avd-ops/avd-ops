@@ -1,11 +1,9 @@
-/* avd-ops.dev layout on top of avd-ops.css: the lifecycle runs as a strip of stages, the brain as the band under them. */
+/* avd-ops.dev layout on top of avd-ops.css: the three questions run as a strip of cards, the layer built on top of them as bands. */
 .lifecycle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-4)}
 .stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.35rem;min-width:0}
 .stage h3 a{text-decoration:none;color:var(--fg)} .stage h3 a:hover{color:var(--accent)}
 .stage p{margin:0;font-size:.95rem;color:var(--muted)}
-.brainband{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
-.tierband{grid-column:1/-1;background:var(--tier-soft);border-color:transparent}
-.tierband .eyebrow{color:var(--tier)}
+.layerband{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4) var(--space-5);padding:0;list-style:none}
 .principles li strong{display:block;font-family:var(--display)}
 td:first-child{white-space:nowrap}
@@ -55,3 +53,12 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-mask{fill:var(--surface)}
 @media (max-width:44rem){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
 .wrap.wide{max-width:60rem}
+/* The docs (site/docs/, built from docs/knowledge/): backlinks and the page graph (assets/graph.js). */
+.backlinks{columns:2;padding-left:1.1rem} @media (max-width:44rem){.backlinks{columns:1}}
+.graph{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.graph svg{display:block;width:100%;height:auto}
+.g-edge{stroke:var(--line-strong);stroke-width:1}
+.g-node circle{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.g-node text{fill:var(--fg);font:600 12px var(--body);text-anchor:middle}
+.g-node:hover circle,.g-node:focus circle{fill:var(--accent-hover)}
+.g-repos circle{fill:var(--brand)} .g-decisions circle{fill:var(--muted)} .g-roadmap circle{fill:var(--tier)}

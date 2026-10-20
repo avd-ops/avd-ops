@@ -1,6 +1,6 @@
 # avd-ops
 
-The website for the AVD repos, published at **<https://avd-ops.dev/>**: one overview page and one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain, avd-liquidware) and how they fit together.
+The front door for the AVD repos, published at **<https://avd-ops.dev/>**: the overview, one page for each public repo (avd-landing-zone, avd-current-state, avd-assess, avd-swarm, avd-second-brain), and the onboarding and user docs for all of them. Each repo stays the source of truth for itself; avd-ops explains how they fit together and links to them ([decision 0002](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md)).
 
 > [!WARNING]
 > **Personal project. Research and learning only. Not for production. No warranty.**
@@ -13,16 +13,33 @@ The website for the AVD repos, published at **<https://avd-ops.dev/>**: one over
 ## Layout
 
 ```text
+docs/knowledge/            # the docs: a knowledge base in the 2ndbrain format, and an Obsidian vault
 site/                      # what GitHub Pages serves
 ├── index.html             # the overview
 ├── family/<repo>.html     # one page per public repo
-└── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css for this site's layout
+├── docs/                  # generated from docs/knowledge/: start here, concepts, repos, roadmap, decisions, graph
+└── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css and graph.js for this site
+docs/family-roles.md       # the family convention: the foundation's three questions, the layer on top, and which way they depend
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
-tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, standalone Cloud Shell blocks, design system
-.github/workflows/         # ci (tests), pages (publishes site/)
+repos.json                 # the public AVD repos avd-ops fronts, read by the tests and the family check
+scripts/site/build-docs.mjs  # docs/knowledge/ -> site/docs/, with backlinks and graph.json
+scripts/family-check.mjs   # every repo carries the avd-ops line and names no banned project
+scripts/kb/                # knowledge base tooling from the 2ndbrain template (Apache-2.0, see its NOTICE)
+tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, Cloud Shell blocks, design system, docs, banned names
+.github/workflows/         # ci (tests), pages (publishes site/), family (weekly), kb-* (knowledge base)
 ```
 
-The site is plain HTML with no build step. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
+The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
+
+## Docs and the graph
+
+The docs use the same knowledge base format as the other AVD repos, from the [2ndbrain](https://github.com/nickprignano/2ndbrain) template: front matter checked by `scripts/kb/validate.py`, decision records in MADR, and ordinary relative Markdown links. Open `docs/knowledge/` in Obsidian and its graph view shows the pages and their links (keep **Settings > Files and links > Use [[Wikilinks]]** off so new links stay Markdown). The site draws the same graph at [avd-ops.dev/docs/graph.html](https://avd-ops.dev/docs/graph.html) and lists backlinks on every page.
+
+A page here explains and links; a detail belongs in the repo that owns it. Every public AVD repo carries this line under its README title, and the weekly `family` workflow checks it:
+
+> Part of [avd-ops](https://avd-ops.dev/), the open toolkit for Azure Virtual Desktop.
+
+Which repo answers which question, and why the foundation never depends on the layer built on top of it: [three questions, three repos](docs/family-roles.md).
 
 ## Publishing
 
@@ -37,7 +54,7 @@ The site is plain HTML with no build step. Every page uses the shared [design sy
 
 ## Contributing
 
-Fork it, open an issue or a pull request. Run `node --test "tests/*.test.mjs"` before pushing (CI runs the same). Keep the notice on every page, name no partner but Liquidware, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
+Fork it, open an issue or a pull request. Run `npm ci`, `node --test "tests/*.test.mjs"` and the knowledge base checks in [AGENTS.md](AGENTS.md) before pushing (CI runs the same). Keep the notice on every page, name no partner product on the site, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
 
 ## License and disclaimer
 
