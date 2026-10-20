@@ -1,0 +1,214 @@
+{
+ "nodes": [
+  {
+   "id": "concepts/README.md",
+   "title": "Concepts",
+   "url": "concepts.html",
+   "topic": "concepts"
+  },
+  {
+   "id": "decisions/0001-adopt-the-2ndbrain-format.md",
+   "title": "0001. Adopt the 2ndbrain knowledge base format, version 1",
+   "url": "decisions/0001-adopt-the-2ndbrain-format.html",
+   "topic": "decisions"
+  },
+  {
+   "id": "decisions/0002-avd-ops-is-the-front-door.md",
+   "title": "0002. avd-ops is the front door for the AVD repos",
+   "url": "decisions/0002-avd-ops-is-the-front-door.html",
+   "topic": "decisions"
+  },
+  {
+   "id": "decisions/README.md",
+   "title": "Decision records",
+   "url": "decisions/index.html",
+   "topic": "decisions"
+  },
+  {
+   "id": "getting-started/README.md",
+   "title": "Start here",
+   "url": "index.html",
+   "topic": "getting-started"
+  },
+  {
+   "id": "repos/README.md",
+   "title": "The repos",
+   "url": "repos/index.html",
+   "topic": "repos"
+  },
+  {
+   "id": "repos/avd-assess.md",
+   "title": "avd-assess",
+   "url": "repos/avd-assess.html",
+   "topic": "repos"
+  },
+  {
+   "id": "repos/avd-current-state.md",
+   "title": "avd-current-state",
+   "url": "repos/avd-current-state.html",
+   "topic": "repos"
+  },
+  {
+   "id": "repos/avd-landing-zone.md",
+   "title": "avd-landing-zone",
+   "url": "repos/avd-landing-zone.html",
+   "topic": "repos"
+  },
+  {
+   "id": "repos/avd-second-brain.md",
+   "title": "avd-second-brain",
+   "url": "repos/avd-second-brain.html",
+   "topic": "repos"
+  },
+  {
+   "id": "repos/avd-swarm.md",
+   "title": "avd-swarm",
+   "url": "repos/avd-swarm.html",
+   "topic": "repos"
+  },
+  {
+   "id": "roadmap/README.md",
+   "title": "Roadmap",
+   "url": "roadmap.html",
+   "topic": "roadmap"
+  }
+ ],
+ "links": [
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0001-adopt-the-2ndbrain-format.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0002-avd-ops-is-the-front-door.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "decisions/0002-avd-ops-is-the-front-door.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "concepts/README.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-landing-zone.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-landing-zone.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-swarm.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-swarm.md"
+  }
+ ]
+}

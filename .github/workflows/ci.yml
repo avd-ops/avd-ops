@@ -1,6 +1,7 @@
 name: ci
 
-# Site tests: the notice on every page, links resolve, the avd-ops name, standalone Cloud Shell blocks.
+# Site tests: the notice on every page, links resolve, the avd-ops name, standalone Cloud Shell blocks,
+# the docs built from docs/knowledge/ up to date, and no banned names (repos.json).
 on:
   pull_request:
   push:
@@ -19,5 +20,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm ci
       - name: node --test
         run: node --test "tests/*.test.mjs"

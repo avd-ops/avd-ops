@@ -1,0 +1,29 @@
+---
+title: "avd-assess"
+summary: "Foundation, what it should be: an open AVD assessment methodology that links pinned published sources and adds what real runs observed"
+topic: repos
+status: partial
+last_reviewed: 2026-10-20
+---
+
+# avd-assess
+
+**Foundation: what it should be.** An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.
+
+The repo is the source of truth: [nickprignano/avd-assess](https://github.com/nickprignano/avd-assess). This page says where it fits.
+
+## What it does
+
+- Five methods: collection, assessment, targets and benchmarks, scoring, and a short sample check.
+- Every step cites a pinned published source (`ref:`), what our own runs observed about it (`obs:`), or method written only where nothing exists (`gap:`).
+- It stores a claim ID and one line in its own words, never a source's text.
+- Nothing in it calls Azure.
+
+## How it fits
+
+- [avd-current-state](avd-current-state.md) runs its methods from pinned copies it carries; [avd-landing-zone](avd-landing-zone.md) is how an estate gets to the target it describes.
+- [avd-second-brain](avd-second-brain.md) cites it and owns the schemas its results use.
+
+## Read more in the repo
+
+- [README and the methods](https://github.com/nickprignano/avd-assess/blob/main/README.md)
