@@ -24,7 +24,14 @@ The site is plain HTML with no build step. The deployment portal stays with the 
 
 ## Publishing
 
-`pages.yml` publishes `site/` on every push to `main` that changes it. One-time settings: **Settings > Pages > Source: GitHub Actions**, then **Custom domain: avd-ops.dev** with **Enforce HTTPS** (Actions deployments need no CNAME file). DNS for the apex points at GitHub Pages' A and AAAA records ([GitHub's list](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)); verify the domain under your GitHub account's Pages settings so no other repo can claim it.
+`pages.yml` publishes `site/` on every push to `main` that changes it, or when run by hand from the Actions tab. The domain's DNS is on Cloudflare; GitHub Pages hosts the site and issues its HTTPS certificate. One-time setup, in this order:
+
+1. **Verify the domain** (so no other repo can claim it): GitHub, your account's **Settings > Pages > Add a domain**, enter `avd-ops.dev`. Add the TXT record it shows in Cloudflare (**DNS > Records**), then click **Verify**.
+2. **Point the apex at GitHub Pages** in Cloudflare: the four A records and four AAAA records from [GitHub's list](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain), name `@`. Optionally a CNAME `www` to `nickprignano.github.io`. Delete any other A, AAAA or CNAME records on `@` and `www` (parking or forwarding records conflict). Set every one of these records to **DNS only** (gray cloud), not Proxied.
+3. **Turn on Pages** in this repo: **Settings > Pages > Source: GitHub Actions**, then **Custom domain: `avd-ops.dev`** and **Save** (Actions deployments need no CNAME file). Wait for the DNS check to pass and the certificate to be issued, then tick **Enforce HTTPS**.
+4. **Publish**: run the `pages` workflow once from the Actions tab.
+
+`.dev` is HTTPS-only in every browser, so the site shows a certificate error until GitHub has issued its certificate; that can take a while after the DNS check passes. Keep the records **DNS only**: GitHub needs to see its own IPs to issue and renew the certificate. If you later want Cloudflare's proxy, turn it on only after Enforce HTTPS is set, and set Cloudflare's **SSL/TLS** mode to **Full (strict)** (Flexible causes a redirect loop).
 
 ## Contributing
 
