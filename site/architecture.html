@@ -13,7 +13,7 @@
 <div class="wrap wide"><header class="top"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="index.html">Overview</a><a href="architecture.html" aria-current="page">Architecture</a><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-current-state.html">avd-current-state</a><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a></nav></header>
 <p class="eyebrow kicker">Architecture</p>
 <h1>How the AVD repos fit together</h1>
-<p class="lede">Three repos answer the basic questions about an Azure Virtual Desktop estate. Two more sit on top of them and add memory and safe operation. Nothing in the base needs the layer above it.</p>
+<p class="lede">Three repos are the foundation: what it is, what it should be, and how we build it. Two more sit on top and automate it, so it gets smarter over time. Nothing in the foundation needs the layer above it.</p>
 <div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
 <ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
@@ -21,26 +21,26 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="index.html#contribute">Contribute</a>.</li></ul></div>
 
 <h2>The layers</h2>
-<p>Read it from the bottom up. Each repo answers one question, in plain words.</p>
+<p>Read it from the bottom up. Three repos are the foundation. The layer on top automates it and makes it smarter over time.</p>
 <section class="stack" aria-label="The layers, top to bottom">
 <div class="layer l-front"><span class="eyebrow">Front door</span>
 <p><a class="who" href="index.html">avd-ops</a>: where to start. The map of the repos, what each one does and how they connect. Each repo stays the source of truth for itself.</p></div>
 
-<div class="layer l-top"><span class="eyebrow">Intelligence layer, optional, built on top</span>
+<div class="layer l-top"><span class="eyebrow">On top: how we automate it, smart and self-improving (optional)</span>
 <div class="row2">
-<div class="piece"><p class="q">Why is it the way it is?</p><a class="who" href="family/avd-second-brain.html">avd-second-brain</a><p>The why, over the environment's whole life: the use cases, and every decision in building, changing, growing, shrinking and fixing it, from the day it was born. It thinks; it never holds a write credential.</p></div>
-<div class="piece"><p class="q">How is it operated, safely?</p><a class="who" href="family/avd-swarm.html">avd-swarm</a><p>The how of operating: agents that read freely and change nothing until a person approves the exact plan. One gate, one kill switch only the owner resets. The avd-buddy chat lives here.</p></div>
+<div class="piece"><p class="q">Makes it smart: <a class="repo" href="family/avd-second-brain.html">avd-second-brain</a></p><p>Remembers why the environment is the way it is, over its whole life, and learns from every change. It thinks; it never holds a write credential.</p></div>
+<div class="piece"><p class="q">Automates it: <a class="repo" href="family/avd-swarm.html">avd-swarm</a></p><p>Agents run the work. They read freely and change nothing until a person approves the exact plan, with one kill switch only the owner resets. The avd-buddy chat lives here.</p></div>
 </div></div>
 
-<p class="reads">The top layer reads what the base produces. The base never waits on it.</p>
+<p class="reads">The top layer builds on the foundation. The foundation never needs it.</p>
 
-<div class="layer l-base"><span class="eyebrow">Base</span>
+<div class="layer l-base"><span class="eyebrow">Foundation</span>
 <div class="row3">
-<div class="piece"><p class="q">What should it be, and why?</p><span class="who">avd-assess</span><p>The assessment method: what to collect, how to judge it, what good looks like. Being specified: a research index that links out to Microsoft's published guidance, pinned, and writes new method only for a gap.</p></div>
-<div class="piece"><p class="q">What is there now?</p><a class="who" href="family/avd-current-state.html">avd-current-state</a><p>Read-only collection and validation, offline. It answers what is in the environment today and whether a deployment landed correctly.</p></div>
-<div class="piece"><p class="q">How is it built and changed from here?</p><a class="who" href="family/avd-landing-zone.html">avd-landing-zone</a><p>The landing zone in Bicep, deployed and changed through the portal-guided Cloud Shell flow, with preflight checks, cleanup and same-tenant DR.</p></div>
-<p class="pair">The self-contained pair: works with no brain and no swarm</p>
-</div></div>
+<div class="piece"><p class="q">What it is: <a class="repo" href="family/avd-current-state.html">avd-current-state</a></p><p>Read-only collection and validation, offline: what is in the environment today, and whether a deployment landed correctly.</p></div>
+<div class="piece"><p class="q">What it should be: <span class="repo">avd-assess</span></p><p>The target, and why. Being specified: a research index that links out to Microsoft's published guidance, pinned, and writes new method only for a gap.</p></div>
+<div class="piece"><p class="q">How we build it: <a class="repo" href="family/avd-landing-zone.html">avd-landing-zone</a></p><p>Builds the landing zone in Bicep and changes it from here, through the portal-guided Cloud Shell flow, with preflight checks, cleanup and same-tenant DR.</p></div>
+</div>
+<p class="pairnote">What it is and How we build it work on their own, with no brain and no swarm.</p></div>
 
 <div class="layer l-ground">Your Azure subscription and Entra tenant<span>the AVD estate: host pools, session hosts, storage, network, identities</span></div>
 </section>
@@ -52,8 +52,8 @@
 <svg viewBox="0 0 1120 640" role="img" aria-label="Contract flows. avd-assess takes pinned Microsoft guidance and gives avd-current-state its check rules. avd-current-state reads the Azure estate and sends redacted facts and its report up to avd-second-brain. avd-landing-zone deploys and changes the estate, reads the C14 target state and sends its C17 run record up. avd-second-brain sends C9 proposals to avd-swarm and gets C10 outcomes back. avd-swarm changes the estate only through approved plans. Azure SRE Agent is optional.">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
 
-<text class="d-band" x="330" y="44">INTELLIGENCE LAYER (OPTIONAL)</text>
-<text class="d-band" x="20" y="314">BASE</text>
+<text class="d-band" x="330" y="44">ON TOP: AUTOMATE IT, MAKE IT SMART (OPTIONAL)</text>
+<text class="d-band" x="20" y="314">FOUNDATION</text>
 <text class="d-band" x="870" y="306" text-anchor="end">SELF-CONTAINED PAIR</text>
 <rect class="d-pair" x="318" y="314" width="554" height="118" rx="12"/>
 
@@ -64,12 +64,12 @@
 
 <rect class="d-top" x="330" y="60" width="220" height="90" rx="8"/>
 <text class="d-name" x="440" y="92" text-anchor="middle">avd-second-brain</text>
-<text class="d-sub" x="440" y="112" text-anchor="middle">the why</text>
+<text class="d-sub" x="440" y="112" text-anchor="middle">makes it smart</text>
 <text class="d-sub" x="440" y="128" text-anchor="middle">C18 lifecycle record</text>
 
 <rect class="d-top" x="640" y="60" width="220" height="90" rx="8"/>
 <text class="d-name" x="750" y="92" text-anchor="middle">avd-swarm</text>
-<text class="d-sub" x="750" y="112" text-anchor="middle">the how</text>
+<text class="d-sub" x="750" y="112" text-anchor="middle">automates it</text>
 <text class="d-sub" x="750" y="128" text-anchor="middle">gate, kill switch, avd-buddy</text>
 
 <rect class="d-ext" x="940" y="60" width="160" height="90" rx="8"/>
@@ -79,16 +79,16 @@
 <rect class="d-box" x="20" y="330" width="220" height="90" rx="8"/>
 <text class="d-name" x="130" y="362" text-anchor="middle">avd-assess</text>
 <text class="d-sub" x="130" y="382" text-anchor="middle">what it should be</text>
-<text class="d-sub" x="130" y="398" text-anchor="middle">and why (method)</text>
+<text class="d-sub" x="130" y="398" text-anchor="middle">(the method)</text>
 
 <rect class="d-box" x="330" y="330" width="220" height="90" rx="8"/>
 <text class="d-name" x="440" y="362" text-anchor="middle">avd-current-state</text>
-<text class="d-sub" x="440" y="382" text-anchor="middle">what is there now</text>
+<text class="d-sub" x="440" y="382" text-anchor="middle">what it is</text>
 <text class="d-sub" x="440" y="398" text-anchor="middle">read-only, offline</text>
 
 <rect class="d-box" x="640" y="330" width="220" height="90" rx="8"/>
 <text class="d-name" x="750" y="362" text-anchor="middle">avd-landing-zone</text>
-<text class="d-sub" x="750" y="382" text-anchor="middle">how it's built and changed</text>
+<text class="d-sub" x="750" y="382" text-anchor="middle">how we build it</text>
 <text class="d-sub" x="750" y="398" text-anchor="middle">portal-guided Cloud Shell</text>
 
 
@@ -128,7 +128,7 @@
 <path class="d-edge" d="M750,422 V538" marker-end="url(#ah)"/>
 <text class="d-lbl" x="758" y="484">deploys, changes</text>
 <path class="d-edge" d="M860,136 H900 V538" marker-end="url(#ah)"/>
-<rect class="d-mask" x="872" y="460" width="56" height="34" rx="3"/>
+<rect class="d-mask" x="870" y="460" width="60" height="34" rx="3"/>
 <text class="d-lbl" x="900" y="474" text-anchor="middle">approved</text>
 <text class="d-lbl" x="900" y="488" text-anchor="middle">plans</text>
 </svg>
