@@ -1,0 +1,48 @@
+# avd-ops: avd-ops docs
+
+> Onboarding and user docs for the AVD repos: what each one does, how they fit together, and where
+> to start.
+
+The knowledge base is in docs/knowledge/. Every page starts with YAML front matter (title, summary,
+topic, status, last_reviewed) validated against docs/knowledge/schema/. Pages with status `plan`
+describe intended work, not facts, and claims marked *unverified* are not yet confirmed. To
+contribute, open a KB feedback or known-error issue; changes land only through reviewed pull requests.
+
+## Knowledge base
+
+- [Knowledge base](docs/knowledge/README.md): What this knowledge base is, how it's organised, and how to add to it safely (status: partial)
+- [Start here](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: partial)
+- [Concepts](docs/knowledge/concepts/README.md): The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture (status: partial)
+- [The repos](docs/knowledge/repos/README.md): Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself (status: partial)
+- [avd-current-state](docs/knowledge/repos/avd-current-state.md): Inventory and validate: read-only PowerShell that collects an AVD estate, checks deployments and writes redacted C11 facts (status: partial)
+- [avd-landing-zone](docs/knowledge/repos/avd-landing-zone.md): Deploy and operate: a cloud-native AVD landing zone in one Bicep template, with a deployment portal (status: partial)
+- [avd-liquidware](docs/knowledge/repos/avd-liquidware.md): Optional tier: ProfileUnity, FlexApp, CommandCTRL and Stratusphere UX on top of a landing zone (status: partial)
+- [avd-second-brain](docs/knowledge/repos/avd-second-brain.md): Remember and learn: the knowledge base, contract registry and fact register under every stage (status: partial)
+- [avd-swarm](docs/knowledge/repos/avd-swarm.md): Act and control: agents that read freely and change nothing until a person approves the plan (status: partial)
+- [Known errors](docs/knowledge/troubleshooting/README.md): Errors hit in this project: symptom, cause, fix and source (status: partial)
+- [Roadmap](docs/knowledge/roadmap/README.md): Where each AVD repo is today and what these docs will cover next (status: plan)
+- [Keeping the knowledge base current](docs/knowledge/curation.md): How the KB stays current: the weekly digest, the prior-art check, the feedback loop, the freshness check and family alignment (status: verified)
+- [Experts we follow](docs/knowledge/experts.md): How we choose which people on this KB's topics the KB follows: the method, the scores and the list (status: verified)
+
+## Structured data
+
+- [Known errors](docs/knowledge/troubleshooting/known-errors.yaml): symptom, cause, fix and source for errors hit in this project
+- [Field reports](docs/knowledge/field-reports.yaml): what worked or broke when someone followed the KB
+- [Experts study](docs/knowledge/experts.yaml): people the KB follows, with scores, evidence and the feeds watched
+- [Family](docs/knowledge/family.yaml): the sibling knowledge bases and the format version each follows
+- [Schemas](docs/knowledge/schema/page.schema.json): JSON Schemas for page front matter and the YAML files above
+
+## Decisions
+
+- [0001. Adopt the 2ndbrain knowledge base format, version 1](docs/knowledge/decisions/0001-adopt-the-2ndbrain-format.md): accepted
+- [0002. avd-ops is the front door for the AVD repos](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md): accepted
+
+## Related knowledge bases
+
+- [2ndbrain](https://github.com/nickprignano/2ndbrain/tree/main/docs/knowledge): The template that owns the family knowledge base format. Source of truth for: the family knowledge base format; its scripts and schemas
+- [AVD](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge): Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm. Source of truth for: Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos
+- [Liquidware](https://github.com/nickprignano/avd-liquidware/tree/main/docs/knowledge): Liquidware products on virtual desktops, starting with Stratusphere UX in Azure. Source of truth for: Liquidware products; Stratusphere UX appliances; the Liquidware tier for the landing zone
+
+## Optional
+
+- [Curator sources](docs/knowledge/sources.toml): the feeds and repos the weekly digest watches

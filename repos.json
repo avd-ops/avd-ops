@@ -1,0 +1,13 @@
+{
+  "$comment": "The AVD repos avd-ops fronts (decision 0002). The site, the docs and scripts/family-check.mjs read this list. Public repos only; private repos stay unbranded and off the site.",
+  "brand_line": "Part of [avd-ops](https://avd-ops.dev/), the open toolkit for Azure Virtual Desktop.",
+  "banned": ["ai-brain", "me2"],
+  "repos": [
+    {"name": "avd-current-state", "repo": "nickprignano/avd-current-state", "branch": "main", "stage": "Inventory and validate", "docs": "docs/knowledge/repos/avd-current-state.md"},
+    {"name": "avd-landing-zone", "repo": "nickprignano/avd-landing-zone", "branch": "master", "stage": "Deploy and operate", "docs": "docs/knowledge/repos/avd-landing-zone.md"},
+    {"name": "avd-liquidware", "repo": "nickprignano/avd-liquidware", "branch": "main", "stage": "Optional Liquidware tier", "docs": "docs/knowledge/repos/avd-liquidware.md"},
+    {"name": "avd-swarm", "repo": "nickprignano/avd-swarm", "branch": "main", "stage": "Act and control", "docs": "docs/knowledge/repos/avd-swarm.md"},
+    {"name": "avd-second-brain", "repo": "nickprignano/avd-second-brain", "branch": "main", "stage": "Remember and learn", "docs": "docs/knowledge/repos/avd-second-brain.md", "generated": ["wiki/"]},
+    {"name": "avd-ops", "repo": "nickprignano/avd-ops", "branch": "main", "stage": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
+  ]
+}
