@@ -7,7 +7,7 @@
 <meta name="description" content="An optional Liquidware tier on top of a landing zone: ProfileUnity, FlexApp through AVD app attach, CommandCTRL, and Stratusphere UX for assessments. FSLogix stays the profile container.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Schibsted+Grotesk:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
-/* Layout: one narrow reading column; the lifecycle runs as a strip of stages, the brain as the band under them. */
+/* Layout: one reading column (46rem) that every block fills, so header, text and boxes share both edges; the lifecycle runs as a strip of stages, the brain as the band under them. */
 :root{
   --bg:#f4f6f9; --surface:#ffffff; --fg:#152232; --muted:#566578; --line:#d7dee8;
   --accent:#0f5fa8; --accent-soft:#e3eef9; --tier:#9a5b12; --tier-soft:#f7ecdc;
@@ -26,7 +26,7 @@
   --warn-bg:#2e2610; --warn-line:#8a6d1e; --warn-fg:#f3e3b0; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);margin:0}
-.wrap{max-width:60rem;margin:0 auto;padding-block:0 4rem;
+.wrap{max-width:46rem;margin:0 auto;padding-block:0 4rem;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 header.top{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;align-items:baseline;padding-block:1.25rem;border-bottom:1px solid var(--line)}
@@ -36,7 +36,7 @@ header.top nav a{text-decoration:none;color:var(--muted)} header.top nav a[aria-
 h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance}
 h1{font-size:clamp(2rem,5vw,2.9rem);margin:2.5rem 0 .75rem;letter-spacing:-.01em}
 h2{font-size:1.45rem;margin:2.75rem 0 .75rem} h3{font-size:1.1rem;margin:0 0 .35rem}
-p,li{max-width:65ch} .lede{font-size:1.2rem;color:var(--muted)}
+.lede{font-size:1.2rem;color:var(--muted)}
 code,.mono{font-family:var(--mono);font-size:.85em}
 .warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-fg);border-radius:6px;padding:.9rem 1.1rem;margin:1.5rem 0;font-size:.95rem}
 .warn strong:first-child{display:block;margin-bottom:.25rem}
