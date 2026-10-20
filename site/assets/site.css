@@ -9,6 +9,50 @@
 td:first-child{white-space:nowrap}
 @media (max-width:44rem){.lifecycle{grid-template-columns:minmax(0,1fr)} td:first-child{white-space:normal}}
 .kicker{margin-top:var(--space-6)} .kicker+h1{margin-top:var(--space-1)}
+
+/* Architecture page: the layers as a stack (the picture), then the contract flows as one drawing. */
+.stack{display:grid;gap:var(--space-3);margin-top:var(--space-4)}
+.layer{border-radius:var(--radius);padding:var(--space-4);display:grid;gap:var(--space-3);min-width:0}
+.layer>.eyebrow{display:block}
+.l-front{background:var(--surface);border:1px solid var(--line)}
+.l-front p{margin:0;color:var(--muted)}
+.l-top{background:var(--accent-soft)}
+.l-top>.eyebrow,.l-base>.eyebrow{color:var(--accent)}
+.l-base{background:var(--sunken);border:1px solid var(--line)}
+.l-ground{background:var(--surface);border:1px solid var(--line-strong);color:var(--fg);text-align:center;font:600 .95rem var(--display)}
+.l-ground span{display:block;font:400 .82rem var(--mono);color:var(--muted);margin-top:.2rem}
+.row2,.row3{display:grid;gap:var(--space-3)}
+.row2{grid-template-columns:repeat(2,minmax(0,1fr))} .row3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.piece{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.piece .q{font:700 1.2rem/1.25 var(--display);color:var(--accent);margin:0}
+.piece .q .repo{color:var(--fg);text-decoration:none} .piece .q a.repo:hover{color:var(--accent-hover)}
+.piece .who{font:600 .8rem var(--mono);color:var(--accent);text-decoration:none}
+.piece .who:hover{color:var(--accent-hover)}
+.piece p{margin:0;font-size:.93rem;color:var(--muted)}
+.pairnote{margin:0;font-size:.9rem;color:var(--muted)}
+.reads{text-align:center;font:500 .8rem var(--mono);color:var(--muted)}
+figure.flows{margin:var(--space-4) 0 0}
+.flows .scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.flows svg{display:block;width:100%;min-width:760px;height:auto;color:var(--muted)}
+.flows figcaption{font-size:.9rem;color:var(--muted);margin-top:var(--space-2)}
+.d-box{fill:var(--surface);stroke:var(--line-strong);stroke-width:1.2}
+.d-top{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.2}
+.d-ext{fill:var(--bg);stroke:var(--line-strong);stroke-width:1.2;stroke-dasharray:5 4}
+.d-tier{fill:var(--tier-soft);stroke:var(--tier);stroke-width:1.2;stroke-dasharray:5 4}
+.d-ground{fill:var(--sunken);stroke:var(--line-strong);stroke-width:1.2}
+.d-pair{fill:none;stroke:var(--accent);stroke-width:1.2;stroke-dasharray:2 4}
+.d-edge{fill:none;stroke:currentColor;stroke-width:1.4}
+.d-opt{fill:none;stroke:currentColor;stroke-width:1.4;stroke-dasharray:5 4}
+.d-head{fill:currentColor}
+.d-name{fill:var(--fg);font:700 14px var(--display)}
+.d-sub{fill:var(--muted);font:12px var(--body)}
+.d-lbl{fill:var(--fg);font:600 11.5px var(--mono)}
+.d-band{fill:var(--accent);font:600 11px var(--mono);letter-spacing:.08em}
+.d-gname{fill:var(--fg);font:700 14px var(--display)}
+.d-gsub{fill:var(--muted);font:12px var(--body)}
+.d-mask{fill:var(--surface)}
+@media (max-width:44rem){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
+.wrap.wide{max-width:60rem}
 /* The docs (site/docs/, built from docs/knowledge/): backlinks and the page graph (assets/graph.js). */
 .backlinks{columns:2;padding-left:1.1rem} @media (max-width:44rem){.backlinks{columns:1}}
 .graph{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
