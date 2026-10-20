@@ -17,12 +17,15 @@ site/                      # what GitHub Pages serves
 ├── index.html             # the overview
 ├── family/<repo>.html     # one page per public repo
 └── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css for this site's layout
+docs/family-roles.md       # the family convention: which repo answers which question, and which way they depend
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
 tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, standalone Cloud Shell blocks, design system
 .github/workflows/         # ci (tests), pages (publishes site/)
 ```
 
 The site is plain HTML with no build step. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
+
+Which repo answers which question, and why avd-landing-zone and avd-current-state never depend on the layer built on top of them: [three questions, three repos](docs/family-roles.md).
 
 ## Publishing
 

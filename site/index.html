@@ -19,18 +19,18 @@
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="index.html#contribute">Contribute</a>.</li></ul></div>
 <h2>How the pieces fit</h2>
-<p>Each repo owns one stage of the lifecycle. They pass versioned, redacted contracts to each other instead of sharing code, and the second brain sits under all of them.</p>
+<p>Three questions, three repos. avd-landing-zone is how it's built and changed from here, avd-current-state is what is there now, and avd-assess, still being specified, is what it should be and why. avd-landing-zone and avd-current-state work as a pair on their own. The second brain and avd-swarm are an intelligence and abstraction layer built on top of them, and never something the pair needs. The repos pass versioned, redacted contracts to each other instead of sharing code. <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md">Read the convention</a>.</p>
 <div class="lifecycle">
-<div class="stage "><span class="eyebrow">Inventory and validate</span>
-<h3><a href="family/avd-current-state.html">avd-current-state</a></h3><p>Read-only PowerShell that answers what is in an AVD environment today, and whether a subscription is ready for a deployment and the deployment landed correctly.</p>
-<span class="status s-built">Built</span><div class="chips"><span class="chip">C11 facts</span></div></div>
-<div class="stage "><span class="eyebrow">Deploy and operate</span>
+<div class="stage "><span class="eyebrow">How it's built and changed from here</span>
 <h3><a href="family/avd-landing-zone.html">avd-landing-zone</a></h3><p>An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
 <span class="status s-built">Built</span><div class="chips"><span class="chip">C14 target state</span><span class="chip">lessons</span></div></div>
-<div class="stage "><span class="eyebrow">Act and control</span>
+<div class="stage "><span class="eyebrow">What is there now</span>
+<h3><a href="family/avd-current-state.html">avd-current-state</a></h3><p>Read-only PowerShell that answers what is in an AVD environment today, and whether a subscription is ready for a deployment and the deployment landed correctly.</p>
+<span class="status s-built">Built</span><div class="chips"><span class="chip">C11 facts</span></div></div>
+<div class="stage "><span class="eyebrow">On top: the how of operating</span>
 <h3><a href="family/avd-swarm.html">avd-swarm</a></h3><p>Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.</p>
 <span class="status s-design">Design and spike</span><div class="chips"><span class="chip">C9 proposals</span><span class="chip">C10 outcomes</span></div></div>
-<div class="stage brainband"><span class="eyebrow">Under every stage: remember and learn</span>
+<div class="stage brainband"><span class="eyebrow">On top: the why, over the environment's life</span>
 <h3><a href="family/avd-second-brain.html">avd-second-brain</a></h3><p>One memory across the AVD lifecycle: what each estate looked like, what broke, what the organization learned, and why each rule is what it is.</p>
 <span class="status s-built">Built, growing</span><div class="chips"><span class="chip">C6 knowledge</span><span class="chip">C13 docs findings</span><span class="chip">C15 fact register</span></div></div>
 <div class="stage tierband"><span class="eyebrow">Optional tier, on any landing zone</span>
