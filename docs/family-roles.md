@@ -23,9 +23,6 @@ three:
 - [avd-swarm](https://github.com/nickprignano/avd-swarm) is **the how of operating** it: agents
   that read and propose, and change nothing until a person approves the exact plan.
 
-[avd-liquidware](https://github.com/nickprignano/avd-liquidware) stays an optional tier on any
-landing zone.
-
 ## The rules
 
 1. **avd-landing-zone and avd-current-state are a self-contained pair.** They work, and keep

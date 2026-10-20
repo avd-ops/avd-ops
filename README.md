@@ -1,6 +1,6 @@
 # avd-ops
 
-The website for the AVD repos, published at **<https://avd-ops.dev/>**: one overview page and one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain, avd-liquidware) and how they fit together.
+The website for the AVD repos, published at **<https://avd-ops.dev/>**: one overview page and one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain) and how they fit together. avd-assess is on the overview and gets its own page once it's public.
 
 > [!WARNING]
 > **Personal project. Research and learning only. Not for production. No warranty.**
@@ -40,7 +40,7 @@ Which repo answers which question, and why avd-landing-zone and avd-current-stat
 
 ## Contributing
 
-Fork it, open an issue or a pull request. Run `node --test "tests/*.test.mjs"` before pushing (CI runs the same). Keep the notice on every page, name no partner but Liquidware, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
+Fork it, open an issue or a pull request. Run `node --test "tests/*.test.mjs"` before pushing (CI runs the same). Keep the notice on every page, name no partner product on the site, and put no tenant data, secrets or customer names anywhere. Contributions are accepted under the [MIT License](LICENSE).
 
 ## License and disclaimer
 
