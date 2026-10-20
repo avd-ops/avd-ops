@@ -19,7 +19,7 @@ test('the site has a page for each public repo in the family', () => {
 
 test('every page carries the avd-ops name', () => {
   for (const f of pages) {
-    assert.match(read(f), /<a class="brand" href="[^"]*index\.html">avd-ops<\/a>/, f);
+    assert.match(read(f), /<a class="brand" href="[^"]*index\.html"><img class="mark" src="[^"]*assets\/brand\/mark\.svg" alt=""[^>]*>avd-ops<\/a>/, f);
     assert.doesNotMatch(read(f), /AVD (repo )?family/i, f);
   }
 });
@@ -33,9 +33,43 @@ test('every page shows the notice before its first section', () => {
   }
 });
 
+test('every page uses the shared design system and nothing else (docs/design-system.md)', () => {
+  for (const f of pages) {
+    const h = read(f);
+    assert.match(h, /<link rel="stylesheet" href="(\.\.\/)?assets\/avd-ops\.css">/, `${f}: no avd-ops.css`);
+    assert.match(h, /<link rel="icon" href="(\.\.\/)?assets\/brand\/favicon\.svg"/, `${f}: no favicon`);
+    assert.doesNotMatch(h, /<style|style="/, `${f}: inline styles belong in assets/`);
+    assert.doesNotMatch(h, /fonts\.(googleapis|gstatic)\.com/, `${f}: fonts are served from assets/fonts`);
+  }
+});
+
+test('the design system defines every token for light and dark and serves its own fonts', () => {
+  const css = read('site/assets/avd-ops.css');
+  assert.match(css, /^\/\* avd-ops design system v\d+\.\d+\.\d+ /, 'version line');
+  const block = (re) => (css.match(re) || [, ''])[1];
+  const names = (b) => [...b.matchAll(/(--[\w-]+):/g)].map((m) => m[1]).sort();
+  const light = names(block(/\n:root\{([\s\S]*?)\n\}/));
+  const darkMedia = names(block(/:root:not\(\[data-theme="light"\]\)\{([\s\S]*?)\}\}/));
+  const darkAttr = names(block(/:root\[data-theme="dark"\]\{([\s\S]*?)\}/));
+  const colors = light.filter((n) => /#[0-9a-f]{3,6}\b|rgba/.test(css.match(new RegExp(`\\n:root\\{[\\s\\S]*?${n}:([^;]+);`))[1]));
+  assert.ok(colors.length > 20, 'color tokens');
+  for (const n of colors) {
+    assert.ok(darkMedia.includes(n), `${n} has no dark value (prefers-color-scheme)`);
+    assert.ok(darkAttr.includes(n), `${n} has no dark value (data-theme)`);
+  }
+  assert.deepEqual(darkMedia, darkAttr, 'the two dark blocks match');
+  for (const [, src] of css.matchAll(/url\("([^"]+)"\)/g)) assert.ok(existsSync(join(root, 'site/assets', src)), src);
+  assert.ok(existsSync(join(root, 'site/assets/fonts/LICENSE')), 'font licenses');
+  assert.ok(existsSync(join(root, 'site/assets/brand/mark.svg')), 'the mark');
+  // Colors live in tokens only: no hex outside the token blocks, in the shared file or the site's own.
+  const rest = css.replace(/\n:root\{[\s\S]*?\n\}|@media \(prefers-color-scheme:dark\)\{[\s\S]*?\}\}|:root\[data-theme="dark"\]\{[\s\S]*?\}/g, '');
+  assert.doesNotMatch(rest, /#[0-9a-fA-F]{3,6}\b/, 'hex outside the tokens in avd-ops.css');
+  assert.doesNotMatch(read('site/assets/site.css'), /#[0-9a-fA-F]{3,6}\b/, 'hex in site.css');
+});
+
 test('relative links resolve to files in site/', () => {
   for (const f of pages) {
-    for (const [, href] of read(f).matchAll(/href="([^"]+)"/g)) {
+    for (const [, href] of read(f).matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (/^(https?:|mailto:|#)/.test(href)) continue;
       const target = join(root, dirname(f), href.split('#')[0]);
       assert.ok(existsSync(target), `${f}: ${href}`);
