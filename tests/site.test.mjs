@@ -12,7 +12,7 @@ const pages = ['site/index.html', ...readdirSync(join(root, 'site/family')).filt
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
-  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-swarm', 'avd-second-brain']) {
+  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain']) {
     assert.ok(pages.includes(`site/family/${r}.html`), r);
   }
 });

@@ -1,6 +1,6 @@
 # avd-ops
 
-The website for the AVD repos, published at **<https://avd-ops.dev/>**: one overview page and one page for each public repo (avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain) and how they fit together. avd-assess is on the overview and gets its own page once it's public.
+The website for the AVD repos, published at **<https://avd-ops.dev/>**: one overview page and one page for each public repo (avd-landing-zone, avd-current-state, avd-assess, avd-swarm, avd-second-brain) and how they fit together.
 
 > [!WARNING]
 > **Personal project. Research and learning only. Not for production. No warranty.**

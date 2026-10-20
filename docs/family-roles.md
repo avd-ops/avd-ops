@@ -13,7 +13,7 @@ operations spec, section 3.0
 | Question | Repo | What it does |
 |---|---|---|
 | What it is | [avd-current-state](https://github.com/nickprignano/avd-current-state) | Collects facts about an environment offline and validates them, read-only |
-| What it should be | avd-assess | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. Being specified; it gets its own page here once it's public |
+| What it should be | [avd-assess](https://github.com/nickprignano/avd-assess) | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. A research index that links out to published sources |
 | How we build it | [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) | Deploys the landing zone from Cloud Shell, with the deployment portal, and every change to it after that |
 
 **On top**, the second brain and avd-swarm are how we automate it and make it smart and
