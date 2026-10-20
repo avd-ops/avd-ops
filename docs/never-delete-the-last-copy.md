@@ -38,7 +38,7 @@ file hashes before anything is deleted.
 
 | Counts | Doesn't count |
 |---|---|
-| A **private** GitHub repository or branch: files under 50 MiB in git, files up to 2 GiB as release assets, with the hash list in git | A public repository or issue (they only ever get redacted output) |
+| Your [private companion repo](private-companion-repo.md), a separate private repo you own: files under 50 MiB in git, files up to 2 GiB as release assets, with the hash list in git | A public repository or issue (they only ever get redacted output) |
 | The run store, outside the resource groups being deleted | Anything inside what is being deleted |
 | An archive downloaded to your own machine, with its hashes | Cloud Shell's disk, GitHub Actions artifacts (they expire), soft delete on its own |
 
