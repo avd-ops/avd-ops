@@ -1,12 +1,12 @@
 # avd-ops design system
 
-One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/). Version 2.0.1. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
+One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/). Version 2.1.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
 
 ## Where the UI is
 
 | Repo | Pages | Uses |
 |---|---|---|
-| avd-ops | every page of avd-ops.dev: home, architecture, `family/`, `docs/`, `design/` | 2.0.1: `avd-ops.css` + `avd-ops-shell.css` + `theme.js`, and `site.css` for its own layouts |
+| avd-ops | every page of avd-ops.dev: home, architecture, `family/`, `docs/`, `design/` | 2.1.0: `avd-ops.css` + `avd-ops-shell.css` + `theme.js`, and `site.css` for its own layouts |
 | avd-landing-zone | `site/portal/` (the deployment portal), `site/region-latency/`, the redirect pages | a vendored copy of 1.1.0; moves onto the shell next |
 | avd-current-state | `site/portal/` (the assessment portal) | a vendored copy of 1.1.0; moves onto the shell after the deployment portal |
 | avd-swarm, avd-second-brain, avd-liquidware | none yet (READMEs and Markdown docs only) | adopt this when they add a page |
@@ -54,6 +54,10 @@ Private repos stay out of it.
 | `.tbl` + `table` | Scrollable table. |
 | `pre`, `code` | Code; command blocks still follow the standalone Cloud Shell rule. |
 | `footer.site` | Footer with the license and trademark lines. |
+| `.segmented` | A radio group drawn as joined buttons (`role="radiogroup"` and an `aria-label`, `label > input[type=radio] + span`): Fix, Accept, Defer, or where commands run. Arrow keys move, as radios do; 44px on touch screens. |
+| `.runin` | The Run in row: `.runin-title`, then two `.segmented` choices, the place (Cloud Shell, Windows, macOS) and the shell (PowerShell, Bash). See [Run in](#run-in). |
+| `.untested` | "Not tested yet": a command variant no real run has proved. The word always shows. |
+| `.requires` | What a variant needs on the machine it runs on, after "Needs:". |
 
 ## Shell
 
@@ -67,7 +71,7 @@ Private repos stay out of it.
 | `footer.foot` | The license and trademark lines, the page's own line, and the credit line (`.credit`). |
 | `.skip` | Skip to content, visible on focus. |
 
-A portal uses the bar, the notice and the footer and leaves out the side list and the menu button (it has its own stage rail); `theme.js` then wires only the theme button. The bar is matched as `header.bar`, so a portal's own `.bar` (the latency chart's bars) keeps its look (2.0.1).
+A portal uses the bar, the notice and the footer and leaves out the side list and the menu button (it has its own stage rail); `theme.js` then wires only the theme button. The bar is matched as `header.bar`, so a portal's own `.bar` (the latency chart's bars) keeps its look (2.0.1). A portal page loads `avd-ops-shell.css` and `theme.js` after `avd-ops-portal.css`, so the portal's button styles don't reach the bar's buttons (2.1.0).
 
 On avd-ops.dev, `scripts/site/shell.mjs` writes the shell: `build-docs.mjs` wraps the docs in it, and `apply-shell.mjs` writes it into the hand-written pages between their `<!-- shell:head -->`, `<!-- shell:top -->` and `<!-- shell:foot -->` markers (`--check` in the tests). The switcher's Deploy and Assess links come from `portal` in [`repos.json`](../repos.json). A copy hosted somewhere else sets its own links, or leaves the switcher out.
 
@@ -80,16 +84,24 @@ On avd-ops.dev, `scripts/site/shell.mjs` writes the shell: `build-docs.mjs` wrap
 | `ol.steps` | The progress rail: one numbered stop per stage, `li.done`, `li.current`, `li.locked`, an optional `data-phase` label; circles only on phones, plus the current label. |
 | `.panel`, `.stage` | A surface for a stage or a collapsible block (`details.panel`); `.panel.accent` for Settings. One `.stage` shows at a time. |
 | `.slot` > `.stop` | The "Run in Cloud Shell, then paste the output" timeline; a stop takes `.good`, `.ok` or `.poor` once its result is known. `.stop > .label` is the stop's name. |
-| `.term` | A Cloud Shell block with its own Copy button (`.term-head`, `.term-label`, `pre`). |
+| `.term` | A command block with its own Copy button (`.term-head`, `.term-label`, `pre`). The label shows `PS>`, or `$` with `data-shell="bash"` on the block. |
 | `textarea.paste` | The paste box. |
 | `.row`, `.field`, `fieldset`, `label.switch` | Form layout, a labeled field with an optional hint (`small`), a group, a toggle. `textarea.prose` for notes. |
 | `button`, `.secondary`, `.linkbtn`, `a.btnlink` | Primary, secondary and link-style actions. |
 | `.stepnav` | Back and Next, sticky at the bottom; `.where` names the stage. |
 | `.result.good` / `.ok` / `.poor` | A run's overall result. |
 | `.outcome.o-pass` / `.o-warn` / `.o-gap` / `.o-unknown` | A check's outcome. Each pill carries its word, never color alone. |
-| `.segmented` | A radio group drawn as joined buttons (`role="radiogroup"`, `label > input[type=radio] + span`), such as Fix, Accept, Defer. |
 | `.filedrop` | A file input with a drop zone; the page fills `.file` and `.error`. The hint says the file is read in the browser and never uploaded. |
 | `.table-wrap`, `table.kv`, `td.num` | A table in its own border, a key and value table, numbers. |
+
+## Run in
+
+Every portal command block follows one choice: where it runs (Cloud Shell, Windows or macOS) and in which shell (PowerShell or Bash). Cloud Shell with PowerShell is the default, and its blocks stay one paste after a clean prompt (avd-landing-zone lesson 0015).
+
+- The page offers only the variants a script supports. Each repo lists them in `scripts/platforms.json` (`tested`, `untested` or `no` per place and shell, with optional `requires`, `twin` and `evidence`). `no` hides a choice for that block and says why; `untested` shows `.untested` next to the block.
+- Bash runs a PowerShell script through `pwsh` unless the list names a bash twin. Windows means PowerShell 7 unless an entry says otherwise.
+- A Windows or macOS block starts with the sign-in that Cloud Shell does for you and shows `.requires`.
+- The choice is stored in this browser only, under `avd-ops-runin`, so both portals open with the same one. If storage is blocked, the page uses the default.
 
 ## Logo
 
@@ -110,7 +122,7 @@ Pages that can't load avd-ops.dev at run time (the portals make no requests to o
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
 ```bash
-TAG=ds-v2.0.1; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
+TAG=ds-v2.1.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.
