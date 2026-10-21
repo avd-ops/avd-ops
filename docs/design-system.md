@@ -83,6 +83,17 @@ The mark is a shield holding a desktop with a cloud, and the >< of a remote sess
 | `favicon.svg` | The same mark with rounded corners, for the browser tab. |
 | `mark-white.svg` | One-color white shield, for dark backgrounds (stickers, slides, social images). |
 
+Images for places that take an upload rather than a page (GitHub avatars, slides), in `brand/` at the
+repo root so they are not vendored with `site/assets/`. All 1024px square PNGs, rendered from the SVGs
+in headless Chromium; the wordmark is `--display` (Schibsted Grotesk 700):
+
+| File | Use |
+|---|---|
+| `avatar-teal-1024.png` | `mark.svg` as is; the avd-ops org avatar. |
+| `avatar-white-1024.png` | The mark on white (`mark-on-white.svg`); the avd-ops-board GitHub App avatar. |
+| `avatar-black-1024.png` | Teal shield on ink (`mark-on-black.svg`), for dark surfaces. |
+| `logo-name-white-1024.png`, `logo-name-black-1024.png` | The white and black marks with "avd-ops" beneath. |
+
 The mark needs no text; where a page names the brand, it sets "avd-ops" in `--display` beside the mark rather than using an image of the word. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
 
 ## Use it in another repo
