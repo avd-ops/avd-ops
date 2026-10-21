@@ -68,3 +68,8 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   the Run in title lose the last tracked mono capitals (stage phase labels, step labels, terminal labels,
   table headers), as 2.3.0 did for the site's labels. Status pills keep theirs. Both portals put the
   notice in the bar, so `.portal p.disclaimer` is removed, and the notice also closes when focus leaves it.
+- Design system 2.5.0 (owner, 2026-10-21): "one screen at a time" and "bottom line first, in plain
+  words, like a chat reply" become rules. The portal components gain the wizard: a slim head, a progress
+  bar grouped by phase, one step that fills the screen, a "+ more" disclosure, the reply to a paste,
+  Back and Next along the bottom on every screen size, and sheets for Settings and Resume. The deployment
+  portal uses it first; the docs follow in a later change.
