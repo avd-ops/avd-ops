@@ -10,7 +10,7 @@
     {"name": "Azure review checklists", "url": "https://github.com/Azure/review-checklists", "license": "MIT", "job": "The AVD checklist the assessment method maps its facts to, cited by short item ID", "in": ["avd-assess"]},
     {"name": "Azure Proactive Resiliency Library v2", "url": "https://github.com/Azure/Azure-Proactive-Resiliency-Library-v2", "license": "MIT", "job": "Resiliency recommendations for AVD resources, read by WARA's collector", "in": ["avd-assess"]},
     {"name": "Azure Monitor Baseline Alerts", "url": "https://github.com/Azure/azure-monitor-baseline-alerts", "license": "MIT", "job": "The AVD alert pattern the method uses as its monitoring reference", "in": ["avd-assess"]},
-    {"name": "2ndbrain", "url": "https://github.com/nickprignano/2ndbrain", "license": "Apache-2.0", "job": "The knowledge base format and tooling (scripts/kb/, schemas, hooks) every family KB is built on; each copy keeps its NOTICE", "in": ["avd-ops", "avd-second-brain"]}
+    {"name": "2ndbrain", "url": "https://github.com/nickprignano/2ndbrain", "license": "Apache-2.0", "job": "The knowledge base format and tooling (scripts/kb/, schemas, hooks) every family KB is built on, and the knowledge capture and handoff hooks the other repos run", "in": ["avd-ops", "avd-second-brain", "avd-landing-zone", "avd-swarm"]}
   ],
   "tooling": [
     {"name": "Bicep", "url": "https://github.com/Azure/bicep", "license": "MIT", "job": "Infrastructure as code for every template"},
@@ -19,7 +19,10 @@
     {"name": "Gitleaks", "url": "https://github.com/gitleaks/gitleaks", "license": "MIT", "job": "Secret scanning before anything is pushed"},
     {"name": "marked", "url": "https://github.com/markedjs/marked", "license": "MIT", "job": "Renders the docs on this site from Markdown"},
     {"name": "MADR", "url": "https://github.com/adr/madr", "license": "MIT OR CC0-1.0", "job": "The format of every decision record"},
-    {"name": "Schibsted Grotesk, Source Sans 3 and JetBrains Mono", "url": "https://github.com/fontsource/fontsource", "license": "OFL-1.1", "job": "The fonts of the design system, served from this site through the Fontsource packages (see site/assets/fonts/LICENSE)"}
+    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "Display font of the design system, served from this site through its Fontsource package (site/assets/fonts/LICENSE)"},
+    {"name": "Source Sans 3", "url": "https://github.com/adobe-fonts/source-sans", "license": "OFL-1.1", "job": "Body font of the design system, served the same way"},
+    {"name": "JetBrains Mono", "url": "https://github.com/JetBrains/JetBrainsMono", "license": "OFL-1.1", "job": "Code font of the design system, served the same way"},
+    {"name": "Fontsource", "url": "https://github.com/fontsource/fontsource", "license": "MIT", "job": "The npm packages the three fonts are taken from, unmodified"}
   ],
   "prior_art": [
     {"name": "Azure Virtual Desktop Landing Zone Accelerator", "url": "https://github.com/Azure/avdaccelerator", "license": "MIT", "why": "Microsoft's broad accelerator covers other identity models and brownfield. avd-landing-zone stays narrow on purpose and points people there for what it leaves out"},
@@ -27,7 +30,7 @@
   ],
   "sources": [
     {"name": "Azure Virtual Desktop documentation", "url": "https://learn.microsoft.com/azure/virtual-desktop/", "license": "Microsoft Learn content, link only", "use": "How AVD behaves. Upstream wins on documented behavior; a real run wins on what happened"},
-    {"name": "Cloud Adoption Framework for AVD", "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/", "license": "CC-BY-4.0, link only", "use": "The assess, deploy and manage phases the family follows"},
+    {"name": "Cloud Adoption Framework for AVD", "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/", "license": "Microsoft Learn content, link only", "use": "The assess, deploy and manage phases the family follows"},
     {"name": "Well-Architected Framework for AVD", "url": "https://learn.microsoft.com/azure/well-architected/azure-virtual-desktop/overview", "license": "Microsoft Learn content, link only", "use": "The pillars and checklists behind the assessment's targets"},
     {"name": "FSLogix documentation", "url": "https://learn.microsoft.com/fslogix/", "license": "Microsoft Learn content, link only", "use": "Profile containers and their storage"},
     {"name": "Microsoft FinOps guides and the FinOps toolkit", "url": "https://learn.microsoft.com/cloud-computing/finops/", "license": "Microsoft Learn content, link only; the toolkit is open source", "use": "The FinOps Framework and FOCUS as Microsoft explains them, for cost assessment"}
@@ -46,6 +49,6 @@
     {"title": "Close a method gap", "url": "https://github.com/avd-ops/avd-assess/tree/main/gaps", "text": "Method we wrote only because no published source covers it. Know a source that does? Tell us and the gap retires."},
     {"title": "Send baseline evidence", "url": "https://github.com/avd-ops/avd-assess/issues/new?template=baseline-evidence.yml", "text": "Measured results from your own lab that agree or disagree with a baseline. Aggregates only, no names or IDs."},
     {"title": "Suggest an expert to follow", "url": "https://github.com/avd-ops/avd-second-brain/issues/new?template=kb-source.yml", "text": "Someone who publishes deep, original work on AVD. They are scored by the same method as everyone else."},
-    {"title": "Report a bug or an idea", "url": "https://github.com/avd-ops/avd-landing-zone/issues", "text": "An issue in the repo it belongs to, or a pull request with a fix, a test, a doc or a lesson from a lab run."}
+    {"title": "Not sure where it goes?", "url": "https://github.com/avd-ops/avd-ops/issues/new", "text": "Open it in avd-ops and we will move it to the right repo. A bug or idea for one repo goes to that repo's issues, below."}
   ]
 }

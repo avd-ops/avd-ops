@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { dirname, join } from 'node:path';
+import { dirname, join, posix } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => (statSync(join(root, d, f)).isDirectory() ? walk(`${d}/${f}`) : [`${d}/${f}`]));
@@ -145,6 +145,10 @@ test('the credits page is built from credits.json and up to date (scripts/site/b
   for (const e of credits.adopted) for (const r of e.in) assert.ok(repoNames.has(r), `${e.name}: ${r} is not in repos.json`);
   for (const i of [...credits.give_back, ...credits.help_wanted]) assert.match(i.url, new RegExp(`^https://github\\.com/${credits.org}/`), `${i.title}: points at the ${credits.org} repos`);
   assert.match(read('site/index.html'), /href="credits\.html#help-us"/, 'Contribute links the credits page');
+  // One nav across the hand-written pages and the generated one, so a new page or repo can't drift.
+  const navOf = (f) => [...(read(f).match(/<nav aria-label="Repos">([\s\S]*?)<\/nav>/) || [, ''])[1].matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)]
+    .map(([, href, text]) => `${posix.join(posix.dirname(f), href)} ${text}`);
+  for (const f of ['site/architecture.html', 'site/credits.html', ...pages.filter((p) => p.startsWith('site/family/'))]) assert.deepEqual(navOf(f), navOf('site/index.html'), `${f}: nav differs from index.html`);
 });
 
 test('repos.json lists every public repo with a docs page, and every page links its repo', () => {

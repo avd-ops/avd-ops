@@ -13,11 +13,12 @@ const data = JSON.parse(readFileSync(join(root, 'credits.json'), 'utf8'));
 const { repos } = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8'));
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const gh = (name) => `https://github.com/${data.org}/${name}`;
+const repoOf = new Map(repos.map((r) => [r.name, r.repo]));
+const gh = (name) => `https://github.com/${repoOf.get(name)}`;
 const link = (url, text) => `<a href="${esc(url)}">${esc(text)}</a>`;
 
 const NAV = [['Overview', 'index.html'], ['Docs', 'docs/index.html'], ['Architecture', 'architecture.html'], ['Credits', 'credits.html'],
-  ...['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain'].map((r) => [r, `family/${r}.html`])];
+  ...['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain'].filter((r) => repoOf.has(r)).map((r) => [r, `family/${r}.html`])];
 const nav = NAV.map(([t, u]) => `<a href="${u}"${u === 'credits.html' ? ' aria-current="page"' : ''}>${t}</a>`).join('');
 
 function table(rows, head, cells) {
@@ -34,7 +35,7 @@ ${items.map((i) => `<div class="card"><h3>${link(i.url, i.title)}</h3><p>${esc(i
 </div>`;
 
 const p = data.people;
-const content = `<span class="eyebrow kicker">Credits</span>
+const content = `<p class="eyebrow kicker">Credits</p>
 <h1>Built on other people's work, and giving it back.</h1>
 <p class="lede">The open-source projects, sources and people the avd-ops repos stand on, and how research help flows both ways: what we send upstream, and where you can help us.</p>
 <div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
