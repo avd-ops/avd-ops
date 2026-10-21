@@ -4,7 +4,7 @@ Status: design, 2026-10-21. Nothing is built. Proposed as [decision 0004](knowle
 
 A submission is anything someone outside sends the family to make it better: **evidence, research,
 a research request, feedback (praise, a problem, or a dispute or fact check), a bug report or a
-feature request**, plus one private route for sponsorship inquiries. Each one has to land in the right repo,
+feature request**, plus two private routes: general contact and sponsorship inquiries. Each one has to land in the right repo,
 with the right labels, in a shape the maintainer can review. Three surfaces send them: the
 **credits and contributors page** and the **standards and research review UI** on avd-ops.dev, and
 the **support mailbot** (designed separately, not built). They share one function, kept here in avd-ops:
@@ -50,7 +50,8 @@ first, sign-in gives the second, section 7 gives the third, and the link builder
 | `bug` | Something in a repo does the wrong thing. | any page, mailbot |
 | `feature` | Something a repo should do. | any page, mailbot |
 
-| `sponsorship` | An inquiry about sponsoring or funding the work. **Private: never a public issue** (section 5.4). | the sponsorship page, credits page |
+| `contact` | General contact: anything that isn't one of the above, or that the sender wants kept private. **Private: never a public issue** (section 5.4). | every page footer, credits page |
+| `sponsorship` | An inquiry about sponsoring or funding the work. **Private** (section 5.4). | the sponsorship page, credits page |
 
 A support question is not a type: it arrives by mail, Nick answers it, and if it turns into one of
 the six he opens that issue (section 5.3). Credit is not a type either: it is an opt-in on any of
@@ -60,7 +61,7 @@ the six public types (section 8).
 
 ```text
 submissions/
-  types.json          the six public types and the private sponsorship route, their labels and the form each uses
+  types.json          the six public types and the two private routes, their labels and the form each uses
   routing.json        type + area -> repo, form and labels (section 4.2)
   forms/*.yml         the canonical issue forms, vendored byte-identical into each repo
   README.md           how to add a type, an area or a repo
@@ -177,16 +178,26 @@ to open it and what goes in. If a sender wants credit, Nick asks them to submit 
 themselves; a mailed contribution is credited only with their written yes, by the name they give.
 This is the path for anyone without a GitHub account.
 
-### 5.4 Sponsorship inquiries (private)
+### 5.4 Private routes: general contact and sponsorship
 
-A sponsorship inquiry carries contact details and terms, so it never becomes a public issue and
-has no issue form. `routing.json` gives it a `mailto:` destination, not a repo: the button shows
-the mailbot address with a fixed subject (`Sponsorship inquiry`) and no body, and the mail goes
-through the mailbot's draft-only path to Nick, who answers it himself. The mailbot gives it its own
-category, drafts nothing commercial, and never links an issue form for it. Until the mailbot
-exists, the button shows only the address.
+Contact and sponsorship carry an email address, and sponsorship carries terms, so neither becomes
+a public issue and neither has an issue form. `routing.json` gives both a `mailto:` destination,
+not a repo: the mailbot's one address (the name is the mailbot's open decision) with a fixed
+subject (`Contact` or `Sponsorship inquiry`) and no body. That is the whole hand-off, one way:
+the site writes nothing, stores nothing and calls no endpoint; the mail goes through the mailbot's
+forward-first, draft-only path, and Nick sends every answer.
 
-The text beside the button reuses the sponsorship page's wording on what funding does and does
+- **mailto, not a Worker form endpoint.** An HTTP endpoint would be a new public write surface
+  (spam, bots, a CAPTCHA to run) and would put a form's text into the Worker outside the mail
+  checks the mailbot relies on (SPF, DKIM, DMARC, RBL). Revisit only if mail proves a barrier.
+- **The subject is a hint, never trust.** The mailbot classifies from the message as it always
+  does, treats all of it as untrusted input, and a subject can't change what the gate allows.
+- **Sponsorship:** its own category in the mailbot, which drafts nothing commercial and never
+  links an issue form. **Contact:** the mailbot may suggest one of the six public types to Nick
+  with the shared link builder (section 5.3), never with the sender's words in it.
+- Until the mailbot exists, both buttons show only the address.
+
+The text beside the sponsorship button the button reuses the sponsorship page's wording on what funding does and does
 not buy (owned by that page, linked, not restated here). It must never imply paid support, an
 SLA, priority or roadmap influence, and names no partner, private project or paid plan. A
 sponsor appears on the credits page only with their written yes.
