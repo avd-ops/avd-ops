@@ -19,6 +19,12 @@
    "topic": "decisions"
   },
   {
+   "id": "decisions/0003-the-family-ends-at-its-contracts.md",
+   "title": "0003. The family ends at its contracts; work outside it builds on them, never the reverse",
+   "url": "decisions/0003-the-family-ends-at-its-contracts.html",
+   "topic": "decisions"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -101,6 +107,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0002-avd-ops-is-the-front-door.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0003-the-family-ends-at-its-contracts.md"
   },
   {
    "source": "getting-started/README.md",

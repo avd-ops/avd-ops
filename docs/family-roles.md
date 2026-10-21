@@ -37,6 +37,13 @@ self-improving, an intelligence and abstraction layer built on the foundation:
    research index that links out to the published sources, pinned to a version, and adds only
    what the family has observed. avd-current-state implements the method. Like the pair,
    avd-assess never depends on the brain or avd-swarm.
+4. **The family ends at its contracts.** Work built on these repos from outside the family reads
+   their published contracts and outputs at a pinned version, and never the reverse: no script,
+   workflow, source list, test or doc step in the family fetches, imports or needs a repository
+   outside it. A contract names who produces it by role, not by repository, and every format that
+   crosses the line is a published contract, so nothing outside can change it silently. Family text
+   may say that a piece of work is outside the family and stops there; it doesn't describe what
+   that work does or plans ([decision 0003](knowledge/decisions/0003-the-family-ends-at-its-contracts.md)).
 
 ## What this means for a change
 
