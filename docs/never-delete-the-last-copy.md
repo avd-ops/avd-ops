@@ -2,7 +2,7 @@
 
 A convention for every repo in the family: avd-landing-zone, avd-current-state, avd-swarm,
 avd-second-brain and avd-liquidware. The decision record, with the reasons, is
-[avd-second-brain decision 0016](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md).
+[avd-second-brain decision 0016](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md).
 
 ## The rule
 
