@@ -30,6 +30,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0004-submissions-are-github-issue-forms.md",
+   "title": "0004. Every outside submission is a GitHub issue form in the repo that owns it",
+   "url": "decisions/0004-submissions-are-github-issue-forms.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -128,6 +135,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0003-the-family-ends-at-its-contracts.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0004-submissions-are-github-issue-forms.md"
   },
   {
    "source": "getting-started/README.md",
