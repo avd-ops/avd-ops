@@ -58,6 +58,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0008-code-signing.md",
+   "title": "0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it",
+   "url": "decisions/0008-code-signing.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -176,6 +183,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0007-starters-not-a-theme-repo.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0008-code-signing.md"
   },
   {
    "source": "getting-started/README.md",
