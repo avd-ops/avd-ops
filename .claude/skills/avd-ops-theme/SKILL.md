@@ -14,12 +14,12 @@ header by hand.
 Pick the file: `artifact.html` for a Claude artifact, `page.html` for a page committed to a repo.
 
 - In a clone of avd-ops: `templates/<file>`.
-- Anywhere else, at the newest release tag (owner tags `ds-v<version>`; fall back to `main` if the tag is not
-  there yet):
+- Anywhere else, from the newest release tag (the owner tags `ds-v<version>` after a merge; fall back to `main`
+  if the tag is not there yet):
 
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/avd-ops/avd-ops/ds-v2.2.0/templates/artifact.html" -o page.html \
-  || curl -fsSL "https://raw.githubusercontent.com/avd-ops/avd-ops/main/templates/artifact.html" -o page.html
+rm -rf /tmp/avd-ops && { git clone -q --depth 1 --branch ds-v2.2.0 https://github.com/avd-ops/avd-ops.git /tmp/avd-ops \
+  || git clone -q --depth 1 https://github.com/avd-ops/avd-ops.git /tmp/avd-ops; } && cp -n /tmp/avd-ops/templates/artifact.html page.html
 ```
 
 Copy it with the shell; don't retype it.
@@ -41,7 +41,9 @@ Copy it with the shell; don't retype it.
 
 ## 3. Rules that still apply
 
-- The research-only notice and the credit line stay on every family page and artifact.
+- The research-only notice and the credit line stay on every family page and artifact. A repo whose own notice
+  says more keeps its wording (avd-liquidware also names Liquidware).
+- Private repos don't use the starters: they brand the page avd-ops and say every repo is open source.
 - A repo page takes a pinned copy of `site/assets/` first (`docs/design-system.md`, "Take a pinned copy") and
   never loads avd-ops.dev or a CDN at run time.
 - Public pages name no private repo, tenant, customer, ID or secret; avd-ops.dev names no partner for now.

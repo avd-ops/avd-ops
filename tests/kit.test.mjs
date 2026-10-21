@@ -9,7 +9,8 @@ import { join } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
 const read = (f) => readFileSync(join(root, f), 'utf8');
-const version = (read('site/assets/avd-ops.css').match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+) /) || [])[1];
+const { VERSION: version } = await import('../scripts/site/build-kit.mjs');
+assert.ok(version, 'version line in avd-ops.css');
 
 test('the starters are up to date with the release (scripts/site/build-kit.mjs)', () => {
   execFileSync(process.execPath, [join(root, 'scripts/site/build-kit.mjs'), '--check'], { stdio: 'pipe' });

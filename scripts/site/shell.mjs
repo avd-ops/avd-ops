@@ -20,6 +20,12 @@ export const GROUPS = [
 // The switcher: the site, then the portals each repo publishes (repos.json "portal").
 export const SWITCHER = [['Docs', null], ['Deploy', portal('avd-landing-zone')], ['Assess', portal('avd-current-state')]];
 
+// The pieces the starters in templates/ share with the site (scripts/site/build-kit.mjs).
+export const brand = (href, src) => `<a class="brand" href="${href}"><img class="mark" src="${src}" alt="" width="28" height="28"><span class="word">avd-ops</span></a>`;
+export const SKIP = '<a class="skip" href="#main">Skip to content</a>';
+export const TRADEMARKS = '<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>';
+export const themeButton = () => `<button class="iconbtn theme" type="button" aria-label="Switch theme">${SUN}${MOON}</button>`;
+
 export const CREDIT = '<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p>';
 
 export const NOTICE = (up) => `<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
@@ -53,10 +59,10 @@ export function shellTop(up, current) {
     ? `<a href="${href}">${t}</a>`
     : `<a href="${up}index.html" aria-current="true">${t}</a>`)).join('');
   const side = GROUPS.map(([g, items]) => `<p class="group">${g}</p>${items.map(([t, href]) => `<a href="${up}${href}"${mark(href, current)}>${t}</a>`).join('')}`).join('\n');
-  return `<a class="skip" href="#main">Skip to content</a>
-<header class="bar"><div class="bar-in"><a class="brand" href="${up}index.html"><img class="mark" src="${up}assets/brand/mark.svg" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
+  return `${SKIP}
+<header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
 <nav class="switcher" aria-label="avd-ops tools">${switcher}</nav>
-<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme">${SUN}${MOON}</button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
+<div class="tools">${themeButton()}<button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
 ${NOTICE(up)}
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
 ${side}
@@ -66,7 +72,7 @@ ${side}
 export function shellFoot(extra) {
   return `</div>
 <footer class="foot"><div class="in">${extra}
-<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+${TRADEMARKS}
 ${CREDIT}</div></footer>
 <button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>`;
 }

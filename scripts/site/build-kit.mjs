@@ -10,24 +10,25 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { NOTICE, SUN, MOON, CREDIT } from './shell.mjs';
+import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, themeButton } from './shell.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
+const BASE = asset('avd-ops.css');
 const SITE = 'https://avd-ops.dev/';
 export const FONTS = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Schibsted+Grotesk:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap';
 
-export const version = () => (asset('avd-ops.css').match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+) /) || [])[1];
+export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+) /) || [])[1];
 
 // The bar without the switcher and the menu: a single page has no side list. A page that wants the switcher
 // copies it from avd-ops.dev (scripts/site/shell.mjs, SWITCHER).
-const bar = (markSrc) => `<a class="skip" href="#main">Skip to content</a>
-<header class="bar"><div class="bar-in"><a class="brand" href="${SITE}"><img class="mark" src="${markSrc}" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
-<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme">${SUN}${MOON}</button></div></div></header>
+const bar = (markSrc) => `${SKIP}
+<header class="bar"><div class="bar-in">${brand(SITE, markSrc)}
+<div class="tools">${themeButton()}</div></div></header>
 ${NOTICE(SITE)}`;
 
 const foot = (own) => `<footer class="foot"><div class="in"><p>${own}</p>
-<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+${TRADEMARKS}
 ${CREDIT}</div></footer>`;
 
 // The sample content both starters open with: real components, so the first view shows the look. Replace it.
@@ -45,7 +46,7 @@ const SAMPLE = `<!-- page:start (replace from here to page:end with the page's o
 
 export function page() {
   return `<!doctype html>
-<!-- avd-ops page starter, design system v${version()} (avd-ops/avd-ops templates/page.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft. -->
+<!-- avd-ops page starter, design system v${VERSION} (avd-ops/avd-ops templates/page.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft. -->
 <!-- Needs a pinned copy of the design system in assets/ next to this page (docs/design-system.md, "Take a pinned copy"). No inline script or style, so it runs under a strict CSP. Page layout goes in the page's own stylesheet, built on the tokens. -->
 <html lang="en">
 <head>
@@ -74,12 +75,12 @@ ${foot('Part of the avd-ops family. Something wrong? Open an issue or a pull req
 }
 
 // avd-ops.css without its @font-face rules (an artifact loads the same families from Google Fonts), then the shell.
-const css = () => `${asset('avd-ops.css').replace(/^\/\*[\s\S]*?\*\/\n+/, '').replace(/^@font-face\{.*\}\n/gm, '').trim()}\n${asset('avd-ops-shell.css').replace(/^\/\*[\s\S]*?\*\/\n+/, '').trim()}`;
+const css = () => `${BASE.replace(/^\/\*[\s\S]*?\*\/\n+/, '').replace(/^@font-face\{.*\}\n/gm, '').trim()}\n${asset('avd-ops-shell.css').replace(/^\/\*[\s\S]*?\*\/\n+/, '').trim()}`;
 const js = () => asset('theme.js').replace(/^\/\*[\s\S]*?\*\/\n/, '').trim();
 const dataUri = (f) => `data:image/svg+xml;base64,${Buffer.from(asset(f)).toString('base64')}`;
 
 export function artifact() {
-  return `<!-- avd-ops artifact starter, design system v${version()} (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
+  return `<!-- avd-ops artifact starter, design system v${VERSION} (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
      Copy this file, rename the title, and replace the content between page:start and page:end. Keep the style and script blocks as they are: they are the release, inlined. -->
 <title>Page title</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -88,11 +89,11 @@ export function artifact() {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <style>
-/* avd-ops design system v${version()}: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
+/* avd-ops design system v${VERSION}: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
 ${css()}
 </style>
 <script>
-/* avd-ops theme.js v${version()}, inlined. */
+/* avd-ops theme.js v${VERSION}, inlined. */
 ${js()}
 </script>
 <div class="shell">

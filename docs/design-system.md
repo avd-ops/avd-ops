@@ -11,7 +11,7 @@ One look and one frame for every public AVD page: avd-ops.dev, the deployment po
 | avd-current-state | `site/portal/` (the assessment portal) | a vendored copy in the shell; its lock file names the release |
 | avd-swarm, avd-second-brain, avd-liquidware, avd-linecheck | none yet (READMEs and Markdown docs only) | start from [`templates/page.html`](../templates/page.html) when they add a page |
 
-Private repos stay out of it: they may use the artifact starter for their own notes, but no public page names them.
+Private repos stay out of it: the starters brand a page as avd-ops and say every repo is open source.
 
 ## Rules
 
@@ -113,13 +113,13 @@ Two starters in [`templates/`](../templates/), written by `scripts/site/build-ki
 | [`page.html`](../templates/page.html) | a new page in any repo (avd-linecheck, a sibling's first page) | the bar (mark, word, theme button), the notice line, one column (`.layout.solo`), the footer with the credit line. It links the pinned copy in `assets/` next to it and has no inline script or style, so it runs under a strict CSP. Take the copy first ([Take a pinned copy](#take-a-pinned-copy)), then put the starter beside `assets/`. |
 | [`artifact.html`](../templates/artifact.html) | a Claude artifact (a proposal, a review, a dashboard) | one file: `avd-ops.css` and `avd-ops-shell.css` inlined without their font faces, `theme.js` inlined, the mark as a data URI, and the same three families from Google Fonts, the only font host an artifact may load. The shell sits on a `div.shell`, because the artifact host writes `<body>`. |
 
-From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy):
+From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy; it never overwrites a page that is there):
 
 ```bash
-TAG=ds-v2.2.0; curl -fsSL "https://raw.githubusercontent.com/avd-ops/avd-ops/$TAG/templates/page.html" -o site/index.html
+TAG=ds-v2.2.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
 ```
 
-A page keeps the notice and the credit line (the avd-ops.dev tests check both on its own pages, and a sibling's tests should too), keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `avd-ops-theme` skill ([`.claude/skills/avd-ops-theme/`](../.claude/skills/avd-ops-theme/SKILL.md)), which starts every page or artifact from these files.
+A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `avd-ops-theme` skill ([`.claude/skills/avd-ops-theme/`](../.claude/skills/avd-ops-theme/SKILL.md)), which starts every page or artifact from these files.
 
 ## Logo
 

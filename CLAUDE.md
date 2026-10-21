@@ -20,6 +20,6 @@ node --test "tests/*.test.mjs"
 - `repos.json` is the one list of public AVD repos. A new public repo gets an entry, a page in `docs/knowledge/repos/` and the avd-ops line under its README title. Private repos stay unbranded and off the site.
 - The AVD repos never name the projects listed in `repos.json` `banned`; the tests check this repo and `family.yml` checks the others weekly.
 - The site names no partner for now: no Liquidware or avd-liquidware (Nick, 2026-10-20; the family-wide rule stays that Liquidware is the only partner), and no Nerdio, Login VSI, Goliath or HCL tooling (Terraform, Packer). `tests/site.test.mjs` checks it.
-- No tenant, subscription or object IDs, domains other than avd-ops.dev, github.com and prignano.ai (the owner's credit line in the shell footer, Nick 2026-10-21), emails, secrets, or employer or customer names.
+- No tenant, subscription or object IDs, domains other than avd-ops.dev, github.com and prignano.ai (the owner's credit line in the shell footer, Nick 2026-10-21) (plus fonts.googleapis.com and fonts.gstatic.com in the artifact starter only, the one font host an artifact may load, decision 0007), emails, secrets, or employer or customer names.
 - Personal project, not for production, as is, not affiliated with the author's employer, Liquidware or Microsoft. The README warning and LICENSE stay.
 - American English.
