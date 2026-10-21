@@ -2,7 +2,7 @@
 
 A convention for every repo in the family, next to [never delete the last copy](never-delete-the-last-copy.md).
 The decision record, with the reasons and sources, is
-[avd-second-brain decision 0017](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md).
+[avd-second-brain decision 0017](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md).
 
 ## The rule
 

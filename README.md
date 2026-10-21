@@ -37,7 +37,7 @@ tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, 
 
 Family conventions: [never delete the last copy](docs/never-delete-the-last-copy.md), for every teardown, cleanup and agent step that deletes data, [never leave the meter running](docs/never-leave-the-meter-running.md), for anything that bills, and your [private companion repo](docs/private-companion-repo.md) for run records.
 
-The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
+The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) ([portal](https://deploy.avd-ops.dev/portal/)).
 
 ## Docs and the graph
 
@@ -53,8 +53,8 @@ Which repo answers which question, and why the foundation never depends on the l
 
 `pages.yml` publishes `site/` on every push to `main` that changes it, or when run by hand from the Actions tab. The domain's DNS is on Cloudflare; GitHub Pages hosts the site and issues its HTTPS certificate. One-time setup, in this order:
 
-1. **Verify the domain** (so no other repo can claim it): GitHub, your account's **Settings > Pages > Add a domain**, enter `avd-ops.dev`. Add the TXT record it shows in Cloudflare (**DNS > Records**), then click **Verify**.
-2. **Point the apex at GitHub Pages** in Cloudflare: the four A records and four AAAA records from [GitHub's list](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain), name `@`. Optionally a CNAME `www` to `nickprignano.github.io`. Delete any other A, AAAA or CNAME records on `@` and `www` (parking or forwarding records conflict). Set every one of these records to **DNS only** (gray cloud), not Proxied.
+1. **Verify the domain** (so no other repo can claim it): GitHub, the avd-ops organization's **Settings > Pages > Add a domain**, enter `avd-ops.dev`. Add the TXT record it shows in Cloudflare (**DNS > Records**), then click **Verify**.
+2. **Point the apex at GitHub Pages** in Cloudflare: the four A records and four AAAA records from [GitHub's list](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain), name `@`. Optionally a CNAME `www` to `avd-ops.github.io`. Delete any other A, AAAA or CNAME records on `@` and `www` (parking or forwarding records conflict). Set every one of these records to **DNS only** (gray cloud), not Proxied.
 3. **Turn on Pages** in this repo: **Settings > Pages > Source: GitHub Actions**, then **Custom domain: `avd-ops.dev`** and **Save** (Actions deployments need no CNAME file). Wait for the DNS check to pass and the certificate to be issued, then tick **Enforce HTTPS**.
 4. **Publish**: run the `pages` workflow once from the Actions tab.
 

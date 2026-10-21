@@ -18,7 +18,9 @@ add it to the topic page it belongs to instead of starting a new file.
 | Page | What's in it | Status |
 |---|---|---|
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | partial |
+| [getting-started/cloud-shell.md](getting-started/cloud-shell.md) | The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence | partial |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | partial |
+| [concepts/sandbox-batches.md](concepts/sandbox-batches.md) | How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence | partial |
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | partial |
 | [repos/avd-assess.md](repos/avd-assess.md) | Foundation, what it should be: an open AVD assessment methodology that links pinned published sources and adds what real runs observed | partial |
 | [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts | partial |
@@ -38,7 +40,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | Knowledge base | Role | Focus | Source of truth for |
 |---|---|---|---|
 | [2ndbrain](https://github.com/nickprignano/2ndbrain/tree/main/docs/knowledge) | reference | The template that owns the family knowledge base format | the family knowledge base format; its scripts and schemas |
-| [AVD](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge) | member | Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm | Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos |
+| [AVD](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge) | member | Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm | Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos |
 | [Liquidware](https://github.com/nickprignano/avd-liquidware/tree/main/docs/knowledge) | member | Liquidware products on virtual desktops, starting with Stratusphere UX in Azure | Liquidware products; Stratusphere UX appliances; the Liquidware tier for the landing zone |
 <!-- END GENERATED: family -->
 

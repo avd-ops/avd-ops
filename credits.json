@@ -19,10 +19,10 @@
     {"name": "Gitleaks", "url": "https://github.com/gitleaks/gitleaks", "license": "MIT", "job": "Secret scanning before anything is pushed"},
     {"name": "marked", "url": "https://github.com/markedjs/marked", "license": "MIT", "job": "Renders the docs on this site from Markdown"},
     {"name": "MADR", "url": "https://github.com/adr/madr", "license": "MIT OR CC0-1.0", "job": "The format of every decision record"},
-    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "Display font of the design system, served from this site through its Fontsource package (site/assets/fonts/LICENSE)"},
-    {"name": "Source Sans 3", "url": "https://github.com/adobe-fonts/source-sans", "license": "OFL-1.1", "job": "Body font of the design system, served the same way"},
-    {"name": "JetBrains Mono", "url": "https://github.com/JetBrains/JetBrainsMono", "license": "OFL-1.1", "job": "Code font of the design system, served the same way"},
-    {"name": "Fontsource", "url": "https://github.com/fontsource/fontsource", "license": "MIT", "job": "The npm packages the three fonts are taken from, unmodified"}
+    {"name": "IBM Plex Mono", "url": "https://github.com/IBM/plex", "license": "OFL-1.1", "job": "Text, controls and code font of the design system, served from this site through its Fontsource package (site/assets/fonts/LICENSE)"},
+    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "Headings and the word avd-ops in the logo, served the same way"},
+    {"name": "JetBrains Mono", "url": "https://github.com/JetBrains/JetBrainsMono", "license": "OFL-1.1", "job": "The tagline in the logo, served the same way"},
+    {"name": "Fontsource", "url": "https://github.com/fontsource/fontsource", "license": "MIT", "job": "The npm packages the fonts are taken from, unmodified"}
   ],
   "prior_art": [
     {"name": "Azure Virtual Desktop Landing Zone Accelerator", "url": "https://github.com/Azure/avdaccelerator", "license": "MIT", "why": "Microsoft's broad accelerator covers other identity models and brownfield. avd-landing-zone stays narrow on purpose and points people there for what it leaves out"},

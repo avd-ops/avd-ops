@@ -9,6 +9,13 @@
    "section": true
   },
   {
+   "id": "concepts/sandbox-batches.md",
+   "title": "Sandbox batches",
+   "url": "concepts/sandbox-batches.html",
+   "topic": "concepts",
+   "status": "partial"
+  },
+  {
    "id": "decisions/0001-adopt-the-2ndbrain-format.md",
    "title": "0001. Adopt the 2ndbrain knowledge base format, version 1",
    "url": "decisions/0001-adopt-the-2ndbrain-format.html",
@@ -51,6 +58,20 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0007-starters-not-a-theme-repo.md",
+   "title": "0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package",
+   "url": "decisions/0007-starters-not-a-theme-repo.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
+   "id": "decisions/0008-code-signing.md",
+   "title": "0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it",
+   "url": "decisions/0008-code-signing.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -64,6 +85,13 @@
    "topic": "getting-started",
    "status": "partial",
    "section": true
+  },
+  {
+   "id": "getting-started/cloud-shell.md",
+   "title": "Working from Cloud Shell",
+   "url": "getting-started/cloud-shell.html",
+   "topic": "getting-started",
+   "status": "partial"
   },
   {
    "id": "repos/README.md",
@@ -143,6 +171,10 @@
    "target": "decisions/0006-run-anywhere.md"
   },
   {
+   "source": "concepts/sandbox-batches.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -167,6 +199,14 @@
    "target": "decisions/0006-run-anywhere.md"
   },
   {
+   "source": "decisions/README.md",
+   "target": "decisions/0007-starters-not-a-theme-repo.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0008-code-signing.md"
+  },
+  {
    "source": "getting-started/README.md",
    "target": "decisions/0002-avd-ops-is-the-front-door.md"
   },
@@ -189,6 +229,22 @@
   {
    "source": "getting-started/README.md",
    "target": "concepts/README.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/cloud-shell.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/cloud-shell.md",
+   "target": "repos/avd-current-state.md"
   },
   {
    "source": "repos/README.md",

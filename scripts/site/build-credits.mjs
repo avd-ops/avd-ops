@@ -33,8 +33,7 @@ ${items.map((i) => `<div class="card"><h3>${link(i.url, i.title)}</h3><p>${esc(i
 </div>`;
 
 const p = data.people;
-const content = `<p class="eyebrow kicker">Credits</p>
-<h1>Built on other people's work, and giving it back.</h1>
+const content = `<h1>Built on other people's work, and giving it back.</h1>
 <p class="lede">The open-source projects, sources and people the avd-ops repos stand on, and how research help flows both ways: what we send upstream, and where you can help us.</p>
 <p>Listing a project here credits it; it doesn't mean the project endorses avd-ops. Licenses are what each repo's license file said on ${esc(data.checked)}. Where we use a source, we link it and say what we use it for in our own words.</p>
 <h2 id="adopted">Open source we build on</h2>

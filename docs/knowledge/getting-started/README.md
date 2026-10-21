@@ -32,8 +32,10 @@ New to the vocabulary? Read [concepts](../concepts/README.md) first.
 ## Before you run anything
 
 - Use a lab subscription and tenant you can throw away. Every repo assumes it.
-- Run from Azure Cloud Shell (PowerShell). Each repo's quick start is one block you paste there.
-- Expect Azure charges and tear down when you're done. The repos that deploy say how.
+- Run from Azure Cloud Shell (PowerShell). Each repo's quick start is one block you paste there; the
+  conventions behind that are in [working from Cloud Shell](cloud-shell.md).
+- Expect Azure charges and tear down when you're done. The repos that deploy say how, and
+  [sandbox batches](../concepts/sandbox-batches.md) is how several paid test runs are approved and run.
 - Never paste a secret into chat, an issue or a pull request. The scripts read secrets with managed
   identities or prompt for them locally.
 
@@ -41,4 +43,4 @@ New to the vocabulary? Read [concepts](../concepts/README.md) first.
 
 Fork any repo, open an issue or a pull request. Put a change in the repo that owns it; these pages
 only link. A page here that is wrong or out of date is a pull request to
-[avd-ops](https://github.com/nickprignano/avd-ops).
+[avd-ops](https://github.com/avd-ops/avd-ops).

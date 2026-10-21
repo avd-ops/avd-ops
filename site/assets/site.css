@@ -1,6 +1,5 @@
 /* avd-ops.dev page layouts on top of avd-ops.css and avd-ops-shell.css: the home page's hero and family map,
    the principles, the architecture stack, the docs extras and the design system reference. */
-.kicker{margin-top:var(--space-4)} .kicker+h1{margin-top:var(--space-1)}
 .actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
 .actions .cta{margin:0;min-height:var(--tap);display:inline-flex;align-items:center}
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4) var(--space-5);padding:0;list-style:none}
@@ -10,8 +9,9 @@ td:first-child{white-space:nowrap}
 
 /* Home: the thesis and the three ways in, then the family as a picture (the layer on top, the three foundation
    questions under it). Tiles are links; the whole tile is the target. */
-.home .hero{display:grid;gap:var(--space-4);padding-block:var(--space-4) var(--space-5);max-width:52rem}
-.home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.015em}
+.home .hero{display:grid;gap:var(--space-4);padding-block:0 var(--space-5);max-width:52rem}
+.home .hero>.eyebrow{margin:0}
+.home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.02em}
 .home .hero .lede{margin:0;max-width:44rem}
 .map{margin:var(--space-4) 0 0;display:grid;gap:var(--space-3)}
 .map .band{background:var(--accent-soft);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;gap:var(--space-3)}
@@ -22,7 +22,7 @@ td:first-child{white-space:nowrap}
 .map .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.3rem;min-width:0;
   color:var(--fg);text-decoration:none;box-shadow:var(--shadow);transition:border-color var(--fast) var(--ease),box-shadow var(--fast) var(--ease)}
 .map .tile:hover{border-color:var(--accent);box-shadow:var(--shadow-2);color:var(--fg)}
-.map .tile small{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.map .tile small{font:600 .86rem var(--body);color:var(--accent)}
 .map .tile b{font:700 1.1rem var(--display)}
 .map .tile span:not(.status){font-size:.93rem;color:var(--muted);flex:1}
 .map .tile .status{margin-top:var(--space-1)}
@@ -88,6 +88,8 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch{display:grid;gap:.35rem;min-width:0} .swatch i{display:block;height:3rem;border-radius:var(--radius-sm);border:1px solid var(--line)} .swatch code{font-size:.78rem;background:none;padding:0}
 .specimen{display:grid;gap:var(--space-2);margin:var(--space-3) 0 var(--space-5)} .specimen>*{margin:0}
 .demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:grid;gap:var(--space-3);margin:var(--space-3) 0 var(--space-5);min-width:0}
+/* Brand: the light lockup always on a light ground, the dark one on the bar ink, whatever the theme. */
+.demo.paper{background:var(--shell-fg);border-color:var(--line)} .demo.inverse{background:var(--shell);border-color:var(--shell-line)} .demo img{max-width:100%;height:auto;max-height:72px;justify-self:start}
 .demo .row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
 .demo .bar-demo{background:var(--shell);color:var(--shell-fg);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);display:flex;gap:var(--space-3);align-items:center;font:700 1rem var(--display)}
 .demo .bar-demo img{width:28px;height:28px;border-radius:6px}
@@ -110,6 +112,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch .t-shell-muted{background:var(--shell-muted)}
 .swatch .t-shell-line{background:var(--shell-line)}
 .swatch .t-shell-hover{background:var(--shell-hover)}
+.swatch .t-shell-warn{background:var(--shell-warn)}
 .swatch .t-good{background:var(--good)}
 .swatch .t-good-soft{background:var(--good-soft)}
 .swatch .t-caution{background:var(--caution)}
@@ -124,7 +127,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch .t-term-bg{background:var(--term-bg)}
 .swatch .t-term-text{background:var(--term-text)}
 .swatch .t-prompt{background:var(--prompt)}
-.specimen .d1{font:700 clamp(2rem,5vw,2.9rem)/1.2 var(--display);letter-spacing:-.01em} .specimen .d3{font:700 1.1rem/1.2 var(--display)}
+.specimen .d1{font:700 clamp(2rem,5vw,2.9rem)/1.2 var(--display);letter-spacing:-.015em} .specimen .d3{font:700 1.1rem/1.2 var(--display)}
 /* Credits page (site/credits.html, built from credits.json): the two-way help as a grid of cards. */
 .credit-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--space-3);margin-top:var(--space-4)}
 .credit-cards .card h3{margin-top:0} .credit-cards .card p{margin:0;font-size:.95rem;color:var(--muted)}
@@ -132,7 +135,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .tbl .chips{margin:0}
 @media (max-width:44rem){.stacked thead{display:none} .stacked,.stacked tbody,.stacked tr,.stacked th,.stacked td{display:block;width:auto}
 .stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
-.stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
+.stacked td::before{content:attr(data-label);display:block;font:600 .84rem var(--body);color:var(--muted)}}
 .origin{margin-top:var(--space-4);background:var(--accent-soft);border-color:transparent} .origin h3{margin-top:0} .origin p{margin:0 0 var(--space-2)} .origin .sig{margin:0;font-size:.9rem;color:var(--muted)}
 /* Security review (security.html, built by scripts/site/build-security.mjs) */
 .security .maturity{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--space-2);margin-top:var(--space-3)}
@@ -149,3 +152,35 @@ figure.flows{margin:var(--space-4) 0 0}
 .security .tbl th[scope="row"]{font-weight:400;color:var(--fg)} .security .tbl td[data-label="Repo"]{white-space:nowrap}
 .security .tbl td[data-label="Evidence"]{min-width:15rem} .security .ev .mono{overflow-wrap:anywhere}
 @media (max-width:44rem){.security .tbl td[data-label="Evidence"]{min-width:0} .security .tbl th[scope="row"]{font-weight:600}}
+
+/* The owner's checklist (checklist.html): a progress bar, then numbered lines that say their state in words.
+   Pills always carry a word; color only repeats it. */
+.cl-bar{display:grid;gap:var(--space-2);padding:var(--space-4);margin:var(--space-4) 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.cl-count{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font-family:var(--display);font-size:1.2rem}
+.cl-count meter{flex:1 1 10rem;min-width:0;height:.8rem}
+.cl-checked{margin:0;color:var(--muted);font-size:.95rem}
+.cl-privacy{font-size:.92rem;color:var(--muted)}
+.cl-list{display:grid;gap:var(--space-3);padding-left:1.6rem;margin:var(--space-3) 0 0}
+.cl-line{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3) var(--space-4);display:grid;gap:var(--space-2);min-width:0}
+.cl-line::marker{font:600 .9rem var(--mono);color:var(--muted)}
+.cl-done{background:var(--sunken)}
+.cl-done .cl-head>span:not(.cl-pill),.cl-done .cl-tick>span{color:var(--muted)}
+.cl-head{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:baseline}
+.cl-head>span:not(.cl-pill){flex:1 1 14rem;min-width:0}
+.cl-tick{display:flex;gap:var(--space-3);align-items:flex-start;cursor:pointer;min-height:var(--tap)}
+.cl-tick input{width:1.4rem;height:1.4rem;flex:none;margin:.15rem 0 0;accent-color:var(--accent)}
+.cl-meta{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;font-size:.92rem}
+.cl-meta a,.cl-line>a{display:inline-flex;align-items:center;min-height:var(--tap)}
+.cl-prs{display:grid;gap:var(--space-1)}
+.cl-pr{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);align-items:center;min-width:0}
+.cl-pr a{display:inline-flex;flex-wrap:wrap;align-items:center;gap:0 .4em;min-height:var(--tap);overflow-wrap:anywhere;font-weight:600}
+.cl-title{font-weight:400;color:var(--muted)}
+.cl-pill{display:inline-block;font:600 .72rem/1.7 var(--mono);letter-spacing:.04em;border-radius:var(--pill);padding:0 9px;color:var(--muted);background:var(--sunken);border:1px solid var(--line)}
+.cl-pill.cl-done,.cl-pill.cl-merged,.cl-pill.cl-on,.chip.cl-on{color:var(--good);background:var(--good-soft);border-color:var(--good)}
+.cl-pill.cl-ready{color:var(--accent);background:var(--accent-soft);border-color:var(--accent)}
+.cl-pill.cl-checks,.cl-pill.cl-behind,.cl-pill.cl-checking,.cl-pill.cl-draft,.cl-pill.cl-todo,.cl-pill.cl-off,.chip.cl-off{color:var(--caution);background:var(--caution-soft);border-color:var(--caution)}
+.cl-pill.cl-conflict,.cl-pill.cl-blocked{color:var(--bad);background:var(--bad-soft);border-color:var(--bad)}
+.cl-pill.cl-closed{color:var(--muted)}
+.cl-repos .chip{text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+@media (pointer:coarse){.cl-repos .chip{min-height:var(--tap)}}
+.cl-bar .cta:disabled{opacity:.6;cursor:default}

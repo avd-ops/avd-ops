@@ -10,7 +10,7 @@ last_reviewed: 2026-10-20
 
 **On top: the how of operating.** Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.
 
-The repo is the source of truth: [nickprignano/avd-swarm](https://github.com/nickprignano/avd-swarm). This page says where it fits.
+The repo is the source of truth: [avd-ops/avd-swarm](https://github.com/avd-ops/avd-swarm). This page says where it fits.
 
 ## What it does
 
@@ -26,6 +26,6 @@ The repo is the source of truth: [nickprignano/avd-swarm](https://github.com/nic
 
 ## Read more in the repo
 
-- [README](https://github.com/nickprignano/avd-swarm/blob/main/README.md)
-- [Spec](https://github.com/nickprignano/avd-swarm/blob/main/docs/spec.md)
-- [Governance](https://github.com/nickprignano/avd-swarm/blob/main/docs/governance.md)
+- [README](https://github.com/avd-ops/avd-swarm/blob/main/README.md)
+- [Spec](https://github.com/avd-ops/avd-swarm/blob/main/docs/spec.md)
+- [Governance](https://github.com/avd-ops/avd-swarm/blob/main/docs/governance.md)

@@ -26,3 +26,51 @@ errors:
     status: unverified
     added: "2026-10-21"
 
+  - id: pinned-json-hash-crlf-on-windows
+    symptom: "assess/method.json does not match its hash in assess/PINS.json. Re-copy it from avd-assess at the pinned commit."
+    cause: A Windows checkout with Git's default core.autocrlf (or `* text=auto`) wrote a vendored JSON file with CRLF, so its SHA-256 no longer matched the pin. Seen on a Windows CI runner.
+    fix: Mark every hashed vendored file `-text` in .gitattributes (avd-current-state `assess/*.json`, `contracts/*.json`; avd-landing-zone `contracts/...`), then re-clone or `git rm --cached -r . && git reset --hard`.
+    source: https://github.com/avd-ops/avd-current-state/pull/36
+    applies_to: avd-current-state 6359ece
+    status: verified
+    added: "2026-10-21"
+  - id: bsd-date-no-d
+    symptom: "Not a time: '2030-01-01T00:00Z' (deploy.sh --jumpbox-keep-running on macOS)"
+    cause: macOS ships BSD date, which has no -d; GNU `date -d` works on Linux, Cloud Shell and Git Bash only. Homebrew bash does not change this. Seen on a macOS CI runner.
+    fix: Fall back to `date -j -u -f '%Y-%m-%dT%H:%MZ' "$value" +%s` when `date -d` fails (avd-landing-zone #105).
+    source: https://github.com/avd-ops/avd-landing-zone/pull/105
+    applies_to: avd-landing-zone 68ffda5
+    status: verified
+    added: "2026-10-21"
+  - id: pwsh-child-loads-real-az-over-fakes
+    symptom: "A test that runs a script in a child pwsh with PSModulePath set to fake modules signs in for real (InteractiveBrowserCredential ... must be executed on the main thread on macOS)"
+    cause: pwsh puts the user and shared module folders back in front of PSModulePath at startup, so an Az install there (macOS runners keep one) wins over the fakes.
+    fix: Set $env:PSModulePath inside the child (`pwsh -Command "`$env:PSModulePath = '<fakes>'; & '<script>' ..."`) instead of only in the parent.
+    source: https://github.com/avd-ops/avd-current-state/pull/36
+    applies_to: PowerShell 7.4
+    status: verified
+    added: "2026-10-21"
+  - id: github-mergeable-state-unknown
+    symptom: "GET /repos/{owner}/{repo}/pulls/{n} returns mergeable: null and mergeable_state: unknown for a pull request that is ready"
+    cause: GitHub works out mergeability in the background after a push or a base-branch change; the first read only starts that job. Unauthenticated callers also share 60 requests an hour per network, so polling in a loop runs out quickly (HTTP 403, x-ratelimit-remaining 0).
+    fix: Treat unknown as still checking, never as ready, and read again a minute later. Cache results, skip pull requests already merged or closed, and read x-ratelimit-remaining and x-ratelimit-reset (exposed to browsers) before the next batch, as site/assets/checklist-core.js does. The rules in force on a branch (`/rules/branches/{branch}`) and private vulnerability reporting (`/private-vulnerability-reporting`) are readable without signing in on a public repo.
+    source: https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request
+    applies_to: GitHub REST API 2022-11-28
+    status: verified
+    added: "2026-10-21"
+  - id: shell-menu-button-on-wide-screens
+    symptom: "The menu (pages) button shows in the avd-ops brand bar on a wide screen, where the side list is already visible."
+    cause: "`.shell .menu{display:none}` lost to `.shell header.bar .iconbtn{display:grid}`, which is more specific (two classes and two elements against two classes). Design system 2.2.0 and earlier."
+    fix: "Scope the hide and the show to the same selector depth as the button style: `.shell header.bar .menu` (design system 2.3.0). A copy pinned at 2.2.0 or earlier can add that rule to its own stylesheet."
+    source: decisions/0005-one-app-shell-for-every-page.md
+    applies_to: avd-ops 5eff96d
+    status: verified
+    added: "2026-10-21"
+  - id: classic-script-in-esm-repo
+    symptom: "TypeError: Cannot read properties of undefined (reading 'AvdOpsEngine') when a test requires a portal engine file"
+    cause: "The repo's package.json says `type: module`, so Node loads every .js file under it as an ES module: `module` is undefined and `this` is undefined at the top level, and the UMD wrapper falls through to the browser branch."
+    fix: "Put a package.json with `\"type\": \"commonjs\"` beside the classic scripts (avd-ops `site/assets/engine/package.json`); a portal that vendors the engine into an ESM repo copies it too."
+    source: https://github.com/avd-ops/avd-ops/blob/main/docs/portal-engine-spec.md
+    applies_to: Node.js 22
+    status: verified
+    added: "2026-10-21"

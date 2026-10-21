@@ -9,7 +9,7 @@ last_reviewed: 2026-10-20
 # The repos
 
 Every repo is public, open source and the source of truth for itself. The list lives in
-[repos.json](https://github.com/nickprignano/avd-ops/blob/main/repos.json), which the site and the
+[repos.json](https://github.com/avd-ops/avd-ops/blob/main/repos.json), which the site and the
 family check both read.
 
 | Repo | Role |
