@@ -1,4 +1,4 @@
-/* avd-ops app shell v2.0.0 (https://avd-ops.dev/, nickprignano/avd-ops site/assets/avd-ops-shell.css). MIT.
+/* avd-ops app shell v2.0.1 (https://avd-ops.dev/, nickprignano/avd-ops site/assets/avd-ops-shell.css). MIT.
    Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
    The frame every family page opens in: the brand bar (mark, word, the Docs, Deploy and Assess switcher, theme
    and menu buttons), the one-line research notice that opens to the full text, a side list that becomes a drawer
@@ -9,11 +9,11 @@
 /* Brand bar: brand ink in both themes, so moving between the site and a portal keeps the same frame. */
 .shell{background:var(--bg)}
 .shell::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--shell);z-index:30}
-.shell .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--shell);color:var(--shell-fg);border-bottom:1px solid var(--shell-line)}
+.shell header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--shell);color:var(--shell-fg);border-bottom:1px solid var(--shell-line)}
 .shell .bar-in{max-width:var(--page);margin:0 auto;display:flex;align-items:center;gap:var(--space-3);min-height:56px;
   padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
-.shell .bar .brand{display:inline-flex;align-items:center;gap:var(--space-2);font:700 1.05rem var(--display);color:var(--shell-fg);text-decoration:none;letter-spacing:.01em;min-height:var(--tap)}
-.shell .bar .brand .mark{width:28px;height:28px;flex:none;border-radius:6px;display:block}
+.shell header.bar .brand{display:inline-flex;align-items:center;gap:var(--space-2);font:700 1.05rem var(--display);color:var(--shell-fg);text-decoration:none;letter-spacing:.01em;min-height:var(--tap)}
+.shell header.bar .brand .mark{width:28px;height:28px;flex:none;border-radius:6px;display:block}
 .shell .switcher{display:flex;gap:2px;padding:3px;border-radius:10px;background:var(--shell-hover);margin-left:var(--space-2)}
 .shell .switcher a{display:flex;align-items:center;min-height:36px;padding:0 .8rem;border-radius:7px;color:var(--shell-muted);text-decoration:none;font-weight:600;font-size:.92rem;transition:background var(--fast) var(--ease),color var(--fast) var(--ease)}
 .shell .switcher a:hover{color:var(--shell-fg)}
@@ -22,7 +22,7 @@
 .shell .iconbtn{width:var(--tap);height:var(--tap);display:grid;place-items:center;border-radius:10px;border:1px solid var(--shell-line);background:transparent;color:var(--shell-fg);cursor:pointer;padding:0}
 .shell .iconbtn:hover{background:var(--shell-hover)}
 .shell .iconbtn svg{width:20px;height:20px}
-.shell .bar :focus-visible{outline-color:var(--shell-fg)}
+.shell header.bar :focus-visible{outline-color:var(--shell-fg)}
 .shell .menu{display:none}
 .shell .theme .moon{display:none}
 :root[data-theme="dark"] .shell .theme .sun{display:none} :root[data-theme="dark"] .shell .theme .moon{display:block}
@@ -82,6 +82,6 @@ html:not(.js) .shell .theme{display:none}
   html:not(.js) .shell .side{position:static;max-height:none;order:2;border-top:1px solid var(--line)}
 }
 @media (max-width:40rem){.shell .notice:not([open]) summary .long{display:none} .shell .notice:not([open]) summary .short{display:inline}}
-@media (max-width:30rem){.shell .bar .brand .word{display:none} .shell .switcher{margin-left:0} .shell .switcher a{padding:0 .65rem}}
+@media (max-width:30rem){.shell header.bar .brand .word{display:none} .shell .switcher{margin-left:0} .shell .switcher a{padding:0 .65rem}}
 .shell .skip{position:absolute;left:-999px;top:0;z-index:50;background:var(--surface);color:var(--fg);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm)}
 .shell .skip:focus{left:max(var(--gutter),env(safe-area-inset-left,0px));top:calc(var(--space-2) + env(safe-area-inset-top,0px))}

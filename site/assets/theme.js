@@ -1,4 +1,4 @@
-/* avd-ops theme and drawer v2.0.0 (https://avd-ops.dev/, nickprignano/avd-ops site/assets/theme.js). MIT.
+/* avd-ops theme and drawer v2.0.1 (https://avd-ops.dev/, nickprignano/avd-ops site/assets/theme.js). MIT.
    Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
    Load it in <head> without defer: it applies a saved theme before the page paints, then wires the shell's theme
    button (.theme) and menu button (.menu, the drawer for the side list below 64rem). No libraries, no requests.
@@ -35,7 +35,7 @@
     var backdrop = document.querySelector('.shell .backdrop');
     if (!menu || !side) return;
     // While the drawer is open the page behind it is inert, so Tab stays in the side list.
-    var behind = document.querySelectorAll('.shell .bar, .shell .notice, .shell main, .shell footer.foot');
+    var behind = document.querySelectorAll('.shell header.bar, .shell .notice, .shell main, .shell footer.foot');
     function setOpen(open) {
       body.classList.toggle('drawer-open', open);
       for (var i = 0; i < behind.length; i++) { if (open) behind[i].setAttribute('inert', ''); else behind[i].removeAttribute('inert'); }
