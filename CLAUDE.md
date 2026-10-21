@@ -8,6 +8,7 @@ avd-ops: the front door for the AVD repos (decision 0002). It holds the website,
 ```bash
 npm ci
 node scripts/site/build-docs.mjs     # after any change in docs/knowledge/
+node scripts/site/build-credits.mjs  # after any change in credits.json (before apply-shell)
 python3 scripts/kb/build.py && python3 scripts/kb/validate.py && python3 -m unittest discover -s scripts/kb
 node --test "tests/*.test.mjs"
 ```
