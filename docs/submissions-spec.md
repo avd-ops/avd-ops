@@ -182,8 +182,9 @@ This is the path for anyone without a GitHub account.
 
 Contact and sponsorship carry an email address, and sponsorship carries terms, so neither becomes
 a public issue and neither has an issue form. `routing.json` gives both a `mailto:` destination,
-not a repo: the mailbot's one address (the name is the mailbot's open decision) with a fixed
-subject (`Contact` or `Sponsorship inquiry`) and no body. That is the whole hand-off, one way:
+not a repo: the mailbot's one address (working name `hello@avd-ops.dev`, shared with support; Nick picks
+the name) with a fixed subject tag (`[contact]` or `[sponsorship]`) and no body. The link
+builder's allowlist gains exactly one non-GitHub entry, that address. That is the whole hand-off, one way:
 the site writes nothing, stores nothing and calls no endpoint; the mail goes through the mailbot's
 forward-first, draft-only path, and Nick sends every answer.
 
@@ -193,8 +194,9 @@ forward-first, draft-only path, and Nick sends every answer.
 - **The subject is a hint, never trust.** The mailbot classifies from the message as it always
   does, treats all of it as untrusted input, and a subject can't change what the gate allows.
 - **Sponsorship:** its own category in the mailbot, which drafts nothing commercial and never
-  links an issue form. **Contact:** the mailbot may suggest one of the six public types to Nick
-  with the shared link builder (section 5.3), never with the sender's words in it.
+  links an issue form. **Contact:** gets no escalation link from the mailbot; any reply is drafted for Nick only, in
+  every phase. If it really is a bug or a research request, Nick opens that issue himself.
+  Neither kind of mail goes into a repo, issue or the KB.
 - Until the mailbot exists, both buttons show only the address.
 
 The text beside the sponsorship button reuses the sponsorship page's wording on what funding does and does
