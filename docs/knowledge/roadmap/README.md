@@ -23,3 +23,12 @@ Where each repo stands, in a line. Each repo's own roadmap and build order are t
 - A walkthrough from an empty lab subscription to a validated landing zone.
 - A glossary of the terms the repos share.
 - Per-repo pages rendered from each README at the commit pinned in `repos.json`.
+
+## A family roadmap page (proposed)
+
+A public roadmap across every repo is designed in [docs/roadmap-spec.md](../../roadmap-spec.md), not built. What the prior-art check found, for the next page like it:
+
+- Open source roadmaps that hold up are built from issues: one public tracking issue per item, a status label, and done closes the issue with a link to what shipped ([GitHub's public roadmap](https://github.com/github/roadmap), [Kubernetes enhancements](https://github.com/kubernetes/enhancements)). Hand-written roadmap pages go stale (the [Backstage roadmap](https://backstage.io/docs/overview/roadmap/) names an update date already past).
+- Leave dates out. The roadmaps that give quarters also warn that dates move.
+- Say maturity apart from progress (Kubernetes' alpha, beta, stable). Here that is proven, pre-beta and design, so an item in progress in a design-stage repo can't read as nearly ready.
+- Issue titles are written by whoever opened the issue: a generated page shows only approved items, checks who added the approval label, and pulls an item whose title changed after approval.
