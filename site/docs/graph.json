@@ -30,6 +30,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0004-one-app-shell-for-every-page.md",
+   "title": "0004. One app shell for every avd-ops page, vendored as a pinned copy",
+   "url": "decisions/0004-one-app-shell-for-every-page.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -128,6 +135,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0003-the-family-ends-at-its-contracts.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0004-one-app-shell-for-every-page.md"
   },
   {
    "source": "getting-started/README.md",

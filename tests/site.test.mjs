@@ -11,6 +11,7 @@ import { dirname, join } from 'node:path';
 const root = new URL('../', import.meta.url).pathname;
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => (statSync(join(root, d, f)).isDirectory() ? walk(`${d}/${f}`) : [`${d}/${f}`]));
 const pages = walk('site').filter((f) => f.endsWith('.html'));
+assert.ok(pages.includes('site/design/index.html'), 'the design system reference page');
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
@@ -21,7 +22,7 @@ test('the site has a page for each public repo in the family', () => {
 
 test('every page carries the avd-ops name', () => {
   for (const f of pages) {
-    assert.match(read(f), /<a class="brand" href="[^"]*index\.html"><img class="mark" src="[^"]*assets\/brand\/mark\.svg" alt=""[^>]*>avd-ops<\/a>/, f);
+    assert.match(read(f), /<a class="brand" href="[^"]*index\.html"><img class="mark" src="[^"]*assets\/brand\/mark\.svg" alt=""[^>]*><span class="word">avd-ops<\/span><\/a>/, f);
     assert.doesNotMatch(read(f), /AVD (repo )?family/i, f);
   }
 });
@@ -39,6 +40,9 @@ test('every page uses the shared design system and nothing else (docs/design-sys
   for (const f of pages) {
     const h = read(f);
     assert.match(h, /<link rel="stylesheet" href="(\.\.\/)*assets\/avd-ops\.css">/, `${f}: no avd-ops.css`);
+    assert.match(h, /<link rel="stylesheet" href="(\.\.\/)*assets\/avd-ops-shell\.css">/, `${f}: no avd-ops-shell.css`);
+    assert.match(h, /<script src="(\.\.\/)*assets\/theme\.js"><\/script>/, `${f}: no theme.js`);
+    assert.match(h, /<body class="shell">/, `${f}: not in the shell`);
     assert.match(h, /<link rel="icon" href="(\.\.\/)*assets\/brand\/favicon\.svg"/, `${f}: no favicon`);
     assert.doesNotMatch(h, /<style|style="/, `${f}: inline styles belong in assets/`);
     assert.doesNotMatch(h, /fonts\.(googleapis|gstatic)\.com/, `${f}: fonts are served from assets/fonts`);
@@ -81,6 +85,54 @@ test('the portal components share the version, use only tokens and touch only .p
   const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[^{]+\{/g, '').split('}').map((r) => r.split('{')[0].trim()).filter(Boolean);
   for (const sel of rules.flatMap((r) => r.split(/,(?![^(]*\))/))) assert.match(sel.trim(), /^(body)?\.portal\b/, `unscoped selector: ${sel.trim()}`);
   for (const f of pages) assert.doesNotMatch(read(f), /class="portal"/, `${f}: the avd-ops.dev pages are not portals`);
+});
+
+test('every page opens in the one shell: same side list, switcher, notice and credit (scripts/site/shell.mjs)', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/site/apply-shell.mjs'), '--check'], { stdio: 'pipe' });
+  const strip = (h) => h.replace(/ aria-current="(page|true)"/g, '').replace(/href="(\.\.\/)+/g, 'href="');
+  const nav = (h) => strip((h.match(/<nav class="side"[\s\S]*?<\/nav>/) || [''])[0]);
+  const first = nav(read('site/index.html'));
+  assert.ok(first.includes('family/avd-landing-zone.html') && first.includes('docs/decisions/index.html'), 'the side list');
+  for (const f of pages) {
+    const h = read(f);
+    assert.equal(nav(h), first, `${f}: a different side list`);
+    assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/[^"]+">Deploy<\/a><a href="https:\/\/[^"]+">Assess<\/a><\/nav>/, `${f}: switcher`);
+    assert.equal((h.match(/aria-current="page"/g) || []).length <= 1, true, `${f}: more than one current page`);
+    assert.match(h, /<details class="notice">/, `${f}: notice line`);
+    assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);
+  }
+});
+
+test('the shell and theme.js share the version, use only tokens and touch only .shell pages', () => {
+  const base = read('site/assets/avd-ops.css');
+  const version = (base.match(/^\/\* avd-ops design system (v\d+\.\d+\.\d+) /) || [])[1];
+  const css = read('site/assets/avd-ops-shell.css');
+  assert.equal((css.match(/^\/\* avd-ops app shell (v\d+\.\d+\.\d+) /) || [])[1], version, 'shell version');
+  assert.equal((read('site/assets/theme.js').match(/^\/\* avd-ops theme and drawer (v\d+\.\d+\.\d+) /) || [])[1], version, 'theme.js version');
+  assert.doesNotMatch(css, /#[0-9a-fA-F]{3,6}\b|rgba?\(|@font-face/, 'colors and fonts come from avd-ops.css');
+  const defined = new Set([...base.matchAll(/(--[\w-]+):/g)].map((m) => m[1]));
+  for (const [, t] of css.matchAll(/var\((--[\w-]+)/g)) assert.ok(defined.has(t), `${t} is not an avd-ops token`);
+  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[^{]+\{/g, '').split('}').map((r) => r.split('{')[0].trim()).filter(Boolean);
+  for (const sel of rules.flatMap((r) => r.split(/,(?![^(]*\))/))) {
+    assert.match(sel.trim(), /^((html(:not\(\.js\))?|\.js|:root(:not\(\[data-theme="light"\]\)|\[data-theme="dark"\])?) )?\.shell\b/, `unscoped selector: ${sel.trim()}`);
+  }
+  assert.doesNotMatch(read('site/assets/theme.js').replace(/\/\*[\s\S]*?\*\//g, ''), /fetch\(|XMLHttpRequest|https?:\/\//, 'theme.js makes no requests');
+});
+
+test('touch targets in the shell are at least 44px and the side list fits a phone', () => {
+  const base = read('site/assets/avd-ops.css');
+  assert.match(base, /--tap:44px/, '--tap');
+  const css = read('site/assets/avd-ops-shell.css');
+  assert.match(css, /\.shell \.iconbtn\{width:var\(--tap\);height:var\(--tap\)/, 'icon buttons');
+  assert.match(css, /@media \(pointer:coarse\)\{\.shell \.side a\{min-height:var\(--tap\)\}/, 'side list rows on touch');
+  assert.match(css, /width:min\(20rem,86vw\)/, 'drawer width');
+});
+
+test('the design system manifest lists every vendored file with its hash (scripts/site/design-manifest.mjs)', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/site/design-manifest.mjs'), '--check'], { stdio: 'pipe' });
+  const m = JSON.parse(read('site/assets/MANIFEST.json'));
+  assert.equal(`v${m.version}`, (read('site/assets/avd-ops.css').match(/^\/\* avd-ops design system (v\d+\.\d+\.\d+) /) || [])[1]);
+  for (const f of ['avd-ops.css', 'avd-ops-shell.css', 'avd-ops-portal.css', 'theme.js', 'brand/mark.svg', 'fonts/LICENSE']) assert.match(m.files[f] || '', /^[0-9a-f]{64}$/, f);
 });
 
 test('relative links resolve to files in site/', () => {
