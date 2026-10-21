@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>0007. The theme ships as starters in avd-ops, not as its own repo or package | avd-ops docs</title>
+<title>0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package | avd-ops docs</title>
 <meta name="description" content="">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
@@ -28,7 +28,7 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0007. The theme ships as starters in avd-ops, not as its own repo or package</h1>
+<h1>0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package</h1>
 <h2>Context and Problem Statement</h2>
 <p>The design system (decision 0005) reaches the two portals as pinned copies, but a new repo (avd-linecheck)
 or a Claude artifact had no starting point: each would rebuild the bar, the notice, the fonts and the theme
@@ -53,16 +53,24 @@ stylesheets and shell pieces as avd-ops.dev; <code>tests/kit.test.mjs</code> fai
 with a strict policy (avd-linecheck&#39;s rule) can use it as is.</li>
 <li><strong>The artifact starter is one file.</strong> Tokens, shell and theme switch inlined; fonts from Google Fonts, the
 only font host an artifact may load; the shell on a wrapper because the artifact host writes <code>&lt;body&gt;</code>.</li>
-<li><strong>A skill makes it the default.</strong> <code>.claude/skills/avd-ops-theme/</code> tells a Claude session to start every
-family page or artifact from a starter.</li>
+<li><strong>A brand profile, in a format any project can use.</strong> <code>brand/profile.json</code> sums up the brand (colors in
+both themes and their roles, type, every logo and brand image, starters, required lines, rules) to the schema
+in <code>brand/profile.schema.json</code>; <code>tests/brand.test.mjs</code> keeps it equal to the stylesheets. The owner asked
+for it to work for any project (2026-10-21), so nothing in the schema is specific to avd-ops.</li>
+<li><strong>A skill makes it the default.</strong> The <code>brand-profile</code> skill (<code>.claude/skills/brand-profile/</code>, also in the
+owner&#39;s account) reads a project&#39;s profile before making a page, artifact or image, starts from its
+starters, and sets up or updates profiles for other projects.</li>
+<li><strong>Every brand file in the repo.</strong> Vector logos and lockups in <code>site/assets/brand/</code> (pinned with the rest);
+avatars, PNG exports, social images and the original concept in <code>brand/</code>, outside the pinned copy.</li>
 </ul>
 <h3>Consequences</h3>
 <ul>
 <li>Good, because a new repo gets the look with one copy and one download, and an artifact with one copy.</li>
 <li>Good, because a release changes the starters in the same pull request.</li>
 <li>Bad, because an artifact made from an old starter keeps the old look; it is a copy, like any vendored file.</li>
-<li>Revisit a tokens file (DTCG JSON) if something other than CSS needs the colors, such as slides or charts
-drawn outside a browser.</li>
+<li>Good, because tools outside a browser (slides, charts, images) read the colors and files from one JSON file.</li>
+<li>Bad, because the profile repeats the tokens; the test is what keeps it honest. If a tool needs the Design
+Tokens Community Group format, generate it from the profile rather than keep a third copy.</li>
 </ul>
 <h2>More Information</h2>
 <ul>

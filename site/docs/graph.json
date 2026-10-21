@@ -52,7 +52,7 @@
   },
   {
    "id": "decisions/0007-starters-not-a-theme-repo.md",
-   "title": "0007. The theme ships as starters in avd-ops, not as its own repo or package",
+   "title": "0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package",
    "url": "decisions/0007-starters-not-a-theme-repo.html",
    "topic": "decisions",
    "status": "proposed"

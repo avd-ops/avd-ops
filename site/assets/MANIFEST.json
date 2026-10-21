@@ -14,6 +14,9 @@
   "fonts/source-sans-3-latin-400-normal.woff2": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
   "fonts/source-sans-3-latin-600-normal.woff2": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
   "brand/favicon.svg": "8651608c42ed305ad5fee0cdc66e9f12f70673ee4b3222181f9f7f40d81c61dd",
+  "brand/lockup-dark.svg": "9ecf6fae72cc3dcb12eee94cc9b8bfb5d81cb36aedc2387df37a2af52254ce5b",
+  "brand/lockup-white.svg": "ca3760b4e5455033aa3de154c192ef02cd0ce2aa555e78204d717eef3b3c2da7",
+  "brand/lockup.svg": "9811554dda1e20d6c81d6be983445261388df7ea712396d9d8dfc073d26e499d",
   "brand/mark-white.svg": "5df08ff6ee99f86d79d65dd7a7dbdcc3e3c8f3ba37c3910fdbfcfbf688c9a5fe",
   "brand/mark.svg": "e5a202dee19df4dd7047b48d3f63f0d3b0cf6f44079adf5799b798271cf99fa2"
  }

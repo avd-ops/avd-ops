@@ -119,19 +119,22 @@ From Azure Cloud Shell, in a clone of the repo that adds the page (after taking 
 TAG=ds-v2.2.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
 ```
 
-A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `avd-ops-theme` skill ([`.claude/skills/avd-ops-theme/`](../.claude/skills/avd-ops-theme/SKILL.md)), which starts every page or artifact from these files.
+A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `brand-profile` skill ([`.claude/skills/brand-profile/`](../.claude/skills/brand-profile/SKILL.md)), which reads `brand/profile.json` and starts every page or artifact from these files.
 
-## Logo
+## Logo and brand kit
 
-The mark is a shield holding a desktop with a cloud, and the >< of a remote session (Nick's logo, 2026-10-20, rebuilt as vector; tagline "Deploy quietly"). Files in `site/assets/brand/`:
+The mark is a shield holding a desktop with a cloud, and the >< of a remote session (Nick's logo, 2026-10-20, rebuilt as vector; tagline "Deploy quietly"). Vector files in `site/assets/brand/`, so every pinned copy has them:
 
 | File | Use |
 |---|---|
-| `mark.svg` | Full-color square mark: teal field, ink shield. The top bar shows it at 26px beside the word "avd-ops". |
+| `mark.svg` | Full-color square mark: teal field, ink shield. The bar shows it at 28px beside the word "avd-ops". |
 | `favicon.svg` | The same mark with rounded corners, for the browser tab. |
 | `mark-white.svg` | One-color white shield, for dark backgrounds (stickers, slides, social images). |
+| `lockup.svg`, `lockup-dark.svg`, `lockup-white.svg` | Mark, word and tagline for light, dark and one-color use, with the text outlined (`scripts/site/brand_lockups.py`), 2.2.0. |
 
-The mark needs no text; where a page names the brand, it sets "avd-ops" in `--display` beside the mark rather than using an image of the word. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
+On a page, the bar sets "avd-ops" in `--display` beside the mark rather than using an image of the word; the lockups are for places outside the shell (READMEs, slides, documents). The pictures (avatars, name tiles, lockups as PNG, link preview and GitHub social images) and the original concept are in [`brand/`](../brand/README.md), outside the pinned copy so the portals don't carry them. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
+
+[`brand/profile.json`](../brand/profile.json) sums the whole brand up in one file (colors in both themes, the role each plays, type, every brand file and its use, the starters, the lines every page carries, the rules) in a format any project can use ([`brand/profile.schema.json`](../brand/profile.schema.json)). `tests/brand.test.mjs` keeps it equal to the tokens and fails on a brand file it doesn't list. This document and the stylesheets stay the source of truth: change them first, then the profile.
 
 ## Take a pinned copy
 

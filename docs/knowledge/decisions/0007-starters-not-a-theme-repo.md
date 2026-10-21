@@ -4,7 +4,7 @@ date: 2026-10-21
 decision-makers: [owner]
 ---
 
-# 0007. The theme ships as starters in avd-ops, not as its own repo or package
+# 0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package
 
 ## Context and Problem Statement
 
@@ -33,16 +33,24 @@ avd-current-state) depend on a registry.
   with a strict policy (avd-linecheck's rule) can use it as is.
 - **The artifact starter is one file.** Tokens, shell and theme switch inlined; fonts from Google Fonts, the
   only font host an artifact may load; the shell on a wrapper because the artifact host writes `<body>`.
-- **A skill makes it the default.** `.claude/skills/avd-ops-theme/` tells a Claude session to start every
-  family page or artifact from a starter.
+- **A brand profile, in a format any project can use.** `brand/profile.json` sums up the brand (colors in
+  both themes and their roles, type, every logo and brand image, starters, required lines, rules) to the schema
+  in `brand/profile.schema.json`; `tests/brand.test.mjs` keeps it equal to the stylesheets. The owner asked
+  for it to work for any project (2026-10-21), so nothing in the schema is specific to avd-ops.
+- **A skill makes it the default.** The `brand-profile` skill (`.claude/skills/brand-profile/`, also in the
+  owner's account) reads a project's profile before making a page, artifact or image, starts from its
+  starters, and sets up or updates profiles for other projects.
+- **Every brand file in the repo.** Vector logos and lockups in `site/assets/brand/` (pinned with the rest);
+  avatars, PNG exports, social images and the original concept in `brand/`, outside the pinned copy.
 
 ### Consequences
 
 - Good, because a new repo gets the look with one copy and one download, and an artifact with one copy.
 - Good, because a release changes the starters in the same pull request.
 - Bad, because an artifact made from an old starter keeps the old look; it is a copy, like any vendored file.
-- Revisit a tokens file (DTCG JSON) if something other than CSS needs the colors, such as slides or charts
-  drawn outside a browser.
+- Good, because tools outside a browser (slides, charts, images) read the colors and files from one JSON file.
+- Bad, because the profile repeats the tokens; the test is what keeps it honest. If a tool needs the Design
+  Tokens Community Group format, generate it from the profile rather than keep a third copy.
 
 ## More Information
 

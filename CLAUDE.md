@@ -10,6 +10,7 @@ npm ci
 node scripts/site/build-docs.mjs     # after any change in docs/knowledge/
 node scripts/site/build-credits.mjs  # after any change in credits.json (before apply-shell)
 node scripts/site/design-manifest.mjs && node scripts/site/build-kit.mjs  # after any change in site/assets/ (manifest, templates/)
+python3 scripts/site/brand_lockups.py  # after changing the mark or the fonts (pip install fonttools brotli); then keep brand/profile.json equal (tests/brand.test.mjs)
 python3 scripts/kb/build.py && python3 scripts/kb/validate.py && python3 -m unittest discover -s scripts/kb
 node --test "tests/*.test.mjs"
 ```
