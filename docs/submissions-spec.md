@@ -195,6 +195,25 @@ to open it and what goes in. If a sender wants credit, Nick asks them to submit 
 themselves; a mailed contribution is credited only with their written yes, by the name they give.
 This is the path for anyone without a GitHub account.
 
+### 5.3a Research projects page and per-repo lists (Nick, 2026-10-21)
+
+Research gets its own page, **avd-ops.dev/research.html**, and a list in each repo.
+
+- **What a research project is:** an accepted `research-request` issue (ours, labeled
+  `call-for-help`, or anyone's) in any repo of `repos.json`. Accepted issues only; a request
+  shows nowhere before the owner adds `accepted`.
+- **The page** groups projects by repo and gap: the question, its status (open, being researched,
+  done with a link to the PR or reference it produced), who is helping (opt-in credit), and an
+  "Ask for research" and an "I can help" link from the builder. Built at site build time from the
+  public issues API with the Pages workflow's read-only token, written as static HTML with the
+  design system; nothing is fetched in the browser. The credits page's calls for help and the
+  review UI's per-gap list read the same generated data, so the three never disagree.
+- **Each repo** gets a short "Research projects" section in its README (or `docs/` page for
+  avd-assess, next to `gaps/`) that links its own filtered issue list
+  (`issues?q=is:open+label:research-request+label:accepted`) and the avd-ops page. A link, not a
+  copy, so it never goes stale and the landing zone and avd-current-state still read nothing at run
+  time.
+
 ### 5.4 Private routes: general contact and sponsorship
 
 Contact and sponsorship carry an email address, and sponsorship carries terms, so neither becomes
@@ -351,6 +370,7 @@ them reads avd-ops at run time.
    maintainer and the origin story (owned by the credits page work).
 3. Research requests about the standards go to avd-assess, others to avd-ops. No email approval
    step: `accepted` is the approval, and only accepted requests are shown.
-4. Build order: forms and routing (step 1, built), the review UI's menus, the foundation repos'
+4. Build order: forms and routing (step 1, built), the research projects page and per-repo
+   lists (section 5.3a), the review UI's menus, the foundation repos'
    vendored copies and portal links, the credits page, the mailbot's link. Labels are created by
    `submissions/labels.mjs --apply`, which the owner runs.
