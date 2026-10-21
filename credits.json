@@ -33,7 +33,7 @@
     "origin": [
       "I started avd-ops in June 2026 as one Azure Virtual Desktop landing zone, built on my own time to see how far a cloud-native deployment could go as code.",
       "Every real run that broke something became a lesson and a guard, and those lessons grew into the other repos: an inventory, an assessment method, agents a person approves, and a memory of what each deployment taught.",
-      "It's still one person's research project: only avd-landing-zone is proven on real deployments, and the rest is being built in the open.",
+      "It's still a personal research project: only avd-landing-zone is proven on real deployments, and the rest is being built in the open.",
       "None of it is a solo act: it's 100% pair programmed with my buddy Claude."
     ],
     "pair": {"name": "Claude", "url": "https://claude.com/claude-code", "text": "pair programmer on every repo, through Claude Code: Claude writes and reviews alongside me, and every change lands through a pull request I merge."},
