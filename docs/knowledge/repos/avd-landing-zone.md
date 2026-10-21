@@ -28,4 +28,4 @@ The repo is the source of truth: [avd-ops/avd-landing-zone](https://github.com/a
 ## Read more in the repo
 
 - [README and quick start](https://github.com/avd-ops/avd-landing-zone/blob/master/README.md)
-- [Deployment portal](https://avd-ops.github.io/avd-landing-zone/portal/)
+- [Deployment portal](https://deploy.avd-ops.dev/portal/)

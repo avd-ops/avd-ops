@@ -37,7 +37,7 @@ tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, 
 
 Family conventions: [never delete the last copy](docs/never-delete-the-last-copy.md), for every teardown, cleanup and agent step that deletes data, [never leave the meter running](docs/never-leave-the-meter-running.md), for anything that bills, and your [private companion repo](docs/private-companion-repo.md) for run records.
 
-The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) ([portal](https://avd-ops.github.io/avd-landing-zone/portal/)).
+The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) ([portal](https://deploy.avd-ops.dev/portal/)).
 
 ## Docs and the graph
 
