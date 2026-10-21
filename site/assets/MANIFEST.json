@@ -3,9 +3,9 @@
  "version": "2.0.0",
  "files": {
   "avd-ops.css": "094f16200f19fdd81f3202599c292975feed7404f84f3a1a4e787f6749536d27",
-  "avd-ops-shell.css": "4e7889b9a34d2de5f447c26a9d206612f8108416e0711291084ebd3fbc73217c",
+  "avd-ops-shell.css": "a6d5f9b3ee29b3bce819a6a046d2de7ce12d6038ed03e87839319c1920f858a5",
   "avd-ops-portal.css": "1654a265cc65b77b32711d7e8dfa08be0443be5545b42a006291d6ed88431be6",
-  "theme.js": "2c5695970ed0bce1504e43a88d153f3588e255688a71e6704ba46fe13899ab56",
+  "theme.js": "d31a0ae117dd712eef4f4553356fec3608c98e35a86b3aeec811a07df8ea81cd",
   "fonts/LICENSE": "5340cc319ceeaba4bfeb4065c719457d8804fe53bbc65253e8fdd3c318dcc4fe",
   "fonts/jetbrains-mono-latin-500-normal.woff2": "cb182feeed4d798ff6961d3c79f7026279448fca0676438aaecb21f3fc39553a",
   "fonts/jetbrains-mono-latin-600-normal.woff2": "400c6bfda18d5d14acad1c15d6dcb9f8e13c015e7286317e0b9a482539bef147",

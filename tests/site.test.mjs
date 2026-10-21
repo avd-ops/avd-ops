@@ -92,7 +92,8 @@ test('every page opens in the one shell: same side list, switcher, notice and cr
   const strip = (h) => h.replace(/ aria-current="(page|true)"/g, '').replace(/href="(\.\.\/)+/g, 'href="');
   const nav = (h) => strip((h.match(/<nav class="side"[\s\S]*?<\/nav>/) || [''])[0]);
   const first = nav(read('site/index.html'));
-  assert.ok(first.includes('family/avd-landing-zone.html') && first.includes('docs/decisions/index.html'), 'the side list');
+  assert.ok(first.includes('family/avd-landing-zone.html'), 'the side list');
+  for (const n of JSON.parse(read('site/docs/graph.json')).nodes.filter((x) => x.section)) assert.ok(first.includes(`href="docs/${n.url}"`), `the side list has no link to the docs section ${n.url}`);
   for (const f of pages) {
     const h = read(f);
     assert.equal(nav(h), first, `${f}: a different side list`);
@@ -146,7 +147,7 @@ test('relative links resolve to files in site/', () => {
 });
 
 test('the site names no partner product and no HCL tooling (no Liquidware for now)', () => {
-  for (const f of [...pages, 'site/assets/site.css']) {
+  for (const f of [...pages, 'site/assets/site.css', 'site/assets/avd-ops-shell.css', 'site/assets/theme.js']) {
     assert.doesNotMatch(read(f), /liquidware|nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
   }
 });

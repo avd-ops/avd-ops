@@ -103,7 +103,7 @@ The mark needs no text; where a page names the brand, it sets "avd-ops" in `--di
 
 ## Take a pinned copy
 
-Pages that can't load avd-ops.dev at run time (the portals make no requests to other sites) vendor a copy, and avd-landing-zone and avd-current-state must keep working with no other repo, so the copy is a copy, never a dependency: no runtime request, no fetch in CI, no package. [`site/assets/MANIFEST.json`](../site/assets/MANIFEST.json) lists every file to vendor with its SHA-256 (`scripts/site/design-manifest.mjs`; the tests fail if it is stale), and each release is tagged `ds-v<version>`.
+Pages that can't load avd-ops.dev at run time (the portals make no requests to other sites) vendor a copy, and avd-landing-zone and avd-current-state must keep working with no other repo, so the copy is a copy, never a dependency: no runtime request, no fetch in CI, no package. [`site/assets/MANIFEST.json`](../site/assets/MANIFEST.json) lists every file to vendor with its SHA-256 (`scripts/site/design-manifest.mjs`; the tests fail if it is stale), and each release is tagged `ds-v<version>` on its merge commit in avd-ops (the owner tags it after the merge).
 
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
