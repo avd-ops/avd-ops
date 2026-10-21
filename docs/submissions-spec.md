@@ -205,9 +205,10 @@ Research gets its own page, **avd-ops.dev/research.html**, and a list in each re
 - **The page** groups projects by repo and gap: the question, its status (open, being researched,
   done with a link to the PR or reference it produced), who is helping (opt-in credit), and an
   "Ask for research" and an "I can help" link from the builder. Built at site build time from the
-  public issues API with the Pages workflow's read-only token, written as static HTML with the
-  design system; nothing is fetched in the browser. The credits page's calls for help and the
-  review UI's per-gap list read the same generated data, so the three never disagree.
+  family's one issue snapshot, `site/data/issues.json` (the roadmap spec, avd-ops #21), written as
+  static HTML with the design system; nothing is fetched in the browser. The roadmap, the credits
+  page's calls for help and the review UI's per-gap list read the same snapshot, so they never
+  disagree.
 - **Each repo** gets a short "Research projects" section in its README (or `docs/` page for
   avd-assess, next to `gaps/`) that links its own filtered issue list
   (`issues?q=is:open+label:research-request+label:accepted`) and the avd-ops page. A link, not a
