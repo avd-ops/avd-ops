@@ -66,4 +66,5 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   of Space Mono, which the owner did not like for headers; text, controls and code stay IBM Plex Mono.
 - Design system 2.4.1 (2026-10-21, applying 2.4.0 to the portals): the portal components and
   the Run in title lose the last tracked mono capitals (stage phase labels, step labels, terminal labels,
-  table headers), as 2.3.0 did for the site's labels. Status pills keep theirs.
+  table headers), as 2.3.0 did for the site's labels. Status pills keep theirs. Both portals put the
+  notice in the bar, so `.portal p.disclaimer` is removed, and the notice also closes when focus leaves it.

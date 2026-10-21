@@ -20,7 +20,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 - **No inline styles.** Page layout goes in the page's own stylesheet (`site.css` here, the portal's `<style>` block there), built on the tokens.
 - **Dark mode follows the system** (`prefers-color-scheme`), and `<html data-theme="light|dark">` forces one. The shell's theme button sets it and remembers the choice in that browser only (`theme.js`).
 - **Touch first.** Every control in the shell is at least `--tap` (44px) on a touch screen, and no page scrolls sideways at 390px.
-- **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice in the brand bar (`details.notice`, a pill that opens to the full text, which stays in the page), the `.warn` box on a page without the shell, or the portal's `.disclaimer` until the portals move.
+- **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice in the brand bar (`details.notice`, a pill that opens to the full text, which stays in the page), or the `.warn` box on a page without the shell. Both portals put theirs in the bar in 2.4.1 (`p.disclaimer` is gone); a portal's footer keeps `footer.disclaimer`.
 
 ## Tokens
 
