@@ -16,7 +16,7 @@ Read at avd-landing-zone `785ef36`, avd-current-state `1e31fca` and avd-linechec
 
 | Piece | Deployment portal (LZ) | Assessment portal (CS) | Linecheck (spec) | Today |
 |---|---|---|---|---|
-| Tokens, fonts, shell | design system at `ds-v2.1.0` | design system at `ds-v2.2.0` | the same (spec 18.8) | **Shared** (decision 0005) |
+| Tokens, fonts, shell | design system at `ds-v2.4.1` | design system at `ds-v2.4.1` | the same (spec 18.8) | **Shared** (decision 0005) |
 | Portal components (`avd-ops-portal.css`) | **not loaded**: the page keeps its own 250-line `<style>`, its own `ol.steps` (`data-phase-start`) and a sliding `#track` of slides | loaded | planned | Shared by CS only |
 | Engine file shape | `portal-core.js`, 1,108 lines, UMD (`window.PortalCore`, `module.exports`), ES5 | `assess-core.js`, 406 lines, UMD (`window.AssessCore`), uses `globalThis` (ES2020) | `engine.js`, `verdict.js`, `export.js` (spec 12.4) | Same pattern, written twice |
 | Run in | `PLATFORMS`, `validRunIn`, `platformKey`, `scriptsIn`, `support`, `forRunIn`: PowerShell in stretches, `$env:` and `Remove-Item Env:` lines to `export` and `unset`, the clone line to bash, `bash ./` lines re-quoted, Az PowerShell and az CLI sign-in added on a local machine | the same names except `platformKey` (inlined in `support`); `forRunIn` leaves PowerShell as is everywhere (the block's preamble signs in) and wraps the whole block in one `pwsh` for Bash | none | **Copied, then diverged.** Same `avd-ops-runin` storage key; each `PLATFORMS` inlined and kept equal to its repo's `platforms.json` by a test |
@@ -158,7 +158,7 @@ After the avd-ops PR merges, Nick tags its merge commit from Cloud Shell (Claude
 SHA=0000000000000000000000000000000000000000; TAG=pe-v1.0.0; D=$HOME/avd-ops-tag; gh auth status >/dev/null 2>&1 || gh auth login; [ -d "$D" ] && rm -rf "$D"; git clone -q https://github.com/avd-ops/avd-ops.git "$D" && git -C "$D" checkout -q "$SHA" && echo "tagging $TAG on $SHA" && gh release create "$TAG" --repo avd-ops/avd-ops --target "$SHA" --title "$TAG" --notes "See docs/portal-engine-spec.md"
 ```
 
-The same block, with `TAG` and `SHA` changed, makes the design-system tags still waiting, on the commits the portals' lock files recorded: ds-v2.1.0 on `753f62b` (the landing zone's lock) and ds-v2.2.0 on `78af4f2` (the assessment portal's), each as the full commit hash from the lock file, not on today's `main`. ds-v2.0.1 on `d106eed` is in no lock file and is only for the record.
+The same block, with `TAG` and `SHA` changed, makes the design-system tags still waiting, on the commit both portals' lock files record: ds-v2.4.1 on the merge commit of the 2.4.1 pull request (both locks re-pin to it), as the full commit hash from the lock file, not on today's `main`. The earlier releases (ds-v2.0.1 on `d106eed`, ds-v2.1.0 on `753f62b`, ds-v2.2.0 on `78af4f2`, ds-v2.3.0 on `8617943`, ds-v2.4.0 on `c133e1b`) are in no lock file any more and are only for the record.
 
 ## 12. Tests in avd-ops
 
