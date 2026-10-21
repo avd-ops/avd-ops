@@ -102,8 +102,11 @@ repos runs on `ubuntu-latest` only, so nothing is yet proven on Windows or macOS
 
 ## 5. `scripts/platforms.json`
 
-Each repo with operator scripts keeps one file the portals read. The shape was agreed with the
-portal toggle work:
+Each repo with operator scripts keeps one file the portals read: `scripts/platforms.json`, or
+`platforms.json` at the root where the scripts live at the root (avd-current-state). Each portal's
+engine carries a copy (`PLATFORMS` in avd-landing-zone `site/portal/portal-core.js`, avd-current-state
+`site/portal/assess-core.js`) and a test fails when they differ, so a change to the file updates the
+copy in the same commit. The shape was agreed with the portal toggle work:
 
 ```json
 {
@@ -129,7 +132,8 @@ portal toggle work:
 Keys are the script paths the portal commands call. Each value is `tested` (a CI job or real run
 on that platform passed; name it in `evidence`), `untested` (should work, not yet proven; the
 portal marks it) or `no` (the portal hides it). Bash means running the `.ps1` through `pwsh` from a
-Bash prompt unless a real twin exists (`"twin": "scripts/x.sh"`). `windows` means PowerShell 7; a
+Bash prompt (the portal writes the block to a temporary `.ps1` through a quoted heredoc and runs
+`pwsh -NoLogo -File`) unless a real twin exists (`"twin": "scripts/x.sh"`). `windows` means PowerShell 7; a
 script that also claims Windows PowerShell adds `"winps51"`. Exempt scripts (section 4) are not
 listed. A test in each repo checks that every listed path exists and every operator entry point is
 listed.
