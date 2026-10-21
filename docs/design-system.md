@@ -1,17 +1,17 @@
 # avd-ops design system
 
-One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/). Version 2.1.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
+One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/), plus two starters in [`templates/`](../templates/): one for a new page in any repo, one for a Claude artifact. Version 2.2.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
 
 ## Where the UI is
 
 | Repo | Pages | Uses |
 |---|---|---|
-| avd-ops | every page of avd-ops.dev: home, architecture, `family/`, `docs/`, `design/` | 2.1.0: `avd-ops.css` + `avd-ops-shell.css` + `theme.js`, and `site.css` for its own layouts |
-| avd-landing-zone | `site/portal/` (the deployment portal), `site/region-latency/`, the redirect pages | a vendored copy of 1.1.0; moves onto the shell next |
-| avd-current-state | `site/portal/` (the assessment portal) | a vendored copy of 1.1.0; moves onto the shell after the deployment portal |
-| avd-swarm, avd-second-brain, avd-liquidware | none yet (READMEs and Markdown docs only) | adopt this when they add a page |
+| avd-ops | every page of avd-ops.dev: home, architecture, `family/`, `docs/`, `design/` | the current release: `avd-ops.css` + `avd-ops-shell.css` + `theme.js`, and `site.css` for its own layouts |
+| avd-landing-zone | `site/portal/` (the deployment portal), `site/region-latency/`, the redirect pages | a vendored copy in the shell; its `site/assets/design-system.lock.json` names the release |
+| avd-current-state | `site/portal/` (the assessment portal) | a vendored copy in the shell; its lock file names the release |
+| avd-swarm, avd-second-brain, avd-liquidware, avd-linecheck | none yet (READMEs and Markdown docs only) | start from [`templates/page.html`](../templates/page.html) when they add a page |
 
-Private repos stay out of it.
+Private repos stay out of it: they may use the artifact starter for their own notes, but no public page names them.
 
 ## Rules
 
@@ -70,6 +70,7 @@ Private repos stay out of it.
 | `.layout` > `nav.side` + `main` | The side list and the page. Below 64rem the side list is a drawer the menu button opens (`body.drawer-open`, Escape or the backdrop closes it); without JavaScript it sits below the page. `main > .col` keeps text to the reading column; a page may use the full width (the home page's map, the architecture page). |
 | `footer.foot` | The license and trademark lines, the page's own line, and the credit line (`.credit`). |
 | `.skip` | Skip to content, visible on focus. |
+| `.layout.solo` | The page column with no side list, for a single page in a sibling repo or an artifact (2.2.0). |
 
 A portal uses the bar, the notice and the footer and leaves out the side list and the menu button (it has its own stage rail); `theme.js` then wires only the theme button. The bar is matched as `header.bar`, so a portal's own `.bar` (the latency chart's bars) keeps its look (2.0.1). A portal page loads `avd-ops-shell.css` and `theme.js` after `avd-ops-portal.css`, so the portal's button styles don't reach the bar's buttons (2.1.0).
 
@@ -103,6 +104,23 @@ Every portal command block follows one choice: where it runs (Cloud Shell, Windo
 - A Windows or macOS block starts with the sign-in that Cloud Shell does for you and shows `.requires`.
 - The choice is stored in this browser only, under `avd-ops-runin`, so both portals open with the same one. If storage is blocked, the page uses the default.
 
+## Start a new page
+
+Two starters in [`templates/`](../templates/), written by `scripts/site/build-kit.mjs` from the same stylesheets and shell pieces as avd-ops.dev (a test fails if they fall behind a release). Both open on sample content between `<!-- page:start -->` and `<!-- page:end -->`: replace it, rename the title, and leave the rest alone.
+
+| Starter | For | What it holds |
+|---|---|---|
+| [`page.html`](../templates/page.html) | a new page in any repo (avd-linecheck, a sibling's first page) | the bar (mark, word, theme button), the notice line, one column (`.layout.solo`), the footer with the credit line. It links the pinned copy in `assets/` next to it and has no inline script or style, so it runs under a strict CSP. Take the copy first ([Take a pinned copy](#take-a-pinned-copy)), then put the starter beside `assets/`. |
+| [`artifact.html`](../templates/artifact.html) | a Claude artifact (a proposal, a review, a dashboard) | one file: `avd-ops.css` and `avd-ops-shell.css` inlined without their font faces, `theme.js` inlined, the mark as a data URI, and the same three families from Google Fonts, the only font host an artifact may load. The shell sits on a `div.shell`, because the artifact host writes `<body>`. |
+
+From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy):
+
+```bash
+TAG=ds-v2.2.0; curl -fsSL "https://raw.githubusercontent.com/avd-ops/avd-ops/$TAG/templates/page.html" -o site/index.html
+```
+
+A page keeps the notice and the credit line (the avd-ops.dev tests check both on its own pages, and a sibling's tests should too), keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `avd-ops-theme` skill ([`.claude/skills/avd-ops-theme/`](../.claude/skills/avd-ops-theme/SKILL.md)), which starts every page or artifact from these files.
+
 ## Logo
 
 The mark is a shield holding a desktop with a cloud, and the >< of a remote session (Nick's logo, 2026-10-20, rebuilt as vector; tagline "Deploy quietly"). Files in `site/assets/brand/`:
@@ -122,7 +140,7 @@ Pages that can't load avd-ops.dev at run time (the portals make no requests to o
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
 ```bash
-TAG=ds-v2.1.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
+TAG=ds-v2.2.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.

@@ -1,0 +1,312 @@
+<!-- avd-ops artifact starter, design system v2.2.0 (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
+     Copy this file, rename the title, and replace the content between page:start and page:end. Keep the style and script blocks as they are: they are the release, inlined. -->
+<title>Page title</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImF2ZC1vcHMiPgogIDwhLS0gYXZkLW9wcyBtYXJrOiBhIHNoaWVsZCBob2xkaW5nIGEgZGVza3RvcCB3aXRoIGEgY2xvdWQsIGFuZCB0aGUgPjwgb2YgYSByZW1vdGUgc2Vzc2lvbi4gUmVidWlsdCBhcyB2ZWN0b3IgZnJvbSB0aGUgMjAyNi0xMC0yMCBsb2dvLiAtLT4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE0IiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTE3IDE0SDgzVjYzTDUwIDg2TDE3IDYzWiIgZmlsbD0iIzBkMTAxNSIvPgogIDxwYXRoIGQ9Ik0yNCAyMEg3N1Y1N0gyNFpNMjcuNSAyMy41VjUzLjVINzMuNVYyMy41WiIgZmlsbD0iIzFjYTk5OCIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgPHBhdGggZD0iTTM0IDQ3TDMyIDQ0LjVWNDEuNUwzNC41IDM5SDM4TDM5LjUgMzUuNUw0Mi41IDMzSDQ2TDQ4IDMwLjVINTNMNTYgMzNMNTcuNSAzNkg2MUw2My41IDM4LjVWNDFMNjYgNDNWNDVMNjQgNDdaIiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTQ3LjUgNTdINTIuNVY2MC41SDU5VjYzSDQxVjYwLjVINDcuNVoiIGZpbGw9IiMxY2E5OTgiLz4KICA8cGF0aCBkPSJNNDIgNjguNUw0Ni41IDcyTDQyIDc1LjVNNTggNjZMNTIuNSA3MC41TDU4IDc1IiBmaWxsPSJub25lIiBzdHJva2U9IiMxY2E5OTgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Schibsted+Grotesk:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* avd-ops design system v2.2.0: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
+/* Tokens. Neutrals are a cool slate; the accent is the logo's teal, darkened on light backgrounds for contrast
+   (--brand and --brand-ink are the logo's own colors, for brand surfaces only); amber marks the optional
+   Liquidware tier; good, caution and bad are for results only, never decoration, and info marks work in progress.
+   The shell pair is the brand bar's ink, the same in both themes so every family page opens on the same frame. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --sunken:#eef2f6; --fg:#152232; --muted:#566578; --line:#d7dee8; --line-strong:#bfc9d6;
+  --accent:#0b7a6e; --accent-hover:#09635a; --on-accent:#ffffff; --accent-soft:#e0f2ef; --focus:#0b7a6e;
+  --brand:#1ca998; --brand-ink:#0d1015;
+  --tier:#9a5b12; --tier-soft:#f7ecdc;
+  --good:#18794e; --good-soft:#e1f3e9; --caution:#8a5a00; --caution-soft:#fbf0d9; --bad:#b42323; --bad-soft:#fbe7e7;
+  --warn-bg:#fff6e0; --warn-line:#e2b74a; --warn-fg:#4d3a07;
+  --term-bg:#0f1822; --term-head:#18232f; --term-text:#dbe5ef; --term-muted:#8796a8; --term-border:#263342; --prompt:#5fcf86;
+  --s-built-bg:#d9f2e3; --s-built-fg:#14532d; --s-design-bg:#e4edfb; --s-design-fg:#1d4785; --s-slice-bg:#fdecc8; --s-slice-fg:#713f12;
+  --shell:#0d1015; --shell-fg:#e8f1f0; --shell-muted:#a3b3b8; --shell-line:#262f36; --shell-hover:#1b242a; --info:#2456a6; --info-soft:#e4edfb;
+  --shadow-2:0 2px 6px rgba(21,34,50,.08),0 12px 32px rgba(21,34,50,.10);
+  --shadow:0 1px 2px rgba(21,34,50,.05),0 4px 16px rgba(21,34,50,.05);
+  --display:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --radius:8px; --radius-sm:6px; --pill:999px;
+  --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.5rem; --space-6:2.5rem;
+  --measure:46rem; --gutter:16px; --page:76rem; --side:15rem; --tap:44px; --radius-lg:14px;
+  --ease:cubic-bezier(.2,.7,.2,1); --fast:120ms; --slow:220ms;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1620; --surface:#16202c; --sunken:#121b25; --fg:#e4ebf3; --muted:#9aa9ba; --line:#2a3646; --line-strong:#3a4859;
+  --accent:#3cc8b4; --accent-hover:#7fe0d2; --on-accent:#0b1520; --accent-soft:#123331; --focus:#7fe0d2;
+  --brand:#1ca998; --brand-ink:#0d1015;
+  --tier:#e5a95a; --tier-soft:#3a2a14;
+  --good:#4cc286; --good-soft:#10291c; --caution:#e0b04a; --caution-soft:#2c2311; --bad:#ff8a80; --bad-soft:#301818;
+  --warn-bg:#2e2610; --warn-line:#8a6d1e; --warn-fg:#f3e3b0;
+  --term-bg:#0a1018; --term-head:#121a24; --term-text:#dbe5ef; --term-muted:#7d8c9e; --term-border:#222e3c; --prompt:#5fcf86;
+  --s-built-bg:#123824; --s-built-fg:#a7e8c0; --s-design-bg:#14223a; --s-design-fg:#bcd2fa; --s-slice-bg:#3d2e0e; --s-slice-fg:#f5d58a;
+  --shell:#070a0d; --shell-fg:#e8f1f0; --shell-muted:#93a6ad; --shell-line:#1d262d; --shell-hover:#141c22; --info:#86b0f5; --info-soft:#14223a;
+  --shadow-2:0 2px 6px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45);
+  --shadow:0 1px 2px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1620; --surface:#16202c; --sunken:#121b25; --fg:#e4ebf3; --muted:#9aa9ba; --line:#2a3646; --line-strong:#3a4859;
+  --accent:#3cc8b4; --accent-hover:#7fe0d2; --on-accent:#0b1520; --accent-soft:#123331; --focus:#7fe0d2;
+  --brand:#1ca998; --brand-ink:#0d1015;
+  --tier:#e5a95a; --tier-soft:#3a2a14;
+  --good:#4cc286; --good-soft:#10291c; --caution:#e0b04a; --caution-soft:#2c2311; --bad:#ff8a80; --bad-soft:#301818;
+  --warn-bg:#2e2610; --warn-line:#8a6d1e; --warn-fg:#f3e3b0;
+  --term-bg:#0a1018; --term-head:#121a24; --term-text:#dbe5ef; --term-muted:#7d8c9e; --term-border:#222e3c; --prompt:#5fcf86;
+  --s-built-bg:#123824; --s-built-fg:#a7e8c0; --s-design-bg:#14223a; --s-design-fg:#bcd2fa; --s-slice-bg:#3d2e0e; --s-slice-fg:#f5d58a;
+  --shell:#070a0d; --shell-fg:#e8f1f0; --shell-muted:#93a6ad; --shell-line:#1d262d; --shell-hover:#141c22; --info:#86b0f5; --info-soft:#14223a;
+  --shadow-2:0 2px 6px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45);
+  --shadow:0 1px 2px rgba(0,0,0,.35); color-scheme:dark}
+
+/* Base */
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);margin:0;-webkit-text-size-adjust:100%}
+a{color:var(--accent)} a:hover{color:var(--accent-hover)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance}
+h1{font-size:clamp(2rem,5vw,2.9rem);margin:var(--space-6) 0 var(--space-3);letter-spacing:-.01em}
+h2{font-size:1.45rem;margin:2.75rem 0 var(--space-3)} h3{font-size:1.1rem;margin:0 0 .35rem}
+code,.mono{font-family:var(--mono);font-size:.85em}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.9rem 1rem;overflow-x:auto;font:.82rem/1.55 var(--mono)}
+/* Commands show every character as typed: no ligature turns << or != into one glyph. */
+pre,code,.mono{font-variant-ligatures:none}
+.lede{font-size:1.2rem;color:var(--muted)}
+.wrap{max-width:var(--measure);margin:0 auto;padding-block:0 4rem;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+
+/* Top bar. The brand is the mark, brand/mark.svg (square) beside the word "avd-ops". A page may follow it with
+   a crumb (.sep, then its own title) and its own links. */
+header.top{display:flex;flex-wrap:wrap;gap:var(--space-2) 1.25rem;align-items:center;padding-block:1.1rem;border-bottom:1px solid var(--line)}
+header.top .brand{display:inline-flex;align-items:center;gap:var(--space-2);font:700 1.05rem var(--display);color:var(--fg);text-decoration:none;letter-spacing:.01em}
+header.top .brand .mark{width:26px;height:26px;flex:none;border-radius:5px;display:block}
+header.top .sep{color:var(--line-strong)}
+header.top nav{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-4);font-size:.95rem}
+header.top nav a{text-decoration:none;color:var(--muted)} header.top nav a:hover{color:var(--fg)} header.top nav a[aria-current]{color:var(--fg);font-weight:600}
+
+/* Notice: the research-only warning every page carries before its first section. */
+.warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-fg);border-radius:var(--radius-sm);padding:.9rem 1.1rem;margin:var(--space-5) 0;font-size:.95rem}
+.warn strong:first-child{display:block;margin-bottom:var(--space-1)}
+.warn ul{margin:var(--space-1) 0 0;padding-left:1.2rem}
+.warn a{color:inherit}
+
+/* Labels, chips, status pills. Chips sit in a .chips row and pills carry an s-* class, so pages that use
+   .chip or .status for their own thing (the portal) keep theirs. */
+.eyebrow{font:600 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:var(--space-1)}
+.chips .chip{font:500 .72rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.1rem var(--space-2);color:var(--muted);background:var(--bg)}
+.status:is(.s-built,.s-design,.s-slice){font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.15rem var(--space-2);border-radius:4px;align-self:flex-start}
+.s-built{background:var(--s-built-bg);color:var(--s-built-fg)} .s-design{background:var(--s-design-bg);color:var(--s-design-fg)} .s-slice{background:var(--s-slice-bg);color:var(--s-slice-fg)}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);min-width:0}
+
+/* Buttons. .cta is a link styled as the primary action; .ghost is the secondary one. */
+.cta{display:inline-block;margin:var(--space-2) var(--space-2) 0 0;padding:var(--space-2) .95rem;border-radius:var(--radius-sm);background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);text-decoration:none;font-weight:600;transition:background var(--fast) var(--ease)}
+.cta:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:var(--on-accent)}
+.cta.ghost{background:transparent;color:var(--accent)} .cta.ghost:hover{background:var(--accent-soft);color:var(--accent)}
+
+/* Tables */
+.tbl{overflow-x:auto;margin:var(--space-4) 0} table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:.55rem .7rem;border-bottom:1px solid var(--line)} th{font-family:var(--display);font-size:.85rem;color:var(--muted)}
+
+/* Segmented choice: a radio group drawn as joined buttons. Markup: div.segmented with role="radiogroup" and an
+   aria-label, holding label>input[type=radio]+span; arrow keys move, as radios do. 44px on touch screens. */
+.segmented{display:inline-flex;max-width:100%;border:1px solid var(--line-strong);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface)}
+.segmented label{position:relative;display:flex;flex:1 1 auto;cursor:pointer}
+.segmented label+label{border-left:1px solid var(--line-strong)}
+.segmented input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.segmented span{display:flex;align-items:center;justify-content:center;width:100%;min-height:34px;padding:0 12px;font-weight:600;font-size:.88rem;color:var(--muted);white-space:nowrap;transition:background var(--fast) var(--ease)}
+.segmented label:hover span{color:var(--fg)}
+.segmented input:checked+span{background:var(--accent-soft);color:var(--accent)}
+.segmented input:focus-visible+span{outline:2px solid var(--focus);outline-offset:-2px}
+@media (pointer:coarse){.segmented span{min-height:var(--tap)}}
+
+/* Run in: where the page's commands run, as two segmented choices (place, then shell) that every command block
+   follows. .runin-title names the row; the page remembers the choice in this browser only. */
+.runin{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3);padding:var(--space-2) var(--space-3);border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--sunken)}
+.runin-title{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:40rem){.runin .segmented{display:flex;width:100%}}
+/* Not tested yet: a variant no real run has proved; the word always shows, never the color alone. */
+.untested{display:inline-block;font:600 .7rem/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-radius:var(--pill);padding:1px 9px;color:var(--caution);background:var(--caution-soft);white-space:nowrap}
+/* What a variant needs on the machine it runs on (PowerShell 7.2, the Az modules, the az CLI). */
+.requires{font-size:.85rem;color:var(--muted)} .requires::before{content:"Needs: ";font-weight:600;color:var(--fg)}
+
+/* Footer */
+footer.site{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* Brand bar: brand ink in both themes, so moving between the site and a portal keeps the same frame. */
+.shell{background:var(--bg)}
+.shell::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--shell);z-index:30}
+.shell header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--shell);color:var(--shell-fg);border-bottom:1px solid var(--shell-line)}
+.shell .bar-in{max-width:var(--page);margin:0 auto;display:flex;align-items:center;gap:var(--space-3);min-height:56px;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.shell header.bar .brand{display:inline-flex;align-items:center;gap:var(--space-2);font:700 1.05rem var(--display);color:var(--shell-fg);text-decoration:none;letter-spacing:.01em;min-height:var(--tap)}
+.shell header.bar .brand .mark{width:28px;height:28px;flex:none;border-radius:6px;display:block}
+.shell .switcher{display:flex;gap:2px;padding:3px;border-radius:10px;background:var(--shell-hover);margin-left:var(--space-2)}
+.shell .switcher a{display:flex;align-items:center;min-height:36px;padding:0 .8rem;border-radius:7px;color:var(--shell-muted);text-decoration:none;font-weight:600;font-size:.92rem;transition:background var(--fast) var(--ease),color var(--fast) var(--ease)}
+.shell .switcher a:hover{color:var(--shell-fg)}
+.shell .switcher a[aria-current]{background:var(--shell-fg);color:var(--shell)}
+.shell .tools{margin-left:auto;display:flex;gap:var(--space-2)}
+.shell header.bar .iconbtn{width:var(--tap);height:var(--tap);display:grid;place-items:center;border-radius:10px;border:1px solid var(--shell-line);background:transparent;color:var(--shell-fg);cursor:pointer;padding:0}
+.shell header.bar .iconbtn:hover{background:var(--shell-hover)}
+.shell header.bar .iconbtn svg{width:20px;height:20px}
+.shell header.bar :focus-visible{outline-color:var(--shell-fg)}
+.shell .menu{display:none}
+.shell .theme .moon{display:none}
+:root[data-theme="dark"] .shell .theme .sun{display:none} :root[data-theme="dark"] .shell .theme .moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .shell .theme .sun{display:none}:root:not([data-theme="light"]) .shell .theme .moon{display:block}}
+html:not(.js) .shell .theme{display:none}
+
+/* Notice: one line that opens to the full research-only notice. The whole text stays in the page. */
+.shell details.notice{background:var(--surface);border-bottom:1px solid var(--line);font-size:.92rem;color:var(--muted)}
+.shell .notice summary{max-width:var(--page);margin:0 auto;display:flex;align-items:center;gap:var(--space-2);min-height:40px;cursor:pointer;list-style:none;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.shell .notice summary::-webkit-details-marker{display:none}
+.shell .notice summary::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--warn-line);flex:none}
+.shell .notice summary strong{font-weight:600;color:var(--fg)}
+.shell .notice summary .short{display:none}
+.shell .notice summary .more{margin-left:auto;color:var(--accent);white-space:nowrap;padding-left:var(--space-3)}
+.shell .notice[open] summary .more{visibility:hidden}
+.shell .notice .full{max-width:var(--page);margin:0 auto;padding-block:0 var(--space-3);
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.shell .notice ul{margin:0;padding:var(--space-3) var(--space-4) var(--space-3) 2.2rem;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:var(--radius-sm);color:var(--warn-fg)}
+.shell .notice ul a{color:inherit}
+
+/* Side list and page column. */
+.shell .layout{max-width:var(--page);margin:0 auto;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:var(--space-6);
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.shell .side{position:sticky;top:calc(56px + env(safe-area-inset-top,0px));align-self:start;max-height:calc(100vh - 56px);overflow-y:auto;padding-block:var(--space-5) var(--space-6);display:grid;gap:var(--space-1);align-content:start}
+.shell .side .group{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:var(--space-4) 0 var(--space-1);padding-left:.6rem}
+.shell .side .group:first-child{margin-top:0}
+.shell .side a{display:flex;align-items:center;min-height:36px;padding:0 .6rem;border-radius:var(--radius-sm);color:var(--fg);text-decoration:none;font-size:.95rem}
+.shell .side a:hover{background:var(--sunken)}
+.shell .side a[aria-current]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+/* A page with no side list (a single page in a sibling repo, an artifact): .layout.solo, one column. */
+.shell .layout.solo{grid-template-columns:minmax(0,1fr)}
+.shell main{min-width:0;padding-block:var(--space-5) var(--space-6)}
+.shell main>.col{max-width:var(--measure)}
+.shell main h1{margin-top:var(--space-3)}
+.shell main h1:first-child{margin-top:var(--space-4)}
+.shell .backdrop{display:none}
+
+/* Footer */
+.shell footer.foot{border-top:1px solid var(--line);background:var(--surface);font-size:.86rem;color:var(--muted)}
+.shell footer.foot .in{max-width:var(--page);margin:0 auto;padding-block:var(--space-5) calc(var(--space-6) + env(safe-area-inset-bottom,0px));display:grid;gap:var(--space-2);
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.shell footer.foot p{margin:0;max-width:var(--measure)}
+.shell footer.foot .credit{font:600 .8rem var(--mono);letter-spacing:.04em;color:var(--fg);margin-top:var(--space-2)}
+.shell footer.foot .credit a{color:inherit}
+
+/* Touch screens get 44px rows in the side list and switcher. */
+@media (pointer:coarse){.shell .side a{min-height:var(--tap)} .shell .switcher a{min-height:40px}}
+
+/* Below 64rem (iPad portrait, phones) the side list is a drawer the menu button opens. */
+@media (max-width:64rem){
+  .shell .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .js .shell .menu{display:grid}
+  .js .shell .side{position:fixed;top:0;bottom:0;left:0;width:min(20rem,86vw);max-height:none;z-index:40;background:var(--surface);border-right:1px solid var(--line);box-shadow:var(--shadow-2);
+    padding:calc(var(--space-5) + env(safe-area-inset-top,0px)) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom,0px)) max(var(--space-4),env(safe-area-inset-left,0px));
+    transform:translateX(-105%);visibility:hidden;transition:transform var(--slow) var(--ease),visibility 0s linear var(--slow)}
+  .js .shell.drawer-open .side{transform:none;visibility:visible;transition:transform var(--slow) var(--ease)}
+  .js .shell.drawer-open .backdrop{display:block;position:fixed;inset:0;z-index:35;background:var(--shell);opacity:.5;border:0;padding:0}
+  html:not(.js) .shell .side{position:static;max-height:none;order:2;border-top:1px solid var(--line)}
+}
+@media (max-width:40rem){.shell .notice:not([open]) summary .long{display:none} .shell .notice:not([open]) summary .short{display:inline}}
+@media (max-width:30rem){.shell header.bar .brand .word{display:none} .shell .switcher{margin-left:0} .shell .switcher a{padding:0 .65rem}}
+.shell .skip{position:absolute;left:-999px;top:0;z-index:50;background:var(--surface);color:var(--fg);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm)}
+.shell .skip:focus{left:max(var(--gutter),env(safe-area-inset-left,0px));top:calc(var(--space-2) + env(safe-area-inset-top,0px))}
+</style>
+<script>
+/* avd-ops theme.js v2.2.0, inlined. */
+(function () {
+  var root = document.documentElement;
+  var KEY = 'avd-ops-theme';
+  root.classList.add('js');
+  try { var saved = localStorage.getItem(KEY); if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved); } catch (e) { /* storage blocked */ }
+
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { return false; }
+  }
+
+  function wire() {
+    var body = document.body;
+    var theme = document.querySelector('.shell .theme');
+    if (theme) {
+      var label = function () { theme.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); };
+      label();
+      theme.addEventListener('click', function () {
+        var next = isDark() ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem(KEY, next); } catch (e) { /* storage blocked */ }
+        label();
+      });
+      try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', label); } catch (e) { /* old browser */ }
+    }
+
+    var menu = document.querySelector('.shell .menu');
+    var side = document.querySelector('.shell .side');
+    var backdrop = document.querySelector('.shell .backdrop');
+    if (!menu || !side) return;
+    // While the drawer is open the page behind it is inert, so Tab stays in the side list.
+    var behind = document.querySelectorAll('.shell header.bar, .shell .notice, .shell main, .shell footer.foot');
+    function setOpen(open, quiet) {
+      body.classList.toggle('drawer-open', open);
+      for (var i = 0; i < behind.length; i++) { if (open) behind[i].setAttribute('inert', ''); else behind[i].removeAttribute('inert'); }
+      menu.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        var first = side.querySelector('[aria-current]') || side.querySelector('a');
+        if (first) first.focus();
+      } else if (!quiet) {
+        menu.focus();
+      }
+    }
+    menu.addEventListener('click', function () { setOpen(!body.classList.contains('drawer-open')); });
+    if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && body.classList.contains('drawer-open')) setOpen(false);
+    });
+    // Closing on a wide screen keeps the side list in place if the window grows while the drawer is open; focus
+    // stays where it was, since the menu button is hidden there.
+    try {
+      window.matchMedia('(min-width: 64.0625rem)').addEventListener('change', function (m) {
+        if (m.matches && body.classList.contains('drawer-open')) setOpen(false, true);
+      });
+    } catch (e) { /* old browser */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+}());
+</script>
+<div class="shell">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><div class="bar-in"><a class="brand" href="https://avd-ops.dev/"><img class="mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImF2ZC1vcHMiPgogIDwhLS0gYXZkLW9wcyBtYXJrOiBhIHNoaWVsZCBob2xkaW5nIGEgZGVza3RvcCB3aXRoIGEgY2xvdWQsIGFuZCB0aGUgPjwgb2YgYSByZW1vdGUgc2Vzc2lvbi4gUmVidWlsdCBhcyB2ZWN0b3IgZnJvbSB0aGUgMjAyNi0xMC0yMCBsb2dvLiAtLT4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFjYTk5OCIvPgogIDxwYXRoIGQ9Ik0xNyAxNEg4M1Y2M0w1MCA4NkwxNyA2M1oiIGZpbGw9IiMwZDEwMTUiLz4KICA8cGF0aCBkPSJNMjQgMjBINzdWNTdIMjRaTTI3LjUgMjMuNVY1My41SDczLjVWMjMuNVoiIGZpbGw9IiMxY2E5OTgiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgogIDxwYXRoIGQ9Ik0zNCA0N0wzMiA0NC41VjQxLjVMMzQuNSAzOUgzOEwzOS41IDM1LjVMNDIuNSAzM0g0Nkw0OCAzMC41SDUzTDU2IDMzTDU3LjUgMzZINjFMNjMuNSAzOC41VjQxTDY2IDQzVjQ1TDY0IDQ3WiIgZmlsbD0iIzFjYTk5OCIvPgogIDxwYXRoIGQ9Ik00Ny41IDU3SDUyLjVWNjAuNUg1OVY2M0g0MVY2MC41SDQ3LjVaIiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTQyIDY4LjVMNDYuNSA3Mkw0MiA3NS41TTU4IDY2TDUyLjUgNzAuNUw1OCA3NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWNhOTk4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
+<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button></div></div></header>
+<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
+<div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
+<li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
+<li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
+<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="https://avd-ops.dev/index.html#contribute">Contribute</a>.</li></ul></div></details>
+<div class="layout solo">
+<main id="main">
+<div class="col">
+<!-- page:start (replace from here to page:end with the page's own content) -->
+<p class="eyebrow">Repo name, one-line role</p>
+<h1>Page title</h1>
+<p class="lede">One sentence on what this page does and for whom.</p>
+<div class="chips"><span class="chip">C11</span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
+<p><a class="cta" href="#start">Primary action</a><a class="cta ghost" href="https://avd-ops.dev/">avd-ops.dev</a></p>
+<h2 id="start">A section</h2>
+<div class="card"><p class="eyebrow">Card</p><p>A surface with a border, for one thing that stands apart. Status pills: <span class="status s-built">built</span> <span class="status s-design">design</span> <span class="status s-slice">slice</span></p></div>
+<div class="tbl"><table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td>Round trip to the nearest region</td><td>42 ms</td></tr><tr><td>Fonts</td><td>served with the page</td></tr></tbody></table></div>
+<pre><code>git clone https://github.com/avd-ops/avd-ops.git</code></pre>
+<!-- page:end -->
+</div>
+</main>
+</div>
+<footer class="foot"><div class="in"><p>Built with the avd-ops design system.</p>
+<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p></div></footer>
+</div>
