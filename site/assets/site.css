@@ -136,3 +136,35 @@ figure.flows{margin:var(--space-4) 0 0}
 .stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
 .stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
 .origin{margin-top:var(--space-4);background:var(--accent-soft);border-color:transparent} .origin h3{margin-top:0} .origin p{margin:0 0 var(--space-2)} .origin .sig{margin:0;font-size:.9rem;color:var(--muted)}
+
+/* The owner's checklist (checklist.html): a progress bar, then numbered lines that say their state in words.
+   Pills always carry a word; color only repeats it. */
+.cl-bar{display:grid;gap:var(--space-2);padding:var(--space-4);margin:var(--space-4) 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.cl-count{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font-family:var(--display);font-size:1.2rem}
+.cl-count meter{flex:1 1 10rem;min-width:0;height:.8rem}
+.cl-checked{margin:0;color:var(--muted);font-size:.95rem}
+.cl-privacy{font-size:.92rem;color:var(--muted)}
+.cl-list{display:grid;gap:var(--space-3);padding-left:1.6rem;margin:var(--space-3) 0 0}
+.cl-line{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3) var(--space-4);display:grid;gap:var(--space-2);min-width:0}
+.cl-line::marker{font:600 .9rem var(--mono);color:var(--muted)}
+.cl-done{background:var(--sunken)}
+.cl-done .cl-head>span:not(.cl-pill),.cl-done .cl-tick>span{color:var(--muted)}
+.cl-head{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:baseline}
+.cl-head>span:not(.cl-pill){flex:1 1 14rem;min-width:0}
+.cl-tick{display:flex;gap:var(--space-3);align-items:flex-start;cursor:pointer;min-height:var(--tap)}
+.cl-tick input{width:1.4rem;height:1.4rem;flex:none;margin:.15rem 0 0;accent-color:var(--accent)}
+.cl-meta{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;font-size:.92rem}
+.cl-meta a,.cl-line>a{display:inline-flex;align-items:center;min-height:var(--tap)}
+.cl-prs{display:grid;gap:var(--space-1)}
+.cl-pr{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);align-items:center;min-width:0}
+.cl-pr a{display:inline-flex;flex-wrap:wrap;align-items:center;gap:0 .4em;min-height:var(--tap);overflow-wrap:anywhere;font-weight:600}
+.cl-title{font-weight:400;color:var(--muted)}
+.cl-pill{display:inline-block;font:600 .72rem/1.7 var(--mono);letter-spacing:.04em;border-radius:var(--pill);padding:0 9px;color:var(--muted);background:var(--sunken);border:1px solid var(--line)}
+.cl-pill.cl-done,.cl-pill.cl-merged,.cl-pill.cl-on,.chip.cl-on{color:var(--good);background:var(--good-soft);border-color:var(--good)}
+.cl-pill.cl-ready{color:var(--accent);background:var(--accent-soft);border-color:var(--accent)}
+.cl-pill.cl-checks,.cl-pill.cl-behind,.cl-pill.cl-checking,.cl-pill.cl-draft,.cl-pill.cl-todo,.cl-pill.cl-off,.chip.cl-off{color:var(--caution);background:var(--caution-soft);border-color:var(--caution)}
+.cl-pill.cl-conflict,.cl-pill.cl-blocked{color:var(--bad);background:var(--bad-soft);border-color:var(--bad)}
+.cl-pill.cl-closed{color:var(--muted)}
+.cl-repos .chip{text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+@media (pointer:coarse){.cl-repos .chip{min-height:var(--tap)}}
+.cl-bar .cta:disabled{opacity:.6;cursor:default}
