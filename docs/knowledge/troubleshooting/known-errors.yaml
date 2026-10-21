@@ -50,3 +50,11 @@ errors:
     applies_to: PowerShell 7.4
     status: verified
     added: "2026-10-21"
+  - id: github-mergeable-state-unknown
+    symptom: "GET /repos/{owner}/{repo}/pulls/{n} returns mergeable: null and mergeable_state: unknown for a pull request that is ready"
+    cause: GitHub works out mergeability in the background after a push or a base-branch change; the first read only starts that job. Unauthenticated callers also share 60 requests an hour per network, so polling in a loop runs out quickly (HTTP 403, x-ratelimit-remaining 0).
+    fix: Treat unknown as still checking, never as ready, and read again a minute later. Cache results, skip pull requests already merged or closed, and read x-ratelimit-remaining and x-ratelimit-reset (exposed to browsers) before the next batch, as site/assets/checklist-core.js does. The rules in force on a branch (`/rules/branches/{branch}`) and private vulnerability reporting (`/private-vulnerability-reporting`) are readable without signing in on a public repo.
+    source: https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request
+    applies_to: GitHub REST API 2022-11-28
+    status: verified
+    added: "2026-10-21"

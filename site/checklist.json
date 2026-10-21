@@ -1,0 +1,79 @@
+{
+  "about": "The list behind checklist.html. Threads and people edit it in a pull request: add a pull request when it is ready for the owner, remove lines once they are done. Public repos only; nothing private goes here.",
+  "updated": "2026-10-21",
+  "owner": "avd-ops",
+  "repos": [
+    { "name": "avd-landing-zone", "branch": "master" },
+    { "name": "avd-current-state", "branch": "main" },
+    { "name": "avd-assess", "branch": "main" },
+    { "name": "avd-swarm", "branch": "main" },
+    { "name": "avd-second-brain", "branch": "main" },
+    { "name": "avd-ops", "branch": "main" }
+  ],
+  "sections": [
+    {
+      "id": "settings",
+      "title": "Repo settings",
+      "intro": "Settings only the owner can change. GitHub's settings pages open in Safari on an iPad (ask for the desktop site); the GitHub app can't change them.",
+      "items": [
+        { "id": "lz-ids-secrets-pr", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 109 }], "note": "The landing zone's workflows read Azure and Entra IDs from Actions secrets, so a run can't print them in a public log." },
+        { "id": "lz-ids-secrets", "kind": "manual", "text": "After that merge: any landing zone ID kept as an Actions variable (repo or environment) is recreated as a secret, and the variable deleted. You type the values; they never go in a chat.", "link": "https://github.com/avd-ops/avd-landing-zone/settings/variables/actions" },
+        { "id": "secret-scanning", "kind": "manual", "text": "Secret scanning and push protection on for every repo: org Code security, Configurations, GitHub recommended, apply to all repositories.", "link": "https://github.com/organizations/avd-ops/settings/security_products" },
+        { "id": "pvr", "kind": "pvr", "text": "Private vulnerability reporting on, so the Security tab offers Report a vulnerability.", "repos": ["avd-landing-zone", "avd-current-state", "avd-assess", "avd-swarm", "avd-second-brain", "avd-ops"] },
+        { "id": "rulesets", "kind": "ruleset", "text": "A default-branch ruleset: restrict deletions, block force pushes, require a pull request. Export avd-second-brain's and import it.", "link": "https://github.com/avd-ops/avd-second-brain/settings/rules", "repos": ["avd-landing-zone", "avd-current-state", "avd-assess", "avd-swarm", "avd-second-brain", "avd-ops"] },
+        { "id": "actions-settings", "kind": "manual", "text": "Actions, General, in each repo: fork pull requests from external contributors need approval, and the default workflow token only reads.", "link": "https://github.com/avd-ops/avd-landing-zone/settings/actions" },
+        { "id": "email-privacy", "kind": "manual", "text": "Keep my email address private, and block command line pushes that expose it.", "link": "https://github.com/settings/emails" }
+      ]
+    },
+    {
+      "id": "merges",
+      "title": "Merge in this order",
+      "intro": "Ready from GitHub mobile once a line says Ready to merge. A line with two pull requests is a pair that changes together: merge both.",
+      "items": [
+        { "id": "m-security-map", "kind": "pr", "prs": [{ "repo": "avd-assess", "number": 38 }, { "repo": "avd-ops", "number": 30 }], "note": "The security review map, then the page that renders it." },
+        { "id": "m-swarm-core", "kind": "pr", "prs": [{ "repo": "avd-swarm", "number": 39 }, { "repo": "avd-second-brain", "number": 85 }], "note": "avd-swarm's open-source core and its brain pair." },
+        { "id": "m-wdot", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 98 }, { "repo": "avd-second-brain", "number": 82 }], "note": "Verify every image optimization run, and its KB page." },
+        { "id": "m-collector", "kind": "pr", "prs": [{ "repo": "avd-current-state", "number": 42 }], "note": "Local collector spec: the owner's answers." },
+        { "id": "m-drift", "kind": "pr", "prs": [{ "repo": "avd-current-state", "number": 39 }], "note": "Drift spec v3: the owner's answers." },
+        { "id": "m-portal-prompt", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 103 }, { "repo": "avd-current-state", "number": 35 }], "note": "Both portals name the Cloud Shell prompt each command expects." },
+        { "id": "m-org-move", "kind": "pr", "prs": [{ "repo": "avd-second-brain", "number": 84 }, { "repo": "avd-assess", "number": 37 }], "note": "What is left of the move to the avd-ops organization." },
+        { "id": "m-cloudshell-docs", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 23 }], "note": "Cloud Shell conventions and the sandbox batch method." },
+        { "id": "m-signing-note", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 35 }], "note": "Code signing: the log bundle collector moved to avd-current-state." }
+      ]
+    },
+    {
+      "id": "read",
+      "title": "Read first",
+      "intro": "New specs the owner hasn't reviewed yet.",
+      "items": [
+        { "id": "r-roles", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 36 }], "note": "Family roles." },
+        { "id": "r-portal-engine", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 37 }], "note": "One engine for every portal." },
+        { "id": "r-portable-map", "kind": "pr", "prs": [{ "repo": "avd-assess", "number": 40 }], "note": "The portable assessment map." }
+      ]
+    },
+    {
+      "id": "hold",
+      "title": "Hold",
+      "intro": "Not for merging yet. Each says why.",
+      "counts": false,
+      "items": [
+        { "id": "h-release-commands", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 108 }], "note": "Wait until its checks, including knowledge capture, pass." },
+        { "id": "h-endpoint-map", "kind": "pr", "prs": [{ "repo": "avd-assess", "number": 39 }], "note": "Needs a rebase." },
+        { "id": "h-wiki-pair", "kind": "pr", "prs": [{ "repo": "avd-swarm", "number": 34 }], "note": "Needs a rebase." },
+        { "id": "h-logos", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 17 }], "note": "Needs a rebase." },
+        { "id": "h-device-cleanup", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 91 }], "note": "Older; ask before merging." },
+        { "id": "h-auto-merge", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 70 }, { "repo": "avd-second-brain", "number": 33 }], "note": "Older; ask before merging." }
+      ]
+    },
+    {
+      "id": "back",
+      "title": "When Claude is back",
+      "counts": false,
+      "items": [
+        { "id": "b-say-merged", "kind": "manual", "text": "Say which pull requests you merged while it was out, so each thread re-pins its readers and records its closeout." },
+        { "id": "b-rebase", "kind": "manual", "text": "Ask for a rebase of every line that says Merge conflict." },
+        { "id": "b-sandbox", "kind": "manual", "text": "Confirm every sandbox run finished and nothing is billing before approving a new one." }
+      ]
+    }
+  ]
+}
