@@ -6,7 +6,7 @@ The family has two portals and a third on the way: the avd-landing-zone deployme
 
 ## 1. The decision in one line
 
-**One engine, three thin portals, built in two phases.** The engine is a set of small, plain JavaScript files in avd-ops with its own manifest and its own `pe-v<version>` tag, vendored into each portal repo with a lock file and a hash test, the way the design system is. Phase 1 holds only pure logic the portals already duplicate (Run in, quoting, state lines, bands, the probe). Phase 2 (page widgets, step model, storage, redaction) waits until linecheck's page exists, so every module has two real users before it moves. Each portal keeps its own steps, commands, checks, packs and words. Nothing is fetched at run time or in CI, so avd-landing-zone and avd-current-state still work with no other repo.
+**One engine, three thin portals, built in two phases.** The engine is a set of small, plain JavaScript files in avd-ops with its own manifest and its own `pe-v<version>` tag, vendored into each portal repo with a lock file and a hash test, the way the design system is. Phase 1 holds the logic both portals already duplicate (Run in, quoting, state lines) plus the landing zone's bands and probe, which linecheck's page is built on, so they have their second user as soon as it exists (section 5). Phase 2 (page widgets, step model, storage, redaction) waits until linecheck's page exists, so every module has two real users before it moves. Each portal keeps its own steps, commands, checks, packs and words. Nothing is fetched at run time or in CI, so avd-landing-zone and avd-current-state still work with no other repo.
 
 The reading chosen: "not three standalone portals" means three portals built from one engine and one look, not one website with three modes. Section 3.3 says why one site was not chosen.
 
@@ -19,7 +19,7 @@ Read at avd-landing-zone `785ef36`, avd-current-state `1e31fca` and avd-linechec
 | Tokens, fonts, shell | design system at `ds-v2.1.0` | design system at `ds-v2.2.0` | the same (spec 18.8) | **Shared** (decision 0005) |
 | Portal components (`avd-ops-portal.css`) | **not loaded**: the page keeps its own 250-line `<style>`, its own `ol.steps` (`data-phase-start`) and a sliding `#track` of slides | loaded | planned | Shared by CS only |
 | Engine file shape | `portal-core.js`, 1,108 lines, UMD (`window.PortalCore`, `module.exports`), ES5 | `assess-core.js`, 406 lines, UMD (`window.AssessCore`), uses `globalThis` (ES2020) | `engine.js`, `verdict.js`, `export.js` (spec 12.4) | Same pattern, written twice |
-| Run in | `PLATFORMS`, `validRunIn`, `platformKey`, `scriptsIn`, `support`, `forRunIn`: PowerShell in stretches, `$env:` and `Remove-Item Env:` lines to `export` and `unset`, the clone line to bash, `bash ./` lines re-quoted, Az PowerShell and az CLI sign-in added on a local machine | the same names; `forRunIn` leaves PowerShell as is everywhere (the block's preamble signs in) and wraps the whole block in one `pwsh` for Bash | none | **Copied, then diverged.** Same `avd-ops-runin` storage key; each `PLATFORMS` inlined and kept equal to its repo's `platforms.json` by a test |
+| Run in | `PLATFORMS`, `validRunIn`, `platformKey`, `scriptsIn`, `support`, `forRunIn`: PowerShell in stretches, `$env:` and `Remove-Item Env:` lines to `export` and `unset`, the clone line to bash, `bash ./` lines re-quoted, Az PowerShell and az CLI sign-in added on a local machine | the same names except `platformKey` (inlined in `support`); `forRunIn` leaves PowerShell as is everywhere (the block's preamble signs in) and wraps the whole block in one `pwsh` for Bash | none | **Copied, then diverged.** Same `avd-ops-runin` storage key; each `PLATFORMS` inlined and kept equal to its repo's `platforms.json` by a test |
 | State lines | `<<<AVDLZ-STATE ...>>>`, drops `[\r\n]+`, keeps unparsable lines as `{ parseError, raw }` with `raw` cut at 200 characters (decision 0007) | `<<<AVDCS-STATE ...>>>`, drops `\r?\n`, skips unparsable lines and any line not `v: 1` with a known stage and status | none (paste-a-result is JSON, spec 8.4) | One parser, two markers, two error policies |
 | Quoting and blocks | `psQuote` (doubles quotes), `bashQuote`, `preamble` | `psQuote` (also refuses control characters), `preamble`, `fileCommand` (internal; here-string guard) | none | Copied, CS's stricter |
 | Paste redaction and issue report | `report.js` (decision 0008), tied to LZ's state lines, subscription lines and resource naming | none | a pattern list "for the day free text reaches a shared artifact" (spec 8.3) | LZ only |
@@ -28,7 +28,7 @@ Read at avd-landing-zone `785ef36`, avd-current-state `1e31fca` and avd-linechec
 | Copy, element helper, downloads | `copy()`, `el()`; `innerHTML` for step and table markup | `copy` with `selectText`, `el()`, `blobLink` | share panel (spec 5) | Copied |
 | Content Security Policy | meta policy: `script-src 'self'`, `style-src 'self' 'unsafe-inline'`, `connect-src https:` | **none** (its test forbids `style="` but the page has a `<style>` block) | strict, `connect-src` generated from the pack (spec 8.2) | Uneven |
 
-The code both portals really share today is about 480 lines (Run in about 110, quoting and preamble about 10, state lines about 8, bands about 35, probe about 20, `report.js` 290). Everything else in this spec is either new or one portal's code.
+The code both portals really share today is about 480 lines (Run in about 110, quoting and preamble about 10, state lines about 8, bands about 35, probe about 20, `report.js` 291). Everything else in this spec is either new or one portal's code.
 
 What each portal owns and never shares: the deployment portal's steps, commands, `decide()` and `analyze()`, sizing and cost; the assessment portal's stages, discovery questions, `intake.json` (contract C19) and the review; linecheck's packs, verdict sentences, export, download sufficiency, UDP hint and guided steps.
 
@@ -49,13 +49,13 @@ Prior-art check: `scripts/kb/prior_art.py "shared portal engine browser javascri
 ### 3.2 Why plain classic scripts
 
 - **One shape for browser and Node.** Both portals are UMD classic scripts: the page loads them with `<script src>`, the Node tests with `require`. Keeping that shape means the existing test suites keep working as they are, and `script-src 'self'` covers them.
-- **No build.** What is in the repo is what runs, so a reviewer reads the diff of the code operators run as subscription Owner (avd-landing-zone red team, PH-9).
+- **No build.** What is in the repo is what runs, so a reviewer reads the diff of the code operators run as subscription Owner.
 - **Language floor:** what the pages already use, ES2020 (`globalThis`, `Promise.prototype.finally`), checked by a parse test in avd-ops.
 - **Parity checklist** from what we did not adopt: declarative rendering into existing markup (Alpine), small components with explicit inputs (Preact), one bundle per release (bundlers). Phase 2's widgets answer the first two with plain functions; the manifest answers the third.
 
 ### 3.3 One site with three modes
 
-Not chosen. The deployment portal's trust root is its repo and ref (decision 0017, `portal-config.js` pins both), and a fork serves its own; a shared site would mix that with the assessment portal's and the end-user page's, whose audience must never see deployment commands. The three CSPs differ on purpose (linecheck's `connect-src` is its pack). And avd-landing-zone with avd-current-state must stay a self-contained pair. The shell's switcher already makes them feel like one product.
+Not chosen. The deployment portal's trust root is its repo and ref (decision 0017: a published copy's `portal-config.js` names the repo, and its commands run a pinned ref), and a fork serves its own; a shared site would mix that with the assessment portal's and the end-user page's, whose audience must never see deployment commands. The three CSPs differ on purpose (linecheck's `connect-src` is its pack). And avd-landing-zone with avd-current-state must stay a self-contained pair. The shell's switcher already makes them feel like one product.
 
 ## 4. Where it lives and how it travels
 
@@ -73,7 +73,7 @@ Not chosen. The deployment portal's trust root is its repo and ref (decision 001
 |---|---|
 | Run in primitives and the whole-block Bash wrapper | Its commands, written for Cloud Shell PowerShell; its `platforms.json`; the landing zone's stretch splitting and `$env:` translation |
 | Finding and parsing state lines, given a marker | Its marker, schema and what a state means (`decide()`, `summarizeCollect()`) |
-| Quoting, validated arguments, the self-contained block preamble | Which repo and ref (`portal-config.js`) and the pattern each value must match |
+| Quoting, validated arguments, the self-contained block preamble | Which repo and ref (`portal-config.js` and the page's settings) and the pattern each value must match |
 | The probe: timing, median, jitter, stalls, deadlines, concurrency and phases | The hosts, sample counts, regions and when to run |
 | Bands and worst-of verdicts, given a threshold table with claim IDs | The thresholds and the sentences |
 | Phase 2: widgets, step model, storage, generic redaction | Its steps, keys, patterns and every word on the page |
@@ -88,12 +88,12 @@ Each file is UMD: in the browser it adds one member to `window.AvdOpsEngine`; in
 
 | File | API (sketch) | Taken from |
 |---|---|---|
-| `core.js` | `VERSION`, `escapeRe`, `check(value, pattern, name)` (throws with the name; the one place a value is accepted) | new; `report.js` |
+| `core.js` | `VERSION`, `check(value, pattern, name)` (throws with the name; the one place a value is accepted) | new |
 | `blocks.js` | `psQuote` (CS's: refuses control characters), `bashQuote`, `arg(name, value, pattern)` (a quoted PowerShell argument, or a throw), `hereString(name, json)` (refuses a line that would close it, or non-ASCII), `preamble({ repoUrl, dir, ref })` | both engines |
 | `runin.js` | `PLACES`, `validRunIn(r)`, `platformKey(r)`, `scriptsIn(cmd, pattern)`, `support(cmd, runIn, platforms)`, `pwshFile(lines)` (the quoted heredoc into a temp `.ps1` and `pwsh -NoLogo -File`, refusing a line `AVD_PS`), `signInLines(where, shell, { azPowerShell, azCli })`, and `forRunIn(cmd, runIn)` with the assessment portal's whole-block behavior | both engines; the landing zone's stretch and `$env:` logic stays in `portal-core.js`, built on `pwshFile` and `signInLines` |
-| `statelines.js` | `extract(text, marker)`: every block between `<<<MARKER` and `MARKER>>>`, `[\r\n]+` dropped, as `{ value }` or `{ parseError, raw }` with `raw` cut at 200 characters (part of the contract); the portal applies its own schema and error policy | both engines |
+| `statelines.js` | `extract(text, marker, { newlines })`: every block between `<<<MARKER` and `MARKER>>>`, with line breaks dropped by the portal's own rule (`[\r\n]+` for the landing zone, `\r?\n` for the assessment portal, so neither golden moves), as `{ value }` or `{ parseError, raw }` with `raw` cut at 200 characters (part of the contract); the portal applies its own schema and error policy | both engines |
 | `bands.js` | `band(value, table)` where the table ends with `otherwise` and every row carries a claim (linecheck spec 7), treating `null`, `undefined` and `NaN` as no answer; `worst(states, order)`; `classifyHosts(results, hosts)` (missing means not tested; fail closed) | `rateLatency`, `classifyReachability`; linecheck 6.2 |
-| `probe.js` (the only `network` file) | `timeOnce(host, opts)`, `measure(host, opts)` returning `{ samples, median, jitter, stalls, slow }`, `run(phases, { deadlineMs })` where a phase is `{ targets, concurrency, deadlineMs }` and phases run one after another (linecheck 5 needs jitter and the target region measured with nothing else running). Defaults reproduce the landing zone's `measure` exactly: warm-up then 5 `GET` samples, 4-second timeout, stop at the first rejected warm-up, no deadline. Fetch options are fixed: `mode: 'no-cors'`, `cache: 'no-store'`, `credentials: 'omit'`, `referrerPolicy: 'no-referrer'`, `redirect` left at its default. `fetch`, `performance.now`, timers, `Date.now` and `Math.random` (the cache-buster) are injected, so Node tests run it on a scripted network | `portal-page.js`; linecheck 4.1, 5 |
+| `probe.js` (the only `network` file) | `timeOnce(host, opts)`, `measure(host, opts)` returning `{ samples, median, jitter, stalls, slow }`, `run(phases, { deadlineMs })` where a phase is `{ targets, concurrency, deadlineMs }` and phases run one after another (linecheck 5 needs jitter and the target region measured with nothing else running). Defaults reproduce the landing zone's `measure` exactly: warm-up then 5 `GET` samples one after another, 4-second timeout, and any rejected request (warm-up or sample) makes the host "no answer" with no median, no deadline. Linecheck's stall counting (keep going past a timed-out sample) is an option, off by default. Fetch options are fixed: `mode: 'no-cors'`, `cache: 'no-store'`, `credentials: 'omit'`, `referrerPolicy: 'no-referrer'`, `redirect` left at its default. `fetch`, `performance.now`, timers, `Date.now` and `Math.random` (the cache-buster) are injected, so Node tests run it on a scripted network | `portal-page.js`; linecheck 4.1, 5 |
 
 ### 6.2 Phase 2: the page, after linecheck v0 exists
 
@@ -125,7 +125,7 @@ What stays in linecheck: download sufficiency and loaded latency, the UDP hint, 
 
 1. **Command goldens.** Every exported command builder (`commands.*` in the landing zone; `collectCommand`, `analyzeCommand`, `intakeCommand`, `reviewCommand` in the assessment portal, which cover the internal `fileCommand`), for a fixed set of synthetic configs, through `forRunIn` in all five Run in choices (Cloud Shell PowerShell and Bash, Windows, macOS PowerShell and Bash), plus one case per landing-zone rewrite rule (stretches, `$env:`, `Remove-Item Env:`, `bash ./` quoting, local sign-in for Az PowerShell and for the az CLI, the clone line).
 2. **Analysis goldens.** Every existing paste fixture through `analyze()` and `latestStates()`, plus state lines with a lone `\r`, a wrapped line, an unparsable line and the crafted pastes of PR 0.
-3. **Probe goldens.** The landing zone's latency and reachability runs on a scripted network (all reached, one blocked, warm-up rejected, all timed out) with the clock and the cache-buster injected: the exact URLs, fetch options, call order and results.
+3. **Probe goldens.** The landing zone's latency and reachability runs on a scripted network (all reached, one blocked, warm-up rejected, warm-up fine but one timed sample rejected, all timed out) with the clock and the cache-buster injected: the exact URLs, fetch options, call order and results.
 4. **Band goldens.** `rateLatency` and `classifyReachability` at 0, every boundary and a value either side of it (99.999, 100, 100.001, 150, 150.001), large values, `null`, `undefined` and `NaN`, and each reachability combination.
 5. **DOM snapshots** (phase 2 only): serialized `#steps`, `.term` and the Run in row for each state, in the existing Playwright job (the landing zone's `portal.browser.test.mjs` runs in its own CI job; the assessment portal gets one). Not pixel screenshots, which drift between browser versions.
 
@@ -135,7 +135,7 @@ What stays in linecheck: download sufficiency and loaded latency, the UDP hint, 
 |---|---|---|---|
 | 0 | avd-landing-zone: validate pasted values | pattern checks on every pasted value used in a command; crafted-paste fixtures | new tests; existing goldens unchanged for valid pastes |
 | 1 | avd-ops: engine 1.0 (`pe-v1.0.0`) | the phase 1 modules, unit tests, the scan, the manifest; nothing in any portal | avd-ops tests on Linux, Windows and macOS |
-| 2 | avd-current-state: vendor and delegate | copy the pure files, `engine.lock.json`, script tags; `assess-core.js` keeps every export and delegates Run in, quoting and state lines | goldens 1 and 2 byte-equal (the lone `\r` case documented if it changes) |
+| 2 | avd-current-state: vendor and delegate | copy the pure files, `engine.lock.json`, script tags; `assess-core.js` keeps every export and delegates Run in, quoting and state lines | goldens 1 and 2 byte-equal |
 | 3 | avd-landing-zone: vendor only | copy the files, the lock and the `<script>` tags; nothing calls them yet | page loads; existing tests |
 | 4 | avd-landing-zone: delegate | `portal-core.js` uses `blocks`, `runin` primitives, `statelines`, `bands`; `window.PortalCore` keeps its API, so `portal-page.js` and the tests are unchanged | goldens 1, 2 and 4 byte-equal |
 | 5 | avd-landing-zone: probe | `portal-page.js` uses `probe.js` | golden 3 |
@@ -152,13 +152,13 @@ Target WCAG 2.1 AA. The progress element announces each step's name in a polite 
 
 ## 11. Release and tags
 
-After the avd-ops PR merges, Nick tags its merge commit from Cloud Shell (Claude sessions cannot push tags). Set `SHA` to the merge commit the PR shows:
+After the avd-ops PR merges, Nick tags its merge commit from Cloud Shell (Claude sessions cannot push tags). The block below is the template; the PR that ships a release puts it in its description with `SHA` and the tag already filled in, so the paste needs no editing:
 
 ```bash
-SHA=<merge-commit>; D=$HOME/avd-ops-tag; [ -d "$D" ] && rm -rf "$D"; git clone -q https://github.com/avd-ops/avd-ops.git "$D" && cd "$D" && git checkout -q "$SHA" && V=$(jq -r .version site/assets/engine/MANIFEST.json) && echo "tagging pe-v$V on $SHA" && gh release create "pe-v$V" --target "$SHA" --title "Portal engine $V" --notes "See docs/portal-engine-spec.md"
+SHA=0000000000000000000000000000000000000000; TAG=pe-v1.0.0; D=$HOME/avd-ops-tag; gh auth status >/dev/null 2>&1 || gh auth login; [ -d "$D" ] && rm -rf "$D"; git clone -q https://github.com/avd-ops/avd-ops.git "$D" && git -C "$D" checkout -q "$SHA" && echo "tagging $TAG on $SHA" && gh release create "$TAG" --repo avd-ops/avd-ops --target "$SHA" --title "$TAG" --notes "See docs/portal-engine-spec.md"
 ```
 
-The design-system tags still waiting should be made the same way on the commits the portals' lock files already recorded (ds-v2.1.0 on `753f62b`, ds-v2.2.0 on `78af4f2`, ds-v2.0.1 on `d106eed`), not on today's `main`.
+The same block, with `TAG` and `SHA` changed, makes the design-system tags still waiting, on the commits the portals' lock files recorded: ds-v2.1.0 on `753f62b` (the landing zone's lock) and ds-v2.2.0 on `78af4f2` (the assessment portal's), each as the full commit hash from the lock file, not on today's `main`. ds-v2.0.1 on `d106eed` is in no lock file and is only for the record.
 
 ## 12. Tests in avd-ops
 
@@ -177,13 +177,14 @@ Reviewed by a separate model pass (Fable, 2026-10-21) against the code at the co
 - **One manifest can't version two things** (high): partial copies were impossible and the assessment portal would carry `probe.js`. Now the engine's own manifest, tag and lock with partial takes (4).
 - **Tags and pins** (high): lock files name tags that don't exist yet, and tagging `main` later would point at the wrong commit. The commit is the pin, tags go on recorded commits, and a test ties hash changes to a version bump (4, 11).
 - **Over-claimed sharing** (medium): sizes and the "today" table corrected; `file://` dropped as a reason, since no family document requires it and the browser test serves over HTTP; the claim that both portals use a generated data wrapper was wrong, they inline the JSON (2, 3.2, 6.3).
-- **Merging diverged code** (medium): Run in's landing-zone rewrite rules stay in the landing zone on shared primitives; state lines get one newline rule and keep each portal's error policy; redaction waits for phase 2 with only generic parts and a frozen placeholder format (6).
+- **Merging diverged code** (medium): Run in's landing-zone rewrite rules stay in the landing zone on shared primitives; state lines keep each portal's newline rule and error policy; redaction waits for phase 2 with only generic parts and a frozen placeholder format (6).
 - **Golden gaps** (medium): `fileCommand` isn't exported, float boundaries and `NaN`, the cache-buster and clock, the fetch options, and DOM snapshots instead of screenshots (9).
 - **CSP follow-ups have prerequisites** (medium): page styles out of `<style>`, inline style attributes, the region list as data (8).
 - **Decision 0005 and accessibility** (medium): vendoring split from delegating; focus and reduced-motion changes named as landing-zone choices; `.o-blocked` styled as a warning (9, 10).
 - **Smaller ones** (low): language floor, load order and Node `require`s, storage keys never change, probe defaults and serial phases, the linecheck spec conflict made blocking, the tag block's target and guard.
 
-The code review of this PR is recorded on the PR.
+The code review of this PR (Claude code-review skill) caught ten more, also fixed: the landing zone's `measure` gives no answer on any rejected sample, not only the warm-up (golden 3 gained that case); the state-line newline rule stays per portal so no golden moves; `portal-config.js` names the repo, not a ref; bands and probe are one portal's code, not duplicated; the tag block was not a self-contained paste; `platformKey` is not in the assessment portal; a stray `report.js` source in phase 1; a wrong red-team citation; a line count.
+
 
 ## 15. Open questions for Nick
 
