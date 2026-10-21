@@ -4,79 +4,96 @@
    "id": "concepts/README.md",
    "title": "Concepts",
    "url": "concepts.html",
-   "topic": "concepts"
+   "topic": "concepts",
+   "status": "partial",
+   "section": true
   },
   {
    "id": "decisions/0001-adopt-the-2ndbrain-format.md",
    "title": "0001. Adopt the 2ndbrain knowledge base format, version 1",
    "url": "decisions/0001-adopt-the-2ndbrain-format.html",
-   "topic": "decisions"
+   "topic": "decisions",
+   "status": "accepted"
   },
   {
    "id": "decisions/0002-avd-ops-is-the-front-door.md",
    "title": "0002. avd-ops is the front door for the AVD repos",
    "url": "decisions/0002-avd-ops-is-the-front-door.html",
-   "topic": "decisions"
+   "topic": "decisions",
+   "status": "accepted"
   },
   {
    "id": "decisions/0003-the-family-ends-at-its-contracts.md",
    "title": "0003. The family ends at its contracts; work outside it builds on them, never the reverse",
    "url": "decisions/0003-the-family-ends-at-its-contracts.html",
-   "topic": "decisions"
+   "topic": "decisions",
+   "status": "proposed"
   },
   {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
-   "topic": "decisions"
+   "topic": "decisions",
+   "section": true
   },
   {
    "id": "getting-started/README.md",
    "title": "Start here",
    "url": "index.html",
-   "topic": "getting-started"
+   "topic": "getting-started",
+   "status": "partial",
+   "section": true
   },
   {
    "id": "repos/README.md",
    "title": "The repos",
    "url": "repos/index.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial",
+   "section": true
   },
   {
    "id": "repos/avd-assess.md",
    "title": "avd-assess",
    "url": "repos/avd-assess.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial"
   },
   {
    "id": "repos/avd-current-state.md",
    "title": "avd-current-state",
    "url": "repos/avd-current-state.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial"
   },
   {
    "id": "repos/avd-landing-zone.md",
    "title": "avd-landing-zone",
    "url": "repos/avd-landing-zone.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial"
   },
   {
    "id": "repos/avd-second-brain.md",
    "title": "avd-second-brain",
    "url": "repos/avd-second-brain.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial"
   },
   {
    "id": "repos/avd-swarm.md",
    "title": "avd-swarm",
    "url": "repos/avd-swarm.html",
-   "topic": "repos"
+   "topic": "repos",
+   "status": "partial"
   },
   {
    "id": "roadmap/README.md",
    "title": "Roadmap",
    "url": "roadmap.html",
-   "topic": "roadmap"
+   "topic": "roadmap",
+   "status": "plan",
+   "section": true
   }
  ],
  "links": [
