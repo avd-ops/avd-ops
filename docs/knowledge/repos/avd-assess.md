@@ -19,6 +19,7 @@ The repo is the source of truth: [avd-ops/avd-assess](https://github.com/avd-ops
 - It stores a claim ID and one line in its own words, never a source's text.
 - It holds the shared reference data the tools read, such as the AVD endpoint map, each entry pinned to its source.
 - Nothing in it calls Azure or runs a probe.
+- It holds the security review map: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the [security review page](https://avd-ops.dev/security.html) and never keeps its own copy of a claim.
 
 ## How it fits
 

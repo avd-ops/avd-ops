@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
@@ -199,6 +200,32 @@ test('the credits page is built from credits.json and up to date (scripts/site/b
   for (const e of credits.adopted) for (const r of e.in) assert.ok(repoNames.has(r), `${e.name}: ${r} is not in repos.json`);
   for (const i of [...credits.give_back, ...credits.help_wanted]) assert.match(i.url, new RegExp(`^https://github\\.com/${credits.org}/`), `${i.title}: points at the ${credits.org} repos`);
   assert.match(read('site/index.html'), /href="credits\.html#help-us"/, 'Contribute links the credits page');
+});
+
+test('the security page renders avd-assess\'s security review map at its pin, and nothing of its own (scripts/site/build-security.mjs)', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/site/build-security.mjs'), '--check'], { stdio: 'pipe' });
+  // The map lives in avd-assess; this copy must be the file at the locked commit, byte for byte.
+  const lock = JSON.parse(read('site/data/security-review.lock.json'));
+  assert.match(lock.commit, /^[0-9a-f]{40}$/, 'lock pins a full commit');
+  assert.match(lock.source, /^https:\/\/github\.com\/[\w-]+\/avd-assess$/, 'lock names avd-assess');
+  const hash = createHash('sha256').update(readFileSync(join(root, 'site/data/security-review.json'))).digest('hex');
+  assert.equal(hash, lock.sha256, 'site/data/security-review.json matches the lock; copy it from avd-assess, never edit it');
+  const map = JSON.parse(read('site/data/security-review.json'));
+  assert.equal(map.schema, 'avd-assess-security-review/v1');
+  const html = read('site/security.html');
+  for (const a of map.areas) for (const c of a.claims) {
+    assert.ok(html.includes(`id="c-${c.id}"`), `claim ${c.id} rendered`);
+    assert.match(c.standing, /^(run|guarded|built|designed)$/, `${c.id}: standing`);
+    for (const ev of c.evidence) if (ev.repo !== 'avd-assess') assert.match(ev.url, /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/blob\/[0-9a-f]{40}\//, `${c.id}: evidence pinned to a commit`);
+  }
+  const pinned = /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/blob\/[0-9a-f]{40}\//;
+  assert.match(map.maturity.source.url, pinned, 'maturity source pinned');
+  for (const t of map.threats) if (t.formal !== 'none') assert.match(t.formal.url, pinned, `${t.repo}: formal review pinned`);
+  for (const g of map.gaps) if (g.issue) assert.match(g.issue, /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/issues\/\d+$/, `${g.id}: issue link`);
+  for (const o of map.operator) assert.ok(html.includes(`id="o-${o.id}"`), `operator item ${o.id} rendered`);
+  for (const q of map.checklist) assert.ok(html.includes(`id="q-${q.id}"`), `question ${q.id} rendered`);
+  // avd-assess's own files are linked at the locked commit, never at a branch.
+  assert.ok(!/github\.com\/avd-ops\/avd-assess\/(blob|tree)\/main\//.test(html), 'no unpinned avd-assess link');
 });
 
 test('repos.json lists every public repo with a docs page, and every page links its repo', () => {
