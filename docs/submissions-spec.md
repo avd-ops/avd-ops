@@ -4,7 +4,7 @@ Status: design, 2026-10-21. Nothing is built. Proposed as [decision 0004](knowle
 
 A submission is anything someone outside sends the family to make it better: **evidence, research,
 a research request, feedback (praise, a problem, or a dispute or fact check), a bug report or a
-feature request**. Each one has to land in the right repo,
+feature request**, plus one private route for sponsorship inquiries. Each one has to land in the right repo,
 with the right labels, in a shape the maintainer can review. Three surfaces send them: the
 **credits and contributors page** and the **standards and research review UI** on avd-ops.dev, and
 the **support mailbot** (designed separately, not built). They share one function, kept here in avd-ops:
@@ -50,15 +50,17 @@ first, sign-in gives the second, section 7 gives the third, and the link builder
 | `bug` | Something in a repo does the wrong thing. | any page, mailbot |
 | `feature` | Something a repo should do. | any page, mailbot |
 
+| `sponsorship` | An inquiry about sponsoring or funding the work. **Private: never a public issue** (section 5.4). | the sponsorship page, credits page |
+
 A support question is not a type: it arrives by mail, Nick answers it, and if it turns into one of
 the six he opens that issue (section 5.3). Credit is not a type either: it is an opt-in on any of
-the six (section 8).
+the six public types (section 8).
 
 ## 4. The shared pieces (all in avd-ops)
 
 ```text
 submissions/
-  types.json          the six types, their labels and the form each uses
+  types.json          the six public types and the private sponsorship route, their labels and the form each uses
   routing.json        type + area -> repo, form and labels (section 4.2)
   forms/*.yml         the canonical issue forms, vendored byte-identical into each repo
   README.md           how to add a type, an area or a repo
@@ -174,6 +176,20 @@ the category, builds the link with the same builder (repo and form only), and Ni
 to open it and what goes in. If a sender wants credit, Nick asks them to submit on GitHub
 themselves; a mailed contribution is credited only with their written yes, by the name they give.
 This is the path for anyone without a GitHub account.
+
+### 5.4 Sponsorship inquiries (private)
+
+A sponsorship inquiry carries contact details and terms, so it never becomes a public issue and
+has no issue form. `routing.json` gives it a `mailto:` destination, not a repo: the button shows
+the mailbot address with a fixed subject (`Sponsorship inquiry`) and no body, and the mail goes
+through the mailbot's draft-only path to Nick, who answers it himself. The mailbot gives it its own
+category, drafts nothing commercial, and never links an issue form for it. Until the mailbot
+exists, the button shows only the address.
+
+The text beside the button reuses the sponsorship page's wording on what funding does and does
+not buy (owned by that page, linked, not restated here). It must never imply paid support, an
+SLA, priority or roadmap influence, and names no partner, private project or paid plan. A
+sponsor appears on the credits page only with their written yes.
 
 ## 6. Forms live in each repo, vendored from here
 
@@ -291,7 +307,7 @@ which docs work and which need a rewrite, the same way the mailbot's category co
 | avd-ops | `submissions/`, `submit.js`, checks and tests; forms for avd-ops; `family.yml` runs the vendored check; site pages read `routing.json` |
 | avd-assess | vendored `research.yml`, `research-request.yml`, `finding.yml`, `dispute.yml`, `feedback.yml`, `bug.yml`, `feature.yml`; `baseline-evidence.yml` re-homed; "open research requests" line per gap |
 | avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain | vendored `bug.yml`, `feature.yml`, `feedback.yml`, `dispute.yml`; two contact links |
-| mailbot (avd-ops `mailbot/`) | its gate calls the shared builder for the escalation link |
+| mailbot (avd-ops `mailbot/`) | its gate calls the shared builder for the escalation link; a `sponsorship` category that drafts nothing and is never escalated to an issue |
 
 Labels are created by a one-off script the owner runs (writes to repos, so the owner's yes). The
 landing zone and avd-current-state stay self-contained: the forms are plain files, and nothing in
