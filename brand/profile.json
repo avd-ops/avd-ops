@@ -1,0 +1,484 @@
+{
+ "$schema": "./profile.schema.json",
+ "schemaVersion": 1,
+ "name": "avd-ops",
+ "tagline": "Deploy quietly",
+ "summary": "The front door and shared look for the public Azure Virtual Desktop repos: one design system, one app shell, one logo.",
+ "visibility": "public",
+ "updated": "2026-10-21",
+ "sourceOfTruth": {
+  "tokens": "site/assets/avd-ops.css",
+  "shell": "site/assets/avd-ops-shell.css",
+  "docs": "docs/design-system.md",
+  "reference": "https://avd-ops.dev/design/"
+ },
+ "release": {
+  "version": "2.2.0",
+  "tag": "ds-v2.2.0",
+  "repo": "https://github.com/avd-ops/avd-ops"
+ },
+ "colors": {
+  "--bg": {
+   "light": "#f4f6f9",
+   "dark": "#0f1620"
+  },
+  "--surface": {
+   "light": "#ffffff",
+   "dark": "#16202c"
+  },
+  "--sunken": {
+   "light": "#eef2f6",
+   "dark": "#121b25"
+  },
+  "--fg": {
+   "light": "#152232",
+   "dark": "#e4ebf3"
+  },
+  "--muted": {
+   "light": "#566578",
+   "dark": "#9aa9ba"
+  },
+  "--line": {
+   "light": "#d7dee8",
+   "dark": "#2a3646"
+  },
+  "--line-strong": {
+   "light": "#bfc9d6",
+   "dark": "#3a4859"
+  },
+  "--accent": {
+   "light": "#0b7a6e",
+   "dark": "#3cc8b4",
+   "use": "links, primary actions, selected rows, focus (the readable teal)"
+  },
+  "--accent-hover": {
+   "light": "#09635a",
+   "dark": "#7fe0d2"
+  },
+  "--on-accent": {
+   "light": "#ffffff",
+   "dark": "#0b1520"
+  },
+  "--accent-soft": {
+   "light": "#e0f2ef",
+   "dark": "#123331"
+  },
+  "--focus": {
+   "light": "#0b7a6e",
+   "dark": "#7fe0d2"
+  },
+  "--brand": {
+   "light": "#1ca998",
+   "dark": "#1ca998",
+   "use": "the logo's teal; brand surfaces only, never text on light backgrounds"
+  },
+  "--brand-ink": {
+   "light": "#0d1015",
+   "dark": "#0d1015",
+   "use": "the logo's shield ink"
+  },
+  "--tier": {
+   "light": "#9a5b12",
+   "dark": "#e5a95a",
+   "use": "the optional partner tier only"
+  },
+  "--tier-soft": {
+   "light": "#f7ecdc",
+   "dark": "#3a2a14"
+  },
+  "--good": {
+   "light": "#18794e",
+   "dark": "#4cc286",
+   "use": "results only, never decoration"
+  },
+  "--good-soft": {
+   "light": "#e1f3e9",
+   "dark": "#10291c"
+  },
+  "--caution": {
+   "light": "#8a5a00",
+   "dark": "#e0b04a",
+   "use": "results only, never decoration"
+  },
+  "--caution-soft": {
+   "light": "#fbf0d9",
+   "dark": "#2c2311"
+  },
+  "--bad": {
+   "light": "#b42323",
+   "dark": "#ff8a80",
+   "use": "results only, never decoration"
+  },
+  "--bad-soft": {
+   "light": "#fbe7e7",
+   "dark": "#301818"
+  },
+  "--warn-bg": {
+   "light": "#fff6e0",
+   "dark": "#2e2610",
+   "use": "the research-only notice"
+  },
+  "--warn-line": {
+   "light": "#e2b74a",
+   "dark": "#8a6d1e"
+  },
+  "--warn-fg": {
+   "light": "#4d3a07",
+   "dark": "#f3e3b0"
+  },
+  "--term-bg": {
+   "light": "#0f1822",
+   "dark": "#0a1018"
+  },
+  "--term-head": {
+   "light": "#18232f",
+   "dark": "#121a24"
+  },
+  "--term-text": {
+   "light": "#dbe5ef",
+   "dark": "#dbe5ef"
+  },
+  "--term-muted": {
+   "light": "#8796a8",
+   "dark": "#7d8c9e"
+  },
+  "--term-border": {
+   "light": "#263342",
+   "dark": "#222e3c"
+  },
+  "--prompt": {
+   "light": "#5fcf86",
+   "dark": "#5fcf86"
+  },
+  "--s-built-bg": {
+   "light": "#d9f2e3",
+   "dark": "#123824"
+  },
+  "--s-built-fg": {
+   "light": "#14532d",
+   "dark": "#a7e8c0"
+  },
+  "--s-design-bg": {
+   "light": "#e4edfb",
+   "dark": "#14223a"
+  },
+  "--s-design-fg": {
+   "light": "#1d4785",
+   "dark": "#bcd2fa"
+  },
+  "--s-slice-bg": {
+   "light": "#fdecc8",
+   "dark": "#3d2e0e"
+  },
+  "--s-slice-fg": {
+   "light": "#713f12",
+   "dark": "#f5d58a"
+  },
+  "--shell": {
+   "light": "#0d1015",
+   "dark": "#070a0d",
+   "use": "the brand bar, the same ink in both themes"
+  },
+  "--shell-fg": {
+   "light": "#e8f1f0",
+   "dark": "#e8f1f0"
+  },
+  "--shell-muted": {
+   "light": "#a3b3b8",
+   "dark": "#93a6ad"
+  },
+  "--shell-line": {
+   "light": "#262f36",
+   "dark": "#1d262d"
+  },
+  "--shell-hover": {
+   "light": "#1b242a",
+   "dark": "#141c22"
+  },
+  "--info": {
+   "light": "#2456a6",
+   "dark": "#86b0f5",
+   "use": "work in progress"
+  },
+  "--info-soft": {
+   "light": "#e4edfb",
+   "dark": "#14223a"
+  },
+  "--shadow-2": {
+   "light": "0 2px 6px rgba(21,34,50,.08),0 12px 32px rgba(21,34,50,.10)",
+   "dark": "0 2px 6px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)"
+  },
+  "--shadow": {
+   "light": "0 1px 2px rgba(21,34,50,.05),0 4px 16px rgba(21,34,50,.05)",
+   "dark": "0 1px 2px rgba(0,0,0,.35)"
+  }
+ },
+ "roles": {
+  "background": "--bg",
+  "surface": "--surface",
+  "sunken": "--sunken",
+  "text": "--fg",
+  "muted": "--muted",
+  "line": "--line",
+  "accent": "--accent",
+  "accentHover": "--accent-hover",
+  "onAccent": "--on-accent",
+  "focus": "--focus",
+  "brand": "--brand",
+  "brandInk": "--brand-ink",
+  "frame": "--shell",
+  "onFrame": "--shell-fg",
+  "good": "--good",
+  "caution": "--caution",
+  "bad": "--bad",
+  "info": "--info"
+ },
+ "type": {
+  "display": {
+   "family": "Schibsted Grotesk",
+   "fallback": "\"Segoe UI\",system-ui,sans-serif",
+   "weights": [
+    600,
+    700
+   ],
+   "files": [
+    "site/assets/fonts/schibsted-grotesk-latin-600-normal.woff2",
+    "site/assets/fonts/schibsted-grotesk-latin-700-normal.woff2"
+   ],
+   "googleFonts": "Schibsted Grotesk",
+   "use": "headings and the word avd-ops",
+   "case": "the brand is always lowercase: avd-ops"
+  },
+  "body": {
+   "family": "Source Sans 3",
+   "fallback": "\"Segoe UI\",system-ui,-apple-system,Roboto,sans-serif",
+   "weights": [
+    400,
+    600
+   ],
+   "files": [
+    "site/assets/fonts/source-sans-3-latin-400-normal.woff2",
+    "site/assets/fonts/source-sans-3-latin-600-normal.woff2"
+   ],
+   "googleFonts": "Source Sans 3",
+   "use": "running text, 17px"
+  },
+  "mono": {
+   "family": "JetBrains Mono",
+   "fallback": "ui-monospace,\"Cascadia Mono\",SFMono-Regular,Menlo,Consolas,monospace",
+   "weights": [
+    500,
+    600
+   ],
+   "files": [
+    "site/assets/fonts/jetbrains-mono-latin-500-normal.woff2",
+    "site/assets/fonts/jetbrains-mono-latin-600-normal.woff2"
+   ],
+   "googleFonts": "JetBrains Mono",
+   "use": "code, commands, uppercase labels and the tagline",
+   "case": "labels and the tagline in uppercase with letter-spacing"
+  }
+ },
+ "shape": {
+  "--radius": "8px",
+  "--radius-sm": "6px",
+  "--pill": "999px",
+  "--space-1": ".25rem",
+  "--space-2": ".5rem",
+  "--space-3": ".75rem",
+  "--space-4": "1rem",
+  "--space-5": "1.5rem",
+  "--space-6": "2.5rem",
+  "--measure": "46rem",
+  "--gutter": "16px",
+  "--page": "76rem",
+  "--side": "15rem",
+  "--tap": "44px",
+  "--radius-lg": "14px",
+  "--ease": "cubic-bezier(.2,.7,.2,1)",
+  "--fast": "120ms",
+  "--slow": "220ms"
+ },
+ "assets": [
+  {
+   "file": "site/assets/brand/mark.svg",
+   "kind": "mark",
+   "background": "any",
+   "use": "The full-color square mark: teal field, ink shield. Beside the word avd-ops in the brand bar at 28px; app icons, avatars."
+  },
+  {
+   "file": "site/assets/brand/favicon.svg",
+   "kind": "favicon",
+   "background": "any",
+   "use": "The mark with rounded corners, for the browser tab."
+  },
+  {
+   "file": "site/assets/brand/mark-white.svg",
+   "kind": "mark",
+   "background": "dark",
+   "use": "One-color white shield for dark backgrounds, photos, stickers and slides."
+  },
+  {
+   "file": "site/assets/brand/lockup.svg",
+   "kind": "lockup",
+   "background": "light",
+   "use": "Mark, word and tagline on a light background (README headers, slides, documents).",
+   "generated": "scripts/site/brand_lockups.py"
+  },
+  {
+   "file": "site/assets/brand/lockup-dark.svg",
+   "kind": "lockup",
+   "background": "dark",
+   "use": "Mark, word and tagline on the brand ink or darker.",
+   "generated": "scripts/site/brand_lockups.py"
+  },
+  {
+   "file": "site/assets/brand/lockup-white.svg",
+   "kind": "lockup",
+   "background": "dark",
+   "use": "One-color white lockup, for photos and one-color printing.",
+   "generated": "scripts/site/brand_lockups.py"
+  },
+  {
+   "file": "brand/png/avd-ops-avatar-1024.png",
+   "kind": "avatar",
+   "background": "brand",
+   "size": "1024x1024",
+   "use": "Profile picture: ink shield on the teal field (GitHub org, social accounts)."
+  },
+  {
+   "file": "brand/png/avd-ops-avatar-black-1024.png",
+   "kind": "avatar",
+   "background": "dark",
+   "size": "1024x1024",
+   "use": "Profile picture: teal-framed shield on ink."
+  },
+  {
+   "file": "brand/png/avd-ops-app-avatar-white-1024.png",
+   "kind": "avatar",
+   "background": "light",
+   "size": "1024x1024",
+   "use": "App icon or avatar on white."
+  },
+  {
+   "file": "brand/png/avd-ops-logo-name-black-1024.png",
+   "kind": "wordmark",
+   "background": "dark",
+   "size": "1024x1024",
+   "use": "Square tile: shield over the word, on ink."
+  },
+  {
+   "file": "brand/png/avd-ops-logo-name-white-1024.png",
+   "kind": "wordmark",
+   "background": "light",
+   "size": "1024x1024",
+   "use": "Square tile: shield over the word, on white."
+  },
+  {
+   "file": "brand/png/lockup-light-2400.png",
+   "kind": "lockup",
+   "background": "light",
+   "size": "2400x600",
+   "use": "The light lockup as a picture, where SVG is not accepted.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/lockup-dark-2400.png",
+   "kind": "lockup",
+   "background": "dark",
+   "size": "2400x600",
+   "use": "The dark lockup as a picture.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/lockup-transparent-2400.png",
+   "kind": "lockup",
+   "background": "transparent",
+   "size": "2400x600",
+   "use": "The light lockup on a transparent background.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/mark-512.png",
+   "kind": "mark",
+   "background": "transparent",
+   "size": "512x512",
+   "use": "The square mark as a picture.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/favicon-180.png",
+   "kind": "favicon",
+   "background": "transparent",
+   "size": "180x180",
+   "use": "Touch icon (apple-touch-icon).",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/social-1200x630.png",
+   "kind": "social",
+   "background": "dark",
+   "size": "1200x630",
+   "use": "Link preview image (Open Graph) for avd-ops pages.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/png/github-social-1280x640.png",
+   "kind": "social",
+   "background": "dark",
+   "size": "1280x640",
+   "use": "GitHub social preview for the public repos.",
+   "generated": "scripts/site/brand-png.mjs"
+  },
+  {
+   "file": "brand/source/avd-ops-logo-concept.jpg",
+   "kind": "source",
+   "background": "dark",
+   "size": "2752x1536",
+   "use": "The owner's original logo concept (2026-10-20): icon-only mark, horizontal lockup, one-color white. Reference only; the SVGs are the logo."
+  }
+ ],
+ "starters": {
+  "page": "templates/page.html",
+  "artifact": "templates/artifact.html"
+ },
+ "required": [
+  {
+   "id": "notice",
+   "text": "Personal project. Research and learning only. Not for production. No warranty. Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft. Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first. Provided \"as is\", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs. Contributions and forks are welcome and encouraged.",
+   "where": "before the first section: the shell's one-line notice that opens to the full text"
+  },
+  {
+   "id": "credit",
+   "text": "A prignano.ai production",
+   "where": "last line of the footer, prignano.ai linked"
+  },
+  {
+   "id": "trademarks",
+   "text": "Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.",
+   "where": "footer"
+  }
+ ],
+ "voice": {
+  "language": "en-US",
+  "rules": [
+   "American English.",
+   "Plain, short sentences; say what a thing does, not how it is built.",
+   "Say \"potentially paid\", never \"the product\".",
+   "Results always carry a word, never color alone."
+  ]
+ },
+ "rules": [
+  "Colors only through tokens; a new color becomes a token in site/assets/avd-ops.css first, with light and dark values.",
+  "Use the logo files; never redraw, recolor, stretch or add effects to the mark.",
+  "Keep clear space around the mark of at least a quarter of its height.",
+  "The mark is never smaller than 16px; below 24px use favicon.svg.",
+  "On a light background use mark.svg or lockup.svg; on ink or darker use lockup-dark.svg or mark-white.svg.",
+  "--brand is for brand surfaces; text and links use --accent.",
+  "Fonts are self-hosted on pages; only an artifact loads them from Google Fonts.",
+  "Pages never load avd-ops.dev or a CDN at run time; repos take a pinned copy.",
+  "No partner names on avd-ops.dev for now.",
+  "Private repos don't use this brand.",
+  "Touch targets at least 44px; no sideways scroll at 390px; light and dark both designed."
+ ]
+}

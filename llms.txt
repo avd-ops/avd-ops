@@ -40,11 +40,15 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0002. avd-ops is the front door for the AVD repos](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md): accepted
 - [0003. The family ends at its contracts; work outside it builds on them, never the reverse](docs/knowledge/decisions/0003-the-family-ends-at-its-contracts.md): proposed
 - [0004. Every outside submission is a GitHub issue form in the repo that owns it](docs/knowledge/decisions/0004-submissions-are-github-issue-forms.md): accepted
+- [0005. One app shell for every avd-ops page, vendored as a pinned copy](docs/knowledge/decisions/0005-one-app-shell-for-every-page.md): accepted
+- [0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux](docs/knowledge/decisions/0006-run-anywhere.md): accepted
+- [0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package](docs/knowledge/decisions/0007-starters-not-a-theme-repo.md): proposed
+- [0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it](docs/knowledge/decisions/0008-code-signing.md): accepted
 
 ## Related knowledge bases
 
 - [2ndbrain](https://github.com/nickprignano/2ndbrain/tree/main/docs/knowledge): The template that owns the family knowledge base format. Source of truth for: the family knowledge base format; its scripts and schemas
-- [AVD](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge): Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm. Source of truth for: Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos
+- [AVD](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge): Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm. Source of truth for: Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos
 - [Liquidware](https://github.com/nickprignano/avd-liquidware/tree/main/docs/knowledge): Liquidware products on virtual desktops, starting with Stratusphere UX in Azure. Source of truth for: Liquidware products; Stratusphere UX appliances; the Liquidware tier for the landing zone
 
 ## Optional

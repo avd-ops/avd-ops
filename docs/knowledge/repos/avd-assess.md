@@ -10,7 +10,7 @@ last_reviewed: 2026-10-20
 
 **Foundation: what it should be.** An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.
 
-The repo is the source of truth: [nickprignano/avd-assess](https://github.com/nickprignano/avd-assess). This page says where it fits.
+The repo is the source of truth: [avd-ops/avd-assess](https://github.com/avd-ops/avd-assess). This page says where it fits.
 
 ## What it does
 
@@ -26,4 +26,4 @@ The repo is the source of truth: [nickprignano/avd-assess](https://github.com/ni
 
 ## Read more in the repo
 
-- [README and the methods](https://github.com/nickprignano/avd-assess/blob/main/README.md)
+- [README and the methods](https://github.com/avd-ops/avd-assess/blob/main/README.md)

@@ -23,7 +23,7 @@ reads every issue before anything acts on it.
 Prior-art check (`scripts/kb/prior_art.py "submission intake issue forms"`): nothing in this KB;
 the sibling and GitHub searches failed from the container (403), so the family part rests on reading
 the sibling repos directly. Found there: **avd-assess already has one evidence path**
-([gaps/evidence-intake.md](https://github.com/nickprignano/avd-assess/blob/main/gaps/evidence-intake.md),
+([gaps/evidence-intake.md](https://github.com/avd-ops/avd-assess/blob/main/gaps/evidence-intake.md),
 its "Baseline evidence" issue form and `scripts/check_evidence.py`), and avd-ops, avd-second-brain
 and 2ndbrain share three KB issue forms (`kb-feedback`, `kb-known-error`, `kb-source`). This spec
 generalizes those; it replaces neither.
@@ -234,6 +234,12 @@ forward-first, draft-only path, and Nick sends every answer.
   links an issue form. **Contact:** gets no escalation link from the mailbot; any reply is drafted for Nick only, in
   every phase. If it really is a bug or a research request, Nick opens that issue himself.
   Neither kind of mail goes into a repo, issue or the KB.
+- **Shown three ways** (mailbot red team, 2026-10-21): the address as plain text with a copy
+  control, the tag to put in the subject, and the mailto link, because many webmail users get
+  nothing from a mailto click. `mailContact()` in `links.mjs` returns all three. The href is exactly
+  `mailto:hello@avd-ops.dev?subject=%5Bcontact%5D` (or `%5Bsponsorship%5D`): brackets
+  percent-encoded per RFC 6068, no `body=`, no userinfo, no second address, and the link text equals
+  the address. A test guards all four.
 - Until the mailbot exists, both buttons show only the address.
 
 The sponsorship button links the planned funding page, `https://avd-ops.dev/funding.html`, and

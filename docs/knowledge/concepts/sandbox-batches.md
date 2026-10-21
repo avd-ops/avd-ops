@@ -14,6 +14,10 @@ the family runs them as **batches**, never one at a time on a whim. This page de
 The repo that runs a test owns its steps, and the rules it builds on are the family's
 [two spend decisions](../getting-started/cloud-shell.md).
 
+The scripts ship with avd-landing-zone and run from Cloud Shell alone: the
+[operator guide](https://github.com/avd-ops/avd-landing-zone/blob/master/docs/sandbox-runs.md) and
+[decision 0020](https://github.com/avd-ops/avd-landing-zone/blob/master/build/decisions/0020-sandbox-runs-in-the-package.md).
+
 ## The shape
 
 Queue items, build a batch, approve it once at its exact total, run its groups in order, keep

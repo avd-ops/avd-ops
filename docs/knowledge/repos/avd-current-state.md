@@ -10,7 +10,7 @@ last_reviewed: 2026-10-20
 
 **What is there now.** Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.
 
-The repo is the source of truth: [nickprignano/avd-current-state](https://github.com/nickprignano/avd-current-state). This page says where it fits.
+The repo is the source of truth: [avd-ops/avd-current-state](https://github.com/avd-ops/avd-current-state). This page says where it fits.
 
 ## What it does
 
@@ -26,4 +26,4 @@ The repo is the source of truth: [nickprignano/avd-current-state](https://github
 
 ## Read more in the repo
 
-- [README and quick start](https://github.com/nickprignano/avd-current-state/blob/main/README.md)
+- [README and quick start](https://github.com/avd-ops/avd-current-state/blob/main/README.md)

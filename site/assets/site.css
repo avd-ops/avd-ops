@@ -1,14 +1,35 @@
-/* avd-ops.dev layout on top of avd-ops.css: the three questions run as a strip of cards, the layer built on top of them as bands. */
-.lifecycle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-4)}
-.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.35rem;min-width:0}
-.stage h3 a{text-decoration:none;color:var(--fg)} .stage h3 a:hover{color:var(--accent)}
-.stage p{margin:0;font-size:.95rem;color:var(--muted)}
-.layerband{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
+/* avd-ops.dev page layouts on top of avd-ops.css and avd-ops-shell.css: the home page's hero and family map,
+   the principles, the architecture stack, the docs extras and the design system reference. */
+.kicker{margin-top:var(--space-4)} .kicker+h1{margin-top:var(--space-1)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.actions .cta{margin:0;min-height:var(--tap);display:inline-flex;align-items:center}
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4) var(--space-5);padding:0;list-style:none}
 .principles li strong{display:block;font-family:var(--display)}
 td:first-child{white-space:nowrap}
-@media (max-width:44rem){.lifecycle{grid-template-columns:minmax(0,1fr)} td:first-child{white-space:normal}}
-.kicker{margin-top:var(--space-6)} .kicker+h1{margin-top:var(--space-1)}
+@media (max-width:44rem){td:first-child{white-space:normal}}
+
+/* Home: the thesis and the three ways in, then the family as a picture (the layer on top, the three foundation
+   questions under it). Tiles are links; the whole tile is the target. */
+.home .hero{display:grid;gap:var(--space-4);padding-block:var(--space-4) var(--space-5);max-width:52rem}
+.home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.015em}
+.home .hero .lede{margin:0;max-width:44rem}
+.map{margin:var(--space-4) 0 0;display:grid;gap:var(--space-3)}
+.map .band{background:var(--accent-soft);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;gap:var(--space-3)}
+.map .band>.eyebrow{color:var(--accent)}
+.map .found{background:var(--sunken);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;gap:var(--space-3)}
+.band-row,.found-row{display:grid;gap:var(--space-3)}
+.band-row{grid-template-columns:repeat(2,minmax(0,1fr))} .found-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+.map .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.3rem;min-width:0;
+  color:var(--fg);text-decoration:none;box-shadow:var(--shadow);transition:border-color var(--fast) var(--ease),box-shadow var(--fast) var(--ease)}
+.map .tile:hover{border-color:var(--accent);box-shadow:var(--shadow-2);color:var(--fg)}
+.map .tile small{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.map .tile b{font:700 1.1rem var(--display)}
+.map .tile span:not(.status){font-size:.93rem;color:var(--muted);flex:1}
+.map .tile .status{margin-top:var(--space-1)}
+.map .needs,.map .pair{margin:0;text-align:center;font:500 .8rem var(--mono);color:var(--muted)}
+.map .pair{text-align:left}
+.map figcaption{font-size:.93rem;color:var(--muted);max-width:var(--measure)}
+@media (max-width:52rem){.band-row,.found-row{grid-template-columns:minmax(0,1fr)}}
 
 /* Architecture page: the layers as a stack (the picture), then the contract flows as one drawing. */
 .stack{display:grid;gap:var(--space-3);margin-top:var(--space-4)}
@@ -52,7 +73,6 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-gsub{fill:var(--muted);font:12px var(--body)}
 .d-mask{fill:var(--surface)}
 @media (max-width:44rem){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
-.wrap.wide{max-width:60rem}
 /* The docs (site/docs/, built from docs/knowledge/): backlinks and the page graph (assets/graph.js). */
 .backlinks{columns:2;padding-left:1.1rem} @media (max-width:44rem){.backlinks{columns:1}}
 .graph{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -62,3 +82,57 @@ figure.flows{margin:var(--space-4) 0 0}
 .g-node text{fill:var(--fg);font:600 12px var(--body);text-anchor:middle}
 .g-node:hover circle,.g-node:focus circle{fill:var(--accent-hover)}
 .g-repos circle{fill:var(--brand)} .g-decisions circle{fill:var(--muted)} .g-roadmap circle{fill:var(--tier)}
+
+/* Design system reference (site/design/): one swatch per color token, so the page shows the live values in either theme. */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:var(--space-3);margin:var(--space-3) 0 var(--space-5)}
+.swatch{display:grid;gap:.35rem;min-width:0} .swatch i{display:block;height:3rem;border-radius:var(--radius-sm);border:1px solid var(--line)} .swatch code{font-size:.78rem;background:none;padding:0}
+.specimen{display:grid;gap:var(--space-2);margin:var(--space-3) 0 var(--space-5)} .specimen>*{margin:0}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:grid;gap:var(--space-3);margin:var(--space-3) 0 var(--space-5);min-width:0}
+/* Brand: the light lockup always on a light ground, the dark one on the bar ink, whatever the theme. */
+.demo.paper{background:var(--shell-fg);border-color:var(--line)} .demo.inverse{background:var(--shell);border-color:var(--shell-line)} .demo img{max-width:100%;height:auto;max-height:72px;justify-self:start}
+.demo .row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
+.demo .bar-demo{background:var(--shell);color:var(--shell-fg);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);display:flex;gap:var(--space-3);align-items:center;font:700 1rem var(--display)}
+.demo .bar-demo img{width:28px;height:28px;border-radius:6px}
+.result-demo{border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);font-weight:600} .result-demo.good{background:var(--good-soft);color:var(--good)} .result-demo.caution{background:var(--caution-soft);color:var(--caution)} .result-demo.bad{background:var(--bad-soft);color:var(--bad)} .result-demo.info{background:var(--info-soft);color:var(--info)}
+.swatch .t-bg{background:var(--bg)}
+.swatch .t-surface{background:var(--surface)}
+.swatch .t-sunken{background:var(--sunken)}
+.swatch .t-fg{background:var(--fg)}
+.swatch .t-muted{background:var(--muted)}
+.swatch .t-line{background:var(--line)}
+.swatch .t-line-strong{background:var(--line-strong)}
+.swatch .t-accent{background:var(--accent)}
+.swatch .t-accent-hover{background:var(--accent-hover)}
+.swatch .t-accent-soft{background:var(--accent-soft)}
+.swatch .t-on-accent{background:var(--on-accent)}
+.swatch .t-brand{background:var(--brand)}
+.swatch .t-brand-ink{background:var(--brand-ink)}
+.swatch .t-shell{background:var(--shell)}
+.swatch .t-shell-fg{background:var(--shell-fg)}
+.swatch .t-shell-muted{background:var(--shell-muted)}
+.swatch .t-shell-line{background:var(--shell-line)}
+.swatch .t-shell-hover{background:var(--shell-hover)}
+.swatch .t-good{background:var(--good)}
+.swatch .t-good-soft{background:var(--good-soft)}
+.swatch .t-caution{background:var(--caution)}
+.swatch .t-caution-soft{background:var(--caution-soft)}
+.swatch .t-bad{background:var(--bad)}
+.swatch .t-bad-soft{background:var(--bad-soft)}
+.swatch .t-info{background:var(--info)}
+.swatch .t-info-soft{background:var(--info-soft)}
+.swatch .t-warn-bg{background:var(--warn-bg)}
+.swatch .t-warn-line{background:var(--warn-line)}
+.swatch .t-warn-fg{background:var(--warn-fg)}
+.swatch .t-term-bg{background:var(--term-bg)}
+.swatch .t-term-text{background:var(--term-text)}
+.swatch .t-prompt{background:var(--prompt)}
+.specimen .d1{font:700 clamp(2rem,5vw,2.9rem)/1.2 var(--display);letter-spacing:-.01em} .specimen .d3{font:700 1.1rem/1.2 var(--display)}
+/* Credits page (site/credits.html, built from credits.json): the two-way help as a grid of cards. */
+.credit-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.credit-cards .card h3{margin-top:0} .credit-cards .card p{margin:0;font-size:.95rem;color:var(--muted)}
+.tbl th[scope="row"]{text-align:left;font-weight:600}
+.tbl .chips{margin:0}
+@media (max-width:44rem){.stacked thead{display:none} .stacked,.stacked tbody,.stacked tr,.stacked th,.stacked td{display:block;width:auto}
+.stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
+.stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
+.origin{margin-top:var(--space-4);background:var(--accent-soft);border-color:transparent} .origin h3{margin-top:0} .origin p{margin:0 0 var(--space-2)} .origin .sig{margin:0;font-size:.9rem;color:var(--muted)}
