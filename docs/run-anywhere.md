@@ -43,6 +43,32 @@ and for a Bash tool the reverse (`bash ./scripts/deploy/deploy.sh ...` from Powe
 portals' Shell toggle (PowerShell or Bash) and Where toggle (Cloud Shell, Windows or macOS) pick the
 form; they read `scripts/platforms.json` (section 5) and offer only what exists.
 
+**Blocks handed out in chat, docs and issues.** Cloud Shell can open in either shell (it remembers
+the last one chosen): on 2026-10-21 it opened in Bash for the owner and a PowerShell block failed
+with Bash syntax errors. A guard first line doesn't help, because an interactive shell runs each
+pasted line on its own: the guard fails and the rest still runs in the wrong shell. So every block
+we hand out is one of:
+
+- **Shell-neutral (preferred for one-off blocks).** Wrap the PowerShell in
+  `pwsh -NoLogo -Command '...'`. A single-quoted string is literal in both Bash and PowerShell, so
+  the same paste works at either prompt and the inner `pwsh` expands the `$` variables. The one
+  rule: no single quotes inside (use double quotes). Tested from Bash and from PowerShell 7.4 on
+  2026-10-21; whether the inner `pwsh` keeps Cloud Shell's Azure sign-in (it should, with its
+  profile loaded, so never `-NoProfile` there) is to be confirmed on the next real Cloud Shell run.
+
+  ```
+  pwsh -NoLogo -Command '
+  $sub = "<subscription name>"
+  Set-AzContext -Subscription $sub | Out-Null
+  ./scripts/ops/Test-AvdLandingZoneReadiness.ps1
+  '
+  ```
+
+- **A pair**, PowerShell and Bash, each starting with a comment that names its shell and how to
+  tell (`PS /home/<you>>` is PowerShell, `<you>@Azure:~$` is Bash; type `pwsh` or `bash` to
+  switch). The portals' toggle shows the pair and defaults to PowerShell, Cloud Shell's first
+  shell; the label on each block says which prompt it expects.
+
 **Twins.** Nick asked for scripts in PowerShell and Bash. Rewriting each script in the other
 language would roughly double about 15,000 lines of operator code and its tests, and the copies
 would drift. The proposal is that a real twin (a `.sh` next to a `.ps1`, or the reverse) is written
