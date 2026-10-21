@@ -43,14 +43,14 @@ kb_page = "curation.md"
 [[source]]
 name = "avd-second-brain: knowledge base"
 kind = "github_commits"
-repo = "nickprignano/avd-second-brain"
+repo = "avd-ops/avd-second-brain"
 path = "docs/knowledge"
 kb_page = "repos/avd-second-brain.md"
 
 [[source]]
 name = "avd-second-brain: decisions"
 kind = "github_commits"
-repo = "nickprignano/avd-second-brain"
+repo = "avd-ops/avd-second-brain"
 path = "docs/knowledge/decisions"
 kb_page = "concepts/README.md"
 

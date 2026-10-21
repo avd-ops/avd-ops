@@ -40,7 +40,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -r scripts/kb/requirements.txt
       - name: Directives are owner-only (decision 0008)
-        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != github.repository_owner
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != (vars.HANDOFF_OWNER || github.repository_owner)
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}

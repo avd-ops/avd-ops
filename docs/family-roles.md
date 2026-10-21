@@ -2,9 +2,9 @@
 
 A convention for every repo in the family: which repo answers which question, and which way the
 repos are allowed to depend on each other. avd-swarm writes the same roles in its spec, section 2
-([avd-swarm #25](https://github.com/nickprignano/avd-swarm/pull/25)), and the second brain in its
+([avd-swarm #25](https://github.com/avd-ops/avd-swarm/pull/25)), and the second brain in its
 operations spec, section 3.0
-([avd-second-brain #44](https://github.com/nickprignano/avd-second-brain/pull/44)).
+([avd-second-brain #44](https://github.com/avd-ops/avd-second-brain/pull/44)).
 
 ## Two layers
 
@@ -12,16 +12,16 @@ operations spec, section 3.0
 
 | Question | Repo | What it does |
 |---|---|---|
-| What it is | [avd-current-state](https://github.com/nickprignano/avd-current-state) | Collects facts about an environment offline and validates them, read-only |
-| What it should be | [avd-assess](https://github.com/nickprignano/avd-assess) | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. A research index that links out to published sources |
-| How we build it | [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) | Deploys the landing zone from Cloud Shell, with the deployment portal, and every change to it after that |
+| What it is | [avd-current-state](https://github.com/avd-ops/avd-current-state) | Collects facts about an environment offline and validates them, read-only |
+| What it should be | [avd-assess](https://github.com/avd-ops/avd-assess) | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. A research index that links out to published sources |
+| How we build it | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) | Deploys the landing zone from Cloud Shell, with the deployment portal, and every change to it after that |
 
 **On top**, the second brain and avd-swarm are how we automate it and make it smart and
 self-improving, an intelligence and abstraction layer built on the foundation:
 
-- [avd-swarm](https://github.com/nickprignano/avd-swarm) automates it: agents that read and
+- [avd-swarm](https://github.com/avd-ops/avd-swarm) automates it: agents that read and
   propose, and change nothing until a person approves the exact plan.
-- [avd-second-brain](https://github.com/nickprignano/avd-second-brain) makes it smart and
+- [avd-second-brain](https://github.com/avd-ops/avd-second-brain) makes it smart and
   self-improving: the why over the environment's whole life, what it looked like, what changed,
   what broke and why each rule is what it is.
 

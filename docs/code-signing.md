@@ -3,8 +3,9 @@
 A convention for every repo in the family, next to [run anywhere](run-anywhere.md),
 [never delete the last copy](never-delete-the-last-copy.md) and
 [never leave the meter running](never-leave-the-meter-running.md). The decision record is
-[avd-ops decision 0007](knowledge/decisions/0007-code-signing.md). Status: **proposed**
-2026-10-21. Nothing here is built, bought or switched on until the owner says so (section 8).
+[avd-ops decision 0008](knowledge/decisions/0008-code-signing.md). Status: **accepted**
+2026-10-21 (the owner said go to all three items in section 8). Artifact Signing is still created
+only when the log bundle is ready to ship, as section 5.2 says.
 
 ## 1. Short answer
 

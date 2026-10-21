@@ -156,7 +156,7 @@ test('the site names no partner product and no HCL tooling (no Liquidware for no
 test('every command block stands alone in Cloud Shell (build/lessons/0015)', () => {
   for (const f of pages) {
     for (const [, block] of read(f).matchAll(/<pre>([\s\S]*?)<\/pre>/g)) {
-      assert.match(block, /git clone https:\/\/github\.com\/nickprignano\/[\w-]+\.git/, `${f}: no clone`);
+      assert.match(block, /git clone https:\/\/github\.com\/(?:avd-ops|nickprignano)\/[\w-]+\.git/, `${f}: no clone`);
       assert.match(block, /Set-Location ~\/[\w-]+; git checkout -q \w+; git pull -q --ff-only/, `${f}: no Set-Location`);
       assert.doesNotMatch(block, /\.\.\.|\\\n/, `${f}: placeholder or bash line continuation`);
     }

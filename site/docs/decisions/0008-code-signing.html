@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>0007. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it | avd-ops docs</title>
+<title>0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it | avd-ops docs</title>
 <meta name="description" content="">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
@@ -28,7 +28,7 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0007. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it</h1>
+<h1>0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it</h1>
 <h2>Context and Problem Statement</h2>
 <p>The owner asked how the family handles code signing and whether it should. An audit of the public
 repos (2026-10-21) found no signed script, no tag, no release and no attestation; scripts reach
@@ -47,7 +47,7 @@ artifacts Windows policy will check (the log bundle first)</li>
 <li>A commercial OV certificate, the SignPath Foundation program, or minisign/GPG signatures</li>
 </ul>
 <h2>Decision Outcome</h2>
-<p>Proposed option: &quot;Releases and provenance for every repo, Authenticode only where Windows enforces
+<p>Chosen option: &quot;Releases and provenance for every repo, Authenticode only where Windows enforces
 it&quot;, because it gives every person on every OS a way to check that code is what the family
 published, for $0, and spends money only on the one artifact whose readers&#39; policies demand a
 publisher signature. Signing every file would help no current operator, since Cloud Shell and
@@ -91,7 +91,7 @@ can be validated instead of an individual.</p>
 
 </div></main>
 </div>
-<footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/nickprignano/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>
+<footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>
 <p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
 <p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p></div></footer>
 <button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>

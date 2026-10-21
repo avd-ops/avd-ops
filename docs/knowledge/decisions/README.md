@@ -15,5 +15,6 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0004](0004-submissions-are-github-issue-forms.md) | Every outside submission is a GitHub issue form in the repo that owns it | Accepted |
 | [0005](0005-one-app-shell-for-every-page.md) | One app shell for every avd-ops page, vendored as a pinned copy | Accepted |
 | [0006](0006-run-anywhere.md) | Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux | Accepted |
-| [0007](0007-code-signing.md) | Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it | Proposed |
+| [0007](0007-starters-not-a-theme-repo.md) | The theme ships as starters and a brand profile in avd-ops, not as its own repo or package | Proposed |
+| [0008](0008-code-signing.md) | Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it | Accepted |
 <!-- END GENERATED: decision-index -->

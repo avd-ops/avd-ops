@@ -51,11 +51,18 @@
    "status": "accepted"
   },
   {
-   "id": "decisions/0007-code-signing.md",
-   "title": "0007. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it",
-   "url": "decisions/0007-code-signing.html",
+   "id": "decisions/0007-starters-not-a-theme-repo.md",
+   "title": "0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package",
+   "url": "decisions/0007-starters-not-a-theme-repo.html",
    "topic": "decisions",
    "status": "proposed"
+  },
+  {
+   "id": "decisions/0008-code-signing.md",
+   "title": "0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it",
+   "url": "decisions/0008-code-signing.html",
+   "topic": "decisions",
+   "status": "accepted"
   },
   {
    "id": "decisions/README.md",
@@ -175,7 +182,11 @@
   },
   {
    "source": "decisions/README.md",
-   "target": "decisions/0007-code-signing.md"
+   "target": "decisions/0007-starters-not-a-theme-repo.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0008-code-signing.md"
   },
   {
    "source": "getting-started/README.md",

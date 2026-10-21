@@ -10,7 +10,7 @@ last_reviewed: 2026-10-20
 
 **On top: the why, over the environment's life.** One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.
 
-The repo is the source of truth: [nickprignano/avd-second-brain](https://github.com/nickprignano/avd-second-brain). This page says where it fits.
+The repo is the source of truth: [avd-ops/avd-second-brain](https://github.com/avd-ops/avd-second-brain). This page says where it fits.
 
 ## What it does
 
@@ -26,7 +26,7 @@ The repo is the source of truth: [nickprignano/avd-second-brain](https://github.
 
 ## Read more in the repo
 
-- [README](https://github.com/nickprignano/avd-second-brain/blob/main/README.md)
-- [Architecture](https://github.com/nickprignano/avd-second-brain/blob/main/docs/architecture.md)
-- [Contracts](https://github.com/nickprignano/avd-second-brain/blob/main/docs/contracts.md)
-- [Knowledge base](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/README.md)
+- [README](https://github.com/avd-ops/avd-second-brain/blob/main/README.md)
+- [Architecture](https://github.com/avd-ops/avd-second-brain/blob/main/docs/architecture.md)
+- [Contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md)
+- [Knowledge base](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/README.md)

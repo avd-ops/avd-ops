@@ -32,10 +32,11 @@
 <!-- /shell:top -->
 <main id="main">
 <div class="col">
-<p class="eyebrow kicker">Reference, version 2.1.0</p>
+<p class="eyebrow kicker">Reference, version 2.2.0</p>
 <h1>Design system</h1>
 <p class="lede">The one look every avd-ops page and portal shares: tokens, type, the shell around each page, and the shared components. Everything below is drawn with the live stylesheets, so switch the theme in the bar to check both.</p>
-<p>How it is built and how another repo takes a pinned copy is in <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/design-system.md">docs/design-system.md</a>.</p>
+<p>How it is built and how another repo takes a pinned copy is in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">docs/design-system.md</a>.</p>
+<p>To start a new page or a Claude artifact in this look, copy a starter from <a href="https://github.com/avd-ops/avd-ops/tree/main/templates">templates/</a>: <code>page.html</code> for a repo, <code>artifact.html</code> for an artifact.</p>
 
 <h2 id="color">Color</h2>
 <p>Colors exist only as tokens, each with a light and a dark value. Results colors mean a result, never decoration; info marks work in progress.</p>
@@ -65,6 +66,12 @@
 <h2 id="shell">Shell</h2>
 <p>Every page opens in the same frame: the brand bar in the shell ink in both themes, with the Docs, Deploy and Assess switcher, the theme button and, below 64rem, the menu button that opens the side list as a drawer. Under the bar, the research notice is one line that opens to the full text. Controls on touch screens are at least 44px.</p>
 <div class="demo"><div class="bar-demo"><img src="../assets/brand/mark.svg" alt="">avd-ops</div></div>
+
+<h2 id="brand">Brand</h2>
+<p>The mark, and the lockup with the tagline for places outside the bar: light, dark and one color. The text in the lockups is outlined, so they look the same without the fonts installed.</p>
+<div class="demo paper"><img src="../assets/brand/lockup.svg" alt="avd-ops, deploy quietly" height="72"></div>
+<div class="demo inverse"><img src="../assets/brand/lockup-dark.svg" alt="avd-ops, deploy quietly" height="72"></div>
+<p>Every brand file (avatars, PNG exports, link preview images, the original concept) is in <a href="https://github.com/avd-ops/avd-ops/tree/main/brand">brand/</a>, with <code>profile.json</code>, the whole brand in one file for tools and Claude.</p>
 
 <h2 id="components">Components</h2>
 <h3>Actions</h3>

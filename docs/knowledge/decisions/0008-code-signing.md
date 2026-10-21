@@ -1,10 +1,10 @@
 ---
-status: proposed
+status: accepted
 date: 2026-10-21
 decision-makers: [owner]
 ---
 
-# 0007. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it
+# 0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it
 
 ## Context and Problem Statement
 
@@ -27,7 +27,7 @@ what, and at what cost?
 
 ## Decision Outcome
 
-Proposed option: "Releases and provenance for every repo, Authenticode only where Windows enforces
+Chosen option: "Releases and provenance for every repo, Authenticode only where Windows enforces
 it", because it gives every person on every OS a way to check that code is what the family
 published, for $0, and spends money only on the one artifact whose readers' policies demand a
 publisher signature. Signing every file would help no current operator, since Cloud Shell and
