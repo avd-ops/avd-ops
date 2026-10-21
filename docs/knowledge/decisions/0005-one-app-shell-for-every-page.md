@@ -57,3 +57,8 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   notice is a round button, so the switcher, notice and both buttons fit 360px. The page column now
   starts on the same line as the side list, and the menu button no longer shows on wide screens
   (`.shell .menu` lost to the more specific bar button rule; it is now `.shell header.bar .menu`).
+- Also in 2.3.0 (owner, 2026-10-21): the theme moved to a mechanical, typewriter type: Space Mono
+  for headings and IBM Plex Mono for text, controls and code. The logo keeps its own faces
+  (Schibsted Grotesk for the word, JetBrains Mono for the tagline, as `--wordmark` and `--tagline`).
+  Labels lost their tracked capitals, and pages no longer put a label above their title, after a
+  frontend design pass.

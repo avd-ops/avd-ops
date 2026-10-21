@@ -240,48 +240,75 @@
  },
  "type": {
   "display": {
-   "family": "Schibsted Grotesk",
-   "fallback": "\"Segoe UI\",system-ui,sans-serif",
+   "family": "Space Mono",
+   "fallback": "ui-monospace,\"Cascadia Mono\",Menlo,Consolas,monospace",
    "weights": [
+    400,
+    700
+   ],
+   "files": [
+    "site/assets/fonts/space-mono-latin-400-normal.woff2",
+    "site/assets/fonts/space-mono-latin-700-normal.woff2"
+   ],
+   "googleFonts": "Space Mono",
+   "use": "headings"
+  },
+  "body": {
+   "family": "IBM Plex Mono",
+   "fallback": "ui-monospace,\"Cascadia Mono\",SFMono-Regular,Menlo,Consolas,monospace",
+   "weights": [
+    400,
     600,
     700
    ],
    "files": [
-    "site/assets/fonts/schibsted-grotesk-latin-600-normal.woff2",
-    "site/assets/fonts/schibsted-grotesk-latin-700-normal.woff2"
+    "site/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+    "site/assets/fonts/ibm-plex-mono-latin-400-italic.woff2",
+    "site/assets/fonts/ibm-plex-mono-latin-600-normal.woff2",
+    "site/assets/fonts/ibm-plex-mono-latin-700-normal.woff2"
    ],
-   "googleFonts": "Schibsted Grotesk",
-   "use": "headings and the word avd-ops",
-   "case": "the brand is always lowercase: avd-ops"
+   "googleFonts": "IBM Plex Mono",
+   "use": "running text at 15.5px, controls and labels in sentence case"
   },
-  "body": {
-   "family": "Source Sans 3",
-   "fallback": "\"Segoe UI\",system-ui,-apple-system,Roboto,sans-serif",
+  "mono": {
+   "family": "IBM Plex Mono",
+   "fallback": "ui-monospace,\"Cascadia Mono\",SFMono-Regular,Menlo,Consolas,monospace",
    "weights": [
     400,
     600
    ],
    "files": [
-    "site/assets/fonts/source-sans-3-latin-400-normal.woff2",
-    "site/assets/fonts/source-sans-3-latin-600-normal.woff2"
+    "site/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+    "site/assets/fonts/ibm-plex-mono-latin-600-normal.woff2"
    ],
-   "googleFonts": "Source Sans 3",
-   "use": "running text, 17px"
+   "googleFonts": "IBM Plex Mono",
+   "use": "code and commands"
   },
-  "mono": {
-   "family": "JetBrains Mono",
-   "fallback": "ui-monospace,\"Cascadia Mono\",SFMono-Regular,Menlo,Consolas,monospace",
+  "wordmark": {
+   "family": "Schibsted Grotesk",
+   "fallback": "\"Segoe UI\",system-ui,sans-serif",
    "weights": [
-    500,
+    700
+   ],
+   "files": [
+    "site/assets/fonts/schibsted-grotesk-latin-700-normal.woff2"
+   ],
+   "googleFonts": "Schibsted Grotesk",
+   "use": "the word avd-ops in the logo and the brand bar only",
+   "case": "the brand is always lowercase: avd-ops"
+  },
+  "tagline": {
+   "family": "JetBrains Mono",
+   "fallback": "ui-monospace,Menlo,Consolas,monospace",
+   "weights": [
     600
    ],
    "files": [
-    "site/assets/fonts/jetbrains-mono-latin-500-normal.woff2",
     "site/assets/fonts/jetbrains-mono-latin-600-normal.woff2"
    ],
    "googleFonts": "JetBrains Mono",
-   "use": "code, commands, uppercase labels and the tagline",
-   "case": "labels and the tagline in uppercase with letter-spacing"
+   "use": "the tagline Deploy quietly in the logo only",
+   "case": "uppercase with wide letter-spacing"
   }
  },
  "shape": {

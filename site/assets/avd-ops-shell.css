@@ -16,10 +16,10 @@
 .shell header.bar .brand{display:inline-flex;align-items:center;gap:var(--space-3);color:var(--shell-fg);text-decoration:none;min-height:var(--tap);flex:none}
 .shell header.bar .brand .mark{width:44px;height:44px;flex:none;border-radius:8px;display:block}
 .shell header.bar .brand .name{display:grid;line-height:1}
-.shell header.bar .brand .word{font:700 1.5rem/1 var(--display);letter-spacing:.005em}
-.shell header.bar .brand .tag{font:600 .64rem/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--brand);margin-top:6px}
+.shell header.bar .brand .word{font:700 1.5rem/1 var(--wordmark);letter-spacing:.005em}
+.shell header.bar .brand .tag{font:600 .64rem/1 var(--tagline);letter-spacing:.26em;text-transform:uppercase;color:var(--brand);margin-top:6px}
 .shell .switcher{display:flex;gap:2px;padding:3px;border-radius:10px;background:var(--shell-hover);margin-left:var(--space-3);flex:none}
-.shell .switcher a{display:flex;align-items:center;min-height:36px;padding:0 .8rem;border-radius:7px;color:var(--shell-muted);text-decoration:none;font-weight:600;font-size:.92rem;transition:background var(--fast) var(--ease),color var(--fast) var(--ease)}
+.shell .switcher a{display:flex;align-items:center;min-height:36px;padding:0 .8rem;border-radius:7px;color:var(--shell-muted);text-decoration:none;font-weight:600;font-size:.86rem;transition:background var(--fast) var(--ease),color var(--fast) var(--ease)}
 .shell .switcher a:hover{color:var(--shell-fg)}
 .shell .switcher a[aria-current]{background:var(--shell-fg);color:var(--shell)}
 .shell .tools{margin-left:auto;display:flex;gap:var(--space-2);flex:none}
@@ -38,7 +38,7 @@ html:not(.js) .shell .theme{display:none}
 .shell header.bar .notice{margin-left:auto;min-width:0}
 .shell header.bar .notice+.tools{margin-left:0}
 .shell header.bar .notice summary{display:flex;align-items:center;gap:var(--space-2);min-height:var(--tap);padding:0 var(--space-3);border:1px solid var(--shell-line);border-radius:var(--pill);
-  cursor:pointer;list-style:none;font-size:.86rem;color:var(--shell-fg);white-space:nowrap;transition:background var(--fast) var(--ease)}
+  cursor:pointer;list-style:none;font-size:.8rem;color:var(--shell-fg);white-space:nowrap;transition:background var(--fast) var(--ease)}
 .shell header.bar .notice summary:hover,.shell header.bar .notice[open] summary{background:var(--shell-hover)}
 .shell .notice summary::-webkit-details-marker{display:none}
 .shell header.bar .notice summary::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--shell-warn);flex:none}
@@ -103,7 +103,7 @@ html:not(.js) .shell .theme{display:none}
   .js .shell.drawer-open .backdrop{display:block;position:fixed;inset:0;z-index:35;background:var(--shell);opacity:.5;border:0;padding:0}
   html:not(.js) .shell .side{position:static;max-height:none;order:2;border-top:1px solid var(--line)}
 }
-@media (max-width:72rem){.shell header.bar .notice summary .long{display:none} .shell header.bar .notice summary .short{display:inline}}
+@media (max-width:86rem){.shell header.bar .notice summary .long{display:none} .shell header.bar .notice summary .short{display:inline}}
 @media (max-width:40rem){.shell>details.notice:not([open]) summary .long{display:none} .shell>details.notice:not([open]) summary .short{display:inline}}
 @media (max-width:64rem){.shell header.bar .brand .tag{display:none} .shell header.bar .brand .word{font-size:1.25rem}}
 /* Phones and narrow windows (44rem): a shorter bar, the mark without the word, and the notice as a round button with its dot. Below 24rem the
@@ -111,14 +111,14 @@ html:not(.js) .shell .theme{display:none}
 @media (max-width:44rem){
   .shell{--bar:60px} .shell .bar-in{gap:var(--space-2)} .shell .tools{gap:6px}
   .shell header.bar .brand .name,.shell header.bar .brand>.word{display:none} .shell header.bar .brand .mark{width:36px;height:36px}
-  .shell .switcher{margin-left:0} .shell .switcher a{padding:0 .55rem;font-size:.88rem}
+  .shell .switcher{margin-left:0} .shell .switcher a{padding:0 .5rem;font-size:.8rem}
   .shell header.bar .notice summary{width:var(--tap);padding:0;justify-content:center;border-color:var(--shell-warn)}
   .shell header.bar .notice summary::after{display:none}
   .shell header.bar .notice summary .short{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   .shell header.bar .notice summary::before{width:10px;height:10px}
 }
-@media (max-width:26rem){.shell .bar-in{gap:6px} .shell header.bar .brand .mark{width:32px;height:32px} .shell .switcher a{padding:0 .5rem}}
+@media (max-width:26rem){.shell .bar-in{gap:6px} .shell header.bar .brand .mark{width:32px;height:32px} .shell .switcher a{padding:0 .38rem}}
 @media (max-width:24rem){.shell header.bar .brand{display:none}}
-@media (max-width:23rem){.shell .switcher a{padding:0 .42rem}}
+@media (max-width:23rem){.shell .switcher a{padding:0 .34rem;font-size:.76rem}}
 .shell .skip{position:absolute;left:-999px;top:0;z-index:50;background:var(--surface);color:var(--fg);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm)}
 .shell .skip:focus{left:max(var(--gutter),env(safe-area-inset-left,0px));top:calc(var(--space-2) + env(safe-area-inset-top,0px))}

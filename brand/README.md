@@ -18,7 +18,7 @@ In [`site/assets/brand/`](../site/assets/brand/), so pages and the repos that ta
 | `lockup-dark.svg` | ink or darker | the same on dark |
 | `lockup-white.svg` | dark, photos | one-color printing |
 
-The lockups are written by [`scripts/site/brand_lockups.py`](../scripts/site/brand_lockups.py) with the word and the tagline outlined from the design system's own fonts (Schibsted Grotesk 700, JetBrains Mono 600), so they look the same anywhere without a font installed.
+The lockups are written by [`scripts/site/brand_lockups.py`](../scripts/site/brand_lockups.py) with the word and the tagline outlined from the logo's own fonts (Schibsted Grotesk 700, JetBrains Mono 600, served for the logo only since 2.3.0), so they look the same anywhere without a font installed.
 
 ## Pictures
 

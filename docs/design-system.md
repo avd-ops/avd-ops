@@ -35,7 +35,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 | Notice | `--warn-bg` `--warn-line` `--warn-fg` | the research-only notice |
 | Terminal | `--term-bg` `--term-head` `--term-text` `--term-muted` `--term-border` `--prompt` | Cloud Shell blocks |
 | Status | `--s-built-*` `--s-design-*` `--s-slice-*` | repo status pills (design uses the info hue; there is no purple) |
-| Type | `--display` (Schibsted Grotesk), `--body` (Source Sans 3), `--mono` (JetBrains Mono) | headings, text, code and labels |
+| Type | `--display` (Space Mono), `--body` and `--mono` (IBM Plex Mono); `--wordmark` (Schibsted Grotesk) and `--tagline` (JetBrains Mono) for the logo only | a mechanical, typewriter feel: headings, text, controls and code (2.3.0; the logo keeps its own faces) |
 | Shape | `--radius` 8px, `--radius-sm` 6px, `--radius-lg` 14px, `--pill`, `--shadow`, `--shadow-2` | cards, controls, chips, the family map, the drawer |
 | Space | `--space-1` to `--space-6` (0.25 to 2.5rem), `--measure` 46rem, `--page` 76rem, `--side` 15rem, `--gutter` 16px, `--tap` 44px | rhythm, reading column, the shell's width and side list, phone gutter, touch targets |
 | Motion | `--ease`, `--fast` 120ms, `--slow` 220ms | short state changes; off under reduced motion |
