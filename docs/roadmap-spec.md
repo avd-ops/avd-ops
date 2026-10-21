@@ -149,7 +149,7 @@ Built with the avd-ops design system inside the direction B shell, through the f
 | Repo | Change |
 |---|---|
 | avd-ops | `roadmap.json`; `scripts/site/fetch-issues.mjs`, `build-roadmap.mjs`; `site/roadmap.html`, `site/data/issues.json`, `site/data/roadmap.json`; `pages.yml` gains the fetch step, `issues: read` and a daily schedule; `repos.json` gains `maturity`; tests (approver check, title-edit pull, private-repo drop, banned terms, link owners, `--check`); the KB roadmap page links the new page; pill classes in the design system. |
-| every public repo | The labels `roadmap`, `accepted` (exists for submissions), `status:exploring`, `status:planned`, `status:in-progress`, `status:done`, `status:parked`, added to `submissions/routing.json`'s label list so `labels.mjs --apply` creates them (Nick runs it). Optionally the README line. |
+| every public repo | The labels `roadmap`, `accepted` (exists for submissions), `status:exploring`, `status:planned`, `status:in-progress`, `status:done`, `status:parked`, each described in `submissions/routing.json`'s `labels` map (the submissions test checks every label is described there) so `labels.mjs --apply` creates them (Nick runs it). That entry lands with the build PR, after the submissions PR that adds `routing.json` has merged, so the two don't touch the same file now. Optionally the README line. |
 | org Project board sync | Optional: mirror `status:*` into the board's Status field, one way. |
 
 ## 12. Questions for Nick
