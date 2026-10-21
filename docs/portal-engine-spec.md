@@ -59,7 +59,7 @@ Not chosen. The deployment portal's trust root is its repo and ref (decision 001
 
 ## 4. Where it lives and how it travels
 
-- **Home: avd-ops, `site/assets/engine/`,** beside the design system, which already holds the family's shared UI and its release flow (decisions 0005, 0007). Both portals take their copy from there, which ends the one-way copying from the landing zone to avd-current-state. avd-linecheck's spec says the engine starts in linecheck and the landing zone vendors it from there (its 6.2, 11 and Q8); this spec proposes avd-ops instead, so the deployment engine never pins an end-user tool's release. **The two specs need one answer before any code** (Q2); the Linecheck work updates its spec to match.
+- **Home: avd-ops, `site/assets/engine/`,** beside the design system, which already holds the family's shared UI and its release flow (decisions 0005, 0007). Both portals take their copy from there, which ends the one-way copying from the landing zone to avd-current-state. avd-linecheck's spec says the engine starts in linecheck and the landing zone vendors it from there (its 6.2, 11 and Q8); avd-ops instead, so the deployment engine never pins an end-user tool's release. **Decided: avd-ops** (Nick, 2026-10-21: "avd-ops makes sense"); linecheck's spec is updated to match in its own repo (6.2 and 11).
 - **Its own release train.** `site/assets/engine/MANIFEST.json` lists each engine file with its SHA-256, a `network` flag (true for `probe.js` only) and the modules it needs (`core.js` for all). Releases are tagged `pe-v<version>`. One train with the design system was considered and dropped: one manifest forces every consumer to carry every file (the design-system tests check every file in the lock), so the assessment portal would vendor a network-capable `probe.js` it never loads, and a CSS patch would bump the engine's version.
 - **Take only what you use.** A portal copies the files it needs (with `core.js`) and records them in `site/assets/engine.lock.json`: `{ tag, commit, files: { name: sha256 } }`. Its engine test checks each listed file matches, that every module a listed file needs is listed too, and that no unlisted engine file is present. The assessment portal takes the pure files only.
 - **The commit is the pin, the tag is a label.** A test cannot check a tag offline, so the lock's `commit` is what pins the copy, and the bump PR's diff is what a reviewer reads. avd-ops gets a test that any change to a released file's hash comes with a version bump, so one version never means two contents.
@@ -189,7 +189,7 @@ The code review of this PR (Claude code-review skill) caught ten more, also fixe
 ## 15. Open questions for Nick
 
 1. **Release train.** The engine on its own `pe-v` tag with its own manifest and lock (recommended, so each portal takes only what it runs), or inside the design system's `ds-v` release.
-2. **Home** (blocks PR 1). avd-ops (recommended), or avd-linecheck as its spec says today.
+2. **Home.** Answered 2026-10-21: avd-ops (section 4).
 3. **Order.** PR 0, then the assessment portal, the landing zone, linecheck v0 and phase 2 (recommended), or linecheck first once its v0 has your go.
 4. **Region bands.** Keep the landing zone's region step on its own bands (recommended until linecheck's spike S1), or take linecheck's four bands when it moves.
 5. **CSP follow-ups.** After the moves and their prerequisites, a meta policy for the assessment portal and a narrower one for the landing zone (recommended), or leave them as they are.
