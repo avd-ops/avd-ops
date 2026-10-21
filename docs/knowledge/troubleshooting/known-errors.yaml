@@ -66,3 +66,11 @@ errors:
     applies_to: avd-ops 5eff96d
     status: verified
     added: "2026-10-21"
+  - id: classic-script-in-esm-repo
+    symptom: "TypeError: Cannot read properties of undefined (reading 'AvdOpsEngine') when a test requires a portal engine file"
+    cause: "The repo's package.json says `type: module`, so Node loads every .js file under it as an ES module: `module` is undefined and `this` is undefined at the top level, and the UMD wrapper falls through to the browser branch."
+    fix: "Put a package.json with `\"type\": \"commonjs\"` beside the classic scripts (avd-ops `site/assets/engine/package.json`); a portal that vendors the engine into an ESM repo copies it too."
+    source: https://github.com/avd-ops/avd-ops/blob/main/docs/portal-engine-spec.md
+    applies_to: Node.js 22
+    status: verified
+    added: "2026-10-21"

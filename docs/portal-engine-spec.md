@@ -1,6 +1,6 @@
 # Portal engine: one engine for every family portal
 
-Status: proposed, design only (Nick, 2026-10-21: "we should have a shared portal engine if possible too not build 3 standalone portals"). Nothing here is built, and no portal changes until Nick approves this spec. Red-teamed (section 14).
+Status: accepted (Nick, 2026-10-21: "we should have a shared portal engine if possible too not build 3 standalone portals"; "go with your recs" on the open questions, section 15). Engine 1.0 (phase 1) is built in `site/assets/engine/` (section 6.4); no portal uses it yet. Red-teamed (section 14).
 
 The family has two portals and a third on the way: the avd-landing-zone deployment portal (`site/portal/`), the avd-current-state assessment portal (`site/portal/`) and the avd-linecheck end-user page ([its spec](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md), sections 4 to 8 and 18). This spec says what they should share, where the shared code lives, how it reaches each repo, and how the two working portals move onto it without a regression.
 
@@ -103,6 +103,29 @@ Each file is UMD: in the browser it adds one member to `window.AvdOpsEngine`; in
 
 Data reaches the engine as arguments, never by a fetch. A portal keeps data it takes from another repo the way it does today: inlined in its own script with a test that it equals the JSON copy (`PLATFORMS` and `platforms.json`), and contract data through `contracts/PINS.json` in the landing zone. The endpoint list from avd-assess's map bundle (the Portable avd-assess map work) arrives the same way.
 
+### 6.4 What 1.0 built, and where it differs from the sketch
+
+Engine 1.0 (`pe-v1.0.0`) is the six phase 1 files, `MANIFEST.json` (written by `scripts/site/engine-manifest.mjs`), and `tests/engine.test.mjs`. Where the code differs from the table above:
+
+- **No shared `preamble`.** The two portals' preambles share no line: the landing zone clones into `~/<repo>` and checks out a ref, the assessment portal uses `$repo`, an output folder and a sign-in check. Moving either would move a golden, so each portal keeps its own and builds it on `blocks.isRepoUrl`, `isRef` and `psQuote`.
+- **`support(cmd, runIn, platforms, pattern)`** takes the portal's script pattern, since the landing zone finds `./scripts/...ps1|sh` and the assessment portal `./avd_*.ps1`. `scriptsIn` needs a global pattern with the path in group 1.
+- **Band tables** are `{ noAnswer, rows }`, with `lt` or `le` on each row but the last, which is `otherwise`. A value that is not a number is no answer; `rateLatency('50')` called it Good. Probes give numbers, so no golden moves.
+- **`measure` resolves** with `median: null` for no answer instead of rejecting, and reports `deadline` when `deadlineAt` cut it short. The landing zone's delegate (PR 5) maps a null median to its old rejection.
+- **Classic scripts in an ESM repo.** `site/assets/engine/package.json` says `type: commonjs`, so Node loads the files as scripts here; a consumer whose own `package.json` says `type: module` copies it too. `.gitattributes` keeps the files' line endings, so a Windows checkout hashes the same.
+- **`psQuote` doubles the typographic single quotes too** (U+2018 to U+201B), which PowerShell also reads as the end of a single-quoted string; the code review of the engine caught it, and the landing zone's own `psQuote` got the same fix in PR 0.
+- **`hereString` still refuses non-ASCII** rather than escaping it as `\uXXXX`, so the assessment portal's behavior and golden don't move; escaping is a possible minor version.
+- **`released`** in the manifest records each released version's hashes (`--release` writes it in the release PR); the test fails when a file changes and the version doesn't.
+
+### 6.5 Taking a copy (each consumer's PR)
+
+Copy `core.js` and the files the portal runs from the tag's commit into its own `site/assets/engine/`, then write `site/assets/engine.lock.json`:
+
+```json
+{ "tag": "pe-v1.0.0", "commit": "<full merge commit of the release PR>", "files": { "core.js": "<sha256>", "runin.js": "<sha256>" } }
+```
+
+The hashes come from `MANIFEST.json` at that commit. The portal's engine test checks each listed file's hash, that every file a listed file `needs` is listed, and that no unlisted engine file is present; the assessment portal takes no `probe.js`. Load `core.js` first with `<script src>`, then the rest.
+
 ## 7. Linecheck's measurement engine
 
 The probe's method is the landing zone's (decision 0003), and linecheck's spec extends it: `HEAD`, 8 samples, jitter as the median of consecutive differences, stalls, slow samples, per-step and whole-run deadlines (spec 4.1, 5). All of that is options on `probe.js` whose defaults are the landing zone's behavior, pinned by golden 3. The bands (spec 6.2) are tables for `bands.js`. Whether the landing zone's region step takes linecheck's 150 to 200 ms band (linecheck Q8) is Nick's choice (Q4 here): the move keeps `rateLatency`'s bands as they are.
@@ -133,7 +156,7 @@ What stays in linecheck: download sufficiency and loaded latency, the UDP hint, 
 
 | Order | Pull request | What moves | Guard |
 |---|---|---|---|
-| 0 | avd-landing-zone: validate pasted values | pattern checks on every pasted value used in a command; crafted-paste fixtures | new tests; existing goldens unchanged for valid pastes |
+| 0 | avd-landing-zone: validate pasted values (#111) | pattern checks on every pasted value used in a command; crafted-paste fixtures | new tests; existing goldens unchanged for valid pastes |
 | 1 | avd-ops: engine 1.0 (`pe-v1.0.0`) | the phase 1 modules, unit tests, the scan, the manifest; nothing in any portal | avd-ops tests on Linux, Windows and macOS |
 | 2 | avd-current-state: vendor and delegate | copy the pure files, `engine.lock.json`, script tags; `assess-core.js` keeps every export and delegates Run in, quoting and state lines | goldens 1 and 2 byte-equal |
 | 3 | avd-landing-zone: vendor only | copy the files, the lock and the `<script>` tags; nothing calls them yet | page loads; existing tests |
@@ -186,13 +209,15 @@ Reviewed by a separate model pass (Fable, 2026-10-21) against the code at the co
 The code review of this PR (Claude code-review skill) caught ten more, also fixed: the landing zone's `measure` gives no answer on any rejected sample, not only the warm-up (golden 3 gained that case); the state-line newline rule stays per portal so no golden moves; `portal-config.js` names the repo, not a ref; bands and probe are one portal's code, not duplicated; the tag block was not a self-contained paste; `platformKey` is not in the assessment portal; a stray `report.js` source in phase 1; a wrong red-team citation; a line count.
 
 
-## 15. Open questions for Nick
+## 15. Questions, answered
 
-1. **Release train.** The engine on its own `pe-v` tag with its own manifest and lock (recommended, so each portal takes only what it runs), or inside the design system's `ds-v` release.
-2. **Home.** Answered 2026-10-21: avd-ops (section 4).
-3. **Order.** PR 0, then the assessment portal, the landing zone, linecheck v0 and phase 2 (recommended), or linecheck first once its v0 has your go.
-4. **Region bands.** Keep the landing zone's region step on its own bands (recommended until linecheck's spike S1), or take linecheck's four bands when it moves.
-5. **CSP follow-ups.** After the moves and their prerequisites, a meta policy for the assessment portal and a narrower one for the landing zone (recommended), or leave them as they are.
+Nick answered all five on 2026-10-21 ("go with your recs" for 1, 3, 4 and 5; "avd-ops makes sense" for 2).
+
+1. **Release train.** Its own `pe-v` tag, manifest and lock, so each portal takes only what it runs.
+2. **Home.** avd-ops (section 4).
+3. **Order.** PR 0 in the landing zone, then engine 1.0, the assessment portal, the landing zone (vendor, delegate, probe), linecheck v0 and phase 2 (section 9).
+4. **Region bands.** The landing zone's region step keeps its own bands until linecheck's spike S1.
+5. **CSP follow-ups.** After the moves and their prerequisites: a meta policy for the assessment portal and a narrower one for the landing zone.
 
 ## 16. Sources
 

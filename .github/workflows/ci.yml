@@ -23,3 +23,22 @@ jobs:
       - run: npm ci
       - name: node --test
         run: node --test "tests/*.test.mjs"
+
+  # The portal engine runs anywhere (decision 0006): its tests and manifest on Windows and macOS too.
+  engine:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: engine tests
+        run: node --test tests/engine.test.mjs
+      - name: engine manifest
+        run: node scripts/site/engine-manifest.mjs --check
