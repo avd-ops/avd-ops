@@ -51,6 +51,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0007-code-signing.md",
+   "title": "0007. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it",
+   "url": "decisions/0007-code-signing.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -165,6 +172,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0006-run-anywhere.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0007-code-signing.md"
   },
   {
    "source": "getting-started/README.md",
