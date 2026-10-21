@@ -62,3 +62,11 @@ figure.flows{margin:var(--space-4) 0 0}
 .g-node text{fill:var(--fg);font:600 12px var(--body);text-anchor:middle}
 .g-node:hover circle,.g-node:focus circle{fill:var(--accent-hover)}
 .g-repos circle{fill:var(--brand)} .g-decisions circle{fill:var(--muted)} .g-roadmap circle{fill:var(--tier)}
+/* Credits page (site/credits.html, built from credits.json): the two-way help as a grid of cards. */
+.credit-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.credit-cards .card h3{margin-top:0} .credit-cards .card p{margin:0;font-size:.95rem;color:var(--muted)}
+.tbl th[scope="row"]{text-align:left;font-weight:600}
+.tbl .chips{margin:0}
+@media (max-width:44rem){.stacked thead{display:none} .stacked,.stacked tbody,.stacked tr,.stacked th,.stacked td{display:block;width:auto}
+.stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
+.stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}

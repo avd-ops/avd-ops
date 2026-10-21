@@ -127,6 +127,26 @@ test('the docs are built from docs/knowledge and up to date (scripts/site/build-
   for (const n of graph.nodes) assert.ok(linked.has(n.id), `${n.id} is an orphan: link it from another page`);
 });
 
+test('the credits page is built from credits.json and up to date (scripts/site/build-credits.mjs)', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/site/build-credits.mjs'), '--check'], { stdio: 'pipe' });
+  const credits = JSON.parse(read('credits.json'));
+  assert.match(credits.checked, /^\d{4}-\d{2}-\d{2}$/, 'checked date');
+  const entries = [...credits.adopted, ...credits.tooling, ...credits.prior_art, ...credits.sources];
+  const seen = new Set();
+  for (const e of entries) {
+    assert.ok(e.name && e.license && (e.job || e.why || e.use), `${e.name}: name, license and what we use it for`);
+    assert.match(e.url, /^https:\/\//, `${e.name}: https link`);
+    assert.ok(!seen.has(e.url), `${e.name}: listed twice`);
+    seen.add(e.url);
+  }
+  // An open-source credit names a license the repo's file states, never a guess.
+  for (const e of [...credits.adopted, ...credits.tooling]) assert.match(e.license, /^(MIT|Apache-2\.0|OFL-1\.1|MIT OR CC0-1\.0)$/, e.name);
+  const repoNames = new Set(JSON.parse(read('repos.json')).repos.map((r) => r.name));
+  for (const e of credits.adopted) for (const r of e.in) assert.ok(repoNames.has(r), `${e.name}: ${r} is not in repos.json`);
+  for (const i of [...credits.give_back, ...credits.help_wanted]) assert.match(i.url, new RegExp(`^https://github\\.com/${credits.org}/`), `${i.title}: points at the ${credits.org} repos`);
+  assert.match(read('site/index.html'), /href="credits\.html#help-us"/, 'Contribute links the credits page');
+});
+
 test('repos.json lists every public repo with a docs page, and every page links its repo', () => {
   const family = JSON.parse(read('repos.json'));
   for (const r of family.repos) {
