@@ -67,7 +67,7 @@ html:not(.js) .shell .theme{display:none}
 .shell .layout{max-width:var(--page);margin:0 auto;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:var(--space-6);
   padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 .shell .side{position:sticky;top:calc(var(--bar) + 1px + env(safe-area-inset-top,0px));align-self:start;max-height:calc(100vh - var(--bar) - 1px - env(safe-area-inset-top,0px));overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent;padding-block:var(--space-5) var(--space-6);display:grid;gap:var(--space-1);align-content:start}
-.shell .side .group{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:var(--space-4) 0 var(--space-1);padding-left:.6rem}
+.shell .side .group{font:600 .84rem var(--body);color:var(--muted);margin:var(--space-4) 0 var(--space-1);padding-left:.6rem}
 .shell .side .group:first-child{margin-top:0}
 .shell .side a{display:flex;align-items:center;min-height:36px;padding:0 .6rem;border-radius:var(--radius-sm);color:var(--fg);text-decoration:none;font-size:.95rem}
 .shell .side a:hover{background:var(--sunken)}

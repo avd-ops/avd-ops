@@ -95,7 +95,7 @@ header.top nav a{text-decoration:none;color:var(--muted)} header.top nav a:hover
 
 /* Labels, chips, status pills. Chips sit in a .chips row and pills carry an s-* class, so pages that use
    .chip or .status for their own thing (the portal) keep theirs. */
-.eyebrow{font:600 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{font:600 .88rem var(--body);color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:var(--space-1)}
 .chips .chip{font:500 .72rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.1rem var(--space-2);color:var(--muted);background:var(--bg)}
 .status:is(.s-built,.s-design,.s-slice){font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.15rem var(--space-2);border-radius:4px;align-self:flex-start}

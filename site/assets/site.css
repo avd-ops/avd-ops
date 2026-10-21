@@ -1,6 +1,5 @@
 /* avd-ops.dev page layouts on top of avd-ops.css and avd-ops-shell.css: the home page's hero and family map,
    the principles, the architecture stack, the docs extras and the design system reference. */
-.kicker{margin-top:var(--space-4)} .kicker+h1{margin-top:var(--space-1)}
 .actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
 .actions .cta{margin:0;min-height:var(--tap);display:inline-flex;align-items:center}
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4) var(--space-5);padding:0;list-style:none}
@@ -23,7 +22,7 @@ td:first-child{white-space:nowrap}
 .map .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:flex;flex-direction:column;gap:.3rem;min-width:0;
   color:var(--fg);text-decoration:none;box-shadow:var(--shadow);transition:border-color var(--fast) var(--ease),box-shadow var(--fast) var(--ease)}
 .map .tile:hover{border-color:var(--accent);box-shadow:var(--shadow-2);color:var(--fg)}
-.map .tile small{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.map .tile small{font:600 .86rem var(--body);color:var(--accent)}
 .map .tile b{font:700 1.1rem var(--display)}
 .map .tile span:not(.status){font-size:.93rem;color:var(--muted);flex:1}
 .map .tile .status{margin-top:var(--space-1)}
@@ -136,7 +135,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .tbl .chips{margin:0}
 @media (max-width:44rem){.stacked thead{display:none} .stacked,.stacked tbody,.stacked tr,.stacked th,.stacked td{display:block;width:auto}
 .stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
-.stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
+.stacked td::before{content:attr(data-label);display:block;font:600 .84rem var(--body);color:var(--muted)}}
 .origin{margin-top:var(--space-4);background:var(--accent-soft);border-color:transparent} .origin h3{margin-top:0} .origin p{margin:0 0 var(--space-2)} .origin .sig{margin:0;font-size:.9rem;color:var(--muted)}
 
 /* The owner's checklist (checklist.html): a progress bar, then numbered lines that say their state in words.

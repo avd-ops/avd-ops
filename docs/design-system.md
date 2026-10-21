@@ -46,7 +46,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 |---|---|
 | `header.top` | The top bar. `.brand` holds the mark (`img.mark`, `brand/mark.svg`) and the word avd-ops; a page may follow it with `.sep` and its own title (the portal: avd-ops / AVD deployment portal), then `nav` or its own links. |
 | `.warn` | The research-only notice box. |
-| `.eyebrow` | Small mono uppercase label above a title or card. |
+| `.eyebrow` | Small label for a group of cards or a layer (sentence case, no capitals; 2.3.0). Pages no longer put one above their title. |
 | `.chip`, `.chips` | Contract and tag chips. |
 | `.status.s-built` / `.s-design` / `.s-slice` | Repo status pills. |
 | `.card` | Surface with a border. |

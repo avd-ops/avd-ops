@@ -33,7 +33,6 @@ ${CREDIT}</div></footer>`;
 
 // The sample content both starters open with: real components, so the first view shows the look. Replace it.
 const SAMPLE = `<!-- page:start (replace from here to page:end with the page's own content) -->
-<p class="eyebrow">Repo name, one-line role</p>
 <h1>Page title</h1>
 <p class="lede">One sentence on what this page does and for whom.</p>
 <div class="chips"><span class="chip">C11</span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
