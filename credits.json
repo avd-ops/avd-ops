@@ -1,0 +1,54 @@
+{
+  "$comment": "The one list of credits on avd-ops.dev/credits.html, built by scripts/site/build-credits.mjs. Link upstream and say what we use it for in our own words; never restate the source. A license is what the repo's LICENSE file says, read on the date in 'checked'. Name a person only if they are a public contributor to these repos or have said yes. No partner, Nerdio or HCL tooling here (tests/site.test.mjs). Public sources only.",
+  "org": "avd-ops",
+  "checked": "2026-10-21",
+  "adopted": [
+    {"name": "Azure Verified Modules", "url": "https://github.com/Azure/bicep-registry-modules", "license": "MIT", "job": "The Bicep modules the landing zone is built from (host pool, workspace, scaling plan, network, Key Vault and more)", "in": ["avd-landing-zone"]},
+    {"name": "Windows Desktop Optimization Tool (WDOT)", "url": "https://github.com/The-Virtual-Desktop-Team/Windows-Desktop-Optimization-Tool", "license": "MIT", "job": "Image optimization, run at a pinned release with a reviewed profile. It supersedes VDOT, which has no license and stays prior art only", "in": ["avd-landing-zone", "avd-assess"]},
+    {"name": "PSRule for Azure", "url": "https://github.com/Azure/PSRule.Rules.Azure", "license": "MIT", "job": "Checks the templates against Well-Architected rules in CI", "in": ["avd-landing-zone", "avd-assess"]},
+    {"name": "Well-Architected Reliability Assessment (WARA)", "url": "https://github.com/Azure/Well-Architected-Reliability-Assessment", "license": "MIT", "job": "The rule engine for live reliability checks, in place of one of our own", "in": ["avd-assess"]},
+    {"name": "Azure review checklists", "url": "https://github.com/Azure/review-checklists", "license": "MIT", "job": "The AVD checklist the assessment method maps its facts to, cited by short item ID", "in": ["avd-assess"]},
+    {"name": "Azure Proactive Resiliency Library v2", "url": "https://github.com/Azure/Azure-Proactive-Resiliency-Library-v2", "license": "MIT", "job": "Resiliency recommendations for AVD resources, read by WARA's collector", "in": ["avd-assess"]},
+    {"name": "Azure Monitor Baseline Alerts", "url": "https://github.com/Azure/azure-monitor-baseline-alerts", "license": "MIT", "job": "The AVD alert pattern the method uses as its monitoring reference", "in": ["avd-assess"]},
+    {"name": "2ndbrain", "url": "https://github.com/nickprignano/2ndbrain", "license": "Apache-2.0", "job": "The knowledge base format and tooling (scripts/kb/, schemas, hooks) every family KB is built on, and the knowledge capture and handoff hooks the other repos run", "in": ["avd-ops", "avd-second-brain", "avd-landing-zone", "avd-swarm"]}
+  ],
+  "tooling": [
+    {"name": "Bicep", "url": "https://github.com/Azure/bicep", "license": "MIT", "job": "Infrastructure as code for every template"},
+    {"name": "Pester", "url": "https://github.com/pester/Pester", "license": "Apache-2.0", "job": "Unit tests, offline scenarios and template guards"},
+    {"name": "PSScriptAnalyzer", "url": "https://github.com/PowerShell/PSScriptAnalyzer", "license": "MIT", "job": "PowerShell lint in every repo's CI"},
+    {"name": "Gitleaks", "url": "https://github.com/gitleaks/gitleaks", "license": "MIT", "job": "Secret scanning before anything is pushed"},
+    {"name": "marked", "url": "https://github.com/markedjs/marked", "license": "MIT", "job": "Renders the docs on this site from Markdown"},
+    {"name": "MADR", "url": "https://github.com/adr/madr", "license": "MIT OR CC0-1.0", "job": "The format of every decision record"},
+    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "Display font of the design system, served from this site through its Fontsource package (site/assets/fonts/LICENSE)"},
+    {"name": "Source Sans 3", "url": "https://github.com/adobe-fonts/source-sans", "license": "OFL-1.1", "job": "Body font of the design system, served the same way"},
+    {"name": "JetBrains Mono", "url": "https://github.com/JetBrains/JetBrainsMono", "license": "OFL-1.1", "job": "Code font of the design system, served the same way"},
+    {"name": "Fontsource", "url": "https://github.com/fontsource/fontsource", "license": "MIT", "job": "The npm packages the three fonts are taken from, unmodified"}
+  ],
+  "prior_art": [
+    {"name": "Azure Virtual Desktop Landing Zone Accelerator", "url": "https://github.com/Azure/avdaccelerator", "license": "MIT", "why": "Microsoft's broad accelerator covers other identity models and brownfield. avd-landing-zone stays narrow on purpose and points people there for what it leaves out"},
+    {"name": "Azure Resource Inventory (ARI)", "url": "https://github.com/microsoft/ARI", "license": "MIT in the repo; its PowerShell Gallery listing says otherwise", "why": "The parity checklist for avd-current-state's inventory and diagram. We built our own for redacted, contract-shaped output, and reuse none of its code until the license question is settled"}
+  ],
+  "references": {"url": "https://github.com/avd-ops/avd-assess/tree/main/references", "text": "Microsoft Learn (Azure Virtual Desktop, the Cloud Adoption and Well-Architected Frameworks, FSLogix, FinOps) and every other source the family reads is listed once, in avd-assess, pinned to a commit or a Learn page's git_commit_id, with the date it was read and short claims in our own words."},
+  "people": {
+    "origin": [
+      "I started avd-ops in June 2026 as one Azure Virtual Desktop landing zone, built on my own time to see how far a cloud-native deployment could go as code.",
+      "Every real run that broke something became a lesson and a guard, and those lessons grew into the other repos: an inventory, an assessment method, agents a person approves, and a memory of what each deployment taught.",
+      "It's still a personal research project: only avd-landing-zone is proven on real deployments, and the rest is being built in the open.",
+      "None of it is a solo act: it's 100% pair programmed with my buddy Claude."
+    ],
+    "pair": {"name": "Claude", "url": "https://claude.com/claude-code", "text": "pair programmer on every repo, through Claude Code: Claude writes and reviews alongside me, and every change lands through a pull request I merge."},
+    "maintainers": [{"name": "Nick Prignano", "github": "nickprignano", "role": "Author and maintainer"}],
+    "experts": {"url": "https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/experts.md", "text": "The subject matter experts the knowledge base follows are chosen and scored by a published method, with evidence for every score."}
+  },
+  "give_back": [
+    {"title": "Upstream asks", "url": "https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/microsoft/upstream-contributions.md", "text": "Gaps, API asks and docs fixes real runs found, each with its evidence, drafted and reviewed before a person files it upstream under their own account."},
+    {"title": "Observations that disagree", "url": "https://github.com/avd-ops/avd-assess/tree/main/observations", "text": "When a run disagrees with a published source, avd-assess records it with the evidence, and it joins the upstream list."},
+    {"title": "Lessons from real runs", "url": "https://github.com/avd-ops/avd-landing-zone/tree/master/build/lessons", "text": "Every failure tests didn't catch becomes a lesson and a guard, in public, for anyone hitting the same thing."}
+  ],
+  "help_wanted": [
+    {"title": "Close a method gap", "url": "https://github.com/avd-ops/avd-assess/tree/main/gaps", "text": "Method we wrote only because no published source covers it. Know a source that does? Tell us and the gap retires."},
+    {"title": "Send baseline evidence", "url": "https://github.com/avd-ops/avd-assess/issues/new?template=baseline-evidence.yml", "text": "Measured results from your own lab that agree or disagree with a baseline. Aggregates only, no names or IDs."},
+    {"title": "Suggest an expert to follow", "url": "https://github.com/avd-ops/avd-second-brain/issues/new?template=kb-source.yml", "text": "Someone who publishes deep, original work on AVD. They are scored by the same method as everyone else."},
+    {"title": "Not sure where it goes?", "url": "https://github.com/avd-ops/avd-ops/issues/new", "text": "Open it in avd-ops and we will move it to the right repo. A bug or idea for one repo goes to that repo's issues, below."}
+  ]
+}

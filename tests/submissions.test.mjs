@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { submissionUrl } from '../submissions/links.mjs';
+import { submissionUrl, mailContact } from '../submissions/links.mjs';
 
 const root = new URL('../', import.meta.url).pathname;
 const read = (f) => readFileSync(join(root, f), 'utf8');
@@ -90,4 +90,16 @@ test('the link builder points only at repos.json or the mailbot, and carries no 
     assert.equal(mail, `mailto:${routing.mail.address}?subject=${encodeURIComponent(`[${type}]`)}`);
   }
   assert.match(routing.mail.address, /@avd-ops\.dev$/, 'the one non-GitHub destination is on avd-ops.dev');
+});
+
+test('private routes are an exact mailto, shown as plain text too (RFC 6068)', () => {
+  for (const type of ['contact', 'sponsorship']) {
+    const m = mailContact(routing, type);
+    assert.equal(m.href, `mailto:hello@avd-ops.dev?subject=%5B${type}%5D`, 'brackets percent-encoded, nothing else');
+    assert.doesNotMatch(m.href, /body=|,|%2C|&|:\/\//i, 'no body, no second address, no userinfo');
+    assert.equal(m.text, m.address, 'the link text equals the address');
+    assert.equal(m.subject, `[${type}]`, 'the tag to type when the link does nothing');
+  }
+  assert.throws(() => mailContact(routing, 'bug'), /not a private route/);
+  assert.throws(() => mailContact({ ...routing, mail: { address: 'a@b.example,c@avd-ops.dev' } }, 'contact'), /one plain address/);
 });

@@ -26,7 +26,9 @@ docs/never-delete-the-last-copy.md  # the family convention for teardown, logs a
 docs/never-leave-the-meter-running.md  # the family convention for anything that bills
 docs/private-companion-repo.md  # your own private repo for run records and the estate vault
 repos.json                 # the public AVD repos avd-ops fronts, read by the tests and the family check
+credits.json               # the one list of credits: what we adopt, read and learn from, and help both ways
 scripts/site/build-docs.mjs  # docs/knowledge/ -> site/docs/, with backlinks and graph.json
+scripts/site/build-credits.mjs  # credits.json -> site/credits.html (what we build on, help both ways)
 scripts/family-check.mjs   # every repo carries the avd-ops line and names no banned project
 scripts/kb/                # knowledge base tooling from the 2ndbrain template (Apache-2.0, see its NOTICE)
 tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, Cloud Shell blocks, design system, docs, banned names

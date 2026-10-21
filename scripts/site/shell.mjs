@@ -14,7 +14,7 @@ export const GROUPS = [
   ['Start', [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Architecture', 'architecture.html'],
     ['Concepts', 'docs/concepts.html'], ['Roadmap', 'docs/roadmap.html']]],
   ['Repos', [...family.repos.filter((r) => r.name !== 'avd-ops').map((r) => [r.name, `family/${r.name}.html`]), ['Repo guides', 'docs/repos/index.html']]],
-  ['Record', [['Decisions', 'docs/decisions/index.html'], ['Graph', 'docs/graph.html'], ['Design system', 'design/index.html']]],
+  ['Record', [['Decisions', 'docs/decisions/index.html'], ['Graph', 'docs/graph.html'], ['Design system', 'design/index.html'], ['Credits', 'credits.html']]],
 ];
 
 // The switcher: the site, then the portals each repo publishes (repos.json "portal").

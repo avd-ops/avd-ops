@@ -48,3 +48,7 @@ Accepted by Nick on 2026-10-21, with: the function is shared by the three founda
 step (`accepted` is the approval, and only accepted research requests are shown). GitHub's form
 `labels:` apply only labels that already exist, so the labels are created first with
 `submissions/labels.mjs`.
+
+The private routes are shown as the plain address with a copy control as well as a mailto link:
+many webmail users get nothing from a mailto click. The mailto is exactly
+`mailto:<address>?subject=%5B<tag>%5D` (RFC 6068), with nothing else in it.
