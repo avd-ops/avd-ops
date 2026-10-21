@@ -14,7 +14,7 @@ is the short version with the links.
 ## Three questions, three repos, and a layer on top
 
 Each repo answers one question
-([family roles](https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md)):
+([family roles](https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md)):
 
 | Question | Repo |
 |---|---|
@@ -35,15 +35,15 @@ The repos pass versioned, redacted files to each other instead of importing each
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact
 register and so on) and one JSON Schema. avd-second-brain holds the registry, and repos that read a
 format keep a byte-identical copy pinned to a commit. See
-[contracts](https://github.com/nickprignano/avd-second-brain/blob/main/docs/contracts.md).
+[contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md).
 
 ## The brain thinks, the swarm acts
 
 avd-second-brain never holds a write credential. Every change to an estate is a plan that
 avd-swarm proposes, a person approves in a GitHub environment, and a governance gate checks against
 live state. One layered kill switch stops it, and only the owner resets it. See
-[decision 0003](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0003-brain-thinks-swarm-acts.md)
-and [avd-swarm's governance](https://github.com/nickprignano/avd-swarm/blob/main/docs/governance.md).
+[decision 0003](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0003-brain-thinks-swarm-acts.md)
+and [avd-swarm's governance](https://github.com/avd-ops/avd-swarm/blob/main/docs/governance.md).
 
 ## Tenant data stays with the tenant
 
@@ -61,26 +61,26 @@ after a person approves it, and every sandbox run comes with a cost estimate and
 Teardown removes what a redeploy recreates and keeps the data. Logs and teardown proof go to one run
 store outside the deployment, kept by default (`-TeardownLogs Keep`), and deleting data with no
 checked copy elsewhere needs `-DiscardLastCopy`, which `-Force` never implies
-([never delete the last copy](https://github.com/nickprignano/avd-ops/blob/main/docs/never-delete-the-last-copy.md),
-avd-second-brain [decision 0016](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md)).
+([never delete the last copy](https://github.com/avd-ops/avd-ops/blob/main/docs/never-delete-the-last-copy.md),
+avd-second-brain [decision 0016](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md)).
 Anything that bills by time is removed, stopped or scheduled at the end of a run unless you opt in
 with `-KeepRunning <until>`, and recurring commitments such as licenses and Marketplace offers are
 recorded with their cancel windows, never bought by a script
-([never leave the meter running](https://github.com/nickprignano/avd-ops/blob/main/docs/never-leave-the-meter-running.md),
-[decision 0017](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md)).
+([never leave the meter running](https://github.com/avd-ops/avd-ops/blob/main/docs/never-leave-the-meter-running.md),
+[decision 0017](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md)).
 Your own copies go to a separate
-[private companion repo](https://github.com/nickprignano/avd-ops/blob/main/docs/private-companion-repo.md).
+[private companion repo](https://github.com/avd-ops/avd-ops/blob/main/docs/private-companion-repo.md).
 
 ## Knowledge capture
 
 Each repo records what a change taught in a knowledge base in the shared format, or says why
 there's nothing to record, and a pull request check asks for it. The format comes from the
 [2ndbrain](https://github.com/nickprignano/2ndbrain) template; the AVD lessons live in
-[avd-second-brain's knowledge base](https://github.com/nickprignano/avd-second-brain/tree/main/docs/knowledge).
+[avd-second-brain's knowledge base](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge).
 These docs use the same format.
 
 ## What's out of scope
 
 The repos use Bicep, PowerShell and native Azure, Entra and Microsoft 365 tooling only. Asks outside that lane are referred elsewhere by
 avd-second-brain's lane rules
-([decision 0012](https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).
+([decision 0012](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).

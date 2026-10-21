@@ -22,11 +22,11 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div>
 <h2>What it does</h2><ul><li>The collector builds a portable evidence package of the AVD workload and the platform around it.</li><li>The validator runs preflight and post-deployment checks and writes a pass/fail report.</li><li>Only Get- and Test- calls against Azure. Nothing is created, changed or deleted.</li><li>The facts script turns packages into one redacted snapshot (contract C11): counts, public values and pseudonyms, no names or IDs.</li></ul>
 <h2>Try it in a lab</h2><pre># Azure Cloud Shell (PowerShell)
-if (-not (Test-Path ~/avd-current-state)) { git clone https://github.com/nickprignano/avd-current-state.git ~/avd-current-state }
+if (-not (Test-Path ~/avd-current-state)) { git clone https://github.com/avd-ops/avd-current-state.git ~/avd-current-state }
 Set-Location ~/avd-current-state; git checkout -q main; git pull -q --ff-only
 ./avd_current_state_collector.ps1</pre>
-<p>Full prerequisites and steps are in the <a href="https://github.com/nickprignano/avd-current-state#readme">README</a>.</p>
-<h2>Read more</h2><ul><li><a href="https://github.com/nickprignano/avd-current-state">Repository on GitHub</a></li><li><a href="https://github.com/nickprignano/avd-current-state#facts-snapshot-for-the-brain-and-avd-swarm">Facts snapshot (C11)</a></li><li><a href="https://github.com/nickprignano/avd-current-state#contributing">Contributing</a></li></ul>
+<p>Full prerequisites and steps are in the <a href="https://github.com/avd-ops/avd-current-state#readme">README</a>.</p>
+<h2>Read more</h2><ul><li><a href="https://github.com/avd-ops/avd-current-state">Repository on GitHub</a></li><li><a href="https://github.com/avd-ops/avd-current-state#facts-snapshot-for-the-brain-and-avd-swarm">Facts snapshot (C11)</a></li><li><a href="https://github.com/avd-ops/avd-current-state#contributing">Contributing</a></li></ul>
 <footer class="site"><p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
 <p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p></footer></div>
 </body>

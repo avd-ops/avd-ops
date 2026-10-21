@@ -41,4 +41,4 @@ New to the vocabulary? Read [concepts](../concepts/README.md) first.
 
 Fork any repo, open an issue or a pull request. Put a change in the repo that owns it; these pages
 only link. A page here that is wrong or out of date is a pull request to
-[avd-ops](https://github.com/nickprignano/avd-ops).
+[avd-ops](https://github.com/avd-ops/avd-ops).

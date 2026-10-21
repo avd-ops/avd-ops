@@ -90,7 +90,7 @@ The mark needs no text; where a page names the brand, it sets "avd-ops" in `--di
 Pages that can't load avd-ops.dev at run time (the portal makes no requests to other sites) vendor a copy at a tagged version into their own Pages folder, as `site/assets/`. From Azure Cloud Shell, in a clone of the repo that adopts it:
 
 ```bash
-git clone --depth 1 https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && cp -r /tmp/avd-ops/site/assets/avd-ops.css /tmp/avd-ops/site/assets/avd-ops-portal.css /tmp/avd-ops/site/assets/fonts /tmp/avd-ops/site/assets/brand site/assets/
+git clone --depth 1 https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && cp -r /tmp/avd-ops/site/assets/avd-ops.css /tmp/avd-ops/site/assets/avd-ops-portal.css /tmp/avd-ops/site/assets/fonts /tmp/avd-ops/site/assets/brand site/assets/
 ```
 
 Then link `assets/avd-ops.css` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal"` on `<body>`. Each copy's first line names the version; bump it in every repo that vendors it together.
