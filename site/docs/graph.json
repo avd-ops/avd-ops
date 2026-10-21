@@ -9,6 +9,13 @@
    "section": true
   },
   {
+   "id": "concepts/sandbox-batches.md",
+   "title": "Sandbox batches",
+   "url": "concepts/sandbox-batches.html",
+   "topic": "concepts",
+   "status": "partial"
+  },
+  {
    "id": "decisions/0001-adopt-the-2ndbrain-format.md",
    "title": "0001. Adopt the 2ndbrain knowledge base format, version 1",
    "url": "decisions/0001-adopt-the-2ndbrain-format.html",
@@ -50,6 +57,13 @@
    "topic": "getting-started",
    "status": "partial",
    "section": true
+  },
+  {
+   "id": "getting-started/cloud-shell.md",
+   "title": "Working from Cloud Shell",
+   "url": "getting-started/cloud-shell.html",
+   "topic": "getting-started",
+   "status": "partial"
   },
   {
    "id": "repos/README.md",
@@ -125,6 +139,10 @@
    "target": "repos/avd-swarm.md"
   },
   {
+   "source": "concepts/sandbox-batches.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -163,6 +181,22 @@
   {
    "source": "getting-started/README.md",
    "target": "concepts/README.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/cloud-shell.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/cloud-shell.md",
+   "target": "repos/avd-current-state.md"
   },
   {
    "source": "repos/README.md",
