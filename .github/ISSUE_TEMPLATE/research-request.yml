@@ -1,0 +1,56 @@
+name: Research request
+description: Ask for research on a question or a gap in the standards, or offer to help with one.
+title: "Research request: "
+labels: [submission, needs-triage, type:research-request, research-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: input
+    id: target
+    attributes:
+      label: Gap
+      description: The gap ID (gap:id) or page it is about, if any. Filled in when you came from avd-ops.dev.
+    validations:
+      required: false
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: The decision or check it would inform.
+  - type: textarea
+    id: known
+    attributes:
+      label: What you already read
+      description: Links to what you found, and why it didn't answer the question.
+  - type: dropdown
+    id: role
+    attributes:
+      label: You are
+      options:
+        - Asking for research
+        - Offering to help research this
+    validations:
+      required: true
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

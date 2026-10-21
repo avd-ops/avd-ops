@@ -12,4 +12,7 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0001](0001-adopt-the-2ndbrain-format.md) | Adopt the 2ndbrain knowledge base format, version 1 | Accepted |
 | [0002](0002-avd-ops-is-the-front-door.md) | avd-ops is the front door for the AVD repos | Accepted |
 | [0003](0003-the-family-ends-at-its-contracts.md) | The family ends at its contracts; work outside it builds on them, never the reverse | Proposed |
+| [0004](0004-submissions-are-github-issue-forms.md) | Every outside submission is a GitHub issue form in the repo that owns it | Accepted |
+| [0005](0005-one-app-shell-for-every-page.md) | One app shell for every avd-ops page, vendored as a pinned copy | Accepted |
+| [0006](0006-run-anywhere.md) | Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux | Accepted |
 <!-- END GENERATED: decision-index -->
