@@ -17,7 +17,7 @@
 <!-- shell:top -->
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
-<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://avd-ops.github.io/avd-landing-zone/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
+<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
 <details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
@@ -43,7 +43,7 @@ Set-Location ~/avd-landing-zone; git checkout -q master; git pull -q --ff-only
 ./scripts/ops/Test-AvdLandingZoneReadiness.ps1 -PreDeployment -ParameterFile parameters/dev.bicepparam -Location northcentralus -UsersGroup &#x27;AVD Users&#x27; -AdminsGroup &#x27;AVD Admins&#x27;
 bash ./scripts/deploy/deploy.sh -p parameters/dev.bicepparam -l northcentralus --users-group &#x27;AVD Users&#x27; --admins-group &#x27;AVD Admins&#x27; --what-if</pre>
 <p>Full prerequisites and steps are in the <a href="https://github.com/avd-ops/avd-landing-zone#readme">README</a>.</p>
-<h2>Read more</h2><ul><li><a href="https://github.com/avd-ops/avd-landing-zone">Repository on GitHub</a></li><li><a href="https://avd-ops.github.io/avd-landing-zone/portal/">Deployment portal</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone/blob/HEAD/docs/design-decisions.md">Design decisions</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone/blob/HEAD/docs/lessons/README.md">Lessons</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone#contributing">Contributing</a></li></ul>
+<h2>Read more</h2><ul><li><a href="https://github.com/avd-ops/avd-landing-zone">Repository on GitHub</a></li><li><a href="https://deploy.avd-ops.dev/portal/">Deployment portal</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone/blob/HEAD/docs/design-decisions.md">Design decisions</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone/blob/HEAD/docs/lessons/README.md">Lessons</a></li><li><a href="https://github.com/avd-ops/avd-landing-zone#contributing">Contributing</a></li></ul>
 </div>
 </main>
 <!-- shell:foot -->
