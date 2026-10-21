@@ -22,6 +22,9 @@ site/                      # what GitHub Pages serves
 docs/family-roles.md       # the family convention: the foundation's three questions, the layer on top, and which way they depend
 docs/build-or-adopt.md     # the family convention: adopt an outside tool only if it's the best and open source, else build
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
+docs/never-delete-the-last-copy.md  # the family convention for teardown, logs and data
+docs/never-leave-the-meter-running.md  # the family convention for anything that bills
+docs/private-companion-repo.md  # your own private repo for run records and the estate vault
 repos.json                 # the public AVD repos avd-ops fronts, read by the tests and the family check
 scripts/site/build-docs.mjs  # docs/knowledge/ -> site/docs/, with backlinks and graph.json
 scripts/family-check.mjs   # every repo carries the avd-ops line and names no banned project
@@ -29,6 +32,8 @@ scripts/kb/                # knowledge base tooling from the 2ndbrain template (
 tests/site.test.mjs        # notice on every page, links resolve, avd-ops name, Cloud Shell blocks, design system, docs, banned names
 .github/workflows/         # ci (tests), pages (publishes site/), family (weekly), kb-* (knowledge base)
 ```
+
+Family conventions: [never delete the last copy](docs/never-delete-the-last-copy.md), for every teardown, cleanup and agent step that deletes data, [never leave the meter running](docs/never-leave-the-meter-running.md), for anything that bills, and your [private companion repo](docs/private-companion-repo.md) for run records.
 
 The overview and repo pages are plain HTML. The docs are Markdown in `docs/knowledge/`: after editing one, run `npm ci` once, then `node scripts/site/build-docs.mjs` and `python3 scripts/kb/build.py`, and commit what they write. Every page uses the shared [design system](docs/design-system.md), which the deployment portal vendors too. The deployment portal stays with the code it drives, in [avd-landing-zone](https://github.com/nickprignano/avd-landing-zone) ([portal](https://nickprignano.github.io/avd-landing-zone/portal/)).
 

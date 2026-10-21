@@ -67,6 +67,19 @@ None of the public repos holds tenant data.</p>
 <h2>Read first, change with approval</h2>
 <p>Scripts and agents read freely. Anything that creates, changes or deletes cloud resources runs only
 after a person approves it, and every sandbox run comes with a cost estimate and a teardown.</p>
+<h2>Keep the last copy, stop the meter</h2>
+<p>Teardown removes what a redeploy recreates and keeps the data. Logs and teardown proof go to one run
+store outside the deployment, kept by default (<code>-TeardownLogs Keep</code>), and deleting data with no
+checked copy elsewhere needs <code>-DiscardLastCopy</code>, which <code>-Force</code> never implies
+(<a href="https://github.com/nickprignano/avd-ops/blob/main/docs/never-delete-the-last-copy.md">never delete the last copy</a>,
+avd-second-brain <a href="https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md">decision 0016</a>).
+Anything that bills by time is removed, stopped or scheduled at the end of a run unless you opt in
+with <code>-KeepRunning &lt;until&gt;</code>, and recurring commitments such as licenses and Marketplace offers are
+recorded with their cancel windows, never bought by a script
+(<a href="https://github.com/nickprignano/avd-ops/blob/main/docs/never-leave-the-meter-running.md">never leave the meter running</a>,
+<a href="https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">decision 0017</a>).
+Your own copies go to a separate
+<a href="https://github.com/nickprignano/avd-ops/blob/main/docs/private-companion-repo.md">private companion repo</a>.</p>
 <h2>Knowledge capture</h2>
 <p>Each repo records what a change taught in a knowledge base in the shared format, or says why
 there&#39;s nothing to record, and a pull request check asks for it. The format comes from the
