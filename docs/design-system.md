@@ -93,6 +93,7 @@ On avd-ops.dev, `scripts/site/shell.mjs` writes the shell: `build-docs.mjs` wrap
 | `button`, `.secondary`, `.linkbtn`, `a.btnlink` | Primary, secondary and link-style actions. |
 | `.stepnav` | Back and Next, sticky at the bottom; `.where` names the stage. |
 | `.wz-head`, `.wz-tools` > `.wz-tool` | The wizard's head (2.5.0): the portal's name (`h1`), one `.purpose` line, and quiet tools such as Settings and Resume. |
+| `main.wz-layout` > `.wz-rail` > `ol.wz-list` | The wizard's layout: the steps listed down the left (`.group` names a phase, `button.step` with `.n`, `.done`, `aria-current="step"`, disabled until reached), the portal's name and the tools above and below it, and the step beside it. Below 64rem the rail becomes a head with `ol.wz-progress`. Add `.wide` to `.wz-nav` to line Back and Next up with the step. |
 | `ol.wz-progress` > `li.phase[data-steps]` | The wizard's progress: one bar per step (`button.seg`, `.done`, `.current`, disabled until reached), grouped by phase, each phase as wide as its steps so its `.phase-name` sits over them. |
 | `.wz-stage` | One step that fills the screen: a large `h2`, one `.purpose` line, the `.act` row, `.quiet` notes. |
 | `details.more` | The "+ more" disclosure that holds a step's detail, so the screen keeps one idea. |

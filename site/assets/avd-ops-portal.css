@@ -122,7 +122,7 @@ body.portal{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
 /* Wizard (2.5.0): one screen at a time (docs/design-system.md, "One screen at a time"). A slim head (the
    portal's name, one line on what it does, two quiet tools), a progress bar grouped by phase, one step that
    fills the screen, and Back and Next along the bottom on every screen size. */
-.portal .wz-head{display:flex;align-items:center;gap:var(--space-3) var(--space-5);flex-wrap:wrap;padding-block:22px 0}
+.portal .wz-head{display:flex;align-items:center;gap:var(--space-3) var(--space-5);padding-block:22px 0;border-bottom:0}
 .portal .wz-head .title{margin-right:auto;min-width:0}
 .portal .wz-head h1{font:700 1.05rem/1.2 var(--display);margin:0}
 .portal .wz-head .purpose{margin:2px 0 0;font-size:.86rem;color:var(--muted);max-width:none}
@@ -131,6 +131,9 @@ body.portal{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
 .portal .wz-tool:hover,.portal .wz-tool[aria-expanded="true"]{background:var(--sunken);color:var(--fg)}
 .portal .wz-tool svg{width:16px;height:16px;flex:none}
 @media (pointer:coarse){.portal .wz-tool{min-height:var(--tap)}}
+/* Phones: the tools as icons (each keeps its name for screen readers in .t), and no purpose line. */
+@media (max-width:560px){.portal .wz-head{padding-top:14px}.portal .wz-head .purpose{display:none}.portal .wz-tool{width:var(--tap);min-height:var(--tap);justify-content:center;padding:0}
+  .portal .wz-tool>.t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
 
 /* Progress: ol.wz-progress > li.phase[data-steps] > .phase-name + .segs > button.seg. A phase is as wide as its
    steps, so its name sits over its own steps. .seg.done, .seg.current; a disabled .seg is not reached yet. */
@@ -151,6 +154,41 @@ body.portal{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
 .portal .wz-progress button.seg:disabled::before{background:var(--line)}
 .portal .wz-progress button.seg:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (pointer:coarse){.portal .wz-progress button.seg{height:var(--tap)}}
+
+/* Wizard layout (2.5.0): the steps as a list down the left, as the docs side list, and the step beside it.
+   main.wz-layout > .wz-rail (the portal's name, ol.wz-list, .wz-tools) + the step column. Below 64rem the rail
+   becomes a head over the step: the name and the tools on one row, then ol.wz-progress in place of the list. */
+.portal .wz-layout{display:grid;grid-template-columns:14rem minmax(0,1fr);gap:var(--space-6);max-width:var(--page);margin:0 auto;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.portal .wz-rail{position:sticky;top:calc(var(--bar) + 1px + env(safe-area-inset-top,0px));align-self:start;max-height:calc(100dvh - var(--bar) - 1px - env(safe-area-inset-top,0px));overflow-y:auto;scrollbar-width:thin;
+  display:grid;gap:var(--space-4);align-content:start;padding-block:28px 24px;border:0}
+.portal .wz-rail h1{font:700 1rem/1.25 var(--display);margin:0 0 0 10px}
+.portal .wz-rail .purpose{margin:4px 0 0 10px;font-size:.8rem;color:var(--muted)}
+.portal ol.wz-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.portal .wz-list .group{font-size:.8rem;font-weight:600;color:var(--muted);margin:var(--space-4) 0 var(--space-1);padding-left:10px}
+.portal .wz-list .group:first-child{margin-top:0}
+.portal .wz-list button.step{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:0 10px;border:0;border-radius:var(--radius-sm);background:none;color:var(--fg);font:400 .9rem/1.2 var(--body);text-align:left}
+.portal .wz-list button.step:hover:not(:disabled){background:var(--sunken);color:var(--fg)}
+.portal .wz-list .n{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:600 .68rem var(--mono);border:1.5px solid var(--line-strong);color:var(--muted)}
+.portal .wz-list button.step.done .n{background:var(--good);border-color:var(--good);color:var(--surface)}
+.portal .wz-list button.step[aria-current="step"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.portal .wz-list button.step[aria-current="step"] .n{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.portal .wz-list button.step:disabled{opacity:1;color:var(--muted)}
+.portal .wz-list button.step:disabled .n{border-style:dashed}
+.portal .wz-rail .wz-tools{display:grid;gap:2px;border-top:1px solid var(--line);padding-top:var(--space-3)}
+.portal .wz-rail ol.wz-progress{display:none}
+@media (pointer:coarse){.portal .wz-list button.step{min-height:var(--tap)}}
+.portal .wz-nav.wide>.in{max-width:var(--page)}
+@media (min-width:64.01rem){.portal .wz-nav.wide>.in{padding-left:calc(max(var(--gutter),env(safe-area-inset-left,0px)) + 14rem + var(--space-6))}}
+@media (max-width:64rem){
+  .portal .wz-layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .portal .wz-rail{position:static;max-height:none;overflow:visible;grid-template-columns:minmax(0,1fr) auto;gap:0 var(--space-3);align-items:center;padding-block:18px 0}
+  .portal .wz-rail h1,.portal .wz-rail .purpose{margin-left:0}
+  .portal .wz-rail ol.wz-list{display:none}
+  .portal .wz-rail ol.wz-progress{display:flex;grid-column:1/-1}
+  .portal .wz-rail .wz-tools{display:flex;border:0;padding:0;grid-row:1;grid-column:2}
+}
+@media (max-width:560px){.portal .wz-rail .purpose{display:none}}
 
 /* The step: a large title, one line that says what to do, the one action, then detail behind details.more. */
 .portal .wz-stage{padding-block:clamp(24px,5vh,56px) 40px}
@@ -182,7 +220,7 @@ body.portal{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
 .portal .reply .bl.poor::before{content:"!";background:var(--bad-soft);color:var(--bad)}
 
 /* Back and Next: one bar along the bottom of the screen, on every screen size. .where names the step. */
-.portal .wz-nav{position:sticky;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -10px 18px -16px var(--fg)}
+.portal .wz-nav{position:sticky;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -10px 18px -16px var(--shell)}
 .portal .wz-nav>.in{display:flex;align-items:center;gap:var(--space-3);min-height:68px;max-width:980px;margin:0 auto;
   padding:10px max(var(--gutter),env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(var(--gutter),env(safe-area-inset-left,0px))}
 .portal .wz-nav .where{flex:1;min-width:0;text-align:center;font-size:.84rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -193,8 +231,8 @@ body.portal{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
    Full width on a phone. The page toggles .hidden on both. */
 .portal .sheet{position:fixed;z-index:40;top:calc(var(--bar) + 1px + env(safe-area-inset-top,0px));right:0;bottom:0;width:min(34rem,100vw);margin:0;overflow-y:auto;overscroll-behavior:contain;
   background:var(--surface);border:0;border-left:1px solid var(--line);border-radius:0;box-shadow:var(--shadow-2);padding:22px max(22px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) 22px}
-.portal .sheet-backdrop{position:fixed;inset:0;z-index:35;background:var(--shell);opacity:.45;border:0;border-radius:0;padding:0;cursor:default}
-.portal .sheet-backdrop:hover{background:var(--shell)}
+.portal button.sheet-backdrop{position:fixed;inset:0;z-index:35;background:var(--shell);opacity:.45;border:0;border-radius:0;padding:0;cursor:default}
+.portal button.sheet-backdrop:hover{background:var(--shell);border:0}
 .portal .sheet h2{font-size:1.3rem}
 .portal .sheet .row{align-items:stretch}
 @media (max-width:560px){.portal .sheet{border-left:0;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}}
