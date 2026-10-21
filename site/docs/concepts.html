@@ -91,6 +91,13 @@ recorded with their cancel windows, never bought by a script
 <a href="https://github.com/nickprignano/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">decision 0017</a>).
 Your own copies go to a separate
 <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/private-companion-repo.md">private companion repo</a>.</p>
+<h2>Runs anywhere</h2>
+<p>Every operator script runs from either Cloud Shell prompt, PowerShell or Bash, and anything a person
+runs on their own machine runs on Windows, macOS and Linux. PowerShell 7 is the baseline; each tool
+is written once and every command comes in a PowerShell and a Bash form that call it. Each repo
+lists, per script, which of those are proven by a test or a real run, and the portals offer only
+those. Proposed in <a href="decisions/0006-run-anywhere.html">decision 0006</a>; the rule, the audit and the
+gaps are in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/run-anywhere.md">run anywhere</a>.</p>
 <h2>Knowledge capture</h2>
 <p>Each repo records what a change taught in a knowledge base in the shared format, or says why
 there&#39;s nothing to record, and a pull request check asks for it. The format comes from the

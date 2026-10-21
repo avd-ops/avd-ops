@@ -44,6 +44,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0006-run-anywhere.md",
+   "title": "0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux",
+   "url": "decisions/0006-run-anywhere.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -132,6 +139,10 @@
    "target": "repos/avd-swarm.md"
   },
   {
+   "source": "concepts/README.md",
+   "target": "decisions/0006-run-anywhere.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -150,6 +161,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0005-one-app-shell-for-every-page.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0006-run-anywhere.md"
   },
   {
    "source": "getting-started/README.md",

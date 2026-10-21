@@ -2,4 +2,27 @@
 # Regenerate the page with `python3 scripts/kb/build.py`. Schema: ../schema/known-errors.schema.json
 # `source` is a KB path (relative to docs/knowledge/) or an https URL.
 
-errors: []
+errors:
+  - id: bash-3-bad-substitution
+    symptom: "deploy.sh: line N: ${JUMPBOX_OS,,}: bad substitution (or mapfile: command not found)"
+    cause: macOS ships Bash 3.2; avd-landing-zone's deploy.sh uses Bash 4 features (lowercase expansion, mapfile).
+    fix: Run it from Azure Cloud Shell, or install a newer bash (Homebrew) and run it with that bash instead of /bin/bash.
+    source: decisions/0006-run-anywhere.md
+    applies_to: avd-landing-zone e66d866
+    status: unverified
+    added: "2026-10-21"
+  - id: sh-crlf-on-windows
+    symptom: "$'\\r': command not found"
+    cause: A Windows checkout with core.autocrlf turned a .sh file's line endings into CRLF.
+    fix: Add `*.sh text eol=lf` to .gitattributes, or re-clone with `git config core.autocrlf input`.
+    source: decisions/0006-run-anywhere.md
+    status: unverified
+    added: "2026-10-21"
+  - id: git-bash-resource-id-rewritten
+    symptom: "az ... --ids fails with a resource ID that starts with C:/Program Files/Git/subscriptions/..."
+    cause: Git Bash (MSYS) converts arguments that start with / into Windows paths.
+    fix: Set MSYS_NO_PATHCONV=1 before running the script, or run it from Cloud Shell.
+    source: decisions/0006-run-anywhere.md
+    status: unverified
+    added: "2026-10-21"
+
