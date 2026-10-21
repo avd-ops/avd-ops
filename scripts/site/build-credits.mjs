@@ -55,8 +55,12 @@ ${table(data.prior_art, ['Project', 'What we learned', 'License'], (r) => [link(
 <h2 id="sources">Sources we read</h2>
 <p>${esc(data.references.text)} ${link(data.references.url, 'See the pinned references')}.</p>
 <h2 id="people">People</h2>
+<div class="card origin"><h3>Where it started</h3>
+<p>${p.origin.map(esc).join(' ')}</p>
+<p class="sig">${p.maintainers.map((m) => `${esc(m.name)}, ${link(`https://github.com/${m.github}`, `@${m.github}`)}`).join('; ')}</p></div>
 <ul>
 ${p.maintainers.map((m) => `<li><strong>${esc(m.name)}</strong> (${link(`https://github.com/${m.github}`, `@${m.github}`)}), ${esc(m.role.toLowerCase())}.</li>`).join('\n')}
+<li><strong>${link(p.pair.url, p.pair.name)}</strong>, ${esc(p.pair.text)}</li>
 <li>Everyone who has opened an issue or a pull request: see each repo's contributors on GitHub, ${repos.filter((r) => r.name !== 'avd-ops').map((r) => link(`${gh(r.name)}/graphs/contributors`, r.name)).join(', ')} and ${link(`${gh('avd-ops')}/graphs/contributors`, 'avd-ops')}.</li>
 <li>${esc(p.experts.text)} ${link(p.experts.url, 'Read the method and the list')}.</li>
 </ul>
