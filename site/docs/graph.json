@@ -30,9 +30,16 @@
    "status": "proposed"
   },
   {
-   "id": "decisions/0004-one-app-shell-for-every-page.md",
-   "title": "0004. One app shell for every avd-ops page, vendored as a pinned copy",
-   "url": "decisions/0004-one-app-shell-for-every-page.html",
+   "id": "decisions/0004-submissions-are-github-issue-forms.md",
+   "title": "0004. Every outside submission is a GitHub issue form in the repo that owns it",
+   "url": "decisions/0004-submissions-are-github-issue-forms.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
+   "id": "decisions/0005-one-app-shell-for-every-page.md",
+   "title": "0005. One app shell for every avd-ops page, vendored as a pinned copy",
+   "url": "decisions/0005-one-app-shell-for-every-page.html",
    "topic": "decisions",
    "status": "accepted"
   },
@@ -138,7 +145,11 @@
   },
   {
    "source": "decisions/README.md",
-   "target": "decisions/0004-one-app-shell-for-every-page.md"
+   "target": "decisions/0004-submissions-are-github-issue-forms.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0005-one-app-shell-for-every-page.md"
   },
   {
    "source": "getting-started/README.md",

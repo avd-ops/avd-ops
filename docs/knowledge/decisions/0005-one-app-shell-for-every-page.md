@@ -4,7 +4,7 @@ date: 2026-10-21
 decision-makers: [owner]
 ---
 
-# 0004. One app shell for every avd-ops page, vendored as a pinned copy
+# 0005. One app shell for every avd-ops page, vendored as a pinned copy
 
 ## Context and Problem Statement
 

@@ -1,6 +1,6 @@
 # avd-ops design system
 
-One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/). Version 2.0.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0004](knowledge/decisions/0004-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
+One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/). Version 2.0.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
 
 ## Where the UI is
 

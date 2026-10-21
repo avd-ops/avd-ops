@@ -1,0 +1,74 @@
+name: Research source
+description: Suggest a source, or a claim from one, for the standards. Pinned, in your own words.
+title: "Research: "
+labels: [submission, needs-triage, type:research, research]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: markdown
+    attributes:
+      value: |
+        The standards keep a pinned link and one line in our own words per claim, never the source's text.
+        To say an existing claim is wrong, use Dispute or fact check.
+  - type: input
+    id: url
+    attributes:
+      label: Source link
+      description: The readable URL.
+    validations:
+      required: true
+  - type: input
+    id: pin
+    attributes:
+      label: Pin
+      description: A commit SHA for a GitHub source; for a Learn page, its git_commit_id and updated_at (in the page's metadata); otherwise an archived copy's link and the date you read it. Leave empty if you can't find one and we'll pin it.
+  - type: textarea
+    id: claim
+    attributes:
+      label: The claim
+      description: One line in your own words, and the section or anchor it comes from.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - "Published: the source states it as fact or a requirement"
+        - "Prior: the source calls it an estimate or starting point"
+        - "Guidance: a recommendation"
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: Source license
+      description: If you know it.
+  - type: input
+    id: target
+    attributes:
+      label: Related claim or gap
+      description: An existing claim or gap ID this adds to, if any. Filled in when you came from avd-ops.dev.
+    validations:
+      required: false
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+        - label: The claim is in my own words; I did not paste the source's text.
+          required: true
+        - label: I agree my submission is licensed under the repo's MIT License.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

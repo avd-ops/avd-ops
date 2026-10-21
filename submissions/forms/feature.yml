@@ -1,0 +1,48 @@
+name: Feature request
+description: Something this repo should do.
+title: "Feature: "
+labels: [submission, needs-triage, type:feature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: input
+    id: target
+    attributes:
+      label: Where
+      description: The page, script or area it is about, if you know. Filled in when you came from avd-ops.dev.
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you are trying to do, and what gets in the way.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

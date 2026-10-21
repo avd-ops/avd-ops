@@ -1,0 +1,73 @@
+name: Dispute or fact check
+description: Something we publish is wrong. Tell us what, and what you say is correct.
+title: "Dispute: "
+labels: [submission, needs-triage, type:feedback, dispute, "dispute:open"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: markdown
+    attributes:
+      value: |
+        Every dispute gets a visible status: open, accepted (we fix it and thank you) or rejected
+        (closed with our reasons and evidence). A rejected dispute can be reopened with new evidence.
+  - type: input
+    id: target
+    attributes:
+      label: What is claimed
+      description: The claim, standard, check or page, as an ID (ref:source#claim, gap:id, a check ID) or a path. Filled in when you came from avd-ops.dev.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where it says so
+      description: The link to the page or line.
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What you say is correct
+      description: In your own words.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence-kind
+    attributes:
+      label: Your evidence
+      options:
+        - A pinned source
+        - A checked evidence file
+        - A public run record, lesson or issue
+        - None yet
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: The link and what it shows. Don't paste a source's text; say what it says in your words.
+  - type: input
+    id: pin
+    attributes:
+      label: Pin
+      description: For a source, a commit SHA, or a Learn page's git_commit_id and updated_at, or an archived copy's link and the date you read it.
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+        - label: I agree my submission is licensed under the repo's MIT License.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

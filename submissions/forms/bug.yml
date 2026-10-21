@@ -1,0 +1,58 @@
+name: Bug report
+description: Something in this repo does the wrong thing.
+title: "Bug: "
+labels: [submission, needs-triage, type:bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: input
+    id: target
+    attributes:
+      label: Where
+      description: The page, script, check or step, as a path or ID. Filled in when you came from avd-ops.dev.
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: The commit or release, and tool versions if they matter.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Error text or a log excerpt, with names and IDs removed.
+      render: text
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

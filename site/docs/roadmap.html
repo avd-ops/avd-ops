@@ -64,6 +64,14 @@
 <li>A glossary of the terms the repos share.</li>
 <li>Per-repo pages rendered from each README at the commit pinned in <code>repos.json</code>.</li>
 </ul>
+<h2>A family roadmap page (proposed)</h2>
+<p>A public roadmap across every repo is designed in <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/roadmap-spec.md">docs/roadmap-spec.md</a>, not built. What the prior-art check found, for the next page like it:</p>
+<ul>
+<li>Open source roadmaps that hold up are built from issues: one public tracking issue per item, a status label, and done closes the issue with a link to what shipped (<a href="https://github.com/github/roadmap">GitHub&#39;s public roadmap</a>, <a href="https://github.com/kubernetes/enhancements">Kubernetes enhancements</a>). Hand-written roadmap pages go stale (the <a href="https://backstage.io/docs/overview/roadmap/">Backstage roadmap</a> names an update date already past).</li>
+<li>Leave dates out. The roadmaps that give quarters also warn that dates move.</li>
+<li>Say maturity apart from progress (Kubernetes&#39; alpha, beta, stable). Here that is proven, pre-beta and design, so an item in progress in a design-stage repo can&#39;t read as nearly ready.</li>
+<li>Issue titles are written by whoever opened the issue: a generated page shows only approved items, checks who added the approval label, and pulls an item whose title changed after approval.</li>
+</ul>
 
 </div></main>
 </div>
