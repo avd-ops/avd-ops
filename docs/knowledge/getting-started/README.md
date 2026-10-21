@@ -25,7 +25,7 @@ tenant.
 | See what an existing AVD environment holds, read-only | [avd-current-state](../repos/avd-current-state.md) | Feed its redacted facts to [avd-second-brain](../repos/avd-second-brain.md) |
 | Deploy a new, cloud-native AVD landing zone | [avd-landing-zone](../repos/avd-landing-zone.md) | Check it with [avd-current-state](../repos/avd-current-state.md)'s validator |
 | Run the estate through agents a person approves | [avd-swarm](../repos/avd-swarm.md) | Design and spike stage today |
-| Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base and handbook |
+| Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
 New to the vocabulary? Read [concepts](../concepts/README.md) first.
 

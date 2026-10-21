@@ -17,7 +17,7 @@ The repo is the source of truth: [nickprignano/avd-second-brain](https://github.
 - A knowledge base of generalized facts: app catalog, rules with their history, sizing calibration and shared runbooks.
 - Estate vaults keep one customer's estate in that customer's own private repo. Tenant data never comes back here.
 - The contract registry and fact register that every repo boundary uses.
-- A docs consistency check and a generated handbook that agents search.
+- A docs consistency check every repo calls. Each repo's page lives here on avd-ops; the brain's old generated handbook is retired.
 
 ## How it fits
 
