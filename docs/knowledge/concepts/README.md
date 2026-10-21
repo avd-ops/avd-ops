@@ -16,11 +16,11 @@ is the short version with the links.
 Each repo answers one question
 ([family roles](https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md)):
 
-| Question | Repo |
-|---|---|
-| How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) |
-| What is there now | [avd-current-state](../repos/avd-current-state.md) |
-| What it should be, and why | [avd-assess](../repos/avd-assess.md) |
+| Question | Repo | Role |
+|---|---|---|
+| How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) | The deployment engine |
+| What is there now | [avd-current-state](../repos/avd-current-state.md) | The collector and validator |
+| What it should be, and why | [avd-assess](../repos/avd-assess.md) | The map and the dictionary |
 
 On top of those sits an intelligence and abstraction layer:
 [avd-second-brain](../repos/avd-second-brain.md) is the why over the environment's whole life, and

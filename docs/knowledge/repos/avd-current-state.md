@@ -3,12 +3,12 @@ title: "avd-current-state"
 summary: "What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts"
 topic: repos
 status: partial
-last_reviewed: 2026-10-20
+last_reviewed: 2026-10-21
 ---
 
 # avd-current-state
 
-**What is there now.** Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.
+**What is there now. The collector and validator.** Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.
 
 The repo is the source of truth: [avd-ops/avd-current-state](https://github.com/avd-ops/avd-current-state). This page says where it fits.
 
