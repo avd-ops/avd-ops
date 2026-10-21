@@ -133,7 +133,7 @@ The avd-ops organization's GitHub Project board is an internal working view of a
 - **Maturity is a separate outlined `.mark`**, never filled, so it can't read as a status: proven `--good`, pre-beta `--caution`, design `--info`.
 - Every new class is added to the reference page at `site/design/`, so it shows in both themes.
 - **The nav has one source, `GROUPS` in `scripts/site/shell.mjs`.** The Roadmap link changes there. `docs/roadmap.html` stays a KB section page, so it stays reachable from the side list (the test that every docs section is in the side list keeps passing).
-- **Generated pages carry the shell markers.** `build-roadmap.mjs` (and the credits and research builders) import `shellHead`, `shellTop` and `shellFoot` from `shell.mjs` and write the `shell:head`, `shell:top` and `shell:foot` markers, so `apply-shell.mjs` handles them on its one code path.
+- **Generated pages carry the shell markers.** `build-roadmap.mjs` (and the credits and research builders) import `shellHead`, `shellTop` and `shellFoot` from `shell.mjs` and write their output between the paired markers (`<!-- shell:head -->` ... `<!-- /shell:head -->`, the same for `top` and `foot`), so `apply-shell.mjs` handles them on its one code path.
 - **Follow-up:** the home page's family tiles read `maturity` from repos.json too, so the home page and the roadmap can't drift.
 
 **Generator:** `scripts/site/build-roadmap.mjs` reads `repos.json`, `roadmap.json` and `site/data/issues.json`, and writes `site/roadmap.html` and `site/data/roadmap.json` (the resolved items, for any later reader). `--check` runs in `tests/site.test.mjs` like the credits page.
