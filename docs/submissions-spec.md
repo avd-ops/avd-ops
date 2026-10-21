@@ -23,7 +23,7 @@ reads every issue before anything acts on it.
 Prior-art check (`scripts/kb/prior_art.py "submission intake issue forms"`): nothing in this KB;
 the sibling and GitHub searches failed from the container (403), so the family part rests on reading
 the sibling repos directly. Found there: **avd-assess already has one evidence path**
-([gaps/evidence-intake.md](https://github.com/nickprignano/avd-assess/blob/main/gaps/evidence-intake.md),
+([gaps/evidence-intake.md](https://github.com/avd-ops/avd-assess/blob/main/gaps/evidence-intake.md),
 its "Baseline evidence" issue form and `scripts/check_evidence.py`), and avd-ops, avd-second-brain
 and 2ndbrain share three KB issue forms (`kb-feedback`, `kb-known-error`, `kb-source`). This spec
 generalizes those; it replaces neither.

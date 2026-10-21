@@ -3,7 +3,7 @@
 A convention for every repo in the family, next to [three questions, three repos](family-roles.md):
 when to use an outside tool and when to build our own. The decision record, with the reasons, is
 avd-second-brain decision 0023, `docs/knowledge/decisions/0023-family-format-best-open-source-or-build.md`
-([avd-second-brain #44](https://github.com/nickprignano/avd-second-brain/pull/44)).
+([avd-second-brain #44](https://github.com/avd-ops/avd-second-brain/pull/44)).
 
 ## The rule
 
@@ -30,7 +30,7 @@ avd-second-brain decision 0023, `docs/knowledge/decisions/0023-family-format-bes
 - **Open source means the license file in the repo.** Read the file, not a package listing or a
   description. When the two disagree, settle it before anything is reused.
 - **Pin what you adopt** to a release or commit, and record it as a reference in
-  [avd-assess](https://github.com/nickprignano/avd-assess) so readers can see what we read and when.
+  [avd-assess](https://github.com/avd-ops/avd-assess) so readers can see what we read and when.
 - **Azure itself is the platform**, not a tool this rule weighs: Resource Graph, Learn and the
   Azure MCP Server are what we build on.
 - The [roles convention](family-roles.md) still holds: an adopted tool never makes

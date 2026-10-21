@@ -14,7 +14,7 @@ import { shellHead, shellTop, shellFoot } from './shell.mjs';
 const root = new URL('../../', import.meta.url).pathname;
 const KB = 'docs/knowledge';
 const OUT = 'site/docs';
-const REPO = 'https://github.com/nickprignano/avd-ops/blob/main/';
+const REPO = 'https://github.com/avd-ops/avd-ops/blob/main/';
 
 // The reader-facing topics are published; the KB's own upkeep pages (its README, curation, experts,
 // troubleshooting) stay in the repo and are linked on GitHub.
@@ -78,7 +78,7 @@ function render(page) {
 
 function shell({ url, title, summary, content }) {
   const up = '../'.repeat(url.split('/').length);           // to site/
-  const foot = `<p>These docs are the Markdown in <a href="https://github.com/nickprignano/avd-ops/tree/main/${KB}">${KB}/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>`;
+  const foot = `<p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/${KB}">${KB}/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>`;
   return `<!doctype html>
 <html lang="en">
 <head>

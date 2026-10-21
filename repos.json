@@ -6,11 +6,11 @@
     "me2"
   ],
   "repos": [
-    {"name": "avd-current-state", "repo": "nickprignano/avd-current-state", "branch": "main", "role": "What is there now", "docs": "docs/knowledge/repos/avd-current-state.md", "portal": "https://avd-ops.github.io/avd-current-state/portal/"},
-    {"name": "avd-assess", "repo": "nickprignano/avd-assess", "branch": "main", "role": "Foundation: what it should be", "docs": "docs/knowledge/repos/avd-assess.md"},
-    {"name": "avd-landing-zone", "repo": "nickprignano/avd-landing-zone", "branch": "master", "role": "How it's built and changed from here", "docs": "docs/knowledge/repos/avd-landing-zone.md", "portal": "https://avd-ops.github.io/avd-landing-zone/portal/"},
-    {"name": "avd-swarm", "repo": "nickprignano/avd-swarm", "branch": "main", "role": "On top: the how of operating", "docs": "docs/knowledge/repos/avd-swarm.md"},
-    {"name": "avd-second-brain", "repo": "nickprignano/avd-second-brain", "branch": "main", "role": "On top: the why, over the environment's life", "docs": "docs/knowledge/repos/avd-second-brain.md"},
-    {"name": "avd-ops", "repo": "nickprignano/avd-ops", "branch": "main", "role": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
+    {"name": "avd-current-state", "repo": "avd-ops/avd-current-state", "branch": "main", "role": "What is there now", "docs": "docs/knowledge/repos/avd-current-state.md", "portal": "https://avd-ops.github.io/avd-current-state/portal/"},
+    {"name": "avd-assess", "repo": "avd-ops/avd-assess", "branch": "main", "role": "Foundation: what it should be", "docs": "docs/knowledge/repos/avd-assess.md"},
+    {"name": "avd-landing-zone", "repo": "avd-ops/avd-landing-zone", "branch": "master", "role": "How it's built and changed from here", "docs": "docs/knowledge/repos/avd-landing-zone.md", "portal": "https://avd-ops.github.io/avd-landing-zone/portal/"},
+    {"name": "avd-swarm", "repo": "avd-ops/avd-swarm", "branch": "main", "role": "On top: the how of operating", "docs": "docs/knowledge/repos/avd-swarm.md"},
+    {"name": "avd-second-brain", "repo": "avd-ops/avd-second-brain", "branch": "main", "role": "On top: the why, over the environment's life", "docs": "docs/knowledge/repos/avd-second-brain.md"},
+    {"name": "avd-ops", "repo": "avd-ops/avd-ops", "branch": "main", "role": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
   ]
 }

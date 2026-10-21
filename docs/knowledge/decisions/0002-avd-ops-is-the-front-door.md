@@ -44,4 +44,4 @@ while each repo stays the source of truth for its own code, specs and lessons.
 
 ## More Information
 
-avd-second-brain's handbook (its `wiki/`, decision 0004 there) was the index agents searched until it was retired on 2026-10-21 (its decision 0024, [PR #76](https://github.com/nickprignano/avd-second-brain/pull/76)). The repo pages here are now the one place to read each repo, and agents search the brain's knowledge base.
+avd-second-brain's handbook (its `wiki/`, decision 0004 there) was the index agents searched until it was retired on 2026-10-21 (its decision 0024, [PR #76](https://github.com/avd-ops/avd-second-brain/pull/76)). The repo pages here are now the one place to read each repo, and agents search the brain's knowledge base.
