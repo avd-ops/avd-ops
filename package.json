@@ -1,0 +1,14 @@
+{
+  "name": "avd-ops",
+  "private": true,
+  "description": "avd-ops.dev: the front door for the AVD repos. Personal project, not for production, as is.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs": "node scripts/site/build-docs.mjs",
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "devDependencies": {
+    "marked": "14.1.4"
+  }
+}

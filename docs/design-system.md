@@ -1,14 +1,15 @@
 # avd-ops design system
 
-One look for every public AVD page: avd-ops.dev and the avd-landing-zone deployment portal today, and any page a sibling repo adds later. It is one stylesheet, its fonts and the brand files, in [`site/assets/`](../site/assets/). Version 1.0.0.
+One look for every public AVD page: avd-ops.dev and the avd-landing-zone deployment portal today, and any page a sibling repo adds later. It is one stylesheet, its fonts and the brand files, plus a second stylesheet for guided portal pages, in [`site/assets/`](../site/assets/). Version 1.1.0.
 
 ## Where the UI is
 
 | Repo | Pages | Uses |
 |---|---|---|
 | avd-ops | `site/index.html`, `site/family/*.html` (avd-ops.dev) | `assets/avd-ops.css` + `assets/site.css` (the lifecycle layout) |
-| avd-landing-zone | `site/portal/` (the deployment portal), `site/region-latency/`, the redirect pages | a vendored copy of `assets/` + the portal's own components |
-| avd-current-state, avd-swarm, avd-second-brain, avd-liquidware | none yet (READMEs and Markdown docs only) | adopt this when they add a page |
+| avd-landing-zone | `site/portal/` (the deployment portal), `site/region-latency/`, the redirect pages | a vendored copy of `assets/` + the portal's own components (moving onto `avd-ops-portal.css`) |
+| avd-current-state | `site/portal/` (the assessment portal) | a vendored copy of `assets/`, `avd-ops-portal.css` for its components |
+| avd-swarm, avd-second-brain, avd-liquidware | none yet (READMEs and Markdown docs only) | adopt this when they add a page |
 
 Private repos stay out of it.
 
@@ -52,6 +53,26 @@ Private repos stay out of it.
 | `pre`, `code` | Code; command blocks still follow the standalone Cloud Shell rule. |
 | `footer.site` | Footer with the license and trademark lines. |
 
+## Portal components
+
+`avd-ops-portal.css` holds what a guided, step-by-step page needs: the deployment portal drew these first, and they live here so the assessment portal and any later portal vendor one copy instead of copying each other (code flows one way between the landing zone and avd-current-state). Load it after `avd-ops.css` and put `class="portal"` on `<body>`; every rule is scoped to `.portal`, so the avd-ops.dev pages never change (a test checks the scoping, the tokens and that both files carry one version).
+
+| Class | What it is |
+|---|---|
+| `ol.steps` | The progress rail: one numbered stop per stage, `li.done`, `li.current`, `li.locked`, an optional `data-phase` label; circles only on phones, plus the current label. |
+| `.panel`, `.stage` | A surface for a stage or a collapsible block (`details.panel`); `.panel.accent` for Settings. One `.stage` shows at a time. |
+| `.slot` > `.stop` | The "Run in Cloud Shell, then paste the output" timeline; a stop takes `.good`, `.ok` or `.poor` once its result is known. `.stop > .label` is the stop's name. |
+| `.term` | A Cloud Shell block with its own Copy button (`.term-head`, `.term-label`, `pre`). |
+| `textarea.paste` | The paste box. |
+| `.row`, `.field`, `fieldset`, `label.switch` | Form layout, a labeled field with an optional hint (`small`), a group, a toggle. `textarea.prose` for notes. |
+| `button`, `.secondary`, `.linkbtn`, `a.btnlink` | Primary, secondary and link-style actions. |
+| `.stepnav` | Back and Next, sticky at the bottom; `.where` names the stage. |
+| `.result.good` / `.ok` / `.poor` | A run's overall result. |
+| `.outcome.o-pass` / `.o-warn` / `.o-gap` / `.o-unknown` | A check's outcome. Each pill carries its word, never color alone. |
+| `.segmented` | A radio group drawn as joined buttons (`role="radiogroup"`, `label > input[type=radio] + span`), such as Fix, Accept, Defer. |
+| `.filedrop` | A file input with a drop zone; the page fills `.file` and `.error`. The hint says the file is read in the browser and never uploaded. |
+| `.table-wrap`, `table.kv`, `td.num` | A table in its own border, a key and value table, numbers. |
+
 ## Logo
 
 The mark is a shield holding a desktop with a cloud, and the >< of a remote session (Nick's logo, 2026-10-20, rebuilt as vector; tagline "Deploy quietly"). Files in `site/assets/brand/`:
@@ -69,7 +90,7 @@ The mark needs no text; where a page names the brand, it sets "avd-ops" in `--di
 Pages that can't load avd-ops.dev at run time (the portal makes no requests to other sites) vendor a copy at a tagged version into their own Pages folder, as `site/assets/`. From Azure Cloud Shell, in a clone of the repo that adopts it:
 
 ```bash
-git clone --depth 1 https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && cp -r /tmp/avd-ops/site/assets/avd-ops.css /tmp/avd-ops/site/assets/fonts /tmp/avd-ops/site/assets/brand site/assets/
+git clone --depth 1 https://github.com/nickprignano/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && cp -r /tmp/avd-ops/site/assets/avd-ops.css /tmp/avd-ops/site/assets/avd-ops-portal.css /tmp/avd-ops/site/assets/fonts /tmp/avd-ops/site/assets/brand site/assets/
 ```
 
-Then link `assets/avd-ops.css` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. The copy's first line names the version; bump it in both repos together.
+Then link `assets/avd-ops.css` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal"` on `<body>`. Each copy's first line names the version; bump it in every repo that vendors it together.

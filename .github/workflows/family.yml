@@ -1,0 +1,26 @@
+name: family
+
+# The family check (scripts/family-check.mjs, decision 0002): every public AVD repo in repos.json
+# carries the avd-ops line under its README title and names no banned project. It reads the other
+# repos' default branches with anonymous clones, so it runs weekly and by hand rather than on pull
+# requests, where another repo's state would turn this repo's CI red. Nothing here touches Azure.
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  family:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/family-check.mjs

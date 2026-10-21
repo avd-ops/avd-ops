@@ -10,13 +10,13 @@
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<div class="wrap"><header class="top"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="../index.html">Overview</a><a href="avd-landing-zone.html">avd-landing-zone</a><a href="avd-current-state.html">avd-current-state</a><a href="avd-swarm.html" aria-current="page">avd-swarm</a><a href="avd-second-brain.html">avd-second-brain</a><a href="avd-liquidware.html">avd-liquidware</a></nav></header>
-<p class="eyebrow kicker">Act and control</p>
+<div class="wrap"><header class="top"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="../index.html">Overview</a><a href="../docs/index.html">Docs</a><a href="../architecture.html">Architecture</a><a href="avd-landing-zone.html">avd-landing-zone</a><a href="avd-current-state.html">avd-current-state</a><a href="avd-assess.html">avd-assess</a><a href="avd-swarm.html" aria-current="page">avd-swarm</a><a href="avd-second-brain.html">avd-second-brain</a></nav></header>
+<p class="eyebrow kicker">On top: how we automate it</p>
 <h1>avd-swarm</h1>
 <p class="lede">Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.</p>
 <span class="status s-design">Design and spike</span>
 <div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
-<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer, Liquidware or Microsoft.</li>
+<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div>
@@ -28,7 +28,7 @@ Set-Location ~/avd-swarm; git checkout -q main; git pull -q --ff-only
 <p>It needs Claude quota in Microsoft Foundry (East US 2). Without it, add <code>-Provider Anthropic</code> to run the same questions on Anthropic's API, with no API key.</p>
 <p>Full prerequisites and steps are in the <a href="https://github.com/nickprignano/avd-swarm#readme">README</a>.</p>
 <h2>Read more</h2><ul><li><a href="https://github.com/nickprignano/avd-swarm">Repository on GitHub</a></li><li><a href="https://github.com/nickprignano/avd-swarm/blob/HEAD/docs/spec.md">Spec</a></li><li><a href="https://github.com/nickprignano/avd-swarm/blob/HEAD/docs/spec.md#9a-build-order-proposed-2026-10-19-after-the-second-red-team">Build order</a></li><li><a href="https://github.com/nickprignano/avd-swarm#contributing">Contributing</a></li></ul>
-<footer class="site"><p>Every repo is open source under MIT (avd-liquidware's knowledge base tooling under Apache-2.0). Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft. Liquidware, ProfileUnity, FlexApp, Stratusphere and CommandCTRL are trademarks of Liquidware.</p>
+<footer class="site"><p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
 <p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p></footer></div>
 </body>
 </html>

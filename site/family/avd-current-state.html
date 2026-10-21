@@ -10,13 +10,13 @@
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<div class="wrap"><header class="top"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="../index.html">Overview</a><a href="avd-landing-zone.html">avd-landing-zone</a><a href="avd-current-state.html" aria-current="page">avd-current-state</a><a href="avd-swarm.html">avd-swarm</a><a href="avd-second-brain.html">avd-second-brain</a><a href="avd-liquidware.html">avd-liquidware</a></nav></header>
-<p class="eyebrow kicker">Inventory and validate</p>
+<div class="wrap"><header class="top"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="../index.html">Overview</a><a href="../docs/index.html">Docs</a><a href="../architecture.html">Architecture</a><a href="avd-landing-zone.html">avd-landing-zone</a><a href="avd-current-state.html" aria-current="page">avd-current-state</a><a href="avd-assess.html">avd-assess</a><a href="avd-swarm.html">avd-swarm</a><a href="avd-second-brain.html">avd-second-brain</a></nav></header>
+<p class="eyebrow kicker">Foundation: what it is</p>
 <h1>avd-current-state</h1>
 <p class="lede">Read-only PowerShell that answers what is in an AVD environment today, and whether a subscription is ready for a deployment and the deployment landed correctly.</p>
 <span class="status s-built">Built</span>
 <div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
-<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer, Liquidware or Microsoft.</li>
+<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div>
@@ -27,7 +27,7 @@ Set-Location ~/avd-current-state; git checkout -q main; git pull -q --ff-only
 ./avd_current_state_collector.ps1</pre>
 <p>Full prerequisites and steps are in the <a href="https://github.com/nickprignano/avd-current-state#readme">README</a>.</p>
 <h2>Read more</h2><ul><li><a href="https://github.com/nickprignano/avd-current-state">Repository on GitHub</a></li><li><a href="https://github.com/nickprignano/avd-current-state#facts-snapshot-for-the-brain-and-avd-swarm">Facts snapshot (C11)</a></li><li><a href="https://github.com/nickprignano/avd-current-state#contributing">Contributing</a></li></ul>
-<footer class="site"><p>Every repo is open source under MIT (avd-liquidware's knowledge base tooling under Apache-2.0). Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft. Liquidware, ProfileUnity, FlexApp, Stratusphere and CommandCTRL are trademarks of Liquidware.</p>
+<footer class="site"><p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
 <p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p></footer></div>
 </body>
 </html>

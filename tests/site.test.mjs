@@ -1,18 +1,20 @@
 // The avd-ops site (site/, published at https://avd-ops.dev/ by .github/workflows/pages.yml).
 // Every page keeps the research-only notice and the invitation to contribute and fork, every relative link
-// resolves, and the site names no partner but Liquidware.
+// resolves, and the site names no partner product and no HCL tooling.
 // Run: node --test "tests/*.test.mjs"
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
-const pages = ['site/index.html', ...readdirSync(join(root, 'site/family')).filter((f) => f.endsWith('.html')).map((f) => `site/family/${f}`)];
+const walk = (d) => readdirSync(join(root, d)).flatMap((f) => (statSync(join(root, d, f)).isDirectory() ? walk(`${d}/${f}`) : [`${d}/${f}`]));
+const pages = walk('site').filter((f) => f.endsWith('.html'));
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
-  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-swarm', 'avd-second-brain', 'avd-liquidware']) {
+  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain']) {
     assert.ok(pages.includes(`site/family/${r}.html`), r);
   }
 });
@@ -36,8 +38,8 @@ test('every page shows the notice before its first section', () => {
 test('every page uses the shared design system and nothing else (docs/design-system.md)', () => {
   for (const f of pages) {
     const h = read(f);
-    assert.match(h, /<link rel="stylesheet" href="(\.\.\/)?assets\/avd-ops\.css">/, `${f}: no avd-ops.css`);
-    assert.match(h, /<link rel="icon" href="(\.\.\/)?assets\/brand\/favicon\.svg"/, `${f}: no favicon`);
+    assert.match(h, /<link rel="stylesheet" href="(\.\.\/)*assets\/avd-ops\.css">/, `${f}: no avd-ops.css`);
+    assert.match(h, /<link rel="icon" href="(\.\.\/)*assets\/brand\/favicon\.svg"/, `${f}: no favicon`);
     assert.doesNotMatch(h, /<style|style="/, `${f}: inline styles belong in assets/`);
     assert.doesNotMatch(h, /fonts\.(googleapis|gstatic)\.com/, `${f}: fonts are served from assets/fonts`);
   }
@@ -67,6 +69,20 @@ test('the design system defines every token for light and dark and serves its ow
   assert.doesNotMatch(read('site/assets/site.css'), /#[0-9a-fA-F]{3,6}\b/, 'hex in site.css');
 });
 
+test('the portal components share the version, use only tokens and touch only .portal pages', () => {
+  const base = read('site/assets/avd-ops.css');
+  const css = read('site/assets/avd-ops-portal.css');
+  const v = (t, re) => (t.match(re) || [])[1];
+  const version = v(base, /^\/\* avd-ops design system (v\d+\.\d+\.\d+) /);
+  assert.equal(v(css, /^\/\* avd-ops portal components (v\d+\.\d+\.\d+) /), version, 'one version for both files');
+  assert.doesNotMatch(css, /#[0-9a-fA-F]{3,6}\b|rgba?\(|:root|@font-face/, 'colors and fonts come from avd-ops.css');
+  const defined = new Set([...base.matchAll(/(--[\w-]+):/g)].map((m) => m[1]));
+  for (const [, t] of css.matchAll(/var\((--[\w-]+)/g)) assert.ok(defined.has(t), `${t} is not an avd-ops token`);
+  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[^{]+\{/g, '').split('}').map((r) => r.split('{')[0].trim()).filter(Boolean);
+  for (const sel of rules.flatMap((r) => r.split(/,(?![^(]*\))/))) assert.match(sel.trim(), /^(body)?\.portal\b/, `unscoped selector: ${sel.trim()}`);
+  for (const f of pages) assert.doesNotMatch(read(f), /class="portal"/, `${f}: the avd-ops.dev pages are not portals`);
+});
+
 test('relative links resolve to files in site/', () => {
   for (const f of pages) {
     for (const [, href] of read(f).matchAll(/(?:href|src)="([^"]+)"/g)) {
@@ -77,9 +93,9 @@ test('relative links resolve to files in site/', () => {
   }
 });
 
-test('the site names no partner but Liquidware and no HCL tooling', () => {
-  for (const f of pages) {
-    assert.doesNotMatch(read(f), /nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
+test('the site names no partner product and no HCL tooling (no Liquidware for now)', () => {
+  for (const f of [...pages, 'site/assets/site.css']) {
+    assert.doesNotMatch(read(f), /liquidware|nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
   }
 });
 
@@ -98,5 +114,35 @@ test('README and LICENSE keep the research-only notice', () => {
   const top = read('README.md').split('\n## ')[0];
   for (const re of [/Personal project/, /Research and learning only/, /Not for production/, /not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty/, /forks are welcome/]) {
     assert.match(top, re, `README intro is missing ${re}`);
+  }
+});
+
+test('the docs are built from docs/knowledge and up to date (scripts/site/build-docs.mjs)', () => {
+  assert.ok(pages.includes('site/docs/index.html') && pages.includes('site/docs/graph.html'), 'docs home and graph');
+  execFileSync(process.execPath, [join(root, 'scripts/site/build-docs.mjs'), '--check'], { stdio: 'pipe' });
+  const graph = JSON.parse(read('site/docs/graph.json'));
+  const ids = new Set(graph.nodes.map((n) => n.id));
+  for (const l of graph.links) assert.ok(ids.has(l.source) && ids.has(l.target), `${l.source} -> ${l.target}`);
+  const linked = new Set(graph.links.flatMap((l) => [l.source, l.target]));
+  for (const n of graph.nodes) assert.ok(linked.has(n.id), `${n.id} is an orphan: link it from another page`);
+});
+
+test('repos.json lists every public repo with a docs page, and every page links its repo', () => {
+  const family = JSON.parse(read('repos.json'));
+  for (const r of family.repos) {
+    assert.ok(existsSync(join(root, r.docs)), `${r.name}: ${r.docs}`);
+    if (r.name !== 'avd-ops') assert.match(read(r.docs), new RegExp(`https://github\\.com/${r.repo}`), r.name);
+  }
+});
+
+test('avd-ops names no project outside the family it shouldn\'t (repos.json banned)', () => {
+  const { banned } = JSON.parse(read('repos.json'));
+  const re = new RegExp(`(?<![\\w-])(${banned.join('|')})(?![\\w-])`, 'i');
+  const files = execFileSync('git', ['-C', root, 'ls-files', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' }).split('\n').filter(Boolean);
+  for (const f of files) {
+    if (f === 'repos.json' || !existsSync(join(root, f))) continue;
+    const text = readFileSync(join(root, f), 'utf8');
+    if (text.includes('\u0000')) continue;
+    assert.doesNotMatch(text, re, f);
   }
 });
