@@ -35,7 +35,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 | Notice | `--warn-bg` `--warn-line` `--warn-fg` | the research-only notice |
 | Terminal | `--term-bg` `--term-head` `--term-text` `--term-muted` `--term-border` `--prompt` | Cloud Shell blocks |
 | Status | `--s-built-*` `--s-design-*` `--s-slice-*` | repo status pills (design uses the info hue; there is no purple) |
-| Type | `--display` (Space Mono), `--body` and `--mono` (IBM Plex Mono); `--wordmark` (Schibsted Grotesk) and `--tagline` (JetBrains Mono) for the logo only | a mechanical, typewriter feel: headings, text, controls and code (2.3.0; the logo keeps its own faces) |
+| Type | `--display` (Schibsted Grotesk, the logo's face), `--body` and `--mono` (IBM Plex Mono); `--wordmark` (Schibsted Grotesk) and `--tagline` (JetBrains Mono) for the logo | headings in the logo's face over mechanical, typewriter text, controls and code (2.4.0) |
 | Shape | `--radius` 8px, `--radius-sm` 6px, `--radius-lg` 14px, `--pill`, `--shadow`, `--shadow-2` | cards, controls, chips, the family map, the drawer |
 | Space | `--space-1` to `--space-6` (0.25 to 2.5rem), `--measure` 46rem, `--page` 76rem, `--side` 15rem, `--gutter` 16px, `--tap` 44px | rhythm, reading column, the shell's width and side list, phone gutter, touch targets |
 | Motion | `--ease`, `--fast` 120ms, `--slow` 220ms | short state changes; off under reduced motion |
@@ -116,7 +116,7 @@ Two starters in [`templates/`](../templates/), written by `scripts/site/build-ki
 From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy; it never overwrites a page that is there):
 
 ```bash
-TAG=ds-v2.3.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
+TAG=ds-v2.4.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
 ```
 
 A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `brand-profile` skill ([`.claude/skills/brand-profile/`](../.claude/skills/brand-profile/SKILL.md)), which reads `brand/profile.json` and starts every page or artifact from these files.
@@ -143,7 +143,7 @@ Pages that can't load avd-ops.dev at run time (the portals make no requests to o
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
 ```bash
-TAG=ds-v2.3.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
+TAG=ds-v2.4.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.

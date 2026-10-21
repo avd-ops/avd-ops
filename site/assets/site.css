@@ -11,7 +11,7 @@ td:first-child{white-space:nowrap}
    questions under it). Tiles are links; the whole tile is the target. */
 .home .hero{display:grid;gap:var(--space-4);padding-block:0 var(--space-5);max-width:52rem}
 .home .hero>.eyebrow{margin:0}
-.home .hero h1{margin:0;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.035em}
+.home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.02em}
 .home .hero .lede{margin:0;max-width:44rem}
 .map{margin:var(--space-4) 0 0;display:grid;gap:var(--space-3)}
 .map .band{background:var(--accent-soft);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;gap:var(--space-3)}
@@ -127,7 +127,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch .t-term-bg{background:var(--term-bg)}
 .swatch .t-term-text{background:var(--term-text)}
 .swatch .t-prompt{background:var(--prompt)}
-.specimen .d1{font:700 clamp(1.85rem,4.4vw,2.6rem)/1.2 var(--display);letter-spacing:-.03em} .specimen .d3{font:700 1.1rem/1.2 var(--display)}
+.specimen .d1{font:700 clamp(2rem,5vw,2.9rem)/1.2 var(--display);letter-spacing:-.015em} .specimen .d3{font:700 1.1rem/1.2 var(--display)}
 /* Credits page (site/credits.html, built from credits.json): the two-way help as a grid of cards. */
 .credit-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--space-3);margin-top:var(--space-4)}
 .credit-cards .card h3{margin-top:0} .credit-cards .card p{margin:0;font-size:.95rem;color:var(--muted)}
