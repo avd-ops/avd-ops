@@ -1,4 +1,4 @@
-<!-- avd-ops artifact starter, design system v2.4.0 (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
+<!-- avd-ops artifact starter, design system v2.4.1 (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
      Copy this file, rename the title, and replace the content between page:start and page:end. Keep the style and script blocks as they are: they are the release, inlined. -->
 <title>Page title</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@600;700&display=swap">
 <style>
-/* avd-ops design system v2.4.0: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
+/* avd-ops design system v2.4.1: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
 /* Tokens. Neutrals are a cool slate; the accent is the logo's teal, darkened on light backgrounds for contrast
    (--brand and --brand-ink are the logo's own colors, for brand surfaces only); amber marks the optional
    Liquidware tier; good, caution and bad are for results only, never decoration, and info marks work in progress.
@@ -126,7 +126,7 @@ th,td{text-align:left;vertical-align:top;padding:.55rem .7rem;border-bottom:1px 
 /* Run in: where the page's commands run, as two segmented choices (place, then shell) that every command block
    follows. .runin-title names the row; the page remembers the choice in this browser only. */
 .runin{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3);padding:var(--space-2) var(--space-3);border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--sunken)}
-.runin-title{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.runin-title{font:600 .88rem var(--body);color:var(--muted)}
 @media (max-width:40rem){.runin .segmented{display:flex;width:100%}}
 /* Not tested yet: a variant no real run has proved; the word always shows, never the color alone. */
 .untested{display:inline-block;font:600 .7rem/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-radius:var(--pill);padding:1px 9px;color:var(--caution);background:var(--caution-soft);white-space:nowrap}
@@ -255,7 +255,7 @@ html:not(.js) .shell .theme{display:none}
 .shell .skip:focus{left:max(var(--gutter),env(safe-area-inset-left,0px));top:calc(var(--space-2) + env(safe-area-inset-top,0px))}
 </style>
 <script>
-/* avd-ops theme.js v2.4.0, inlined. */
+/* avd-ops theme.js v2.4.1, inlined. */
 (function () {
   var root = document.documentElement;
   var KEY = 'avd-ops-theme';
