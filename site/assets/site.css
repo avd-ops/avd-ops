@@ -88,6 +88,8 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch{display:grid;gap:.35rem;min-width:0} .swatch i{display:block;height:3rem;border-radius:var(--radius-sm);border:1px solid var(--line)} .swatch code{font-size:.78rem;background:none;padding:0}
 .specimen{display:grid;gap:var(--space-2);margin:var(--space-3) 0 var(--space-5)} .specimen>*{margin:0}
 .demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);display:grid;gap:var(--space-3);margin:var(--space-3) 0 var(--space-5);min-width:0}
+/* Brand: the light lockup always on a light ground, the dark one on the bar ink, whatever the theme. */
+.demo.paper{background:var(--shell-fg);border-color:var(--line)} .demo.inverse{background:var(--shell);border-color:var(--shell-line)} .demo img{max-width:100%;height:auto;max-height:72px;justify-self:start}
 .demo .row{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
 .demo .bar-demo{background:var(--shell);color:var(--shell-fg);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);display:flex;gap:var(--space-3);align-items:center;font:700 1rem var(--display)}
 .demo .bar-demo img{width:28px;height:28px;border-radius:6px}

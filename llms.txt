@@ -40,6 +40,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0004. Every outside submission is a GitHub issue form in the repo that owns it](docs/knowledge/decisions/0004-submissions-are-github-issue-forms.md): accepted
 - [0005. One app shell for every avd-ops page, vendored as a pinned copy](docs/knowledge/decisions/0005-one-app-shell-for-every-page.md): accepted
 - [0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux](docs/knowledge/decisions/0006-run-anywhere.md): accepted
+- [0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package](docs/knowledge/decisions/0007-starters-not-a-theme-repo.md): proposed
 
 ## Related knowledge bases
 
