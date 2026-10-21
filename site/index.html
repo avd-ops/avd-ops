@@ -5,38 +5,57 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-ops</title>
 <meta name="description" content="Open-source repos for Azure Virtual Desktop.">
+<!-- shell:head -->
 <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/avd-ops.css">
+<link rel="stylesheet" href="assets/avd-ops-shell.css">
 <link rel="stylesheet" href="assets/site.css">
+<script src="assets/theme.js"></script>
+<!-- /shell:head -->
 </head>
-<body>
-<div class="wrap"><header class="top"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="index.html" aria-current="page">Overview</a><a href="docs/index.html">Docs</a><a href="architecture.html">Architecture</a><a href="credits.html">Credits</a><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-current-state.html">avd-current-state</a><a href="family/avd-assess.html">avd-assess</a><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a></nav></header>
-<h1>Azure Virtual Desktop, from inventory to operations, as code you can read.</h1>
-<p class="lede">Open-source repos that inventory what an AVD environment is, assess what it should be, deploy a hardened landing zone, run it with agents a person approves, and remember what every deployment taught. Bicep and PowerShell, run from Azure Cloud Shell.</p>
-<div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
-<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
+<body class="shell">
+<!-- shell:top -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><div class="bar-in"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
+<nav class="switcher" aria-label="avd-ops tools"><a href="index.html" aria-current="true">Docs</a><a href="https://avd-ops.github.io/avd-landing-zone/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
+<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
+<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
+<div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
-<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="index.html#contribute">Contribute</a>.</li></ul></div>
-<h2>How the pieces fit</h2>
-<p>The foundation is three repos, each answering one question: avd-current-state is what it is, avd-assess is what it should be, and avd-landing-zone is how we build it. avd-current-state and avd-landing-zone work as a pair on their own. On top, avd-swarm and the second brain are how we automate it and make it smart and self-improving, and never something the foundation needs. The repos pass versioned, redacted contracts to each other instead of sharing code. <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md">Read the convention</a>, or see the <a href="architecture.html">architecture</a> for the layers and the contracts between them.</p>
-<div class="lifecycle">
-<div class="stage "><span class="eyebrow">Foundation: what it is</span>
-<h3><a href="family/avd-current-state.html">avd-current-state</a></h3><p>Read-only PowerShell that answers what is in an AVD environment today, and whether a subscription is ready for a deployment and the deployment landed correctly.</p>
-<span class="status s-built">Built</span><div class="chips"><span class="chip">C11 facts</span></div></div>
-<div class="stage "><span class="eyebrow">Foundation: what it should be</span>
-<h3><a href="family/avd-assess.html">avd-assess</a></h3><p>The assessment method: how to collect, assess, set targets and benchmarks, and score an AVD environment. Methodology only, no tools: a research index that links out to published sources and adds what real runs observed.</p>
-<span class="status s-design">Being specified</span></div>
-<div class="stage "><span class="eyebrow">Foundation: how we build it</span>
-<h3><a href="family/avd-landing-zone.html">avd-landing-zone</a></h3><p>An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
-<span class="status s-built">Built</span><div class="chips"><span class="chip">C14 target state</span><span class="chip">lessons</span></div></div>
-<div class="stage layerband"><span class="eyebrow">On top: how we automate it</span>
-<h3><a href="family/avd-swarm.html">avd-swarm</a></h3><p>Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.</p>
-<span class="status s-design">Design and spike</span><div class="chips"><span class="chip">C9 proposals</span><span class="chip">C10 outcomes</span></div></div>
-<div class="stage layerband"><span class="eyebrow">On top: how it gets smart and self-improving</span>
-<h3><a href="family/avd-second-brain.html">avd-second-brain</a></h3><p>One memory across the AVD lifecycle: what each estate looked like, what broke, what the organization learned, and why each rule is what it is.</p>
-<span class="status s-built">Built, growing</span><div class="chips"><span class="chip">C6 knowledge</span><span class="chip">C13 docs findings</span><span class="chip">C15 fact register</span></div></div>
+<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="index.html#contribute">Contribute</a>.</li></ul></div></details>
+<div class="layout"><nav class="side" id="side" aria-label="Pages">
+<p class="group">Start</p><a href="index.html" aria-current="page">Overview</a><a href="docs/index.html">Start here</a><a href="architecture.html">Architecture</a><a href="docs/concepts.html">Concepts</a><a href="docs/roadmap.html">Roadmap</a>
+<p class="group">Repos</p><a href="family/avd-current-state.html">avd-current-state</a><a href="family/avd-assess.html">avd-assess</a><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a><a href="docs/repos/index.html">Repo guides</a>
+<p class="group">Record</p><a href="docs/decisions/index.html">Decisions</a><a href="docs/graph.html">Graph</a><a href="design/index.html">Design system</a><a href="credits.html">Credits</a>
+</nav>
+<!-- /shell:top -->
+<main id="main" class="home">
+<section class="hero" aria-labelledby="h-hero">
+<p class="eyebrow">Open-source toolkit for Azure Virtual Desktop</p>
+<h1 id="h-hero">Azure Virtual Desktop, from inventory to operations, as code you can read.</h1>
+<p class="lede">Read what an AVD environment is, decide what it should be, deploy a hardened landing zone, and run it with agents a person approves. Bicep and PowerShell, run from Azure Cloud Shell.</p>
+<div class="actions"><a class="cta" href="https://avd-ops.github.io/avd-landing-zone/portal/">Deploy a lab</a><a class="cta ghost" href="https://avd-ops.github.io/avd-current-state/portal/">Assess an estate</a><a class="cta ghost" href="docs/index.html">Start here</a></div>
+</section>
+
+<figure class="map" aria-labelledby="map-cap">
+<div class="band"><span class="eyebrow">On top, optional: how it gets automated and smarter</span>
+<div class="band-row">
+<a class="tile" href="family/avd-swarm.html"><b>avd-swarm</b><span>Agents that read freely and change nothing until a person approves the exact plan.</span><span class="status s-design">Design and spike</span></a>
+<a class="tile" href="family/avd-second-brain.html"><b>avd-second-brain</b><span>One memory across the lifecycle: what each estate looked like, what broke and why each rule is what it is.</span><span class="status s-built">Built, growing</span></a>
+</div></div>
+<p class="needs">The foundation never needs the layer on top.</p>
+<div class="found"><span class="eyebrow">Foundation: three questions</span>
+<div class="found-row">
+<a class="tile" href="family/avd-current-state.html"><small>What it is</small><b>avd-current-state</b><span>Read-only PowerShell: what is in an AVD environment today, and whether a deployment landed correctly.</span><span class="status s-built">Built</span></a>
+<a class="tile" href="family/avd-assess.html"><small>What it should be</small><b>avd-assess</b><span>The assessment method: collect, assess, set targets and score, linked to published sources.</span><span class="status s-design">Being specified</span></a>
+<a class="tile" href="family/avd-landing-zone.html"><small>How we build it</small><b>avd-landing-zone</b><span>Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</span><span class="status s-built">Built</span></a>
 </div>
+<p class="pair">avd-current-state and avd-landing-zone work as a pair on their own.</p></div>
+<figcaption id="map-cap">The repos pass versioned, redacted contracts to each other instead of sharing code. <a href="architecture.html">See the architecture</a> or <a href="https://github.com/nickprignano/avd-ops/blob/main/docs/family-roles.md">read the convention</a>.</figcaption>
+</figure>
+
+<div class="col">
 <h2>What they share</h2>
 <ul class="principles">
 <li><strong>Read first, change with approval</strong>Collectors and agents read freely. Every change to an estate goes through a plan a person approves, with a kill switch.</li>
@@ -47,8 +66,15 @@
 <h2 id="contribute">Contribute</h2>
 <p>Contributions and forks are welcome and encouraged. Fork a repo and make it your own, or send back what you learn: an issue for a bug, a question or an idea, or a pull request with a fix, a test, a doc or a lesson from a real lab run. Small pull requests are easiest to review. Research help is just as welcome: the <a href="credits.html#help-us">credits page</a> lists what we build on and where you can help.</p>
 <p>Before you open one, run the checks the repo's README lists and keep tenant data, IDs and secrets out of the repo, issues and pull requests. A change to a contract between repos comes with the matching pull request in the repo on the other side.</p>
-<p><a class="cta" href="https://github.com/nickprignano/avd-landing-zone">avd-landing-zone</a><a class="cta ghost" href="https://github.com/nickprignano/avd-current-state">avd-current-state</a><a class="cta ghost" href="https://github.com/nickprignano/avd-assess">avd-assess</a><a class="cta ghost" href="https://github.com/nickprignano/avd-swarm">avd-swarm</a><a class="cta ghost" href="https://github.com/nickprignano/avd-second-brain">avd-second-brain</a></p>
-<footer class="site"><p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
-<p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p></footer></div>
+<p class="actions"><a class="cta" href="https://github.com/nickprignano/avd-landing-zone">avd-landing-zone</a><a class="cta ghost" href="https://github.com/nickprignano/avd-current-state">avd-current-state</a><a class="cta ghost" href="https://github.com/nickprignano/avd-assess">avd-assess</a><a class="cta ghost" href="https://github.com/nickprignano/avd-swarm">avd-swarm</a><a class="cta ghost" href="https://github.com/nickprignano/avd-second-brain">avd-second-brain</a></p>
+</div>
+</main>
+<!-- shell:foot -->
+</div>
+<footer class="foot"><div class="in"><p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p>
+<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p></div></footer>
+<button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>
+<!-- /shell:foot -->
 </body>
 </html>
