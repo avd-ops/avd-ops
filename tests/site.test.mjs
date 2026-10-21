@@ -22,7 +22,7 @@ test('the site has a page for each public repo in the family', () => {
 
 test('every page carries the avd-ops name', () => {
   for (const f of pages) {
-    assert.match(read(f), /<a class="brand" href="[^"]*index\.html"><img class="mark" src="[^"]*assets\/brand\/mark\.svg" alt=""[^>]*><span class="word">avd-ops<\/span><\/a>/, f);
+    assert.match(read(f), /<a class="brand" href="[^"]*index\.html"><img class="mark" src="[^"]*assets\/brand\/mark\.svg" alt=""[^>]*><span class="name"><span class="word">avd-ops<\/span><span class="tag">Deploy quietly<\/span><\/span><\/a>/, f);
     assert.doesNotMatch(read(f), /AVD (repo )?family/i, f);
   }
 });
@@ -99,7 +99,7 @@ test('every page opens in the one shell: same side list, switcher, notice and cr
     assert.equal(nav(h), first, `${f}: a different side list`);
     assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/[^"]+">Deploy<\/a><a href="https:\/\/[^"]+">Assess<\/a><\/nav>/, `${f}: switcher`);
     assert.equal((h.match(/aria-current="page"/g) || []).length <= 1, true, `${f}: more than one current page`);
-    assert.match(h, /<details class="notice">/, `${f}: notice line`);
+    assert.match((h.match(/<header class="bar">[\s\S]*?<\/header>/) || [''])[0], /<details class="notice">/, `${f}: the notice sits in the brand bar`);
     assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);
   }
 });

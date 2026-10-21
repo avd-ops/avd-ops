@@ -20,7 +20,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 - **No inline styles.** Page layout goes in the page's own stylesheet (`site.css` here, the portal's `<style>` block there), built on the tokens.
 - **Dark mode follows the system** (`prefers-color-scheme`), and `<html data-theme="light|dark">` forces one. The shell's theme button sets it and remembers the choice in that browser only (`theme.js`).
 - **Touch first.** Every control in the shell is at least `--tap` (44px) on a touch screen, and no page scrolls sideways at 390px.
-- **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice line (`details.notice`, one line that opens to the full text, which stays in the page), the `.warn` box on a page without the shell, or the portal's `.disclaimer` until the portals move.
+- **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice in the brand bar (`details.notice`, a pill that opens to the full text, which stays in the page), the `.warn` box on a page without the shell, or the portal's `.disclaimer` until the portals move.
 
 ## Tokens
 
@@ -28,7 +28,7 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 |---|---|---|
 | Neutrals | `--bg` `--surface` `--sunken` `--fg` `--muted` `--line` `--line-strong` | page, cards, wells, text, borders |
 | Accent | `--accent` `--accent-hover` `--on-accent` `--accent-soft` `--focus` | teal: links, primary actions, selected rows, focus rings |
-| Shell | `--shell` `--shell-fg` `--shell-muted` `--shell-line` `--shell-hover` | the brand bar: the shield's ink in both themes, so every page opens on the same frame |
+| Shell | `--shell` `--shell-fg` `--shell-muted` `--shell-line` `--shell-hover` `--shell-warn` | the brand bar: the shield's ink in both themes, so every page opens on the same frame |
 | Brand | `--brand` (#1ca998) `--brand-ink` (#0d1015) | the logo's teal and shield; brand surfaces only, not text on light backgrounds (the accent is the readable teal) |
 | Tier | `--tier` `--tier-soft` | the optional Liquidware tier only |
 | Results | `--good` `--caution` `--bad` `--info` and their `-soft` backgrounds | latency, preflight and verify results, and info for work in progress; never decoration |
@@ -65,14 +65,14 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 
 | Piece | What it is |
 |---|---|
-| `header.bar` | The brand bar, sticky, in `--shell` in both themes: the mark and the word avd-ops, then `nav.switcher` (Docs, Deploy, Assess; the current one carries `aria-current`), then the theme button and, below 64rem, the menu button. The word hides below 30rem. |
-| `details.notice` | The research notice as one line (a shorter one on phones) that opens to the full text. The full text stays in the page. |
-| `.layout` > `nav.side` + `main` | The side list and the page. Below 64rem the side list is a drawer the menu button opens (`body.drawer-open`, Escape or the backdrop closes it); without JavaScript it sits below the page. `main > .col` keeps text to the reading column; a page may use the full width (the home page's map, the architecture page). |
+| `header.bar` | The brand bar, sticky, `--bar` tall (72px, 60px below 44rem), in `--shell` in both themes: the brand as in the horizontal lockup (the mark at 44px, the word avd-ops and the tagline "Deploy quietly" in `--brand`), then `nav.switcher` (Docs, Deploy, Assess; the current one carries `aria-current`), then the notice, the theme button and, below 64rem, the menu button. The tagline hides below 64rem, the word below 44rem and the mark below 24rem, so the bar fits a 360px phone (2.3.0). |
+| `details.notice` | The research notice, inside the bar: a pill with the full line on wide screens, "Not for production" below 72rem and a round button with the warning dot (`--shell-warn`) below 44rem; a page from a 2.2.0 starter that keeps the notice under the bar still gets the row. It opens to the full text under the bar; a tap or click outside or Escape closes it (`theme.js`), and it scrolls on a short screen. The full text stays in the page (2.3.0; until 2.2.0 it was a row of its own under the bar). |
+| `.layout` > `nav.side` + `main` | The side list and the page, starting on the same line: the page's first element takes no top margin (2.3.0). Below 64rem the side list is a drawer the menu button opens (`body.drawer-open`, Escape or the backdrop closes it); without JavaScript it sits below the page. `main > .col` keeps text to the reading column; a page may use the full width (the home page's map, the architecture page). |
 | `footer.foot` | The license and trademark lines, the page's own line, and the credit line (`.credit`). |
 | `.skip` | Skip to content, visible on focus. |
 | `.layout.solo` | The page column with no side list, for a single page in a sibling repo or an artifact (2.2.0). |
 
-A portal uses the bar, the notice and the footer and leaves out the side list and the menu button (it has its own stage rail); `theme.js` then wires only the theme button. The bar is matched as `header.bar`, so a portal's own `.bar` (the latency chart's bars) keeps its look (2.0.1). A portal page loads `avd-ops-shell.css` and `theme.js` after `avd-ops-portal.css`, so the portal's button styles don't reach the bar's buttons (2.1.0).
+A portal uses the bar and the footer (and may put the notice in its bar) and leaves out the side list and the menu button (it has its own stage rail); `theme.js` then wires only the theme button. The bar is matched as `header.bar`, so a portal's own `.bar` (the latency chart's bars) keeps its look (2.0.1). A portal page loads `avd-ops-shell.css` and `theme.js` after `avd-ops-portal.css`, so the portal's button styles don't reach the bar's buttons (2.1.0).
 
 On avd-ops.dev, `scripts/site/shell.mjs` writes the shell: `build-docs.mjs` wraps the docs in it, and `apply-shell.mjs` writes it into the hand-written pages between their `<!-- shell:head -->`, `<!-- shell:top -->` and `<!-- shell:foot -->` markers (`--check` in the tests). The switcher's Deploy and Assess links come from `portal` in [`repos.json`](../repos.json). A copy hosted somewhere else sets its own links, or leaves the switcher out.
 
@@ -110,13 +110,13 @@ Two starters in [`templates/`](../templates/), written by `scripts/site/build-ki
 
 | Starter | For | What it holds |
 |---|---|---|
-| [`page.html`](../templates/page.html) | a new page in any repo (avd-linecheck, a sibling's first page) | the bar (mark, word, theme button), the notice line, one column (`.layout.solo`), the footer with the credit line. It links the pinned copy in `assets/` next to it and has no inline script or style, so it runs under a strict CSP. Take the copy first ([Take a pinned copy](#take-a-pinned-copy)), then put the starter beside `assets/`. |
+| [`page.html`](../templates/page.html) | a new page in any repo (avd-linecheck, a sibling's first page) | the bar (mark, word and tagline, the notice, theme button), one column (`.layout.solo`), the footer with the credit line. It links the pinned copy in `assets/` next to it and has no inline script or style, so it runs under a strict CSP. Take the copy first ([Take a pinned copy](#take-a-pinned-copy)), then put the starter beside `assets/`. |
 | [`artifact.html`](../templates/artifact.html) | a Claude artifact (a proposal, a review, a dashboard) | one file: `avd-ops.css` and `avd-ops-shell.css` inlined without their font faces, `theme.js` inlined, the mark as a data URI, and the same three families from Google Fonts, the only font host an artifact may load. The shell sits on a `div.shell`, because the artifact host writes `<body>`. |
 
 From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy; it never overwrites a page that is there):
 
 ```bash
-TAG=ds-v2.2.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
+TAG=ds-v2.3.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
 ```
 
 A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `brand-profile` skill ([`.claude/skills/brand-profile/`](../.claude/skills/brand-profile/SKILL.md)), which reads `brand/profile.json` and starts every page or artifact from these files.
@@ -127,12 +127,12 @@ The mark is a shield holding a desktop with a cloud, and the >< of a remote sess
 
 | File | Use |
 |---|---|
-| `mark.svg` | Full-color square mark: teal field, ink shield. The bar shows it at 28px beside the word "avd-ops". |
+| `mark.svg` | Full-color square mark: teal field, ink shield. The bar shows it at 44px beside the word "avd-ops" and the tagline. |
 | `favicon.svg` | The same mark with rounded corners, for the browser tab. |
 | `mark-white.svg` | One-color white shield, for dark backgrounds (stickers, slides, social images). |
 | `lockup.svg`, `lockup-dark.svg`, `lockup-white.svg` | Mark, word and tagline for light, dark and one-color use, with the text outlined (`scripts/site/brand_lockups.py`), 2.2.0. |
 
-On a page, the bar sets "avd-ops" in `--display` beside the mark rather than using an image of the word; the lockups are for places outside the shell (READMEs, slides, documents). The pictures (avatars, name tiles, lockups as PNG, link preview and GitHub social images) and the original concept are in [`brand/`](../brand/README.md), outside the pinned copy so the portals don't carry them. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
+On a page, the bar sets "avd-ops" in `--display` and the tagline in `--mono` beside the mark rather than using an image of the lockup, so the text stays real text; the lockups are for places outside the shell (READMEs, slides, documents). The pictures (avatars, name tiles, lockups as PNG, link preview and GitHub social images) and the original concept are in [`brand/`](../brand/README.md), outside the pinned copy so the portals don't carry them. After changing a brand file here, copy `brand/` to the repos that vendor `assets/`.
 
 [`brand/profile.json`](../brand/profile.json) sums the whole brand up in one file (colors in both themes, the role each plays, type, every brand file and its use, the starters, the lines every page carries, the rules) in a format any project can use ([`brand/profile.schema.json`](../brand/profile.schema.json)). `tests/brand.test.mjs` keeps it equal to the tokens and fails on a brand file it doesn't list. This document and the stylesheets stay the source of truth: change them first, then the profile.
 
@@ -143,7 +143,7 @@ Pages that can't load avd-ops.dev at run time (the portals make no requests to o
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
 ```bash
-TAG=ds-v2.2.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
+TAG=ds-v2.3.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.

@@ -13,8 +13,8 @@
   "reference": "https://avd-ops.dev/design/"
  },
  "release": {
-  "version": "2.2.0",
-  "tag": "ds-v2.2.0",
+  "version": "2.3.0",
+  "tag": "ds-v2.3.0",
   "repo": "https://github.com/avd-ops/avd-ops"
  },
  "colors": {
@@ -195,6 +195,11 @@
    "light": "#1b242a",
    "dark": "#141c22"
   },
+  "--shell-warn": {
+   "light": "#e2b74a",
+   "dark": "#e0b04a",
+   "use": "the notice's warning dot in the brand bar"
+  },
   "--info": {
    "light": "#2456a6",
    "dark": "#86b0f5",
@@ -304,7 +309,7 @@
    "file": "site/assets/brand/mark.svg",
    "kind": "mark",
    "background": "any",
-   "use": "The full-color square mark: teal field, ink shield. Beside the word avd-ops in the brand bar at 28px; app icons, avatars."
+   "use": "The full-color square mark: teal field, ink shield. Beside the word avd-ops in the brand bar at 44px (36px on phones); app icons, avatars."
   },
   {
    "file": "site/assets/brand/favicon.svg",
@@ -446,7 +451,7 @@
   {
    "id": "notice",
    "text": "Personal project. Research and learning only. Not for production. No warranty. Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft. Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first. Provided \"as is\", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs. Contributions and forks are welcome and encouraged.",
-   "where": "before the first section: the shell's one-line notice that opens to the full text"
+   "where": "before the first section: the notice in the shell's brand bar, which opens to the full text"
   },
   {
    "id": "credit",

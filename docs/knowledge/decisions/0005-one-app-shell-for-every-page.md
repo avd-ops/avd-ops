@@ -50,3 +50,10 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
 - [Design system](../../design-system.md) has the tokens, components, files and the copy steps.
 - The switcher leaves out avd-buddy until the app exists (owner, 2026-10-21).
 - The footer carries the owner's credit line, "A prignano.ai production" (owner, 2026-10-21).
+- Design system 2.3.0 (owner, 2026-10-21): the notice moved into the brand bar as a pill that opens
+  to the full text under the bar, because a row of its own took too much space. The full text still
+  stays in every page (a test checks it sits inside `header.bar`). The bar grew to 72px with the
+  brand as in the horizontal lockup (mark, word, "Deploy quietly"); on phones it is 60px and the
+  notice is a round button, so the switcher, notice and both buttons fit 360px. The page column now
+  starts on the same line as the side list, and the menu button no longer shows on wide screens
+  (`.shell .menu` lost to the more specific bar button rule; it is now `.shell header.bar .menu`).

@@ -24,8 +24,8 @@ export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+)
 // copies it from avd-ops.dev (scripts/site/shell.mjs, SWITCHER).
 const bar = (markSrc) => `${SKIP}
 <header class="bar"><div class="bar-in">${brand(SITE, markSrc)}
-<div class="tools">${themeButton()}</div></div></header>
-${NOTICE(SITE)}`;
+${NOTICE(SITE)}
+<div class="tools">${themeButton()}</div></div></header>`;
 
 const foot = (own) => `<footer class="foot"><div class="in"><p>${own}</p>
 ${TRADEMARKS}

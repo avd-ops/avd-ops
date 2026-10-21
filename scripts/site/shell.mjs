@@ -1,5 +1,5 @@
 // The avd-ops app shell (docs/design-system.md, "Shell"): the brand bar with the Docs, Deploy and Assess
-// switcher, the one-line notice, the side list and the footer, as HTML strings. build-docs.mjs wraps every
+// switcher and the notice, the side list and the footer, as HTML strings. build-docs.mjs wraps every
 // docs page in it, and apply-shell.mjs writes it into the hand-written pages between their shell markers, so
 // every page on avd-ops.dev has one navigation. Pure: it takes a page's place and returns markup.
 // Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
@@ -21,14 +21,14 @@ export const GROUPS = [
 export const SWITCHER = [['Docs', null], ['Deploy', portal('avd-landing-zone')], ['Assess', portal('avd-current-state')]];
 
 // The pieces the starters in templates/ share with the site (scripts/site/build-kit.mjs).
-export const brand = (href, src) => `<a class="brand" href="${href}"><img class="mark" src="${src}" alt="" width="28" height="28"><span class="word">avd-ops</span></a>`;
+export const brand = (href, src) => `<a class="brand" href="${href}"><img class="mark" src="${src}" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>`;
 export const SKIP = '<a class="skip" href="#main">Skip to content</a>';
 export const TRADEMARKS = '<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>';
 export const themeButton = () => `<button class="iconbtn theme" type="button" aria-label="Switch theme">${SUN}${MOON}</button>`;
 
 export const CREDIT = '<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p>';
 
-export const NOTICE = (up) => `<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
+export const NOTICE = (up) => `<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
@@ -62,8 +62,8 @@ export function shellTop(up, current) {
   return `${SKIP}
 <header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
 <nav class="switcher" aria-label="avd-ops tools">${switcher}</nav>
-<div class="tools">${themeButton()}<button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
 ${NOTICE(up)}
+<div class="tools">${themeButton()}<button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
 ${side}
 </nav>`;

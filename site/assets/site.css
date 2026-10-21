@@ -10,7 +10,8 @@ td:first-child{white-space:nowrap}
 
 /* Home: the thesis and the three ways in, then the family as a picture (the layer on top, the three foundation
    questions under it). Tiles are links; the whole tile is the target. */
-.home .hero{display:grid;gap:var(--space-4);padding-block:var(--space-4) var(--space-5);max-width:52rem}
+.home .hero{display:grid;gap:var(--space-4);padding-block:0 var(--space-5);max-width:52rem}
+.home .hero>.eyebrow{margin:0}
 .home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.015em}
 .home .hero .lede{margin:0;max-width:44rem}
 .map{margin:var(--space-4) 0 0;display:grid;gap:var(--space-3)}
@@ -112,6 +113,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .swatch .t-shell-muted{background:var(--shell-muted)}
 .swatch .t-shell-line{background:var(--shell-line)}
 .swatch .t-shell-hover{background:var(--shell-hover)}
+.swatch .t-shell-warn{background:var(--shell-warn)}
 .swatch .t-good{background:var(--good)}
 .swatch .t-good-soft{background:var(--good-soft)}
 .swatch .t-caution{background:var(--caution)}
