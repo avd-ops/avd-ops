@@ -18,16 +18,22 @@ const lock = JSON.parse(readFileSync(join(root, 'site/data/security-review.lock.
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const link = (url, text) => `<a href="${esc(url)}">${text}</a>`;
 const assess = (path) => `${lock.source}/blob/${lock.commit}/${path}`;
-const FAMILY = new Set(['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain']);
+// repos.json is the one list of repos; each but avd-ops has a family page.
+const FAMILY = new Set(JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8')).repos.map((r) => r.name).filter((n) => n !== 'avd-ops'));
+// A value the page has no label for stops the build by name, rather than rendering "undefined".
+const known = (table, key, what) => {
+  if (!(key in table)) throw new Error(`security-review.json: unknown ${what} ${JSON.stringify(key)}; teach build-security.mjs its label`);
+  return table[key];
+};
 const repoLink = (r) => (FAMILY.has(r) ? `<a href="family/${r}.html">${r}</a>` : `<a href="index.html">${r}</a>`);
 
 // An evidence item: the pinned URL avd-assess wrote, or for avd-assess's own files, the commit this page pins.
-const evUrl = (ev) => ev.url || assess(ev.path.replace(/#.*/, ''));
+const evUrl = (ev) => ev.url || assess(ev.path);
 const KIND = { lesson: 'Lesson', run: 'Run record', test: 'Test', ci: 'CI job', code: 'Code', license: 'License', decision: 'Decision', doc: 'Doc' };
 const evLabel = (ev) => {
   const [path, anchor] = ev.path.split('#');
   const file = path.split('/').pop();
-  return `${KIND[ev.kind]}: <span class="mono">${esc(file)}${anchor && /^L\d/.test(anchor) ? `:${esc(anchor.slice(1))}` : ''}</span>`;
+  return `${known(KIND, ev.kind, 'evidence kind')}: <span class="mono">${esc(file)}${anchor && /^L\d/.test(anchor) ? `:${esc(anchor.slice(1))}` : ''}</span>`;
 };
 const evidence = (list) => `<ul class="ev">${list.map((ev) => `<li>${link(evUrl(ev), evLabel(ev))}</li>`).join('')}</ul>`;
 
@@ -35,8 +41,9 @@ const evidence = (list) => `<ul class="ev">${list.map((ev) => `<li>${link(evUrl(
 const CITE = { ref: 'references', obs: 'observations', gap: 'gaps' };
 const citeUrl = (c) => {
   const [kind, rest] = c.split(':');
-  const id = rest.split('#')[0];
-  return assess(`${CITE[kind]}/${id}.${kind === 'gap' ? 'md' : 'yaml'}`);
+  const [id, claim] = rest.split('#');
+  // A reference's claim has no anchor in its YAML file; the visible text still names it.
+  return assess(`${known(CITE, kind, 'citation kind')}/${id}.${kind === 'gap' ? 'md' : 'yaml'}`) + (claim && kind === 'gap' ? `#${claim}` : '');
 };
 
 const STANDING = {
@@ -45,7 +52,7 @@ const STANDING = {
   built: ['Built', 'It is in the code; no test or real run was found for it.'],
   designed: ['Designed', 'Written down only: a spec or a proposed decision, not built or not run.'],
 };
-const standing = (s) => `<span class="standing st-${s}">${STANDING[s][0]}</span>`;
+const standing = (s) => `<span class="standing st-${s}">${known(STANDING, s, 'standing')[0]}</span>`;
 const MATURITY = { proven: ['Proven', 's-built'], 'pre-beta': ['Pre-beta', 's-slice'], design: ['Design', 's-design'] };
 
 const claims = new Map(map.areas.flatMap((a) => a.claims.map((c) => [c.id, c])));
@@ -56,6 +63,7 @@ const ref = (id) => {
   return link(citeUrl(id), esc(id));
 };
 const refs = (ids) => `<span class="refs">${ids.map(ref).join(', ')}</span>`;
+const formal = map.threats.filter((t) => t.formal !== 'none').map((t) => t.repo);
 const counts = Object.fromEntries(Object.keys(STANDING).map((s) => [s, [...claims.values()].filter((c) => c.standing === s).length]));
 
 const table = (head, rows) => `<div class="tbl"><table class="stacked">
@@ -72,7 +80,7 @@ const content = `<p class="eyebrow kicker">Security review</p>
 
 <h2 id="maturity">How far each repo has been proven</h2>
 <p>The owner's call, recorded in the ${link(map.maturity.source.url, 'roadmap spec')}. A claim below never makes its repo more proven than this.</p>
-<div class="maturity">${Object.entries(map.maturity.repos).map(([r, m]) => `<div class="card"><b>${repoLink(r)}</b><span class="status ${MATURITY[m][1]}">${MATURITY[m][0]}</span></div>`).join('')}</div>
+<div class="maturity">${Object.entries(map.maturity.repos).map(([r, m]) => `<div class="card"><b>${repoLink(r)}</b><span class="status ${known(MATURITY, m, 'maturity')[1]}">${MATURITY[m][0]}</span></div>`).join('')}</div>
 
 <h2 id="standing">How strong the evidence is</h2>
 <p>Each claim carries one standing, the strongest its evidence supports. Of ${claims.size} claims: ${Object.entries(counts).map(([s, n]) => `${n} ${STANDING[s][0].toLowerCase()}`).join(', ')}.</p>
@@ -98,7 +106,7 @@ ${table(['Claim', 'Repo', 'Standing', 'Evidence'], a.claims.map((c) => row(`c-${
 ${table(['Decision', 'See'], map.operator.map((o) => row(`o-${o.id}`, [esc(o.says), refs(o.see)])))}
 
 <h2 id="threats">What each repo can touch</h2>
-<p>A short summary per repo, not a formal threat model. Only avd-swarm has had a full red team so far.</p>
+<p>A short summary per repo, not a formal threat model. ${formal.length ? `A formal review exists for ${formal.map(repoLink).join(', ')}; the others have none yet.` : 'No repo has a formal review yet.'}</p>
 <div class="credit-cards">
 ${map.threats.map((t) => `<div class="card"><h3>${repoLink(t.repo)}</h3><p>${esc(t.touches)}</p><p><b>Risks:</b> ${t.risks.map(esc).join('; ')}.</p><p><b>Limited by:</b> ${refs(t.limits)}</p>${t.formal === 'none' ? '<p class="note">No formal threat model yet.</p>' : `<p>${link(t.formal.url, 'Red team review')}</p>`}</div>`).join('\n')}
 </div>
@@ -107,11 +115,11 @@ ${map.threats.map((t) => `<div class="card"><h3>${repoLink(t.repo)}</h3><p>${esc
 <p>To judge an estate rather than the tools, use the avd-assess ${link(assess(map.standards.method), 'security method')} and ${link(citeUrl(map.standards.scope), 'its scope')}, the pillars ${map.standards.pillars.map((p) => `<span class="chip">${esc(p)}</span>`).join(' ')}, and these pinned Microsoft sources: ${map.standards.references.map((r) => link(citeUrl(r), esc(r.slice(4)))).join(', ')}.</p>
 
 <h2 id="gaps">What the review found missing</h2>
-<p>Each is proposed as an issue in the repo named, not fixed here.</p>
-${table(['Gap', 'Repos'], map.gaps.map((g) => row(`g-${g.id}`, [`${esc(g.says)}${g.issue ? ` ${link(g.issue, 'Issue')}` : ''}`, `<div class="chips">${g.repos.map((r) => `<span class="chip">${esc(r)}</span>`).join('')}</div>`])))}
+<p>Gaps the map found, each for the repos named to fix${map.gaps.some((g) => g.issue) ? '; an issue link means one is open' : ''}.</p>
+${table(['Gap', 'Repos'], map.gaps.map((g) => row(`g-${g.id}`, [`${esc(g.says)}${g.issue ? ` ${link(g.issue, 'Issue')}` : ''}`, g.repos.map(repoLink).join(', ')])))}
 
 <h2 id="report">Reporting a vulnerability</h2>
-<p>Privately, through <strong>Report a vulnerability</strong> on the repo's Security tab, as each repo's <span class="mono">SECURITY.md</span> says. Never put secrets, IDs, names or estate data in a public issue.</p>
+<p>Privately, through <strong>Report a vulnerability</strong> on the affected repo's Security tab. ${(() => { const g = map.gaps.find((x) => x.id === 'security-policy'); return g ? `Where a repo has no security policy yet (${g.repos.map(repoLink).join(', ')}) and the button isn't there, open an issue that asks for a private contact and holds no details.` : 'Each repo\'s <span class="mono">SECURITY.md</span> says how.'; })()} Never put secrets, IDs, names or estate data in a public issue.</p>
 
 <h2 id="data">The map as data</h2>
 <p>For tools: ${link('data/security-review.json', 'security-review.json')} (<span class="mono">${esc(map.schema)}</span>), byte-identical to avd-assess at <span class="mono">${esc(lock.commit.slice(0, 7))}</span>, with its ${link(assess('contracts/schemas/assess-security-review.schema.json'), 'schema')}.</p>`;
