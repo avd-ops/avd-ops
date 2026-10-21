@@ -124,8 +124,17 @@ The avd-ops organization's GitHub Project board is an internal working view of a
 | Direction B app shell (`avd-ops-shell.css`, `theme.js`, the shell markers `apply-shell.mjs` fills) | Modern UI work, design system 2.0 | The page is a shell page; the side list's "Roadmap" link moves from `docs/roadmap.html` to `roadmap.html`. |
 | `site/data/issues.json` and `fetch-issues.mjs` | This spec proposes it; research page, library and credits read it | The one issue snapshot (section 5.1). |
 | `submissions/routing.json` and `links.mjs` | Submissions | "Suggest a feature" and "Ask for research" links, credit opt-in. |
-| Card and status components | Design system | New pill classes for the five statuses and three maturity marks, built on existing tokens (`--info`, the `--s-*` pairs, `--good`, `--caution`, `--muted`); no new colors. |
+| Card and status components | Design system | Pill classes for the five statuses and a separate maturity mark, in `avd-ops.css` (section 9.1). |
 | `credits.json`, `library.json` | Credits, standards library | Not read. A done item's requester credit comes from the same opt-in the credits page lists. |
+
+### 9.1 Design system and shell (from the design system 2.0 review)
+
+- **Status pills live in `avd-ops.css`** beside `.status.s-built / .s-design / .s-slice`, under the same `.status:is(...)` rule, each with a light and a dark token pair: exploring `--sunken` / `--muted` with a dashed outline, planned `--info-soft` / `--info`, in progress `--accent-soft` / `--accent`, done `--good-soft` / `--good`, parked `--sunken` / `--muted` solid. Each has a `::before` glyph (○ ◔ ◑ ✓ ‖), so a status never rests on color alone and "planned" stays distinct from the repo pill "Being specified", which shares the info hue.
+- **Maturity is a separate outlined `.mark`**, never filled, so it can't read as a status: proven `--good`, pre-beta `--caution`, design `--info`.
+- Every new class is added to the reference page at `site/design/`, so it shows in both themes.
+- **The nav has one source, `GROUPS` in `scripts/site/shell.mjs`.** The Roadmap link changes there. `docs/roadmap.html` stays a KB section page, so it stays reachable from the side list (the test that every docs section is in the side list keeps passing).
+- **Generated pages carry the shell markers.** `build-roadmap.mjs` (and the credits and research builders) import `shellHead`, `shellTop` and `shellFoot` from `shell.mjs` and write the `shell:head`, `shell:top` and `shell:foot` markers, so `apply-shell.mjs` handles them on its one code path.
+- **Follow-up:** the home page's family tiles read `maturity` from repos.json too, so the home page and the roadmap can't drift.
 
 **Generator:** `scripts/site/build-roadmap.mjs` reads `repos.json`, `roadmap.json` and `site/data/issues.json`, and writes `site/roadmap.html` and `site/data/roadmap.json` (the resolved items, for any later reader). `--check` runs in `tests/site.test.mjs` like the credits page.
 
@@ -152,7 +161,9 @@ Built with the avd-ops design system inside the direction B shell, through the f
 | every public repo | The labels `roadmap`, `accepted` (exists for submissions), `status:exploring`, `status:planned`, `status:in-progress`, `status:done`, `status:parked`, each described in `submissions/routing.json`'s `labels` map (the submissions test checks every label is described there) so `labels.mjs --apply` creates them (Nick runs it). That entry lands with the build PR, after the submissions PR that adds `routing.json` has merged, so the two don't touch the same file now. Optionally the README line. |
 | org Project board sync | Optional: mirror `status:*` into the board's Status field, one way. |
 
-## 12. Questions for Nick
+## 12. Questions for Nick (open)
+
+Not answered yet; the build PR settles them before anything is built.
 
 1. **Labels:** `roadmap` plus `accepted` (recommended, the same approval word as submissions), or `roadmap` alone as the approval?
 2. **Maturity:** are avd-current-state, avd-assess, avd-second-brain and avd-ops all pre-beta, and avd-swarm design?
