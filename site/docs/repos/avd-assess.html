@@ -23,7 +23,7 @@
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../../index.html#contribute">Contribute</a>.</li></ul></div></details>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
-<p class="group">Start</p><a href="../../index.html">Overview</a><a href="../../docs/index.html">Start here</a><a href="../../architecture.html">Architecture</a><a href="../../docs/concepts.html">Concepts</a><a href="../../docs/roadmap.html">Roadmap</a>
+<p class="group">Start</p><a href="../../index.html">Overview</a><a href="../../docs/index.html">Start here</a><a href="../../architecture.html">Architecture</a><a href="../../security.html">Security review</a><a href="../../docs/concepts.html">Concepts</a><a href="../../docs/roadmap.html">Roadmap</a>
 <p class="group">Repos</p><a href="../../family/avd-current-state.html">avd-current-state</a><a href="../../family/avd-assess.html">avd-assess</a><a href="../../family/avd-landing-zone.html">avd-landing-zone</a><a href="../../family/avd-swarm.html">avd-swarm</a><a href="../../family/avd-second-brain.html">avd-second-brain</a><a href="../../docs/repos/index.html" aria-current="true">Repo guides</a>
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
@@ -37,6 +37,7 @@
 <li>Every step cites a pinned published source (<code>ref:</code>), what our own runs observed about it (<code>obs:</code>), or method written only where nothing exists (<code>gap:</code>).</li>
 <li>It stores a claim ID and one line in its own words, never a source&#39;s text.</li>
 <li>Nothing in it calls Azure.</li>
+<li>It holds the security review map: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the <a href="https://avd-ops.dev/security.html">security review page</a> and never keeps its own copy of a claim.</li>
 </ul>
 <h2>How it fits</h2>
 <ul>

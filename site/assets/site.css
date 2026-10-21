@@ -134,3 +134,18 @@ figure.flows{margin:var(--space-4) 0 0}
 .stacked tr{border-bottom:1px solid var(--line);padding:var(--space-3) 0} .stacked th,.stacked td{border:0;padding:.15rem 0}
 .stacked td::before{content:attr(data-label);display:block;font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
 .origin{margin-top:var(--space-4);background:var(--accent-soft);border-color:transparent} .origin h3{margin-top:0} .origin p{margin:0 0 var(--space-2)} .origin .sig{margin:0;font-size:.9rem;color:var(--muted)}
+/* Security review (security.html, built by scripts/site/build-security.mjs) */
+.security .maturity{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--space-2);margin-top:var(--space-3)}
+.security .maturity .card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3)}
+.standing{display:inline-block;font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.15rem var(--space-2);border-radius:4px;white-space:nowrap}
+.st-run{background:var(--good-soft);color:var(--good)} .st-guarded{background:var(--info-soft);color:var(--info)}
+.st-built{background:var(--caution-soft);color:var(--caution)} .st-designed{background:var(--sunken);color:var(--muted);border:1px solid var(--line)}
+.security .legend{display:grid;gap:var(--space-2);margin:var(--space-3) 0 0} .security .legend div{display:flex;gap:var(--space-3);align-items:baseline}
+.security .legend dt{flex:0 0 6.5rem} .security .legend dd{margin:0;color:var(--muted)}
+.security .checklist li{margin-bottom:var(--space-2)} .security .refs{display:block;font:.85rem var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.security .ev{list-style:none;margin:0;padding:0;font-size:.9rem} .security .ev li{margin:.1rem 0;overflow-wrap:anywhere}
+.security .note{display:block;margin-top:var(--space-1);font-size:.88rem;color:var(--muted)}
+.security .pillars{color:var(--muted);font-size:.95rem} .security .tbl td,.security .tbl th{vertical-align:top}
+.security .tbl th[scope="row"]{font-weight:400;color:var(--fg)} .security .tbl td[data-label="Repo"]{white-space:nowrap}
+.security .tbl td[data-label="Evidence"]{min-width:15rem} .security .ev .mono{overflow-wrap:anywhere}
+@media (max-width:44rem){.security .tbl td[data-label="Evidence"]{min-width:0} .security .tbl th[scope="row"]{font-weight:600}}

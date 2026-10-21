@@ -3,7 +3,7 @@ title: "avd-assess"
 summary: "Foundation, what it should be: an open AVD assessment methodology that links pinned published sources and adds what real runs observed"
 topic: repos
 status: partial
-last_reviewed: 2026-10-20
+last_reviewed: 2026-10-21
 ---
 
 # avd-assess
@@ -18,6 +18,7 @@ The repo is the source of truth: [nickprignano/avd-assess](https://github.com/ni
 - Every step cites a pinned published source (`ref:`), what our own runs observed about it (`obs:`), or method written only where nothing exists (`gap:`).
 - It stores a claim ID and one line in its own words, never a source's text.
 - Nothing in it calls Azure.
+- It holds the security review map: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the [security review page](https://avd-ops.dev/security.html) and never keeps its own copy of a claim.
 
 ## How it fits
 
