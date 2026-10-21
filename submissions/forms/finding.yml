@@ -1,0 +1,66 @@
+name: Real-run finding
+description: Something a real run showed about a claim or baseline that isn't a measured metric. For metrics, use Baseline evidence.
+title: "Finding: "
+labels: [submission, needs-triage, type:evidence, observation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: input
+    id: target
+    attributes:
+      label: Claim
+      description: The claim or baseline ID it tests (ref:source#claim). Filled in when you came from avd-ops.dev.
+    validations:
+      required: true
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict
+      options:
+        - Agrees
+        - Disagrees
+        - Extends
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: What the run showed
+      description: General advice, not a story about a specific estate.
+    validations:
+      required: true
+  - type: input
+    id: evidence-link
+    attributes:
+      label: Public evidence
+      description: A link to a public lesson, run record or issue. Never a raw export.
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      options: [sandbox, lab, estate]
+    validations:
+      required: true
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+        - label: It's from a sandbox or lab, or the estate's owner agreed to share it.
+          required: true
+        - label: I agree my submission is licensed under the repo's MIT License.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

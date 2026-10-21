@@ -1,14 +1,16 @@
 # Submissions: one intake for the AVD family
 
-Status: design, 2026-10-21. Nothing is built. Proposed as [decision 0004](knowledge/decisions/0004-submissions-are-github-issue-forms.md).
+Status: accepted by Nick 2026-10-21 ([decision 0004](knowledge/decisions/0004-submissions-are-github-issue-forms.md)). Step 1 is built in avd-ops: [`submissions/`](../submissions/README.md) holds the routing table, the forms and the link builder. The rest is design.
 
 A submission is anything someone outside sends the family to make it better: **evidence, research,
 a research request, feedback (praise, a problem, or a dispute or fact check), a bug report or a
 feature request**, plus two private routes: general contact and sponsorship inquiries. Each one has to land in the right repo,
-with the right labels, in a shape the maintainer can review. Three surfaces send them: the
-**credits and contributors page** and the **standards and research review UI** on avd-ops.dev, and
-the **support mailbot** (designed separately, not built). They share one function, kept here in avd-ops:
-one list of types, one routing table, one set of issue forms, and one link builder.
+with the right labels, in a shape the maintainer can review. The function is shared by **the three
+foundation repos**, avd-landing-zone, avd-current-state and avd-assess (Nick, 2026-10-21): each
+vendors the forms and the routing table and links to them from its own pages and portals (section
+5.0). The avd-ops.dev surfaces use it too: the **credits and contributors page**, the **standards
+and research review UI**, and the **support mailbot** (designed separately, not built). It is kept
+here in avd-ops: one routing table, one set of issue forms, and one link builder.
 
 ## 1. The decision in one line
 
@@ -61,14 +63,13 @@ the six public types (section 8).
 
 ```text
 submissions/
-  types.json          the six public types and the two private routes, their labels and the form each uses
-  routing.json        type + area -> repo, form and labels (section 4.2)
+  routing.json        the types, every label, and type + area -> repo and form (section 4.2)
   forms/*.yml         the canonical issue forms, vendored byte-identical into each repo
   README.md           how to add a type, an area or a repo
-site/assets/submit.js the link builder (section 4.3); the pages work without it
-scripts/submissions/  check-routing.mjs (routing only names repos in repos.json, every form exists)
-                      check-vendored.mjs (each repo's copy matches; run by family.yml weekly)
-tests/submissions.test.mjs
+  links.mjs           the link builder (section 4.3), pure, browser and Node
+  labels.mjs          prints, or with --apply creates, every label in a repo (the owner runs it)
+tests/submissions.test.mjs  routes, forms, labels and the builder (step 1)
+scripts/submissions/check-vendored.mjs  each repo's copy matches (later, with the vendoring PRs)
 ```
 
 ### 4.1 Submission schema
@@ -127,7 +128,7 @@ short. Each gap file in avd-assess gets one line: "Open research requests:" link
 
 ### 4.3 The link builder
 
-`submit.js` turns `{type, area, target, summary}` into
+`links.mjs` turns `{type, area, target, summary}` into
 `https://github.com/<repo>/issues/new?template=<form>&title=<summary>&target=<target>`, from
 `routing.json`. That is all it does.
 
@@ -136,13 +137,28 @@ short. Each gap file in avd-assess gets one line: "Open research requests:" link
   browser history or a referrer. Prefilling form fields by their `id` is documented by GitHub; test
   it once on each form before relying on it, and fall back to `template=` alone.
 - **Built at build time too.** Every button is a plain `<a href>` written by the site build from
-  `routing.json`; `submit.js` only refines it (for example adding the claim a reviewer selected).
+  `routing.json`; the page's script only refines it (for example adding the claim a reviewer selected).
   With scripts off, every link still works.
 - **One allowlist.** Only `github.com/<repo>` for repos in `repos.json`. The same function is
   what the mailbot's gate uses to build its repo-and-template link, so the mailbot never invents a
   destination (mailbot spec section 5 step 9).
 
 ## 5. How each surface calls it
+
+### 5.0 The three foundation repos
+
+avd-landing-zone, avd-current-state and avd-assess each vendor `routing.json`, `links.mjs` and the
+forms their routes name, byte-identical, into `vendor/avd-ops-submissions/` with a `PINS.json`
+naming the avd-ops commit, the same way they vendor contracts. Nothing reads avd-ops at run time,
+so the landing zone and avd-current-state stay a self-contained pair. Each one then:
+
+- copies its forms into `.github/ISSUE_TEMPLATE/` (bug, feature, feedback, dispute; avd-assess also
+  research, research request, finding and baseline evidence);
+- links them from its own pages: the deployment portal and the assessment portal get "Report a
+  problem", "Send feedback" and "Dispute this" links built with the vendored builder. The landing
+  zone's existing portal issue report (decision 0008, redacted in the browser) stays as it is; it
+  is the `bug` route with its own redaction, and gains the shared labels;
+- adds its two contact links to `config.yml`.
 
 ### 5.1 Standards and research review UI
 
@@ -155,15 +171,16 @@ the row's ID as `target`:
 - **Ask for research** on a gap -> `research-request` (`target: gap:<id>`)
 - **Report a problem** with the method -> `bug` (avd-assess)
 
-It also shows, per gap, the open research requests, and per claim or standard its **dispute
+It also shows, per gap, the accepted open research requests, and per claim or standard its **dispute
 status** (none, open, accepted, rejected, with a link to the reasons), read at build time
 (section 8), so a reader sees what is already asked or disputed before asking again.
 
 ### 5.2 Credits and contributors page
 
 - Lists people who opted in to credit (section 8), each with what they contributed and links.
-- Shows **open calls for help**: open `research-request` issues in avd-assess and avd-ops, newest
-  first, each with its gap. Ours look the same as anyone's: when we want outside research, Nick
+- Shows **open calls for help**: open `research-request` issues in avd-assess and avd-ops that
+  carry `accepted`, newest first, each with its gap. Nothing shows before the owner says yes; no
+  email step is needed for that (Nick, 2026-10-21). Ours look the same as anyone's: when we want outside research, Nick
   opens a `research-request` with the `call-for-help` label, and it shows first.
 - **Thanks for corrections:** people whose dispute was accepted are listed first, with the claim
   they corrected (credit opt-in still applies).
@@ -199,7 +216,8 @@ forward-first, draft-only path, and Nick sends every answer.
   Neither kind of mail goes into a repo, issue or the KB.
 - Until the mailbot exists, both buttons show only the address.
 
-The text beside the sponsorship button reuses the sponsorship page's wording on what funding does and does
+The sponsorship button links the planned funding page, `https://avd-ops.dev/funding.html`, and
+waits on the same go as that page. The text beside the sponsorship button reuses the sponsorship page's wording on what funding does and does
 not buy (owned by that page, linked, not restated here). It must never imply paid support, an
 SLA, priority or roadmap influence, and names no partner, private project or paid plan. A
 sponsor appears on the credits page only with their written yes.
@@ -213,8 +231,8 @@ line. A repo keeps its own extra forms (handoff, KB forms). Each repo's `config.
 `contact_links`: "Not sure where this goes?" (the avd-ops `needs-routing` form) and the docs.
 Blank issues stay on.
 
-avd-assess's `baseline-evidence.yml` moves to `submissions/forms/` unchanged and is vendored back,
-so its evidence path stays exactly as written.
+avd-assess's `baseline-evidence.yml` moves to `submissions/forms/` and is vendored back with only
+the shared labels added, so its evidence path stays as written.
 
 ## 7. Untrusted input: spam, abuse and prompt injection
 
@@ -317,20 +335,22 @@ which docs work and which need a rewrite, the same way the mailbot's category co
 
 | Repo | Change |
 |---|---|
-| avd-ops | `submissions/`, `submit.js`, checks and tests; forms for avd-ops; `family.yml` runs the vendored check; site pages read `routing.json` |
-| avd-assess | vendored `research.yml`, `research-request.yml`, `finding.yml`, `dispute.yml`, `feedback.yml`, `bug.yml`, `feature.yml`; `baseline-evidence.yml` re-homed; "open research requests" line per gap |
-| avd-landing-zone, avd-current-state, avd-swarm, avd-second-brain | vendored `bug.yml`, `feature.yml`, `feedback.yml`, `dispute.yml`; two contact links |
+| avd-ops | `submissions/` (built, step 1); own forms in `.github/ISSUE_TEMPLATE/` (built); later `check-vendored.mjs` in `family.yml` and site pages that read `routing.json` |
+| avd-assess | `vendor/avd-ops-submissions/` at a pin; vendored `research.yml`, `research-request.yml`, `finding.yml`, `dispute.yml`, `feedback.yml`, `bug.yml`, `feature.yml`; `baseline-evidence.yml` re-homed; "open research requests" line per gap |
+| avd-landing-zone, avd-current-state | `vendor/avd-ops-submissions/` at a pin; portal links (section 5.0); vendored `bug.yml`, `feature.yml`, `feedback.yml`, `dispute.yml`; two contact links |
 | mailbot (avd-ops `mailbot/`) | its gate calls the shared builder for the escalation link; a `sponsorship` category that drafts nothing and is never escalated to an issue |
 
 Labels are created by a one-off script the owner runs (writes to repos, so the owner's yes). The
 landing zone and avd-current-state stay self-contained: the forms are plain files, and nothing in
 them reads avd-ops at run time.
 
-## 12. Open questions for Nick
+## 12. Decided (Nick, 2026-10-21)
 
-1. Is this the right "three"? Read here as the credits page, the review UI and the mailbot.
-2. Credit: GitHub username only (recommended), or also a display name a person types?
-3. Do research requests from outside go to avd-assess even when they are not about the standards
-   (recommended: avd-ops for those, as the table has it)?
-4. Build order: forms and routing first (smallest, useful alone), then the review UI's menus, then
-   credits, then the mailbot link.
+1. The three are the foundation repos; the avd-ops.dev surfaces use the same function.
+2. Credit by GitHub username. The credits page also opens with a short shoutout to the
+   maintainer and the origin story (owned by the credits page work).
+3. Research requests about the standards go to avd-assess, others to avd-ops. No email approval
+   step: `accepted` is the approval, and only accepted requests are shown.
+4. Build order: forms and routing (step 1, built), the review UI's menus, the foundation repos'
+   vendored copies and portal links, the credits page, the mailbot's link. Labels are created by
+   `submissions/labels.mjs --apply`, which the owner runs.

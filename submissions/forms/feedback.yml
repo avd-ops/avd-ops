@@ -1,0 +1,46 @@
+name: Feedback
+description: Tell us what worked or what didn't. To say something we publish is wrong, use Dispute or fact check.
+title: "Feedback: "
+labels: [submission, needs-triage, type:feedback, feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo is public, and so is this issue. Don't paste API keys, tenant, subscription or other IDs,
+        user or host names, domains, emails, IP addresses or secrets, or anything from an employer, a
+        customer or a private project. A person reads every submission before anything acts on it.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - "Praise: this worked or helped"
+        - "Problem: this didn't work or wasn't clear"
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: About
+      description: The page, standard, tool or step. Filled in when you came from avd-ops.dev.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Your feedback
+    validations:
+      required: true
+  - type: checkboxes
+    id: public-safe
+    attributes:
+      label: Public-safe
+      options:
+        - label: I removed keys, IDs, names, domains, emails, IP addresses and secrets, and nothing here comes from an employer, a customer or a private project.
+          required: true
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: Credit me by my GitHub username on the avd-ops contributors page.

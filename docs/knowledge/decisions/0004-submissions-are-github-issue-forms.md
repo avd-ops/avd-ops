@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2026-10-21
 decision-makers: [owner]
 ---
@@ -42,3 +42,9 @@ A repo with its own `.github/ISSUE_TEMPLATE/` ignores an org `.github` repo's de
 family repo but avd-current-state has one, so defaults alone can't share the forms. Never put the
 submitter's text in a prefilled issue URL: it would sit in browser history and referrers (mailbot
 red team finding 6). Revisit if outside submissions outgrow manual triage.
+
+Accepted by Nick on 2026-10-21, with: the function is shared by the three foundation repos
+(avd-landing-zone, avd-current-state, avd-assess), credit by GitHub username, no email approval
+step (`accepted` is the approval, and only accepted research requests are shown). GitHub's form
+`labels:` apply only labels that already exist, so the labels are created first with
+`submissions/labels.mjs`.
