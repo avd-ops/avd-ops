@@ -107,6 +107,13 @@ our own idea      --->  Nick opens the issue      --->  same labels
 - **Feature requests** come through the shared submission forms ([submissions spec](submissions-spec.md), `type:feature`, routed by `routing.json`). They graduate only when Nick adds `roadmap` and `accepted`. The card then says "From a community request" and credits the requester by GitHub username only if they ticked the credit box.
 - **Research requests** stay on the research projects page; a question is not a roadmap item. When research produces work to build, Nick opens (or a session drafts for him) a linked feature issue, and that issue graduates the usual way. One issue lives on one page.
 - **Bugs** are not roadmap items unless one is large enough that Nick labels it.
+
+### 7.1 Keeping it full (Nick, 2026-10-21)
+
+Nothing joins the page by itself; every item still needs Nick's labels. Two light helpers make sure new work gets offered to him as old work finishes:
+
+- **Weekly candidates list.** A scheduled, read-only job (`scripts/site/roadmap-candidates.mjs`, weekly, the default read-only token) reads `site/data/issues.json` and lists the open public issues and PRs in repos.json repos, opened or updated that week, that carry no `roadmap` label and aren't bot reports (kb-digest, kb-freshness, docs-findings, portal-report and the like). It writes the list to the job summary, newest first, each with its repo, number and title. It labels nothing, opens nothing and comments on nothing. Nick picks what to label.
+- **Threads suggest items.** When a Claude thread opens public work that belongs on the roadmap, its final reply ends with "Roadmap candidate: <repo>#<n>". A suggestion only: the session never adds `roadmap`, `accepted` or a `status:*` label.
 - The page ends with "Suggest a feature" and "Ask for research", links from the shared link builder (`submissions/links.mjs`), and a link to the research projects page.
 
 ## 8. The org Project board
@@ -160,6 +167,7 @@ Built with the avd-ops design system inside the direction B shell, through the f
 | avd-ops | `roadmap.json`; `scripts/site/fetch-issues.mjs`, `build-roadmap.mjs`; `site/roadmap.html`, `site/data/issues.json`, `site/data/roadmap.json`; `pages.yml` gains the fetch step, `issues: read` and a daily schedule; `repos.json` gains `maturity`; tests (approver check, title-edit pull, private-repo drop, banned terms, link owners, `--check`); the KB roadmap page links the new page; pill classes in the design system. |
 | every public repo | The labels `roadmap`, `accepted` (exists for submissions), `status:exploring`, `status:planned`, `status:in-progress`, `status:done`, `status:parked`, each described in `submissions/routing.json`'s `labels` map (the submissions test checks every label is described there) so `labels.mjs --apply` creates them (Nick runs it). That entry lands with the build PR, after the submissions PR that adds `routing.json` has merged, so the two don't touch the same file now. Optionally the README line. |
 | org Project board sync | Optional: mirror `status:*` into the board's Status field, one way. |
+| avd-ops (helpers) | `scripts/site/roadmap-candidates.mjs` and a weekly read-only workflow that writes its job summary (section 7.1), with a test against the issues fixture. |
 
 ## 12. Questions for Nick
 
