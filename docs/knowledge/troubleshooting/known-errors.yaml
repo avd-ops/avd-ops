@@ -58,3 +58,11 @@ errors:
     applies_to: GitHub REST API 2022-11-28
     status: verified
     added: "2026-10-21"
+  - id: shell-menu-button-on-wide-screens
+    symptom: "The menu (pages) button shows in the avd-ops brand bar on a wide screen, where the side list is already visible."
+    cause: "`.shell .menu{display:none}` lost to `.shell header.bar .iconbtn{display:grid}`, which is more specific (two classes and two elements against two classes). Design system 2.2.0 and earlier."
+    fix: "Scope the hide and the show to the same selector depth as the button style: `.shell header.bar .menu` (design system 2.3.0). A copy pinned at 2.2.0 or earlier can add that rule to its own stylesheet."
+    source: decisions/0005-one-app-shell-for-every-page.md
+    applies_to: avd-ops 5eff96d
+    status: verified
+    added: "2026-10-21"

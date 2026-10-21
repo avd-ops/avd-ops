@@ -16,14 +16,14 @@
 <body class="shell">
 <!-- shell:top -->
 <a class="skip" href="#main">Skip to content</a>
-<header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
+<header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
 <nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://avd-ops.github.io/avd-landing-zone/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
-<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
-<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
+<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div></details>
+<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
 <p class="group">Start</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../architecture.html">Architecture</a><a href="../docs/concepts.html">Concepts</a><a href="../docs/roadmap.html">Roadmap</a>
 <p class="group">Repos</p><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-landing-zone.html">avd-landing-zone</a><a href="../family/avd-swarm.html">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a><a href="../docs/repos/index.html">Repo guides</a>
@@ -32,7 +32,6 @@
 <!-- /shell:top -->
 <main id="main">
 <div class="col">
-<p class="eyebrow kicker">Reference, version 2.2.0</p>
 <h1>Design system</h1>
 <p class="lede">The one look every avd-ops page and portal shares: tokens, type, the shell around each page, and the shared components. Everything below is drawn with the live stylesheets, so switch the theme in the bar to check both.</p>
 <p>How it is built and how another repo takes a pinned copy is in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">docs/design-system.md</a>.</p>
@@ -45,7 +44,7 @@
 <h3>Accent and brand</h3>
 <div class="swatches"><div class="swatch"><i class="t-accent"></i><code>--accent</code></div><div class="swatch"><i class="t-accent-hover"></i><code>--accent-hover</code></div><div class="swatch"><i class="t-accent-soft"></i><code>--accent-soft</code></div><div class="swatch"><i class="t-on-accent"></i><code>--on-accent</code></div><div class="swatch"><i class="t-brand"></i><code>--brand</code></div><div class="swatch"><i class="t-brand-ink"></i><code>--brand-ink</code></div></div>
 <h3>Shell</h3>
-<div class="swatches"><div class="swatch"><i class="t-shell"></i><code>--shell</code></div><div class="swatch"><i class="t-shell-fg"></i><code>--shell-fg</code></div><div class="swatch"><i class="t-shell-muted"></i><code>--shell-muted</code></div><div class="swatch"><i class="t-shell-line"></i><code>--shell-line</code></div><div class="swatch"><i class="t-shell-hover"></i><code>--shell-hover</code></div></div>
+<div class="swatches"><div class="swatch"><i class="t-shell"></i><code>--shell</code></div><div class="swatch"><i class="t-shell-fg"></i><code>--shell-fg</code></div><div class="swatch"><i class="t-shell-muted"></i><code>--shell-muted</code></div><div class="swatch"><i class="t-shell-line"></i><code>--shell-line</code></div><div class="swatch"><i class="t-shell-hover"></i><code>--shell-hover</code></div><div class="swatch"><i class="t-shell-warn"></i><code>--shell-warn</code></div></div>
 <h3>Results</h3>
 <div class="swatches"><div class="swatch"><i class="t-good"></i><code>--good</code></div><div class="swatch"><i class="t-good-soft"></i><code>--good-soft</code></div><div class="swatch"><i class="t-caution"></i><code>--caution</code></div><div class="swatch"><i class="t-caution-soft"></i><code>--caution-soft</code></div><div class="swatch"><i class="t-bad"></i><code>--bad</code></div><div class="swatch"><i class="t-bad-soft"></i><code>--bad-soft</code></div><div class="swatch"><i class="t-info"></i><code>--info</code></div><div class="swatch"><i class="t-info-soft"></i><code>--info-soft</code></div></div>
 <h3>Notice and terminal</h3>
@@ -53,18 +52,18 @@
 
 <h2 id="type">Type</h2>
 <div class="specimen">
-<p class="eyebrow">Schibsted Grotesk, headings and the wordmark</p>
+<p class="eyebrow">Space Mono, headings</p>
 <p class="d1">Deploy quietly</p>
 <p class="d3">A heading at the third level</p>
-<p class="eyebrow">Source Sans 3, text and controls</p>
+<p class="eyebrow">IBM Plex Mono, text, controls and code</p>
 <p class="lede">A lede states what a page is for in one or two sentences.</p>
-<p>Body text sits in a 46rem column, about 75 characters, at 17px with 1.6 line height.</p>
-<p class="eyebrow">JetBrains Mono, commands and labels</p>
+<p>Body text sits in a 46rem column, under 80 characters, at 15.5px with 1.7 line height.</p>
 <p><code>Set-Location ~/avd-landing-zone</code></p>
+<p class="eyebrow">The logo keeps its own faces: Schibsted Grotesk for the word, JetBrains Mono for the tagline.</p>
 </div>
 
 <h2 id="shell">Shell</h2>
-<p>Every page opens in the same frame: the brand bar in the shell ink in both themes, with the Docs, Deploy and Assess switcher, the theme button and, below 64rem, the menu button that opens the side list as a drawer. Under the bar, the research notice is one line that opens to the full text. Controls on touch screens are at least 44px.</p>
+<p>Every page opens in the same frame: the brand bar in the shell ink in both themes, with the brand as in the lockup (mark, word and tagline), the Docs, Deploy and Assess switcher, the research notice as a pill that opens to the full text, the theme button and, below 64rem, the menu button that opens the side list as a drawer. Controls on touch screens are at least 44px.</p>
 <div class="demo"><div class="bar-demo"><img src="../assets/brand/mark.svg" alt="">avd-ops</div></div>
 
 <h2 id="brand">Brand</h2>

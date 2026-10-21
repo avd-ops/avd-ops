@@ -27,6 +27,7 @@ test('both starters show the whole notice before the first section and end with 
     assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);
     assert.match(h, /<!-- page:start [^>]*-->[\s\S]*<!-- page:end -->/, `${f}: content markers`);
     assert.match(h, /<div class="layout solo">/, `${f}: one column`);
+    assert.match((h.match(/<header class="bar">[\s\S]*?<\/header>/) || [''])[0], /<details class="notice">/, `${f}: the notice sits in the brand bar`);
   }
 });
 

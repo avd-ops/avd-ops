@@ -16,7 +16,7 @@ const root = new URL('../../', import.meta.url).pathname;
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
 const BASE = asset('avd-ops.css');
 const SITE = 'https://avd-ops.dev/';
-export const FONTS = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Schibsted+Grotesk:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@700&family=Space+Mono:wght@400;700&display=swap';
 
 export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+) /) || [])[1];
 
@@ -24,8 +24,8 @@ export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+)
 // copies it from avd-ops.dev (scripts/site/shell.mjs, SWITCHER).
 const bar = (markSrc) => `${SKIP}
 <header class="bar"><div class="bar-in">${brand(SITE, markSrc)}
-<div class="tools">${themeButton()}</div></div></header>
-${NOTICE(SITE)}`;
+${NOTICE(SITE)}
+<div class="tools">${themeButton()}</div></div></header>`;
 
 const foot = (own) => `<footer class="foot"><div class="in"><p>${own}</p>
 ${TRADEMARKS}
@@ -33,7 +33,6 @@ ${CREDIT}</div></footer>`;
 
 // The sample content both starters open with: real components, so the first view shows the look. Replace it.
 const SAMPLE = `<!-- page:start (replace from here to page:end with the page's own content) -->
-<p class="eyebrow">Repo name, one-line role</p>
 <h1>Page title</h1>
 <p class="lede">One sentence on what this page does and for whom.</p>
 <div class="chips"><span class="chip">C11</span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
