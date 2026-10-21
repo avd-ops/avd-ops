@@ -62,3 +62,5 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   (Schibsted Grotesk for the word, JetBrains Mono for the tagline, as `--wordmark` and `--tagline`).
   Labels lost their tracked capitals, and pages no longer put a label above their title, after a
   frontend design pass.
+- Design system 2.4.0 (owner, 2026-10-21): headings use the logo's face, Schibsted Grotesk, in place
+  of Space Mono, which the owner did not like for headers; text, controls and code stay IBM Plex Mono.

@@ -13,8 +13,8 @@
   "reference": "https://avd-ops.dev/design/"
  },
  "release": {
-  "version": "2.3.0",
-  "tag": "ds-v2.3.0",
+  "version": "2.4.0",
+  "tag": "ds-v2.4.0",
   "repo": "https://github.com/avd-ops/avd-ops"
  },
  "colors": {
@@ -240,18 +240,18 @@
  },
  "type": {
   "display": {
-   "family": "Space Mono",
-   "fallback": "ui-monospace,\"Cascadia Mono\",Menlo,Consolas,monospace",
+   "family": "Schibsted Grotesk",
+   "fallback": "\"Segoe UI\",system-ui,sans-serif",
    "weights": [
-    400,
+    600,
     700
    ],
    "files": [
-    "site/assets/fonts/space-mono-latin-400-normal.woff2",
-    "site/assets/fonts/space-mono-latin-700-normal.woff2"
+    "site/assets/fonts/schibsted-grotesk-latin-600-normal.woff2",
+    "site/assets/fonts/schibsted-grotesk-latin-700-normal.woff2"
    ],
-   "googleFonts": "Space Mono",
-   "use": "headings"
+   "googleFonts": "Schibsted Grotesk",
+   "use": "headings, in the logo's own face"
   },
   "body": {
    "family": "IBM Plex Mono",

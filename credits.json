@@ -20,8 +20,7 @@
     {"name": "marked", "url": "https://github.com/markedjs/marked", "license": "MIT", "job": "Renders the docs on this site from Markdown"},
     {"name": "MADR", "url": "https://github.com/adr/madr", "license": "MIT OR CC0-1.0", "job": "The format of every decision record"},
     {"name": "IBM Plex Mono", "url": "https://github.com/IBM/plex", "license": "OFL-1.1", "job": "Text, controls and code font of the design system, served from this site through its Fontsource package (site/assets/fonts/LICENSE)"},
-    {"name": "Space Mono", "url": "https://github.com/googlefonts/spacemono", "license": "OFL-1.1", "job": "Heading font of the design system, served the same way"},
-    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "The word avd-ops in the logo, served the same way"},
+    {"name": "Schibsted Grotesk", "url": "https://github.com/schibsted/schibsted-grotesk", "license": "OFL-1.1", "job": "Headings and the word avd-ops in the logo, served the same way"},
     {"name": "JetBrains Mono", "url": "https://github.com/JetBrains/JetBrainsMono", "license": "OFL-1.1", "job": "The tagline in the logo, served the same way"},
     {"name": "Fontsource", "url": "https://github.com/fontsource/fontsource", "license": "MIT", "job": "The npm packages the fonts are taken from, unmodified"}
   ],
