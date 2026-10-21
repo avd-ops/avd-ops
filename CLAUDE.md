@@ -9,6 +9,8 @@ avd-ops: the front door for the AVD repos (decision 0002). It holds the website,
 npm ci
 node scripts/site/build-docs.mjs     # after any change in docs/knowledge/
 node scripts/site/build-credits.mjs  # after any change in credits.json (before apply-shell)
+node scripts/site/design-manifest.mjs && node scripts/site/build-kit.mjs  # after any change in site/assets/ (manifest, templates/)
+python3 scripts/site/brand_lockups.py  # after changing the mark or the fonts (pip install fonttools brotli); then keep brand/profile.json equal (tests/brand.test.mjs)
 python3 scripts/kb/build.py && python3 scripts/kb/validate.py && python3 -m unittest discover -s scripts/kb
 node --test "tests/*.test.mjs"
 ```
@@ -19,6 +21,6 @@ node --test "tests/*.test.mjs"
 - `repos.json` is the one list of public AVD repos. A new public repo gets an entry, a page in `docs/knowledge/repos/` and the avd-ops line under its README title. Private repos stay unbranded and off the site.
 - The AVD repos never name the projects listed in `repos.json` `banned`; the tests check this repo and `family.yml` checks the others weekly.
 - The site names no partner for now: no Liquidware or avd-liquidware (Nick, 2026-10-20; the family-wide rule stays that Liquidware is the only partner), and no Nerdio, Login VSI, Goliath or HCL tooling (Terraform, Packer). `tests/site.test.mjs` checks it.
-- No tenant, subscription or object IDs, domains other than avd-ops.dev, github.com and prignano.ai (the owner's credit line in the shell footer, Nick 2026-10-21), emails, secrets, or employer or customer names.
+- No tenant, subscription or object IDs, domains other than avd-ops.dev, github.com and prignano.ai (the owner's credit line in the shell footer, Nick 2026-10-21) (plus fonts.googleapis.com and fonts.gstatic.com in the artifact starter only, the one font host an artifact may load, decision 0007), emails, secrets, or employer or customer names.
 - Personal project, not for production, as is, not affiliated with the author's employer, Liquidware or Microsoft. The README warning and LICENSE stay.
 - American English.

@@ -51,6 +51,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0007-starters-not-a-theme-repo.md",
+   "title": "0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package",
+   "url": "decisions/0007-starters-not-a-theme-repo.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -165,6 +172,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0006-run-anywhere.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0007-starters-not-a-theme-repo.md"
   },
   {
    "source": "getting-started/README.md",
