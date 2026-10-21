@@ -254,8 +254,7 @@
    "fallback": "\"Segoe UI\",system-ui,-apple-system,Roboto,sans-serif",
    "weights": [
     400,
-    600,
-    700
+    600
    ],
    "files": [
     "site/assets/fonts/source-sans-3-latin-400-normal.woff2",
@@ -268,10 +267,8 @@
    "family": "JetBrains Mono",
    "fallback": "ui-monospace,\"Cascadia Mono\",SFMono-Regular,Menlo,Consolas,monospace",
    "weights": [
-    400,
     500,
-    600,
-    700
+    600
    ],
    "files": [
     "site/assets/fonts/jetbrains-mono-latin-500-normal.woff2",

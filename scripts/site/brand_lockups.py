@@ -7,6 +7,8 @@ Personal project, not for production, as is; not affiliated with the author's em
 
     pip install fonttools brotli && python3 scripts/site/brand_lockups.py
 """
+import json
+from functools import lru_cache
 from pathlib import Path
 
 from fontTools.pens.svgPathPen import SVGPathPen
@@ -16,12 +18,20 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "site/assets"
 WORD, TAGLINE = "avd-ops", "DEPLOY QUIETLY"
-INK, BRAND, ACCENT, SHELL_FG, WHITE = "#0d1015", "#1ca998", "#0b7a6e", "#e8f1f0", "#ffffff"
+# Colors come from the brand profile (light values), so a token change reaches the lockups on the next run.
+COLORS = json.loads((ROOT / "brand/profile.json").read_text())["colors"]
+INK, BRAND, ACCENT, SHELL_FG = (COLORS[t]["light"] for t in ("--brand-ink", "--brand", "--accent", "--shell-fg"))
+WHITE = "#ffffff"
+
+
+@lru_cache(maxsize=None)
+def load(font_file):
+    return TTFont(font_file)
 
 
 def outline(font_file, text, size, x, baseline, tracking=0.0):
     """Path data for text set at size (em) with its baseline at y, and the x where it ends."""
-    font = TTFont(font_file)
+    font = load(font_file)
     upm = font["head"].unitsPerEm
     cmap, glyphs, hmtx = font.getBestCmap(), font.getGlyphSet(), font["hmtx"]
     scale = size / upm

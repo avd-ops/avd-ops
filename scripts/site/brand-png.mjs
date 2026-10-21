@@ -3,14 +3,16 @@
 // Needs Playwright with a Chromium, which the tests don't: run it by hand after changing a brand file.
 // Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
 //
-//   npx -y playwright@1.56.1 install chromium   # once, where no Chromium is installed
+//   npm i --no-save playwright@1.56.1 && npx playwright install chromium   # once; not a dependency of the site
 //   node scripts/site/brand-png.mjs
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const brand = (f) => `data:image/svg+xml;base64,${readFileSync(join(root, 'site/assets/brand', f)).toString('base64')}`;
-const INK = '#0d1015'; const LIGHT = '#f4f6f9';
+const { colors } = JSON.parse(readFileSync(join(root, 'brand/profile.json'), 'utf8'));
+const INK = colors['--brand-ink'].light; const LIGHT = colors['--bg'].light;
 
 // [file, width, height, background, image, image height as a share of the canvas]
 const RENDERS = [

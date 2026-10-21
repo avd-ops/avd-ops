@@ -22,15 +22,16 @@ When you set up a profile for another project, add its row here by proposing an 
 ## 1. Find the profile
 
 1. In the repo you're working in: `brand/profile.json`.
-2. Otherwise the project's row above. Get it with git, not by retyping:
+2. Otherwise the project's row above. Get it with git, not by retyping (set REPO from the row):
 
 ```bash
-rm -rf /tmp/brand-src && git clone -q --depth 1 https://github.com/avd-ops/avd-ops.git /tmp/brand-src && ls /tmp/brand-src/brand
+REPO=https://github.com/avd-ops/avd-ops; rm -rf /tmp/brand-src && git clone -q --depth 1 "$REPO.git" /tmp/brand-src && ls /tmp/brand-src/brand
 ```
 
 3. No profile and no row: ask which project it is for, or offer to set one up (section 3). Never invent a brand.
 
-If the profile has `release.tag`, prefer that tag (`--branch <tag>`) and fall back to the default branch.
+The default branch is current. For a copy that must stay fixed (a page committed to another repo), check out the
+profile's `release.tag` if the tag exists (`git -C /tmp/brand-src fetch --depth 1 origin tag <tag>`).
 
 ## 2. Make something with it
 
