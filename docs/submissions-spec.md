@@ -197,7 +197,7 @@ forward-first, draft-only path, and Nick sends every answer.
   with the shared link builder (section 5.3), never with the sender's words in it.
 - Until the mailbot exists, both buttons show only the address.
 
-The text beside the sponsorship button the button reuses the sponsorship page's wording on what funding does and does
+The text beside the sponsorship button reuses the sponsorship page's wording on what funding does and does
 not buy (owned by that page, linked, not restated here). It must never imply paid support, an
 SLA, priority or roadmap influence, and names no partner, private project or paid plan. A
 sponsor appears on the credits page only with their written yes.
