@@ -44,7 +44,7 @@ One `status:*` label per item. The columns come from the status, so an item can 
 | `status:done` | Done | Recently done | Shipped. Set by closing the issue as completed; the build reads the close, the label is optional. Links the PR or release that did it. |
 | `status:parked` | Parked | Parked (folded) | Was on the public roadmap and is paused, with a one-line reason in `roadmap.json`. Parked items come only from items that were public; nothing private feeds this list. |
 
-An issue closed as "not planned" leaves the page; its history stays on the issue. Done items show for 120 days, then fold into a link to the repo's closed `roadmap` issues. Each status pill carries its word and a shape, never color alone.
+An issue closed as "not planned" leaves the page; its history stays on the issue. Done items show for 90 days, then fold into a link to the repo's closed `roadmap` issues. Each status pill carries its word and a shape, never color alone.
 
 ## 5. Data
 
@@ -88,8 +88,8 @@ The page opens with a strip of the six repos, each with its maturity, because th
 
 | Maturity | Means | Repos today |
 |---|---|---|
-| **Proven** | Deployed and torn down end to end in real runs, with run and teardown evidence and lessons in public, and CI guards from what those runs taught. | avd-landing-zone |
-| **Pre-beta** | Built and tested offline, partly run for real; expect breaking changes. | avd-current-state, avd-assess, avd-second-brain, avd-ops |
+| **Proven** | Run for real end to end, more than once, with lessons in public and CI guards from what those runs taught. A repo that deploys also has run and teardown evidence. | avd-landing-zone, avd-current-state |
+| **Pre-beta** | Built and tested offline, partly run for real; expect breaking changes. | avd-assess, avd-second-brain, avd-ops |
 | **Design** | Specified, spikes only; not ready to run. | avd-swarm |
 
 A repo moves up only by Nick's decision, recorded in the repo's decisions with the runs that justify it. Every item card shows its repo's maturity mark, so an "in progress" item in a design-stage repo can't read as nearly ready.
@@ -149,7 +149,7 @@ Built with the avd-ops design system inside the direction B shell, through the f
 - **Top:** the one-line notice, the title, the "direction, not a promise" line, the maturity strip, and a repo filter (all, or one repo) that is a row of links to `#<repo>` anchors, refined by script; without script everything shows.
 - **Now, Next, Later:** three columns on a wide screen; on a phone, stacked sections with a jump row. Within a column, items group by theme, then curated order, then last change.
 - **Card:** the title linking to the issue ("Issue #41 on GitHub"), the repo, the repo's maturity mark, the status pill with its word, the summary, "updated 3 Oct", and "From a community request" when it is one.
-- **Below:** "Recently done" (closed in the last 120 days, with what shipped and the proven-or-not line) and "Parked" folded in a `details`.
+- **Below:** "Recently done" (closed in the last 90 days, with what shipped and the proven-or-not line) and "Parked" folded in a `details`.
 - **End:** Suggest a feature, Ask for research, and the research projects page.
 - Real links, a visible focus ring, no hover-only content, no color-only state, WCAG 2.1 AA contrast in both themes, 44px targets.
 
@@ -161,11 +161,11 @@ Built with the avd-ops design system inside the direction B shell, through the f
 | every public repo | The labels `roadmap`, `accepted` (exists for submissions), `status:exploring`, `status:planned`, `status:in-progress`, `status:done`, `status:parked`, each described in `submissions/routing.json`'s `labels` map (the submissions test checks every label is described there) so `labels.mjs --apply` creates them (Nick runs it). That entry lands with the build PR, after the submissions PR that adds `routing.json` has merged, so the two don't touch the same file now. Optionally the README line. |
 | org Project board sync | Optional: mirror `status:*` into the board's Status field, one way. |
 
-## 12. Questions for Nick (open)
+## 12. Questions for Nick
 
-Not answered yet; the build PR settles them before anything is built.
+Answered (Nick, 2026-10-21): 1, 2 and 4. Still open: 3, which the build PR settles before anything is built.
 
-1. **Labels:** `roadmap` plus `accepted` (recommended, the same approval word as submissions), or `roadmap` alone as the approval?
-2. **Maturity:** are avd-current-state, avd-assess, avd-second-brain and avd-ops all pre-beta, and avd-swarm design?
+1. **Labels:** decided, `roadmap` plus `accepted`, both added by an approver.
+2. **Maturity:** decided, avd-landing-zone and avd-current-state are proven (avd-current-state has been run for real several times), avd-assess, avd-second-brain and avd-ops are pre-beta, avd-swarm is design.
 3. **Seed items:** which open issues should be on the page first? Recommended: a short first list Nick picks from each repo's open issues, plus umbrella issues in avd-ops for the front door work (research page, standards library, credits, submissions).
-4. **Done window:** 120 days, or until the next release of the repo?
+4. **Done window:** decided, 90 days.
