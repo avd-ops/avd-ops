@@ -2,8 +2,8 @@
 
 A convention for every repo in the family, next to [never delete the last copy](never-delete-the-last-copy.md)
 and [never leave the meter running](never-leave-the-meter-running.md). The decision record is
-[avd-ops decision 0006](knowledge/decisions/0006-run-anywhere.md). Status: **proposed**, waiting
-for the owner's answer on one question (section 2, "Twins").
+[avd-ops decision 0006](knowledge/decisions/0006-run-anywhere.md). Status: **accepted**
+2026-10-21 (one script, callable from both shells).
 
 ## 1. The rule
 
@@ -25,7 +25,7 @@ Anyone with a browser, a Windows PC or a Mac can run every operator script in th
 only where code runs inside Windows and the platform gives you nothing else, and those scripts are
 exempt from the cross-platform rule (section 4).
 
-**One implementation, callable from both shells (recommended).** Each tool is written once, in
+**One implementation, callable from both shells.** Each tool is written once, in
 PowerShell 7 unless it is a thin Bicep or `az` wrapper that is clearer in Bash. Every command block
 an operator sees comes in two forms that call the same script:
 
@@ -71,10 +71,9 @@ we hand out is one of:
 
 **Twins.** Nick asked for scripts in PowerShell and Bash. Rewriting each script in the other
 language would roughly double about 15,000 lines of operator code and its tests, and the copies
-would drift. The proposal is that a real twin (a `.sh` next to a `.ps1`, or the reverse) is written
-only when a script can't be called from the other shell, and the open question to the owner is
-which of three levels to adopt: one script callable from both shells (recommended), thin wrappers
-for the first commands an operator types, or full twins with a parity test.
+would drift. The owner chose (2026-10-21) one script callable from both shells over thin wrappers or full
+twins: a real twin (a `.sh` next to a `.ps1`, or the reverse) is written only when a script can't
+be called from the other shell.
 
 **Portable PowerShell.** Build paths with `Join-Path` (or `[IO.Path]`), never `\` or `C:\`; take
 temporary and output folders from `[IO.Path]::GetTempPath()`, `$HOME` and `~/clouddrive` with a

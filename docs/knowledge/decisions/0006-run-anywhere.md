@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2026-10-21
 decision-makers: [owner]
 ---
@@ -25,10 +25,10 @@ true?
 
 ## Decision Outcome
 
-Proposed option: "One implementation per tool, callable from both shells", because both Cloud
+Chosen option: "One implementation per tool, callable from both shells", because both Cloud
 Shell prompts and every desktop OS can start `pwsh` and `bash`, so operators get a block in the
 shell they chose without a second copy of about 15,000 lines of operator code that would drift. The
-owner answers which option to adopt; until then this record stays proposed.
+owner picked it on 2026-10-21.
 
 - PowerShell 7.2 or later is the PowerShell baseline for operator scripts; Windows PowerShell 5.1
   only for code that runs inside Azure on Windows (exempt) and where a repo already promises it.

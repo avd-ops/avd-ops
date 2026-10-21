@@ -45,10 +45,10 @@ true?</p>
 <li>Full twins: every operator script as a <code>.ps1</code> and a <code>.sh</code>, with a parity test</li>
 </ul>
 <h2>Decision Outcome</h2>
-<p>Proposed option: &quot;One implementation per tool, callable from both shells&quot;, because both Cloud
+<p>Chosen option: &quot;One implementation per tool, callable from both shells&quot;, because both Cloud
 Shell prompts and every desktop OS can start <code>pwsh</code> and <code>bash</code>, so operators get a block in the
 shell they chose without a second copy of about 15,000 lines of operator code that would drift. The
-owner answers which option to adopt; until then this record stays proposed.</p>
+owner picked it on 2026-10-21.</p>
 <ul>
 <li>PowerShell 7.2 or later is the PowerShell baseline for operator scripts; Windows PowerShell 5.1
 only for code that runs inside Azure on Windows (exempt) and where a repo already promises it.</li>

@@ -77,7 +77,7 @@ Every operator script runs from either Cloud Shell prompt, PowerShell or Bash, a
 runs on their own machine runs on Windows, macOS and Linux. PowerShell 7 is the baseline; each tool
 is written once and every command comes in a PowerShell and a Bash form that call it. Each repo
 lists, per script, which of those are proven by a test or a real run, and the portals offer only
-those. Proposed in [decision 0006](../decisions/0006-run-anywhere.md); the rule, the audit and the
+those. See [decision 0006](../decisions/0006-run-anywhere.md); the rule, the audit and the
 gaps are in [run anywhere](https://github.com/avd-ops/avd-ops/blob/main/docs/run-anywhere.md).
 
 ## Knowledge capture

@@ -48,7 +48,7 @@
    "title": "0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux",
    "url": "decisions/0006-run-anywhere.html",
    "topic": "decisions",
-   "status": "proposed"
+   "status": "accepted"
   },
   {
    "id": "decisions/README.md",
