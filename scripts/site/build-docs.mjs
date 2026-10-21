@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, relative, posix } from 'node:path';
 import { marked } from 'marked';
+import { graphHealth } from './graph-health.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const KB = 'docs/knowledge';
@@ -48,7 +49,7 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 const pages = sources.map((src) => {
   const { meta, body } = frontMatter(readFileSync(join(root, KB, src), 'utf8'));
   const h1 = (body.match(/^# (.+)$/m) || [, src])[1];
-  return { src, url: urlOf(src), title: h1, summary: meta.summary || '', topic: meta.topic || src.split('/')[0], body, links: [] };
+  return { src, url: urlOf(src), title: h1, summary: meta.summary || '', topic: meta.topic || src.split('/')[0], status: meta.status || '', body, links: [] };
 });
 const bySrc = new Map(pages.map((p) => [p.src, p]));
 
@@ -118,16 +119,23 @@ function build() {
     files.set(p.url, shell({ url: p.url, title: p.title, summary: p.summary, current: p.url, content: p.html + backlinks }));
   }
   const graph = {
-    nodes: pages.map((p) => ({ id: p.src, title: p.title, url: p.url, topic: p.topic })),
+    nodes: pages.map((p) => ({
+      id: p.src, title: p.title, url: p.url, topic: p.topic,
+      ...(p.status ? { status: p.status } : {}), ...(SECTIONS.some(([, s]) => s === p.src) ? { section: true } : {}),
+    })),
     links: pages.flatMap((p) => p.links.map((t) => ({ source: p.src, target: t }))),
   };
   files.set('graph.json', `${JSON.stringify(graph, null, 1)}\n`);
+  const { hubs } = graphHealth(graph);
   files.set('graph.html', shell({
     url: 'graph.html', title: 'Graph', summary: 'Every docs page and the links between them', current: 'graph.html',
     content: `<h1>Graph</h1>
 <p class="lede">Every page in these docs and the links between them, the same graph Obsidian draws from the vault. Select a page to open it.</p>
 <h2 id="map">Map</h2>
 <div class="graph" data-src="graph.json"><svg role="img" aria-label="Graph of the docs pages and their links"></svg></div>
+<h2 id="most-linked">Most linked</h2>
+<p>The pages most others link to. Check these first when something changes.</p>
+<ol>${hubs.map((h) => `<li><a href="${h.url}">${esc(h.title)}</a> (linked from ${h.linkedFrom})</li>`).join('')}</ol>
 <h2 id="pages">Pages</h2>
 <ul>${pages.map((p) => `<li><a href="${p.url}">${esc(p.title)}</a></li>`).join('')}</ul>
 <script src="../assets/graph.js" defer></script>`,
