@@ -157,10 +157,31 @@ the pull request that adds this page.
 - **Cost**: GitHub-hosted runners are free for public repos; macOS runs are slower, so the matrix
   runs on pull requests that touch scripts and weekly on main, not on every docs change.
 
+## 6a. Linters, hooks and editor settings
+
+Asked by the owner on 2026-10-21: do the tools that check and suggest code support the rule? Mostly
+they run, but on Linux only and without the rules that would catch platform problems. A trial run
+of each fix below was made on the audited commits.
+
+| Tool | Where it runs today | Cross-platform today | Finding | Recommendation |
+|---|---|---|---|---|
+| PSScriptAnalyzer (LZ, current-state, brain) | CI on Linux, locally | Runs on every OS, but none of the compatibility rules are on, and `Severity = @('Error', 'Warning')` hides parse errors (`ParseError` is its own severity) | **Two avd-landing-zone image scripts don't parse** (`"$path: ..."` and `"$i: ..."` read as drive-qualified variables in `scripts/image/Invoke-ImageCleanup.ps1` line 20 and `Update-DefenderSignature.ps1` line 14) and CI passed them | Add `'ParseError'` to `Severity` in every repo now; turn on `PSUseCompatibleSyntax` (target 7.0, plus 5.1 where promised), `PSUseCompatibleCommands` and `PSUseCompatibleTypes` with the bundled PowerShell 7.0 Ubuntu and Windows profiles (and the Windows PowerShell 5.1 profile for 5.1 files). Trial: avd-landing-zone `scripts/ops` gives 8 findings, all in `scripts/ops/host` (Windows-only by design: move that folder under the exempt list or ignore it), plus `Test-Json -SchemaFile` (7.2, newer than the bundled 7.0 profile: ignore). avd-current-state gives 102 hits of its own `Write-Log` (a name in the union profile: `IgnoreCommands`) and one guarded `Test-Json`. Linting is OS-independent once the profiles are on, so it stays one Linux job. |
+| Pester | CI on Linux | Tests are PowerShell, so they can run anywhere; LZ fakes include Bash shims | Nothing proven on Windows or macOS | The OS matrix in section 6 |
+| shellcheck (LZ, swarm) | CI on Linux | Linux only, which is fine: it reads the script, it doesn't run it | It has no "Bash 3.2" target, so it can't catch `${x,,}` or `mapfile` on macOS | Keep it; add the macOS `/bin/bash` smoke step and an explicit `BASH_VERSINFO` check in scripts that need Bash 4 |
+| Bicep lint and build | CI on Linux | The Bicep CLI is the same on every OS | None | Nothing to do |
+| gitleaks (CI and LZ's `.githooks/pre-commit`) | CI on Linux; the hook wherever a contributor enables it | gitleaks has Windows and macOS builds; the hook is `/bin/sh`, which Git for Windows runs | None | Nothing to do |
+| KB tools (`scripts/kb/*.py`, family-wide) | CI on Linux, Claude Code hooks | Python runs anywhere | `open()` and `Path.read_text()` without `encoding=`: ruff's `PLW1514` finds 3 to 6 per repo | Fix in 2ndbrain and re-sync (gap 6); add `ruff check --select PLW1514` to the KB checks |
+| Claude Code hooks (`.claude/settings.json`) | Claude Code sessions | Hooks call `python3` and `bash`; Claude Code on Windows runs hooks through Git Bash, but a Windows Python install often has `python` or `py`, not `python3` | Local Windows contributors may see the hooks fail | Note it in each repo's contributing guide; revisit if an outside contributor on Windows hits it |
+| Node site and portal tests (`node --test`) | CI on Linux | Node runs anywhere; paths are POSIX strings | None found | Add Windows to the matrix only for the portal engines' tests (they build the command blocks) |
+| EditorConfig | Nowhere | - | No repo has one, so editors pick their own line endings and indentation | Add a small `.editorconfig` (UTF-8, LF, final newline, 2 or 4 spaces as each repo already uses) |
+| `.gitattributes` | LZ, current-state, brain, only for byte-pinned contracts | - | No line-ending rule for `.sh` (or anything else) | Add `* text=auto` and `*.sh text eol=lf`, keeping the existing `-text` lines for pinned contracts |
+| Markdown and YAML lint | Nowhere (the KB validator checks KB structure, not style) | - | None needed for this rule | Nothing to do |
+
 ## 7. Gaps, ranked by value
 
 | # | Gap | Repo | Why it matters | Size |
 |---|---|---|---|---|
+| 0 | Two image scripts fail to parse; CI's analyzer hides parse errors (add `ParseError` to `Severity` in every repo) | avd-landing-zone, then current-state and brain settings | A real bug that ships today; the image build steps that call them can't run | XS |
 | 1 | `platforms.json` with real evidence, and a test that it lists every operator entry point | avd-landing-zone, avd-current-state | The portals' toggle reads it; today it would be a guess | S each |
 | 2 | Windows and macOS CI matrix for Pester and the analyzer (plus `shell: powershell` for the 5.1 claims) | avd-current-state | The one repo people already run on their own machines, and its README claims Windows PowerShell 5.1 with no test | S |
 | 3 | `deploy.sh`: Bash version check with a clear message, `MSYS_NO_PATHCONV=1`, `*.sh text eol=lf`, and a macOS and Git Bash smoke step with a fake `az` | avd-landing-zone | The deploy command is the one most likely to be run locally, and today it breaks on a stock Mac with an unclear error | S |
@@ -168,6 +189,7 @@ the pull request that adds this page.
 | 5 | Windows and macOS matrix for `scripts/ops` Pester tests and offline scenarios | avd-landing-zone | Proves the local path for the ops scripts; fake Bash tools need a PowerShell sibling | M |
 | 6 | `encoding="utf-8"` in the shared KB tools, fixed once in 2ndbrain and re-synced | 2ndbrain, then every family KB | Contributors on Windows; small and mechanical | S |
 | 7 | New scripts follow the rule: the batch runner moving into avd-landing-zone (`scripts/ops/*Spend*`, `*SandboxBatch*`) lands as pwsh 7.2 with entries in `platforms.json`, and its fake `az` gets a Windows sibling | avd-landing-zone | Keeps the next 7 scripts from becoming new gaps | in that work |
+| 7a | Analyzer compatibility rules on (section 6a), `.editorconfig`, `* text=auto` and `*.sh text eol=lf` | every repo with scripts | Catches Windows-only commands and 5.1 syntax at lint time, from one Linux job | S per repo |
 | 8 | Brain `scripts/*.ps1` and `vault/avd_second_brain.ps1` on the matrix (the vault script on `shell: powershell`) | avd-second-brain | Contributor and vault operator use on Windows | S |
 
-Follow-up pull requests start with gaps 1 to 3 after the owner's yes; the rest follow in order.
+Gap 0 is a bug fix and goes first. Follow-up pull requests for gaps 1 to 3 and 7a start after the owner's yes; the rest follow in order.
