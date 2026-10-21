@@ -5,21 +5,37 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-swarm | avd-ops</title>
 <meta name="description" content="Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.">
+<!-- shell:head -->
 <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/avd-ops.css">
+<link rel="stylesheet" href="../assets/avd-ops-shell.css">
 <link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/theme.js"></script>
+<!-- /shell:head -->
 </head>
-<body>
-<div class="wrap"><header class="top"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="26" height="26">avd-ops</a><nav aria-label="Repos"><a href="../index.html">Overview</a><a href="../docs/index.html">Docs</a><a href="../architecture.html">Architecture</a><a href="avd-landing-zone.html">avd-landing-zone</a><a href="avd-current-state.html">avd-current-state</a><a href="avd-assess.html">avd-assess</a><a href="avd-swarm.html" aria-current="page">avd-swarm</a><a href="avd-second-brain.html">avd-second-brain</a></nav></header>
+<body class="shell">
+<!-- shell:top -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="28" height="28"><span class="word">avd-ops</span></a>
+<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://avd-ops.github.io/avd-landing-zone/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
+<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
+<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Research project, not for production.</strong><span class="more">Read the notice</span></summary>
+<div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
+<li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
+<li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
+<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div></details>
+<div class="layout"><nav class="side" id="side" aria-label="Pages">
+<p class="group">Start</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../architecture.html">Architecture</a><a href="../docs/concepts.html">Concepts</a><a href="../docs/roadmap.html">Roadmap</a>
+<p class="group">Repos</p><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-landing-zone.html">avd-landing-zone</a><a href="../family/avd-swarm.html" aria-current="page">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a><a href="../docs/repos/index.html">Repo guides</a>
+<p class="group">Record</p><a href="../docs/decisions/index.html">Decisions</a><a href="../docs/graph.html">Graph</a><a href="../design/index.html">Design system</a>
+</nav>
+<!-- /shell:top -->
+<main id="main">
+<div class="col">
 <p class="eyebrow kicker">On top: how we automate it</p>
 <h1>avd-swarm</h1>
 <p class="lede">Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.</p>
 <span class="status s-design">Design and spike</span>
-<div class="warn" role="note"><strong>Personal project. Research and learning only. Not for production. No warranty.</strong>
-<ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
-<li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
-<li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
-<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div>
 <h2>What it does</h2><ul><li>A coordinator hands questions to specialist agents: readiness, deploy, hosts, images, users and cost.</li><li>Writes go through plans approved in GitHub Environments, with one layered kill switch only the owner resets.</li><li>The write path never runs in the public repo. Adopters run it from a private repo synced from a release tag.</li><li>Today only the S1a spike runs. Everything after the first two write actions is designed, not scheduled.</li></ul>
 <h2>Try it in a lab</h2><p>The S1a spike runs from the public repo alone. It prices itself first and refuses to deploy anything if the estimate is over the run cap ($20 by default) or would take the month past the monthly cap you give it, then deploys, asks its questions, tears down, checks nothing is left and records the run.</p><pre># Azure Cloud Shell (PowerShell), in a lab tenant and a sandbox subscription
 if (-not (Test-Path ~/avd-swarm)) { git clone https://github.com/nickprignano/avd-swarm.git ~/avd-swarm }
@@ -28,7 +44,14 @@ Set-Location ~/avd-swarm; git checkout -q main; git pull -q --ff-only
 <p>It needs Claude quota in Microsoft Foundry (East US 2). Without it, add <code>-Provider Anthropic</code> to run the same questions on Anthropic's API, with no API key.</p>
 <p>Full prerequisites and steps are in the <a href="https://github.com/nickprignano/avd-swarm#readme">README</a>.</p>
 <h2>Read more</h2><ul><li><a href="https://github.com/nickprignano/avd-swarm">Repository on GitHub</a></li><li><a href="https://github.com/nickprignano/avd-swarm/blob/HEAD/docs/spec.md">Spec</a></li><li><a href="https://github.com/nickprignano/avd-swarm/blob/HEAD/docs/spec.md#9a-build-order-proposed-2026-10-19-after-the-second-red-team">Build order</a></li><li><a href="https://github.com/nickprignano/avd-swarm#contributing">Contributing</a></li></ul>
-<footer class="site"><p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
-<p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p></footer></div>
+</div>
+</main>
+<!-- shell:foot -->
+</div>
+<footer class="foot"><div class="in"><p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p>
+<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p></div></footer>
+<button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>
+<!-- /shell:foot -->
 </body>
 </html>
