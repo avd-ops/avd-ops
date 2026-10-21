@@ -137,7 +137,8 @@ listed.
 ## 6. How it's tested
 
 No new harness: GitHub Actions' OS matrix with the tools each repo already uses. The prior-art
-check (avd-second-brain `kb-prior-art`, 2026-10-21) found nothing in the family KBs to reuse.
+check for this is avd-second-brain's `kb-prior-art` run of 2026-10-21; what it found is noted in
+the pull request that adds this page.
 
 - **PowerShell**: a `strategy.matrix.os: [ubuntu-latest, windows-latest, macos-latest]` job runs
   `Invoke-Pester` and `Invoke-ScriptAnalyzer` with `shell: pwsh`. Repos that claim Windows
