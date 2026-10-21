@@ -16,7 +16,8 @@ only when the log bundle is ready to ship, as section 5.2 says.
   release tag.** That answers the question most people actually have ("is this the code the
   family published, at the version I think?") on every OS, Cloud Shell included.
 - **Add Authenticode only where Windows enforces it**, which today means one artifact: the
-  avd-linecheck log bundle script, which its spec already says ships only signed. Use Azure
+  log bundle collector, which ships only signed (it moved from avd-linecheck to avd-current-state
+  on 2026-10-21, tracked in avd-current-state issue 41). Use Azure
   Artifact Signing from a GitHub Actions job with OIDC (no secret), about $9.99 a month, started
   when that script is ready to ship and not before.
 - **Do not sign the landing zone's scripts in place.** No one who runs them today gains from it,
@@ -61,7 +62,7 @@ Two different promises are often both called "signing":
 | Run Command, image builder step, Automation runbook | No. Azure runs the content it was given | The pinned commit or tag the template was built from |
 
 Execution policy is not a security boundary (Microsoft says so); App Control is. So Authenticode
-pays off where an organization's own policy demands it: a helpdesk pushing the linecheck log
+pays off where an organization's own policy demands it: a helpdesk pushing the avd-current-state log
 bundle to managed PCs is the one case the family has today. Operators of the landing zone work in
 Cloud Shell and gain nothing from it.
 
@@ -74,7 +75,7 @@ in any repo, and the owner pays for anything that bills.
 | --- | --- | --- | --- | --- |
 | **GitHub immutable releases** (tag locked to a commit, assets can't change, release attestation) | Provenance | Yes, nothing to manage | $0 | **Adopt now** |
 | **GitHub artifact attestations** (`actions/attest-build-provenance`, Sigstore public-good instance for public repos, SLSA build provenance) | Provenance | Yes, the workflow's OIDC token | $0 for public repos | **Adopt now**, for files a workflow builds (the assembled log bundle script) |
-| **Azure Artifact Signing** (formerly Trusted Signing; Microsoft-managed keys in an HSM, certificates renewed daily and valid 72 hours, a durable per-profile EKU) | Authenticode, publicly trusted | Yes: `azure/login` with a federated credential, then Microsoft's signing action or `ArtifactSigning` module on a Windows runner | Basic $9.99 a month (5,000 signatures; billed for the full month, not prorated) | **Adopt for the linecheck log bundle only**, when it ships, on the owner's go |
+| **Azure Artifact Signing** (formerly Trusted Signing; Microsoft-managed keys in an HSM, certificates renewed daily and valid 72 hours, a durable per-profile EKU) | Authenticode, publicly trusted | Yes: `azure/login` with a federated credential, then Microsoft's signing action or `ArtifactSigning` module on a Windows runner | Basic $9.99 a month (5,000 signatures; billed for the full month, not prorated) | **Adopt for the log bundle collector only**, when it ships, on the owner's go |
 | Sigstore `cosign sign-blob` on its own | Provenance | Yes | $0 | Not needed: the attestation above is the same Sigstore service with GitHub's identity built in. Reference only |
 | SignPath Foundation (free for OSI-licensed projects) | Authenticode | Yes | $0 | Prior art only: a third-party service that is neither open source nor Microsoft, and the publisher on every signature would be the foundation, not the family |
 | Organization validation (OV) certificate from a commercial CA | Authenticode | Possible: since 2023 the key must live in hardware, and a cloud HSM (Key Vault Premium or Managed HSM) reached with OIDC qualifies | About $150 to $300 a year, plus the HSM and a CA relationship | Reject: more money and more moving parts than Artifact Signing for the same result |
@@ -114,16 +115,17 @@ No Authenticode for these repos until someone shows an `AllSigned` or App Contro
 that runs operator scripts locally. If that day comes, the signed copies go **into a release
 asset** (a zip), never back into git.
 
-### 5.2 avd-linecheck log bundle: signed and attested
+### 5.2 The log bundle collector (avd-current-state): signed and attested
 
-When the collector exists (its spec, section 17, makes signing a prerequisite):
+When the collector exists (first specified in avd-linecheck's spec, section 17, which makes signing a
+prerequisite; avd-current-state now owns it):
 
 1. A release workflow on a Windows runner assembles the one `.ps1` from the tested module,
    signs it with **Artifact Signing** (Public Trust, timestamped with Microsoft's timestamp
    service, because the certificate itself expires after 72 hours), and attests the signed file
    with `actions/attest-build-provenance`.
 2. The workflow signs into Azure with **OIDC**: a federated credential whose subject is exactly
-   `repo:avd-ops/avd-linecheck:environment:release`, an environment limited to `v*` tags, and one
+   `repo:avd-ops/avd-current-state:environment:release`, an environment limited to `v*` tags, and one
    role (Artifact Signing Certificate Profile Signer) on one certificate profile. Workflow
    permissions: `id-token: write`, `attestations: write`, `contents: read`. No secret anywhere.
    With one maintainer, the environment's required reviewer is the person who pushed the tag, so
@@ -147,7 +149,7 @@ pwsh -NoLogo -Command 'Get-AuthenticodeSignature ./Get-AvdLogBundle.ps1 | Format
 ```
 
 ```bash
-gh attestation verify ./Get-AvdLogBundle.ps1 -R avd-ops/avd-linecheck
+gh attestation verify ./Get-AvdLogBundle.ps1 -R avd-ops/avd-current-state
 ```
 
 ### 5.3 What a person can verify offline
@@ -202,7 +204,7 @@ signatures stay valid.
 2. Make release tags the default in command blocks and portals.
 3. Create the Artifact Signing account, run individual identity validation, and accept the
    validated legal name as the visible publisher, at $9.99 a month, when the log bundle is ready.
-4. Add the federated credential and the `release` environment in avd-linecheck.
+4. Add the federated credential and the `release` environment in avd-current-state.
 
 ## 9. Open questions
 

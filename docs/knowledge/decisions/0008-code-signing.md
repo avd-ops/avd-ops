@@ -13,7 +13,7 @@ repos (2026-10-21) found no signed script, no tag, no release and no attestation
 people through `git clone` in Azure Cloud Shell, through templates that embed host scripts at the
 deployed commit, and through one runbook URL pinned to a commit. Cloud Shell, macOS and Linux never
 check an Authenticode signature, and Windows checks one only for downloaded files, `AllSigned`, and
-App Control or AppLocker script rules. The avd-linecheck log bundle, meant for helpdesks to push to
+App Control or AppLocker script rules. The log bundle collector (specified in avd-linecheck, owned by avd-current-state since 2026-10-21), meant for helpdesks to push to
 managed Windows PCs, must ship signed (its spec, section 17.5). What should the family sign, with
 what, and at what cost?
 
