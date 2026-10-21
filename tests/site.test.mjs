@@ -131,7 +131,7 @@ test('the credits page is built from credits.json and up to date (scripts/site/b
   execFileSync(process.execPath, [join(root, 'scripts/site/build-credits.mjs'), '--check'], { stdio: 'pipe' });
   const credits = JSON.parse(read('credits.json'));
   assert.match(credits.checked, /^\d{4}-\d{2}-\d{2}$/, 'checked date');
-  const entries = [...credits.adopted, ...credits.tooling, ...credits.prior_art, ...credits.sources];
+  const entries = [...credits.adopted, ...credits.tooling, ...credits.prior_art];
   const seen = new Set();
   for (const e of entries) {
     assert.ok(e.name && e.license && (e.job || e.why || e.use), `${e.name}: name, license and what we use it for`);

@@ -28,14 +28,7 @@
     {"name": "Azure Virtual Desktop Landing Zone Accelerator", "url": "https://github.com/Azure/avdaccelerator", "license": "MIT", "why": "Microsoft's broad accelerator covers other identity models and brownfield. avd-landing-zone stays narrow on purpose and points people there for what it leaves out"},
     {"name": "Azure Resource Inventory (ARI)", "url": "https://github.com/microsoft/ARI", "license": "MIT in the repo; its PowerShell Gallery listing says otherwise", "why": "The parity checklist for avd-current-state's inventory and diagram. We built our own for redacted, contract-shaped output, and reuse none of its code until the license question is settled"}
   ],
-  "sources": [
-    {"name": "Azure Virtual Desktop documentation", "url": "https://learn.microsoft.com/azure/virtual-desktop/", "license": "Microsoft Learn content, link only", "use": "How AVD behaves. Upstream wins on documented behavior; a real run wins on what happened"},
-    {"name": "Cloud Adoption Framework for AVD", "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/", "license": "Microsoft Learn content, link only", "use": "The assess, deploy and manage phases the family follows"},
-    {"name": "Well-Architected Framework for AVD", "url": "https://learn.microsoft.com/azure/well-architected/azure-virtual-desktop/overview", "license": "Microsoft Learn content, link only", "use": "The pillars and checklists behind the assessment's targets"},
-    {"name": "FSLogix documentation", "url": "https://learn.microsoft.com/fslogix/", "license": "Microsoft Learn content, link only", "use": "Profile containers and their storage"},
-    {"name": "Microsoft FinOps guides and the FinOps toolkit", "url": "https://learn.microsoft.com/cloud-computing/finops/", "license": "Microsoft Learn content, link only; the toolkit is open source", "use": "The FinOps Framework and FOCUS as Microsoft explains them, for cost assessment"}
-  ],
-  "references": {"url": "https://github.com/avd-ops/avd-assess/tree/main/references", "text": "Every source the family reads is pinned in avd-assess, each to a commit or a Learn page's git_commit_id, with the date it was read and short claims in our own words."},
+  "references": {"url": "https://github.com/avd-ops/avd-assess/tree/main/references", "text": "Microsoft Learn (Azure Virtual Desktop, the Cloud Adoption and Well-Architected Frameworks, FSLogix, FinOps) and every other source the family reads is listed once, in avd-assess, pinned to a commit or a Learn page's git_commit_id, with the date it was read and short claims in our own words."},
   "people": {
     "maintainers": [{"name": "Nick Prignano", "github": "nickprignano", "role": "Author and maintainer"}],
     "experts": {"url": "https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/experts.md", "text": "The subject matter experts the knowledge base follows are chosen and scored by a published method, with evidence for every score."}

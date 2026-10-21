@@ -53,7 +53,6 @@ ${table(data.tooling, ['Project', 'What we use it for', 'License'], (r) => [link
 <p>Projects that do part of what we do. We studied them, used them as a checklist, and say why we took a different path.</p>
 ${table(data.prior_art, ['Project', 'What we learned', 'License'], (r) => [link(r.url, r.name), esc(r.why), `<span class="mono">${esc(r.license)}</span>`])}
 <h2 id="sources">Sources we read</h2>
-${table(data.sources, ['Source', 'What we read it for', 'Terms'], (r) => [link(r.url, r.name), esc(r.use), esc(r.license)])}
 <p>${esc(data.references.text)} ${link(data.references.url, 'See the pinned references')}.</p>
 <h2 id="people">People</h2>
 <ul>
