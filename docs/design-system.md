@@ -1,6 +1,6 @@
 # avd-ops design system
 
-One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/), plus two starters in [`templates/`](../templates/): one for a new page in any repo, one for a Claude artifact. Version 2.4.1. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
+One look and one frame for every public AVD page: avd-ops.dev, the deployment portal in avd-landing-zone, the assessment portal in avd-current-state, and any page a sibling repo adds later. It is a token stylesheet, the app shell every page opens in, a stylesheet for guided portal pages, a small theme script, the fonts and the brand files, in [`site/assets/`](../site/assets/), plus two starters in [`templates/`](../templates/): one for a new page in any repo, one for a Claude artifact. Version 2.5.0. Why it is a shell, and why other repos take a copy instead of a dependency: [decision 0005](knowledge/decisions/0005-one-app-shell-for-every-page.md). Every token and component, live in both themes: [avd-ops.dev/design/](https://avd-ops.dev/design/).
 
 ## Where the UI is
 
@@ -20,6 +20,8 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 - **No inline styles.** Page layout goes in the page's own stylesheet (`site.css` here, the portal's `<style>` block there), built on the tokens.
 - **Dark mode follows the system** (`prefers-color-scheme`), and `<html data-theme="light|dark">` forces one. The shell's theme button sets it and remembers the choice in that browser only (`theme.js`).
 - **Touch first.** Every control in the shell is at least `--tap` (44px) on a touch screen, and no page scrolls sideways at 390px.
+- **One screen at a time** (owner, 2026-10-21). A guided page shows one step that fills the screen, with Back and Next along the bottom, never a page of stacked panels. A docs page or a long section follows the same idea: one idea per screen, and the rest behind a `details.more` disclosure. If a screen needs scrolling to find its action, split it.
+- **Bottom line first, in plain words, like a chat reply** (owner, 2026-10-21). Each screen opens with what to do or what happened, in one plain sentence, then the one action. Detail, reasons and caveats go behind "more". No walls of text: a paragraph over three lines is a sign it belongs behind "more" or on its own screen. A portal's answer to a paste starts with the verdict (`.reply .bl`), then one or two sentences, then the next button.
 - **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice in the brand bar (`details.notice`, a pill that opens to the full text, which stays in the page), or the `.warn` box on a page without the shell. Both portals put theirs in the bar in 2.4.1 (`p.disclaimer` is gone); a portal's footer keeps `footer.disclaimer`.
 
 ## Tokens
@@ -90,6 +92,14 @@ On avd-ops.dev, `scripts/site/shell.mjs` writes the shell: `build-docs.mjs` wrap
 | `.row`, `.field`, `fieldset`, `label.switch` | Form layout, a labeled field with an optional hint (`small`), a group, a toggle. `textarea.prose` for notes. |
 | `button`, `.secondary`, `.linkbtn`, `a.btnlink` | Primary, secondary and link-style actions. |
 | `.stepnav` | Back and Next, sticky at the bottom; `.where` names the stage. |
+| `.wz-head`, `.wz-tools` > `.wz-tool` | The wizard's head (2.5.0): the portal's name (`h1`), one `.purpose` line, and quiet tools such as Settings and Resume. |
+| `ol.wz-progress` > `li.phase[data-steps]` | The wizard's progress: one bar per step (`button.seg`, `.done`, `.current`, disabled until reached), grouped by phase, each phase as wide as its steps so its `.phase-name` sits over them. |
+| `.wz-stage` | One step that fills the screen: a large `h2`, one `.purpose` line, the `.act` row, `.quiet` notes. |
+| `details.more` | The "+ more" disclosure that holds a step's detail, so the screen keeps one idea. |
+| `.runline` | Run in as one quiet line over a command block ("For Cloud Shell, PowerShell. Change"); the full choice lives in Settings. |
+| `.reply` > `.bl` | The answer to a paste, bottom line first: the verdict (`.good`, `.ok`, `.poor`, always with its word), then the next action. |
+| `.wz-nav` > `.in` | Back and Next along the bottom on every screen size; `.where` names the step on wide screens. |
+| `.sheet`, `.sheet-backdrop` | A panel that slides over the step (Settings, Where did I leave off), full width on a phone. |
 | `.result.good` / `.ok` / `.poor` | A run's overall result. |
 | `.outcome.o-pass` / `.o-warn` / `.o-gap` / `.o-unknown` | A check's outcome. Each pill carries its word, never color alone. |
 | `.filedrop` | A file input with a drop zone; the page fills `.file` and `.error`. The hint says the file is read in the browser and never uploaded. |
@@ -116,7 +126,7 @@ Two starters in [`templates/`](../templates/), written by `scripts/site/build-ki
 From Azure Cloud Shell, in a clone of the repo that adds the page (after taking the pinned copy; it never overwrites a page that is there):
 
 ```bash
-TAG=ds-v2.4.1; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
+TAG=ds-v2.5.0; PAGE=site/new-page.html; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && if [ -e "$PAGE" ]; then echo "$PAGE exists; pick another name"; else cp /tmp/avd-ops/templates/page.html "$PAGE" && echo "wrote $PAGE"; fi
 ```
 
 A page keeps the notice and the credit line. A repo whose own notice says more keeps its wording (avd-liquidware also names Liquidware in the notice's first item). It keeps colors in tokens, and puts its own layout in its own stylesheet. An artifact follows the same rules except where the artifact host forbids them: its styles are inline and its fonts come from Google Fonts. Claude sessions use the `brand-profile` skill ([`.claude/skills/brand-profile/`](../.claude/skills/brand-profile/SKILL.md)), which reads `brand/profile.json` and starts every page or artifact from these files.
@@ -143,7 +153,7 @@ Pages that can't load avd-ops.dev at run time (the portals make no requests to o
 A repo that takes a copy keeps it in `site/assets/` and records the tag and the manifest's hashes in `site/assets/design-system.lock.json`; its own design-system test checks the files still match, so local changes go in that repo's own stylesheet. From Azure Cloud Shell, in a clone of the repo that adopts it (set the tag first):
 
 ```bash
-TAG=ds-v2.4.1; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
+TAG=ds-v2.5.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" https://github.com/avd-ops/avd-ops.git /tmp/avd-ops && mkdir -p site/assets && (cd /tmp/avd-ops/site/assets && cp -r avd-ops.css avd-ops-shell.css avd-ops-portal.css theme.js fonts brand "$OLDPWD/site/assets/") && jq --arg tag "$TAG" --arg commit "$(git -C /tmp/avd-ops rev-parse HEAD)" '{tag:$tag,commit:$commit,files:.files}' /tmp/avd-ops/site/assets/MANIFEST.json > site/assets/design-system.lock.json
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.
