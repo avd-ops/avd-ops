@@ -124,7 +124,8 @@ test('touch targets in the shell are at least 44px and the side list fits a phon
   const base = read('site/assets/avd-ops.css');
   assert.match(base, /--tap:44px/, '--tap');
   const css = read('site/assets/avd-ops-shell.css');
-  assert.match(css, /\.shell \.iconbtn\{width:var\(--tap\);height:var\(--tap\)/, 'icon buttons');
+  assert.match(css, /\.shell header\.bar \.iconbtn\{width:var\(--tap\);height:var\(--tap\)/, 'icon buttons');
+  assert.match(base, /@media \(pointer:coarse\)\{\.segmented span\{min-height:var\(--tap\)\}\}/, 'segmented choices on touch');
   assert.match(css, /@media \(pointer:coarse\)\{\.shell \.side a\{min-height:var\(--tap\)\}/, 'side list rows on touch');
   assert.match(css, /width:min\(20rem,86vw\)/, 'drawer width');
 });
