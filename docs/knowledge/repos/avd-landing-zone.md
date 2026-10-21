@@ -3,12 +3,12 @@ title: "avd-landing-zone"
 summary: "How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal"
 topic: repos
 status: partial
-last_reviewed: 2026-10-20
+last_reviewed: 2026-10-21
 ---
 
 # avd-landing-zone
 
-**How it's built and changed from here.** An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
+**How it's built and changed from here. The deployment engine.** An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
 
 The repo is the source of truth: [avd-ops/avd-landing-zone](https://github.com/avd-ops/avd-landing-zone). This page says where it fits.
 
