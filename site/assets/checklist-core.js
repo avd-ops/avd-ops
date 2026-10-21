@@ -17,6 +17,8 @@ export const MIN_GAP_MS = 2 * 60 * 1000;
 export const REQUIRED_RULES = ['deletion', 'non_fast_forward', 'pull_request'];
 
 export const prKey = (repo, number) => `${repo}#${number}`;
+// Where a setting's answer is cached: rules:<repo> or pvr:<repo>.
+export const settingKey = (kind, repo) => `${kind === 'ruleset' ? 'rules' : 'pvr'}:${repo}`;
 
 // Every pull request a checklist names, once, in the order it first appears.
 export function listPrs(data) {
@@ -50,7 +52,8 @@ export function prStatus(pr) {
   if (pr.state === 'closed') return { state: 'closed', word: 'Closed without merging', done: true };
   if (pr.draft) return { state: 'draft', word: 'Draft', done: false };
   switch (pr.mergeable_state) {
-    case 'clean': return { state: 'ready', word: 'Ready to merge', done: false };
+    case 'clean':
+    case 'has_hooks': return { state: 'ready', word: 'Ready to merge', done: false };
     case 'unstable': return { state: 'checks', word: 'Checks failing or still running', done: false };
     case 'dirty': return { state: 'conflict', word: 'Merge conflict: needs a rebase', done: false };
     case 'blocked': return { state: 'blocked', word: 'Blocked by a rule or a review', done: false };
@@ -59,16 +62,19 @@ export function prStatus(pr) {
   }
 }
 
-// A line of one or more pull requests (a pair changes together): done when every one is merged or closed. Its
-// word is the least ready member's, so a pair reads "Ready" only when both halves are.
-const ORDER = ['conflict', 'blocked', 'behind', 'checks', 'draft', 'checking', 'unchecked', 'ready', 'closed', 'merged'];
+// A line of one or more pull requests (a pair changes together): done only when every one is merged; a pull
+// request closed without merging keeps the line open until checklist.json drops it. Its word is the least ready
+// member's, so a pair reads "Ready" only when both halves are; head is the short word for the line's pill.
+const ORDER = ['conflict', 'blocked', 'closed', 'behind', 'checks', 'draft', 'checking', 'unchecked', 'ready', 'merged'];
+const head = (state) => (state === 'ready' ? 'Ready to merge' : state === 'unchecked' ? 'Not checked yet' : state === 'closed' ? 'Closed, not merged' : 'Not ready yet');
 export function itemPrStatus(item, prs) {
   const each = (item.prs || []).map((p) => ({ ...p, status: prStatus(prs[prKey(p.repo, p.number)]) }));
   const worst = each.reduce((a, b) => (ORDER.indexOf(b.status.state) < ORDER.indexOf(a.status.state) ? b : a), each[0]);
-  const done = each.length > 0 && each.every((p) => p.status.done);
-  if (done) return { state: 'done', word: each.every((p) => p.status.state === 'merged') ? 'Merged' : 'Done', done, each };
-  if (each.length > 1 && worst.status.state !== 'ready') return { state: worst.status.state, word: `${worst.repo} #${worst.number}: ${worst.status.word}`, done, each };
-  return { state: worst.status.state, word: worst.status.word, done, each };
+  const done = each.length > 0 && each.every((p) => p.status.state === 'merged');
+  if (done) return { state: 'done', word: 'Merged', head: 'Merged', done, each };
+  const st = worst.status.state;
+  if (each.length > 1 && st !== 'ready') return { state: st, word: `${worst.repo} #${worst.number}: ${worst.status.word}`, head: head(st), done, each };
+  return { state: st, word: worst.status.word, head: head(st), done, each };
 }
 
 // GET /repos/{owner}/{repo}/rules/branches/{branch} lists the rules in force on that branch.
@@ -97,23 +103,28 @@ export function itemSettingStatus(item, perRepo) {
   return { state: 'off', word: `${each.length - off.length} of ${each.length} repos`, done: false, each };
 }
 
-// The requests a full check would make, cheapest first: settings, then the open pull requests. Merged and closed
-// pull requests already in the cache are skipped, since they can't change back.
+// The requests a full check would make, the ones answered longest ago first, so when GitHub's limit cuts a check
+// short the next one picks up where it stopped. Merged pull requests are skipped, since they can't change back;
+// a closed one can be reopened, so it is still asked about.
 export function planRequests(data, cache) {
   const out = [];
   for (const s of data.sections) {
     for (const item of s.items) {
-      if (item.kind === 'ruleset') for (const r of settingRepos(data, item)) out.push({ key: `rules:${r.name}`, path: `/repos/${data.owner}/${r.name}/rules/branches/${encodeURIComponent(r.branch)}` });
-      if (item.kind === 'pvr') for (const r of settingRepos(data, item)) out.push({ key: `pvr:${r.name}`, path: `/repos/${data.owner}/${r.name}/private-vulnerability-reporting` });
+      if (item.kind === 'ruleset') for (const r of settingRepos(data, item)) out.push({ key: settingKey('ruleset', r.name), path: `/repos/${data.owner}/${r.name}/rules/branches/${encodeURIComponent(r.branch)}` });
+      if (item.kind === 'pvr') for (const r of settingRepos(data, item)) out.push({ key: settingKey('pvr', r.name), path: `/repos/${data.owner}/${r.name}/private-vulnerability-reporting` });
     }
   }
   for (const p of listPrs(data)) {
     const k = prKey(p.repo, p.number);
-    if (prStatus(cache.prs?.[k]).done) continue;
+    if (prStatus(cache.prs?.[k]).state === 'merged') continue;
     out.push({ key: `pr:${k}`, path: `/repos/${data.owner}/${p.repo}/pulls/${p.number}` });
   }
   const seen = new Set();
-  return out.filter((r) => (seen.has(r.key) ? false : seen.add(r.key)));
+  const asked = cache.asked || {};
+  return out.filter((r) => (seen.has(r.key) ? false : seen.add(r.key)))
+    .map((r, i) => ({ r, i, t: asked[r.key] || 0 }))
+    .sort((a, b) => a.t - b.t || a.i - b.i)
+    .map((x) => x.r);
 }
 
 // How many of the planned requests to send now, from the rate limit GitHub last reported. Keeps a small reserve
@@ -126,14 +137,25 @@ export function budget(planned, rate, now) {
   return { send, waitUntil: send < planned && rate.reset ? rate.reset * 1000 : null };
 }
 
+// The rate GitHub last reported, or null once its window has reset and the number no longer holds.
+export const currentRate = (rate, now) => (rate && typeof rate.remaining === 'number' && rate.reset && now < rate.reset * 1000 ? rate : null);
+// Reads the rate-limit headers; a missing header is unknown, never zero.
+export function readRate(get) {
+  const r = get('x-ratelimit-remaining'); const t = get('x-ratelimit-reset');
+  if (r === null || t === null || r === '' || t === '') return null;
+  const remaining = Number(r); const reset = Number(t);
+  return Number.isFinite(remaining) && Number.isFinite(reset) ? { remaining, reset } : null;
+}
+
 // Should the page check by itself on load?
 export const shouldAutoCheck = (cache, now) => !cache.checkedAt || now - cache.checkedAt > STALE_MS;
 // When the Check now button may be used again.
 export const nextCheckAt = (cache) => (cache.checkedAt ? cache.checkedAt + MIN_GAP_MS : 0);
 
-// Folds one response into the cache. A failed request keeps the last good value.
-export function applyResult(cache, key, ok, body) {
-  const next = { prs: { ...(cache.prs || {}) }, settings: { ...(cache.settings || {}) }, checkedAt: cache.checkedAt, rate: cache.rate };
+// Folds one response into the cache. A failed request keeps the last good value; either way the key counts as
+// asked at `now`, so the next check starts with the others.
+export function applyResult(cache, key, ok, body, now = 0) {
+  const next = { prs: { ...(cache.prs || {}) }, settings: { ...(cache.settings || {}) }, asked: { ...(cache.asked || {}), [key]: now }, checkedAt: cache.checkedAt, rate: cache.rate };
   if (!ok) return next;
   if (key.startsWith('pr:')) {
     const b = body || {};
@@ -166,7 +188,7 @@ export function lineDone(data, item, cache, ticks) {
 export function settingsFor(data, item, cache) {
   const out = {};
   for (const name of item.repos || []) {
-    const v = (cache.settings || {})[`${item.kind === 'ruleset' ? 'rules' : 'pvr'}:${name}`];
+    const v = (cache.settings || {})[settingKey(item.kind, name)];
     out[name] = item.kind === 'ruleset' ? rulesetStatus(v) : pvrStatus(v);
   }
   return out;
@@ -188,7 +210,7 @@ export function validate(data) {
       if (!['pr', 'manual', 'ruleset', 'pvr'].includes(item.kind)) errors.push(`${item.id}: kind`);
       if (item.kind === 'pr') for (const p of item.prs || []) if (!repoNames.has(p.repo) || !Number.isInteger(p.number)) errors.push(`${item.id}: ${p.repo}#${p.number}`);
       if (item.kind === 'pr' && !(item.prs || []).length) errors.push(`${item.id}: no prs`);
-      if ((item.kind === 'ruleset' || item.kind === 'pvr') && !(item.repos || []).every((r) => repoNames.has(r))) errors.push(`${item.id}: repos`);
+      if ((item.kind === 'ruleset' || item.kind === 'pvr') && !(Array.isArray(item.repos) && item.repos.length && item.repos.every((r) => repoNames.has(r)))) errors.push(`${item.id}: repos`);
       if (item.kind === 'manual' && !item.text) errors.push(`${item.id}: text`);
       if (item.link && !/^https:\/\/github\.com\//.test(item.link)) errors.push(`${item.id}: link must be on github.com`);
     }

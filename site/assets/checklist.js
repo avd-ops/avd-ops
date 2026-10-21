@@ -4,7 +4,7 @@
    Personal project, not for production, as is; not affiliated with the author's employer or Microsoft. */
 import {
   API, validate, planRequests, budget, applyResult, shouldAutoCheck, nextCheckAt, itemPrStatus, itemSettingStatus,
-  settingsFor, progress, lineDone, prKey,
+  settingsFor, progress, lineDone, prKey, currentRate, readRate,
 } from './checklist-core.js';
 
 const CACHE_KEY = 'avd-ops-checklist-cache';
@@ -52,7 +52,7 @@ function line(item) {
     const s = itemPrStatus(item, cache.prs || {});
     const links = el('div', { class: 'cl-prs' });
     for (const p of s.each) links.append(el('div', { class: 'cl-pr' }, prLink(p), pill(p.status.state, p.status.word)));
-    li.append(el('div', { class: 'cl-head' }, pill(s.done ? 'done' : s.state, s.done ? s.word : s.state === 'ready' ? 'Ready to merge' : s.state === 'unchecked' ? 'Not checked yet' : 'Not ready yet'), el('span', { text: item.note || '' })), links);
+    li.append(el('div', { class: 'cl-head' }, pill(s.done ? 'done' : s.state, s.head), el('span', { text: item.note || '' })), links);
     return li;
   }
   const s = itemSettingStatus(item, settingsFor(data, item, cache));
@@ -84,7 +84,8 @@ function render() {
 function status(extra) {
   const parts = [];
   parts.push(cache.checkedAt ? `Last checked ${time(cache.checkedAt)}.` : 'Not checked yet.');
-  if (cache.rate && typeof cache.rate.remaining === 'number') parts.push(`GitHub allows ${cache.rate.remaining} more checks from your network until ${time(cache.rate.reset * 1000)}.`);
+  const rate = currentRate(cache.rate, Date.now());
+  if (rate) parts.push(`GitHub allows ${rate.remaining} more requests from your network until ${time(rate.reset * 1000)}.`);
   if (extra) parts.push(extra);
   $('#checked').textContent = parts.join(' ');
   const wait = nextCheckAt(cache) - Date.now();
@@ -102,15 +103,15 @@ async function check() {
   for (const req of plan.slice(0, send)) {
     try {
       const res = await fetch(`${API}${req.path}`, { headers: { Accept: 'application/vnd.github+json' } });
-      const remaining = Number(res.headers.get('x-ratelimit-remaining'));
-      const reset = Number(res.headers.get('x-ratelimit-reset'));
-      if (Number.isFinite(remaining) && reset) cache = { ...cache, rate: { remaining, reset } };
-      if ((res.status === 403 || res.status === 429) && remaining === 0) { limited = true; break; }
+      const rate = readRate((h) => res.headers.get(h));
+      if (rate) cache = { ...cache, rate };
+      if ((res.status === 403 || res.status === 429) && rate && rate.remaining === 0) { limited = true; break; }
       const body = res.ok ? await res.json() : null;
       if (res.ok) ok += 1; else failed += 1;
-      cache = applyResult(cache, req.key, res.ok, body);
+      cache = applyResult(cache, req.key, res.ok, body, Date.now());
     } catch (e) {
       failed += 1;
+      cache = applyResult(cache, req.key, false, null, Date.now());
     }
   }
   // Only a check that got answers counts as a check, so a refused one doesn't block the next try.

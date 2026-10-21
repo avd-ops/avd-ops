@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   validate, prStatus, itemPrStatus, rulesetStatus, pvrStatus, itemSettingStatus, planRequests, budget, applyResult,
-  shouldAutoCheck, progress, listPrs, STALE_MS, RATE_LIMIT,
+  shouldAutoCheck, progress, listPrs, STALE_MS, RATE_LIMIT, currentRate, readRate,
 } from '../site/assets/checklist-core.js';
 
 const root = new URL('../', import.meta.url).pathname;
@@ -43,6 +43,7 @@ test('pull request states, including the lazy first read', () => {
   assert.equal(prStatus({ state: 'open', mergeable_state: 'unknown' }).state, 'checking');
   assert.equal(prStatus({ state: 'open' }).state, 'checking', 'omitted mergeable_state is never ready');
   assert.equal(prStatus({ state: 'open', draft: true, mergeable_state: 'clean' }).state, 'draft');
+  assert.equal(prStatus({ state: 'open', mergeable_state: 'has_hooks' }).state, 'ready');
 });
 
 test('a pair is ready only when both halves are, and done only when both are merged', () => {
@@ -52,7 +53,11 @@ test('a pair is ready only when both halves are, and done only when both are mer
   const half = itemPrStatus(item, { 'a#1': ready, 'b#2': { state: 'open', mergeable_state: 'dirty' } });
   assert.equal(half.state, 'conflict');
   assert.match(half.word, /^b #2: Merge conflict/);
+  assert.equal(half.head, 'Not ready yet');
   assert.equal(itemPrStatus(item, { 'a#1': { merged: true }, 'b#2': ready }).done, false);
+  const closedHalf = itemPrStatus(item, { 'a#1': { merged: true }, 'b#2': { state: 'closed', merged: false } });
+  assert.equal(closedHalf.done, false, 'closed without merging is not done');
+  assert.equal(closedHalf.head, 'Closed, not merged');
   assert.equal(itemPrStatus(item, { 'a#1': { merged: true }, 'b#2': { merged_at: '2026-10-21T00:00:00Z' } }).done, true);
 });
 
@@ -75,10 +80,15 @@ test('merged pull requests are never asked about again, and a failed request kee
   const key = `${first.repo}#${first.number}`;
   const after = planRequests(data, { prs: { [key]: { merged: true } }, settings: {} });
   assert.equal(after.length, all.length - 1);
+  assert.equal(planRequests(data, { prs: { [key]: { state: 'closed', merged: false } }, settings: {} }).length, all.length, 'a closed pull request can be reopened');
+  const asked = Object.fromEntries(all.slice(0, 5).map((r) => [r.key, 100]));
+  const rotated = planRequests(data, { prs: {}, settings: {}, asked });
+  assert.deepEqual(rotated.slice(-5).map((r) => r.key), all.slice(0, 5).map((r) => r.key), 'the ones asked most recently go last');
   const c1 = applyResult({ prs: {}, settings: {} }, `pr:${key}`, true, { state: 'open', mergeable_state: 'clean', title: 't', extra: 'dropped' });
   assert.deepEqual(Object.keys(c1.prs[key]).sort(), ['draft', 'html_url', 'mergeable_state', 'merged', 'merged_at', 'state', 'title']);
-  const c2 = applyResult(c1, `pr:${key}`, false, null);
+  const c2 = applyResult(c1, `pr:${key}`, false, null, 5);
   assert.equal(c2.prs[key].mergeable_state, 'clean');
+  assert.equal(c2.asked[`pr:${key}`], 5);
 });
 
 test('the rate limit is respected and the page waits before checking by itself', () => {
@@ -86,6 +96,10 @@ test('the rate limit is respected and the page waits before checking by itself',
   assert.deepEqual(budget(30, { remaining: 10, reset: now / 1000 + 600 }, now), { send: 7, waitUntil: now + 600_000 });
   assert.equal(budget(30, { remaining: 0, reset: now / 1000 - 1 }, now).send, 30, 'the window has reset');
   assert.equal(budget(30, null, now).send, 30);
+  assert.equal(currentRate({ remaining: 0, reset: now / 1000 - 1 }, now), null, 'an old window is not shown');
+  assert.deepEqual(currentRate({ remaining: 4, reset: now / 1000 + 60 }, now), { remaining: 4, reset: now / 1000 + 60 });
+  assert.equal(readRate(() => null), null, 'a missing header is unknown, not zero');
+  assert.deepEqual(readRate((h) => ({ 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1700000000' })[h]), { remaining: 0, reset: 1700000000 });
   assert.equal(shouldAutoCheck({}, now), true);
   assert.equal(shouldAutoCheck({ checkedAt: now - 1000 }, now), false);
   assert.equal(shouldAutoCheck({ checkedAt: now - STALE_MS - 1 }, now), true);
@@ -100,4 +114,5 @@ test('progress counts manual ticks and leaves out sections that do not count', (
   assert.deepEqual(progress(d, { prs: { 'r#1': { merged: true } } }, { m: true, m2: true }), { done: 2, total: 2 });
   assert.deepEqual(progress(d, {}, {}), { done: 0, total: 2 });
   assert.ok(validate({ ...d, sections: [{ id: 's', title: 'S', items: [{ id: 'l', kind: 'manual', text: 'x', link: 'https://example.com/' }] }] }).length, 'links stay on github.com');
+  for (const repos of [undefined, []]) assert.ok(validate({ ...d, sections: [{ id: 's', title: 'S', items: [{ id: 'v', kind: 'pvr', text: 'x', repos }] }] }).length, 'a setting line needs repos');
 });
