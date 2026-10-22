@@ -1,6 +1,6 @@
 {
   "about": "The list behind checklist.html. Threads and people edit it in a pull request: add a pull request when it is ready for the owner, remove lines once they are done. Public repos only; nothing private goes here.",
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "owner": "avd-ops",
   "repos": [
     { "name": "avd-landing-zone", "branch": "master" },
@@ -30,6 +30,8 @@
       "title": "Merge in this order",
       "intro": "Ready from GitHub mobile once a line says Ready to merge. A line with two pull requests is a pair that changes together: merge both.",
       "items": [
+        { "id": "m-text-width", "kind": "pr", "prs": [{ "repo": "avd-ops", "number": 65 }, { "repo": "avd-landing-zone", "number": 120 }, { "repo": "avd-current-state", "number": 53 }], "note": "Text fills its box on desktop: design system 2.7.0 first, then both portals take the copy." },
+        { "id": "m-text-width-tag", "kind": "manual", "text": "After avd-ops #65 merges: tag ds-v2.7.0 on its merge commit (the tag block in docs/design-system.md). If it was squashed, ask Claude to re-pin the two portals' lock files.", "link": "https://github.com/avd-ops/avd-ops/tags" },
         { "id": "m-security-map", "kind": "pr", "prs": [{ "repo": "avd-assess", "number": 38 }, { "repo": "avd-ops", "number": 30 }], "note": "The security review map, then the page that renders it." },
         { "id": "m-swarm-core", "kind": "pr", "prs": [{ "repo": "avd-swarm", "number": 39 }, { "repo": "avd-second-brain", "number": 85 }], "note": "avd-swarm's open-source core and its brain pair." },
         { "id": "m-wdot", "kind": "pr", "prs": [{ "repo": "avd-landing-zone", "number": 98 }, { "repo": "avd-second-brain", "number": 82 }], "note": "Verify every image optimization run, and its KB page." },
@@ -72,7 +74,8 @@
       "items": [
         { "id": "b-say-merged", "kind": "manual", "text": "Say which pull requests you merged while it was out, so each thread re-pins its readers and records its closeout." },
         { "id": "b-rebase", "kind": "manual", "text": "Ask for a rebase of every line that says Merge conflict." },
-        { "id": "b-sandbox", "kind": "manual", "text": "Confirm every sandbox run finished and nothing is billing before approving a new one." }
+        { "id": "b-sandbox", "kind": "manual", "text": "Confirm every sandbox run finished and nothing is billing before approving a new one." },
+        { "id": "b-assess-wizard", "kind": "manual", "text": "Move the Assess portal to the one-step wizard layout the Deploy portal uses (its own thread)." }
       ]
     }
   ]
