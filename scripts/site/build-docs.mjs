@@ -47,9 +47,18 @@ function frontMatter(text) {
   return { meta, body: m ? text.slice(m[0].length) : text };
 }
 
-// The text of an HTML fragment: tags dropped, and any < or > a broken tag leaves behind dropped too, so the
-// result is safe in an attribute or the step list.
-const plain = (html) => html.replace(/<[^>]*>/g, '').replace(/[<>]/g, '');
+// The text of an HTML fragment: everything from a < to the next > is dropped, and no < or > survives, so the
+// result is safe in an attribute or the step list. A scan, not a regex, so nothing half-stripped is left.
+function plain(html) {
+  let out = '';
+  let inTag = false;
+  for (const c of html) {
+    if (c === '<') inTag = true;
+    else if (c === '>') inTag = false;
+    else if (!inTag) out += c;
+  }
+  return out;
+}
 const unesc = (s) => s.replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 

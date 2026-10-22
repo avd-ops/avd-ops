@@ -182,6 +182,18 @@ test('the docs are built from docs/knowledge and up to date (scripts/site/build-
   for (const n of graph.nodes) assert.ok(linked.has(n.id), `${n.id} is an orphan: link it from another page`);
 });
 
+// The text of an HTML fragment, by a scan (as build-docs.mjs does), so no half-stripped tag is left.
+function plain(html) {
+  let out = '';
+  let inTag = false;
+  for (const c of html) {
+    if (c === '<') inTag = true;
+    else if (c === '>') inTag = false;
+    else if (!inTag) out += c;
+  }
+  return out;
+}
+
 test('every docs page reads one screen at a time, bottom line first (docs/design-system.md, "One screen at a time")', () => {
   const docs = pages.filter((f) => f.startsWith('site/docs/') && f !== 'site/docs/graph.html');
   assert.ok(docs.length > 10, 'docs pages');
@@ -199,7 +211,7 @@ test('every docs page reads one screen at a time, bottom line first (docs/design
       assert.ok(open.startsWith('<p class="bl">'), `${f}: #${id} opens without a bottom line`);
     }
     for (const [, bl] of h.matchAll(/<p class="bl">([\s\S]*?)<\/p>/g)) {
-      const text = bl.replace(/<[^>]*>/g, '').replace(/[<>]/g, '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+      const text = plain(bl).replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
       assert.ok(text.length <= 200, `${f}: a bottom line is one or two short sentences, not ${text.length} characters: "${text.slice(0, 60)}..."`);
     }
   }
