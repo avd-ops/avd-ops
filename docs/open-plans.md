@@ -33,6 +33,7 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Never delete the last copy, never leave the meter running | Rules merged | Costed test run of the checks | owner | [`docs/never-delete-the-last-copy.md`](never-delete-the-last-copy.md), [`docs/never-leave-the-meter-running.md`](never-leave-the-meter-running.md) |
 | Estate RAID log (C25) | Spec merged | Build after the open questions R2 to R6 (defaults in the spec) | owner | [avd-second-brain `docs/raid-spec.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/raid-spec.md) |
 | Brain and swarm v1 decisions D1 to D18 | Defaults stand until answered | Owner answers or keeps the defaults | owner | [avd-second-brain `docs/v1-review.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/v1-review.md) |
+| Outside coding agents | Hard rules in AGENTS.md; setup and review steps written | Owner sets up the agent account and fork, and tightens the main ruleset | owner | [`docs/outside-agents.md`](outside-agents.md) |
 
 ## Parked
 
