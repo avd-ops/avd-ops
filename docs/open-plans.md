@@ -34,6 +34,7 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Estate RAID log (C25) | Spec merged | Build after the open questions R2 to R6 (defaults in the spec) | owner | [avd-second-brain `docs/raid-spec.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/raid-spec.md) |
 | Brain and swarm v1 decisions D1 to D18 | Defaults stand until answered | Owner answers or keeps the defaults | owner | [avd-second-brain `docs/v1-review.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/v1-review.md) |
 | Outside coding agents | Hard rules in AGENTS.md; setup and review steps written | Owner sets up the agent account and fork, and tightens the main ruleset | owner | [`docs/outside-agents.md`](outside-agents.md) |
+| Add pick-up items without Claude | To do, not started (owner, 2026-10-22: log it, no build yet) | Build later: a "Pick-up item" issue form (title, repo, goal, acceptance check) with a `pick-up` label, here for public items and in the owner's private repo for private ones; `checklist.html` lists open `pick-up` issues through the anonymous GitHub API it already uses, so no workflow, secret or paid service is needed. Check the existing issue forms and the org board sync first so nothing is duplicated; private items never land in a public repo | anyone | this row |
 
 ## Parked
 
