@@ -25,12 +25,23 @@ Tests: `node --test "tests/*.test.mjs"` (`tests/submissions.test.mjs`).
 
 ## Create the labels (owner only)
 
-Run in Cloud Shell, once per repo that receives submissions:
+Run in Cloud Shell, once per repo that receives submissions. Cloud Shell opens in bash or
+PowerShell; use the block for the prompt you see (`$` is bash, `PS` is PowerShell). Rerunning is safe.
+
+Bash:
 
 ```bash
 cd ~ && (git -C avd-ops pull || git clone https://github.com/avd-ops/avd-ops.git) && cd ~/avd-ops
 gh auth status || gh auth login
 for r in avd-ops/avd-ops avd-ops/avd-assess avd-ops/avd-landing-zone avd-ops/avd-current-state; do node submissions/labels.mjs "$r" --apply; done
+```
+
+PowerShell:
+
+```powershell
+Set-Location ~; if (Test-Path avd-ops) { git -C avd-ops pull } else { git clone https://github.com/avd-ops/avd-ops.git }; Set-Location ~/avd-ops
+gh auth status; if ($LASTEXITCODE -ne 0) { gh auth login }
+foreach ($r in 'avd-ops/avd-ops','avd-ops/avd-assess','avd-ops/avd-landing-zone','avd-ops/avd-current-state') { node submissions/labels.mjs $r --apply }
 ```
 
 Triage: a submission opens with `needs-triage`. Nothing acts on it, and no page shows it, until the
