@@ -1,7 +1,10 @@
 # Decision records
 
-Short records of choices that shape this knowledge base and the work it covers. One file per
-decision, numbered in order, in [MADR 4](https://adr.github.io/madr/) format. Copy
+Every choice that shapes these docs and the work they cover, one record each.
+
+<!-- more -->
+
+One file per decision, numbered in order, in [MADR 4](https://adr.github.io/madr/) format. Copy
 [template.md](template.md) to add one. A decision stays `proposed` until the maintainer says yes.
 A reversed decision gets a new record, and the old one is marked *Superseded by NNNN*. Each KB in
 the family numbers its own decisions; refer to a sibling's as `<project> 0012`, with a link.

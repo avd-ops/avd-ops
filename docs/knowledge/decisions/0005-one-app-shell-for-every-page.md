@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0005. One app shell for every avd-ops page, vendored as a pinned copy
 
+Every avd-ops page and portal opens in one shared shell, and other repos take a pinned copy of it.
+
 ## Context and Problem Statement
+
+The site and the two portals each looked and moved differently, worst on a phone.
+
+<!-- more -->
 
 The avd-ops pages shared colors and fonts (design system 1.x), but avd-ops.dev, the docs, the
 deployment portal and the assessment portal each had their own header and navigation. On a phone the
@@ -16,6 +22,8 @@ one frame, without making avd-landing-zone and avd-current-state depend on avd-o
 
 ## Considered Options
 
+Three options were weighed.
+
 - Tune-up: keep the 1.x layout, fix the nav, widths and touch sizes
 - Control plane: one app shell (brand bar with a Docs, Deploy and Assess switcher, a side list that
   becomes a drawer, a one-line notice) for the site and every portal
@@ -23,7 +31,11 @@ one frame, without making avd-landing-zone and avd-current-state depend on avd-o
 
 ## Decision Outcome
 
-Chosen option: "Control plane", because only a shared shell makes the site and the portals one
+Chosen option: "Control plane".
+
+<!-- more -->
+
+Why: only a shared shell makes the site and the portals one
 product with one way to move between them, and it keeps the colors, fonts and logo already chosen.
 The owner picked it from a rendered proposal with all three options on 2026-10-21.
 
@@ -46,6 +58,10 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   (`portal-core.js`, the state line, report redaction) must not change in the same pull request.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 - [Design system](../../design-system.md) has the tokens, components, files and the copy steps.
 - The switcher leaves out avd-buddy until the app exists (owner, 2026-10-21).

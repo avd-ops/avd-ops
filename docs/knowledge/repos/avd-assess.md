@@ -8,25 +8,38 @@ last_reviewed: 2026-10-22
 
 # avd-assess
 
-**Foundation: what it should be. The map and the dictionary.** An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.
+What an estate should be, and why: the map and the dictionary every other repo reads.
+
+<!-- more -->
+
+An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.
 
 The repo is the source of truth: [avd-ops/avd-assess](https://github.com/avd-ops/avd-assess). This page says where it fits.
 
 ## What it does
+
+Five methods, each step pinned to a published source or to what our own runs saw. It never calls Azure.
 
 - Five methods: collection, assessment, targets and benchmarks, scoring, and a short sample check.
 - Every step cites a pinned published source (`ref:`), what our own runs observed about it (`obs:`), or method written only where nothing exists (`gap:`).
 - It stores a claim ID and one line in its own words, never a source's text.
 - It holds the shared reference data the tools read, such as the AVD endpoint map, each entry pinned to its source.
 - Nothing in it calls Azure or runs a probe.
+
+<!-- more -->
+
 - It holds the security review map: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the [security review page](https://avd-ops.dev/security.html) and never keeps its own copy of a claim.
 - avd-ops renders its methods, sources and claims as the [standards library](https://avd-ops.dev/standards/), read like a paper: numbered references, each claim with its pin, read date and three states (mapped, measurable, validated). It reads only avd-assess's own published files at one pinned commit, the same pin as the security page. Most sources are Microsoft Learn pages, and a Learn pin records which version was read, but that commit is not published, so a reader can only open the live page; the library says so on each such source.
 
 ## How it fits
 
+The other repos run its methods and cite it. It depends on none of them.
+
 - [avd-current-state](avd-current-state.md) runs its methods from pinned copies it carries; [avd-landing-zone](avd-landing-zone.md) is how an estate gets to the target it describes.
 - [avd-second-brain](avd-second-brain.md) cites it and owns the schemas its results use.
 
 ## Read more in the repo
+
+The repo has the full detail. Start here:
 
 - [README and the methods](https://github.com/avd-ops/avd-assess/blob/main/README.md)

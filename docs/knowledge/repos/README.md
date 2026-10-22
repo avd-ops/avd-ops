@@ -8,9 +8,7 @@ last_reviewed: 2026-10-20
 
 # The repos
 
-Every repo is public, open source and the source of truth for itself. The list lives in
-[repos.json](https://github.com/avd-ops/avd-ops/blob/main/repos.json), which the site and the
-family check both read.
+Five public repos, each the source of truth for itself. Pick one to see where it fits.
 
 | Repo | Role |
 |---|---|
@@ -19,3 +17,8 @@ family check both read.
 | [avd-assess](avd-assess.md) | What it should be, and why |
 | [avd-swarm](avd-swarm.md) | On top: the how of operating |
 | [avd-second-brain](avd-second-brain.md) | On top: the why, over the environment's life |
+
+<!-- more -->
+
+The list lives in [repos.json](https://github.com/avd-ops/avd-ops/blob/main/repos.json), which the site
+and the family check both read.

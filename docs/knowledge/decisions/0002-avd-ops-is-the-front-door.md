@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0002. avd-ops is the front door for the AVD repos
 
+avd-ops holds the onboarding and user docs for every repo, and each repo stays the source of truth for itself.
+
 ## Context and Problem Statement
+
+Readers had no single place that says what the repos are and where to start.
+
+<!-- more -->
 
 The AVD repos each document themselves, and a reader arriving from outside has no single place
 that says what they are, how they fit and where to start. Several repos also repeated the same
@@ -15,6 +21,8 @@ repos present themselves?
 
 ## Considered Options
 
+Three options were weighed.
+
 - avd-ops holds the onboarding and user docs, in the shared knowledge base format, and every public
   repo presents as part of avd-ops
 - Each repo carries its own onboarding, with the site only linking
@@ -22,7 +30,11 @@ repos present themselves?
 
 ## Decision Outcome
 
-Chosen option: "avd-ops holds the onboarding and user docs", because people need one front door,
+Chosen option: "avd-ops holds the onboarding and user docs".
+
+<!-- more -->
+
+Why: people need one front door,
 while each repo stays the source of truth for its own code, specs and lessons.
 
 - avd-ops is the brand in front of the public AVD repos. Their names don't change. Each README
@@ -43,5 +55,9 @@ while each repo stays the source of truth for its own code, specs and lessons.
   changes a repo are what catch it.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 avd-second-brain's handbook (its `wiki/`, decision 0004 there) was the index agents searched until it was retired on 2026-10-21 (its decision 0024, [PR #76](https://github.com/avd-ops/avd-second-brain/pull/76)). The repo pages here are now the one place to read each repo, and agents search the brain's knowledge base.

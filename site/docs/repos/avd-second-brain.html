@@ -28,32 +28,50 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>avd-second-brain</h1>
-<p><strong>On top: the why, over the environment&#39;s life.</strong> One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.</p>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-second-brain" title="avd-second-brain"><span class="n">1</span><span class="t">avd-second-brain</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
+<section class="screen" id="avd-second-brain">
+<h1 tabindex="-1">avd-second-brain</h1>
+<p class="bl">The why behind every rule, kept over an estate&#39;s whole life. It never changes anything.</p>
+
+<details class="more"><summary>More</summary>
+<p>One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-second-brain">avd-ops/avd-second-brain</a>. This page says where it fits.</p>
-<h2>What it does</h2>
+</details>
+</section>
+<section class="screen" id="what-it-does">
+<h2 tabindex="-1">What it does</h2>
+<p class="bl">A knowledge base, private vaults for each estate, and the contracts every repo uses.</p>
 <ul>
 <li>A knowledge base of generalized facts: app catalog, rules with their history, sizing calibration and shared runbooks.</li>
 <li>Estate vaults keep one customer&#39;s estate in that customer&#39;s own private repo. Tenant data never comes back here.</li>
 <li>The contract registry and fact register that every repo boundary uses.</li>
 <li>A docs consistency check every repo calls. Each repo&#39;s page lives here on avd-ops; the brain&#39;s old generated handbook is retired.</li>
 </ul>
-<h2>How it fits</h2>
+</section>
+<section class="screen" id="how-it-fits">
+<h2 tabindex="-1">How it fits</h2>
+<p class="bl">It thinks for avd-swarm and reads from the two foundation repos.</p>
 <ul>
 <li>Thinks for <a href="avd-swarm.html">avd-swarm</a>, which acts; the brain never holds a write credential.</li>
 <li>Reads facts from <a href="avd-current-state.html">avd-current-state</a> and lessons from <a href="avd-landing-zone.html">avd-landing-zone</a>.</li>
 </ul>
-<h2>Read more in the repo</h2>
+</section>
+<section class="screen" id="read-more-in-the-repo">
+<h2 tabindex="-1">Read more in the repo</h2>
+<p class="bl">The repo has the full detail. Start here:</p>
 <ul>
 <li><a href="https://github.com/avd-ops/avd-second-brain/blob/main/README.md">README</a></li>
 <li><a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/architecture.md">Architecture</a></li>
 <li><a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md">Contracts</a></li>
 <li><a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/README.md">Knowledge base</a></li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="../index.html">Start here</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-landing-zone.html">avd-landing-zone</a></li><li><a href="avd-swarm.html">avd-swarm</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul>
-
+<details class="more linked"><summary>Linked from 8 pages</summary>
+<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="../index.html">Start here</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-landing-zone.html">avd-landing-zone</a></li><li><a href="avd-swarm.html">avd-swarm</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="avd-landing-zone.html" data-page="avd-landing-zone">Back</a><span class="where">avd-second-brain</span><a class="sc-next" href="avd-swarm.html" data-page="avd-swarm">Next<span class="pg">: avd-swarm</span></a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

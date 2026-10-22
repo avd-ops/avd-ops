@@ -7,18 +7,30 @@ decision-makers: [maintainers]
 
 # NNNN. Short title of the problem and solution
 
+One plain line: what was chosen. It is the page's first screen on avd-ops.dev.
+
 ## Context and Problem Statement
+
+The problem in one sentence.
+
+<!-- more -->
 
 What problem or question forced a choice, in two or three sentences, ending in the question.
 
 ## Considered Options
+
+How many options were weighed, in one line.
 
 - Option 1
 - Option 2
 
 ## Decision Outcome
 
-Chosen option: "Option 1", because (the deciding reason).
+Chosen option: "Option 1".
+
+<!-- more -->
+
+Why: (the deciding reason).
 
 ### Consequences
 

@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0003. The family ends at its contracts; work outside it builds on them, never the reverse
 
+The family ends at its published contracts. Work outside it may build on them; the family never depends on that work.
+
 ## Context and Problem Statement
+
+Nothing said where the family ends, or which way dependencies may cross the line.
+
+<!-- more -->
 
 The AVD repos on this site are public and free. Some work that builds on them may live outside the family, and
 some of the family's text, source lists and checks still name or fetch repositories outside it,
@@ -16,6 +22,8 @@ line, and which way may dependencies cross it?
 
 ## Considered Options
 
+Two options were weighed.
+
 - Family contracts and docs name the outside repositories that produce or read them, and family
   repos may fetch or link them
 - The family ends at its contracts: they name a producer by its role, every format that crosses the
@@ -24,7 +32,11 @@ line, and which way may dependencies cross it?
 
 ## Decision Outcome
 
-Chosen option: "The family ends at its contracts", because a family repo that depends on or
+Chosen option: "The family ends at its contracts".
+
+<!-- more -->
+
+Why: a family repo that depends on or
 describes outside work breaks when that work moves, and a published contract lets anything build
 on the family without the family knowing what it is.
 
@@ -48,6 +60,10 @@ Recorded as rule 4 in [family roles](../../family-roles.md).
   repositories need a cleanup pull request each, linked as one set.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 - Replaces a record first proposed in avd-second-brain, closed there as outside that knowledge
   base's scope after its restructure.

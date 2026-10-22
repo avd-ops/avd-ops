@@ -28,7 +28,13 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>Sandbox batches</h1>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#sandbox-batches" title="Sandbox batches"><span class="n">1</span><span class="t">Sandbox batches</span></a></li><li><a href="#the-shape" title="The shape"><span class="n">2</span><span class="t">The shape</span></a></li><li><a href="#1-queue-an-item" title="1. Queue an item"><span class="n">3</span><span class="t">1. Queue an item</span></a></li><li><a href="#2-build-a-batch" title="2. Build a batch"><span class="n">4</span><span class="t">2. Build a batch</span></a></li><li><a href="#3-approve-once-at-the-exact-total" title="3. Approve once, at the exact total"><span class="n">5</span><span class="t">3. Approve once, at the exact total</span></a></li><li><a href="#4-run-groups-one-after-another" title="4. Run groups one after another"><span class="n">6</span><span class="t">4. Run groups one after another</span></a></li><li><a href="#5-keep-then-tear-down" title="5. Keep, then tear down"><span class="n">7</span><span class="t">5. Keep, then tear down</span></a></li><li><a href="#6-evidence" title="6. Evidence"><span class="n">8</span><span class="t">6. Evidence</span></a></li><li><a href="#what-real-runs-taught" title="What real runs taught"><span class="n">9</span><span class="t">What real runs taught</span></a></li></ol></nav>
+<section class="screen" id="sandbox-batches">
+<h1 tabindex="-1">Sandbox batches</h1>
+<p class="bl">Paid test runs go in batches: priced first, approved once at the exact total, torn down with proof.</p>
+
+<details class="more"><summary>More</summary>
 <p>Some changes can only be proven by deploying them: a landing zone round trip, a recovery test, a
 teardown that must leave nothing behind. Those runs cost money and use shared resource names, so
 the family runs them as <strong>batches</strong>, never one at a time on a whim. This page describes the method.
@@ -37,10 +43,18 @@ The repo that runs a test owns its steps, and the rules it builds on are the fam
 <p>The scripts ship with avd-landing-zone and run from Cloud Shell alone: the
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/docs/sandbox-runs.md">operator guide</a> and
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/build/decisions/0020-sandbox-runs-in-the-package.md">decision 0020</a>.</p>
-<h2>The shape</h2>
-<p>Queue items, build a batch, approve it once at its exact total, run its groups in order, keep
+</details>
+</section>
+<section class="screen" id="the-shape">
+<h2 tabindex="-1">The shape</h2>
+<p class="bl">Queue items, build a batch, approve it once at its exact total, run its groups in order, keep
 what must survive, tear down, and leave evidence.</p>
-<h2>1. Queue an item</h2>
+</section>
+<section class="screen" id="1-queue-an-item">
+<h2 tabindex="-1">1. Queue an item</h2>
+<p class="bl">Write each test down before anything runs: what it deploys, for how long, and what it must keep.</p>
+
+<details class="more"><summary>More</summary>
 <p>Each item is one test, written down before anything runs:</p>
 <ul>
 <li><strong>Source</strong>, pinned to a commit, so what was approved is what runs.</li>
@@ -52,7 +66,13 @@ stored secrets).</li>
 <li><strong>Keep</strong>: the paths whose output must survive teardown.</li>
 <li><strong>Depends on</strong>: items or merges that must land first.</li>
 </ul>
-<h2>2. Build a batch</h2>
+</details>
+</section>
+<section class="screen" id="2-build-a-batch">
+<h2 tabindex="-1">2. Build a batch</h2>
+<p class="bl">A builder groups the tests that can share a deployment, prices them, and checks the caps.</p>
+
+<details class="more"><summary>More</summary>
 <p>A builder reads the ready items and:</p>
 <ul>
 <li>groups items that can share one deployment, so one deploy serves several tests;</li>
@@ -62,7 +82,13 @@ up to a batch total;</li>
 before anyone is asked;</li>
 <li>writes the batch as one file with a stable hash.</li>
 </ul>
-<h2>3. Approve once, at the exact total</h2>
+</details>
+</section>
+<section class="screen" id="3-approve-once-at-the-exact-total">
+<h2 tabindex="-1">3. Approve once, at the exact total</h2>
+<p class="bl">A person types <code>go batch &lt;id&gt; $&lt;total&gt;</code>, exactly. A bare &quot;go&quot; is not an approval.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>One approval covers one batch at its printed total. The phrase is <code>go batch &lt;id&gt; $&lt;total&gt;</code>, and
 it has to match exactly. A bare &quot;go&quot; is not an approval.</li>
@@ -70,14 +96,26 @@ it has to match exactly. A bare &quot;go&quot; is not an approval.</li>
 price) voids it, and the batch is built and approved again.</li>
 <li>A model or an agent can build and price a batch, but only a person approves one.</li>
 </ul>
-<h2>4. Run groups one after another</h2>
+</details>
+</section>
+<section class="screen" id="4-run-groups-one-after-another">
+<h2 tabindex="-1">4. Run groups one after another</h2>
+<p class="bl">Groups that share resource names run in order, with teardown evidence between them.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Groups that use the same resource names run in sequence, with teardown evidence between them.
 Otherwise the second deploy collides with the first one&#39;s leftovers.</li>
 <li>The runner checks the cost gate again before each group. It stops on leftovers, a missed
 deadline or the monthly cap. Stopping is always safe, because nothing new is deployed.</li>
 </ul>
-<h2>5. Keep, then tear down</h2>
+</details>
+</section>
+<section class="screen" id="5-keep-then-tear-down">
+<h2 tabindex="-1">5. Keep, then tear down</h2>
+<p class="bl">What must survive is copied out and checked, then everything is torn down.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Before any teardown, every Keep path is archived to a run store outside the deployment, read back
 and hash-checked. If there&#39;s no run store, the group refuses to start
@@ -85,12 +123,24 @@ and hash-checked. If there&#39;s no run store, the group refuses to start
 <li>Teardown removes everything the group deployed, then checks that nothing is left billing
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">never leave the meter running</a>).</li>
 </ul>
-<h2>6. Evidence</h2>
+</details>
+</section>
+<section class="screen" id="6-evidence">
+<h2 tabindex="-1">6. Evidence</h2>
+<p class="bl">Each group leaves a record: the estimate, the actual cost, what ran, what was kept and the teardown result.</p>
+
+<details class="more"><summary>More</summary>
 <p>Each group leaves a record: estimate, actual cost once it settles, what ran at which commit, what
 was kept and where, and the teardown result. The landing zone&#39;s
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/build/specs/run-recorder-spec.md">run recorder spec</a>
 defines the run record (contract C17).</p>
-<h2>What real runs taught</h2>
+</details>
+</section>
+<section class="screen" id="what-real-runs-taught">
+<h2 tabindex="-1">What real runs taught</h2>
+<p class="bl">Four things the first real runs got wrong, and what changed.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong>A runner identity needs more than Contributor.</strong> The landing zone assigns Azure Policy, so an
 unattended runner also needs a role that can write policy assignments.</li>
@@ -102,10 +152,13 @@ results: rebase and retry before writing.</li>
 <li><strong>Cloud Shell can&#39;t grant admin consent with <code>az</code>.</strong> The managed sign-in is refused. Use a Graph
 app role assignment instead.</li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../index.html">Start here</a></li><li><a href="../getting-started/cloud-shell.html">Working from Cloud Shell</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from 2 pages</summary>
+<ul class="backlinks"><li><a href="../index.html">Start here</a></li><li><a href="../getting-started/cloud-shell.html">Working from Cloud Shell</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="../concepts.html" data-page="Concepts">Back</a><span class="where">Sandbox batches</span><a class="sc-next" href="../roadmap.html" data-page="Roadmap">Next<span class="pg">: Roadmap</span></a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

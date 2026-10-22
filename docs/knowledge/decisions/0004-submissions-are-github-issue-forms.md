@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0004. Every outside submission is a GitHub issue form in the repo that owns it
 
+Everything outsiders send in arrives as a GitHub issue form in the repo that owns it. No server, no secret.
+
 ## Context and Problem Statement
+
+Three pages will ask outsiders to send things in. How does that reach the right repo safely?
+
+<!-- more -->
 
 Three surfaces will ask outsiders to send things in: the credits and contributors page, the
 standards and research review UI, and the support mailbot. What they send (evidence, research,
@@ -16,6 +22,8 @@ submissions get in?
 
 ## Considered Options
 
+Three options were weighed.
+
 - GitHub issue forms in each owning repo, vendored from one canonical set in avd-ops, with one
   routing table and a link builder the three surfaces share
 - A form endpoint (Staticman or a small Worker) that opens issues or pull requests with a bot token
@@ -23,7 +31,11 @@ submissions get in?
 
 ## Decision Outcome
 
-Chosen option: "GitHub issue forms", because GitHub Issues is already the tracker, the forms need
+Chosen option: "GitHub issue forms".
+
+<!-- more -->
+
+Why: GitHub Issues is already the tracker, the forms need
 no server and no token, GitHub sign-in is the spam barrier, and the family already uses issue forms
 for its KB and for avd-assess evidence. The design is [docs/submissions-spec.md](../../submissions-spec.md).
 
@@ -37,6 +49,10 @@ for its KB and for avd-assess evidence. The design is [docs/submissions-spec.md]
 - Bad, because forms are vendored into each repo and can drift; `family.yml` checks them weekly.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 A repo with its own `.github/ISSUE_TEMPLATE/` ignores an org `.github` repo's defaults, and every
 family repo but avd-current-state has one, so defaults alone can't share the forms. Never put the

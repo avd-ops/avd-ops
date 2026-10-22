@@ -28,8 +28,17 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux</h1>
-<h2>Context and Problem Statement</h2>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0006-every-operator-script-runs-from-either-cloud-shell-prompt-and-on-windows-macos-and-linux" title="0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux"><span class="n">1</span><span class="t">0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
+<section class="screen" id="0006-every-operator-script-runs-from-either-cloud-shell-prompt-and-on-windows-macos-and-linux">
+<h1 tabindex="-1">0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux</h1>
+<p class="bl">Each script is written once and runs from PowerShell or Bash, on Cloud Shell, Windows, macOS and Linux.</p>
+</section>
+<section class="screen" id="context-and-problem-statement">
+<h2 tabindex="-1">Context and Problem Statement</h2>
+<p class="bl">People run the scripts from either Cloud Shell prompt and on their own PCs and Macs, but CI only proved Linux.</p>
+
+<details class="more"><summary>More</summary>
 <p>Azure Cloud Shell is how most people meet the family: it opens in PowerShell, often on an iPad, and
 a command block is pasted once. Some people work in Cloud Shell&#39;s Bash prompt, and some run the
 scripts on their own Windows PC or Mac (avd-current-state&#39;s facts script runs offline on a laptop).
@@ -38,14 +47,23 @@ and macOS, and that the portals offer a Bash or PowerShell, Windows or macOS tog
 the six public repos (2026-10-21) found portable PowerShell 7 code, one Bash entry point that needs
 Bash 4, and every CI job on Linux only. How should the family make &quot;runs anywhere&quot; true and keep it
 true?</p>
-<h2>Considered Options</h2>
+</details>
+</section>
+<section class="screen" id="considered-options">
+<h2 tabindex="-1">Considered Options</h2>
+<p class="bl">Three options were weighed.</p>
 <ul>
 <li>One implementation per tool, callable from both shells, proven by a CI OS matrix</li>
 <li>Thin wrappers in the other language for the first commands an operator types, plus the above</li>
 <li>Full twins: every operator script as a <code>.ps1</code> and a <code>.sh</code>, with a parity test</li>
 </ul>
-<h2>Decision Outcome</h2>
-<p>Chosen option: &quot;One implementation per tool, callable from both shells&quot;, because both Cloud
+</section>
+<section class="screen" id="decision-outcome">
+<h2 tabindex="-1">Decision Outcome</h2>
+<p class="bl">Chosen option: &quot;One implementation per tool, callable from both shells&quot;.</p>
+
+<details class="more"><summary>More</summary>
+<p>Why: both Cloud
 Shell prompts and every desktop OS can start <code>pwsh</code> and <code>bash</code>, so operators get a block in the
 shell they chose without a second copy of about 15,000 lines of operator code that would drift. The
 owner picked it on 2026-10-21.</p>
@@ -59,7 +77,7 @@ evidence for every <code>tested</code>. The portals read it and offer only what 
 runners; no new harness.</li>
 </ul>
 <p>The full rule, the audit and the ranked gaps: <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/run-anywhere.md">run anywhere</a>.</p>
-<h3>Consequences</h3>
+<h3 id="consequences">Consequences</h3>
 <ul>
 <li>Good, because a person picks their shell and OS in the portal and gets a command that is proven,
 or clearly marked as not yet proven.</li>
@@ -68,7 +86,13 @@ or clearly marked as not yet proven.</li>
 and weekly on main.</li>
 <li>Bad, because a Bash-only tool still needs <code>bash</code> on Windows (Git Bash or WSL).</li>
 </ul>
-<h2>More Information</h2>
+</details>
+</section>
+<section class="screen" id="more-information">
+<h2 tabindex="-1">More Information</h2>
+<p class="bl">Links, open questions and what changed later.</p>
+
+<details class="more"><summary>More</summary>
 <p>Facts the audit found, each a gap with a fix in the run anywhere page: stock macOS ships Bash 3.2,
 so <code>${x,,}</code> and <code>mapfile</code> fail there; Git Bash on Windows rewrites arguments that start with <code>/</code>
 (such as <code>/subscriptions/...</code> resource IDs) unless <code>MSYS_NO_PATHCONV=1</code> (to confirm on a Windows
@@ -76,10 +100,13 @@ runner); a Windows checkout with <code>core.autocrlf</code> breaks <code>.sh</co
 Python before 3.15 opens text in the ANSI code page on Windows unless <code>encoding=&quot;utf-8&quot;</code> is passed
 (PEP 686). Revisit when a script can&#39;t be called from the other shell, or when an outside
 contributor asks for a native twin.</p>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">Decision records</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from 2 pages</summary>
+<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">Decision records</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0005-one-app-shell-for-every-page.html" data-page="0005. One app shell for every avd-ops page, vendored as a pinned copy">Back</a><span class="where">0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux</span><a class="sc-next" href="0007-starters-not-a-theme-repo.html" data-page="0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package">Next<span class="pg">: 0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package</span></a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

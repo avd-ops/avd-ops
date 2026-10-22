@@ -8,11 +8,17 @@ last_reviewed: 2026-10-21
 
 # avd-landing-zone
 
-**How it's built and changed from here. The deployment engine.** An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
+How an estate is built and changed from here: one Bicep template, deployed from a browser-guided portal.
+
+<!-- more -->
+
+An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
 
 The repo is the source of truth: [avd-ops/avd-landing-zone](https://github.com/avd-ops/avd-landing-zone). This page says where it fits.
 
 ## What it does
+
+A cloud-only, private-by-default landing zone, with a portal that walks you through each step.
 
 - No domain controllers, no line of sight to on-premises, no post-deployment scripts.
 - FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; session hosts on Trusted Launch with encryption at host.
@@ -21,11 +27,15 @@ The repo is the source of truth: [avd-ops/avd-landing-zone](https://github.com/a
 
 ## How it fits
 
+It pairs with avd-current-state and works without anything on top.
+
 - With [avd-current-state](avd-current-state.md) it forms a self-contained pair that never depends on the layer on top.
 - Can read a C14 target-state manifest from [avd-second-brain](avd-second-brain.md) when one exists, and works without one.
 - Its lessons are recorded in avd-second-brain's knowledge base.
 
 ## Read more in the repo
+
+The repo has the full detail. Start here:
 
 - [README and quick start](https://github.com/avd-ops/avd-landing-zone/blob/master/README.md)
 - [Deployment portal](https://deploy.avd-ops.dev/portal/)

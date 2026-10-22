@@ -8,11 +8,18 @@ last_reviewed: 2026-10-21
 
 # Working from Cloud Shell
 
-Every AVD repo is written to run from Azure Cloud Shell (PowerShell), including from a tablet. Most
-of the rules below came out of real runs that failed, and each one links to the lesson or decision
+Every repo runs from Azure Cloud Shell in PowerShell, even on a tablet. These are the house rules for doing that safely.
+
+<!-- more -->
+
+Most of the rules below came out of real runs that failed, and each one links to the lesson or decision
 in the repo that owns it. This page states the conventions. The code stays in the repos.
 
 ## One block, pasted into a clean prompt
+
+Every command is one block that does everything itself. Wait for a clean prompt, then paste it once.
+
+<!-- more -->
 
 - **Every command we give is one self-contained block.** It clones the repo or updates it, moves
   into it, signs in if needed, and then runs the step. Nothing depends on a variable, folder or
@@ -29,6 +36,10 @@ in the repo that owns it. This page states the conventions. The code stays in th
 
 ## Pin what you run
 
+Pin a script to a tag or commit, so you run exactly what you read.
+
+<!-- more -->
+
 - A block that clones a repo can pin it to a tag or commit. The portal does this for a published
   copy, so a run can be repeated exactly.
 - For a single script fetched with `Invoke-WebRequest` from `raw.githubusercontent.com`, prefer a
@@ -36,6 +47,10 @@ in the repo that owns it. This page states the conventions. The code stays in th
   diagnosing a changed one afterwards.
 
 ## Nothing is kept in the shell
+
+Cloud Shell forgets everything, so where a run stands comes from Azure and anything you keep goes somewhere durable.
+
+<!-- more -->
 
 - Cloud Shell keeps files only in `~/clouddrive` (and the `$HOME` image), and only when a storage
   account is mounted. An ephemeral session keeps nothing, and every session ends after about
@@ -48,6 +63,10 @@ in the repo that owns it. This page states the conventions. The code stays in th
   mounted `~/clouddrive`, a download, or the run store (next section).
 
 ## Session state, logs and resuming
+
+Each step ends with a state line you paste into the portal, and a dropped session picks up where it left off.
+
+<!-- more -->
 
 The landing zone's
 [run recorder](https://github.com/avd-ops/avd-landing-zone/blob/master/build/specs/run-recorder-spec.md)
@@ -78,6 +97,10 @@ holds these conventions. It's opt-in, and the default deployment doesn't change.
 
 ## Sign in once, and check it
 
+Sign in to Graph once per session, and check which tenant and subscription you're in before anything writes.
+
+<!-- more -->
+
 - Cloud Shell signs you in to Azure. Microsoft Graph is a separate sign-in. The landing zone signs
   in to Graph once per session with one set of scopes that every later script reuses
   ([`Connect-AvdLandingZone.ps1`](https://github.com/avd-ops/avd-landing-zone/blob/master/docs/reference/scripts-ops-Connect-AvdLandingZone.md),
@@ -90,6 +113,10 @@ holds these conventions. It's opt-in, and the default deployment doesn't change.
 
 ## Read first, fix on request
 
+Scripts only read, unless you pass `-Fix`. When a call fails, they print everything it returned.
+
+<!-- more -->
+
 - Checks are read-only by default. Preflight before you deploy, postflight after. A script changes
   something only when you pass `-Fix` and it says what it changes.
 - When an Azure or Graph call fails, the scripts print everything it returned: step, HTTP status,
@@ -97,6 +124,10 @@ holds these conventions. It's opt-in, and the default deployment doesn't change.
   ([lesson 0012](https://github.com/avd-ops/avd-landing-zone/blob/master/build/lessons/0012-diagnose-first.md)).
 
 ## Cloud Shell can't reach private endpoints
+
+For a private Key Vault or profile share, use the opt-in jumpbox through Bastion Developer.
+
+<!-- more -->
 
 Cloud Shell sits outside the landing zone's network, so it can't reach a private Key Vault or an
 SMB-only profile share. For those steps, the landing zone offers an opt-in jumpbox reached through
@@ -106,6 +137,10 @@ Bastion Developer
 
 ## Redact before you share
 
+Run output through the redactor before it goes into an issue, a chat or a pull request.
+
+<!-- more -->
+
 Output pasted into an issue, a chat or a pull request leaves your tenant. The landing zone redacts
 it first with the same rules as the deployment portal's issue report:
 [`redact.mjs`](https://github.com/avd-ops/avd-landing-zone/blob/master/scripts/ops/redact.mjs).
@@ -113,6 +148,10 @@ it first with the same rules as the deployment portal's issue report:
 domains. Never paste a secret anywhere.
 
 ## Costs
+
+Price before you deploy, keep a budget, and prove after teardown that nothing is left billing.
+
+<!-- more -->
 
 - **Price before you deploy.** The pre-deployment preflight prices the landing zone from live
   retail prices. Every cost line must match exactly one price meter, or it lists the meters it saw.
@@ -138,6 +177,10 @@ domains. Never paste a secret anywhere.
 
 ## Leave nothing billing, delete nothing you can't get back
 
+When a run ends, nothing keeps billing, and no data is deleted without a copy somewhere else.
+
+<!-- more -->
+
 - **Never leave the meter running.** Anything that bills by time is removed, stopped or on a
   schedule at the end of a run, unless you opt in with an expiry
   ([decision 0017](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md)).
@@ -148,6 +191,10 @@ domains. Never paste a secret anywhere.
   Running several test runs this way is described in [sandbox batches](../concepts/sandbox-batches.md).
 
 ## Where the helpers live
+
+The helpers stay in avd-landing-zone and avd-current-state. There's no shared kit to install.
+
+<!-- more -->
 
 These stay in their repos. avd-landing-zone and avd-current-state are a self-contained pair, so
 neither depends on a shared kit.
