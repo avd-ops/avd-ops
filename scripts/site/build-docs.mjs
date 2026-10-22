@@ -47,6 +47,9 @@ function frontMatter(text) {
   return { meta, body: m ? text.slice(m[0].length) : text };
 }
 
+// The text of an HTML fragment: tags dropped, and any < or > a broken tag leaves behind dropped too, so the
+// result is safe in an attribute or the step list.
+const plain = (html) => html.replace(/<[^>]*>/g, '').replace(/[<>]/g, '');
 const unesc = (s) => s.replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -82,7 +85,7 @@ function render(page, md) {
 function slugger() {
   const seen = new Map();
   return (text) => {
-    const base = unesc(text.replace(/<[^>]+>/g, '')).trim().toLowerCase().replace(/[^\w\- ]/g, '').replace(/ /g, '-');
+    const base = unesc(plain(text)).trim().toLowerCase().replace(/[^\w\- ]/g, '').replace(/ /g, '-');
     const n = seen.get(base) || 0;
     seen.set(base, n + 1);
     return n ? `${base}-${n}` : base;
@@ -91,7 +94,7 @@ function slugger() {
 
 // On a phone a table reads as one card per row (site.css .stacked), so each cell carries its column's name.
 function stack(table) {
-  const cols = [...(table.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => m[1].replace(/<[^>]+>/g, ''));
+  const cols = [...(table.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => plain(m[1]));
   return table.replace('<table>', '<table class="stacked">').replace(/<tbody>[\s\S]*<\/tbody>/, (body) => body.replace(/<tr>([\s\S]*?)<\/tr>/g,
     (_, row) => { let i = 0; return `<tr>${row.replace(/<td([^>]*)>/g, (m, a) => `<td${a} data-label="${cols[i++] || ''}">`)}</tr>`; }));
 }
@@ -120,7 +123,7 @@ function screens(page) {
     const lead = sub(render(page, shown)).replace(/^<p>/, '<p class="bl">');
     const more = rest.length ? `\n<details class="more"><summary>More</summary>\n${sub(render(page, rest.join('\n')))}</details>\n` : '';
     // title is already escaped HTML (marked escapes it), so it goes into the markup as it is.
-    return { id, title: head.replace(/<[^>]+>/g, ''), html: `<section class="screen" id="${id}">\n<h${s.level} tabindex="-1">${head}</h${s.level}>\n${lead}${more}</section>` };
+    return { id, title: plain(head), html: `<section class="screen" id="${id}">\n<h${s.level} tabindex="-1">${head}</h${s.level}>\n${lead}${more}</section>` };
   });
 }
 

@@ -199,7 +199,7 @@ test('every docs page reads one screen at a time, bottom line first (docs/design
       assert.ok(open.startsWith('<p class="bl">'), `${f}: #${id} opens without a bottom line`);
     }
     for (const [, bl] of h.matchAll(/<p class="bl">([\s\S]*?)<\/p>/g)) {
-      const text = bl.replace(/<[^>]+>/g, '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+      const text = bl.replace(/<[^>]*>/g, '').replace(/[<>]/g, '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
       assert.ok(text.length <= 200, `${f}: a bottom line is one or two short sentences, not ${text.length} characters: "${text.slice(0, 60)}..."`);
     }
   }
