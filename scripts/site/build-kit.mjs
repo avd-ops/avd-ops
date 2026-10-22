@@ -16,7 +16,7 @@ const root = new URL('../../', import.meta.url).pathname;
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
 const BASE = asset('avd-ops.css');
 const SITE = 'https://avd-ops.dev/';
-export const FONTS = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@600;700&display=swap';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap';
 
 export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+) /) || [])[1];
 
