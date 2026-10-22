@@ -28,6 +28,16 @@
       return { n: -1, el: el };
     }
 
+    // "Next: <page>" on a wide screen; the page's name (span.pg) hides on a phone, so the button says "Next".
+    function label(a, word, page) {
+      a.textContent = word;
+      if (!page) return;
+      var pg = document.createElement('span');
+      pg.className = 'pg';
+      pg.textContent = ': ' + page;
+      a.appendChild(pg);
+    }
+
     function show(n, focus, target) {
       current = n;
       for (var i = 0; i < screens.length; i++) screens[i].classList.toggle('on', i === n);
@@ -40,13 +50,13 @@
       // when there is none.
       if (back) {
         back.hidden = n === 0 && !prevPage;
-        if (n > 0) { back.setAttribute('href', '#' + screens[n - 1].id); back.textContent = 'Back'; }
-        else if (prevPage) { back.setAttribute('href', prevPage); back.textContent = 'Back: ' + back.getAttribute('data-page'); }
+        if (n > 0) { back.setAttribute('href', '#' + screens[n - 1].id); label(back, 'Back', ''); }
+        else if (prevPage) { back.setAttribute('href', prevPage); label(back, 'Back', back.getAttribute('data-page')); }
       }
       if (next) {
         next.hidden = n === screens.length - 1 && !nextPage;
-        if (n < screens.length - 1) { next.setAttribute('href', '#' + screens[n + 1].id); next.textContent = 'Next'; }
-        else if (nextPage) { next.setAttribute('href', nextPage); next.textContent = 'Next: ' + next.getAttribute('data-page'); }
+        if (n < screens.length - 1) { next.setAttribute('href', '#' + screens[n + 1].id); label(next, 'Next', ''); }
+        else if (nextPage) { next.setAttribute('href', nextPage); label(next, 'Next', next.getAttribute('data-page')); }
       }
       // An #anchor inside a screen opens the "+ more" it sits in and scrolls to it; a new screen opens at the top,
       // its title focused for screen readers.

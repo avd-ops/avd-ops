@@ -169,7 +169,7 @@ function build() {
       : '';
     const nav = `<nav class="sc-nav" aria-label="Back and next"><div class="in">${prev ? `<a class="sc-back" href="${rel(prev)}" data-page="${esc(prev.title)}">Back</a>` : '<a class="sc-back" hidden>Back</a>'}`
       + `<span class="where">${p.screens[0].title}</span>`
-      + `${next ? `<a class="sc-next" href="${rel(next)}" data-page="${esc(next.title)}">Next: ${esc(next.title)}</a>` : '<a class="sc-next" hidden>Next</a>'}</div></nav>`;
+      + `${next ? `<a class="sc-next" href="${rel(next)}" data-page="${esc(next.title)}">Next<span class="pg">: ${esc(next.title)}</span></a>` : '<a class="sc-next" hidden>Next</a>'}</div></nav>`;
     const content = `<article class="screens">\n${steps}${p.screens.map((s, n) => (n === p.screens.length - 1 ? s.html.replace(/<\/section>$/, `${backlinks}</section>`) : s.html)).join('\n')}\n${nav}\n</article>\n<script src="${'../'.repeat(p.url.split('/').length)}assets/docs.js" defer></script>`;
     files.set(p.url, shell({ url: p.url, title: p.title, summary: p.summary, content }));
   }
