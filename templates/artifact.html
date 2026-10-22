@@ -1,13 +1,13 @@
-<!-- avd-ops artifact starter, design system v2.5.0 (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
+<!-- avd-ops artifact starter, design system v2.6.0 (avd-ops/avd-ops templates/artifact.html). Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
      Copy this file, rename the title, and replace the content between page:start and page:end. Keep the style and script blocks as they are: they are the release, inlined. -->
 <title>Page title</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImF2ZC1vcHMiPgogIDwhLS0gYXZkLW9wcyBtYXJrOiBhIHNoaWVsZCBob2xkaW5nIGEgZGVza3RvcCB3aXRoIGEgY2xvdWQsIGFuZCB0aGUgPjwgb2YgYSByZW1vdGUgc2Vzc2lvbi4gUmVidWlsdCBhcyB2ZWN0b3IgZnJvbSB0aGUgMjAyNi0xMC0yMCBsb2dvLiAtLT4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE0IiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTE3IDE0SDgzVjYzTDUwIDg2TDE3IDYzWiIgZmlsbD0iIzBkMTAxNSIvPgogIDxwYXRoIGQ9Ik0yNCAyMEg3N1Y1N0gyNFpNMjcuNSAyMy41VjUzLjVINzMuNVYyMy41WiIgZmlsbD0iIzFjYTk5OCIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgPHBhdGggZD0iTTM0IDQ3TDMyIDQ0LjVWNDEuNUwzNC41IDM5SDM4TDM5LjUgMzUuNUw0Mi41IDMzSDQ2TDQ4IDMwLjVINTNMNTYgMzNMNTcuNSAzNkg2MUw2My41IDM4LjVWNDFMNjYgNDNWNDVMNjQgNDdaIiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTQ3LjUgNTdINTIuNVY2MC41SDU5VjYzSDQxVjYwLjVINDcuNVoiIGZpbGw9IiMxY2E5OTgiLz4KICA8cGF0aCBkPSJNNDIgNjguNUw0Ni41IDcyTDQyIDc1LjVNNTggNjZMNTIuNSA3MC41TDU4IDc1IiBmaWxsPSJub25lIiBzdHJva2U9IiMxY2E5OTgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@600&family=Schibsted+Grotesk:wght@600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
-/* avd-ops design system v2.5.0: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
+/* avd-ops design system v2.6.0: avd-ops.css and avd-ops-shell.css, inlined. Page styles go after this block, built on the tokens. */
 /* Tokens. Neutrals are a cool slate; the accent is the logo's teal, darkened on light backgrounds for contrast
    (--brand and --brand-ink are the logo's own colors, for brand surfaces only); amber marks the optional
    Liquidware tier; good, caution and bad are for results only, never decoration, and info marks work in progress.
@@ -29,6 +29,7 @@
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",SFMono-Regular,Menlo,Consolas,monospace;
   --wordmark:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
   --tagline:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --prose:"Source Serif 4",Georgia,"Times New Roman",serif;
   --radius:8px; --radius-sm:6px; --pill:999px;
   --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.5rem; --space-6:2.5rem;
   --measure:46rem; --gutter:16px; --page:76rem; --side:15rem; --tap:44px; --radius-lg:14px; --bar:72px;
@@ -68,6 +69,7 @@ h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance}
 h1{font-size:clamp(2rem,5vw,2.9rem);margin:var(--space-6) 0 var(--space-3);letter-spacing:-.015em}
 h2{font-size:1.45rem;margin:2.75rem 0 var(--space-3);letter-spacing:-.005em} h3{font-size:1.1rem;margin:0 0 .35rem}
 code,.mono{font-family:var(--mono);font-size:.9em}
+.prose{font-family:var(--prose);font-size:1.06rem;line-height:1.65}
 :not(pre)>code{background:var(--sunken);border:1px solid var(--line);border-radius:4px;padding:0 .3em}
 pre{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.9rem 1rem;overflow-x:auto;font:.82rem/1.55 var(--mono)}
 /* Commands show every character as typed: no ligature turns << or != into one glyph. */
@@ -255,7 +257,7 @@ html:not(.js) .shell .theme{display:none}
 .shell .skip:focus{left:max(var(--gutter),env(safe-area-inset-left,0px));top:calc(var(--space-2) + env(safe-area-inset-top,0px))}
 </style>
 <script>
-/* avd-ops theme.js v2.5.0, inlined. */
+/* avd-ops theme.js v2.6.0, inlined. */
 (function () {
   var root = document.documentElement;
   var KEY = 'avd-ops-theme';

@@ -184,3 +184,40 @@ figure.flows{margin:var(--space-4) 0 0}
 .cl-repos .chip{text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
 @media (pointer:coarse){.cl-repos .chip{min-height:var(--tap)}}
 .cl-bar .cta:disabled{opacity:.6;cursor:default}
+
+/* Standards library (standards/, built by scripts/site/build-standards.mjs): avd-assess read like a paper.
+   Reading text in --prose; citations, references, claims and the three node states. */
+.standards .crumbs{font-size:.9rem;color:var(--muted);margin-bottom:var(--space-3)}
+.standards .edition{font-size:.88rem;color:var(--muted);margin:0 0 var(--space-4)}
+.standards .abstract{max-width:var(--measure);border-block:1px solid var(--line);padding:var(--space-3) 0;margin-bottom:var(--space-5)}
+.standards .abstract p{margin:0 0 var(--space-2)} .standards .abstract p:last-child{margin-bottom:0}
+.standards .article{max-width:var(--measure)}
+.standards .article li{margin-bottom:var(--space-2)}
+.standards .cite{font:600 .8rem var(--mono);white-space:nowrap;text-decoration:none;color:var(--accent)}
+.standards .cite:hover,.standards .cite:focus-visible{text-decoration:underline}
+.standards .cite.obs{color:var(--info)} .standards .cite.gap{color:var(--caution)}
+.standards .refs{list-style:none;padding:0;margin:var(--space-3) 0 var(--space-5);display:grid;gap:var(--space-3);max-width:var(--measure)}
+.standards .refs li{display:flex;gap:var(--space-3);align-items:baseline;font-family:var(--prose);line-height:1.55;scroll-margin-top:calc(var(--bar) + var(--space-3))}
+.standards .refs li:target{background:var(--accent-soft);border-radius:var(--radius-sm);padding:var(--space-2)}
+.standards .refs .n{flex:0 0 3.2rem;font:600 .8rem var(--mono);color:var(--accent)}
+.standards .refs.bib li{display:block}
+.standards .claim{border-top:1px solid var(--line);padding:var(--space-4) 0;max-width:var(--measure);scroll-margin-top:calc(var(--bar) + var(--space-3))}
+.standards .claim:target{background:var(--accent-soft);border-radius:var(--radius-sm);padding-inline:var(--space-3)}
+.standards .claim-head{margin:0;display:flex;gap:var(--space-2);align-items:baseline;flex-wrap:wrap;font-weight:600}
+.standards .says{margin:var(--space-2) 0}
+.standards .kind{font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.1rem var(--space-2)}
+.standards .states{display:inline-flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);margin:var(--space-1) 0}
+.standards .state{font:500 .78rem var(--mono);padding:.1rem var(--space-2);border-radius:var(--pill);border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.standards .state.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-hover)}
+.standards .verdict{display:inline-block;font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.1rem var(--space-2);border-radius:4px;white-space:nowrap}
+.v-agrees{background:var(--good-soft);color:var(--good)} .v-extends{background:var(--info-soft);color:var(--info)}
+.v-not-yet-tested,.v-help{background:var(--sunken);color:var(--muted);border:1px solid var(--line)} .v-disagrees{background:var(--bad-soft);color:var(--bad)}
+.standards .note{font-size:.88rem;color:var(--muted);overflow-wrap:anywhere}
+.standards .cite-box{max-width:var(--measure);padding:var(--space-4);margin-top:var(--space-5)}
+.standards .cite-line{margin:var(--space-2) 0;padding:var(--space-2) var(--space-3);background:var(--sunken);border-radius:var(--radius-sm);overflow-wrap:anywhere}
+.standards .method-list{list-style:none;padding:0;display:grid;gap:var(--space-3);max-width:var(--measure)}
+.standards .method-list li{display:grid;gap:.2rem} .standards .method-list a{font:700 1.05rem var(--display)}
+.standards .method-list .prose{color:var(--muted);font-size:.98rem}
+.standards .legend{display:grid;gap:var(--space-2)} .standards .legend div{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap}
+.standards .legend dt{flex:0 0 auto} .standards .legend dd{margin:0;color:var(--muted)}
+.standards .tbl td.mono{overflow-wrap:anywhere}

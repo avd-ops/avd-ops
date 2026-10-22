@@ -1,0 +1,28 @@
+{
+  "description": "site/data/standards/ holds byte-identical copies of these avd-assess files at commit (contracts/fact-register.json is stored as fact-register.json); tests/standards.test.mjs checks every hash. To update, run node scripts/site/build-standards.mjs --pin <avd-assess checkout>, then node scripts/site/build-standards.mjs, in one PR.",
+  "source": "https://github.com/avd-ops/avd-assess",
+  "commit": "a5a7eeeb230a38c80cb00735b2531f407ddc2236",
+  "date": "2026-10-21",
+  "files": {
+    "index.json": "c3f347094b25673b1a5379d7083a15c0dfcc220c6edb6fdbc0d3b1d545130c98",
+    "map.json": "0b1cd3b68afa25a338dfde75affe41c78a49b234b6762e2a0298c82bdbec9dcd",
+    "method.json": "995318b0ce9907dc04f23abdbbaa83ada3ff94bb333f1744a269cb2cbb355d76",
+    "contracts/fact-register.json": "2ea4516b0d837d540f418bb85ceedfef34d0896849e9b6cd565788b7ebfade57",
+    "methods/assessment.md": "b773beb8f5e18b2c62d9fe4061f7534ac00b138f021b584a987b4538b5d1b7e9",
+    "methods/baseline-profile.md": "1a094f67e91752d94deea1b7b3ebf5fede4652fb4f1999588914e7e984bbccfe",
+    "methods/collection.md": "870686f9687e3f3c9a8bcd9bf51f2859d5e7bfa79d1dd136c7dbf14d9a69466f",
+    "methods/diagnostics.md": "34f3fdefa2c39b51b164c6f2a63ff3405e50ede0ae037bc2d34c4ba1cf60db5b",
+    "methods/finops.md": "2343d45c918782eec403d26963f84365e58f61d71fa95dfc11e9e651faade45a",
+    "methods/intune.md": "8d7a3a25af3bfc1376c1c11fcfccba0c32501c66883d237cfa3dc8d7859ce288",
+    "methods/network.md": "7c1f5d8551b57900c69137fe4c9bbddf343122375838bdd76b694816087a69fa",
+    "methods/reliability.md": "7c5a09bc127e02a81db8b953d84b29b01bdde4319a20f8fc78a9b5af8ee08df4",
+    "methods/remediation.md": "83aae3314a4fc115418ebbb2c4fce473334cf238c4bf541a0d6c5fa6a20f3ea6",
+    "methods/remote-protocols.md": "2065586d869bd2994b98e0dbc2360b2c0fe6989a010e221971752aea87f6ed92",
+    "methods/sample-check.md": "88c092001ad905b887b3b9b65396e5b9ff0a51cd2d14d3c67ab749c6f7983905",
+    "methods/scoring.md": "09590ca302fb0c3e37f203d9b2d902eae1e4d1fc57b87a9efbd97c4efcbb7577",
+    "methods/security.md": "678f9d75320ec6e8638726d8fd314f4361929d2214c9f09d5598e0e7be745029",
+    "methods/targets-benchmarks.md": "fa7ba2223518eab75ce538bbd5b5d395267916d7d230d90d90e4d622283824cf",
+    "methods/tune-rightsize.md": "59050a05a974a7fa13d3a17ca184ec0bbcd9d2001df7feec32eacf926837ae07",
+    "methods/use-cases.md": "5471933d810a933d5fccbf723c05b7480aaf50fbc30b3eb5fe475b567597d4f1"
+  }
+}

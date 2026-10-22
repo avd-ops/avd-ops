@@ -74,3 +74,11 @@ errors:
     applies_to: Node.js 22
     status: verified
     added: "2026-10-21"
+  - id: pre-is-a-command-block
+    symptom: "not ok - every command block stands alone in Cloud Shell (build/lessons/0015): <code>avd-assess@a5a7eee:methods/assessment.md</code>"
+    cause: "tests/site.test.mjs treats every <pre> on an avd-ops.dev page as a Cloud Shell command block, so it must clone, Set-Location and pull. A citation or other copyable text in a <pre> fails it."
+    fix: "Use <pre> only for commands. Copyable non-command text goes in a paragraph with <code> (the standards library's .cite-line)."
+    source: https://github.com/avd-ops/avd-ops/blob/main/tests/site.test.mjs
+    applies_to: avd-ops site tests
+    status: verified
+    added: "2026-10-22"

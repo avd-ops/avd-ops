@@ -73,3 +73,6 @@ The owner picked it from a rendered proposal with all three options on 2026-10-2
   bar grouped by phase, one step that fills the screen, a "+ more" disclosure, the reply to a paste,
   Back and Next along the bottom on every screen size, and sheets for Settings and Resume. The deployment
   portal uses it first; the docs follow in a later change.
+- Design system 2.6.0 (owner, 2026-10-22): a serif reading face, Source Serif 4, as `--prose` and the
+  `.prose` class, for long reading text only: the standards library's articles, claims and reference
+  lists, which are read like a paper. Headings, controls, labels and code keep their faces.
