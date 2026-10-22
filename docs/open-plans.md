@@ -18,7 +18,7 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Drift detection | Phase 1 built | First read-only run; plan phases 2 and 3 | owner | [avd-current-state `docs/drift-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/drift-spec.md) |
 | Shared read-only identity | Built | First real run | owner | [avd-current-state `docs/reader-identity.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/reader-identity.md) |
 | Local collector (hosts, then devices) | Spec merged; the owner's answers are in [avd-current-state #42](https://github.com/avd-ops/avd-current-state/pull/42) | Merge #42, then build host mode with preflight | owner, then anyone | [avd-current-state `docs/local-collector-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/local-collector-spec.md) |
-| Assessment portal | Phases 1 to 3 merged; phase 4 in [avd-current-state #51](https://github.com/avd-ops/avd-current-state/pull/51) | Review and merge #51 | anyone | [avd-current-state `docs/assessment-portal-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/assessment-portal-spec.md) |
+| Assessment portal | Phases 1 to 4 merged; wizard layout being built ([items below](#assessment-portal-on-the-wizard-layout)) | Work the items below | anyone | [avd-current-state `docs/assessment-portal-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/assessment-portal-spec.md) |
 | Estate diagram | Spec merged | Phase 1 build offline | anyone | [avd-current-state `docs/diagram-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/diagram-spec.md) |
 | Shared portal engine | 1.0 released; current-state portal on it; 1.1.0 in [avd-ops #59](https://github.com/avd-ops/avd-ops/pull/59) | Landing zone vendors it (PR 3), delegates (4), probe (5), then avd-linecheck v0 | anyone | [`docs/portal-engine-spec.md`](portal-engine-spec.md) |
 | avd-assess map | All 22 pillars merged; release v1.0.0 published | Evidence runs for the map (costed), wiring the standards library to `map.json` | owner | [avd-assess `docs/assess-spec.md`](https://github.com/avd-ops/avd-assess/blob/main/docs/assess-spec.md), [`docs/distribution-spec.md`](https://github.com/avd-ops/avd-assess/blob/main/docs/distribution-spec.md) |
@@ -34,6 +34,20 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Estate RAID log (C25) | Spec merged | Build after the open questions R2 to R6 (defaults in the spec) | owner | [avd-second-brain `docs/raid-spec.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/raid-spec.md) |
 | Brain and swarm v1 decisions D1 to D18 | Defaults stand until answered | Owner answers or keeps the defaults | owner | [avd-second-brain `docs/v1-review.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/v1-review.md) |
 | Outside coding agents | Hard rules in AGENTS.md; setup and review steps written | Owner sets up the agent account and fork, and tightens the main ruleset | owner | [`docs/outside-agents.md`](outside-agents.md) |
+
+## Assessment portal on the wizard layout
+
+The assessment portal (avd-current-state `site/portal/`) still uses the old layout: a step strip on top, long intros and every discovery question on one screen. The deployment portal already uses the wizard (design system 2.5.0 and later, ["Wizard"](design-system.md)): steps listed down the left, one screen at a time, the bottom line first and detail behind "+ more". These items move the assessment portal onto it. Each one is small and can be done and checked on its own, in this order, in avd-current-state unless it says otherwise. Check: `node --test "tests/portal/*.test.mjs"` in avd-current-state, then look at the page at 1440px and 390px wide, light and dark.
+
+- [ ] **1. Design system 2.7.0 first** (owner). Merge avd-ops #65, then avd-current-state #53, then tag `ds-v2.7.0` on the merge commit. Everything below builds on 2.7.0.
+- [ ] **2. Page frame** (anyone). `main.wz-layout` with a `header.top.wz-rail` holding the portal's name, one `.purpose` line, `ol.wz-list`, `ol.wz-progress` and `.wz-tools` (Settings, Report a problem); `nav.wz-nav.wide` for Back and Next. Remove the old `ol.steps`, `.top-intro` and `.stepnav`. Copy the structure from the deployment portal's `site/portal/index.html`.
+- [ ] **3. Steps** (anyone). Keep the five stages as the list's groups (Collect, Discover, Analyze, Review, Plan) and split Discover into four screens: Regions, Network and identity, Working hours, Users and notes (which builds `intake.json`). A saved `discover` step opens the first Discover screen. `portal.js`: one `STEPS` list with each step's stage, used by the list, the progress bar, Back and Next and the report's stage name.
+- [ ] **4. One idea per screen** (anyone). Each step: a large `h2`, one `.purpose` line that says what to do, the one action, then the rest (the long intro, the optional reader check, what a file holds) behind `details.more`.
+- [ ] **5. Run in as one line** (anyone). Replace the segmented Run in bar with the `.runline` over the command ("For Cloud Shell, PowerShell. Change"); Change opens Settings, which now holds the Run in choice.
+- [ ] **6. Settings and Report a problem as sheets** (anyone). `.sheet` with a `button.sheet-backdrop`; the backdrop and Escape close them and focus returns to the tool that opened them.
+- [ ] **7. Results as a reply** (anyone). A pasted output's answer is a `.reply`: the verdict first (`.bl` with `good`, `ok` or `poor`), the headline, then the table behind "+ more".
+- [ ] **8. Guards** (anyone). Update `tests/portal/site.test.mjs` (the notice test now splits on `wz-list`) and add a test that every step has a section, a title and a purpose line.
+- [ ] **9. Spec** (anyone). Update the layout section of avd-current-state `docs/assessment-portal-spec.md`, and this row when done.
 
 ## Parked
 
