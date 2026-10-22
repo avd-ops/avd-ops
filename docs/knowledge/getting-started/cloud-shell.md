@@ -3,7 +3,7 @@ title: "Working from Cloud Shell"
 summary: "The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence"
 topic: getting-started
 status: partial
-last_reviewed: 2026-10-21
+last_reviewed: 2026-10-22
 ---
 
 # Working from Cloud Shell
@@ -146,6 +146,12 @@ it first with the same rules as the deployment portal's issue report:
 [`redact.mjs`](https://github.com/avd-ops/avd-landing-zone/blob/master/scripts/ops/redact.mjs).
 `--level private` removes secrets only. `--level public` also removes tenant names, IDs, emails and
 domains. Never paste a secret anywhere.
+
+The portals' Report a problem buttons redact in your browser before they open an issue. The shared
+rules are the portal engine's [`redact.js`](https://github.com/avd-ops/avd-ops/blob/main/site/assets/engine/redact.js) (engine 1.1):
+secrets, emails, tenant and domain names, IDs, public IP addresses and user names in paths, plus
+each portal's own patterns. Given the landing zone's patterns, it returns exactly what the
+deployment portal's report does on the landing zone's 54 recorded outputs.
 
 ## Costs
 

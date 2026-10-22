@@ -1,6 +1,6 @@
 # Portal engine: one engine for every family portal
 
-Status: accepted (Nick, 2026-10-21: "we should have a shared portal engine if possible too not build 3 standalone portals"; "go with your recs" on the open questions, section 15). Engine 1.0 (phase 1) is built in `site/assets/engine/` (section 6.4); no portal uses it yet. Red-teamed (section 14).
+Status: accepted (Nick, 2026-10-21: "we should have a shared portal engine if possible too not build 3 standalone portals"; "go with your recs" on the open questions, section 15). Engine 1.0 (phase 1) is built in `site/assets/engine/` (section 6.4); 1.1 adds `redact.js` for the assessment portal's Report a problem button (section 6.6). Red-teamed (section 14).
 
 The family has two portals and a third on the way: the avd-landing-zone deployment portal (`site/portal/`), the avd-current-state assessment portal (`site/portal/`) and the avd-linecheck end-user page ([its spec](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md), sections 4 to 8 and 18). This spec says what they should share, where the shared code lives, how it reaches each repo, and how the two working portals move onto it without a regression.
 
@@ -125,6 +125,14 @@ Copy `core.js` and the files the portal runs from the tag's commit into its own 
 ```
 
 The hashes come from `MANIFEST.json` at that commit. The portal's engine test checks each listed file's hash, that every file a listed file `needs` is listed, and that no unlisted engine file is present; the assessment portal takes no `probe.js`. Load `core.js` first with `<script src>`, then the rest.
+
+### 6.6 What 1.1 added: redact.js ahead of phase 2
+
+Engine 1.1 (`pe-v1.1.0`) adds `redact.js`, the generic redaction section 6.2 describes, before the rest of phase 2. Its first user is the assessment portal's Report a problem button (avd-current-state's portal spec, phase 4, decision 5: "move its core into avd-ops as a shared script both portals vendor"); the landing zone keeps its own `report.js` until it adopts the engine's page modules (section 9, PR 7). The other files only change their version line.
+
+- **API:** `maskSecrets(text)`, `redact(text, { known, extraTerms, patterns, publicIds, publicDomains, keepValues, level })`, `describe(counts, labels)`, `fence(text)` and `issueUrl(repoUrl, title, body, { label, maxLength })`. The secret, email, tenant, domain, ID, IP and home-path steps are generic. A portal's own values (the landing zone's state-line settings, subscription names, storage and key vault names) arrive as `known` and `patterns`. A pattern is a global regular expression whose named group `value` is replaced and whose `pre` and `post` groups are kept.
+- **Same output as the landing zone's.** Given the landing zone's patterns, kept values, public IDs and state-line settings, `redact` returns exactly what `report.js` returns on all 54 of the landing zone's recorded fixtures (`build/tests/portal/fixtures`, checked when 1.1 was written). The `<kind-n>` format and the numbering after an earlier redaction are unchanged, so PR 7 can move the landing zone over without moving a golden.
+- **Differences:** emails are found before the operator's own terms, not after: in `report.js` a term inside an address (a company name in its domain) broke the address up and left the user name in the report. `describe` writes `2 x ID` (ASCII, like every engine file) where `report.js` writes a multiplication sign. `issueUrl` takes the label as an option, refuses a repo URL that isn't a GitHub repository, and shortens lines over 400 characters before it cuts whole lines: in `report.js` one long line in the first 30 (a line of JSON, a long ARM error) left the link with an empty body.
 
 ## 7. Linecheck's measurement engine
 

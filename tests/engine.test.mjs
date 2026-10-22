@@ -14,7 +14,7 @@ import { ENGINE, PATH, NETWORK, engineFiles, versionOf, manifest } from '../scri
 const require = createRequire(import.meta.url);
 const load = (f) => require(join(ENGINE, f));
 const core = load('core.js'), blocks = load('blocks.js'), statelines = load('statelines.js');
-const runin = load('runin.js'), bands = load('bands.js'), probe = load('probe.js');
+const runin = load('runin.js'), bands = load('bands.js'), probe = load('probe.js'), redact = load('redact.js');
 const files = engineFiles();
 const text = (f) => readFileSync(join(ENGINE, f), 'utf8');
 const code = (f) => text(f).replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:\\'"`])\/\/.*$/gm, '$1');
@@ -328,6 +328,88 @@ test('probe: run measures phases one after another, in target order, within its 
   assert.deepEqual([kept[0][0].median, own.calls.length], [5, 3], 'a phase keeps its own env when the run has none');
 });
 
+// ---------------------------------------------------------------- redaction
+// Private-looking values are built here, never written out, so the repo's secret scan has nothing to find.
+const hex = (n, c) => c.repeat(n);
+const guid = (c) => [hex(8, c), hex(4, c), hex(4, c), hex(4, c), hex(12, c)].join('-');
+const ip = (...o) => o.join('.');
+const at = (u, d) => `${u}@${d}`;
+
+test('redact: maskSecrets removes tokens, keys, signatures, passwords and device codes, and keeps IDs', () => {
+  const jwt = ['eyJ' + 'a'.repeat(12), 'b'.repeat(12), 'c'.repeat(8)].join('.');
+  const key = 'Ab1' + 'x'.repeat(40) + '==';
+  const input = [`token ${jwt}`, `Authorization: Bearer ${'k'.repeat(20)}`, `https://contoso.blob.core.windows.net/c?sv=1&sig=${'s'.repeat(10)}`,
+    `AccountKey=${key};`, `pass` + `word=${'p'.repeat(8)}`, 'To sign in, enter the code ABCD1234 to authenticate.', `id ${guid('1')}`].join('\n');
+  const r = redact.maskSecrets(input);
+  assert.equal(r.count, 6);
+  for (const v of [jwt, 'k'.repeat(20), 's'.repeat(10), key, 'p'.repeat(8), 'ABCD1234']) assert.ok(!r.text.includes(v), v);
+  assert.ok(r.text.includes(guid('1')), 'IDs stay: the analysis needs them');
+  assert.equal(redact.maskSecrets(r.text).count, 0, 'masking twice finds nothing new');
+});
+
+test('redact: the <kind-n> format is frozen, one number per distinct value, continuing after an earlier redaction', () => {
+  const a = guid('a'), b = guid('b');
+  const r = redact.redact(`sub ${a}\nagain ${a.toUpperCase()}\nother ${b}\nuser ${at('first.last', 'fabrikam.com')} at fabrikam.com\ntenant fabrikam.onmicrosoft.com\nfrom ${ip(20, 30, 40, 50)} via ${ip(10, 1, 2, 3)}\npath /home/someone/x`);
+  assert.equal(r.text, 'sub <id-1>\nagain <id-1>\nother <id-2>\nuser <email-1> at <domain-1>\ntenant <tenant-1>.onmicrosoft.com\nfrom <ip-1> via ' + ip(10, 1, 2, 3) + '\npath /home/<user-1>/x');
+  assert.deepEqual(r.counts, { id: 3, email: 1, domain: 1, tenant: 1, ip: 1, user: 1 });
+  assert.equal(r.total, 8);
+  const again = redact.redact(`${r.text}\nnew ${guid('c')}`);
+  assert.match(again.text, /new <id-3>$/, 'an edited report numbers new values after the old ones');
+  assert.equal(again.counts.id, 1);
+});
+
+test('redact: public IDs, domains and the portal\'s own kept values stay readable', () => {
+  const r = redact.redact(`Graph 00000003-0000-0000-c000-000000000000 role ${guid('d')} ${at('a', 'contoso.com')} sandbox`, { publicIds: [guid('d')], keepValues: ['sandbox'], extraTerms: ['sandbox'] });
+  assert.equal(r.text, 'Graph 00000003-0000-0000-c000-000000000000 role ' + guid('d') + ' <email-1> sandbox');
+});
+
+test('redact: the operator\'s terms and settings, short ones as whole words only', () => {
+  const r = redact.redact('Fabrikam Users in fab ran fabulous checks for Fabrikam', { extraTerms: ['fab'], known: [{ kind: 'name', value: 'Fabrikam Users' }, { kind: 'subscription', value: 'Prod Sub' }, { value: 'Fabrikam' }, { kind: 'Bad Kind', value: 'checks' }] });
+  assert.equal(r.text, '<name-1> in <custom-1> ran fabulous <name-3> for <name-2>');
+  assert.equal(redact.redact('x', { known: [{ kind: 'name', value: at('u', 'fabrikam.com') }] }).total, 0, 'a UPN in the settings is left to the email step');
+  const mail = at('ops.admin', 'fabrikam.com');
+  assert.equal(redact.redact(`${mail} at Fabrikam`, { extraTerms: ['Fabrikam'] }).text, '<email-1> at <custom-1>', 'a term inside an address does not break it up');
+});
+
+test('redact: a portal\'s patterns replace the value group and keep pre and post', () => {
+  const patterns = [
+    { kind: 'subscription', re: /(?<pre>subscription ')(?<value>[^'\n]+)(?<post>')/gi },
+    { kind: 'storage', re: /\b(?<value>[a-z0-9]{3,24})(?<post>\.file\.core\.windows\.net)\b/g },
+    { kind: 'host', re: /\bavdhost-\d+\b/g }
+  ];
+  const r = redact.redact("in subscription 'Contoso Prod' share stfab01.file.core.windows.net host avdhost-1 and avdhost-1, subscription '<subscription-1>'", { patterns });
+  // The placeholder already in the text is left alone, and the new value is numbered after it.
+  assert.equal(r.text, "in subscription '<subscription-2>' share <storage-1>.file.core.windows.net host <host-1> and <host-1>, subscription '<subscription-1>'");
+  assert.throws(() => redact.redact('x', { patterns: [{ kind: 'x', re: /x/ }] }), /global/);
+  assert.equal(redact.redact(`a ${guid('e')}`, { level: 'private' }).text, `a ${guid('e')}`, 'private: secrets only');
+});
+
+test('redact: describe, fence and issueUrl', () => {
+  assert.equal(redact.describe({}), 'Nothing found to redact.');
+  assert.equal(redact.describe({ id: 2, host: 1 }, { host: 'session host' }), 'Redacted 2 x ID, 1 x session host.');
+  assert.equal(redact.fence('a ``` b'), '````');
+  assert.equal(redact.fence('plain'), '```');
+  const repo = 'https://github.com/avd-ops/avd-current-state';
+  const small = redact.issueUrl(repo + '/', 'Portal: x', 'body');
+  assert.equal(small.url, `${repo}/issues/new?labels=portal-report&title=Portal%3A%20x&body=body`);
+  assert.equal(small.trimmed, 0);
+  assert.equal(redact.issueUrl(repo, 't', 'b', { label: '' }).url, `${repo}/issues/new?title=t&body=b`);
+  assert.throws(() => redact.issueUrl('https://evil.example/x/y', 't', 'b'), /repo URL/);
+  assert.throws(() => redact.issueUrl(repo, 't', 'b', { label: 'a&b' }), /label/);
+  const long = Array.from({ length: 2000 }, (v, i) => `line ${i}`).join('\n');
+  const cut = redact.issueUrl(repo, 't', long, { maxLength: 4000 });
+  assert.ok(cut.url.length <= 4000 && cut.trimmed > 0);
+  const body = decodeURIComponent(cut.url.split('&body=')[1]);
+  assert.ok(body.startsWith('line 0\n') && body.endsWith('line 1999') && body.includes('lines cut to fit'), 'keeps the start and the end');
+  const one = redact.issueUrl(repo, 't', `what happened\n${'x'.repeat(9000)}\nlast line`);
+  const oneBody = decodeURIComponent(one.url.split('&body=')[1]);
+  assert.ok(one.url.length <= 7500 && one.trimmed === 1, 'one long line is shortened, not the whole body dropped');
+  assert.ok(oneBody.startsWith('what happened\n') && oneBody.endsWith('last line') && oneBody.includes('characters cut'), oneBody.slice(0, 80));
+  const wide = redact.issueUrl(repo, 't', Array.from({ length: 40 }, (v, i) => `${i} ${'%'.repeat(390)}`).join('\n'));
+  const wideBody = decodeURIComponent(wide.url.split('&body=')[1]);
+  assert.ok(wide.url.length <= 7500 && wide.trimmed > 0 && wideBody.startsWith('0 ') && wideBody.includes('lines cut to fit'), 'lines that grow when encoded still fit');
+});
+
 // ---------------------------------------------------------------- the scan, the floor, the manifest
 test('no file but probe.js can make a request, and none evaluates code or writes HTML', () => {
   const network = /\bfetch\b|XMLHttpRequest|WebSocket|EventSource|RTCPeerConnection|sendBeacon|\bimport\s*\(|\bhttps?:\/\/|importScripts|\.src\s*=|navigator\./;
@@ -371,7 +453,7 @@ test('the manifest is up to date, lists every file and what it needs, and a rele
 });
 
 test('each file loads alone after core.js, in Node and in a browser-like context', () => {
-  const names = { 'blocks.js': 'blocks', 'statelines.js': 'statelines', 'runin.js': 'runin', 'bands.js': 'bands', 'probe.js': 'probe' };
+  const names = { 'blocks.js': 'blocks', 'statelines.js': 'statelines', 'runin.js': 'runin', 'bands.js': 'bands', 'probe.js': 'probe', 'redact.js': 'redact' };
   assert.deepEqual(Object.keys(names).sort(), files.filter((f) => f !== 'core.js'));
   for (const [f, name] of Object.entries(names)) {
     const ctx = vm.createContext({});
