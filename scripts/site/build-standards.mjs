@@ -3,14 +3,15 @@
 // method.json, the fact register and methods/*.md. avd-assess holds the standards; these pages only present
 // them like a paper: numbered references, citations that name the claim, each source with its pin and the date
 // it was read, and an edition stamp. A change to a claim is made in avd-assess and arrives here with a pin bump.
-// It also writes site/data/library.json, the one data file the library and the credits page read.
+// It also writes site/data/library.json: every source, claim (with its states), observation, gap and check of the
+// edition as one file, for tools and for the credits page (avd-ops #18) to read instead of parsing avd-assess.
 // Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
 //
 //   node scripts/site/build-standards.mjs                      # write site/standards/ and site/data/library.json
 //   node scripts/site/build-standards.mjs --check              # fail if any of them is out of date (CI)
 //   node scripts/site/build-standards.mjs --pin ../avd-assess  # copy avd-assess's files at its HEAD and lock them
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, copyFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { join, dirname, posix } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { marked } from 'marked';
@@ -19,7 +20,9 @@ import { applyShell } from './apply-shell.mjs';
 const root = new URL('../../', import.meta.url).pathname;
 const DATA = 'site/data/standards';
 const LOCK = `${DATA}/standards.lock.json`;
-const FILES = ['index.json', 'map.json', 'method.json', 'contracts/fact-register.json'];
+const FILES = ['index.json', 'method.json', 'contracts/fact-register.json'];
+// The security page renders another avd-assess file; one edition of avd-assess for the whole site, so --pin moves both.
+const SECURITY = { file: 'security-review.json', to: 'site/data/security-review.json', lock: 'site/data/security-review.lock.json' };
 const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
 
 // --pin: take avd-assess's files at the checkout's HEAD, byte for byte, and record each hash.
@@ -29,8 +32,11 @@ if (pinAt > -1) {
   if (!src || !existsSync(join(src, 'index.json'))) throw new Error('--pin needs the path of an avd-assess checkout');
   const git = (...a) => execFileSync('git', ['-C', src, ...a], { encoding: 'utf8' }).trim();
   if (git('status', '--porcelain')) throw new Error(`${src} has uncommitted changes; pin a clean commit`);
-  rmSync(join(root, DATA), { recursive: true, force: true });
+  // Check everything is there before touching the current copy, so a bad checkout changes nothing.
+  for (const f of [...FILES, 'methods', SECURITY.file]) if (!existsSync(join(src, f))) throw new Error(`${src}: no ${f}; is it avd-assess?`);
   const methods = readdirSync(join(src, 'methods')).filter((f) => f.endsWith('.md')).sort().map((f) => `methods/${f}`);
+  if (!methods.length) throw new Error(`${src}: methods/ has no .md files`);
+  rmSync(join(root, DATA), { recursive: true, force: true });
   const files = {};
   for (const f of [...FILES, ...methods]) {
     const to = join(root, DATA, f.replace(/^contracts\//, ''));
@@ -46,7 +52,10 @@ if (pinAt > -1) {
     files,
   };
   writeFileSync(join(root, LOCK), `${JSON.stringify(lock, null, 2)}\n`);
-  console.log(`pinned avd-assess ${lock.commit.slice(0, 7)} (${Object.keys(files).length} files); now run node scripts/site/build-standards.mjs`);
+  copyFileSync(join(src, SECURITY.file), join(root, SECURITY.to));
+  const sec = JSON.parse(readFileSync(join(root, SECURITY.lock), 'utf8'));
+  writeFileSync(join(root, SECURITY.lock), `${JSON.stringify({ ...sec, source: lock.source, commit: lock.commit, sha256: sha(join(root, SECURITY.to)) }, null, 2)}\n`);
+  console.log(`pinned avd-assess ${lock.commit.slice(0, 7)} (${Object.keys(files).length} files); now run node scripts/site/build-standards.mjs and node scripts/site/build-security.mjs`);
   process.exit(0);
 }
 
@@ -86,6 +95,7 @@ const citedBy = new Map(); // "source#claim" or "source" -> [{ method, title }]
 const methods = methodIds.map((id) => {
   const md = readFileSync(local(`methods/${id}.md`), 'utf8');
   const title = (md.match(/^# (.+)$/m) || [, id])[1];
+  const body = md.replace(/^[\s\S]*?^# .+\n+/m, ''); // everything before and including the title
   for (const [, kind, ref, claim] of md.matchAll(TOKEN)) {
     resolve(kind, ref, claim, `methods/${id}.md`);
     if (kind !== 'ref') continue;
@@ -93,7 +103,7 @@ const methods = methodIds.map((id) => {
     if (!citedBy.has(key)) citedBy.set(key, []);
     if (!citedBy.get(key).some((m) => m.id === id)) citedBy.get(key).push({ id, title });
   }
-  return { id, title, md };
+  return { id, title, md, body };
 });
 const obsOn = new Map(); // "source#claim" -> [observation]
 for (const o of index.observations) {
@@ -107,7 +117,10 @@ for (const o of index.observations) {
 const checksOn = new Map(); // "source#claim" -> [check]
 for (const c of method.checks) for (const cl of c.claims) {
   const m = cl.match(/^ref:([^#]+)#(.+)$/);
-  if (m) (checksOn.get(`${m[1]}#${m[2]}`) || checksOn.set(`${m[1]}#${m[2]}`, []).get(`${m[1]}#${m[2]}`)).push(c);
+  if (!m) continue;
+  const key = `${m[1]}#${m[2]}`;
+  if (!checksOn.has(key)) checksOn.set(key, []);
+  checksOn.get(key).push(c);
 }
 
 // The three node states from avd-assess's map review: mapped (a pinned source states it), measurable (a check
@@ -120,7 +133,7 @@ const stateOf = (source, claim) => {
   const os = obsOn.get(key) || [];
   return {
     mapped: true,
-    measurable: checks.some((c) => c.facts.every((f) => facts.get(f)?.status === 'built')),
+    measurable: checks.some((c) => c.facts.length > 0 && c.facts.every((f) => facts.get(f)?.status === 'built')),
     validated: os.some((o) => (o.verdict === 'agrees' || o.verdict === 'extends') && o.evidence?.length),
     disputed: os.some((o) => o.verdict === 'disagrees'),
     helpWanted: os.some((o) => o.verdict === 'not-yet-tested'),
@@ -149,7 +162,7 @@ const entry = (r) => `${esc(publisher(r))}. <cite>${esc(r.title)}</cite>. Pinned
 function render(m) {
   const order = []; const oOrder = []; const gOrder = [];
   const num = (list, id) => (list.includes(id) ? list.indexOf(id) : list.push(id) - 1) + 1;
-  let md = m.md.replace(/^# .+\n+/, '');
+  let md = m.body;
   md = md.replace(TOKEN, (_, kind, id, claim) => {
     if (kind === 'ref') {
       const n = num(order, id);
@@ -160,11 +173,13 @@ function render(m) {
     return `<a class="cite gap" href="#gap-${id}" title="Our own method: ${esc(gaps.get(id).title)}">[G${num(gOrder, id)}]</a>`;
   });
   const renderer = new marked.Renderer();
-  renderer.link = ({ href, text }) => {
+  renderer.link = function ({ href, title, tokens }) {
     let to = href;
-    if (/^[a-z0-9-]+\.md(#.*)?$/.test(href) && methodIds.includes(href.split('.md')[0])) to = href.replace('.md', '.html');
-    else if (!/^(https?:|#)/.test(href)) to = assess(href.replace(/^\.\.\//, '').replace(/^\.\//, 'methods/'));
-    return `<a href="${esc(to)}">${text}</a>`;
+    const [file, anchor] = href.split('#');
+    if (/^(https?:|mailto:|#)/.test(href)) to = href;
+    else if (methodIds.includes(file.replace(/^\.\//, '').replace(/\.md$/, '')) && file.endsWith('.md')) to = `${file.replace(/^\.\//, '').replace(/\.md$/, '.html')}${anchor ? `#${anchor}` : ''}`;
+    else to = assess(posix.normalize(posix.join('methods', file))) + (anchor ? `#${anchor}` : ''); // relative to methods/, at the pin
+    return `<a href="${esc(to)}"${title ? ` title="${esc(title)}"` : ''}>${this.parser.parseInline(tokens)}</a>`;
   };
   const html = marked.parse(md, { renderer, gfm: true });
   const [lead, ...rest] = html.split(/(?=<h2)/);
@@ -271,6 +286,15 @@ ${sorted.map((s) => `<li><span>${entry(s)} <a href="${s.id}.html">${s.claims.len
 </ol>`));
 
 // How to cite.
+// Examples from this edition's own records, so each one cites something that exists.
+const exRef = index.references.find((r) => r.claims.length);
+const ex = [
+  ['A claim from a source', 'avd-assess@&lt;commit&gt;:references/&lt;source&gt;.yaml#&lt;claim&gt;', exRef && cite(`references/${exRef.id}.yaml`, exRef.claims[0].id)],
+  ['An observation', 'avd-assess@&lt;commit&gt;:observations/&lt;id&gt;.yaml', index.observations[0] && cite(`observations/${index.observations[0].id}.yaml`)],
+  ['A gap (our own method)', 'avd-assess@&lt;commit&gt;:gaps/&lt;id&gt;.md', index.gaps[0] && cite(`gaps/${index.gaps[0].id}.md`)],
+  ['A check', 'avd-assess@&lt;commit&gt;:method.json#&lt;check&gt;', method.checks[0] && cite('method.json', method.checks[0].id)],
+  ['A method', 'avd-assess@&lt;commit&gt;:methods/&lt;id&gt;.md', methods[0] && cite(`methods/${methods[0].id}.md`)],
+];
 out.set('standards/how-to-cite.html', page('standards/how-to-cite.html', 'How to cite', 'How to cite the avd-assess standards: a claim, an observation, a gap or a check, at a commit.', `<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Standards library</a> / How to cite</nav>
 <h1>How to cite</h1>
 ${edition('')}
@@ -279,11 +303,7 @@ ${edition('')}
 <div class="tbl"><table>
 <thead><tr><th scope="col">What</th><th scope="col">Form</th><th scope="col">Example</th></tr></thead>
 <tbody>
-<tr><th scope="row">A claim from a source</th><td class="mono">avd-assess@&lt;commit&gt;:references/&lt;source&gt;.yaml#&lt;claim&gt;</td><td class="mono">${esc(cite('references/avd-autoscale.yaml', 'capacity-threshold'))}</td></tr>
-<tr><th scope="row">An observation</th><td class="mono">avd-assess@&lt;commit&gt;:observations/&lt;id&gt;.yaml</td><td class="mono">${esc(cite(`observations/${index.observations[0].id}.yaml`))}</td></tr>
-<tr><th scope="row">A gap (our own method)</th><td class="mono">avd-assess@&lt;commit&gt;:gaps/&lt;id&gt;.md</td><td class="mono">${esc(cite(`gaps/${index.gaps[0].id}.md`))}</td></tr>
-<tr><th scope="row">A check</th><td class="mono">avd-assess@&lt;commit&gt;:method.json#&lt;check&gt;</td><td class="mono">${esc(cite('method.json', method.checks[0].id))}</td></tr>
-<tr><th scope="row">A method</th><td class="mono">avd-assess@&lt;commit&gt;:methods/&lt;id&gt;.md</td><td class="mono">${esc(cite('methods/finops.md'))}</td></tr>
+${ex.map(([what, form, eg]) => `<tr><th scope="row">${what}</th><td class="mono">${form}</td><td class="mono">${eg ? esc(eg) : 'none in this edition'}</td></tr>`).join('\n')}
 </tbody></table></div>
 <h2 id="upstream">Citing the sources themselves</h2>
 <p>Our claims are one line in our own words. When your point rests on what Microsoft or another publisher says, cite their page too, with the pin and read date from its entry here, and read it yourself: the live page may have changed since we read it.</p>
@@ -304,7 +324,10 @@ ${edition('')}
 const counts = { sources: index.references.length, claims: claimCount, observations: index.observations.length, gaps: index.gaps.length, checks: method.checks.length };
 const allStates = index.references.flatMap((s) => s.claims.map((c) => stateOf(s.id, c.id)));
 const nState = (k) => allStates.filter((s) => s[k]).length;
-const abstract = (m) => { const p = m.md.replace(/^# .+\n+/, '').split(/\n\n/)[0].replace(TOKEN, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, ''); return esc(p); };
+// The front page's one-line summary: the method's first paragraph as plain text, citations left out.
+const abstract = (m) => esc(m.body.split(/\n\n/)[0]
+  .replace(/\s*\((?:\s*`(?:ref|obs|gap):[^`]+`[,;]?)+\s*\)/g, '') // a parenthesis holding only citations
+  .replace(TOKEN, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*|`/g, '').replace(/\s+([,.;])/g, '$1'));
 const byTitle = [...methods].sort((a, b) => a.title.localeCompare(b.title));
 out.set('standards/index.html', page('standards/index.html', 'Standards library', 'The avd-assess standards for Azure Virtual Desktop, read like a paper: methods with numbered references, every source pinned, every claim in our own words.', `<h1>Standards library</h1>
 ${edition('')}

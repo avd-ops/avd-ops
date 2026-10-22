@@ -20,7 +20,7 @@ test('the library is built from the locked avd-assess files and is up to date', 
   assert.match(lock.commit, /^[0-9a-f]{40}$/, 'lock pins a full commit');
   assert.match(lock.source, /^https:\/\/github\.com\/[\w-]+\/avd-assess$/, 'lock names avd-assess');
   assert.match(lock.date, /^\d{4}-\d{2}-\d{2}$/, 'lock dates the edition');
-  for (const f of ['index.json', 'map.json', 'method.json', 'contracts/fact-register.json']) assert.ok(f in lock.files, `${f} is locked`);
+  for (const f of ['index.json', 'method.json', 'contracts/fact-register.json']) assert.ok(f in lock.files, `${f} is locked`);
   for (const [f, hash] of Object.entries(lock.files)) {
     assert.equal(createHash('sha256').update(readFileSync(join(root, data(f)))).digest('hex'), hash, `${f} matches the lock; copy it with --pin, never edit it`);
   }
@@ -61,7 +61,7 @@ test('avd-assess is linked only at the pinned commit, and every page states its 
   }
 });
 
-test('library.json carries every source, claim and its three node states for the library and the credits page', () => {
+test('library.json carries every source, claim and its three node states', () => {
   const lib = JSON.parse(read('site/data/library.json'));
   assert.equal(lib.schema, 'avd-ops-library/v1');
   assert.equal(lib.edition.commit, lock.commit);

@@ -5,7 +5,6 @@
   "date": "2026-10-21",
   "files": {
     "index.json": "c3f347094b25673b1a5379d7083a15c0dfcc220c6edb6fdbc0d3b1d545130c98",
-    "map.json": "0b1cd3b68afa25a338dfde75affe41c78a49b234b6762e2a0298c82bdbec9dcd",
     "method.json": "995318b0ce9907dc04f23abdbbaa83ada3ff94bb333f1744a269cb2cbb355d76",
     "contracts/fact-register.json": "2ea4516b0d837d540f418bb85ceedfef34d0896849e9b6cd565788b7ebfade57",
     "methods/assessment.md": "b773beb8f5e18b2c62d9fe4061f7534ac00b138f021b584a987b4538b5d1b7e9",
