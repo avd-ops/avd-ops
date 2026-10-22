@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux
 
+Each script is written once and runs from PowerShell or Bash, on Cloud Shell, Windows, macOS and Linux.
+
 ## Context and Problem Statement
+
+People run the scripts from either Cloud Shell prompt and on their own PCs and Macs, but CI only proved Linux.
+
+<!-- more -->
 
 Azure Cloud Shell is how most people meet the family: it opens in PowerShell, often on an iPad, and
 a command block is pasted once. Some people work in Cloud Shell's Bash prompt, and some run the
@@ -25,7 +31,11 @@ true?
 
 ## Decision Outcome
 
-Chosen option: "One implementation per tool, callable from both shells", because both Cloud
+Chosen option: "One implementation per tool, callable from both shells".
+
+<!-- more -->
+
+Why: both Cloud
 Shell prompts and every desktop OS can start `pwsh` and `bash`, so operators get a block in the
 shell they chose without a second copy of about 15,000 lines of operator code that would drift. The
 owner picked it on 2026-10-21.
@@ -50,6 +60,10 @@ The full rule, the audit and the ranked gaps: [run anywhere](https://github.com/
 - Bad, because a Bash-only tool still needs `bash` on Windows (Git Bash or WSL).
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 Facts the audit found, each a gap with a fix in the run anywhere page: stock macOS ships Bash 3.2,
 so `${x,,}` and `mapfile` fail there; Git Bash on Windows rewrites arguments that start with `/`

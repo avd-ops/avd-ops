@@ -69,11 +69,51 @@ function rewrite(page, href) {
   return REPO + posix.normalize(posix.join(KB, target)) + (hash ? `#${hash}` : '');
 }
 
-function render(page) {
+function render(page, md) {
   const renderer = new marked.Renderer();
   const link = renderer.link.bind(renderer);
   renderer.link = (token) => link({ ...token, href: rewrite(page, token.href) });
-  return marked.parse(page.body, { renderer, gfm: true });
+  return marked.parse(md, { renderer, gfm: true });
+}
+
+// GitHub's heading anchors, so a link that works on GitHub and in the validator works on the site too.
+function slugger() {
+  const seen = new Map();
+  return (text) => {
+    const base = text.replace(/<[^>]+>/g, '').replace(/&\w+;/g, '').trim().toLowerCase().replace(/[^\w\- ]/g, '').replace(/ /g, '-');
+    const n = seen.get(base) || 0;
+    seen.set(base, n + 1);
+    return n ? `${base}-${n}` : base;
+  };
+}
+
+// On a phone a table reads as one card per row (site.css .stacked), so each cell carries its column's name.
+function stack(table) {
+  const cols = [...(table.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => m[1].replace(/<[^>]+>/g, ''));
+  return table.replace('<table>', '<table class="stacked">').replace(/<tbody>[\s\S]*<\/tbody>/, (body) => body.replace(/<tr>([\s\S]*?)<\/tr>/g,
+    (_, row) => { let i = 0; return `<tr>${row.replace(/<td([^>]*)>/g, (m, a) => `<td${a} data-label="${cols[i++] || ''}">`)}</tr>`; }));
+}
+
+// One idea per screen (docs/design-system.md, "One screen at a time"): the title and the intro are the first
+// screen and each ## section is the next one. In a section, what comes after a <!-- more --> line goes behind
+// "+ more", so the screen opens on its bottom line. Without JavaScript every screen shows, one after another.
+function screens(page) {
+  const slug = slugger();
+  const body = page.body.replace(/^# .+\n/m, '');
+  const parts = body.split(/^## (.+)\n/m);
+  const list = [{ title: page.title, md: parts[0], level: 1 }];
+  for (let i = 1; i < parts.length; i += 2) list.push({ title: parts[i].trim(), md: parts[i + 1], level: 2 });
+  return list.map((s) => {
+    const id = slug(s.title);
+    const [shown, ...rest] = s.md.split(/^<!-- more -->\s*$/m);
+    const sub = (html) => html.replace(/<h([34])>([\s\S]*?)<\/h\1>/g, (_, n, t) => `<h${n} id="${slug(t)}">${t}</h${n}>`)
+      .replace(/<table>[\s\S]*?<\/table>/g, (t) => `<div class="tbl">${stack(t)}</div>`);
+    const head = marked.parseInline(s.title);
+    const lead = sub(render(page, shown)).replace(/^<p>/, '<p class="bl">');
+    const more = rest.length ? `\n<details class="more"><summary>More</summary>\n${sub(render(page, rest.join('\n')))}</details>\n` : '';
+    // title is already escaped HTML (marked escapes it), so it goes into the markup as it is.
+    return { id, title: head.replace(/<[^>]+>/g, ''), html: `<section class="screen" id="${id}">\n<h${s.level} tabindex="-1">${head}</h${s.level}>\n${lead}${more}</section>` };
+  });
 }
 
 function shell({ url, title, summary, content }) {
@@ -102,13 +142,26 @@ ${shellFoot(foot)}
 
 function build() {
   const files = new Map();
-  for (const p of pages) p.html = render(p);
-  for (const p of pages) {
+  for (const p of pages) p.screens = screens(p);
+  // The docs read as one walk-through: Next on a page's last screen opens the next page, in the side list's order.
+  const order = SECTIONS.flatMap(([, s]) => pages.filter((p) => p.src.startsWith(s.split('/')[0] + '/'))
+    .sort((a, b) => (a.src === s ? -1 : b.src === s ? 1 : a.src.localeCompare(b.src))));
+  for (const [i, p] of order.entries()) {
+    const rel = (q) => posix.relative(posix.dirname(p.url), q.url);
     const back = pages.filter((q) => q.links.includes(p.src));
     const backlinks = back.length
-      ? `\n<h2 id="linked-from">Linked from</h2>\n<ul class="backlinks">${back.map((q) => `<li><a href="${posix.relative(posix.dirname(p.url), q.url)}">${esc(q.title)}</a></li>`).join('')}</ul>\n`
+      ? `<details class="more linked"><summary>Linked from ${back.length === 1 ? 'one page' : `${back.length} pages`}</summary>\n<ul class="backlinks">${back.map((q) => `<li><a href="${rel(q)}">${esc(q.title)}</a></li>`).join('')}</ul></details>\n`
       : '';
-    files.set(p.url, shell({ url: p.url, title: p.title, summary: p.summary, content: p.html + backlinks }));
+    const prev = order[i - 1];
+    const next = order[i + 1];
+    const steps = p.screens.length > 1
+      ? `<nav class="sc-steps" aria-label="On this page"><ol>${p.screens.map((s, n) => `<li><a href="#${s.id}" title="${s.title}"><span class="n">${n + 1}</span><span class="t">${s.title}</span></a></li>`).join('')}</ol></nav>\n`
+      : '';
+    const nav = `<nav class="sc-nav" aria-label="Back and next"><div class="in">${prev ? `<a class="sc-back" href="${rel(prev)}" data-page="${esc(prev.title)}">Back</a>` : '<a class="sc-back" hidden>Back</a>'}`
+      + `<span class="where">${p.screens.length > 1 ? `1 of ${p.screens.length}` : esc(p.title)}</span>`
+      + `${next ? `<a class="sc-next" href="${rel(next)}" data-page="${esc(next.title)}">Next: ${esc(next.title)}</a>` : '<a class="sc-next" hidden>Next</a>'}</div></nav>`;
+    const content = `<article class="screens">\n${steps}${p.screens.map((s, n) => (n === p.screens.length - 1 ? s.html.replace(/<\/section>$/, `${backlinks}</section>`) : s.html)).join('\n')}\n${nav}\n</article>\n<script src="${'../'.repeat(p.url.split('/').length)}assets/docs.js" defer></script>`;
+    files.set(p.url, shell({ url: p.url, title: p.title, summary: p.summary, content }));
   }
   const graph = {
     nodes: pages.map((p) => ({

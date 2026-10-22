@@ -28,31 +28,48 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>avd-landing-zone</h1>
-<p><strong>How it&#39;s built and changed from here. The deployment engine.</strong> An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-landing-zone" title="avd-landing-zone"><span class="n">1</span><span class="t">avd-landing-zone</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
+<section class="screen" id="avd-landing-zone">
+<h1 tabindex="-1">avd-landing-zone</h1>
+<p class="bl">How an estate is built and changed from here: one Bicep template, deployed from a browser-guided portal.</p>
+
+<details class="more"><summary>More</summary>
+<p>An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-landing-zone">avd-ops/avd-landing-zone</a>. This page says where it fits.</p>
-<h2>What it does</h2>
+</details>
+</section>
+<section class="screen" id="what-it-does">
+<h2 tabindex="-1">What it does</h2>
+<p class="bl">A cloud-only, private-by-default landing zone, with a portal that walks you through each step.</p>
 <ul>
 <li>No domain controllers, no line of sight to on-premises, no post-deployment scripts.</li>
 <li>FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; session hosts on Trusted Launch with encryption at host.</li>
 <li>No default outbound access, AVD Private Link, Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.</li>
 <li>A deployment portal in the browser that sizes the host pool and walks you through Cloud Shell, one pasted output at a time.</li>
 </ul>
-<h2>How it fits</h2>
+</section>
+<section class="screen" id="how-it-fits">
+<h2 tabindex="-1">How it fits</h2>
+<p class="bl">It pairs with avd-current-state and works without anything on top.</p>
 <ul>
 <li>With <a href="avd-current-state.html">avd-current-state</a> it forms a self-contained pair that never depends on the layer on top.</li>
 <li>Can read a C14 target-state manifest from <a href="avd-second-brain.html">avd-second-brain</a> when one exists, and works without one.</li>
 <li>Its lessons are recorded in avd-second-brain&#39;s knowledge base.</li>
 </ul>
-<h2>Read more in the repo</h2>
+</section>
+<section class="screen" id="read-more-in-the-repo">
+<h2 tabindex="-1">Read more in the repo</h2>
 <ul>
 <li><a href="https://github.com/avd-ops/avd-landing-zone/blob/master/README.md">README and quick start</a></li>
 <li><a href="https://deploy.avd-ops.dev/portal/">Deployment portal</a></li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="../index.html">Start here</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-second-brain.html">avd-second-brain</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul>
-
+<details class="more linked"><summary>Linked from 7 pages</summary>
+<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="../index.html">Start here</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-second-brain.html">avd-second-brain</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="avd-current-state.html" data-page="avd-current-state">Back</a><span class="where">1 of 4</span><a class="sc-next" href="avd-second-brain.html" data-page="avd-second-brain">Next: avd-second-brain</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

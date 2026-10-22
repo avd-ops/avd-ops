@@ -28,17 +28,28 @@
 <p class="group">Record</p><a href="../docs/decisions/index.html">Decisions</a><a href="../docs/graph.html">Graph</a><a href="../design/index.html">Design system</a><a href="../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>Start here</h1>
-<p>avd-ops is the front door for a set of open-source repos that take an Azure Virtual Desktop estate
-from inventory to operations, as Bicep and PowerShell you can read and run from Azure Cloud Shell.
-These pages explain how the repos fit together. Each repo stays the source of truth for itself, so
-for anything detailed (parameters, scripts, specs, lessons) follow the link into that repo. Why the
-docs live here, and how they&#39;re kept, is <a href="decisions/0002-avd-ops-is-the-front-door.html">decision 0002</a>.</p>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#start-here" title="Start here"><span class="n">1</span><span class="t">Start here</span></a></li><li><a href="#pick-your-starting-point" title="Pick your starting point"><span class="n">2</span><span class="t">Pick your starting point</span></a></li><li><a href="#before-you-run-anything" title="Before you run anything"><span class="n">3</span><span class="t">Before you run anything</span></a></li><li><a href="#contributing" title="Contributing"><span class="n">4</span><span class="t">Contributing</span></a></li></ol></nav>
+<section class="screen" id="start-here">
+<h1 tabindex="-1">Start here</h1>
+<p class="bl">Open-source Bicep and PowerShell that build, check and run an Azure Virtual Desktop estate, all from
+Azure Cloud Shell. Try it in a lab you can throw away.</p>
+
+<details class="more"><summary>More</summary>
+<p>avd-ops is the front door for these repos: they take an Azure Virtual Desktop estate from inventory
+to operations. These pages explain how the repos fit together. Each repo stays the source of truth
+for itself, so for anything detailed (parameters, scripts, specs, lessons) follow the link into that
+repo. Why the docs live here, and how they&#39;re kept, is
+<a href="decisions/0002-avd-ops-is-the-front-door.html">decision 0002</a>.</p>
 <p>Everything here is a personal research project: not for production, provided as is, and not
 affiliated with the author&#39;s employer or Microsoft. Use a dedicated lab subscription and
 tenant.</p>
-<h2>Pick your starting point</h2>
-<table>
+</details>
+</section>
+<section class="screen" id="pick-your-starting-point">
+<h2 tabindex="-1">Pick your starting point</h2>
+<p class="bl">Pick the row that matches what you want to do, and open that repo.</p>
+<div class="tbl"><table class="stacked">
 <thead>
 <tr>
 <th>You want to</th>
@@ -47,28 +58,41 @@ tenant.</p>
 </tr>
 </thead>
 <tbody><tr>
-<td>See what an existing AVD environment holds, read-only</td>
-<td><a href="repos/avd-current-state.html">avd-current-state</a></td>
-<td>Feed its redacted facts to <a href="repos/avd-second-brain.html">avd-second-brain</a></td>
+<td data-label="
+
+You want to">See what an existing AVD environment holds, read-only</td>
+<td data-label="Start with"><a href="repos/avd-current-state.html">avd-current-state</a></td>
+<td data-label="Then">Feed its redacted facts to <a href="repos/avd-second-brain.html">avd-second-brain</a></td>
 </tr>
 <tr>
-<td>Deploy a new, cloud-native AVD landing zone</td>
-<td><a href="repos/avd-landing-zone.html">avd-landing-zone</a></td>
-<td>Check it with <a href="repos/avd-current-state.html">avd-current-state</a>&#39;s validator</td>
+<td data-label="
+
+You want to">Deploy a new, cloud-native AVD landing zone</td>
+<td data-label="Start with"><a href="repos/avd-landing-zone.html">avd-landing-zone</a></td>
+<td data-label="Then">Check it with <a href="repos/avd-current-state.html">avd-current-state</a>&#39;s validator</td>
 </tr>
 <tr>
-<td>Run the estate through agents a person approves</td>
-<td><a href="repos/avd-swarm.html">avd-swarm</a></td>
-<td>Design and spike stage today</td>
+<td data-label="
+
+You want to">Run the estate through agents a person approves</td>
+<td data-label="Start with"><a href="repos/avd-swarm.html">avd-swarm</a></td>
+<td data-label="Then">Design and spike stage today</td>
 </tr>
 <tr>
-<td>Learn what past deployments taught</td>
-<td><a href="repos/avd-second-brain.html">avd-second-brain</a></td>
-<td>Its knowledge base</td>
+<td data-label="
+
+You want to">Learn what past deployments taught</td>
+<td data-label="Start with"><a href="repos/avd-second-brain.html">avd-second-brain</a></td>
+<td data-label="Then">Its knowledge base</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p>New to the vocabulary? Read <a href="concepts.html">concepts</a> first.</p>
-<h2>Before you run anything</h2>
+</section>
+<section class="screen" id="before-you-run-anything">
+<h2 tabindex="-1">Before you run anything</h2>
+<p class="bl">Use a throwaway lab, run from Cloud Shell, tear down when you&#39;re done, and never paste a secret.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Use a lab subscription and tenant you can throw away. Every repo assumes it.</li>
 <li>Run from Azure Cloud Shell (PowerShell). Each repo&#39;s quick start is one block you paste there; the
@@ -78,11 +102,20 @@ conventions behind that are in <a href="getting-started/cloud-shell.html">workin
 <li>Never paste a secret into chat, an issue or a pull request. The scripts read secrets with managed
 identities or prompt for them locally.</li>
 </ul>
-<h2>Contributing</h2>
-<p>Fork any repo, open an issue or a pull request. Put a change in the repo that owns it; these pages
-only link. A page here that is wrong or out of date is a pull request to
-<a href="https://github.com/avd-ops/avd-ops">avd-ops</a>.</p>
+</details>
+</section>
+<section class="screen" id="contributing">
+<h2 tabindex="-1">Contributing</h2>
+<p class="bl">Fork any repo and open an issue or a pull request in the repo that owns the change.</p>
 
+<details class="more"><summary>More</summary>
+<p>These pages only link. A page here that is wrong or out of date is a pull request to
+<a href="https://github.com/avd-ops/avd-ops">avd-ops</a>.</p>
+</details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" hidden>Back</a><span class="where">1 of 4</span><a class="sc-next" href="getting-started/cloud-shell.html" data-page="Working from Cloud Shell">Next: Working from Cloud Shell</a></div></nav>
+</article>
+<script src="../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

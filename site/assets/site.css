@@ -73,7 +73,57 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-gsub{fill:var(--muted);font:12px var(--body)}
 .d-mask{fill:var(--surface)}
 @media (max-width:44rem){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
-/* The docs (site/docs/, built from docs/knowledge/): backlinks and the page graph (assets/graph.js). */
+/* The docs (site/docs/, built from docs/knowledge/): one screen at a time (assets/docs.js), backlinks and the
+   page graph (assets/graph.js). article.screens holds the "On this page" list, one section.screen per idea and
+   the Back and Next bar. Without JavaScript the list is a table of contents and every screen shows in order;
+   with it (.paged) one screen shows and the list becomes the progress bars, as in the portal wizard. */
+.screens .sc-steps ol{margin:0 0 var(--space-5);padding-left:1.4rem;color:var(--muted)}
+.screens .sc-steps .n{display:none}
+.screens .screen{scroll-margin-top:calc(var(--bar) + var(--space-3))}
+.screens .screen+.screen{margin-top:var(--space-6)}
+.screens .screen>h1,.screens .screen>h2{font:700 clamp(1.8rem,1.3rem + 2vw,2.5rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 var(--space-3)}
+.screens .screen>h1:focus,.screens .screen>h2:focus{outline:none}
+.screens .screen>h1:focus-visible,.screens .screen>h2:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+.screens .bl{font-size:1.1rem;line-height:1.5;color:var(--fg);max-width:40rem;margin:0 0 var(--space-4)}
+.screens .screen h3{margin-top:var(--space-5)}
+.screens details.more{border-top:1px solid var(--line);margin-top:var(--space-5);padding-top:var(--space-2)}
+.screens details.more>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:var(--space-2);min-height:var(--tap);color:var(--muted);font-weight:600;font-size:.92rem}
+.screens details.more>summary::-webkit-details-marker{display:none}
+.screens details.more>summary::before{content:"+";font:600 1.05rem/1 var(--mono);color:var(--accent);width:1ch}
+.screens details.more[open]>summary::before{content:"\2212"}
+.screens details.more>summary:hover{color:var(--fg)}
+.screens details.more>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:var(--radius-sm)}
+.screens details.more>:not(summary){font-size:.95rem}
+.screens details.more>:nth-child(2){margin-top:var(--space-2)}
+.screens details.linked{margin-top:var(--space-6)}
+.screens .sc-nav{margin-top:var(--space-6)}
+.screens .sc-nav .in{display:flex;align-items:center;gap:var(--space-3);min-height:64px}
+.screens .sc-nav .where{flex:1;min-width:0;text-align:center;font-size:.84rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screens .sc-nav a{display:inline-flex;align-items:center;min-height:var(--tap);padding:0 var(--space-4);border-radius:var(--radius-sm);font-weight:600;text-decoration:none;
+  max-width:60%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screens .sc-nav a[hidden]{display:none}
+.screens .sc-back{border:1px solid var(--line-strong);color:var(--fg)}
+.screens .sc-back:hover{border-color:var(--accent);color:var(--accent)}
+.screens .sc-next{margin-left:auto;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent)}
+.screens .sc-next:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:var(--on-accent)}
+.screens .sc-nav a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.screens.paged .screen:not(.on){display:none}
+.screens.paged .screen{min-height:calc(100dvh - var(--bar) - 15rem)}
+.screens.paged .screen+.screen{margin-top:0}
+.screens.paged .sc-steps ol{display:flex;gap:4px;padding:0;margin:0 0 var(--space-5);list-style:none}
+.screens.paged .sc-steps li{flex:1;min-width:0}
+.screens.paged .sc-steps a{display:flex;align-items:center;height:28px;text-decoration:none}
+.screens.paged .sc-steps a::before{content:"";display:block;width:100%;height:4px;border-radius:2px;background:var(--line-strong)}
+.screens.paged .sc-steps a:hover::before{background:var(--accent-hover)}
+.screens.paged .sc-steps a.done::before{background:var(--accent-soft)}
+.screens.paged .sc-steps a[aria-current="step"]::before{background:var(--accent);height:6px;border-radius:3px}
+.screens.paged .sc-steps a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.screens.paged .sc-steps .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.screens.paged .sc-nav{position:sticky;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);margin-top:var(--space-5);
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (pointer:coarse){.screens.paged .sc-steps a{height:var(--tap)}}
+@media (max-width:44rem){.screens .sc-nav .where{display:none} .screens .sc-nav a{max-width:none;flex:1 1 0;justify-content:center}}
+@media print{.screens.paged .screen:not(.on){display:block} .screens .sc-nav,.screens .sc-steps{display:none} .screens details.more>*{display:block}}
 .backlinks{columns:2;padding-left:1.1rem} @media (max-width:44rem){.backlinks{columns:1}}
 .graph{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .graph svg{display:block;width:100%;height:auto}

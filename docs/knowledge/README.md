@@ -64,6 +64,13 @@ Every change follows the [guardrails](../guardrails.md). Run the prior-art check
   of [decisions/template.md](decisions/template.md) at the next number, `proposed` until the
   maintainer says yes. Run `python3 scripts/kb/build.py` and `python3 scripts/kb/validate.py`
   before pushing.
+- **How a published page reads** (owner, 2026-10-21: one screen at a time, bottom line first). On
+  [avd-ops.dev/docs](https://avd-ops.dev/docs/) the title and intro are the first screen and each
+  `##` section is the next one, with Back and Next along the bottom. Open each section with its
+  bottom line: one plain sentence, or two, at most 200 characters (a test checks). Put the detail
+  after a `<!-- more -->` line; the site folds it behind "+ more", and GitHub and Obsidian hide the
+  marker. A decision opens with one line that says what was chosen, and its outcome with the
+  chosen option alone, the reasons after the marker.
 
 ## Format
 

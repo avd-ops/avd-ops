@@ -28,14 +28,26 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0003. The family ends at its contracts; work outside it builds on them, never the reverse</h1>
-<h2>Context and Problem Statement</h2>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0003-the-family-ends-at-its-contracts-work-outside-it-builds-on-them-never-the-reverse" title="0003. The family ends at its contracts; work outside it builds on them, never the reverse"><span class="n">1</span><span class="t">0003. The family ends at its contracts; work outside it builds on them, never the reverse</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
+<section class="screen" id="0003-the-family-ends-at-its-contracts-work-outside-it-builds-on-them-never-the-reverse">
+<h1 tabindex="-1">0003. The family ends at its contracts; work outside it builds on them, never the reverse</h1>
+<p class="bl">The family ends at its published contracts. Work outside it may build on them; the family never depends on that work.</p>
+</section>
+<section class="screen" id="context-and-problem-statement">
+<h2 tabindex="-1">Context and Problem Statement</h2>
+<p class="bl">Nothing said where the family ends, or which way dependencies may cross the line.</p>
+
+<details class="more"><summary>More</summary>
 <p>The AVD repos on this site are public and free. Some work that builds on them may live outside the family, and
 some of the family&#39;s text, source lists and checks still name or fetch repositories outside it,
 which breaks the day that work moves, renames or changes visibility. The family roles say which
 way the repos inside the family depend on each other, but not where the family ends. Where is the
 line, and which way may dependencies cross it?</p>
-<h2>Considered Options</h2>
+</details>
+</section>
+<section class="screen" id="considered-options">
+<h2 tabindex="-1">Considered Options</h2>
 <ul>
 <li>Family contracts and docs name the outside repositories that produce or read them, and family
 repos may fetch or link them</li>
@@ -43,8 +55,13 @@ repos may fetch or link them</li>
 line is a published contract, and nothing in the family depends on, fetches or describes work
 outside it</li>
 </ul>
-<h2>Decision Outcome</h2>
-<p>Chosen option: &quot;The family ends at its contracts&quot;, because a family repo that depends on or
+</section>
+<section class="screen" id="decision-outcome">
+<h2 tabindex="-1">Decision Outcome</h2>
+<p class="bl">Chosen option: &quot;The family ends at its contracts&quot;.</p>
+
+<details class="more"><summary>More</summary>
+<p>Why: a family repo that depends on or
 describes outside work breaks when that work moves, and a published contract lets anything build
 on the family without the family knowing what it is.</p>
 <ul>
@@ -59,24 +76,33 @@ check in the family, so an outside producer can&#39;t change it silently.</li>
 doesn&#39;t describe what that work does or plans.</li>
 </ul>
 <p>Recorded as rule 4 in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md">family roles</a>.</p>
-<h3>Consequences</h3>
+<h3 id="consequences">Consequences</h3>
 <ul>
 <li>Good, because outside work can move, rename or change visibility without a family pull request.</li>
 <li>Good, because the family&#39;s own checks cover every format that crosses the line.</li>
 <li>Bad, because existing text and source lists in several repos that still name outside
 repositories need a cleanup pull request each, linked as one set.</li>
 </ul>
-<h2>More Information</h2>
+</details>
+</section>
+<section class="screen" id="more-information">
+<h2 tabindex="-1">More Information</h2>
+<p class="bl">Links, open questions and what changed later.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Replaces a record first proposed in avd-second-brain, closed there as outside that knowledge
 base&#39;s scope after its restructure.</li>
 <li>Revisit if a family repo ever needs outside work to run: that need becomes a published contract
 in the family, not a dependency.</li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="index.html">Decision records</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from one page</summary>
+<ul class="backlinks"><li><a href="index.html">Decision records</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0002-avd-ops-is-the-front-door.html" data-page="0002. avd-ops is the front door for the AVD repos">Back</a><span class="where">1 of 5</span><a class="sc-next" href="0004-submissions-are-github-issue-forms.html" data-page="0004. Every outside submission is a GitHub issue form in the repo that owns it">Next: 0004. Every outside submission is a GitHub issue form in the repo that owns it</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

@@ -28,31 +28,53 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>avd-assess</h1>
-<p><strong>Foundation: what it should be. The map and the dictionary.</strong> An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.</p>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-assess" title="avd-assess"><span class="n">1</span><span class="t">avd-assess</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
+<section class="screen" id="avd-assess">
+<h1 tabindex="-1">avd-assess</h1>
+<p class="bl">What an estate should be, and why: the map and the dictionary every other repo reads.</p>
+
+<details class="more"><summary>More</summary>
+<p>An open methodology for assessing Azure Virtual Desktop estates: what to collect, how to judge it, what good looks like and how to score it. It is a research index, not a tool.</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-assess">avd-ops/avd-assess</a>. This page says where it fits.</p>
-<h2>What it does</h2>
+</details>
+</section>
+<section class="screen" id="what-it-does">
+<h2 tabindex="-1">What it does</h2>
+<p class="bl">Five methods, each step pinned to a published source or to what our own runs saw. It never calls Azure.</p>
 <ul>
 <li>Five methods: collection, assessment, targets and benchmarks, scoring, and a short sample check.</li>
 <li>Every step cites a pinned published source (<code>ref:</code>), what our own runs observed about it (<code>obs:</code>), or method written only where nothing exists (<code>gap:</code>).</li>
 <li>It stores a claim ID and one line in its own words, never a source&#39;s text.</li>
 <li>It holds the shared reference data the tools read, such as the AVD endpoint map, each entry pinned to its source.</li>
 <li>Nothing in it calls Azure or runs a probe.</li>
+</ul>
+
+<details class="more"><summary>More</summary>
+<ul>
 <li>It holds the security review map: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the <a href="https://avd-ops.dev/security.html">security review page</a> and never keeps its own copy of a claim.</li>
 </ul>
-<h2>How it fits</h2>
+</details>
+</section>
+<section class="screen" id="how-it-fits">
+<h2 tabindex="-1">How it fits</h2>
+<p class="bl">The other repos run its methods and cite it. It depends on none of them.</p>
 <ul>
 <li><a href="avd-current-state.html">avd-current-state</a> runs its methods from pinned copies it carries; <a href="avd-landing-zone.html">avd-landing-zone</a> is how an estate gets to the target it describes.</li>
 <li><a href="avd-second-brain.html">avd-second-brain</a> cites it and owns the schemas its results use.</li>
 </ul>
-<h2>Read more in the repo</h2>
+</section>
+<section class="screen" id="read-more-in-the-repo">
+<h2 tabindex="-1">Read more in the repo</h2>
 <ul>
 <li><a href="https://github.com/avd-ops/avd-assess/blob/main/README.md">README and the methods</a></li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">The repos</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul>
-
+<details class="more linked"><summary>Linked from 3 pages</summary>
+<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">The repos</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="index.html" data-page="The repos">Back</a><span class="where">1 of 4</span><a class="sc-next" href="avd-current-state.html" data-page="avd-current-state">Next: avd-current-state</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

@@ -1,0 +1,75 @@
+/* avd-ops docs: one screen at a time (docs/design-system.md, "One screen at a time"). MIT.
+   Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
+   A docs page (scripts/site/build-docs.mjs) is an article.screens of section.screen, an "On this page" list
+   and the Back and Next bar. This shows one screen, moves with Back and Next (the first and last screens go to
+   the previous and next page), follows the address's #anchor and the browser's back button, and keeps the
+   step list current. Without it every screen shows in order. No libraries, no requests, nothing stored. */
+(function () {
+  function wire() {
+    var article = document.querySelector('article.screens');
+    if (!article) return;
+    var screens = Array.prototype.slice.call(article.querySelectorAll('section.screen'));
+    var steps = article.querySelectorAll('.sc-steps a');
+    var back = article.querySelector('.sc-back');
+    var next = article.querySelector('.sc-next');
+    var where = article.querySelector('.sc-nav .where');
+    var prevPage = back && back.getAttribute('href');
+    var nextPage = next && next.getAttribute('href');
+    var current = -1;
+    article.classList.add('paged');
+
+    // The screen that holds the address's #anchor: the screen itself, or one with that heading inside it.
+    function fromHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var el = id && document.getElementById(id);
+      for (var i = 0; el && i < screens.length; i++) if (screens[i] === el || screens[i].contains(el)) return { n: i, el: el };
+      return { n: 0, el: null };
+    }
+
+    function show(n, focus, target) {
+      current = n;
+      for (var i = 0; i < screens.length; i++) screens[i].classList.toggle('on', i === n);
+      for (var j = 0; j < steps.length; j++) {
+        if (j === n) steps[j].setAttribute('aria-current', 'step'); else steps[j].removeAttribute('aria-current');
+        steps[j].classList.toggle('done', j < n);
+      }
+      if (where && screens.length > 1) where.textContent = (n + 1) + ' of ' + screens.length;
+      // Back and Next move one screen; past the first or last they open the previous or next page, and hide
+      // when there is none.
+      if (back) {
+        back.hidden = n === 0 && !prevPage;
+        if (n > 0) { back.setAttribute('href', '#' + screens[n - 1].id); back.textContent = 'Back'; }
+        else if (prevPage) { back.setAttribute('href', prevPage); back.textContent = 'Back: ' + back.getAttribute('data-page'); }
+      }
+      if (next) {
+        next.hidden = n === screens.length - 1 && !nextPage;
+        if (n < screens.length - 1) { next.setAttribute('href', '#' + screens[n + 1].id); next.textContent = 'Next'; }
+        else if (nextPage) { next.setAttribute('href', nextPage); next.textContent = 'Next: ' + next.getAttribute('data-page'); }
+      }
+      // An #anchor inside a screen scrolls to it; a new screen opens at the top, its title focused for screen readers.
+      if (target && target !== screens[n]) target.scrollIntoView();
+      else window.scrollTo(0, 0);
+      if (focus) screens[n].querySelector('h1,h2').focus({ preventScroll: true });
+    }
+
+    // Links to a screen on this page change the screen without reloading; the browser's back button returns.
+    article.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var el = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      if (!el) return;
+      e.preventDefault();
+      history.pushState(null, '', a.getAttribute('href'));
+      var at = fromHash();
+      show(at.n, true, at.el);
+    });
+    window.addEventListener('popstate', function () { var at = fromHash(); show(at.n, false, at.el); });
+    window.addEventListener('hashchange', function () { var at = fromHash(); if (at.n !== current) show(at.n, false, at.el); });
+    var start = fromHash();
+    show(start.n, false, start.el);
+    // The browser jumps to the #anchor after load; put the screen back at the top unless it named a heading.
+    if (!start.el || start.el === screens[start.n]) window.addEventListener('load', function () { setTimeout(function () { window.scrollTo(0, 0); }, 0); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+}());

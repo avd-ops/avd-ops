@@ -28,11 +28,22 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>Working from Cloud Shell</h1>
-<p>Every AVD repo is written to run from Azure Cloud Shell (PowerShell), including from a tablet. Most
-of the rules below came out of real runs that failed, and each one links to the lesson or decision
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#working-from-cloud-shell" title="Working from Cloud Shell"><span class="n">1</span><span class="t">Working from Cloud Shell</span></a></li><li><a href="#one-block-pasted-into-a-clean-prompt" title="One block, pasted into a clean prompt"><span class="n">2</span><span class="t">One block, pasted into a clean prompt</span></a></li><li><a href="#pin-what-you-run" title="Pin what you run"><span class="n">3</span><span class="t">Pin what you run</span></a></li><li><a href="#nothing-is-kept-in-the-shell" title="Nothing is kept in the shell"><span class="n">4</span><span class="t">Nothing is kept in the shell</span></a></li><li><a href="#session-state-logs-and-resuming" title="Session state, logs and resuming"><span class="n">5</span><span class="t">Session state, logs and resuming</span></a></li><li><a href="#sign-in-once-and-check-it" title="Sign in once, and check it"><span class="n">6</span><span class="t">Sign in once, and check it</span></a></li><li><a href="#read-first-fix-on-request" title="Read first, fix on request"><span class="n">7</span><span class="t">Read first, fix on request</span></a></li><li><a href="#cloud-shell-cant-reach-private-endpoints" title="Cloud Shell can&#39;t reach private endpoints"><span class="n">8</span><span class="t">Cloud Shell can&#39;t reach private endpoints</span></a></li><li><a href="#redact-before-you-share" title="Redact before you share"><span class="n">9</span><span class="t">Redact before you share</span></a></li><li><a href="#costs" title="Costs"><span class="n">10</span><span class="t">Costs</span></a></li><li><a href="#leave-nothing-billing-delete-nothing-you-cant-get-back" title="Leave nothing billing, delete nothing you can&#39;t get back"><span class="n">11</span><span class="t">Leave nothing billing, delete nothing you can&#39;t get back</span></a></li><li><a href="#where-the-helpers-live" title="Where the helpers live"><span class="n">12</span><span class="t">Where the helpers live</span></a></li></ol></nav>
+<section class="screen" id="working-from-cloud-shell">
+<h1 tabindex="-1">Working from Cloud Shell</h1>
+<p class="bl">Every repo runs from Azure Cloud Shell in PowerShell, even on a tablet. These are the house rules for doing that safely.</p>
+
+<details class="more"><summary>More</summary>
+<p>Most of the rules below came out of real runs that failed, and each one links to the lesson or decision
 in the repo that owns it. This page states the conventions. The code stays in the repos.</p>
-<h2>One block, pasted into a clean prompt</h2>
+</details>
+</section>
+<section class="screen" id="one-block-pasted-into-a-clean-prompt">
+<h2 tabindex="-1">One block, pasted into a clean prompt</h2>
+<p class="bl">Every command is one block that does everything itself. Wait for a clean prompt, then paste it once.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong>Every command we give is one self-contained block.</strong> It clones the repo or updates it, moves
 into it, signs in if needed, and then runs the step. Nothing depends on a variable, folder or
@@ -47,7 +58,13 @@ right-click to copy.</li>
 <li><strong>Each script prints its next command</strong> and a line before anything slow, so a session that drops
 can pick up from where it stood.</li>
 </ul>
-<h2>Pin what you run</h2>
+</details>
+</section>
+<section class="screen" id="pin-what-you-run">
+<h2 tabindex="-1">Pin what you run</h2>
+<p class="bl">Pin a script to a tag or commit, so you run exactly what you read.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>A block that clones a repo can pin it to a tag or commit. The portal does this for a published
 copy, so a run can be repeated exactly.</li>
@@ -55,7 +72,13 @@ copy, so a run can be repeated exactly.</li>
 commit SHA in the URL over <code>main</code>. Reading the script before you run it is cheaper than
 diagnosing a changed one afterwards.</li>
 </ul>
-<h2>Nothing is kept in the shell</h2>
+</details>
+</section>
+<section class="screen" id="nothing-is-kept-in-the-shell">
+<h2 tabindex="-1">Nothing is kept in the shell</h2>
+<p class="bl">Cloud Shell forgets everything, so where a run stands comes from Azure and anything you keep goes somewhere durable.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Cloud Shell keeps files only in <code>~/clouddrive</code> (and the <code>$HOME</code> image), and only when a storage
 account is mounted. An ephemeral session keeps nothing, and every session ends after about
@@ -67,7 +90,13 @@ and the scripts say how to check on them.</li>
 <li><strong>Anything you need to keep goes somewhere durable before the session ends.</strong> That means a
 mounted <code>~/clouddrive</code>, a download, or the run store (next section).</li>
 </ul>
-<h2>Session state, logs and resuming</h2>
+</details>
+</section>
+<section class="screen" id="session-state-logs-and-resuming">
+<h2 tabindex="-1">Session state, logs and resuming</h2>
+<p class="bl">Each step ends with a state line you paste into the portal, and a dropped session picks up where it left off.</p>
+
+<details class="more"><summary>More</summary>
 <p>The landing zone&#39;s
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/build/specs/run-recorder-spec.md">run recorder</a>
 holds these conventions. It&#39;s opt-in, and the default deployment doesn&#39;t change.</p>
@@ -95,7 +124,13 @@ landing zone never takes its own evidence with it. Logs are kept by default
 <li><strong>Redact before anything leaves the tenant</strong>, and fail closed. If redaction can&#39;t run, nothing is
 uploaded or shared (<a href="#redact-before-you-share">Redact before you share</a>).</li>
 </ul>
-<h2>Sign in once, and check it</h2>
+</details>
+</section>
+<section class="screen" id="sign-in-once-and-check-it">
+<h2 tabindex="-1">Sign in once, and check it</h2>
+<p class="bl">Sign in to Graph once per session, and check which tenant and subscription you&#39;re in before anything writes.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Cloud Shell signs you in to Azure. Microsoft Graph is a separate sign-in. The landing zone signs
 in to Graph once per session with one set of scopes that every later script reuses
@@ -107,7 +142,13 @@ sign-in with a real request before trusting it
 <li>Check which tenant and subscription you&#39;re in before anything writes. The scripts take a
 subscription ID and switch to it, instead of trusting whatever context the shell had.</li>
 </ul>
-<h2>Read first, fix on request</h2>
+</details>
+</section>
+<section class="screen" id="read-first-fix-on-request">
+<h2 tabindex="-1">Read first, fix on request</h2>
+<p class="bl">Scripts only read, unless you pass <code>-Fix</code>. When a call fails, they print everything it returned.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Checks are read-only by default. Preflight before you deploy, postflight after. A script changes
 something only when you pass <code>-Fix</code> and it says what it changes.</li>
@@ -115,19 +156,37 @@ something only when you pass <code>-Fix</code> and it says what it changes.</li>
 error code, body and correlation ID
 (<a href="https://github.com/avd-ops/avd-landing-zone/blob/master/build/lessons/0012-diagnose-first.md">lesson 0012</a>).</li>
 </ul>
-<h2>Cloud Shell can&#39;t reach private endpoints</h2>
+</details>
+</section>
+<section class="screen" id="cloud-shell-cant-reach-private-endpoints">
+<h2 tabindex="-1">Cloud Shell can&#39;t reach private endpoints</h2>
+<p class="bl">For a private Key Vault or profile share, use the opt-in jumpbox through Bastion Developer.</p>
+
+<details class="more"><summary>More</summary>
 <p>Cloud Shell sits outside the landing zone&#39;s network, so it can&#39;t reach a private Key Vault or an
 SMB-only profile share. For those steps, the landing zone offers an opt-in jumpbox reached through
 Bastion Developer
 (<a href="https://github.com/avd-ops/avd-landing-zone/blob/master/build/decisions/0019-jumpbox-bastion-developer.md">decision 0019</a>,
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/docs/reference/scripts-ops-Connect-AvdJumpbox.md"><code>Connect-AvdJumpbox.ps1</code></a>).</p>
-<h2>Redact before you share</h2>
+</details>
+</section>
+<section class="screen" id="redact-before-you-share">
+<h2 tabindex="-1">Redact before you share</h2>
+<p class="bl">Run output through the redactor before it goes into an issue, a chat or a pull request.</p>
+
+<details class="more"><summary>More</summary>
 <p>Output pasted into an issue, a chat or a pull request leaves your tenant. The landing zone redacts
 it first with the same rules as the deployment portal&#39;s issue report:
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/scripts/ops/redact.mjs"><code>redact.mjs</code></a>.
 <code>--level private</code> removes secrets only. <code>--level public</code> also removes tenant names, IDs, emails and
 domains. Never paste a secret anywhere.</p>
-<h2>Costs</h2>
+</details>
+</section>
+<section class="screen" id="costs">
+<h2 tabindex="-1">Costs</h2>
+<p class="bl">Price before you deploy, keep a budget, and prove after teardown that nothing is left billing.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong>Price before you deploy.</strong> The pre-deployment preflight prices the landing zone from live
 retail prices. Every cost line must match exactly one price meter, or it lists the meters it saw.
@@ -151,7 +210,13 @@ done until it&#39;s gone or recorded as kept on purpose.</li>
 <li><strong>Keep a standing budget</strong> on any sandbox subscription, one that teardown doesn&#39;t delete. The
 landing zone&#39;s preflight warns when a dev or test landing zone has none.</li>
 </ul>
-<h2>Leave nothing billing, delete nothing you can&#39;t get back</h2>
+</details>
+</section>
+<section class="screen" id="leave-nothing-billing-delete-nothing-you-cant-get-back">
+<h2 tabindex="-1">Leave nothing billing, delete nothing you can&#39;t get back</h2>
+<p class="bl">When a run ends, nothing keeps billing, and no data is deleted without a copy somewhere else.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong>Never leave the meter running.</strong> Anything that bills by time is removed, stopped or on a
 schedule at the end of a run, unless you opt in with an expiry
@@ -162,10 +227,16 @@ needs a checked copy elsewhere or an explicit <code>-DiscardLastCopy</code>
 <li><strong>Estimate first, then keep teardown evidence:</strong> what was removed, and that nothing is left.
 Running several test runs this way is described in <a href="../concepts/sandbox-batches.html">sandbox batches</a>.</li>
 </ul>
-<h2>Where the helpers live</h2>
+</details>
+</section>
+<section class="screen" id="where-the-helpers-live">
+<h2 tabindex="-1">Where the helpers live</h2>
+<p class="bl">The helpers stay in avd-landing-zone and avd-current-state. There&#39;s no shared kit to install.</p>
+
+<details class="more"><summary>More</summary>
 <p>These stay in their repos. avd-landing-zone and avd-current-state are a self-contained pair, so
 neither depends on a shared kit.</p>
-<table>
+<div class="tbl"><table class="stacked">
 <thead>
 <tr>
 <th>Helper</th>
@@ -173,38 +244,55 @@ neither depends on a shared kit.</p>
 </tr>
 </thead>
 <tbody><tr>
-<td>Block builder (clone or update, pin, record)</td>
-<td>avd-landing-zone, deployment portal</td>
-</tr>
-<tr>
-<td>Cloud Shell detection, subscription guard, REST wrappers with full errors</td>
-<td>avd-landing-zone <code>scripts/ops/AvdLandingZone.psm1</code></td>
-</tr>
-<tr>
-<td>One Graph sign-in per session</td>
-<td>avd-landing-zone <code>Connect-AvdLandingZone.ps1</code></td>
-</tr>
-<tr>
-<td>Run recorder, run store and &quot;Where did I leave off?&quot;</td>
-<td>avd-landing-zone <code>scripts/ops/</code></td>
-</tr>
-<tr>
-<td>Cost estimate and preflight pricing</td>
-<td>avd-landing-zone preflight (decision 0010)</td>
-</tr>
-<tr>
-<td>Redaction</td>
-<td>avd-landing-zone <code>scripts/ops/redact.mjs</code></td>
-</tr>
-<tr>
-<td>Read-only collector and validator, output to <code>~/clouddrive</code></td>
-<td><a href="../repos/avd-current-state.html">avd-current-state</a></td>
-</tr>
-</tbody></table>
+<td data-label="
 
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="../concepts/sandbox-batches.html">Sandbox batches</a></li><li><a href="../index.html">Start here</a></li></ul>
+Helper">Block builder (clone or update, pin, record)</td>
+<td data-label="Repo">avd-landing-zone, deployment portal</td>
+</tr>
+<tr>
+<td data-label="
 
+Helper">Cloud Shell detection, subscription guard, REST wrappers with full errors</td>
+<td data-label="Repo">avd-landing-zone <code>scripts/ops/AvdLandingZone.psm1</code></td>
+</tr>
+<tr>
+<td data-label="
+
+Helper">One Graph sign-in per session</td>
+<td data-label="Repo">avd-landing-zone <code>Connect-AvdLandingZone.ps1</code></td>
+</tr>
+<tr>
+<td data-label="
+
+Helper">Run recorder, run store and &quot;Where did I leave off?&quot;</td>
+<td data-label="Repo">avd-landing-zone <code>scripts/ops/</code></td>
+</tr>
+<tr>
+<td data-label="
+
+Helper">Cost estimate and preflight pricing</td>
+<td data-label="Repo">avd-landing-zone preflight (decision 0010)</td>
+</tr>
+<tr>
+<td data-label="
+
+Helper">Redaction</td>
+<td data-label="Repo">avd-landing-zone <code>scripts/ops/redact.mjs</code></td>
+</tr>
+<tr>
+<td data-label="
+
+Helper">Read-only collector and validator, output to <code>~/clouddrive</code></td>
+<td data-label="Repo"><a href="../repos/avd-current-state.html">avd-current-state</a></td>
+</tr>
+</tbody></table></div>
+</details>
+<details class="more linked"><summary>Linked from 2 pages</summary>
+<ul class="backlinks"><li><a href="../concepts/sandbox-batches.html">Sandbox batches</a></li><li><a href="../index.html">Start here</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="../index.html" data-page="Start here">Back</a><span class="where">1 of 12</span><a class="sc-next" href="../concepts.html" data-page="Concepts">Next: Concepts</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

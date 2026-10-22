@@ -28,22 +28,39 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0005. One app shell for every avd-ops page, vendored as a pinned copy</h1>
-<h2>Context and Problem Statement</h2>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0005-one-app-shell-for-every-avd-ops-page-vendored-as-a-pinned-copy" title="0005. One app shell for every avd-ops page, vendored as a pinned copy"><span class="n">1</span><span class="t">0005. One app shell for every avd-ops page, vendored as a pinned copy</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
+<section class="screen" id="0005-one-app-shell-for-every-avd-ops-page-vendored-as-a-pinned-copy">
+<h1 tabindex="-1">0005. One app shell for every avd-ops page, vendored as a pinned copy</h1>
+<p class="bl">Every avd-ops page and portal opens in one shared shell, and other repos take a pinned copy of it.</p>
+</section>
+<section class="screen" id="context-and-problem-statement">
+<h2 tabindex="-1">Context and Problem Statement</h2>
+<p class="bl">The site and the two portals each looked and moved differently, worst on a phone.</p>
+
+<details class="more"><summary>More</summary>
 <p>The avd-ops pages shared colors and fonts (design system 1.x), but avd-ops.dev, the docs, the
 deployment portal and the assessment portal each had their own header and navigation. On a phone the
 site&#39;s nav wrapped to three lines with 24px links, and the research notice was the largest thing on every
 page. Moving from the site to a portal looked like changing products. How should every family UI share
 one frame, without making avd-landing-zone and avd-current-state depend on avd-ops?</p>
-<h2>Considered Options</h2>
+</details>
+</section>
+<section class="screen" id="considered-options">
+<h2 tabindex="-1">Considered Options</h2>
 <ul>
 <li>Tune-up: keep the 1.x layout, fix the nav, widths and touch sizes</li>
 <li>Control plane: one app shell (brand bar with a Docs, Deploy and Assess switcher, a side list that
 becomes a drawer, a one-line notice) for the site and every portal</li>
 <li>Cloud Shell: a dark-first, terminal-styled look across every page</li>
 </ul>
-<h2>Decision Outcome</h2>
-<p>Chosen option: &quot;Control plane&quot;, because only a shared shell makes the site and the portals one
+</section>
+<section class="screen" id="decision-outcome">
+<h2 tabindex="-1">Decision Outcome</h2>
+<p class="bl">Chosen option: &quot;Control plane&quot;.</p>
+
+<details class="more"><summary>More</summary>
+<p>Why: only a shared shell makes the site and the portals one
 product with one way to move between them, and it keeps the colors, fonts and logo already chosen.
 The owner picked it from a rendered proposal with all three options on 2026-10-21.</p>
 <ul>
@@ -58,14 +75,20 @@ below 64rem (iPad portrait and phones).</li>
 <li><strong>The notice stays whole.</strong> It is one line under the bar that opens to the full text, and the full
 text stays in every page.</li>
 </ul>
-<h3>Consequences</h3>
+<h3 id="consequences">Consequences</h3>
 <ul>
 <li>Good, because the portals get the same frame by re-vendoring, one pull request per repo.</li>
 <li>Good, because a fork that hosts a portal itself can set its own switcher links.</li>
 <li>Bad, because the portals&#39; headers change markup when they move onto the shell; their logic
 (<code>portal-core.js</code>, the state line, report redaction) must not change in the same pull request.</li>
 </ul>
-<h2>More Information</h2>
+</details>
+</section>
+<section class="screen" id="more-information">
+<h2 tabindex="-1">More Information</h2>
+<p class="bl">Links, open questions and what changed later.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">Design system</a> has the tokens, components, files and the copy steps.</li>
 <li>The switcher leaves out avd-buddy until the app exists (owner, 2026-10-21).</li>
@@ -94,10 +117,13 @@ bar grouped by phase, one step that fills the screen, a &quot;+ more&quot; discl
 Back and Next along the bottom on every screen size, and sheets for Settings and Resume. The deployment
 portal uses it first; the docs follow in a later change.</li>
 </ul>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="index.html">Decision records</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from one page</summary>
+<ul class="backlinks"><li><a href="index.html">Decision records</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0004-submissions-are-github-issue-forms.html" data-page="0004. Every outside submission is a GitHub issue form in the repo that owns it">Back</a><span class="where">1 of 5</span><a class="sc-next" href="0006-run-anywhere.html" data-page="0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux">Next: 0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

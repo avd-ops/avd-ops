@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package
 
+New pages and artifacts start from two starters in avd-ops. No theme repo, no package.
+
 ## Context and Problem Statement
+
+A new page or a Claude artifact had nowhere to start from, so each rebuilt the look by hand.
+
+<!-- more -->
 
 The design system (decision 0005) reaches the two portals as pinned copies, but a new repo (avd-linecheck)
 or a Claude artifact had no starting point: each would rebuild the bar, the notice, the fonts and the theme
@@ -22,7 +28,11 @@ that lets any new page or artifact open in the avd-ops look, and does it need a 
 
 ## Decision Outcome
 
-Chosen option: "Starters in avd-ops", because the release, its tags, its manifest, the reference page and
+Chosen option: "Starters in avd-ops".
+
+<!-- more -->
+
+Why: the release, its tags, its manifest, the reference page and
 the tests that keep the pieces equal are already there; a second repo would split the source of truth and
 add a second tag to keep in step, and a package would make the self-contained pair (avd-landing-zone,
 avd-current-state) depend on a registry.
@@ -53,6 +63,10 @@ avd-current-state) depend on a registry.
   Tokens Community Group format, generate it from the profile rather than keep a third copy.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 - [Design system](../../design-system.md), section "Start a new page".
 - Prior art looked at: Style Dictionary and the DTCG token format (open source; no non-CSS reader here yet),

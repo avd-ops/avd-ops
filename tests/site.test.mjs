@@ -182,6 +182,26 @@ test('the docs are built from docs/knowledge and up to date (scripts/site/build-
   for (const n of graph.nodes) assert.ok(linked.has(n.id), `${n.id} is an orphan: link it from another page`);
 });
 
+test('every docs page reads one screen at a time, bottom line first (docs/design-system.md, "One screen at a time")', () => {
+  const docs = pages.filter((f) => f.startsWith('site/docs/') && f !== 'site/docs/graph.html');
+  assert.ok(docs.length > 10, 'docs pages');
+  const js = read('site/assets/docs.js');
+  assert.doesNotMatch(js.replace(/\/\*[\s\S]*?\*\//g, ''), /fetch\(|XMLHttpRequest|localStorage|https?:\/\//, 'docs.js makes no requests and stores nothing');
+  for (const f of docs) {
+    const h = read(f);
+    assert.match(h, /<script src="(\.\.\/)*assets\/docs\.js" defer><\/script>/, `${f}: no docs.js`);
+    const screens = [...h.matchAll(/<section class="screen" id="([^"]+)">\n<h([12]) tabindex="-1">/g)];
+    assert.ok(screens.length >= 1 && screens[0][2] === '1', `${f}: the title opens the first screen`);
+    assert.equal(new Set(screens.map((m) => m[1])).size, screens.length, `${f}: screen ids are unique`);
+    if (screens.length > 1) for (const [, id] of screens) assert.ok(h.includes(`<a href="#${id}"`), `${f}: the step list has no #${id}`);
+    assert.match(h, /<nav class="sc-nav" aria-label="Back and next">/, `${f}: Back and Next`);
+    for (const [, bl] of h.matchAll(/<p class="bl">([\s\S]*?)<\/p>/g)) {
+      const text = bl.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      assert.ok(text.length <= 200, `${f}: a bottom line is one or two short sentences, not ${text.length} characters: "${text.slice(0, 60)}..."`);
+    }
+  }
+});
+
 test('the credits page is built from credits.json and up to date (scripts/site/build-credits.mjs)', () => {
   execFileSync(process.execPath, [join(root, 'scripts/site/build-credits.mjs'), '--check'], { stdio: 'pipe' });
   const credits = JSON.parse(read('credits.json'));

@@ -28,21 +28,38 @@
 <p class="group">Record</p><a href="../../docs/decisions/index.html" aria-current="true">Decisions</a><a href="../../docs/graph.html">Graph</a><a href="../../design/index.html">Design system</a><a href="../../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>0002. avd-ops is the front door for the AVD repos</h1>
-<h2>Context and Problem Statement</h2>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0002-avd-ops-is-the-front-door-for-the-avd-repos" title="0002. avd-ops is the front door for the AVD repos"><span class="n">1</span><span class="t">0002. avd-ops is the front door for the AVD repos</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
+<section class="screen" id="0002-avd-ops-is-the-front-door-for-the-avd-repos">
+<h1 tabindex="-1">0002. avd-ops is the front door for the AVD repos</h1>
+<p class="bl">avd-ops holds the onboarding and user docs for every repo, and each repo stays the source of truth for itself.</p>
+</section>
+<section class="screen" id="context-and-problem-statement">
+<h2 tabindex="-1">Context and Problem Statement</h2>
+<p class="bl">Readers had no single place that says what the repos are and where to start.</p>
+
+<details class="more"><summary>More</summary>
 <p>The AVD repos each document themselves, and a reader arriving from outside has no single place
 that says what they are, how they fit and where to start. Several repos also repeated the same
 map. Where should onboarding and user-facing docs for the whole set live, and how should the
 repos present themselves?</p>
-<h2>Considered Options</h2>
+</details>
+</section>
+<section class="screen" id="considered-options">
+<h2 tabindex="-1">Considered Options</h2>
 <ul>
 <li>avd-ops holds the onboarding and user docs, in the shared knowledge base format, and every public
 repo presents as part of avd-ops</li>
 <li>Each repo carries its own onboarding, with the site only linking</li>
 <li>avd-second-brain&#39;s generated handbook doubles as the user docs</li>
 </ul>
-<h2>Decision Outcome</h2>
-<p>Chosen option: &quot;avd-ops holds the onboarding and user docs&quot;, because people need one front door,
+</section>
+<section class="screen" id="decision-outcome">
+<h2 tabindex="-1">Decision Outcome</h2>
+<p class="bl">Chosen option: &quot;avd-ops holds the onboarding and user docs&quot;.</p>
+
+<details class="more"><summary>More</summary>
+<p>Why: people need one front door,
 while each repo stays the source of truth for its own code, specs and lessons.</p>
 <ul>
 <li>avd-ops is the brand in front of the public AVD repos. Their names don&#39;t change. Each README
@@ -55,19 +72,28 @@ renders the same pages and the same graph.</li>
 owns it.</li>
 <li><code>repos.json</code> is the one list of family repos. The family check reads it.</li>
 </ul>
-<h3>Consequences</h3>
+<h3 id="consequences">Consequences</h3>
 <ul>
 <li>Good, because a reader has one place to start and every page links to the source of truth.</li>
 <li>Good, because the docs use the same format and checks as the other knowledge bases.</li>
 <li>Bad, because a repo page here can drift from its README; the family check and the review that
 changes a repo are what catch it.</li>
 </ul>
-<h2>More Information</h2>
+</details>
+</section>
+<section class="screen" id="more-information">
+<h2 tabindex="-1">More Information</h2>
+<p class="bl">Links, open questions and what changed later.</p>
+
+<details class="more"><summary>More</summary>
 <p>avd-second-brain&#39;s handbook (its <code>wiki/</code>, decision 0004 there) was the index agents searched until it was retired on 2026-10-21 (its decision 0024, <a href="https://github.com/avd-ops/avd-second-brain/pull/76">PR #76</a>). The repo pages here are now the one place to read each repo, and agents search the brain&#39;s knowledge base.</p>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="index.html">Decision records</a></li><li><a href="../index.html">Start here</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from 2 pages</summary>
+<ul class="backlinks"><li><a href="index.html">Decision records</a></li><li><a href="../index.html">Start here</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0001-adopt-the-2ndbrain-format.html" data-page="0001. Adopt the 2ndbrain knowledge base format, version 1">Back</a><span class="where">1 of 5</span><a class="sc-next" href="0003-the-family-ends-at-its-contracts.html" data-page="0003. The family ends at its contracts; work outside it builds on them, never the reverse">Next: 0003. The family ends at its contracts; work outside it builds on them, never the reverse</a></div></nav>
+</article>
+<script src="../../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

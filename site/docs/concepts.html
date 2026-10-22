@@ -28,13 +28,20 @@
 <p class="group">Record</p><a href="../docs/decisions/index.html">Decisions</a><a href="../docs/graph.html">Graph</a><a href="../design/index.html">Design system</a><a href="../credits.html">Credits</a>
 </nav>
 <main id="main"><div class="col">
-<h1>Concepts</h1>
-<p>The repos share a handful of ideas. Each is explained in full in the repo that owns it; this page
-is the short version with the links.</p>
-<h2>Three questions, three repos, and a layer on top</h2>
-<p>Each repo answers one question
-(<a href="https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md">family roles</a>):</p>
-<table>
+<article class="screens">
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#concepts" title="Concepts"><span class="n">1</span><span class="t">Concepts</span></a></li><li><a href="#three-questions-three-repos-and-a-layer-on-top" title="Three questions, three repos, and a layer on top"><span class="n">2</span><span class="t">Three questions, three repos, and a layer on top</span></a></li><li><a href="#contracts-not-shared-code" title="Contracts, not shared code"><span class="n">3</span><span class="t">Contracts, not shared code</span></a></li><li><a href="#the-brain-thinks-the-swarm-acts" title="The brain thinks, the swarm acts"><span class="n">4</span><span class="t">The brain thinks, the swarm acts</span></a></li><li><a href="#tenant-data-stays-with-the-tenant" title="Tenant data stays with the tenant"><span class="n">5</span><span class="t">Tenant data stays with the tenant</span></a></li><li><a href="#read-first-change-with-approval" title="Read first, change with approval"><span class="n">6</span><span class="t">Read first, change with approval</span></a></li><li><a href="#keep-the-last-copy-stop-the-meter" title="Keep the last copy, stop the meter"><span class="n">7</span><span class="t">Keep the last copy, stop the meter</span></a></li><li><a href="#runs-anywhere" title="Runs anywhere"><span class="n">8</span><span class="t">Runs anywhere</span></a></li><li><a href="#knowledge-capture" title="Knowledge capture"><span class="n">9</span><span class="t">Knowledge capture</span></a></li><li><a href="#whats-out-of-scope" title="What&#39;s out of scope"><span class="n">10</span><span class="t">What&#39;s out of scope</span></a></li></ol></nav>
+<section class="screen" id="concepts">
+<h1 tabindex="-1">Concepts</h1>
+<p class="bl">A handful of ideas run through every repo. Each screen here is the short version, with a link to the full one.</p>
+
+<details class="more"><summary>More</summary>
+<p>Each idea is explained in full in the repo that owns it; this page is the short version with the links.</p>
+</details>
+</section>
+<section class="screen" id="three-questions-three-repos-and-a-layer-on-top">
+<h2 tabindex="-1">Three questions, three repos, and a layer on top</h2>
+<p class="bl">Three repos each answer one question about an estate, and two more sit on top of them.</p>
+<div class="tbl"><table class="stacked">
 <thead>
 <tr>
 <th>Question</th>
@@ -43,46 +50,85 @@ is the short version with the links.</p>
 </tr>
 </thead>
 <tbody><tr>
-<td>How it&#39;s built and changed from here</td>
-<td><a href="repos/avd-landing-zone.html">avd-landing-zone</a></td>
-<td>The deployment engine</td>
+<td data-label="
+
+Question">How it&#39;s built and changed from here</td>
+<td data-label="Repo"><a href="repos/avd-landing-zone.html">avd-landing-zone</a></td>
+<td data-label="Role">The deployment engine</td>
 </tr>
 <tr>
-<td>What is there now</td>
-<td><a href="repos/avd-current-state.html">avd-current-state</a></td>
-<td>The collector and validator</td>
+<td data-label="
+
+Question">What is there now</td>
+<td data-label="Repo"><a href="repos/avd-current-state.html">avd-current-state</a></td>
+<td data-label="Role">The collector and validator</td>
 </tr>
 <tr>
-<td>What it should be, and why</td>
-<td><a href="repos/avd-assess.html">avd-assess</a></td>
-<td>The map and the dictionary</td>
+<td data-label="
+
+Question">What it should be, and why</td>
+<td data-label="Repo"><a href="repos/avd-assess.html">avd-assess</a></td>
+<td data-label="Role">The map and the dictionary</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
+
+<details class="more"><summary>More</summary>
+<p>The roles are set in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md">family roles</a>.</p>
 <p>On top of those sits an intelligence and abstraction layer:
 <a href="repos/avd-second-brain.html">avd-second-brain</a> is the why over the environment&#39;s whole life, and
 <a href="repos/avd-swarm.html">avd-swarm</a> is the how of operating it.</p>
 <p>Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
 that keeps working with no second brain and no avd-swarm.</p>
-<h2>Contracts, not shared code</h2>
+</details>
+</section>
+<section class="screen" id="contracts-not-shared-code">
+<h2 tabindex="-1">Contracts, not shared code</h2>
+<p class="bl">The repos hand each other versioned, redacted files, never each other&#39;s code.</p>
+
+<details class="more"><summary>More</summary>
 <p>The repos pass versioned, redacted files to each other instead of importing each other&#39;s code.
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact
 register and so on) and one JSON Schema. avd-second-brain holds the registry, and repos that read a
 format keep a byte-identical copy pinned to a commit. See
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md">contracts</a>.</p>
-<h2>The brain thinks, the swarm acts</h2>
+</details>
+</section>
+<section class="screen" id="the-brain-thinks-the-swarm-acts">
+<h2 tabindex="-1">The brain thinks, the swarm acts</h2>
+<p class="bl">The brain can&#39;t change anything. Every change is a plan a person approves, with one kill switch.</p>
+
+<details class="more"><summary>More</summary>
 <p>avd-second-brain never holds a write credential. Every change to an estate is a plan that
 avd-swarm proposes, a person approves in a GitHub environment, and a governance gate checks against
 live state. One layered kill switch stops it, and only the owner resets it. See
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0003-brain-thinks-swarm-acts.md">decision 0003</a>
 and <a href="https://github.com/avd-ops/avd-swarm/blob/main/docs/governance.md">avd-swarm&#39;s governance</a>.</p>
-<h2>Tenant data stays with the tenant</h2>
+</details>
+</section>
+<section class="screen" id="tenant-data-stays-with-the-tenant">
+<h2 tabindex="-1">Tenant data stays with the tenant</h2>
+<p class="bl">Only redacted facts leave an estate, and no public repo holds tenant data.</p>
+
+<details class="more"><summary>More</summary>
 <p>Collectors and validators read an estate; what leaves it is redacted: counts, public values and
 pseudonyms, never names or IDs. A customer&#39;s estate vault lives in that customer&#39;s private repo.
 None of the public repos holds tenant data.</p>
-<h2>Read first, change with approval</h2>
+</details>
+</section>
+<section class="screen" id="read-first-change-with-approval">
+<h2 tabindex="-1">Read first, change with approval</h2>
+<p class="bl">Reading is free. Changing anything in the cloud waits for a person&#39;s yes.</p>
+
+<details class="more"><summary>More</summary>
 <p>Scripts and agents read freely. Anything that creates, changes or deletes cloud resources runs only
 after a person approves it, and every sandbox run comes with a cost estimate and a teardown.</p>
-<h2>Keep the last copy, stop the meter</h2>
+</details>
+</section>
+<section class="screen" id="keep-the-last-copy-stop-the-meter">
+<h2 tabindex="-1">Keep the last copy, stop the meter</h2>
+<p class="bl">A teardown keeps your data and leaves nothing billing, unless you say otherwise.</p>
+
+<details class="more"><summary>More</summary>
 <p>Teardown removes what a redeploy recreates and keeps the data. Logs and teardown proof go to one run
 store outside the deployment, kept by default (<code>-TeardownLogs Keep</code>), and deleting data with no
 checked copy elsewhere needs <code>-DiscardLastCopy</code>, which <code>-Force</code> never implies
@@ -95,27 +141,48 @@ recorded with their cancel windows, never bought by a script
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">decision 0017</a>).
 Your own copies go to a separate
 <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/private-companion-repo.md">private companion repo</a>.</p>
-<h2>Runs anywhere</h2>
+</details>
+</section>
+<section class="screen" id="runs-anywhere">
+<h2 tabindex="-1">Runs anywhere</h2>
+<p class="bl">Every script runs from either Cloud Shell prompt, and on Windows, macOS and Linux.</p>
+
+<details class="more"><summary>More</summary>
 <p>Every operator script runs from either Cloud Shell prompt, PowerShell or Bash, and anything a person
 runs on their own machine runs on Windows, macOS and Linux. PowerShell 7 is the baseline; each tool
 is written once and every command comes in a PowerShell and a Bash form that call it. Each repo
 lists, per script, which of those are proven by a test or a real run, and the portals offer only
 those. See <a href="decisions/0006-run-anywhere.html">decision 0006</a>; the rule, the audit and the
 gaps are in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/run-anywhere.md">run anywhere</a>.</p>
-<h2>Knowledge capture</h2>
+</details>
+</section>
+<section class="screen" id="knowledge-capture">
+<h2 tabindex="-1">Knowledge capture</h2>
+<p class="bl">Every change records what it taught, or says why there&#39;s nothing to record.</p>
+
+<details class="more"><summary>More</summary>
 <p>Each repo records what a change taught in a knowledge base in the shared format, or says why
 there&#39;s nothing to record, and a pull request check asks for it. The format comes from the
 <a href="https://github.com/nickprignano/2ndbrain">2ndbrain</a> template; the AVD lessons live in
 <a href="https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge">avd-second-brain&#39;s knowledge base</a>.
 These docs use the same format.</p>
-<h2>What&#39;s out of scope</h2>
+</details>
+</section>
+<section class="screen" id="whats-out-of-scope">
+<h2 tabindex="-1">What&#39;s out of scope</h2>
+<p class="bl">Bicep, PowerShell and native Microsoft tooling only. Anything else goes to another project.</p>
+
+<details class="more"><summary>More</summary>
 <p>The repos use Bicep, PowerShell and native Azure, Entra and Microsoft 365 tooling only. Asks outside that lane are referred elsewhere by
 avd-second-brain&#39;s lane rules
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md">decision 0012</a>).</p>
-
-<h2 id="linked-from">Linked from</h2>
-<ul class="backlinks"><li><a href="index.html">Start here</a></li></ul>
-
+</details>
+<details class="more linked"><summary>Linked from one page</summary>
+<ul class="backlinks"><li><a href="index.html">Start here</a></li></ul></details>
+</section>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="getting-started/cloud-shell.html" data-page="Working from Cloud Shell">Back</a><span class="where">1 of 10</span><a class="sc-next" href="concepts/sandbox-batches.html" data-page="Sandbox batches">Next: Sandbox batches</a></div></nav>
+</article>
+<script src="../assets/docs.js" defer></script>
 </div></main>
 </div>
 <footer class="foot"><div class="in"><p>These docs are the Markdown in <a href="https://github.com/avd-ops/avd-ops/tree/main/docs/knowledge">docs/knowledge/</a>; open the folder in Obsidian to browse it as a vault. Each repo is the source of truth for itself.</p>

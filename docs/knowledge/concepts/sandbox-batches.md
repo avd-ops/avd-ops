@@ -8,6 +8,10 @@ last_reviewed: 2026-10-21
 
 # Sandbox batches
 
+Paid test runs go in batches: priced first, approved once at the exact total, torn down with proof.
+
+<!-- more -->
+
 Some changes can only be proven by deploying them: a landing zone round trip, a recovery test, a
 teardown that must leave nothing behind. Those runs cost money and use shared resource names, so
 the family runs them as **batches**, never one at a time on a whim. This page describes the method.
@@ -25,6 +29,10 @@ what must survive, tear down, and leave evidence.
 
 ## 1. Queue an item
 
+Write each test down before anything runs: what it deploys, for how long, and what it must keep.
+
+<!-- more -->
+
 Each item is one test, written down before anything runs:
 
 - **Source**, pinned to a commit, so what was approved is what runs.
@@ -38,6 +46,10 @@ Each item is one test, written down before anything runs:
 
 ## 2. Build a batch
 
+A builder groups the tests that can share a deployment, prices them, and checks the caps.
+
+<!-- more -->
+
 A builder reads the ready items and:
 
 - groups items that can share one deployment, so one deploy serves several tests;
@@ -49,6 +61,10 @@ A builder reads the ready items and:
 
 ## 3. Approve once, at the exact total
 
+A person types `go batch <id> $<total>`, exactly. A bare "go" is not an approval.
+
+<!-- more -->
+
 - One approval covers one batch at its printed total. The phrase is `go batch <id> $<total>`, and
   it has to match exactly. A bare "go" is not an approval.
 - The approval is bound to the batch file's hash. Any change to the batch (an item, a pin, a
@@ -57,12 +73,20 @@ A builder reads the ready items and:
 
 ## 4. Run groups one after another
 
+Groups that share resource names run in order, with teardown evidence between them.
+
+<!-- more -->
+
 - Groups that use the same resource names run in sequence, with teardown evidence between them.
   Otherwise the second deploy collides with the first one's leftovers.
 - The runner checks the cost gate again before each group. It stops on leftovers, a missed
   deadline or the monthly cap. Stopping is always safe, because nothing new is deployed.
 
 ## 5. Keep, then tear down
+
+What must survive is copied out and checked, then everything is torn down.
+
+<!-- more -->
 
 - Before any teardown, every Keep path is archived to a run store outside the deployment, read back
   and hash-checked. If there's no run store, the group refuses to start
@@ -72,12 +96,20 @@ A builder reads the ready items and:
 
 ## 6. Evidence
 
+Each group leaves a record: the estimate, the actual cost, what ran, what was kept and the teardown result.
+
+<!-- more -->
+
 Each group leaves a record: estimate, actual cost once it settles, what ran at which commit, what
 was kept and where, and the teardown result. The landing zone's
 [run recorder spec](https://github.com/avd-ops/avd-landing-zone/blob/master/build/specs/run-recorder-spec.md)
 defines the run record (contract C17).
 
 ## What real runs taught
+
+Four things the first real runs got wrong, and what changed.
+
+<!-- more -->
 
 - **A runner identity needs more than Contributor.** The landing zone assigns Azure Policy, so an
   unattended runner also needs a role that can write policy assignments.

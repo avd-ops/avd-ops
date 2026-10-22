@@ -6,7 +6,13 @@ decision-makers: [owner]
 
 # 0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it
 
+Every repo ships attested, immutable releases for free. Only the Windows log collector gets an Authenticode signature.
+
 ## Context and Problem Statement
+
+Should the family sign its scripts, and with what?
+
+<!-- more -->
 
 The owner asked how the family handles code signing and whether it should. An audit of the public
 repos (2026-10-21) found no signed script, no tag, no release and no attestation; scripts reach
@@ -28,7 +34,11 @@ what, and at what cost?
 ## Decision Outcome
 
 Chosen option: "Releases and provenance for every repo, Authenticode only where Windows enforces
-it", because it gives every person on every OS a way to check that code is what the family
+it".
+
+<!-- more -->
+
+Why: it gives every person on every OS a way to check that code is what the family
 published, for $0, and spends money only on the one artifact whose readers' policies demand a
 publisher signature. Signing every file would help no current operator, since Cloud Shell and
 `git clone` ignore signatures, and would break byte-identical pins. Provenance alone would leave
@@ -58,6 +68,10 @@ The full audit, the options, the verification commands and the cost: [code signi
   re-signing by the organization; only App Control can pin the durable EKU.
 
 ## More Information
+
+Links, open questions and what changed later.
+
+<!-- more -->
 
 Facts behind it, all from Microsoft Learn or GitHub Docs: non-Windows PowerShell's execution policy
 is `Unrestricted` and can't be changed, and `Get-AuthenticodeSignature` exists only on Windows;
