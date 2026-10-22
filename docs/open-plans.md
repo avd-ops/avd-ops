@@ -14,6 +14,7 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Plan | State | Next step | Who | Detail |
 |---|---|---|---|---|
 | avd-swarm core and adapters (WP0 to WP8) | Decision 0009 accepted; check runner, alert path and runbook endpoint merged | First runbook sandbox run, then one estimate for the check runner and alert path, red team before build step 3 | owner | [avd-swarm `docs/core-and-adapters.md`](https://github.com/avd-ops/avd-swarm/blob/main/docs/core-and-adapters.md) |
+| Sandbox skill for coding agents (batch runner first) | Plan in [avd-swarm #48](https://github.com/avd-ops/avd-swarm/pull/48), tracking issue #47 | Owner merges the plan and decides on roadmap labels; then write the skill offline | owner, then anyone | [avd-swarm `docs/sandbox-skill.md`](https://github.com/avd-ops/avd-swarm/blob/main/docs/sandbox-skill.md) |
 | Tripwire kit | Spec merged | Build the landing zone and current-state plumbing first, on the owner's go | owner | [avd-swarm `docs/tripwires.md`](https://github.com/avd-ops/avd-swarm/blob/main/docs/tripwires.md) |
 | Drift detection | Phase 1 built | First read-only run; plan phases 2 and 3 | owner | [avd-current-state `docs/drift-spec.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/drift-spec.md) |
 | Shared read-only identity | Built | First real run | owner | [avd-current-state `docs/reader-identity.md`](https://github.com/avd-ops/avd-current-state/blob/main/docs/reader-identity.md) |
