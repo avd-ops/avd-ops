@@ -13,8 +13,8 @@
   "reference": "https://avd-ops.dev/design/"
  },
  "release": {
-  "version": "2.6.0",
-  "tag": "ds-v2.6.0",
+  "version": "2.7.0",
+  "tag": "ds-v2.7.0",
   "repo": "https://github.com/avd-ops/avd-ops"
  },
  "colors": {
@@ -321,7 +321,7 @@
   "--space-4": "1rem",
   "--space-5": "1.5rem",
   "--space-6": "2.5rem",
-  "--measure": "46rem",
+  "--measure": "76rem",
   "--gutter": "16px",
   "--page": "76rem",
   "--side": "15rem",

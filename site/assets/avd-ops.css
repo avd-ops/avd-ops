@@ -1,4 +1,4 @@
-/* avd-ops design system v2.6.0 (https://avd-ops.dev/, avd-ops/avd-ops site/assets/avd-ops.css). MIT.
+/* avd-ops design system v2.7.0 (https://avd-ops.dev/, avd-ops/avd-ops site/assets/avd-ops.css). MIT.
    Personal project, not for production, as is; not affiliated with the author's employer, Liquidware or Microsoft.
    One file for every public AVD page: tokens (light, dark, and a data-theme override), base type, and the shared
    pieces (top bar with the logo slot, notice, buttons, chips, status pills, tables, code, footer). Pages add only
@@ -41,7 +41,7 @@
   --prose:"Source Serif 4",Georgia,"Times New Roman",serif;
   --radius:8px; --radius-sm:6px; --pill:999px;
   --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.5rem; --space-6:2.5rem;
-  --measure:46rem; --gutter:16px; --page:76rem; --side:15rem; --tap:44px; --radius-lg:14px; --bar:72px;
+  --measure:76rem; --gutter:16px; --page:76rem; --side:15rem; --tap:44px; --radius-lg:14px; --bar:72px;
   --ease:cubic-bezier(.2,.7,.2,1); --fast:120ms; --slow:220ms;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
