@@ -34,6 +34,49 @@ The one list of plans that are designed or being built in the public avd-ops rep
 | Estate RAID log (C25) | Spec merged | Build after the open questions R2 to R6 (defaults in the spec) | owner | [avd-second-brain `docs/raid-spec.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/raid-spec.md) |
 | Brain and swarm v1 decisions D1 to D18 | Defaults stand until answered | Owner answers or keeps the defaults | owner | [avd-second-brain `docs/v1-review.md`](https://github.com/avd-ops/avd-second-brain/blob/main/docs/v1-review.md) |
 | Outside coding agents | Hard rules in AGENTS.md; setup and review steps written | Owner sets up the agent account and fork, and tightens the main ruleset | owner | [`docs/outside-agents.md`](outside-agents.md) |
+| Square favicon and installable app icon | Logged, nothing built | Items 1 to 5 below in avd-ops, then 6 and 7 in the portals | anyone, owner tags | [items below](#favicon-and-app-icon-pick-up-list) |
+
+## Favicon and app icon pick-up list
+
+The owner's ask (2026-10-22): the square logo becomes the favicon in the design system, and the app icon when a page is installed as a web app. Nothing is built yet. The square logo is `site/assets/brand/mark.svg` (teal field, ink shield, square corners), the vector of the owner's `brand/png/avd-ops-avatar-1024.png`; make every icon from the SVG and never scale, crop or redraw the PNG. Today `favicon.svg` is the same mark with rounded corners (`rx="14"`), and no page has a web app manifest, a touch icon link or a theme color. Each item is small and checked on its own, in this order. Items 1 to 5 are one avd-ops PR; 6 and 7 are one PR each in their repo. Every page keeps the notice first; American English; no inline style.
+
+- [ ] **1. Square favicon** (anyone). In `site/assets/brand/favicon.svg`, remove `rx="14"` from the first `<rect>`. Keep the file name, so every existing `<link rel="icon">` keeps working (`scripts/site/shell.mjs` `shellHead()`, `templates/page.html`, `scripts/site/build-kit.mjs`, and the vendored copies in the portals). Change its line in `brand/profile.json` ("The square mark, for the browser tab"), in the brand table in `docs/design-system.md` and in `brand/README.md`. Add to `tests/brand.test.mjs` that `favicon.svg` and `mark.svg` draw the same shapes. Check: `diff site/assets/brand/mark.svg site/assets/brand/favicon.svg` prints nothing, and `node --test "tests/*.test.mjs"` passes.
+- [ ] **2. Icon pictures** (anyone). Render from `mark.svg` with `scripts/site/brand-png.mjs` (give each row an output folder; these four go to `site/assets/brand/`, not `brand/png/`, so the portals' pinned copy carries them):
+  - `icon-192.png`, 192x192, the mark filling the canvas;
+  - `icon-512.png`, 512x512, the same;
+  - `icon-maskable-512.png`, 512x512, background `--brand` (#1ca998) with the mark at 75% of the canvas, so the shield stays inside the 80% circle a launcher may crop to;
+  - `apple-touch-icon.png`, 180x180, opaque, the mark filling the canvas (iOS paints transparent corners black).
+
+  Then retire `brand/png/favicon-180.png`, which is the rounded favicon on a transparent canvas: take its row out of the script, `brand/profile.json` and `brand/README.md`. List the four new files in `brand/profile.json` (`kind` `favicon`, `size`, `background` `brand` for the maskable one, `generated` naming the script) and in the brand README. The script needs Playwright with a Chromium (its header says how); a Claude cloud session already has one. Check: `file site/assets/brand/*.png` shows each size; `node --test tests/brand.test.mjs` passes (it fails on a brand file the profile doesn't list); look at `icon-maskable-512.png` through a circle mask in Chrome DevTools (Application, Manifest, "Show only the minimum safe area for maskable icons").
+- [ ] **3. Manifest for avd-ops.dev** (anyone). `site/manifest.webmanifest`:
+  ```json
+  {
+    "name": "avd-ops",
+    "short_name": "avd-ops",
+    "description": "Docs for the AVD repos. Personal project, research only, not for production.",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#f4f6f9",
+    "theme_color": "#0d1015",
+    "icons": [
+      { "src": "assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+      { "src": "assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+      { "src": "assets/brand/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ]
+  }
+  ```
+  `background_color` is `--bg` light and `theme_color` is `--shell` light, the ink of the brand bar in both themes; take both from `brand/profile.json`, never new hex values. Paths inside a manifest resolve from the manifest's own URL. No service worker: Chrome and Edge offer to install without one, and one would cache pages that must stay current. Check: a test in `tests/site.test.mjs` that parses the file, finds every icon on disk at its stated size (PNG width and height are bytes 16 to 23) and compares the two colors with the profile.
+- [ ] **4. Head links** (anyone). In `shellHead()` in `scripts/site/shell.mjs`, after the icon link:
+  ```html
+  <link rel="apple-touch-icon" href="${up}assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="${up}manifest.webmanifest">
+  <meta name="theme-color" content="#0d1015">
+  ```
+  Then run `node scripts/site/apply-shell.mjs`, `node scripts/site/build-docs.mjs` and `node scripts/site/build-standards.mjs` so every page picks them up. Add the touch icon and theme color (not the manifest, which is per site) to the starter `templates/page.html` and the starter page in `scripts/site/build-kit.mjs`, then `node scripts/site/build-kit.mjs`. Check: extend the favicon assertion in `tests/site.test.mjs` to the touch icon and the manifest link; after Pages publishes, Chrome on https://avd-ops.dev/ shows the install button and DevTools, Application, Manifest lists no errors; on the iPad, Share, Add to Home Screen shows the square mark.
+- [ ] **5. Design system release** (anyone, then owner). Raise the version line at the top of `avd-ops.css`, `avd-ops-shell.css`, `avd-ops-portal.css` and `theme.js` to the next minor after the newest one (2.7.0 is in avd-ops #65 at the time of writing), add an "Installable pages" paragraph to `docs/design-system.md` (the files above, the head lines, a manifest per site with its own name and `start_url`, `manifest-src 'self'` in a page's CSP), and run `node scripts/site/design-manifest.mjs`: the new pictures land in `site/assets/MANIFEST.json` on their own because `brand/` is vendored whole. Check: `node scripts/site/design-manifest.mjs --check` and `node --test "tests/*.test.mjs"`. Then the owner merges and tags `ds-v<version>` on the merge commit.
+- [ ] **6. Deployment portal** (anyone, in avd-landing-zone, after the tag). Re-vendor with the Cloud Shell block in [Take a pinned copy](design-system.md#take-a-pinned-copy) at the new tag (it copies `brand/` with the new pictures and rewrites `site/assets/design-system.lock.json`). Add `site/portal/manifest.webmanifest` like item 3 with `"name": "AVD Deployment Portal"`, `"short_name": "Deploy"`, `start_url` and `scope` `"./"`, and icon paths `../assets/brand/...`. In `site/portal/index.html` add the three head lines from item 4 with `../` paths, and add `manifest-src 'self'` to its Content-Security-Policy meta tag, because `default-src 'none'` blocks the manifest otherwise (a copy published with the policy as a response header, as the page's comment describes, needs it there too). Pages that are not installable (`site/region-latency/`, the redirect pages) take only the touch icon line. Check: add the new links to `build/tests/portal/design-system.test.mjs`; `node --test "build/tests/portal/*.test.mjs"`; after Pages publishes, DevTools on https://deploy.avd-ops.dev/portal/ shows the manifest with no errors and no CSP error in the console.
+- [ ] **7. Assessment portal** (anyone, in avd-current-state, after the tag). The same as item 6 in `site/portal/`, with `"name": "AVD Assessment Portal"` and `"short_name": "Assess"`; if the page has or gains a CSP, it carries `manifest-src 'self'`. Check: `node --test "tests/portal/*.test.mjs"` (its `site.test.mjs` checks the lock file) and the same DevTools look where the portal is published.
 
 ## Parked
 
