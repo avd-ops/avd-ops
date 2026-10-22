@@ -177,9 +177,11 @@ Target WCAG 2.1 AA. The progress element announces each step's name in a polite 
 
 After the avd-ops PR merges, Nick tags its merge commit from Cloud Shell (Claude sessions cannot push tags). The block below is the template; the PR that ships a release puts it in its description with `SHA` and the tag already filled in, so the paste needs no editing:
 
-```bash
-SHA=0000000000000000000000000000000000000000; TAG=pe-v1.0.0; D=$HOME/avd-ops-tag; gh auth status >/dev/null 2>&1 || gh auth login; [ -d "$D" ] && rm -rf "$D"; git clone -q https://github.com/avd-ops/avd-ops.git "$D" && git -C "$D" checkout -q "$SHA" && echo "tagging $TAG on $SHA" && gh release create "$TAG" --repo avd-ops/avd-ops --target "$SHA" --title "$TAG" --notes "See docs/portal-engine-spec.md"
+```powershell
+$SHA = '0000000000000000000000000000000000000000'; $TAG = 'pe-v1.0.0'; gh auth status *> $null; if ($LASTEXITCODE -ne 0) { gh auth login }; Write-Host "tagging $TAG on $SHA"; gh release create $TAG --repo avd-ops/avd-ops --target $SHA --title $TAG --notes 'See docs/portal-engine-spec.md'
 ```
+
+It is PowerShell, the shell Cloud Shell usually opens; in Bash, run `pwsh` first. `gh release create --target` tags the commit on GitHub, so no clone is needed. (The first version was Bash and failed to parse in PowerShell, 2026-10-22.)
 
 The same block, with `TAG` and `SHA` changed, makes the design-system tags still waiting, on the commit both portals' lock files record: ds-v2.4.1 on the merge commit of the 2.4.1 pull request (both locks re-pin to it), as the full commit hash from the lock file, not on today's `main`. The earlier releases (ds-v2.0.1 on `d106eed`, ds-v2.1.0 on `753f62b`, ds-v2.2.0 on `78af4f2`, ds-v2.3.0 on `8617943`, ds-v2.4.0 on `c133e1b`) are in no lock file any more and are only for the record.
 
