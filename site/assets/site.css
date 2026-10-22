@@ -9,10 +9,10 @@ td:first-child{white-space:nowrap}
 
 /* Home: the thesis and the three ways in, then the family as a picture (the layer on top, the three foundation
    questions under it). Tiles are links; the whole tile is the target. */
-.home .hero{display:grid;gap:var(--space-4);padding-block:0 var(--space-5);max-width:52rem}
+.home .hero{display:grid;gap:var(--space-4);padding-block:0 var(--space-5)}
 .home .hero>.eyebrow{margin:0}
 .home .hero h1{margin:0;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.02em}
-.home .hero .lede{margin:0;max-width:44rem}
+.home .hero .lede{margin:0}
 .map{margin:var(--space-4) 0 0;display:grid;gap:var(--space-3)}
 .map .band{background:var(--accent-soft);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;gap:var(--space-3)}
 .map .band>.eyebrow{color:var(--accent)}
@@ -84,7 +84,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .screens .screen>h1,.screens .screen>h2{font:700 clamp(1.8rem,1.3rem + 2vw,2.5rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 var(--space-3)}
 .screens .screen>h1:focus,.screens .screen>h2:focus{outline:none}
 .screens .screen>h1:focus-visible,.screens .screen>h2:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
-.screens .bl{font-size:1.1rem;line-height:1.5;color:var(--fg);max-width:40rem;margin:0 0 var(--space-4)}
+.screens .bl{font-size:1.1rem;line-height:1.5;color:var(--fg);margin:0 0 var(--space-4)}
 .screens .screen h3{margin-top:var(--space-5)}
 .screens details.more{border-top:1px solid var(--line);margin-top:var(--space-5);padding-top:var(--space-2)}
 .screens details.more>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:var(--space-2);min-height:var(--tap);color:var(--muted);font-weight:600;font-size:.92rem}

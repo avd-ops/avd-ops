@@ -92,3 +92,6 @@ Links, open questions and what changed later.
 - Design system 2.6.0 (owner, 2026-10-22): a serif reading face, Source Serif 4, as `--prose` and the
   `.prose` class, for long reading text only: the standards library's articles, claims and reference
   lists, which are read like a paper. Headings, controls, labels and code keep their faces.
+- Design system 2.7.0 (owner, 2026-10-22): text fills the box it sits in on desktop. `--measure`
+  becomes the shell width (76rem), and the narrow caps on portal ledes, intros, step text and
+  "+ more" and on the home hero are gone, so a paragraph ends where its card and divider end.
