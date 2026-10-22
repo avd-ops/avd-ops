@@ -180,6 +180,11 @@ it first with the same rules as the deployment portal&#39;s issue report:
 <a href="https://github.com/avd-ops/avd-landing-zone/blob/master/scripts/ops/redact.mjs"><code>redact.mjs</code></a>.
 <code>--level private</code> removes secrets only. <code>--level public</code> also removes tenant names, IDs, emails and
 domains. Never paste a secret anywhere.</p>
+<p>The portals&#39; Report a problem buttons redact in your browser before they open an issue. The shared
+rules are the portal engine&#39;s <a href="https://github.com/avd-ops/avd-ops/blob/main/site/assets/engine/redact.js"><code>redact.js</code></a> (engine 1.1):
+secrets, emails, tenant and domain names, IDs, public IP addresses and user names in paths, plus
+each portal&#39;s own patterns. Given the landing zone&#39;s patterns, it returns exactly what the
+deployment portal&#39;s report does on the landing zone&#39;s 54 recorded outputs.</p>
 </details>
 </section>
 <section class="screen" id="costs">
