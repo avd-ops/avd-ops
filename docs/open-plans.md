@@ -39,4 +39,39 @@ The one list of plans that are designed or being built in the public avd-ops rep
 
 | Plan | Resume when | Detail |
 |---|---|---|
-| avd-linecheck v0 | The owner runs spikes S1, S3 and S4 on the owner's own devices | [avd-linecheck `docs/spec.md`](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md) |
+| avd-linecheck v0 | The owner runs spikes S1, S3 and S4 on the owner's own devices, then gives the go for v0 ([items below](#avd-linecheck-pick-up-list)) | [avd-linecheck `docs/spec.md`](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md) |
+
+## avd-linecheck pick-up list
+
+avd-linecheck ([spec](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md)) is parked. These items let the owner or any agent move it forward in small steps, each done and checked on its own. Part A is free and needs only a browser. Part B waits for the owner's go. Every change in avd-linecheck follows its [AGENTS.md](https://github.com/avd-ops/avd-linecheck/blob/main/AGENTS.md) and [CLAUDE.md](https://github.com/avd-ops/avd-linecheck/blob/main/CLAUDE.md), and its check is `node --test "tests/*.test.mjs"`.
+
+### A. Device runs of the spikes (owner, free, no tenant)
+
+Each page has one button and a "Copy the result" button. A result holds the browser name and timings only. Record it by editing [`spikes/README.md`](https://github.com/avd-ops/avd-linecheck/edit/main/spikes/README.md) on GitHub: paste it under that spike's heading as a fenced block with the date and the network type (home Wi-Fi, cellular, office), then "Commit changes" on a new branch, which opens a pull request. Never paste an IP address, a network or device name, or a location finer than a country.
+
+- [ ] **A1. S1, browser sample against ping.** Open https://linecheck.avd-ops.dev/s1/ and press the button. On the same device and network, run `ping login.microsoftonline.com` (Windows Command Prompt or macOS Terminal). Record the page's result and the ping round-trip times only (delete the address ping prints); if ping gets no reply, write "ping blocked". Do it on three networks: home Wi-Fi, cellular (phone hotspot), and one more if you can. Checks spec section 4.1's "upper bound on the round trip" wording on real networks.
+- [ ] **A2. S3, browser capabilities.** Open https://linecheck.avd-ops.dev/s3/ and press the button on each of: Safari on a Mac, Safari on the iPad, Firefox (any desktop), Chrome on Android if one is at hand. It makes no network request and asks for no permission. Record one block per browser.
+- [ ] **A3. S4, the 8 MiB file.** Open https://linecheck.avd-ops.dev/s4/ and press the button right away (cold), then again a minute later (warm). Do it on a desktop browser and on a phone, on Wi-Fi and on cellular (it downloads 40 MiB a run, so mind a metered plan). Record both runs. This decides whether the 8 MiB blob is a steady reading (spec section 4.4).
+- [ ] **A4. Optional: S2 from home.** On a laptop on a home network (not Cloud Shell, which runs in Azure), run `curl -sI https://rdweb.wvd.microsoft.com/`. Record only the status line and the `x-ms-wvd-service-region` header, under S2.
+- [ ] **A5. Fold the readings in** (anyone, after A1 to A3). Update the status table at the top of `spikes/README.md` and, where a reading changes a number or a wording, the spec section it names (4.1, 4.4, 13). If S1's ping comparison shows the browser sample is far from a real round trip, say so in 4.1 rather than tuning the bands.
+
+### B. v0 build (waits for the owner's go)
+
+The v0 scope is spec section 12.5: the run of section 5 with the generic pack, a verdict, an export with no personal data, and the paste-a-result view. Rules for every item: client-side only, no build step, plain HTML, CSS and JavaScript; nothing leaves the browser unless the user copies or downloads it; strict CSP (spec 8.2) with no inline script or style; the avd-ops design system and its wizard rules (one screen at a time, bottom line first, detail behind "+ more"); the probe from the shared portal engine, never a copy; build the download check, do not adopt `@cloudflare/speedtest` (spike S1 found its defaults call Cloudflare); the notice first on every page; American English, ASCII scripts. Do them in this order.
+
+- [ ] **B0. The owner's go for v0** (owner). Read A1 to A5 first. Until the go, nothing below is built.
+- [ ] **B1. Page frame** (anyone). `site/index.html` with the shell (bar, notice first, footer) from the design system vendored at the newest `ds-v` tag (2.5.0 or later, for the wizard) with its lock file; a `<meta>` CSP starting `default-src 'none'` before every script; a linked stylesheet only; `pages.yml` publishes `site/`. Check: tests for the notice, the CSP, no inline script or style (including `style=` attributes) and no absolute URL to the page's own origin; the `served` workflow stays green.
+- [ ] **B2. Vendor the engine** (anyone). `core.js`, `bands.js` and `probe.js` from avd-ops `site/assets/engine/` at the newest `pe-v` tag, with a lock file and a hash test, as the portal engine spec section 4 describes. Check: the hash test fails when a vendored file changes.
+- [ ] **B3. Packs** (anyone). `site/packs/schema.json`, `generic.json` (the page's own origin only, "reached or not") and a validator that refuses IP literals, private ranges, localhost and `http:`, and requires a claim on every threshold row and a final `otherwise` (spec 7). A test rebuilds `connect-src` from the pack and fails on a mismatch (spec 8.2).
+- [ ] **B4. Download sufficiency** (anyone). Our own small function in `site/engine.js`: fetch `blobs/8m.bin` (random bytes made by a script, checked in with a hash) with `cache: 'default'`, catch a browser cache hit with `transferSize`, measure first byte to last, loaded latency only when the download ran 3 seconds, informational only (spec 4.4). Use A3's readings for the size. Check: Node tests on a scripted network.
+- [ ] **B5. The run** (anyone). Nothing on page load; the page lists what it will contact (spec 8.1) before "Check my connection"; steps and deadlines as spec section 5, run through `probe.run` phases (jitter and the target region alone); `?region=` and `?lite` the only parameters. Check: a scripted test where every host times out ends in a verdict inside the run deadline, never a spinner.
+- [ ] **B6. Verdict** (anyone). `site/verdict.js`, pure: the four states (`pass`, `warn`, `blocked`, `unknown`, `fail` only for a measured value over the line), worst first, one sentence per finding and the "not tested" list (spec 6.2). Check: fixtures, including a blocked network.
+- [ ] **B7. Export** (anyone). `site/export.js`, pure: the JSON and summary of spec 8.3, top three regions by default. Check: a fixture holding an IP, a host name, a user name and a full user agent in the raw measurements, and a test that none reaches the output.
+- [ ] **B8. Paste a result** (anyone). Schema check, render only enumerated states and numbers, sentences looked up from the shipped pack (spec 8.4). Check: a crafted paste with its own sentences renders none of them.
+- [ ] **B9. Screens and access** (anyone). The wizard layout at 390px and 1440px, light and dark; a live-region progress bar; every state with a word and an icon; 44px touch targets; a word-list reading-level test on the sentences (spec 12.4).
+- [ ] **B10. Close out** (anyone). Take the spike pages off Pages, update the README status and spec status, and move this plan's row from Parked to the table above.
+
+### C. Also waiting for the owner
+
+- [ ] **C1. Listing on avd-ops.dev** (owner). avd-linecheck stays off `repos.json`, `docs/knowledge/repos/`, the switcher and the site checklist until the owner says.
+- [ ] **C2. v1 and later** (owner). The AVD pack (v1) reads avd-assess's endpoint map at a pin (Q6) with avd-current-state #28 aligned; device-only guided steps need the owner's captures (spec 18); every v2 server piece needs its own cost estimate and the exact go, and only free pieces are built (Q9).
