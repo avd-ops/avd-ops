@@ -34,4 +34,6 @@ Its redacted facts feed the brain, and its validator checks the landing zone.
 
 ## Read more in the repo
 
+The repo has the full detail. Start here:
+
 - [README and quick start](https://github.com/avd-ops/avd-current-state/blob/main/README.md)

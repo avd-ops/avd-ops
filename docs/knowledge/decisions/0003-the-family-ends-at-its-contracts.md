@@ -22,6 +22,8 @@ line, and which way may dependencies cross it?
 
 ## Considered Options
 
+Two options were weighed.
+
 - Family contracts and docs name the outside repositories that produce or read them, and family
   repos may fetch or link them
 - The family ends at its contracts: they name a producer by its role, every format that crosses the

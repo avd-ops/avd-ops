@@ -39,4 +39,6 @@ The other repos run its methods and cite it. It depends on none of them.
 
 ## Read more in the repo
 
+The repo has the full detail. Start here:
+
 - [README and the methods](https://github.com/avd-ops/avd-assess/blob/main/README.md)

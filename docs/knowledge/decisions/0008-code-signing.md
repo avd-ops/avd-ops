@@ -25,6 +25,8 @@ what, and at what cost?
 
 ## Considered Options
 
+Four options were weighed.
+
 - Releases and provenance for every repo ($0), Authenticode through Azure Artifact Signing only for
   artifacts Windows policy will check (the log bundle first)
 - Authenticode-sign every PowerShell file in every repo

@@ -21,6 +21,8 @@ repos present themselves?
 
 ## Considered Options
 
+Three options were weighed.
+
 - avd-ops holds the onboarding and user docs, in the shared knowledge base format, and every public
   repo presents as part of avd-ops
 - Each repo carries its own onboarding, with the site only linking

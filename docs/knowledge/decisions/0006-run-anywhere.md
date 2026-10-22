@@ -25,6 +25,8 @@ true?
 
 ## Considered Options
 
+Three options were weighed.
+
 - One implementation per tool, callable from both shells, proven by a CI OS matrix
 - Thin wrappers in the other language for the first commands an operator types, plus the above
 - Full twins: every operator script as a `.ps1` and a `.sh`, with a parity test

@@ -19,6 +19,8 @@ that stays current without manual sweeps. Should it use the shared 2ndbrain form
 
 ## Considered Options
 
+Three options were weighed.
+
 - Adopt the 2ndbrain format (version 1) from the 2ndbrain template
 - A format of its own
 - No in-repo knowledge base; keep notes elsewhere

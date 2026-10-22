@@ -22,6 +22,8 @@ one frame, without making avd-landing-zone and avd-current-state depend on avd-o
 
 ## Considered Options
 
+Three options were weighed.
+
 - Tune-up: keep the 1.x layout, fix the nav, widths and touch sizes
 - Control plane: one app shell (brand bar with a Docs, Deploy and Assess switcher, a side list that
   becomes a drawer, a one-line notice) for the site and every portal

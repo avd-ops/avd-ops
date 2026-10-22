@@ -18,12 +18,14 @@
     var current = -1;
     article.classList.add('paged');
 
-    // The screen that holds the address's #anchor: the screen itself, or one with that heading inside it.
+    // The screen that holds the address's #anchor: the screen itself, or one with that heading inside it. No
+    // anchor is the first screen; an anchor outside the screens (the shell's "Skip to content") is n -1, no change.
     function fromHash() {
       var id = decodeURIComponent(location.hash.slice(1));
-      var el = id && document.getElementById(id);
+      if (!id) return { n: 0, el: null };
+      var el = document.getElementById(id);
       for (var i = 0; el && i < screens.length; i++) if (screens[i] === el || screens[i].contains(el)) return { n: i, el: el };
-      return { n: 0, el: null };
+      return { n: -1, el: el };
     }
 
     function show(n, focus, target) {
@@ -46,7 +48,9 @@
         if (n < screens.length - 1) { next.setAttribute('href', '#' + screens[n + 1].id); next.textContent = 'Next'; }
         else if (nextPage) { next.setAttribute('href', nextPage); next.textContent = 'Next: ' + next.getAttribute('data-page'); }
       }
-      // An #anchor inside a screen scrolls to it; a new screen opens at the top, its title focused for screen readers.
+      // An #anchor inside a screen opens the "+ more" it sits in and scrolls to it; a new screen opens at the top,
+      // its title focused for screen readers.
+      for (var d = target && target.parentElement; d && d !== screens[n]; d = d.parentElement) if (d.tagName === 'DETAILS') d.open = true;
       if (target && target !== screens[n]) target.scrollIntoView();
       else window.scrollTo(0, 0);
       if (focus) screens[n].querySelector('h1,h2').focus({ preventScroll: true });
@@ -57,15 +61,23 @@
       var a = e.target.closest && e.target.closest('a[href^="#"]');
       if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
       var el = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
-      if (!el) return;
+      if (!el || !article.contains(el)) return;
       e.preventDefault();
       history.pushState(null, '', a.getAttribute('href'));
       var at = fromHash();
       show(at.n, true, at.el);
     });
-    window.addEventListener('popstate', function () { var at = fromHash(); show(at.n, false, at.el); });
-    window.addEventListener('hashchange', function () { var at = fromHash(); if (at.n !== current) show(at.n, false, at.el); });
+    window.addEventListener('popstate', function () { var at = fromHash(); if (at.n >= 0) show(at.n, false, at.el); });
+    window.addEventListener('hashchange', function () { var at = fromHash(); if (at.n >= 0 && at.n !== current) show(at.n, false, at.el); });
+    // A printout holds every screen with its "+ more" open, and the page goes back as it was afterwards.
+    var closed = [];
+    window.addEventListener('beforeprint', function () {
+      closed = Array.prototype.filter.call(article.querySelectorAll('details.more'), function (d) { return !d.open; });
+      for (var i = 0; i < closed.length; i++) closed[i].open = true;
+    });
+    window.addEventListener('afterprint', function () { for (var i = 0; i < closed.length; i++) closed[i].open = false; closed = []; });
     var start = fromHash();
+    if (start.n < 0) start = { n: 0, el: null };
     show(start.n, false, start.el);
     // The browser jumps to the #anchor after load; put the screen back at the top unless it named a heading.
     if (!start.el || start.el === screens[start.n]) window.addEventListener('load', function () { setTimeout(function () { window.scrollTo(0, 0); }, 0); });

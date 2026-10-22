@@ -22,6 +22,8 @@ submissions get in?
 
 ## Considered Options
 
+Three options were weighed.
+
 - GitHub issue forms in each owning repo, vendored from one canonical set in avd-ops, with one
   routing table and a link builder the three surfaces share
 - A form endpoint (Staticman or a small Worker) that opens issues or pull requests with a bot token

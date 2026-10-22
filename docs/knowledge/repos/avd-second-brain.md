@@ -34,6 +34,8 @@ It thinks for avd-swarm and reads from the two foundation repos.
 
 ## Read more in the repo
 
+The repo has the full detail. Start here:
+
 - [README](https://github.com/avd-ops/avd-second-brain/blob/main/README.md)
 - [Architecture](https://github.com/avd-ops/avd-second-brain/blob/main/docs/architecture.md)
 - [Contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md)

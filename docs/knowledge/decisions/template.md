@@ -19,6 +19,8 @@ What problem or question forced a choice, in two or three sentences, ending in t
 
 ## Considered Options
 
+How many options were weighed, in one line.
+
 - Option 1
 - Option 2
 

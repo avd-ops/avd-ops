@@ -21,6 +21,8 @@ that lets any new page or artifact open in the avd-ops look, and does it need a 
 
 ## Considered Options
 
+Three options were weighed.
+
 - Starters in avd-ops: `templates/page.html` and `templates/artifact.html`, generated from the release,
   plus a Claude skill that starts from them
 - A separate theme repo, vendored the same way

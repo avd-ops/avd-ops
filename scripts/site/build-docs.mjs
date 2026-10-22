@@ -20,8 +20,9 @@ const REPO = 'https://github.com/avd-ops/avd-ops/blob/main/';
 // troubleshooting) stay in the repo and are linked on GitHub.
 const PUBLISHED = [/^getting-started\//, /^concepts\//, /^repos\//, /^roadmap\//, /^decisions\/(README|\d{4}-[\w-]+)\.md$/];
 // The KB sections: each is a root of the docs graph, reached from the side list (shell.mjs GROUPS).
-const SECTIONS = [['Start here', 'getting-started/README.md'], ['Concepts', 'concepts/README.md'], ['Repos', 'repos/README.md'],
-  ['Roadmap', 'roadmap/README.md'], ['Decisions', 'decisions/README.md']];
+// In the side list's order, which is also the order Next walks through the docs.
+const SECTIONS = [['Start here', 'getting-started/README.md'], ['Concepts', 'concepts/README.md'], ['Roadmap', 'roadmap/README.md'],
+  ['Repos', 'repos/README.md'], ['Decisions', 'decisions/README.md']];
 
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => {
   const p = `${d}/${f}`;
@@ -46,6 +47,7 @@ function frontMatter(text) {
   return { meta, body: m ? text.slice(m[0].length) : text };
 }
 
+const unesc = (s) => s.replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const pages = sources.map((src) => {
@@ -80,7 +82,7 @@ function render(page, md) {
 function slugger() {
   const seen = new Map();
   return (text) => {
-    const base = text.replace(/<[^>]+>/g, '').replace(/&\w+;/g, '').trim().toLowerCase().replace(/[^\w\- ]/g, '').replace(/ /g, '-');
+    const base = unesc(text.replace(/<[^>]+>/g, '')).trim().toLowerCase().replace(/[^\w\- ]/g, '').replace(/ /g, '-');
     const n = seen.get(base) || 0;
     seen.set(base, n + 1);
     return n ? `${base}-${n}` : base;
@@ -99,13 +101,19 @@ function stack(table) {
 // "+ more", so the screen opens on its bottom line. Without JavaScript every screen shows, one after another.
 function screens(page) {
   const slug = slugger();
-  const body = page.body.replace(/^# .+\n/m, '');
-  const parts = body.split(/^## (.+)\n/m);
-  const list = [{ title: page.title, md: parts[0], level: 1 }];
-  for (let i = 1; i < parts.length; i += 2) list.push({ title: parts[i].trim(), md: parts[i + 1], level: 2 });
+  // Split on ## headings and <!-- more --> lines outside code fences, so a fenced sample can hold either.
+  const list = [];
+  let fence = false;
+  for (const line of page.body.split('\n')) {
+    if (/^(```|~~~)/.test(line)) fence = !fence;
+    const h = !fence && line.match(/^(#{1,2}) (.+)$/);
+    if (h) list.push({ title: h[2].trim(), level: h[1].length, parts: [[]] });
+    else if (list.length && !fence && /^<!-- more -->\s*$/.test(line)) list.at(-1).parts.push([]);
+    else if (list.length) list.at(-1).parts.at(-1).push(line);
+  }
   return list.map((s) => {
     const id = slug(s.title);
-    const [shown, ...rest] = s.md.split(/^<!-- more -->\s*$/m);
+    const [shown, ...rest] = s.parts.map((lines) => lines.join('\n'));
     const sub = (html) => html.replace(/<h([34])>([\s\S]*?)<\/h\1>/g, (_, n, t) => `<h${n} id="${slug(t)}">${t}</h${n}>`)
       .replace(/<table>[\s\S]*?<\/table>/g, (t) => `<div class="tbl">${stack(t)}</div>`);
     const head = marked.parseInline(s.title);
@@ -146,6 +154,8 @@ function build() {
   // The docs read as one walk-through: Next on a page's last screen opens the next page, in the side list's order.
   const order = SECTIONS.flatMap(([, s]) => pages.filter((p) => p.src.startsWith(s.split('/')[0] + '/'))
     .sort((a, b) => (a.src === s ? -1 : b.src === s ? 1 : a.src.localeCompare(b.src))));
+  // A published page outside the sections is still built, at the end of the walk.
+  order.push(...pages.filter((p) => !order.includes(p)));
   for (const [i, p] of order.entries()) {
     const rel = (q) => posix.relative(posix.dirname(p.url), q.url);
     const back = pages.filter((q) => q.links.includes(p.src));
@@ -158,7 +168,7 @@ function build() {
       ? `<nav class="sc-steps" aria-label="On this page"><ol>${p.screens.map((s, n) => `<li><a href="#${s.id}" title="${s.title}"><span class="n">${n + 1}</span><span class="t">${s.title}</span></a></li>`).join('')}</ol></nav>\n`
       : '';
     const nav = `<nav class="sc-nav" aria-label="Back and next"><div class="in">${prev ? `<a class="sc-back" href="${rel(prev)}" data-page="${esc(prev.title)}">Back</a>` : '<a class="sc-back" hidden>Back</a>'}`
-      + `<span class="where">${p.screens.length > 1 ? `1 of ${p.screens.length}` : esc(p.title)}</span>`
+      + `<span class="where">${p.screens[0].title}</span>`
       + `${next ? `<a class="sc-next" href="${rel(next)}" data-page="${esc(next.title)}">Next: ${esc(next.title)}</a>` : '<a class="sc-next" hidden>Next</a>'}</div></nav>`;
     const content = `<article class="screens">\n${steps}${p.screens.map((s, n) => (n === p.screens.length - 1 ? s.html.replace(/<\/section>$/, `${backlinks}</section>`) : s.html)).join('\n')}\n${nav}\n</article>\n<script src="${'../'.repeat(p.url.split('/').length)}assets/docs.js" defer></script>`;
     files.set(p.url, shell({ url: p.url, title: p.title, summary: p.summary, content }));

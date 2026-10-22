@@ -34,6 +34,8 @@ It only knows what the brain cites, and checks live state again before any chang
 
 ## Read more in the repo
 
+The repo has the full detail. Start here:
+
 - [README](https://github.com/avd-ops/avd-swarm/blob/main/README.md)
 - [Spec](https://github.com/avd-ops/avd-swarm/blob/main/docs/spec.md)
 - [Governance](https://github.com/avd-ops/avd-swarm/blob/main/docs/governance.md)

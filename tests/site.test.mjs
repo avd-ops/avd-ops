@@ -195,8 +195,11 @@ test('every docs page reads one screen at a time, bottom line first (docs/design
     assert.equal(new Set(screens.map((m) => m[1])).size, screens.length, `${f}: screen ids are unique`);
     if (screens.length > 1) for (const [, id] of screens) assert.ok(h.includes(`<a href="#${id}"`), `${f}: the step list has no #${id}`);
     assert.match(h, /<nav class="sc-nav" aria-label="Back and next">/, `${f}: Back and Next`);
+    for (const [, id, open] of h.matchAll(/<section class="screen" id="([^"]+)">\n<h[12][^>]*>[\s\S]*?<\/h[12]>\n(.{0,16})/g)) {
+      assert.ok(open.startsWith('<p class="bl">'), `${f}: #${id} opens without a bottom line`);
+    }
     for (const [, bl] of h.matchAll(/<p class="bl">([\s\S]*?)<\/p>/g)) {
-      const text = bl.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      const text = bl.replace(/<[^>]+>/g, '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
       assert.ok(text.length <= 200, `${f}: a bottom line is one or two short sentences, not ${text.length} characters: "${text.slice(0, 60)}..."`);
     }
   }
