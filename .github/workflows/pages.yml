@@ -10,6 +10,8 @@ on:
       - main
     paths:
       - 'site/**'
+      - 'llms.txt'
+      - 'scripts/site/build-llms.mjs'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -34,6 +36,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Include canonical llms.txt
+        run: node scripts/site/build-llms.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
