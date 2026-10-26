@@ -1,29 +1,31 @@
 ---
 title: "avd-landing-zone"
-summary: "How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal"
+summary: "How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link"
 topic: repos
 status: partial
-last_reviewed: 2026-10-21
+last_reviewed: 2026-10-25
 ---
 
 # avd-landing-zone
 
-How an estate is built and changed from here: one Bicep template, deployed from a browser-guided portal.
+How an estate is built and changed from here: one Bicep template, deployed from a full-fledged browser deployment portal.
 
 <!-- more -->
 
-An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.
+An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template and a guided deployment portal.
 
 The repo is the source of truth: [avd-ops/avd-landing-zone](https://github.com/avd-ops/avd-landing-zone). This page says where it fits.
 
 ## What it does
 
-A cloud-only, private-by-default landing zone, with a portal that walks you through each step.
+A cloud-only, private-by-default landing zone with a deployment portal that configures the full topology and walks you through each step.
 
 - No domain controllers, no line of sight to on-premises, no post-deployment scripts.
-- FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; session hosts on Trusted Launch with encryption at host.
-- No default outbound access, AVD Private Link, Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.
-- A deployment portal in the browser that sizes the host pool and walks you through Cloud Shell, one pasted output at a time.
+- Deploys multiple workspaces, Desktop and RemoteApp application groups, and Pooled or Personal host pools from one Bicep template and topology manifest.
+- Configures every setting per host pool (sizing, load balancing, RDP properties, FSLogix profile size, autoscale, Encryption at Host, Intune, availability zones, and network access) with setting templates that apply to all or selected pools.
+- Full AVD Private Link (`connection` on host pools, `feed` and `global` on workspaces) and Private Endpoints for Azure Files and Key Vault, supporting both new and existing Private DNS zones per zone.
+- FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.
+- A deployment portal in the browser that designs and prices the topology and walks you through Cloud Shell, one pasted output at a time.
 
 ## How it fits
 

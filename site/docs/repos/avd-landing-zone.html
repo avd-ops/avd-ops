@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-landing-zone | avd-ops docs</title>
-<meta name="description" content="How it's built and changed from here: a cloud-native AVD landing zone in one Bicep template, with a deployment portal">
+<meta name="description" content="How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -32,21 +32,23 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-landing-zone" title="avd-landing-zone"><span class="n">1</span><span class="t">avd-landing-zone</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
 <section class="screen" id="avd-landing-zone">
 <h1 tabindex="-1">avd-landing-zone</h1>
-<p class="bl">How an estate is built and changed from here: one Bicep template, deployed from a browser-guided portal.</p>
+<p class="bl">How an estate is built and changed from here: one Bicep template, deployed from a full-fledged browser deployment portal.</p>
 
 <details class="more"><summary>More</summary>
-<p>An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template.</p>
+<p>An Azure Virtual Desktop landing zone for cloud-native organizations: Entra ID-joined, Intune-managed, private by default, deployed end to end from one Bicep template and a guided deployment portal.</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-landing-zone">avd-ops/avd-landing-zone</a>. This page says where it fits.</p>
 </details>
 </section>
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
-<p class="bl">A cloud-only, private-by-default landing zone, with a portal that walks you through each step.</p>
+<p class="bl">A cloud-only, private-by-default landing zone with a deployment portal that configures the full topology and walks you through each step.</p>
 <ul>
 <li>No domain controllers, no line of sight to on-premises, no post-deployment scripts.</li>
-<li>FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; session hosts on Trusted Launch with encryption at host.</li>
-<li>No default outbound access, AVD Private Link, Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.</li>
-<li>A deployment portal in the browser that sizes the host pool and walks you through Cloud Shell, one pasted output at a time.</li>
+<li>Deploys multiple workspaces, Desktop and RemoteApp application groups, and Pooled or Personal host pools from one Bicep template and topology manifest.</li>
+<li>Configures every setting per host pool (sizing, load balancing, RDP properties, FSLogix profile size, autoscale, Encryption at Host, Intune, availability zones, and network access) with setting templates that apply to all or selected pools.</li>
+<li>Full AVD Private Link (<code>connection</code> on host pools, <code>feed</code> and <code>global</code> on workspaces) and Private Endpoints for Azure Files and Key Vault, supporting both new and existing Private DNS zones per zone.</li>
+<li>FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.</li>
+<li>A deployment portal in the browser that designs and prices the topology and walks you through Cloud Shell, one pasted output at a time.</li>
 </ul>
 </section>
 <section class="screen" id="how-it-fits">
