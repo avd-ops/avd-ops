@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      - name: build and check llms.txt route
+        run: |
+          node scripts/site/build-llms.mjs
+          node scripts/site/check-llms-route.mjs
       - name: node --test
         run: node --test "tests/*.test.mjs"
 
