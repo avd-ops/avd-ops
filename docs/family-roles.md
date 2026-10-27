@@ -14,7 +14,7 @@ operations spec, section 3.0
 |---|---|---|---|
 | What it is | [avd-current-state](https://github.com/avd-ops/avd-current-state) | The collector and validator | Collects facts about an environment offline and validates them, read-only |
 | What it should be | [avd-assess](https://github.com/avd-ops/avd-assess) | The map and the dictionary | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. A research index that links out to published sources, the map of every detail an estate is built and assessed by, and the shared reference data the tools read, such as the endpoint map, each entry pinned to its source |
-| How we build it | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) | The deployment engine | Deploys the landing zone from Cloud Shell, with the deployment portal, and every change to it after that |
+| How we build it | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) | The deployment orchestrator and portal | Orchestrates deployments from Cloud Shell through the deployment portal across five control-plane repos (`avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform`), and every change after that ([decision 0009](knowledge/decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 
 Roles as the owner named them on 2026-10-21.
 
@@ -39,7 +39,7 @@ optional server probe stays optional, and free.
 
 1. **avd-landing-zone and avd-current-state are a self-contained pair.** They work, and keep
    working, with no second brain and no avd-swarm. avd-landing-zone stays true to its original
-   purpose: deploying and changing an AVD landing zone.
+   purpose: orchestrating and changing an AVD landing zone across `avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform` ([decision 0009](knowledge/decisions/0009-split-landing-zone-into-five-control-planes.md)).
 2. **Dependencies point down, never up.** The second brain and avd-swarm build on the pair and
    read what it produces. The pair never needs them: no deployment, check or script in the pair
    fails because the brain or avd-swarm is missing, renamed or down.

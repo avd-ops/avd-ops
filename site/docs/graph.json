@@ -72,6 +72,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0009-split-landing-zone-into-five-control-planes.md",
+   "title": "0009. Split deployment into five control-plane repos orchestrated by avd-landing-zone",
+   "url": "decisions/0009-split-landing-zone-into-five-control-planes.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -152,6 +159,10 @@
   },
   {
    "source": "concepts/README.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "concepts/README.md",
    "target": "repos/avd-current-state.md"
   },
   {
@@ -205,6 +216,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0008-code-signing.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
    "source": "getting-started/README.md",
@@ -292,6 +307,10 @@
   },
   {
    "source": "repos/avd-landing-zone.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-landing-zone.md",
    "target": "repos/avd-second-brain.md"
   },
   {
@@ -321,6 +340,10 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
    "source": "roadmap/README.md",
