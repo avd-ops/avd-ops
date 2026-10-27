@@ -3,9 +3,9 @@
   "org": "avd-ops",
   "checked": "2026-10-21",
   "adopted": [
-    {"name": "Azure Verified Modules", "url": "https://github.com/Azure/bicep-registry-modules", "license": "MIT", "job": "The Bicep modules the landing zone is built from (host pool, workspace, scaling plan, network, Key Vault and more)", "in": ["avd-landing-zone"]},
-    {"name": "Windows Desktop Optimization Tool (WDOT)", "url": "https://github.com/The-Virtual-Desktop-Team/Windows-Desktop-Optimization-Tool", "license": "MIT", "job": "Image optimization, run at a pinned release with a reviewed profile. It supersedes VDOT, which has no license and stays prior art only", "in": ["avd-landing-zone", "avd-assess"]},
-    {"name": "PSRule for Azure", "url": "https://github.com/Azure/PSRule.Rules.Azure", "license": "MIT", "job": "Checks the templates against Well-Architected rules in CI", "in": ["avd-landing-zone", "avd-assess"]},
+    {"name": "Azure Verified Modules", "url": "https://github.com/Azure/bicep-registry-modules", "license": "MIT", "job": "The Bicep modules the landing zone is built from (host pool, workspace, scaling plan, network, Key Vault and more)", "in": ["avd-landing-zone", "avd-azure"]},
+    {"name": "Windows Desktop Optimization Tool (WDOT)", "url": "https://github.com/The-Virtual-Desktop-Team/Windows-Desktop-Optimization-Tool", "license": "MIT", "job": "Image optimization, run at a pinned release with a reviewed profile. It supersedes VDOT, which has no license and stays prior art only", "in": ["avd-landing-zone", "avd-azure", "avd-assess"]},
+    {"name": "PSRule for Azure", "url": "https://github.com/Azure/PSRule.Rules.Azure", "license": "MIT", "job": "Checks the templates against Well-Architected rules in CI", "in": ["avd-landing-zone", "avd-azure", "avd-assess"]},
     {"name": "Well-Architected Reliability Assessment (WARA)", "url": "https://github.com/Azure/Well-Architected-Reliability-Assessment", "license": "MIT", "job": "The rule engine for live reliability checks, in place of one of our own", "in": ["avd-assess"]},
     {"name": "Azure review checklists", "url": "https://github.com/Azure/review-checklists", "license": "MIT", "job": "The AVD checklist the assessment method maps its facts to, cited by short item ID", "in": ["avd-assess"]},
     {"name": "Azure Proactive Resiliency Library v2", "url": "https://github.com/Azure/Azure-Proactive-Resiliency-Library-v2", "license": "MIT", "job": "Resiliency recommendations for AVD resources, read by WARA's collector", "in": ["avd-assess"]},
