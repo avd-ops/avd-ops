@@ -134,14 +134,14 @@
    "title": "avd-entra",
    "url": "repos/avd-entra.html",
    "topic": "repos",
-   "status": "plan"
+   "status": "partial"
   },
   {
    "id": "repos/avd-intune.md",
    "title": "avd-intune",
    "url": "repos/avd-intune.html",
    "topic": "repos",
-   "status": "plan"
+   "status": "partial"
   },
   {
    "id": "repos/avd-landing-zone.md",
@@ -155,14 +155,14 @@
    "title": "avd-m365",
    "url": "repos/avd-m365.html",
    "topic": "repos",
-   "status": "plan"
+   "status": "partial"
   },
   {
    "id": "repos/avd-power-platform.md",
    "title": "avd-power-platform",
    "url": "repos/avd-power-platform.html",
    "topic": "repos",
-   "status": "plan"
+   "status": "partial"
   },
   {
    "id": "repos/avd-second-brain.md",
