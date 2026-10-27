@@ -44,6 +44,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0006. Every operator script runs from either Cloud Shell prompt and on Windows, macOS and Linux](docs/knowledge/decisions/0006-run-anywhere.md): accepted
 - [0007. The theme ships as starters and a brand profile in avd-ops, not as its own repo or package](docs/knowledge/decisions/0007-starters-not-a-theme-repo.md): proposed
 - [0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it](docs/knowledge/decisions/0008-code-signing.md): accepted
+- [0009. Split deployment into five control-plane repos orchestrated by avd-landing-zone](docs/knowledge/decisions/0009-split-landing-zone-into-five-control-planes.md): accepted
 
 ## Related knowledge bases
 

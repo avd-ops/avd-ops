@@ -3,7 +3,7 @@ title: "avd-landing-zone"
 summary: "How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link"
 topic: repos
 status: partial
-last_reviewed: 2026-10-25
+last_reviewed: 2026-10-27
 ---
 
 # avd-landing-zone
@@ -31,7 +31,7 @@ A cloud-only, private-by-default landing zone with a deployment portal that conf
 
 It pairs with avd-current-state and works without anything on top.
 
-- With [avd-current-state](avd-current-state.md) it forms a self-contained pair that never depends on the layer on top.
+- With [avd-current-state](avd-current-state.md) it forms a self-contained pair that never depends on the layer on top, orchestrating five control-plane repos (`avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform`) for greenfield and brownfield estates ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)).
 - Can read a C14 target-state manifest from [avd-second-brain](avd-second-brain.md) when one exists, and works without one.
 - Its lessons are recorded in avd-second-brain's knowledge base.
 

@@ -3,7 +3,7 @@ title: "Concepts"
 summary: "The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture"
 topic: concepts
 status: partial
-last_reviewed: 2026-10-21
+last_reviewed: 2026-10-27
 ---
 
 # Concepts
@@ -20,7 +20,7 @@ Three repos each answer one question about an estate, and two more sit on top of
 
 | Question | Repo | Role |
 |---|---|---|
-| How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) | The deployment engine |
+| How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) | The deployment orchestrator and portal (over `avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform`, [decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 | What is there now | [avd-current-state](../repos/avd-current-state.md) | The collector and validator |
 | What it should be, and why | [avd-assess](../repos/avd-assess.md) | The map and the dictionary |
 
