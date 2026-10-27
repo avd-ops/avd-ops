@@ -42,20 +42,33 @@
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
 <p class="bl">It configures Intune MDM enrollment, Settings Catalog profiles and device compliance for session hosts.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Configures MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules.</li>
-<li>Deploys Settings Catalog profiles for AVD session hosts: FSLogix policies, RDP Shortpath, multimedia redirection, session limits and Windows Update rings.</li>
-<li>Applies session-host compliance policies that pair with <a href="avd-entra.html">avd-entra</a> Conditional Access.</li>
-<li>Assigns core host applications to the dynamic session-host device groups.</li>
+<li>Checks active Intune service plans (<code>INTUNE_A*</code>), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.</li>
+<li>Deploys Settings Catalog profiles (<code>FSLogix</code>, <code>Watermarking</code>, <code>ScreenCaptureProtection</code>, <code>SessionTimeLimits</code>, <code>DefenderVdiExclusions</code>) and device compliance policies stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
+<li>Assigns Settings Catalog and compliance policies to the dynamic session-host device group from <a href="avd-entra.html">avd-entra</a>.</li>
+<li><code>Deploy-AvdIntune.ps1</code> emits <code>intune-manifest.json</code> (<code>avd-ops-intune-manifest/v1</code>) and records <code>created: true|false</code> per policy ID in <code>intune-run-manifest.json</code> (<code>avd-ops-intune-run-manifest/v1</code>).</li>
+<li><code>Remove-AvdIntune.ps1 -DiscardLastCopy</code> deletes only policies created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield policies untouched and gating teardown behind <code>-DiscardLastCopy</code>.</li>
 </ul>
+<pre><code class="language-powershell"># Azure Cloud Shell (PowerShell)
+if (-not (Test-Path ~/avd-intune)) { git clone https://github.com/avd-ops/avd-intune.git ~/avd-intune }
+Set-Location ~/avd-intune; git checkout -q main; git pull -q --ff-only
+./scripts/Deploy-AvdIntune.ps1 -EntraManifestPath ./entra-manifest.json -OutputPath ./intune-manifest.json -RunManifestPath ./intune-run-manifest.json
+./scripts/Remove-AvdIntune.ps1 -RunManifestPath ./intune-run-manifest.json -DiscardLastCopy -WhatIf
+</code></pre>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
 <p class="bl">It targets the device groups from avd-entra so session hosts deployed by avd-azure enroll on first boot.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Orchestrated by <a href="avd-landing-zone.html">avd-landing-zone</a> alongside <a href="avd-azure.html">avd-azure</a> and <a href="avd-entra.html">avd-entra</a>.</li>
 <li>Validated read-only by <a href="avd-current-state.html">avd-current-state</a> against benchmarks in <a href="avd-assess.html">avd-assess</a>.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>

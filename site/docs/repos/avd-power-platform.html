@@ -42,20 +42,32 @@
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
 <p class="bl">It provisions Power Platform governance and approval-gated Power Automate flows for the AVD estate.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Deploys dedicated Power Platform environments, strict DLP policies, and Bicep <code>Microsoft.PowerPlatform/enterprisePolicies</code> for VNet subnet injection.</li>
-<li>Ships unpacked Power Automate solutions in Git for self-service pool and personal desktop access requests in Microsoft Teams.</li>
-<li>Automates approval-gated session-host drain mode, restart, personal desktop start-on-demand, and stale FSLogix profile alerts.</li>
-<li>Driven headlessly from Bicep, PowerShell 7, Bash, Python and the Power Platform CLI (<code>pac</code>).</li>
+<li>Deploys dedicated Power Platform environments (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Day-2 Automation</code>), strict DLP policies (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Day-2 Automation Strict DLP Policy</code>), and Bicep <code>Microsoft.PowerPlatform/enterprisePolicies</code> for VNet subnet injection.</li>
+<li>Packs and imports source-controlled Power Automate solutions (<code>AvdDay2Automation</code>) wired to <code>avd-entra</code> user groups and <code>avd-azure</code> host pools for self-service access requests and approval-gated host drain, restart, and start-on-demand in Microsoft Teams.</li>
+<li><code>Deploy-AvdPowerPlatform.ps1</code> emits <code>power-platform-manifest.json</code> (<code>avd-ops-power-platform-manifest/v1</code>) and records <code>created: true|false</code> per resource in <code>power-platform-run-manifest.json</code> (<code>avd-ops-power-platform-run-manifest/v1</code>).</li>
+<li><code>Remove-AvdPowerPlatform.ps1 -DiscardLastCopy</code> deletes only the DLP policy, environment, and enterprise policy created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield objects untouched and gating stateful teardown behind <code>-DiscardLastCopy</code>.</li>
 </ul>
+<pre><code class="language-powershell"># Azure Cloud Shell (PowerShell)
+if (-not (Test-Path ~/avd-power-platform)) { git clone https://github.com/avd-ops/avd-power-platform.git ~/avd-power-platform }
+Set-Location ~/avd-power-platform; git checkout -q main; git pull -q --ff-only
+./scripts/Deploy-AvdPowerPlatform.ps1 -EntraManifestPath ./entra-manifest.json -AzureOutputsPath ./azure-outputs.json -OutputPath ./power-platform-manifest.json -RunManifestPath ./power-platform-run-manifest.json
+./scripts/Remove-AvdPowerPlatform.ps1 -RunManifestPath ./power-platform-run-manifest.json -DiscardLastCopy -WhatIf
+</code></pre>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
 <p class="bl">It wires deterministic tenant workflows to the groups in avd-entra and the host pools in avd-azure.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Orchestrated by <a href="avd-landing-zone.html">avd-landing-zone</a> after <a href="avd-entra.html">avd-entra</a> and <a href="avd-azure.html">avd-azure</a> complete.</li>
 <li>Complements <a href="avd-swarm.html">avd-swarm</a>: whereas avd-swarm runs agentic reasoning and GitHub-gated plans, avd-power-platform runs deterministic self-service and operator approval flows inside the tenant.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>

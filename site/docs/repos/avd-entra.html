@@ -42,21 +42,35 @@
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
 <p class="bl">It prepares groups, Conditional Access and Entra Kerberos in Entra ID with zero portal click-ops.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Creates per-pool user security groups, dynamic session-host device groups, and break-glass exclusion groups.</li>
+<li>Creates security groups stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Users</code>, per-pool <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Users (&lt;pool&gt;)</code>, <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Admins</code>, <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Break-Glass Exclude</code>) and dynamic session-host device groups (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Session Hosts</code>).</li>
 <li>Deploys Conditional Access policies targeting Azure Virtual Desktop and Windows Cloud Login (<code>reportOnly</code> by default).</li>
 <li>Completes the Microsoft Graph service principal and Entra Kerberos readiness steps for Premium Azure Files (FSLogix).</li>
 <li>Checks tenant license SKUs in preflight and seeds optional greenfield lab users without buying commitments.</li>
+<li><code>Deploy-AvdEntra.ps1</code> emits <code>entra-manifest.json</code> (<code>avd-ops-entra-manifest/v1</code>) and records <code>created: true|false</code> per object ID in <code>entra-run-manifest.json</code> (<code>avd-ops-entra-run-manifest/v1</code>).</li>
+<li><code>Remove-AvdEntra.ps1 -DiscardLastCopy</code> tears down only objects created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield objects untouched and gating stateful deletions behind <code>-DiscardLastCopy</code>.</li>
 </ul>
+<pre><code class="language-powershell"># Azure Cloud Shell (PowerShell)
+if (-not (Test-Path ~/avd-entra)) { git clone https://github.com/avd-ops/avd-entra.git ~/avd-entra }
+Set-Location ~/avd-entra; git checkout -q main; git pull -q --ff-only
+./scripts/Deploy-AvdEntra.ps1 -Prefix avd -Environment dev -OutputPath ./entra-manifest.json -RunManifestPath ./entra-run-manifest.json
+./scripts/Remove-AvdEntra.ps1 -RunManifestPath ./entra-run-manifest.json -DiscardLastCopy -WhatIf
+</code></pre>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
 <p class="bl">It runs as the root identity stage under avd-landing-zone and feeds the other four control planes.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Orchestrated by <a href="avd-landing-zone.html">avd-landing-zone</a> or run standalone from Azure Cloud Shell.</li>
 <li>Emits <code>entra-manifest.json</code> so <a href="avd-intune.html">avd-intune</a>, <a href="avd-m365.html">avd-m365</a>, <a href="avd-azure.html">avd-azure</a> and <a href="avd-power-platform.html">avd-power-platform</a> bind to the same security groups.</li>
 <li>Checked read-only by <a href="avd-current-state.html">avd-current-state</a>.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>

@@ -42,20 +42,34 @@
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
 <p class="bl">It configures OneDrive, Teams VDI and Microsoft 365 Apps baselines for greenfield AVD tenants.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Configures OneDrive Silent Account Configuration, Known Folder Move (KFM) and sync rules for pooled and personal desktops.</li>
-<li>Applies Microsoft Teams VDI media optimization and meeting policies.</li>
+<li>Configures OneDrive Silent Account Configuration, Known Folder Move (<code>KFMSilentOptIn</code>, querying the tenant GUID dynamically at deploy time) and Files On-Demand sync rules stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
+<li>Applies Microsoft Teams VDI media optimization (<code>SlimCore</code>) and meeting policies.</li>
 <li>Sets Microsoft 365 Apps Shared Computer Activation and Outlook caching defaults for FSLogix containers.</li>
 <li>Checks required tenant SKUs in preflight without purchasing recurring commitments.</li>
+<li><code>Deploy-AvdM365.ps1</code> emits <code>m365-manifest.json</code> (<code>avd-ops-m365-manifest/v1</code>) and records <code>created: true|false</code> per policy ID in <code>m365-run-manifest.json</code> (<code>avd-ops-m365-run-manifest/v1</code>).</li>
+<li><code>Remove-AvdM365.ps1 -DiscardLastCopy</code> deletes only policies created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield policies untouched and gating teardown behind <code>-DiscardLastCopy</code>.</li>
 </ul>
+<pre><code class="language-powershell"># Azure Cloud Shell (PowerShell)
+if (-not (Test-Path ~/avd-m365)) { git clone https://github.com/avd-ops/avd-m365.git ~/avd-m365 }
+Set-Location ~/avd-m365; git checkout -q main; git pull -q --ff-only
+./scripts/Deploy-AvdM365.ps1 -EntraManifestPath ./entra-manifest.json -OutputPath ./m365-manifest.json -RunManifestPath ./m365-run-manifest.json
+./scripts/Remove-AvdM365.ps1 -RunManifestPath ./m365-run-manifest.json -DiscardLastCopy -WhatIf
+</code></pre>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
 <p class="bl">It pairs with avd-entra and avd-intune when standing up a greenfield tenant from avd-landing-zone.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li>Orchestrated by <a href="avd-landing-zone.html">avd-landing-zone</a> for greenfield setups; brownfield tenants with existing M365 settings can skip it.</li>
 <li>Consumes user group targets from <a href="avd-entra.html">avd-entra</a> and aligns with endpoint profiles in <a href="avd-intune.html">avd-intune</a>.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>
