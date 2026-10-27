@@ -12,8 +12,8 @@ operations spec, section 3.0
 
 | Question | Repo | Role | What it does |
 |---|---|---|---|
-| What it is | [avd-current-state](https://github.com/avd-ops/avd-current-state) | The collector and validator | Collects facts about an environment offline and validates them, read-only |
-| What it should be | [avd-assess](https://github.com/avd-ops/avd-assess) | The map and the dictionary | The assessment method, and the why behind it: collection, assessment, targets and benchmarks, scoring. A research index that links out to published sources, the map of every detail an estate is built and assessed by, and the shared reference data the tools read, such as the endpoint map, each entry pinned to its source |
+| What it is | [avd-current-state](https://github.com/avd-ops/avd-current-state) | The collector and validator | Collects facts about an environment offline across all five control planes (`azure`, `entra`, `intune`, `m365`, `power-platform`) and validates them, read-only ([decision 0010](knowledge/decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)) |
+| What it should be | [avd-assess](https://github.com/avd-ops/avd-assess) | The map and the dictionary | The assessment method across all five control planes, and the why behind it: collection, assessment, targets and benchmarks, scoring, and plane-routed remediation ([decision 0010](knowledge/decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)). A research index that links out to published sources, the map of every detail an estate is built and assessed by, and the shared reference data the tools read, such as the endpoint map, each entry pinned to its source |
 | How we build it | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone) | The deployment orchestrator and portal | Orchestrates deployments from Cloud Shell through the deployment portal across five control-plane repos (`avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform`), and every change after that ([decision 0009](knowledge/decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 
 Roles as the owner named them on 2026-10-21.

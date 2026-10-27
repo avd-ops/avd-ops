@@ -12,8 +12,8 @@ Where each repo stands today, in one line each.
 
 | Repo | Today |
 |---|---|
-| [avd-current-state](../repos/avd-current-state.md) | Built: collector, validator and the C11 facts snapshot |
-| [avd-assess](../repos/avd-assess.md) | Public: the five methods, with sources pinned and observations growing |
+| [avd-current-state](../repos/avd-current-state.md) | Built: collector, validator and the C11 facts snapshot; expanding across all five control planes ([decision 0010](../decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)) |
+| [avd-assess](../repos/avd-assess.md) | Public: the methods, with sources pinned, observations growing, and five-plane standards specified ([decision 0010](../decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)) |
 | [avd-landing-zone](../repos/avd-landing-zone.md) | Built: top-level orchestrator and deployment portal over the five control-plane repos ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 | [avd-entra](../repos/avd-entra.md) | Bootstrapped: Entra ID groups, Conditional Access and Entra Kerberos control plane |
 | [avd-intune](../repos/avd-intune.md) | Bootstrapped: Intune session-host MDM enrollment and Settings Catalog control plane |
