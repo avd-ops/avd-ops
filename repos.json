@@ -8,7 +8,12 @@
   "repos": [
     {"name": "avd-current-state", "repo": "avd-ops/avd-current-state", "branch": "main", "role": "What is there now", "docs": "docs/knowledge/repos/avd-current-state.md", "portal": "https://avd-ops.github.io/avd-current-state/portal/"},
     {"name": "avd-assess", "repo": "avd-ops/avd-assess", "branch": "main", "role": "Foundation: what it should be", "docs": "docs/knowledge/repos/avd-assess.md"},
-    {"name": "avd-landing-zone", "repo": "avd-ops/avd-landing-zone", "branch": "master", "role": "How it's built and changed from here", "docs": "docs/knowledge/repos/avd-landing-zone.md", "portal": "https://deploy.avd-ops.dev/portal/"},
+    {"name": "avd-landing-zone", "repo": "avd-ops/avd-landing-zone", "branch": "master", "role": "How it's built and changed from here: orchestrator and portal", "docs": "docs/knowledge/repos/avd-landing-zone.md", "portal": "https://deploy.avd-ops.dev/portal/"},
+    {"name": "avd-entra", "repo": "avd-ops/avd-entra", "branch": "main", "role": "Control plane: Entra ID identity, groups and Conditional Access", "docs": "docs/knowledge/repos/avd-entra.md"},
+    {"name": "avd-intune", "repo": "avd-ops/avd-intune", "branch": "main", "role": "Control plane: Intune session-host enrollment and Settings Catalog", "docs": "docs/knowledge/repos/avd-intune.md"},
+    {"name": "avd-m365", "repo": "avd-ops/avd-m365", "branch": "main", "role": "Control plane: greenfield Microsoft 365, OneDrive and Teams VDI", "docs": "docs/knowledge/repos/avd-m365.md"},
+    {"name": "avd-azure", "repo": "avd-ops/avd-azure", "branch": "main", "role": "Control plane: Azure ARM and Bicep infrastructure", "docs": "docs/knowledge/repos/avd-azure.md"},
+    {"name": "avd-power-platform", "repo": "avd-ops/avd-power-platform", "branch": "main", "role": "Control plane: Power Platform and Power Automate day-2 workflows", "docs": "docs/knowledge/repos/avd-power-platform.md"},
     {"name": "avd-swarm", "repo": "avd-ops/avd-swarm", "branch": "main", "role": "On top: the how of operating", "docs": "docs/knowledge/repos/avd-swarm.md"},
     {"name": "avd-second-brain", "repo": "avd-ops/avd-second-brain", "branch": "main", "role": "On top: the why, over the environment's life", "docs": "docs/knowledge/repos/avd-second-brain.md"},
     {"name": "avd-ops", "repo": "avd-ops/avd-ops", "branch": "main", "role": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
