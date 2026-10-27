@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>avd-power-platform | avd-ops</title>
+<meta name="description" content="Day-2 Power Platform environments, DLP policies and Power Automate workflow automation for Azure Virtual Desktop estates.">
+<!-- shell:head -->
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/avd-ops.css">
+<link rel="stylesheet" href="../assets/avd-ops-shell.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/theme.js"></script>
+<!-- /shell:head -->
+</head>
+<body class="shell">
+<!-- shell:top -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
+<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://avd-ops.github.io/avd-current-state/portal/">Assess</a></nav>
+<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
+<div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
+<li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
+<li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
+<li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div></details>
+<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
+<div class="layout"><nav class="side" id="side" aria-label="Pages">
+<p class="group">Start</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../architecture.html">Architecture</a><a href="../security.html">Security review</a><a href="../standards/index.html">Standards library</a><a href="../docs/concepts.html">Concepts</a><a href="../docs/roadmap.html">Roadmap</a>
+<p class="group">Repos</p><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-landing-zone.html">avd-landing-zone</a><a href="../family/avd-entra.html">avd-entra</a><a href="../family/avd-intune.html">avd-intune</a><a href="../family/avd-m365.html">avd-m365</a><a href="../family/avd-azure.html">avd-azure</a><a href="../family/avd-power-platform.html" aria-current="page">avd-power-platform</a><a href="../family/avd-swarm.html">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a><a href="../docs/repos/index.html">Repo guides</a>
+<p class="group">Record</p><a href="../docs/decisions/index.html">Decisions</a><a href="../docs/graph.html">Graph</a><a href="../design/index.html">Design system</a><a href="../credits.html">Credits</a>
+</nav>
+<!-- /shell:top -->
+<main id="main">
+<div class="col">
+<h1>avd-power-platform</h1>
+<p class="lede">Day-2 Power Platform environments, DLP policies and Power Automate workflow automation for Azure Virtual Desktop estates, orchestrated by avd-landing-zone.</p>
+<span class="status s-design">Design</span>
+<h2>What it does</h2><ul><li>Deploys dedicated Power Platform environments, strict DLP policies and Bicep <code>Microsoft.PowerPlatform/enterprisePolicies</code> for VNet injection.</li><li>Ships source-controlled, unpacked Power Automate solutions wired to avd-azure host pools and avd-entra groups.</li><li>Automates self-service desktop and pool access requests in Microsoft Teams with manager approval gates.</li><li>Automates approval-gated session-host drain, restart, personal desktop start-on-demand and stale FSLogix profile alerts.</li></ul>
+<h2>Try it in a lab</h2><pre># Azure Cloud Shell (PowerShell)
+if (-not (Test-Path ~/avd-power-platform)) { git clone https://github.com/avd-ops/avd-power-platform.git ~/avd-power-platform }
+Set-Location ~/avd-power-platform; git checkout -q main; git pull -q --ff-only
+Get-Content ./README.md</pre>
+<p>Full details and contracts are in the <a href="https://github.com/avd-ops/avd-power-platform#readme">README</a>.</p>
+<h2>Read more</h2><ul><li><a href="https://github.com/avd-ops/avd-power-platform">Repository on GitHub</a></li><li><a href="../docs/repos/avd-power-platform.html">Repo guide</a></li><li><a href="../docs/decisions/0009-split-landing-zone-into-five-control-planes.html">Decision 0009</a></li><li><a href="https://github.com/avd-ops/avd-power-platform#contributing">Contributing</a></li></ul>
+</div>
+</main>
+<!-- shell:foot -->
+</div>
+<footer class="foot"><div class="in"><p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p>
+<p>Every repo is open source, under MIT unless a folder says otherwise. Azure, Azure Virtual Desktop, Microsoft Entra, Intune and FSLogix are trademarks of Microsoft.</p>
+<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p></div></footer>
+<button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>
+<!-- /shell:foot -->
+</body>
+</html>

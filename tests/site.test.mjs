@@ -16,7 +16,7 @@ assert.ok(pages.includes('site/design/index.html'), 'the design system reference
 const read = (f) => readFileSync(join(root, f), 'utf8');
 
 test('the site has a page for each public repo in the family', () => {
-  for (const r of ['avd-landing-zone', 'avd-current-state', 'avd-assess', 'avd-swarm', 'avd-second-brain']) {
+  for (const r of JSON.parse(read('repos.json')).repos.filter((x) => x.name !== 'avd-ops').map((x) => x.name)) {
     assert.ok(pages.includes(`site/family/${r}.html`), r);
   }
 });

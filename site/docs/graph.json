@@ -116,6 +116,13 @@
    "status": "partial"
   },
   {
+   "id": "repos/avd-azure.md",
+   "title": "avd-azure",
+   "url": "repos/avd-azure.html",
+   "topic": "repos",
+   "status": "partial"
+  },
+  {
    "id": "repos/avd-current-state.md",
    "title": "avd-current-state",
    "url": "repos/avd-current-state.html",
@@ -123,11 +130,39 @@
    "status": "partial"
   },
   {
+   "id": "repos/avd-entra.md",
+   "title": "avd-entra",
+   "url": "repos/avd-entra.html",
+   "topic": "repos",
+   "status": "plan"
+  },
+  {
+   "id": "repos/avd-intune.md",
+   "title": "avd-intune",
+   "url": "repos/avd-intune.html",
+   "topic": "repos",
+   "status": "plan"
+  },
+  {
    "id": "repos/avd-landing-zone.md",
    "title": "avd-landing-zone",
    "url": "repos/avd-landing-zone.html",
    "topic": "repos",
    "status": "partial"
+  },
+  {
+   "id": "repos/avd-m365.md",
+   "title": "avd-m365",
+   "url": "repos/avd-m365.html",
+   "topic": "repos",
+   "status": "plan"
+  },
+  {
+   "id": "repos/avd-power-platform.md",
+   "title": "avd-power-platform",
+   "url": "repos/avd-power-platform.html",
+   "topic": "repos",
+   "status": "plan"
   },
   {
    "id": "repos/avd-second-brain.md",
@@ -267,11 +302,31 @@
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/README.md",
    "target": "repos/avd-landing-zone.md"
   },
   {
    "source": "repos/README.md",
-   "target": "repos/avd-assess.md"
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-power-platform.md"
   },
   {
    "source": "repos/README.md",
@@ -280,6 +335,10 @@
   {
    "source": "repos/README.md",
    "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
    "source": "repos/avd-assess.md",
@@ -294,12 +353,88 @@
    "target": "repos/avd-second-brain.md"
   },
   {
+   "source": "repos/avd-azure.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
+   "target": "repos/avd-power-platform.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
    "source": "repos/avd-current-state.md",
    "target": "repos/avd-second-brain.md"
   },
   {
    "source": "repos/avd-current-state.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-power-platform.md"
+  },
+  {
+   "source": "repos/avd-entra.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
+   "target": "repos/avd-assess.md"
   },
   {
    "source": "repos/avd-landing-zone.md",
@@ -312,6 +447,42 @@
   {
    "source": "repos/avd-landing-zone.md",
    "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-m365.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-m365.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-m365.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-m365.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-power-platform.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-power-platform.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-power-platform.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-power-platform.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-power-platform.md",
+   "target": "repos/avd-swarm.md"
   },
   {
    "source": "repos/avd-second-brain.md",
@@ -344,6 +515,26 @@
   {
    "source": "roadmap/README.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-power-platform.md"
   },
   {
    "source": "roadmap/README.md",
