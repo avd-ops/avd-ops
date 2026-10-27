@@ -5,9 +5,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { graphHealth } from '../scripts/site/graph-health.mjs';
 
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const node = (id, extra = {}) => ({ id, title: id, url: `${id}.html`, topic: id.split('/')[0], ...extra });
 
 test('a page nobody links to is an orphan, unless the nav reaches it', () => {
@@ -54,7 +56,7 @@ test('a superseded decision may be linked from the decision records, not from gu
 });
 
 test('the docs graph is healthy', () => {
-  const h = graphHealth(JSON.parse(readFileSync(`${root}site/docs/graph.json`, 'utf8')));
+  const h = graphHealth(JSON.parse(readFileSync(join(root, 'site/docs/graph.json'), 'utf8')));
   assert.deepEqual(h.orphans, [], 'link these pages from another page');
   assert.deepEqual(h.unreachable, [], 'these pages cannot be reached from the nav');
   assert.deepEqual(h.supersededLinks, [], 'link the decision that superseded these instead');

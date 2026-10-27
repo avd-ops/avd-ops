@@ -7,11 +7,12 @@
 //   node scripts/site/build-docs.mjs --check   # fail if site/docs/ is out of date (CI)
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, relative, posix } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import { graphHealth } from './graph-health.mjs';
 import { shellHead, shellTop, shellFoot } from './shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const KB = 'docs/knowledge';
 const OUT = 'site/docs';
 const REPO = 'https://github.com/avd-ops/avd-ops/blob/main/';

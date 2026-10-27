@@ -8,8 +8,9 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (f) => readFileSync(join(root, f), 'utf8');
 const lock = JSON.parse(read('site/data/standards/standards.lock.json'));
 const data = (f) => `site/data/standards/${f.replace(/^contracts\//, '')}`;

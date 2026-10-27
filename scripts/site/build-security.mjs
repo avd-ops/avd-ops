@@ -8,9 +8,10 @@
 //   node scripts/site/build-security.mjs --check   # fail if site/security.html is out of date (CI)
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { applyShell } from './apply-shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const OUT = 'site/security.html';
 const map = JSON.parse(readFileSync(join(root, 'site/data/security-review.json'), 'utf8'));
 const lock = JSON.parse(readFileSync(join(root, 'site/data/security-review.lock.json'), 'utf8'));

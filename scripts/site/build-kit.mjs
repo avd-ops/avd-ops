@@ -9,10 +9,10 @@
 //   node scripts/site/build-kit.mjs --check   # fail if templates/ is out of date (CI)
 import { readFileSync, writeFileSync, existsSync, mkdirSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, themeButton } from './shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
 const BASE = asset('avd-ops.css');
 const SITE = 'https://avd-ops.dev/';

@@ -12,12 +12,13 @@
 //   node scripts/site/build-standards.mjs --pin ../avd-assess  # copy avd-assess's files at its HEAD and lock them
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, copyFileSync } from 'node:fs';
 import { join, dirname, posix } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { marked } from 'marked';
 import { applyShell } from './apply-shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const DATA = 'site/data/standards';
 const LOCK = `${DATA}/standards.lock.json`;
 const FILES = ['index.json', 'method.json', 'contracts/fact-register.json'];

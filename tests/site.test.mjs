@@ -8,8 +8,9 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => (statSync(join(root, d, f)).isDirectory() ? walk(`${d}/${f}`) : [`${d}/${f}`]));
 const pages = walk('site').filter((f) => f.endsWith('.html'));
 assert.ok(pages.includes('site/design/index.html'), 'the design system reference page');
@@ -276,7 +277,7 @@ test('avd-ops names no project outside the family it shouldn\'t (repos.json bann
   const re = new RegExp(`(?<![\\w-])(${banned.join('|')})(?![\\w-])`, 'i');
   const files = execFileSync('git', ['-C', root, 'ls-files', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' }).split('\n').filter(Boolean);
   for (const f of files) {
-    if (f === 'repos.json' || !existsSync(join(root, f))) continue;
+    if (f === 'repos.json' || !existsSync(join(root, f)) || statSync(join(root, f)).isDirectory()) continue;
     const text = readFileSync(join(root, f), 'utf8');
     if (text.includes('\u0000')) continue;
     assert.doesNotMatch(text, re, f);
