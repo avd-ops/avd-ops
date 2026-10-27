@@ -6,9 +6,10 @@
 //   node scripts/site/build-credits.mjs --check   # fail if site/credits.html is out of date (CI)
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { applyShell } from './apply-shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const OUT = 'site/credits.html';
 const data = JSON.parse(readFileSync(join(root, 'credits.json'), 'utf8'));
 const { repos } = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8'));

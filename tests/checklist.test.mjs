@@ -5,12 +5,13 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   validate, prStatus, itemPrStatus, rulesetStatus, pvrStatus, itemSettingStatus, planRequests, budget, applyResult,
   shouldAutoCheck, progress, listPrs, STALE_MS, RATE_LIMIT, currentRate, readRate,
 } from '../site/assets/checklist-core.js';
 
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (f) => readFileSync(join(root, f), 'utf8');
 const data = JSON.parse(read('site/checklist.json'));
 

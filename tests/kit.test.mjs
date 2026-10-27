@@ -6,8 +6,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (f) => readFileSync(join(root, f), 'utf8');
 const { VERSION: version } = await import('../scripts/site/build-kit.mjs');
 assert.ok(version, 'version line in avd-ops.css');

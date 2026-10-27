@@ -82,3 +82,19 @@ errors:
     applies_to: avd-ops site tests
     status: verified
     added: "2026-10-22"
+  - id: nodejs-url-pathname-windows-drive-slash
+    symptom: "ENOENT: no such file or directory, open 'C:\\C:\\...\\file' (or fatal: cannot change to '/C:/...')"
+    cause: "`new URL('../', import.meta.url).pathname` returns a leading slash before the drive letter on Windows (`/C:/...`), which `path.join` duplicates into `C:\\C:\\...` and `git -C` rejects, while `path.relative` returns `\\` separators."
+    fix: "Convert `import.meta.url` with `fileURLToPath(new URL('../', import.meta.url))` from `node:url`, normalize `relative()` paths to `/` for URLs and manifest keys, and keep `* text=auto eol=lf` in `.gitattributes`."
+    source: decisions/0006-run-anywhere.md
+    applies_to: Node.js 20+ on Windows
+    status: verified
+    added: "2026-10-27"
+  - id: python-unittest-path-root-on-windows
+    symptom: "ValueError: 'C:\\\\Users\\\\...\\\\sources.toml' is not in the subpath of '\\\\' in scripts/kb/test_kb.py"
+    cause: "Mocking `validate.ROOT` as `Path('/')` in unit tests resolves to `'\\\\'` on Windows without a drive letter, while `tempfile.mkdtemp()` creates a directory on `C:\\\\`, so `path.relative_to(ROOT)` raises `ValueError`."
+    fix: "Patch `validate.ROOT` to the temporary directory (`mock.patch.object(validate, 'ROOT', tmp)`) instead of `Path('/')`."
+    source: decisions/0006-run-anywhere.md
+    applies_to: Python 3.11+ on Windows
+    status: verified
+    added: "2026-10-27"

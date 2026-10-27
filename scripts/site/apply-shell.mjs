@@ -8,15 +8,15 @@
 //   node scripts/site/apply-shell.mjs --check   # fail if a page's shell is out of date (CI)
 import { readFileSync, writeFileSync, readdirSync, statSync, realpathSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { shellHead, shellTop, shellFoot } from './shell.mjs';
 
-const root = new URL('../../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const SITE = join(root, 'site');
 const FOOT = '<p>This site is built from each repo\'s README. Something wrong? Open an issue or a pull request in the repo it came from.</p>';
 
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
-const handWritten = () => walk(SITE).filter((f) => f.endsWith('.html') && !relative(SITE, f).startsWith('docs/'));
+const handWritten = () => walk(SITE).filter((f) => f.endsWith('.html') && !relative(SITE, f).replace(/\\/g, '/').startsWith('docs/'));
 
 export function applyShell(html, current) {
   const up = '../'.repeat(current.split('/').length - 1);
@@ -32,7 +32,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.ar
   const check = process.argv.includes('--check');
   const stale = [];
   for (const f of handWritten()) {
-    const current = relative(SITE, f);
+    const current = relative(SITE, f).replace(/\\/g, '/');
     const before = readFileSync(f, 'utf8');
     const after = applyShell(before, current);
     if (after !== before) {

@@ -4,9 +4,11 @@
 // every page on avd-ops.dev has one navigation. Pure: it takes a page's place and returns markup.
 // Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
 import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../../', import.meta.url).pathname;
-const family = JSON.parse(readFileSync(`${root}repos.json`, 'utf8'));
+const root = fileURLToPath(new URL('../../', import.meta.url));
+const family = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8'));
 const portal = (name) => family.repos.find((r) => r.name === name)?.portal;
 
 // The side list, the same on every page. Paths are relative to site/.

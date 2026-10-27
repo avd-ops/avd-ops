@@ -250,7 +250,7 @@ class FamilyTests(unittest.TestCase):
         self.addCleanup(shutil.rmtree, tmp)
         (tmp / "sources.toml").write_text('[[source]]\nname = "a"\nkind = "github_commits"\nrepo = "octo/sib"\npath = "kb"\n')
         validate.errors.clear()
-        with mock.patch.object(kblib, "SOURCES", tmp / "sources.toml"), mock.patch.object(validate, "ROOT", Path("/")):
+        with mock.patch.object(kblib, "SOURCES", tmp / "sources.toml"), mock.patch.object(validate, "ROOT", tmp):
             validate.check_family()
         self.assertEqual(len(validate.errors), 1)
         self.assertIn("kb/decisions", validate.errors[0])
@@ -322,7 +322,7 @@ class DirectiveTests(unittest.TestCase):
         many = [{**self.DIRECTIVES[0], "id": f"d-20261018-{i}"} for i in range(6)]
         kblib.Path(tmp / "directives.yaml").write_text(kblib.dump_yaml({"directives": many}))
         validate.errors.clear()
-        with mock.patch.object(kblib, "DIRECTIVES", tmp / "directives.yaml"), mock.patch.object(validate, "ROOT", Path("/")):
+        with mock.patch.object(kblib, "DIRECTIVES", tmp / "directives.yaml"), mock.patch.object(validate, "ROOT", tmp):
             validate.check_directives(self.TODAY)
         self.assertEqual(len(validate.errors), 1)
         self.assertIn("6 directives are active", validate.errors[0])
