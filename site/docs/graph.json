@@ -79,6 +79,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md",
+   "title": "0010. Expand avd-assess and avd-current-state natively across all five control planes",
+   "url": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -221,6 +228,10 @@
    "target": "getting-started/cloud-shell.md"
   },
   {
+   "source": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -255,6 +266,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
   },
   {
    "source": "getting-started/README.md",
@@ -342,11 +357,35 @@
   },
   {
    "source": "repos/avd-assess.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
    "target": "repos/avd-current-state.md"
   },
   {
    "source": "repos/avd-assess.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "repos/avd-power-platform.md"
   },
   {
    "source": "repos/avd-assess.md",
@@ -378,11 +417,35 @@
   },
   {
    "source": "repos/avd-current-state.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
    "target": "repos/avd-second-brain.md"
   },
   {
    "source": "repos/avd-current-state.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-current-state.md",
+   "target": "repos/avd-power-platform.md"
   },
   {
    "source": "repos/avd-entra.md",
@@ -503,6 +566,10 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
   },
   {
    "source": "roadmap/README.md",

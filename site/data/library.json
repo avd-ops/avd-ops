@@ -3,8 +3,8 @@
  "schema": "avd-ops-library/v1",
  "edition": {
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "a5a7eeeb230a38c80cb00735b2531f407ddc2236",
-  "date": "2026-10-21"
+  "commit": "cfcc3026b968c3c15a4150b8c7160891a138d3f0",
+  "date": "2026-10-27"
  },
  "references": [
   {
@@ -1260,7 +1260,7 @@
       "measurable": false,
       "validated": false,
       "disputed": false,
-      "helpWanted": false
+      "helpWanted": true
      },
      "citedBy": []
     },
@@ -2321,7 +2321,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "vm-login-roles",
@@ -2360,7 +2362,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "fslogix-hybrid-users",
@@ -2394,7 +2398,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3670,12 +3674,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "two-aligned-policies",
@@ -3683,12 +3689,14 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "feed-app-no-mfa",
@@ -3701,7 +3709,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "legacy-clients-off",
@@ -3753,7 +3763,35 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "avd-multimedia-redirection",
+   "title": "Multimedia redirection for Azure Virtual Desktop",
+   "url": "https://learn.microsoft.com/azure/virtual-desktop/multimedia-redirection-intro",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id a5a6107238e1f12e2f22cbfb5d0dd011696b5540, updated_at 2026-10-20",
+   "read": "2026-10-27",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "mmr-browser-video",
+     "says": "Multimedia redirection redirects video playback and audio calls from Edge or Chrome inside the remote session to the local device for faster rendering and lower session host CPU consumption.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "m365"
+     ]
     }
    ]
   },
@@ -4179,12 +4217,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     },
     {
      "id": "onedrive-per-machine",
@@ -4197,7 +4237,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     },
     {
      "id": "line-of-business-after",
@@ -4210,7 +4252,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     }
    ]
   },
@@ -4367,7 +4411,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "hybrid-sync",
@@ -4804,7 +4850,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "user-role",
@@ -4812,12 +4860,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "contributor-no-assignment",
@@ -5591,7 +5641,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "consent-prompt",
@@ -5604,7 +5656,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "kerberos-server-object",
@@ -5625,12 +5679,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "disconnect-on-lock",
@@ -5835,7 +5891,8 @@
       "helpWanted": false
      },
      "citedBy": [
-      "intune"
+      "intune",
+      "m365"
      ]
     },
     {
@@ -6213,12 +6270,14 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     }
    ]
   },
@@ -6606,12 +6665,14 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     }
    ]
   },
@@ -8557,12 +8618,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "one-identity-source",
@@ -8635,12 +8698,14 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "settings-catalog-multisession",
@@ -9705,7 +9770,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -9939,7 +10004,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10029,7 +10094,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10044,7 +10109,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10059,7 +10124,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10074,7 +10139,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10173,7 +10238,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": true,
       "disputed": false,
       "helpWanted": false
@@ -10303,7 +10368,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -10648,12 +10713,14 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "PA-7",
@@ -11180,6 +11247,62 @@
    ]
   },
   {
+   "id": "onedrive-vdi",
+   "title": "Use the sync app on virtual desktops (OneDrive VDI support)",
+   "url": "https://learn.microsoft.com/sharepoint/sync-vdi-support",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id 9d9b5cecc7cff8124eb11f6cad601b8168f5e30d, updated_at 2026-10-15",
+   "read": "2026-10-27",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "silent-config-and-kfm",
+     "says": "Silent account configuration signs users in to OneDrive automatically on virtual desktops, and Known Folder Move redirects Desktop, Documents and Pictures into OneDrive so user files survive outside the profile container.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "m365"
+     ]
+    },
+    {
+     "id": "files-on-demand-vdi",
+     "says": "Files On-Demand is supported on Windows 10 and Windows 11 virtual desktops with FSLogix profile containers and keeps un-opened files online-only so they do not bloat the profile VHDX.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "m365"
+     ]
+    },
+    {
+     "id": "per-machine-install",
+     "says": "On virtual desktops shared by multiple users, install the OneDrive sync app per machine (/allusers) in the image.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "m365"
+     ]
+    }
+   ]
+  },
+  {
    "id": "perfmon-troubleshooting",
    "title": "Troubleshoot issues using Performance Monitor (Windows Server)",
    "url": "https://learn.microsoft.com/troubleshoot/windows-server/support-tools/troubleshoot-issues-performance-monitor",
@@ -11350,6 +11473,103 @@
       "helpWanted": false
      },
      "citedBy": []
+    }
+   ]
+  },
+  {
+   "id": "power-platform-dlp",
+   "title": "Data loss prevention policies in Power Platform",
+   "url": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id 1441cc222fef2a8af2d4b618da57831455284c20, updated_at 2026-10-16",
+   "read": "2026-10-27",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "environment-coverage",
+     "says": "Every Power Platform environment running operational automation should be covered by at least one data loss prevention policy that separates business connectors from non-business and blocked connectors.",
+     "kind": "guidance",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "power-platform"
+     ]
+    },
+    {
+     "id": "default-group-blocked",
+     "says": "Setting the default connector group to Blocked ensures newly added connectors in Power Platform are blocked until an administrator explicitly classifies them.",
+     "kind": "guidance",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "power-platform"
+     ]
+    },
+    {
+     "id": "connector-groups",
+     "says": "Power Platform DLP policies classify connectors into Business, Non-Business and Blocked groups to prevent flows from combining operational connectors with unapproved external endpoints.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "power-platform"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "power-platform-vnet",
+   "title": "Virtual Network support overview for Power Platform",
+   "url": "https://learn.microsoft.com/power-platform/admin/vnet-support-overview",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id c998a642c96d92bafb78d5c9350b26eea0f4c9d0, updated_at 2026-10-05",
+   "read": "2026-10-27",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "enterprise-policy-subnet",
+     "says": "A Microsoft.PowerPlatform/enterprisePolicies resource links a Power Platform environment to delegated Azure virtual network subnets so Dataverse and Power Platform components reach private endpoints without public exposure.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "power-platform"
+     ]
+    },
+    {
+     "id": "delegated-subnet-egress",
+     "says": "Subnets used for Power Platform Virtual Network injection are delegated to Microsoft.PowerPlatform/enterprisePolicies in the environment's supported regions.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "power-platform"
+     ]
     }
    ]
   },
@@ -12529,12 +12749,14 @@
      "says": "Determine whether Microsoft Teams will be part of the deployment (Performance, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     },
     {
      "id": "B03.01",
@@ -12558,7 +12780,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     },
     {
      "id": "C01.04",
@@ -12809,12 +13033,14 @@
      "says": "Configure the Azure Files share for Entra Kerberos authentication on Entra joined hosts (Security, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "F01.04",
@@ -12968,7 +13194,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "G03.07",
@@ -12987,12 +13215,13 @@
      "says": "Evaluate MFA and Conditional Access for AVD users (Security, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
      "citedBy": [
+      "entra",
       "intune",
       "security"
      ]
@@ -13210,12 +13439,14 @@
      "says": "Determine whether OneDrive will be part of the deployment (Operations, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     },
     {
      "id": "B01.11",
@@ -13762,12 +13993,14 @@
      "says": "Create a domain user group per set of users granted each host pool's application group (Security, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "D01.07",
@@ -13815,7 +14048,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "D03.03",
@@ -13834,12 +14069,14 @@
      "says": "If single sign-on is required, review the supported scenarios and prerequisites (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "entra"
+     ]
     },
     {
      "id": "D03.05",
@@ -14469,12 +14706,13 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
      },
      "citedBy": [
+      "m365",
       "remote-protocols"
      ]
     },
@@ -14489,7 +14727,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "m365"
+     ]
     }
    ]
   },
@@ -14701,6 +14941,30 @@
      "id": "reinstall-last",
      "says": "When nothing else works, uninstall the agent, boot loader and stack, remove the host from the pool and register it again with a new key.",
      "kind": "guidance",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    }
+   ]
+  },
+  {
+   "id": "troubleshoot-autoscale",
+   "title": "Troubleshoot autoscale issues in Azure Virtual Desktop",
+   "url": "https://learn.microsoft.com/troubleshoot/azure/virtual-desktop/troubleshoot-autoscale",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id dc42685e97f5937c6a2b267667a03a169494a603, updated_at 2026-05-01",
+   "read": "2026-10-22",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "role-scope-containing-pool",
+     "says": "Autoscale can't start or stop hosts without the power on and off role, which the page says can be granted on the host pool, its resource group or the subscription.",
+     "kind": "published",
      "state": {
       "mapped": true,
       "measurable": false,
@@ -16889,6 +17153,16 @@
    ]
   },
   {
+   "id": "power-role-at-resource-group-scope",
+   "claim": "ref:autoscale-plan#role-at-subscription",
+   "verdict": "not-yet-tested",
+   "date": "2026-10-22",
+   "evidence": [
+    "https://github.com/avd-ops/avd-landing-zone/blob/62f1e3460c2654b122238b4b8f92a1002f7aea2f/bicep/modules/controlPlane.bicep",
+    "https://github.com/avd-ops/avd-landing-zone/blob/62f1e3460c2654b122238b4b8f92a1002f7aea2f/bicep/modules/sessionHosts.bicep"
+   ]
+  },
+  {
    "id": "premium-ssd-os-disk-default",
    "claim": "ref:avd-deploy-host-pool#premium-ssd-os-disk",
    "verdict": "not-yet-tested",
@@ -17174,12 +17448,20 @@
    "title": "a logon time target"
   },
   {
+   "id": "m365-scope",
+   "title": "what a Microsoft 365 VDI productivity assessment can judge, and from where"
+  },
+  {
    "id": "monitoring-scope",
    "title": "monitoring, operations, scaling and power"
   },
   {
    "id": "network-scope",
    "title": "what a network assessment covers, what it can measure, and which repo does what"
+  },
+  {
+   "id": "power-platform-scope",
+   "title": "what a Power Platform day-2 automation assessment can judge, and from where"
   },
   {
    "id": "reliability-scope",
@@ -17361,6 +17643,190 @@
    "facts": [
     "c11.policy.doNotEnforce"
    ]
+  },
+  {
+   "id": "asm-entra-no-direct-user-rbac",
+   "title": "Application groups use group-based assignment with no direct user assignments",
+   "claims": [
+    "ref:avd-rbac#user-role",
+    "ref:caf-avd-identity#groups-not-users",
+    "ref:review-checklists-avd#D01.06"
+   ],
+   "facts": [
+    "c11.hostPool.directUserAssignments"
+   ]
+  },
+  {
+   "id": "asm-entra-sso-enabled",
+   "title": "Host pools with Entra-joined hosts enable Entra single sign-on",
+   "claims": [
+    "ref:avd-sso#host-pool-property",
+    "ref:review-checklists-avd#D03.04"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.entraJoined",
+    "c11.hostPool.entraSso"
+   ]
+  },
+  {
+   "id": "asm-entra-ca-avd-mfa",
+   "title": "Conditional Access enforces MFA for AVD and Windows Cloud Login",
+   "claims": [
+    "ref:avd-mfa-conditional-access#target-apps",
+    "ref:avd-mfa-conditional-access#two-aligned-policies",
+    "ref:review-checklists-avd#G04.01"
+   ],
+   "facts": [
+    "c11.entra.caAvdRequiresMfa"
+   ]
+  },
+  {
+   "id": "asm-entra-ca-break-glass-excluded",
+   "title": "AVD Conditional Access policies exclude emergency-access (break-glass) accounts",
+   "claims": [
+    "ref:ca-require-compliant-device#exclude-break-glass",
+    "ref:mcsb-avd-baseline#IM-7"
+   ],
+   "facts": [
+    "c11.entra.caAvdBreakGlassExcluded"
+   ]
+  },
+  {
+   "id": "asm-entra-files-kerberos-ready",
+   "title": "Azure Files Entra Kerberos service principal is configured and excluded from MFA CA",
+   "claims": [
+    "ref:files-entra-kerberos#cloud-only-and-hybrid",
+    "ref:files-entra-kerberos#exclude-from-mfa",
+    "ref:review-checklists-avd#D02.01"
+   ],
+   "facts": [
+    "c11.storage.filesIdentity",
+    "c11.entra.kerberosStoragePrincipalsReady"
+   ]
+  },
+  {
+   "id": "asm-intune-hosts-managed",
+   "title": "Session hosts requesting Intune enrollment are managed in Intune",
+   "claims": [
+    "ref:intune-avd-multisession#enrollment-prerequisites",
+    "ref:avd-entra-joined-hosts#enroll-on-deploy"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.intuneEnrollRequested",
+    "c11.hostPool.sessionHosts.intuneManaged"
+   ]
+  },
+  {
+   "id": "asm-intune-hosts-compliant",
+   "title": "Intune-managed session hosts have zero noncompliant devices",
+   "claims": [
+    "ref:intune-avd-multisession#compliance-settings-supported",
+    "ref:intune-avd-multisession#compliance-device-targeted"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.intuneNoncompliant"
+   ]
+  },
+  {
+   "id": "asm-intune-secure-by-default",
+   "title": "Intune tenant marks devices without a compliance policy as noncompliant",
+   "claims": [
+    "ref:intune-compliance#no-policy-default-compliant",
+    "ref:graph-device-management-settings#secure-by-default"
+   ],
+   "facts": [
+    "c11.intune.noPolicyMeansNoncompliant"
+   ]
+  },
+  {
+   "id": "asm-intune-fslogix-catalog-profile",
+   "title": "Intune Settings Catalog delivers an FSLogix profile container policy",
+   "claims": [
+    "ref:intune-avd-multisession#settings-catalog-only",
+    "ref:intune-avd-multisession#admx-supported"
+   ],
+   "facts": [
+    "c11.intune.fslogixProfileConfigured"
+   ]
+  },
+  {
+   "id": "asm-intune-no-orphaned-devices",
+   "title": "Host pools have no orphaned Intune device records for deleted session hosts",
+   "claims": [
+    "ref:intune-avd-multisession#orphaned-records"
+   ],
+   "facts": [
+    "c11.hostPool.intuneOrphans"
+   ]
+  },
+  {
+   "id": "asm-m365-onedrive-kfm",
+   "title": "OneDrive Silent Account Configuration and Known Folder Move are enabled for session hosts",
+   "claims": [
+    "ref:onedrive-vdi#silent-config-and-kfm",
+    "ref:onedrive-vdi#files-on-demand-vdi"
+   ],
+   "facts": [
+    "c11.m365.oneDriveSilentConfigEnabled",
+    "c11.m365.oneDriveKfmState"
+   ]
+  },
+  {
+   "id": "asm-m365-shared-computer-activation",
+   "title": "Microsoft 365 Apps Shared Computer Activation is enabled for multi-session hosts",
+   "claims": [
+    "ref:avd-office-image#shared-computer-activation",
+    "ref:review-checklists-avd#B01.09"
+   ],
+   "facts": [
+    "c11.hostPool.type",
+    "c11.m365.m365AppsSharedComputerActivation"
+   ]
+  },
+  {
+   "id": "asm-m365-teams-vdi-optimization",
+   "title": "Microsoft Teams VDI media optimization is enabled for session hosts",
+   "claims": [
+    "ref:teams-on-avd#media-optimization",
+    "ref:review-checklists-avd#B01.10"
+   ],
+   "facts": [
+    "c11.m365.teamsMediaOptimizationState"
+   ]
+  },
+  {
+   "id": "asm-pp-dedicated-environment",
+   "title": "Power Platform day-2 workflows run in a dedicated environment outside Default",
+   "claims": [
+    "ref:power-platform-dlp#environment-coverage"
+   ],
+   "facts": [
+    "c11.powerPlatform.dedicatedEnvironments"
+   ]
+  },
+  {
+   "id": "asm-pp-dlp-blocks-unapproved",
+   "title": "Power Platform DLP policy covers the AVD environment and blocks unapproved connectors",
+   "claims": [
+    "ref:power-platform-dlp#connector-groups",
+    "ref:power-platform-dlp#default-group-blocked"
+   ],
+   "facts": [
+    "c11.powerPlatform.dlpPoliciesCoveringAvdEnv",
+    "c11.powerPlatform.dlpDefaultGroupClassification"
+   ]
+  },
+  {
+   "id": "asm-pp-vnet-enterprise-policy",
+   "title": "Power Platform enterprise policy injects environments into a delegated VNet subnet",
+   "claims": [
+    "ref:power-platform-vnet#enterprise-policy-subnet",
+    "ref:power-platform-vnet#delegated-subnet-egress"
+   ],
+   "facts": [
+    "c11.powerPlatform.enterprisePoliciesCount",
+    "c11.powerPlatform.vnetInjectedSubnets"
+   ]
   }
  ],
  "methods": [
@@ -17381,6 +17847,10 @@
    "title": "Troubleshooting and diagnostics method"
   },
   {
+   "id": "entra",
+   "title": "Entra ID and identity method"
+  },
+  {
    "id": "finops",
    "title": "FinOps method"
   },
@@ -17389,8 +17859,16 @@
    "title": "Intune and host management method"
   },
   {
+   "id": "m365",
+   "title": "Microsoft 365 and collaboration method"
+  },
+  {
    "id": "network",
    "title": "Network method"
+  },
+  {
+   "id": "power-platform",
+   "title": "Power Platform and low-code governance method"
   },
   {
    "id": "reliability",

@@ -252,12 +252,12 @@ test('the security page renders avd-assess\'s security review map at its pin, an
   for (const a of map.areas) for (const c of a.claims) {
     assert.ok(html.includes(`id="c-${c.id}"`), `claim ${c.id} rendered`);
     assert.match(c.standing, /^(run|guarded|built|designed)$/, `${c.id}: standing`);
-    for (const ev of c.evidence) if (ev.repo !== 'avd-assess') assert.match(ev.url, /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/blob\/[0-9a-f]{40}\//, `${c.id}: evidence pinned to a commit`);
+    for (const ev of c.evidence) if (ev.repo !== 'avd-assess') assert.match(ev.url, /^https:\/\/github\.com\/avd-ops\/[a-z0-9-]+\/blob\/[0-9a-f]{40}\//, `${c.id}: evidence pinned to a commit`);
   }
-  const pinned = /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/blob\/[0-9a-f]{40}\//;
+  const pinned = /^https:\/\/github\.com\/avd-ops\/[a-z0-9-]+\/blob\/[0-9a-f]{40}\//;
   assert.match(map.maturity.source.url, pinned, 'maturity source pinned');
   for (const t of map.threats) if (t.formal !== 'none') assert.match(t.formal.url, pinned, `${t.repo}: formal review pinned`);
-  for (const g of map.gaps) if (g.issue) assert.match(g.issue, /^https:\/\/github\.com\/avd-ops\/[a-z-]+\/issues\/\d+$/, `${g.id}: issue link`);
+  for (const g of map.gaps) if (g.issue) assert.match(g.issue, /^https:\/\/github\.com\/avd-ops\/[a-z0-9-]+\/issues\/\d+$/, `${g.id}: issue link`);
   for (const o of map.operator) assert.ok(html.includes(`id="o-${o.id}"`), `operator item ${o.id} rendered`);
   for (const q of map.checklist) assert.ok(html.includes(`id="q-${q.id}"`), `question ${q.id} rendered`);
   // avd-assess's own files are linked at the locked commit, never at a branch.

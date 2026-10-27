@@ -21,4 +21,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0007](0007-starters-not-a-theme-repo.md) | The theme ships as starters and a brand profile in avd-ops, not as its own repo or package | Proposed |
 | [0008](0008-code-signing.md) | Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it | Accepted |
 | [0009](0009-split-landing-zone-into-five-control-planes.md) | Split deployment into five control-plane repos orchestrated by avd-landing-zone | Accepted |
+| [0010](0010-expand-assess-and-current-state-across-five-control-planes.md) | Expand avd-assess and avd-current-state natively across all five control planes | Accepted |
 <!-- END GENERATED: decision-index -->

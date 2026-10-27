@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-current-state | avd-ops docs</title>
-<meta name="description" content="What is there now: read-only PowerShell that collects an AVD environment, validates it and writes redacted C11 facts">
+<meta name="description" content="What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -32,29 +32,29 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-current-state" title="avd-current-state"><span class="n">1</span><span class="t">avd-current-state</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
 <section class="screen" id="avd-current-state">
 <h1 tabindex="-1">avd-current-state</h1>
-<p class="bl">What is in an estate right now, read-only: the collector and the validator.</p>
+<p class="bl">What is in an estate right now, read-only: the collector and the validator across all five control planes.</p>
 
 <details class="more"><summary>More</summary>
-<p>Read-only PowerShell that answers what is in an AVD environment today, whether a subscription is ready for a deployment, and whether the deployment landed correctly.</p>
+<p>Read-only PowerShell that answers what is in an AVD environment today across Azure, Entra ID, Intune, Microsoft 365 and Power Platform, whether an estate is ready for a deployment, and whether the deployment landed correctly (<a href="../decisions/0010-expand-assess-and-current-state-across-five-control-planes.html">decision 0010</a>).</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-current-state">avd-ops/avd-current-state</a>. This page says where it fits.</p>
 </details>
 </section>
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
-<p class="bl">It collects evidence, checks a deployment before and after, and never changes anything.</p>
+<p class="bl">It collects evidence, checks a deployment before and after across selected control planes, and never changes anything.</p>
 <ul>
-<li>The collector builds a portable evidence package of the AVD workload and the platform around it.</li>
-<li>The validator runs preflight and post-deployment checks and writes a pass/fail report.</li>
-<li>Only <code>Get-</code> and <code>Test-</code> calls against Azure. Nothing is created, changed or deleted.</li>
-<li>The facts script turns packages into one redacted snapshot (contract C11): counts, public values and pseudonyms, no names or IDs.</li>
+<li>The collector builds a portable evidence package of the AVD workload and the five control planes (<code>azure</code>, <code>entra</code>, <code>intune</code>, <code>m365</code> and <code>power-platform</code>), degrading gracefully to <code>unknown</code> for any plane skipped or unconsented.</li>
+<li>The validator runs preflight and post-deployment checks across <code>-Planes</code> and writes a pass/fail report, optionally reading the stage handoff manifests (<code>entra-manifest.json</code>, <code>intune-manifest.json</code>, <code>m365-manifest.json</code>, <code>azure-outputs.json</code>, <code>power-platform-manifest.json</code>).</li>
+<li>Only <code>GET</code>, <code>Get-</code> and <code>Test-</code> calls with zero write scopes, pinned in <code>rebuild/scope.json</code> and guarded in CI. Nothing is created, changed or deleted.</li>
+<li>The facts script turns packages into one redacted snapshot (contract C11) with plane-scoped namespaces (<code>c11.entra.*</code>, <code>c11.intune.*</code>, <code>c11.m365.*</code>, <code>c11.powerPlatform.*</code> and Azure paths): counts, public values and pseudonyms, no names or IDs.</li>
 </ul>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
-<p class="bl">Its redacted facts feed the brain, and its validator checks the landing zone.</p>
+<p class="bl">Its redacted facts feed the brain, and its validator and assessment portal check the five-plane landing zone.</p>
 <ul>
 <li>Its C11 facts feed <a href="avd-second-brain.html">avd-second-brain</a>; avd-swarm sees them only as cited evidence from the brain.</li>
-<li>The validator checks a <a href="avd-landing-zone.html">avd-landing-zone</a> deployment before and after.</li>
+<li>The validator checks a <a href="avd-landing-zone.html">avd-landing-zone</a> deployment before and after across <a href="avd-entra.html">avd-entra</a>, <a href="avd-intune.html">avd-intune</a>, <a href="avd-m365.html">avd-m365</a>, <a href="avd-azure.html">avd-azure</a> and <a href="avd-power-platform.html">avd-power-platform</a>, and the assessment portal exports plane-grouped C24 remediation plans.</li>
 </ul>
 </section>
 <section class="screen" id="read-more-in-the-repo">
