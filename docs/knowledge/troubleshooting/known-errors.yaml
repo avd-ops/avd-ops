@@ -98,3 +98,20 @@ errors:
     applies_to: Python 3.11+ on Windows
     status: verified
     added: "2026-10-27"
+  - id: portal-is-button-specificity-on-wz-tool
+    symptom: "A `<button class=\"wz-tool\">` in the wizard rail renders with the primary solid `--accent` fill and border instead of a quiet ghost tool button."
+    cause: "In `avd-ops-portal.css` (design system 2.7.0), `.portal :is(button, a.btnlink)` has specificity `(0, 2, 1)` (taken from `a.btnlink`), and `.portal :is(button:hover:not(:disabled), a.btnlink:hover)` has `(0, 3, 1)`, which beats `.portal .wz-tool` `(0, 2, 0)` and `.portal .wz-tool:hover` `(0, 3, 0)` whenever `.wz-tool` is a `<button>`."
+    fix: "Qualify quiet wizard and header buttons with the element and container selector (`.portal .wz-rail button.wz-tool:hover:not(:disabled)`, `.portal.shell header.bar button.iconbtn:hover:not(:disabled)`), and set explicit `width` and `height` attributes on inline `<svg>` icons inside header and rail buttons."
+    source: decisions/0005-one-app-shell-for-every-page.md
+    applies_to: avd-ops design system 2.7.0
+    status: verified
+    added: "2026-10-27"
+  - id: portal-root-url-relative-assets-404
+    symptom: "Opening a local portal server at `/` renders the `avd-ops` brand bar and base colors, but leaves the portal's own stylesheet and scripts unloaded (`404 Not Found`)."
+    cause: "Serving `site/portal/index.html` directly at `GET /` without a redirect resolves `../assets/avd-ops.css` to `/assets/avd-ops.css` (`200 OK`), while sibling relative URLs (`portal.css`, `portal.js`) resolve to `/portal.css` at `site/` instead of `site/portal/`."
+    fix: "Redirect `GET /` and `GET /portal` with `302 Found` (`Location: /portal/`) in local dev servers rooted at `site/` so sibling relative URLs always resolve inside `/portal/`."
+    source: decisions/0005-one-app-shell-for-every-page.md
+    applies_to: avd-ops portals
+    status: verified
+    added: "2026-10-27"
+
