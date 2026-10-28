@@ -3,8 +3,8 @@
  "schema": "avd-ops-library/v1",
  "edition": {
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "cfcc3026b968c3c15a4150b8c7160891a138d3f0",
-  "date": "2026-10-27"
+  "commit": "b0875cd20bedf1fed80215ca309c95c52740683a",
+  "date": "2026-10-28"
  },
  "references": [
   {
@@ -22,7 +22,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -866,7 +866,7 @@
      "says": "Create scaling plans per region (scaling plans, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -890,7 +890,7 @@
      "says": "Configure scheduled agent updates for host pools (host pools, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -1752,7 +1752,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -2149,7 +2149,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -3027,7 +3027,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3044,7 +3044,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3125,7 +3125,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3141,7 +3141,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3264,7 +3264,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3303,7 +3303,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3329,7 +3329,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -4336,7 +4336,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": true,
       "disputed": false,
       "helpWanted": false
@@ -6079,7 +6079,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -6155,7 +6155,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -8273,7 +8273,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -8353,7 +8353,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -11613,7 +11613,7 @@
      "says": "Azure.AVD.ScheduleAgentUpdate, define a maintenance window for host pool agent updates (Reliability, important).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12568,7 +12568,7 @@
      "says": "Configure scheduled agent updates (Reliability, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12604,7 +12604,7 @@
      "says": "Enable monitoring for Azure Virtual Desktop (Reliability, high).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12616,7 +12616,7 @@
      "says": "Send diagnostic settings for workspaces, host pools, application groups and host VMs to a Log Analytics workspace (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12685,7 +12685,7 @@
      "says": "Plan the best resiliency option for the host pool deployment (Reliability, high).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12699,7 +12699,7 @@
      "says": "Build a backup protection strategy for profile and Office containers (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12827,7 +12827,7 @@
      "says": "Use VM SKUs that support Accelerated Networking (Performance, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12905,7 +12905,7 @@
      "says": "Enable SMB multichannel on premium file shares that hold FSLogix profiles (Performance, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12917,7 +12917,7 @@
      "says": "Determine which managed disk type session hosts will use (Performance, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12977,7 +12977,7 @@
      "says": "Assess the requirements for host pool autoscaling (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13085,7 +13085,7 @@
      "says": "Assess disk encryption requirements for session hosts (Security, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13175,7 +13175,7 @@
      "says": "Enable diagnostic and audit logging (Security, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -17826,6 +17826,167 @@
    "facts": [
     "c11.powerPlatform.enterprisePoliciesCount",
     "c11.powerPlatform.vnetInjectedSubnets"
+   ]
+  },
+  {
+   "id": "asm-insights-rtt-target",
+   "title": "AVD Insights p95 round-trip latency stays under 150 ms",
+   "claims": [
+    "ref:avd-prerequisites#rtt-under-150",
+    "ref:avd-insights-use-cases#rtt-ideal-100-poor-200"
+   ],
+   "facts": [
+    "c11.insights.rttP95"
+   ]
+  },
+  {
+   "id": "asm-insights-input-delay-target",
+   "title": "AVD Insights p95 user input delay stays within the 100 ms acceptable band",
+   "claims": [
+    "ref:avd-insights-glossary#input-delay-bands",
+    "ref:avd-insights-use-cases#input-delay-host-100"
+   ],
+   "facts": [
+    "c11.insights.inputDelayP95"
+   ]
+  },
+  {
+   "id": "asm-insights-time-to-connect",
+   "title": "AVD Insights p95 time to connect stays under 30 seconds",
+   "claims": [
+    "ref:avd-insights-glossary#time-to-connect-stages",
+    "ref:avd-insights-workbooks#queries-define-measures"
+   ],
+   "facts": [
+    "c11.insights.timeToConnectP95"
+   ]
+  },
+  {
+   "id": "asm-insights-connection-reliability",
+   "title": "AVD Insights connection failure rate stays at or below 5 percent",
+   "claims": [
+    "ref:avd-insights-workbooks#queries-define-measures",
+    "ref:diagnostics-log-analytics#connection-states"
+   ],
+   "facts": [
+    "c11.insights.connectionFailureRate"
+   ]
+  },
+  {
+   "id": "asm-hosts-accelerated-networking",
+   "title": "Session host NICs enable accelerated networking",
+   "claims": [
+    "ref:review-checklists-avd#C01.13",
+    "ref:accelerated-networking#lower-latency-jitter-cpu"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.notAcceleratedNetworking"
+   ]
+  },
+  {
+   "id": "asm-hosts-encryption-at-host",
+   "title": "Session hosts enable encryption at host",
+   "claims": [
+    "ref:review-checklists-avd#G02.02",
+    "ref:disk-encryption-options#encryption-at-host"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.notEncryptionAtHost"
+   ]
+  },
+  {
+   "id": "asm-hosts-premium-os-disk",
+   "title": "Session hosts run on Premium SSD or ephemeral OS disks",
+   "claims": [
+    "ref:review-checklists-avd#H03.01",
+    "ref:avd-deploy-host-pool#premium-ssd-os-disk"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.nonPremiumOsDisk"
+   ]
+  },
+  {
+   "id": "asm-hosts-zone-redundant",
+   "title": "Session hosts are pinned to availability zones",
+   "claims": [
+    "ref:review-checklists-avd#A01.04",
+    "ref:waf-reliability-checklist#RE:05"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.unpinnedZones"
+   ]
+  },
+  {
+   "id": "asm-hostpool-diagnostics-enabled",
+   "title": "Host pools forward required diagnostic log categories to a workspace",
+   "claims": [
+    "ref:review-checklists-avd#E02.02",
+    "ref:review-checklists-avd#G03.05",
+    "ref:avd-insights#hostpool-diagnostics"
+   ],
+   "facts": [
+    "c11.hostPool.diagnosticsSetting"
+   ]
+  },
+  {
+   "id": "asm-hosts-insights-agent",
+   "title": "Session hosts have the Azure Monitor Agent and AVD Insights DCR associated",
+   "claims": [
+    "ref:review-checklists-avd#E02.01",
+    "ref:avd-insights#host-data-ama-dcr"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.monitoringAgent",
+    "c11.hostPool.sessionHosts.insightsDcr"
+   ]
+  },
+  {
+   "id": "asm-pooled-autoscale-attached",
+   "title": "Pooled host pools have an active AVD scaling plan attached",
+   "claims": [
+    "ref:review-checklists-avd#E01.04",
+    "ref:aprl-desktop-virtualization#499769ae-67c9-492e-9ca5-cfd4cece5209",
+    "ref:avd-autoscale#scales-to-save-cost"
+   ],
+   "facts": [
+    "c11.hostPool.type",
+    "c11.hostPool.scalingPlan.method"
+   ]
+  },
+  {
+   "id": "asm-hostpool-scheduled-agent-updates",
+   "title": "Host pools configure a maintenance window for scheduled agent updates",
+   "claims": [
+    "ref:review-checklists-avd#E01.10",
+    "ref:aprl-desktop-virtualization#979ff8be-5f3a-4d8e-9aa3-407ecdd6d6f7",
+    "ref:psrule-azure#AZR-000437"
+   ],
+   "facts": [
+    "c11.hostPool.agentUpdate.scheduled"
+   ]
+  },
+  {
+   "id": "asm-files-smb-multichannel",
+   "title": "Premium Azure Files profile storage enables SMB Multichannel",
+   "claims": [
+    "ref:review-checklists-avd#H01.02",
+    "ref:azure-files-smb#multichannel-ssd-only"
+   ],
+   "facts": [
+    "c11.storage.kind",
+    "c11.storage.smbMultichannel"
+   ]
+  },
+  {
+   "id": "asm-files-backup-protected",
+   "title": "Premium Azure Files profile storage is protected by Azure Backup",
+   "claims": [
+    "ref:review-checklists-avd#A03.02",
+    "ref:azure-files-backup#snapshot-and-vaulted"
+   ],
+   "facts": [
+    "c11.storage.kind",
+    "c11.storage.backupProtected"
    ]
   }
  ],

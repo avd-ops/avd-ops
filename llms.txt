@@ -51,6 +51,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0008. Family scripts ship as attested, immutable releases; Authenticode only where Windows enforces it](docs/knowledge/decisions/0008-code-signing.md): accepted
 - [0009. Split deployment into five control-plane repos orchestrated by avd-landing-zone](docs/knowledge/decisions/0009-split-landing-zone-into-five-control-planes.md): accepted
 - [0010. Expand avd-assess and avd-current-state natively across all five control planes](docs/knowledge/decisions/0010-expand-assess-and-current-state-across-five-control-planes.md): accepted
+- [0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)](docs/knowledge/decisions/0011-avd-benchmark-and-assess-corpus.md): proposed
 
 ## Related knowledge bases
 

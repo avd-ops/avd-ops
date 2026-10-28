@@ -1,12 +1,12 @@
 {
   "description": "site/data/standards/ holds byte-identical copies of these avd-assess files at commit (contracts/fact-register.json is stored as fact-register.json); tests/standards.test.mjs checks every hash. To update, run node scripts/site/build-standards.mjs --pin <avd-assess checkout>, then node scripts/site/build-standards.mjs, in one PR.",
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "cfcc3026b968c3c15a4150b8c7160891a138d3f0",
-  "date": "2026-10-27",
+  "commit": "b0875cd20bedf1fed80215ca309c95c52740683a",
+  "date": "2026-10-28",
   "files": {
     "index.json": "745a756e011bb6b98f4f7b41e062d87c8235eb0eebbb3408b7490ffb151ccc14",
-    "method.json": "64de9cfeda4b59cdc061f1d0981f1f457f5a77925afe9c175683edabf3c38dad",
-    "contracts/fact-register.json": "edd6ad6ee9e222687e6b904ff04a2f9db61c0c5ac39b5d0cfff5e1c3f6123915",
+    "method.json": "9cf1a07a3b2d2bbeab7584e6b5594cd61cab27253671f6e2d3ed215bcfeec97d",
+    "contracts/fact-register.json": "a10092d6b9321195670acebae5699bf5c6d604df1f0b3893bd542044ab1e6b32",
     "methods/assessment.md": "bbb666c60c86e5588e2c3385d23e6bb4f1ec487630bf02ed81f3b34a3b1f36a8",
     "methods/baseline-profile.md": "1a094f67e91752d94deea1b7b3ebf5fede4652fb4f1999588914e7e984bbccfe",
     "methods/collection.md": "870686f9687e3f3c9a8bcd9bf51f2859d5e7bfa79d1dd136c7dbf14d9a69466f",

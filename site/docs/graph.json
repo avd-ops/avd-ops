@@ -86,6 +86,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0011-avd-benchmark-and-assess-corpus.md",
+   "title": "0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)",
+   "url": "decisions/0011-avd-benchmark-and-assess-corpus.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -232,6 +239,10 @@
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
+   "source": "decisions/0011-avd-benchmark-and-assess-corpus.md",
+   "target": "decisions/0004-submissions-are-github-issue-forms.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -270,6 +281,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
   },
   {
    "source": "getting-started/README.md",
@@ -358,6 +373,10 @@
   {
    "source": "repos/avd-assess.md",
    "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
   },
   {
    "source": "repos/avd-assess.md",

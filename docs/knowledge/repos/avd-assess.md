@@ -3,7 +3,7 @@ title: "avd-assess"
 summary: "Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed"
 topic: repos
 status: partial
-last_reviewed: 2026-10-27
+last_reviewed: 2026-10-28
 ---
 
 # avd-assess
@@ -12,7 +12,7 @@ What an estate should be, and why: the map and the dictionary every other repo r
 
 <!-- more -->
 
-An open methodology for assessing Azure Virtual Desktop estates across Azure, Entra ID, Intune, Microsoft 365 and Power Platform: what to collect, how to judge it, what good looks like and how to score it ([decision 0010](../decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)). It is a research index, not a tool.
+An open methodology for assessing Azure Virtual Desktop estates across Azure, Entra ID, Intune, Microsoft 365 and Power Platform: what to collect, how to judge it, what good looks like and how to score it ([decision 0010](../decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)), plus the benchmark profile definitions and public evidence corpus for the benchmark platform ([decision 0011](../decisions/0011-avd-benchmark-and-assess-corpus.md)). It is a research index, not a tool.
 
 The repo is the source of truth: [avd-ops/avd-assess](https://github.com/avd-ops/avd-assess). This page says where it fits.
 
