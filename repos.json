@@ -16,6 +16,7 @@
     {"name": "avd-power-platform", "repo": "avd-ops/avd-power-platform", "branch": "main", "role": "Control plane: Power Platform and Power Automate day-2 workflows", "docs": "docs/knowledge/repos/avd-power-platform.md"},
     {"name": "avd-swarm", "repo": "avd-ops/avd-swarm", "branch": "main", "role": "On top: the how of operating", "docs": "docs/knowledge/repos/avd-swarm.md"},
     {"name": "avd-second-brain", "repo": "avd-ops/avd-second-brain", "branch": "main", "role": "On top: the why, over the environment's life", "docs": "docs/knowledge/repos/avd-second-brain.md"},
+    {"name": "avd-linecheck", "repo": "avd-ops/avd-linecheck", "branch": "main", "role": "End-user browser network check", "docs": "docs/knowledge/repos/avd-linecheck.md", "portal": "https://linecheck.avd-ops.dev/"},
     {"name": "avd-ops", "repo": "avd-ops/avd-ops", "branch": "main", "role": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
   ]
 }

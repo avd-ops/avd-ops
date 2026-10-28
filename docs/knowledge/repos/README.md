@@ -8,7 +8,7 @@ last_reviewed: 2026-10-27
 
 # The repos
 
-Ten public repos, each the source of truth for itself. Pick one to see where it fits.
+Eleven public repos, each the source of truth for itself. Pick one to see where it fits.
 
 | Repo | Role |
 |---|---|
@@ -22,6 +22,7 @@ Ten public repos, each the source of truth for itself. Pick one to see where it 
 | [avd-power-platform](avd-power-platform.md) | Control plane: Power Platform and Power Automate day-2 workflows |
 | [avd-swarm](avd-swarm.md) | On top: the how of operating |
 | [avd-second-brain](avd-second-brain.md) | On top: the why, over the environment's life |
+| [avd-linecheck](avd-linecheck.md) | End-user browser network check |
 
 <!-- more -->
 

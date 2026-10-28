@@ -22,6 +22,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [avd-entra](docs/knowledge/repos/avd-entra.md): Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop (status: partial)
 - [avd-intune](docs/knowledge/repos/avd-intune.md): Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop (status: partial)
 - [avd-landing-zone](docs/knowledge/repos/avd-landing-zone.md): How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link (status: partial)
+- [avd-linecheck](docs/knowledge/repos/avd-linecheck.md): End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in (status: verified)
 - [avd-m365](docs/knowledge/repos/avd-m365.md): Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines (status: partial)
 - [avd-power-platform](docs/knowledge/repos/avd-power-platform.md): Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop (status: partial)
 - [avd-second-brain](docs/knowledge/repos/avd-second-brain.md): On top, the why: the knowledge base, contract registry and fact register over the environment's life (status: partial)
