@@ -28,6 +28,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-entra.md](repos/avd-entra.md) | Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop | partial |
 | [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop | partial |
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link | partial |
+| [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
 | [repos/avd-m365.md](repos/avd-m365.md) | Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines | partial |
 | [repos/avd-power-platform.md](repos/avd-power-platform.md) | Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop | partial |
 | [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, the why: the knowledge base, contract registry and fact register over the environment's life | partial |
