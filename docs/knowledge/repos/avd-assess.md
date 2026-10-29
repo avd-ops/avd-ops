@@ -2,8 +2,8 @@
 title: "avd-assess"
 summary: "Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-assess
@@ -28,7 +28,7 @@ Methods across every pillar and control plane, each step pinned to a published s
 
 <!-- more -->
 
-- It holds the security review map across all 11 public repos: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the [security review page](https://avd-ops.dev/security.html) and never keeps its own copy of a claim.
+- It holds the security review map across 11 public repos (avd-linecheck isn't in it yet): what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the [security review page](https://avd-ops.dev/security.html) and never keeps its own copy of a claim.
 - avd-ops renders its methods, sources and claims as the [standards library](https://avd-ops.dev/standards/), read like a paper: numbered references, each claim with its pin, read date and three states (mapped, measurable, validated). It reads only avd-assess's own published files at one pinned commit, the same pin as the security page. Most sources are Microsoft Learn pages, and a Learn pin records which version was read, but that commit is not published, so a reader can only open the live page; the library says so on each such source.
 
 ## How it fits
@@ -36,7 +36,7 @@ Methods across every pillar and control plane, each step pinned to a published s
 The other repos run its methods and cite it. It depends on none of them.
 
 - [avd-current-state](avd-current-state.md) runs its methods from pinned copies it carries; [avd-landing-zone](avd-landing-zone.md) and the five control-plane repos ([avd-entra](avd-entra.md), [avd-intune](avd-intune.md), [avd-m365](avd-m365.md), [avd-azure](avd-azure.md), [avd-power-platform](avd-power-platform.md)) are how an estate gets to the target it describes.
-- [avd-second-brain](avd-second-brain.md) cites it and owns the schemas its results use.
+- It holds the foundation contracts (C11, C15, C17, C19 to C24) that the other repos vendor at a pin; [avd-second-brain](avd-second-brain.md) cites it.
 
 ## Read more in the repo
 

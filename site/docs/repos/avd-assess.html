@@ -52,7 +52,7 @@
 
 <details class="more"><summary>More</summary>
 <ul>
-<li>It holds the security review map across all 11 public repos: what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the <a href="https://avd-ops.dev/security.html">security review page</a> and never keeps its own copy of a claim.</li>
+<li>It holds the security review map across 11 public repos (avd-linecheck isn&#39;t in it yet): what each repo does for security, the pinned file that does or proves it, how strong that evidence is, what the operator still owns and the gaps. avd-ops renders it at a pinned commit on the <a href="https://avd-ops.dev/security.html">security review page</a> and never keeps its own copy of a claim.</li>
 <li>avd-ops renders its methods, sources and claims as the <a href="https://avd-ops.dev/standards/">standards library</a>, read like a paper: numbered references, each claim with its pin, read date and three states (mapped, measurable, validated). It reads only avd-assess&#39;s own published files at one pinned commit, the same pin as the security page. Most sources are Microsoft Learn pages, and a Learn pin records which version was read, but that commit is not published, so a reader can only open the live page; the library says so on each such source.</li>
 </ul>
 </details>
@@ -62,7 +62,7 @@
 <p class="bl">The other repos run its methods and cite it. It depends on none of them.</p>
 <ul>
 <li><a href="avd-current-state.html">avd-current-state</a> runs its methods from pinned copies it carries; <a href="avd-landing-zone.html">avd-landing-zone</a> and the five control-plane repos (<a href="avd-entra.html">avd-entra</a>, <a href="avd-intune.html">avd-intune</a>, <a href="avd-m365.html">avd-m365</a>, <a href="avd-azure.html">avd-azure</a>, <a href="avd-power-platform.html">avd-power-platform</a>) are how an estate gets to the target it describes.</li>
-<li><a href="avd-second-brain.html">avd-second-brain</a> cites it and owns the schemas its results use.</li>
+<li>It holds the foundation contracts (C11, C15, C17, C19 to C24) that the other repos vendor at a pin; <a href="avd-second-brain.html">avd-second-brain</a> cites it.</li>
 </ul>
 </section>
 <section class="screen" id="read-more-in-the-repo">
@@ -71,8 +71,8 @@
 <ul>
 <li><a href="https://github.com/avd-ops/avd-assess/blob/main/README.md">README and the methods</a></li>
 </ul>
-<details class="more linked"><summary>Linked from 5 pages</summary>
-<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-intune.html">avd-intune</a></li><li><a href="avd-linecheck.html">avd-linecheck</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
+<details class="more linked"><summary>Linked from 6 pages</summary>
+<ul class="backlinks"><li><a href="../concepts.html">Concepts</a></li><li><a href="index.html">The repos</a></li><li><a href="avd-intune.html">avd-intune</a></li><li><a href="avd-linecheck.html">avd-linecheck</a></li><li><a href="avd-second-brain.html">avd-second-brain</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
 </section>
 <nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="index.html" data-page="The repos">Back</a><span class="where">avd-assess</span><a class="sc-next" href="avd-azure.html" data-page="avd-azure">Next<span class="pg">: avd-azure</span></a></div></nav>
 </article>

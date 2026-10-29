@@ -55,15 +55,15 @@ path = "docs/knowledge/decisions"
 kb_page = "concepts/README.md"
 
 [[source]]
-name = "avd-liquidware: knowledge base"
+name = "Liquidware KB: changes"
 kind = "github_commits"
-repo = "nickprignano/avd-liquidware"
+repo = "nickprignano/liquidware-ninja"
 path = "docs/knowledge"
 kb_page = "curation.md"
 
 [[source]]
-name = "avd-liquidware: decisions"
+name = "Liquidware KB: decisions"
 kind = "github_commits"
-repo = "nickprignano/avd-liquidware"
+repo = "nickprignano/liquidware-ninja"
 path = "docs/knowledge/decisions"
 kb_page = "curation.md"

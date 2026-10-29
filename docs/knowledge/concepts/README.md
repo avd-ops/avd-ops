@@ -2,8 +2,8 @@
 title: "Concepts"
 summary: "The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture"
 topic: concepts
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # Concepts
@@ -43,8 +43,11 @@ The repos hand each other versioned, redacted files, never each other's code.
 
 The repos pass versioned, redacted files to each other instead of importing each other's code.
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact
-register and so on) and one JSON Schema. avd-second-brain holds the registry, and repos that read a
-format keep a byte-identical copy pinned to a commit. See
+register and so on) and one JSON Schema. avd-assess holds the foundation contracts (C11, C15 and
+the others the foundation reads), avd-second-brain holds the upper layers' own (C14 among them), and
+repos that read a format keep a byte-identical copy pinned to a commit
+([brain decision 0021](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0021-foundation-contracts-live-in-avd-assess.md)). See avd-assess
+[contracts](https://github.com/avd-ops/avd-assess/blob/main/contracts/README.md) and avd-second-brain
 [contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md).
 
 ## The brain thinks, the swarm acts

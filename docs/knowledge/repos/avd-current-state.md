@@ -2,8 +2,8 @@
 title: "avd-current-state"
 summary: "What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-current-state

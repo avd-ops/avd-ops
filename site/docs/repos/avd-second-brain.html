@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-second-brain | avd-ops docs</title>
-<meta name="description" content="On top, the why: the knowledge base, contract registry and fact register over the environment's life">
+<meta name="description" content="On top, the why: each estate's decisions, use cases and RAID log over its life, the family knowledge base, and the upper layers' contracts">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -43,9 +43,10 @@
 <h2 tabindex="-1">What it does</h2>
 <p class="bl">A knowledge base, private vaults for each estate, and the contracts every repo uses.</p>
 <ul>
-<li>A knowledge base of generalized facts: app catalog, rules with their history, sizing calibration and shared runbooks.</li>
+<li>Lifecycle records (C18) and a RAID log (C25) for each environment: its use cases, every decision with what else was considered, and the change that carried it out (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0020-the-brain-is-the-why-layer.md">decision 0020</a>, <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0022-the-brain-keeps-the-raid-log.md">decision 0022</a>, scope in <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0024-the-brain-is-the-estate-brain.md">decision 0024</a>).</li>
 <li>Estate vaults keep one customer&#39;s estate in that customer&#39;s own private repo. Tenant data never comes back here.</li>
-<li>The contract registry and fact register that every repo boundary uses.</li>
+<li>Guidance learned across estates (sizing calibration, the app catalog, shared runbooks) and the family knowledge base.</li>
+<li>The schemas for the upper layers&#39; own formats. The foundation contracts and the fact register come from <a href="avd-assess.html">avd-assess</a>, copied byte for byte at a pin (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0021-foundation-contracts-live-in-avd-assess.md">decision 0021</a>).</li>
 <li>A docs consistency check every repo calls. Each repo&#39;s page lives here on avd-ops; the brain&#39;s old generated handbook is retired.</li>
 </ul>
 </section>

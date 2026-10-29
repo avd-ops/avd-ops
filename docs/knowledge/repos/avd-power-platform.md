@@ -2,8 +2,8 @@
 title: "avd-power-platform"
 summary: "Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-power-platform
@@ -23,7 +23,7 @@ It provisions Power Platform governance and approval-gated Power Automate flows 
 <!-- more -->
 
 - Deploys dedicated Power Platform environments (`[avd-ops-<prefix>-<env>] AVD Day-2 Automation`), strict DLP policies (`[avd-ops-<prefix>-<env>] AVD Day-2 Automation Strict DLP Policy`), and Bicep `Microsoft.PowerPlatform/enterprisePolicies` for VNet subnet injection.
-- Packs and imports source-controlled Power Automate solutions (`AvdDay2Automation`) wired to `avd-entra` user groups and `avd-azure` host pools for self-service access requests and approval-gated host drain, restart, and start-on-demand in Microsoft Teams.
+- Packs and imports source-controlled Power Automate solutions (`AvdDay2Automation`) wired to `avd-entra` user groups and `avd-azure` host pools for self-service pool access requests (approved in Microsoft Teams) and an approval-gated session host drain and restart.
 - `Deploy-AvdPowerPlatform.ps1` emits `power-platform-manifest.json` (`avd-ops-power-platform-manifest/v1`) and records `created: true|false` per resource in `power-platform-run-manifest.json` (`avd-ops-power-platform-run-manifest/v1`).
 - `Remove-AvdPowerPlatform.ps1 -DiscardLastCopy` deletes only the DLP policy, environment, and enterprise policy created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield objects untouched and gating stateful teardown behind `-DiscardLastCopy`.
 

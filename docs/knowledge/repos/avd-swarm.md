@@ -2,8 +2,8 @@
 title: "avd-swarm"
 summary: "On top, the how of operating: agents that read freely and change nothing until a person approves the plan"
 topic: repos
-status: partial
-last_reviewed: 2026-10-20
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-swarm

@@ -2,8 +2,8 @@
 title: "avd-intune"
 summary: "Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-intune
@@ -23,7 +23,7 @@ It configures Intune MDM enrollment, Settings Catalog profiles and device compli
 <!-- more -->
 
 - Checks active Intune service plans (`INTUNE_A*`), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.
-- Deploys Settings Catalog profiles (`FSLogix`, `Watermarking`, `ScreenCaptureProtection`, `SessionTimeLimits`, `DefenderVdiExclusions`) and device compliance policies stamped with `[avd-ops-<prefix>-<env>]`.
+- Deploys Settings Catalog profiles (FSLogix profile containers; a multi-session host baseline with RDP Shortpath, multimedia redirection and session time limits; a Windows Update ring) and a session-host compliance policy, each stamped with `[avd-ops-<prefix>-<env>]`.
 - Assigns Settings Catalog and compliance policies to the dynamic session-host device group from [avd-entra](avd-entra.md).
 - `Deploy-AvdIntune.ps1` emits `intune-manifest.json` (`avd-ops-intune-manifest/v1`) and records `created: true|false` per policy ID in `intune-run-manifest.json` (`avd-ops-intune-run-manifest/v1`).
 - `Remove-AvdIntune.ps1 -DiscardLastCopy` deletes only policies created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield policies untouched and gating teardown behind `-DiscardLastCopy`.
