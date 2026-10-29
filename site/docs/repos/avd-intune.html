@@ -46,7 +46,7 @@
 <details class="more"><summary>More</summary>
 <ul>
 <li>Checks active Intune service plans (<code>INTUNE_A*</code>), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.</li>
-<li>Deploys Settings Catalog profiles (<code>FSLogix</code>, <code>Watermarking</code>, <code>ScreenCaptureProtection</code>, <code>SessionTimeLimits</code>, <code>DefenderVdiExclusions</code>) and device compliance policies stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
+<li>Deploys Settings Catalog profiles (FSLogix profile containers; a multi-session host baseline with RDP Shortpath, multimedia redirection and session time limits; a Windows Update ring) and a session-host compliance policy, each stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
 <li>Assigns Settings Catalog and compliance policies to the dynamic session-host device group from <a href="avd-entra.html">avd-entra</a>.</li>
 <li><code>Deploy-AvdIntune.ps1</code> emits <code>intune-manifest.json</code> (<code>avd-ops-intune-manifest/v1</code>) and records <code>created: true|false</code> per policy ID in <code>intune-run-manifest.json</code> (<code>avd-ops-intune-run-manifest/v1</code>).</li>
 <li><code>Remove-AvdIntune.ps1 -DiscardLastCopy</code> deletes only policies created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield policies untouched and gating teardown behind <code>-DiscardLastCopy</code>.</li>

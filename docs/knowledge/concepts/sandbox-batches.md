@@ -2,8 +2,8 @@
 title: "Sandbox batches"
 summary: "How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence"
 topic: concepts
-status: partial
-last_reviewed: 2026-10-21
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # Sandbox batches
@@ -79,8 +79,11 @@ Groups that share resource names run in order, with teardown evidence between th
 
 - Groups that use the same resource names run in sequence, with teardown evidence between them.
   Otherwise the second deploy collides with the first one's leftovers.
-- The runner checks the cost gate again before each group. It stops on leftovers, a missed
+- Each group starts with a read-only health check (permissions, leftovers from an earlier run, the
+  run store, the caps), and the runner checks the cost gate again. It stops on leftovers, a missed
   deadline or the monthly cap. Stopping is always safe, because nothing new is deployed.
+- Before a group claims anything, it arms a deadline teardown on the run store, so a Cloud Shell
+  that dies mid-run still leaves nothing billing ([brain decision 0026](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0026-runs-check-and-clean-before-they-spend.md)).
 
 ## 5. Keep, then tear down
 
@@ -89,7 +92,7 @@ What must survive is copied out and checked, then everything is torn down.
 <!-- more -->
 
 - Before any teardown, every Keep path is archived to a run store outside the deployment, read back
-  and hash-checked. If there's no run store, the group refuses to start
+  and hash-checked. A group that keeps private output refuses to run without a run store
   ([never delete the last copy](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md)).
 - Teardown removes everything the group deployed, then checks that nothing is left billing
   ([never leave the meter running](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md)).

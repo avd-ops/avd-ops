@@ -1,9 +1,9 @@
 ---
 title: "avd-second-brain"
-summary: "On top, the why: the knowledge base, contract registry and fact register over the environment's life"
+summary: "On top, the why: each estate's decisions, use cases and RAID log over its life, the family knowledge base, and the upper layers' contracts"
 topic: repos
-status: partial
-last_reviewed: 2026-10-20
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-second-brain
@@ -20,9 +20,10 @@ The repo is the source of truth: [avd-ops/avd-second-brain](https://github.com/a
 
 A knowledge base, private vaults for each estate, and the contracts every repo uses.
 
-- A knowledge base of generalized facts: app catalog, rules with their history, sizing calibration and shared runbooks.
+- Lifecycle records (C18) and a RAID log (C25) for each environment: its use cases, every decision with what else was considered, and the change that carried it out ([decision 0020](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0020-the-brain-is-the-why-layer.md), [decision 0022](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0022-the-brain-keeps-the-raid-log.md), scope in [decision 0024](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0024-the-brain-is-the-estate-brain.md)).
 - Estate vaults keep one customer's estate in that customer's own private repo. Tenant data never comes back here.
-- The contract registry and fact register that every repo boundary uses.
+- Guidance learned across estates (sizing calibration, the app catalog, shared runbooks) and the family knowledge base.
+- The schemas for the upper layers' own formats. The foundation contracts and the fact register come from [avd-assess](avd-assess.md), copied byte for byte at a pin ([decision 0021](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0021-foundation-contracts-live-in-avd-assess.md)).
 - A docs consistency check every repo calls. Each repo's page lives here on avd-ops; the brain's old generated handbook is retired.
 
 ## How it fits

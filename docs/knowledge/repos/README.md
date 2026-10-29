@@ -2,8 +2,8 @@
 title: "The repos"
 summary: "Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # The repos

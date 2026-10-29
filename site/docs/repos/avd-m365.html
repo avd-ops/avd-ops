@@ -46,8 +46,8 @@
 <details class="more"><summary>More</summary>
 <ul>
 <li>Configures OneDrive Silent Account Configuration, Known Folder Move (<code>KFMSilentOptIn</code>, querying the tenant GUID dynamically at deploy time) and Files On-Demand sync rules stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
-<li>Applies Microsoft Teams VDI media optimization (<code>SlimCore</code>) and meeting policies.</li>
-<li>Sets Microsoft 365 Apps Shared Computer Activation and Outlook caching defaults for FSLogix containers.</li>
+<li>Applies Microsoft Teams VDI media optimization (<code>SlimCoreAndWebRtc</code>).</li>
+<li>Sets Microsoft 365 Apps Shared Computer Activation, the Monthly Enterprise update channel and a three-month Outlook cache for FSLogix containers.</li>
 <li>Checks required tenant SKUs in preflight without purchasing recurring commitments.</li>
 <li><code>Deploy-AvdM365.ps1</code> emits <code>m365-manifest.json</code> (<code>avd-ops-m365-manifest/v1</code>) and records <code>created: true|false</code> per policy ID in <code>m365-run-manifest.json</code> (<code>avd-ops-m365-run-manifest/v1</code>).</li>
 <li><code>Remove-AvdM365.ps1 -DiscardLastCopy</code> deletes only policies created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield policies untouched and gating teardown behind <code>-DiscardLastCopy</code>.</li>

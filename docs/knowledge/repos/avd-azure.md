@@ -2,8 +2,8 @@
 title: "avd-azure"
 summary: "Control plane: cloud-native Azure ARM and Bicep infrastructure for Azure Virtual Desktop, Private Link, FSLogix Azure Files and session hosts"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-azure
@@ -23,14 +23,14 @@ It deploys the Azure and AVD resource layer from Bicep with Private Link and Ent
 - Deploys multiple workspaces, Desktop and RemoteApp application groups, and Pooled or Personal host pools from Bicep.
 - Configures full AVD Private Link (`connection`, `feed` and `global`) and Private Endpoints for Azure Files and Key Vault.
 - Configures FSLogix on Premium Azure Files with Entra Kerberos and no storage keys, plus Azure Policy, Defender for Cloud and budget automation.
-- Joins session hosts to Entra ID and enrolls them into [avd-intune](avd-intune.md) via `AADLoginForWindows`.
+- Joins session hosts to Entra ID with the Entra join extension (`AADLoginForWindows`) and enrolls them in Intune, where the [avd-intune](avd-intune.md) profiles apply.
 
 ## How it fits
 
 It is the Azure infrastructure stage orchestrated by avd-landing-zone and checked by avd-current-state.
 
 - Invoked at a pinned commit by [avd-landing-zone](avd-landing-zone.md) or run directly from Azure Cloud Shell.
-- Binds application groups and RBAC to groups from [avd-entra](avd-entra.md) and exports `azure-outputs.json` for [avd-power-platform](avd-power-platform.md) and [avd-current-state](avd-current-state.md).
+- Binds application groups and RBAC to the user and admin groups from [avd-entra](avd-entra.md), passed in as group IDs. Its handoff to [avd-power-platform](avd-power-platform.md) and [avd-current-state](avd-current-state.md) is `azure-outputs.json`, defined by its contract schema; `deploy.sh` doesn't write that file yet.
 
 ## Read more in the repo
 

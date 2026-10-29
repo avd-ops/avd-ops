@@ -36,9 +36,12 @@ projects:
   format_version: 1
 - id: liquidware
   name: Liquidware
-  repo: nickprignano/avd-liquidware
+  repo: nickprignano/liquidware-ninja
   kb_path: docs/knowledge
   role: member
-  focus: Liquidware products on virtual desktops, starting with Stratusphere UX in Azure
-  owns: [Liquidware products, Stratusphere UX appliances, the Liquidware tier for the landing zone]
+  focus: Liquidware products across virtual and physical desktops (Stratusphere UX, ProfileUnity, FlexApp, CommandCTRL)
+  # Its own row also names a private toolkit repo, which this public KB leaves out.
+  owns: ['Liquidware products (Stratusphere UX, ProfileUnity, FlexApp, CommandCTRL)', the Stratusphere
+      API and SpotCheck methodology, 'how they fit with AVD, Citrix, Horizon and FSLogix, and the avd-liquidware
+      toolkit']
   format_version: 1
