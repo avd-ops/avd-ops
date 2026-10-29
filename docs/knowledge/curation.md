@@ -32,7 +32,8 @@ people are chosen with the method in [experts.md](experts.md).
 Working a digest: tick the items worth adding (a `→ docs/knowledge/<page>.md` at the end of an
 item's line sends it to another page than its source's), then label the issue **kb-accepted**.
 [kb-feedback](#feedback-loop-kb-feedback) adds each ticked item to its page under "From the
-digest", marked unverified, and opens a pull request that closes the digest. Before merging, turn
+digest", marked unverified (a verified page goes back to partial), and opens a pull request that
+closes the digest. Before merging, turn
 each link into what matters (facts, versions, fixes; not a link dump) with a primary source, and
 drop its marker. Or write it up by hand in your own PR with `Closes #<digest>`.
 

@@ -555,6 +555,19 @@ class DigestTests(unittest.TestCase):
             feedback.handle(issue, "2026-10-28")  # a re-run adds nothing twice, and says so
         self.assertEqual((self.tmp / "getting-started/README.md").read_text(encoding="utf-8").count("example.com/one"), 1)
 
+    def test_accept_marks_page_partial_and_escapes_feed_text(self):
+        body = "### Blog <b>A</b> → `docs/knowledge/getting-started/README.md`\n- [x] [v2 <img src=x>](https://e/x)\n"
+        feedback.handle({"number": 7, "body": body, "labels": ["kb-digest"]}, "2026-10-29")
+        page = (self.tmp / "getting-started/README.md").read_text(encoding="utf-8")
+        self.assertRegex(page, r"(?m)^status: partial$")  # freshness lists it until the pick is written up
+        self.assertIn("[v2 &lt;img src=x&gt;](https://e/x) (Blog &lt;b&gt;A&lt;/b&gt;", page)
+        self.assertNotIn("<img", page)
+
+    def test_accept_refuses_ticks_it_cannot_read(self):
+        body = "### A → `docs/knowledge/getting-started/README.md`\n- [x] [ok](https://e/ok)\n- [x] [old](http://e/old)\n"
+        with self.assertRaisesRegex(feedback.FeedbackError, "1 ticked line"):
+            feedback.handle({"number": 1, "body": body, "labels": ["kb-digest"]}, "2026-10-29")
+
     def test_accept_refuses_other_files_and_authors(self):
         for page in ("../../scripts/kb/build.py", "troubleshooting/known-errors.yaml", "decisions/0001-x.md"):
             with self.assertRaisesRegex(feedback.FeedbackError, "isn't a topic page"):
@@ -644,8 +657,9 @@ class CommitNoiseTests(unittest.TestCase):
         commit = lambda msg: {"html_url": "https://e/" + msg[:5], "commit": {
             "message": msg, "committer": {"date": "2026-10-20T00:00:00Z"}}}
         with mock.patch.object(sources, "github", return_value=[
-                commit("Merge pull request #1 from x"), commit("Bump pyyaml"), commit("Fix the thing")]):
+                commit("Merge pull request #1 from x"), commit("Bump pyyaml from 6.0.1 to 6.0.2"),
+                commit("Bump the minimum agent version"), commit("Fix the thing")]):
             items = sources.github_commits({"repo": "o/r"}, datetime(2026, 10, 1, tzinfo=timezone.utc))
-        self.assertEqual([i.title for i in items], ["Fix the thing"])
+        self.assertEqual([i.title for i in items], ["Bump the minimum agent version", "Fix the thing"])
 
 

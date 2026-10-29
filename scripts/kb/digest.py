@@ -65,8 +65,15 @@ def ticked_items(body: str) -> list[dict]:
     return items
 
 
+def safe(text: str) -> str:
+    """Feed text as plain Markdown: no brackets that end the link, no HTML the site would render."""
+    return text.replace("[", "(").replace("]", ")").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def add_to_page(page: Path, lines: list[str]) -> None:
     text = page.read_text(encoding="utf-8").rstrip("\n") + "\n"
+    # A verified page with unverified picks is partial, so kb-freshness lists it until they're written up.
+    text = re.sub(r"^status: verified$", "status: partial", text, count=1, flags=re.M)
     if SECTION not in text.splitlines():
         text += f"\n{SECTION}\n\nPicked from the weekly digest; each waits to be written up in our own words.\n\n"
     page.write_text(text + "\n".join(lines) + "\n", encoding="utf-8")
@@ -87,7 +94,11 @@ def accept(issue: dict) -> tuple[str, str]:
     author = (issue.get("user") or {}).get("login")
     if author and author != "github-actions[bot]":
         raise DigestError(f"digests come from kb-curator, but this issue was opened by {author}")
-    items = ticked_items(issue.get("body") or "")
+    body = issue.get("body") or ""
+    items = ticked_items(body)
+    unread = len(ANY_TICK.findall(body)) - len(items)
+    if unread:
+        raise DigestError(f"{unread} ticked line(s) aren't a `- [x] [title](https://...)` item; fix or untick them")
     if not items:
         raise DigestError("nothing is ticked; tick the items worth adding, then re-add kb-accepted")
     by_page: dict[str, list[dict]] = {}
@@ -104,8 +115,8 @@ def accept(issue: dict) -> tuple[str, str]:
         if new:
             added += len(new)
             add_to_page(KB_DIR / page, [
-                f"- [{it['title'].replace('[', '(').replace(']', ')')}]({it['url']})"
-                f" ({it['source']}{', ' + it['date'] if it['date'] else ''}; digest #{n})."
+                f"- [{safe(it['title'])}]({it['url']})"
+                f" ({safe(it['source'])}{', ' + it['date'] if it['date'] else ''}; digest #{n})."
                 " *Unverified:* summarize it here and check it against a primary source." for it in new])
     if not added:
         raise DigestError("every ticked item is already on its page; close the digest instead")

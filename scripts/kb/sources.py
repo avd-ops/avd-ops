@@ -27,8 +27,9 @@ def _user_agent() -> str:
 
 USER_AGENT = _user_agent()
 GITHUB_API = "https://api.github.com"
-# Commit titles that never belong in a digest: merges and dependency bumps (from 2ndbrain).
-NOISE = re.compile(r"^(Merge (pull request|branch|remote-tracking)|Bump |(build|chore)\(deps)", re.I)
+# Commit titles that never belong in a digest: merges and dependency bumps (from 2ndbrain; a bump
+# is Dependabot's "Bump <package> from <old> to <new>", so "Bump the minimum version" stays).
+NOISE = re.compile(r"^(Merge (pull request|branch|remote-tracking)|Bump \S+ from \S+ to |(build|chore)\(deps)", re.I)
 
 
 @dataclass
