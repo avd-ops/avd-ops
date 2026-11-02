@@ -18,14 +18,15 @@ operations spec, section 3.0
 
 Roles as the owner named them on 2026-10-21.
 
-**On top**, the second brain and avd-swarm are how we automate it and make it smart and
-self-improving, an intelligence and abstraction layer built on the foundation:
+**On top**, the second brain and avd-swarm are the **Desktop DevOps** intelligence and operating
+layer across Azure Virtual Desktop, Windows 365 and Microsoft Intune ([decision 0012](knowledge/decisions/0012-desktop-devops-for-avd-win365-and-intune.md)):
 
-- [avd-swarm](https://github.com/avd-ops/avd-swarm) automates it: agents that read and
-  propose, and change nothing until a person approves the exact plan.
+- [avd-swarm](https://github.com/avd-ops/avd-swarm) automates it: Desktop DevOps agents across AVD,
+  Windows 365 and Intune that read freely, detect policy and host drift, and change nothing until a
+  person approves the exact plan.
 - [avd-second-brain](https://github.com/avd-ops/avd-second-brain) makes it smart and
-  self-improving: the why over the environment's whole life, what it looked like, what changed,
-  what broke and why each rule is what it is.
+  self-improving: the why over the desktop estate's whole life across AVD, Windows 365 and Intune—what
+  it looked like, what changed, what broke and why each rule and policy is what it is.
 
 ## Beside the foundation: the end-user portal
 
