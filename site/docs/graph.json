@@ -86,6 +86,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "title": "0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune",
+   "url": "decisions/0012-desktop-devops-for-avd-win365-and-intune.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -220,6 +227,10 @@
   },
   {
    "source": "concepts/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "concepts/README.md",
    "target": "repos/avd-second-brain.md"
   },
   {
@@ -237,6 +248,14 @@
   {
    "source": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
   },
   {
    "source": "decisions/README.md",
@@ -277,6 +296,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "getting-started/README.md",
@@ -492,6 +515,10 @@
   },
   {
    "source": "repos/avd-intune.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
    "target": "repos/avd-entra.md"
   },
   {
@@ -572,6 +599,10 @@
   },
   {
    "source": "repos/avd-second-brain.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
    "target": "repos/avd-swarm.md"
   },
   {
@@ -581,6 +612,14 @@
   {
    "source": "repos/avd-second-brain.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-swarm.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "repos/avd-swarm.md",
@@ -613,6 +652,10 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "roadmap/README.md",

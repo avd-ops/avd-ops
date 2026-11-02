@@ -1,30 +1,31 @@
 ---
 title: "avd-intune"
-summary: "Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop"
+summary: "Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning"
 topic: repos
 status: partial
-last_reviewed: 2026-10-27
+last_reviewed: 2026-11-02
 ---
 
 # avd-intune
 
-The Microsoft Intune device enrollment and endpoint configuration control plane for AVD session hosts.
+The Microsoft Intune policy-as-code and Windows 365 Cloud PC control plane for desktop estates.
 
 <!-- more -->
 
-Declarative Microsoft Graph Settings Catalog and compliance profiles that enroll and configure Azure Virtual Desktop session hosts ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)).
+Declarative Microsoft Graph Settings Catalog profiles, compliance policies, assignment filters and optional Windows 365 Cloud PC provisioning policies (`deviceManagement/virtualEndpoint`) for Azure Virtual Desktop and Windows 365 ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md), [decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)).
 
 The repo is the source of truth: [avd-ops/avd-intune](https://github.com/avd-ops/avd-intune). This page says where it fits.
 
 ## What it does
 
-It configures Intune MDM enrollment, Settings Catalog profiles and device compliance for session hosts.
+It configures Intune MDM enrollment, assignment filters, Settings Catalog baselines and optional Windows 365 provisioning policies.
 
 <!-- more -->
 
-- Checks active Intune service plans (`INTUNE_A*`), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.
-- Deploys Settings Catalog profiles (`FSLogix`, `Watermarking`, `ScreenCaptureProtection`, `SessionTimeLimits`, `DefenderVdiExclusions`) and device compliance policies stamped with `[avd-ops-<prefix>-<env>]`.
-- Assigns Settings Catalog and compliance policies to the dynamic session-host device group from [avd-entra](avd-entra.md).
+- Checks active Intune and Windows 365 service plans (`INTUNE_A*`, `CPC_E_*`, `WIN365_*`), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.
+- Deploys standard Intune assignment filters (`avd-multisession`, `avd-personal`, `win365-cloudpc`, `physical-desktop`), Settings Catalog profiles (`FSLogix`, `Watermarking`, `ScreenCaptureProtection`, `SessionTimeLimits`, `DefenderVdiExclusions`) and device compliance policies stamped with `[avd-ops-<prefix>-<env>]`.
+- Optionally deploys declarative Windows 365 Cloud PC provisioning policies (`enableSingleSignOn: true`), user settings (`localAdminEnabled: false`, scheduled restore points) and Azure Network Connections when `-IncludeWin365` is enabled ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)).
+- Assigns Settings Catalog, compliance and Windows 365 policies to the groups from [avd-entra](avd-entra.md).
 - `Deploy-AvdIntune.ps1` emits `intune-manifest.json` (`avd-ops-intune-manifest/v1`) and records `created: true|false` per policy ID in `intune-run-manifest.json` (`avd-ops-intune-run-manifest/v1`).
 - `Remove-AvdIntune.ps1 -DiscardLastCopy` deletes only policies created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield policies untouched and gating teardown behind `-DiscardLastCopy`.
 

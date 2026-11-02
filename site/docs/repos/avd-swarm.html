@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-swarm | avd-ops docs</title>
-<meta name="description" content="On top, the how of operating: agents that read freely and change nothing until a person approves the plan">
+<meta name="description" content="On top, Desktop DevOps execution: agents across AVD, Windows 365 and Intune that read freely and change nothing until a person approves the plan">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -32,30 +32,37 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-swarm" title="avd-swarm"><span class="n">1</span><span class="t">avd-swarm</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
 <section class="screen" id="avd-swarm">
 <h1 tabindex="-1">avd-swarm</h1>
-<p class="bl">Agents that run an estate, changing nothing until a person approves the exact plan.</p>
+<p class="bl">Desktop DevOps agents across AVD, Windows 365 and Intune, changing nothing until a person approves the exact plan.</p>
 
 <details class="more"><summary>More</summary>
-<p>Agents that manage Azure and Entra ID without the portals. They read freely and change nothing until a person approves the exact plan.</p>
+<p>Agents that manage Azure Virtual Desktop, Windows 365 Cloud PCs and Microsoft Intune policy-as-code without portal click-ops (<a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>). They read freely and change nothing until a person approves the exact plan.</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-swarm">avd-ops/avd-swarm</a>. This page says where it fits.</p>
 </details>
 </section>
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
-<p class="bl">Specialist agents read and propose. Every write is an approved plan behind one kill switch.</p>
+<p class="bl">Specialist Desktop DevOps agents read and propose. Every write is an approved plan behind one kill switch.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>A coordinator hands questions to specialist agents: readiness, deploy, hosts, images, users and cost.</li>
-<li>Writes go through plans approved in GitHub Environments, with one layered kill switch only the owner resets.</li>
+<li>A coordinator hands questions to specialist Desktop DevOps agents: <code>readiness</code>, <code>deploy</code>, <code>hosts-and-cloudpcs</code>, <code>intune-policy</code>, <code>images-and-apps</code>, <code>users-and-access</code> and <code>cost-and-licensing</code>.</li>
+<li>Detects Intune Settings Catalog and Windows 365 provisioning policy drift, proposes ring-by-ring policy promotions, and manages session-host and Cloud PC operations.</li>
+<li>Writes go through <code>C9</code> plans approved in GitHub Environments, with a <code>dataLossGuard</code> on destructive actions and one layered kill switch only the owner resets.</li>
 <li>The write path never runs in the public repo; adopters run it from a private repo synced from a release tag.</li>
 <li>Today only the S1a spike runs. Everything after the first two write actions is designed, not scheduled.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
 <p class="bl">It only knows what the brain cites, and checks live state again before any change.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Gets estate facts only from <a href="avd-second-brain.html">avd-second-brain</a>, as cited C11 and C12 evidence, and re-reads live state before any change.</li>
-<li>Changes together with avd-second-brain (decision 0003).</li>
+<li>Gets estate facts across AVD, Windows 365 and Intune only from <a href="avd-second-brain.html">avd-second-brain</a>, as cited C11 and C12 evidence, and re-reads live state before any change.</li>
+<li>Changes together with avd-second-brain (decision 0003 and <a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>).</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>
