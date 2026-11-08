@@ -9,6 +9,13 @@
    "section": true
   },
   {
+   "id": "concepts/glossary.md",
+   "title": "Glossary",
+   "url": "concepts/glossary.html",
+   "topic": "concepts",
+   "status": "partial"
+  },
+  {
    "id": "concepts/sandbox-batches.md",
    "title": "Sandbox batches",
    "url": "concepts/sandbox-batches.html",
@@ -86,6 +93,20 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0011-avd-benchmark-and-assess-corpus.md",
+   "title": "0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)",
+   "url": "decisions/0011-avd-benchmark-and-assess-corpus.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
+   "id": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "title": "0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune",
+   "url": "decisions/0012-desktop-devops-for-avd-win365-and-intune.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -106,6 +127,13 @@
    "url": "getting-started/cloud-shell.html",
    "topic": "getting-started",
    "status": "verified"
+  },
+  {
+   "id": "getting-started/lab-walkthrough.md",
+   "title": "Lab walkthrough: empty subscription to validated landing zone",
+   "url": "getting-started/lab-walkthrough.html",
+   "topic": "getting-started",
+   "status": "partial"
   },
   {
    "id": "repos/README.md",
@@ -220,6 +248,10 @@
   },
   {
    "source": "concepts/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "concepts/README.md",
    "target": "repos/avd-second-brain.md"
   },
   {
@@ -231,12 +263,36 @@
    "target": "decisions/0006-run-anywhere.md"
   },
   {
+   "source": "concepts/glossary.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "concepts/glossary.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "concepts/glossary.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
    "source": "concepts/sandbox-batches.md",
    "target": "getting-started/cloud-shell.md"
   },
   {
    "source": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0011-avd-benchmark-and-assess-corpus.md",
+   "target": "decisions/0004-submissions-are-github-issue-forms.md"
+  },
+  {
+   "source": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
   },
   {
    "source": "decisions/README.md",
@@ -279,6 +335,14 @@
    "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
   },
   {
+   "source": "decisions/README.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
    "source": "getting-started/README.md",
    "target": "decisions/0002-avd-ops-is-the-front-door.md"
   },
@@ -317,6 +381,22 @@
   {
    "source": "getting-started/cloud-shell.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
    "source": "repos/README.md",
@@ -372,6 +452,10 @@
   },
   {
    "source": "repos/avd-assess.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
+  },
+  {
+   "source": "repos/avd-assess.md",
    "target": "repos/avd-current-state.md"
   },
   {
@@ -492,6 +576,10 @@
   },
   {
    "source": "repos/avd-intune.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "repos/avd-intune.md",
    "target": "repos/avd-entra.md"
   },
   {
@@ -572,7 +660,7 @@
   },
   {
    "source": "repos/avd-second-brain.md",
-   "target": "repos/avd-assess.md"
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "repos/avd-second-brain.md",
@@ -585,6 +673,14 @@
   {
    "source": "repos/avd-second-brain.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-second-brain.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-swarm.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "repos/avd-swarm.md",
@@ -620,6 +716,10 @@
   },
   {
    "source": "roadmap/README.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "roadmap/README.md",
    "target": "repos/avd-m365.md"
   },
   {
@@ -637,6 +737,14 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "getting-started/lab-walkthrough.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "concepts/glossary.md"
   }
  ]
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-intune | avd-ops docs</title>
-<meta name="description" content="Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop">
+<meta name="description" content="Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -32,22 +32,23 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-intune" title="avd-intune"><span class="n">1</span><span class="t">avd-intune</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
 <section class="screen" id="avd-intune">
 <h1 tabindex="-1">avd-intune</h1>
-<p class="bl">The Microsoft Intune device enrollment and endpoint configuration control plane for AVD session hosts.</p>
+<p class="bl">The Microsoft Intune policy-as-code and Windows 365 Cloud PC control plane for desktop estates.</p>
 
 <details class="more"><summary>More</summary>
-<p>Declarative Microsoft Graph Settings Catalog and compliance profiles that enroll and configure Azure Virtual Desktop session hosts (<a href="../decisions/0009-split-landing-zone-into-five-control-planes.html">decision 0009</a>).</p>
+<p>Declarative Microsoft Graph Settings Catalog profiles, compliance policies, assignment filters and optional Windows 365 Cloud PC provisioning policies (<code>deviceManagement/virtualEndpoint</code>) for Azure Virtual Desktop and Windows 365 (<a href="../decisions/0009-split-landing-zone-into-five-control-planes.html">decision 0009</a>, <a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>).</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-intune">avd-ops/avd-intune</a>. This page says where it fits.</p>
 </details>
 </section>
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
-<p class="bl">It configures Intune MDM enrollment, Settings Catalog profiles and device compliance for session hosts.</p>
+<p class="bl">It configures Intune MDM enrollment, assignment filters, Settings Catalog baselines and optional Windows 365 provisioning policies.</p>
 
 <details class="more"><summary>More</summary>
 <ul>
-<li>Checks active Intune service plans (<code>INTUNE_A*</code>), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.</li>
-<li>Deploys Settings Catalog profiles (FSLogix profile containers; a multi-session host baseline with RDP Shortpath, multimedia redirection and session time limits; a Windows Update ring) and a session-host compliance policy, each stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
-<li>Assigns Settings Catalog and compliance policies to the dynamic session-host device group from <a href="avd-entra.html">avd-entra</a>.</li>
+<li>Checks active Intune and Windows 365 service plans (<code>INTUNE_A*</code>, <code>CPC_E_*</code>, <code>WIN365_*</code>), MDM auto-enrollment scope and Windows Enterprise multi-session enrollment rules in preflight without purchasing commitments.</li>
+<li>Deploys standard Intune assignment filters (<code>avd-multisession</code>, <code>avd-personal</code>, <code>win365-cloudpc</code>, <code>physical-desktop</code>), Settings Catalog profiles (<code>FSLogix</code>, <code>Watermarking</code>, <code>ScreenCaptureProtection</code>, <code>SessionTimeLimits</code>, <code>DefenderVdiExclusions</code>) and device compliance policies stamped with <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code>.</li>
+<li>Optionally deploys declarative Windows 365 Cloud PC provisioning policies (<code>enableSingleSignOn: true</code>), user settings (<code>localAdminEnabled: false</code>, scheduled restore points) and Azure Network Connections when <code>-IncludeWin365</code> is enabled (<a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>).</li>
+<li>Assigns Settings Catalog, compliance and Windows 365 policies to the groups from <a href="avd-entra.html">avd-entra</a>.</li>
 <li><code>Deploy-AvdIntune.ps1</code> emits <code>intune-manifest.json</code> (<code>avd-ops-intune-manifest/v1</code>) and records <code>created: true|false</code> per policy ID in <code>intune-run-manifest.json</code> (<code>avd-ops-intune-run-manifest/v1</code>).</li>
 <li><code>Remove-AvdIntune.ps1 -DiscardLastCopy</code> deletes only policies created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield policies untouched and gating teardown behind <code>-DiscardLastCopy</code>.</li>
 </ul>
@@ -76,8 +77,8 @@ Set-Location ~/avd-intune; git checkout -q main; git pull -q --ff-only
 <ul>
 <li><a href="https://github.com/avd-ops/avd-intune/blob/main/README.md">README and quick start</a></li>
 </ul>
-<details class="more linked"><summary>Linked from 7 pages</summary>
-<ul class="backlinks"><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-azure.html">avd-azure</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-entra.html">avd-entra</a></li><li><a href="avd-m365.html">avd-m365</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
+<details class="more linked"><summary>Linked from 8 pages</summary>
+<ul class="backlinks"><li><a href="index.html">The repos</a></li><li><a href="avd-assess.html">avd-assess</a></li><li><a href="avd-azure.html">avd-azure</a></li><li><a href="avd-current-state.html">avd-current-state</a></li><li><a href="avd-entra.html">avd-entra</a></li><li><a href="avd-m365.html">avd-m365</a></li><li><a href="avd-second-brain.html">avd-second-brain</a></li><li><a href="../roadmap.html">Roadmap</a></li></ul></details>
 </section>
 <nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="avd-entra.html" data-page="avd-entra">Back</a><span class="where">avd-intune</span><a class="sc-next" href="avd-landing-zone.html" data-page="avd-landing-zone">Next<span class="pg">: avd-landing-zone</span></a></div></nav>
 </article>

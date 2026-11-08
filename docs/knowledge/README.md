@@ -1,9 +1,9 @@
 ---
 title: "Knowledge base"
-summary: "What this knowledge base is, how it's organized, and how to add to it safely"
+summary: "What this knowledge base is, how it's organised, and how to add to it safely"
 topic: overview
-status: verified
-last_reviewed: 2026-10-29
+status: partial
+last_reviewed: 2026-10-18
 ---
 
 # Knowledge base
@@ -19,20 +19,22 @@ add it to the topic page it belongs to instead of starting a new file.
 |---|---|---|
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | verified |
 | [getting-started/cloud-shell.md](getting-started/cloud-shell.md) | The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence | verified |
+| [getting-started/lab-walkthrough.md](getting-started/lab-walkthrough.md) | Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks | partial |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | verified |
+| [concepts/glossary.md](concepts/glossary.md) | One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term | partial |
 | [concepts/sandbox-batches.md](concepts/sandbox-batches.md) | How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence | verified |
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | verified |
 | [repos/avd-assess.md](repos/avd-assess.md) | Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed | verified |
 | [repos/avd-azure.md](repos/avd-azure.md) | Control plane: cloud-native Azure ARM and Bicep infrastructure for Azure Virtual Desktop, Private Link, FSLogix Azure Files and session hosts | verified |
 | [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts | verified |
 | [repos/avd-entra.md](repos/avd-entra.md) | Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop | verified |
-| [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune session-host MDM enrollment, Settings Catalog baselines and compliance policies for Azure Virtual Desktop | verified |
+| [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning | verified |
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link | verified |
 | [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
 | [repos/avd-m365.md](repos/avd-m365.md) | Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines | verified |
 | [repos/avd-power-platform.md](repos/avd-power-platform.md) | Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop | verified |
-| [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, the why: each estate's decisions, use cases and RAID log over its life, the family knowledge base, and the upper layers' contracts | verified |
-| [repos/avd-swarm.md](repos/avd-swarm.md) | On top, the how of operating: agents that read freely and change nothing until a person approves the plan | verified |
+| [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune | verified |
+| [repos/avd-swarm.md](repos/avd-swarm.md) | On top, Desktop DevOps execution: agents across AVD, Windows 365 and Intune that read freely and change nothing until a person approves the plan | verified |
 | [troubleshooting/](troubleshooting/README.md) | Errors hit in this project: symptom, cause, fix and source | verified |
 | [roadmap/](roadmap/README.md) | Where each AVD repo is today and what these docs will cover next | plan |
 | [curation.md](curation.md) | How the KB stays current: the weekly digest, the prior-art check, the feedback loop, the freshness check and family alignment | verified |
@@ -46,7 +48,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | Knowledge base | Role | Focus | Source of truth for |
 |---|---|---|---|
 | [2ndbrain](https://github.com/nickprignano/2ndbrain/tree/main/docs/knowledge) | reference | The template that owns the family knowledge base format | the family knowledge base format; its scripts and schemas |
-| [AVD](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge) | member | Azure Virtual Desktop itself, across its lifecycle (assess, inventory, deploy, operate), and the intelligence layer behind avd-swarm | Azure Virtual Desktop platform; FSLogix; session host images in general; the AVD landing zone and its operations; the contracts between the AVD repos |
+| [AVD](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge) | member | Desktop DevOps intelligence across Azure Virtual Desktop, Windows 365 and Microsoft Intune (assess, inventory, deploy, operate), and the memory layer behind avd-swarm | Azure Virtual Desktop platform; Windows 365 Cloud PCs; Intune policy-as-code and assignment filters; FSLogix; session host and Cloud PC images; the AVD landing zone and its operations; the contracts between the AVD repos |
 | [Liquidware](https://github.com/nickprignano/liquidware-ninja/tree/main/docs/knowledge) | member | Liquidware products across virtual and physical desktops (Stratusphere UX, ProfileUnity, FlexApp, CommandCTRL) | Liquidware products (Stratusphere UX, ProfileUnity, FlexApp, CommandCTRL); the Stratusphere API and SpotCheck methodology; how they fit with AVD, Citrix, Horizon and FSLogix, and the avd-liquidware toolkit |
 <!-- END GENERATED: family -->
 
@@ -65,7 +67,7 @@ Every change follows the [guardrails](../guardrails.md). Run the prior-art check
   expert to follow** issue. When a maintainer labels it `kb-accepted`, a workflow turns it into a
   pull request.
 - **With a pull request:** add a bullet to the matching topic page, say what happened, the fix and
-  the versions it applies to, and mark anything you haven't confirmed with an italic `*unverified*` marker (the freshness check counts them). Known errors
+  the versions it applies to, and mark anything you haven't confirmed as *unverified*. Known errors
   go in [troubleshooting/known-errors.yaml](troubleshooting/known-errors.yaml). Decisions are a copy
   of [decisions/template.md](decisions/template.md) at the next number, `proposed` until the
   maintainer says yes. Run `python3 scripts/kb/build.py` and `python3 scripts/kb/validate.py`

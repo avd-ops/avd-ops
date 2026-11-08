@@ -3,8 +3,8 @@
  "schema": "avd-ops-library/v1",
  "edition": {
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "cfcc3026b968c3c15a4150b8c7160891a138d3f0",
-  "date": "2026-10-27"
+  "commit": "79e2fc577d3abba39f94902ce0029d6e465dab58",
+  "date": "2026-11-07"
  },
  "references": [
   {
@@ -22,7 +22,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -75,8 +75,8 @@
    "title": "Activity log in Azure Monitor",
    "url": "https://learn.microsoft.com/azure/azure-monitor/fundamentals/activity-log",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id e1e0379f84a8e116f30c72567d10ade8ea2f46e5, updated_at 2026-10-19",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 25304e36332b7851db820ab35a8b2814ccbe7614, updated_at 2026-10-27",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -866,7 +866,7 @@
      "says": "Create scaling plans per region (scaling plans, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -890,7 +890,7 @@
      "says": "Configure scheduled agent updates for host pools (host pools, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -928,8 +928,8 @@
    "title": "Azure Architecture Center, Azure Virtual Desktop landing zone design guide",
    "url": "https://learn.microsoft.com/azure/architecture/landing-zones/azure-virtual-desktop/design-guide",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 1a7a778bf46ec7c3bdd403f91d5985a92ac6cc25, updated_at 2026-10-05",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id dd1873a40db49a7541996af5597d94969aa63444, updated_at 2026-10-27",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -1375,8 +1375,8 @@
    "title": "What are Azure availability zones?",
    "url": "https://learn.microsoft.com/azure/reliability/availability-zones-overview",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 2f7ee4c8b45127943bcd615810dc882f9ddd598e, updated_at 2026-10-13",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 454863f3dc91952428e31d5a5fcd4ba88bdb1ad7, updated_at 2026-10-27",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -1752,7 +1752,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -2149,7 +2149,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -2629,8 +2629,8 @@
    "title": "Azure Architecture Center, a GIS desktop app on Azure Virtual Desktop (example scenario)",
    "url": "https://learn.microsoft.com/azure/architecture/example-scenario/data/esri-arcgis-azure-virtual-desktop",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 069a83fe2cc8d78c25f4123a93ba3b9819821147, updated_at 2026-06-03",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id fce7dc954ab10936e5083de69677c9c046b86494, updated_at 2026-10-27",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -3027,7 +3027,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3044,7 +3044,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3125,7 +3125,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3141,7 +3141,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3264,7 +3264,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3303,7 +3303,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3329,7 +3329,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -3800,8 +3800,8 @@
    "title": "Multiregion BCDR for Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop-multi-region-bcdr",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id d6054b5b6a0fda90d06619b94a3c5c2ce89c4513, updated_at 2026-10-05",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 0762ad3f4f716eaeb4f5da294f815cf5f99bd965, updated_at 2026-10-23",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -4336,7 +4336,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": true,
       "disputed": false,
       "helpWanted": false
@@ -5110,8 +5110,8 @@
    "title": "Security recommendations for Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 02c72255bd133b6d98c53d233b6f97b780f2322a, updated_at 2026-08-27",
-   "read": "2026-10-20",
+   "pin": "Learn git_commit_id 033104598fa925b1260d4d3d83012e0692c949a3, updated_at 2026-10-21",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -5291,6 +5291,19 @@
      "id": "gsa-on-hosts",
      "says": "Configure Global Secure Access on session hosts to apply the same access controls to private, internet and Microsoft 365 apps, external identities included.",
      "kind": "guidance",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    },
+    {
+     "id": "no-administrator-protection",
+     "says": "Don't turn on Windows 11 Administrator protection on session hosts or their images; it isn't supported yet, and the Windows security baselines applied by Group Policy turn it on from the October 2026 security update.",
+     "kind": "published",
      "state": {
       "mapped": true,
       "measurable": false,
@@ -5862,8 +5875,8 @@
    "title": "Windows update management methodologies for Azure Virtual Desktop session hosts",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/windows-update-management-methodologies-session-hosts",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id c972d4459371656583cdf255f87778a5ffc75fa4, updated_at 2026-10-08",
-   "read": "2026-10-20",
+   "pin": "Learn git_commit_id de6e2325bea5c22de746080fb3965dbf1b277e5a, updated_at 2026-10-28",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -5923,7 +5936,7 @@
     },
     {
      "id": "hotpatch",
-     "says": "Hotpatch applies eligible monthly security updates without a reboot on supported editions, including multi-session.",
+     "says": "Hotpatch applies eligible monthly security updates without a reboot on Windows Server Azure Edition and Windows 11 Enterprise 24H2 or later with VBS on; multi-session isn't supported.",
      "kind": "published",
      "state": {
       "mapped": true,
@@ -6030,8 +6043,8 @@
    "title": "What's new in Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/whats-new",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id e1f3352792e5f5036e29c56eff58e883bb6b2b22, updated_at 2026-10-14",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 9f188d1eb9303ec2326038144e80606e4d67ed4f, updated_at 2026-10-23",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -6051,7 +6064,7 @@
     },
     {
      "id": "multipath-ga",
-     "says": "RDP Multipath became generally available in July 2025; redundant TCP paths began a phased GA rollout in May 2026.",
+     "says": "RDP Multipath became generally available in July 2025; redundant TCP paths began a phased GA rollout in May 2026 and were generally available in July 2026.",
      "kind": "published",
      "state": {
       "mapped": true,
@@ -6079,7 +6092,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -6121,8 +6134,8 @@
    "title": "Azure Files networking considerations",
    "url": "https://learn.microsoft.com/azure/storage/files/storage-files-networking-overview",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 7d8e1c58c58a4dc0ec333cbc4ad45173c7d61e6d, updated_at 2026-10-05",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00, updated_at 2026-10-26",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -6145,8 +6158,8 @@
    "title": "SMB file shares in Azure Files",
    "url": "https://learn.microsoft.com/azure/storage/files/files-smb-protocol",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 950ee5e997d79ae583f3b68272322c637732fc9a, updated_at 2026-09-22",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00, updated_at 2026-10-26",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -6155,7 +6168,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -6169,8 +6182,8 @@
    "title": "Azure Files guidance for virtual desktop workloads",
    "url": "https://learn.microsoft.com/azure/storage/files/virtual-desktop-workloads",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 21b4b7181ee0e882340a24ca59e1805107a58d64, updated_at 2026-10-19",
-   "read": "2026-10-20",
+   "pin": "Learn git_commit_id ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00, updated_at 2026-10-26",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -6211,6 +6224,63 @@
       "helpWanted": false
      },
      "citedBy": []
+    }
+   ]
+  },
+  {
+   "id": "azure-mcp",
+   "title": "Azure MCP Server tools for Azure Virtual Desktop and server startup modes",
+   "url": "https://learn.microsoft.com/azure/developer/azure-mcp-server/tools/azure-virtual-desktop",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id 7c4a91e2b803f512d4a96c1830e7b42f9a51c308, updated_at 2026-10-20",
+   "read": "2026-11-03",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "read-only-flag",
+     "says": "Starting the Azure MCP Server with `--read-only` exposes only tools annotated read-only (`readOnlyHint` set to `true`) and refuses write operations across exposed namespaces.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "diagnostics"
+     ]
+    },
+    {
+     "id": "all-mode-per-tool-allowlist",
+     "says": "The default `namespace` mode exposes one aggregated tool per service namespace; starting the Azure MCP Server with `--mode all` (or naming tools with `--tool`) exposes individual tool schemas so a caller can enforce a per-tool allowlist and bound prompt token overhead.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "diagnostics"
+     ]
+    },
+    {
+     "id": "typed-vs-cli-wrapper",
+     "says": "The Azure MCP Server's `virtualdesktop` namespace exposes typed, read-only tools for host pools, session hosts and user sessions, whereas `Azure/azure-api-mcp` (`--readonly`) wraps free-form `az` CLI commands for ad-hoc exploration; deterministic collectors and test harnesses run direct PowerShell or Bicep without MCP.",
+     "kind": "guidance",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "collection",
+      "diagnostics"
+     ]
     }
    ]
   },
@@ -7560,8 +7630,8 @@
    "title": "Context-based redirections (preview), Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/context-based-redirections-avd",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 3a92c56eeb06c2c44fb9e51ee18283bc9ac6e888, updated_at 2026-06-03",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 9f188d1eb9303ec2326038144e80606e4d67ed4f, updated_at 2026-10-23",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -7579,7 +7649,7 @@
     },
     {
      "id": "full-desktop-only",
-     "says": "Supported in Windows App on Windows, web, Android, iOS and iPadOS and macOS, for full desktop sessions.",
+     "says": "Supported in Windows App on Windows, web, Android, iOS and iPadOS and macOS, for full desktop sessions and, in AVD, RemoteApp sessions too.",
      "kind": "published",
      "state": {
       "mapped": true,
@@ -8273,7 +8343,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -8353,7 +8423,7 @@
      "kind": "published",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": true
@@ -8582,8 +8652,8 @@
    "title": "Support matrix for Azure Files backup",
    "url": "https://learn.microsoft.com/azure/backup/azure-file-share-support-matrix",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 61a22ef60bd18c850befbd4c64c118893ae42770, updated_at 2026-09-23",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 8ec165efbe56a9ea50ae0ce0ea42b0fbb5f23cf0, updated_at 2026-10-27",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -8740,8 +8810,8 @@
    "title": "Create monitoring alerts for Azure Files",
    "url": "https://learn.microsoft.com/azure/storage/files/files-monitoring-alerts",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id aa85b0febdf3dde390ad653f19cd406f8cc6aff5, updated_at 2026-10-07",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00, updated_at 2026-10-26",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -10100,6 +10170,7 @@
       "helpWanted": false
      },
      "citedBy": [
+      "desktop-devops",
       "intune"
      ]
     },
@@ -10229,6 +10300,7 @@
       "helpWanted": false
      },
      "citedBy": [
+      "desktop-devops",
       "intune"
      ]
     },
@@ -11067,8 +11139,8 @@
    "title": "Policy CSP - ControlPolicyConflict (MDMWinsOverGP)",
    "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-controlpolicyconflict",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id a0d5f1399171210809959ea5d44801cc57b5ad30, updated_at 2026-10-16",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id 6e5887a2f20ef9f4a897a01f069534e71a53d71e, updated_at 2026-10-23",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -11418,8 +11490,8 @@
    "title": "Azure Policy built-in policy definitions",
    "url": "https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id a8fd4cc5f61be2ad229afefa3073a8697d92dd1a, updated_at 2026-07-08",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id d0416576c874e0530c249dcaa635cac518dc3d15, updated_at 2026-10-28",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -11613,7 +11685,7 @@
      "says": "Azure.AVD.ScheduleAgentUpdate, define a maintenance window for host pool agent updates (Reliability, important).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -11693,8 +11765,8 @@
    "title": "Use RDP Multipath to improve connection reliability to Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/rdp-multipath",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 41dcc5bdc9210cae5b9151f9851568b917ad77db, updated_at 2026-09-15",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id fd2c58b5ac344436387554e034f9fedc90e656df, updated_at 2026-10-22",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -11958,8 +12030,8 @@
    "title": "RDP Shortpath for Azure Virtual Desktop",
    "url": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
    "publisher": "Microsoft Learn",
-   "pin": "Learn git_commit_id 41dcc5bdc9210cae5b9151f9851568b917ad77db, updated_at 2026-09-15",
-   "read": "2026-10-21",
+   "pin": "Learn git_commit_id fd2c58b5ac344436387554e034f9fedc90e656df, updated_at 2026-10-22",
+   "read": "2026-10-29",
    "license": "Microsoft Learn content (link only)",
    "claims": [
     {
@@ -12496,7 +12568,7 @@
    "url": "https://github.com/Azure/review-checklists",
    "publisher": "GitHub, Azure/review-checklists",
    "pin": "https://github.com/Azure/review-checklists/blob/f131b93418892102b00c247fd9cf685e3d356522/checklists/avd_checklist.en.json",
-   "read": "2026-10-20",
+   "read": "2026-10-29",
    "license": "MIT",
    "claims": [
     {
@@ -12560,6 +12632,7 @@
       "helpWanted": false
      },
      "citedBy": [
+      "desktop-devops",
       "finops"
      ]
     },
@@ -12568,7 +12641,7 @@
      "says": "Configure scheduled agent updates (Reliability, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12604,7 +12677,7 @@
      "says": "Enable monitoring for Azure Virtual Desktop (Reliability, high).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12616,7 +12689,7 @@
      "says": "Send diagnostic settings for workspaces, host pools, application groups and host VMs to a Log Analytics workspace (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12685,7 +12758,7 @@
      "says": "Plan the best resiliency option for the host pool deployment (Reliability, high).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12699,7 +12772,7 @@
      "says": "Build a backup protection strategy for profile and Office containers (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12827,7 +12900,7 @@
      "says": "Use VM SKUs that support Accelerated Networking (Performance, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12905,7 +12978,7 @@
      "says": "Enable SMB multichannel on premium file shares that hold FSLogix profiles (Performance, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12917,7 +12990,7 @@
      "says": "Determine which managed disk type session hosts will use (Performance, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -12977,7 +13050,7 @@
      "says": "Assess the requirements for host pool autoscaling (Reliability, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13085,7 +13158,7 @@
      "says": "Assess disk encryption requirements for session hosts (Security, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13143,6 +13216,30 @@
      "citedBy": []
     },
     {
+     "id": "G03.01",
+     "says": "Prefer RemoteApps over full desktops where possible (Security, medium).",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    },
+    {
+     "id": "G03.02",
+     "says": "Decide whether to control or restrict users' internet browsing from session hosts (Security, medium).",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    },
+    {
      "id": "G03.03",
      "says": "Users have no local administrator rights on session hosts (Security, high).",
      "state": {
@@ -13175,7 +13272,7 @@
      "says": "Enable diagnostic and audit logging (Security, medium).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13951,32 +14048,6 @@
      "citedBy": []
     },
     {
-     "id": "D01.03",
-     "says": "Review the domain GPOs that reach the host pools' OUs and affect session host features (Operations, medium).",
-     "state": {
-      "mapped": true,
-      "measurable": false,
-      "validated": false,
-      "disputed": false,
-      "helpWanted": false
-     },
-     "citedBy": [
-      "intune"
-     ]
-    },
-    {
-     "id": "D01.04",
-     "says": "Configure FSLogix with its Group Policy ADMX template (Operations, medium).",
-     "state": {
-      "mapped": true,
-      "measurable": false,
-      "validated": false,
-      "disputed": false,
-      "helpWanted": false
-     },
-     "citedBy": []
-    },
-    {
      "id": "D01.05",
      "says": "Use a dedicated account that may only join VMs to the domain (Security, medium).",
      "state": {
@@ -14105,6 +14176,30 @@
     {
      "id": "C02.03",
      "says": "Review the client OS users run and the AVD client type (Performance, low).",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    },
+    {
+     "id": "C02.01",
+     "says": "Assess how many users will connect and from which regions (Performance, medium).",
+     "state": {
+      "mapped": true,
+      "measurable": false,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": []
+    },
+    {
+     "id": "C02.02",
+     "says": "Assess each host pool's external dependencies (Performance, medium).",
      "state": {
       "mapped": true,
       "measurable": false,
@@ -15686,7 +15781,9 @@
       "disputed": false,
       "helpWanted": false
      },
-     "citedBy": []
+     "citedBy": [
+      "desktop-devops"
+     ]
     },
     {
      "id": "CO:06",
@@ -16363,6 +16460,113 @@
       "helpWanted": false
      },
      "citedBy": []
+    }
+   ]
+  },
+  {
+   "id": "windows-365-intune",
+   "title": "Windows 365 Cloud PC provisioning, user settings and Intune assignment filters",
+   "url": "https://learn.microsoft.com/windows-365/enterprise/create-provisioning-policy",
+   "publisher": "Microsoft Learn",
+   "pin": "Learn git_commit_id 4e8b71c3a902d114f6c88e1209a3b54d7e61f02a, updated_at 2026-10-18",
+   "read": "2026-11-02",
+   "license": "Microsoft Learn content (link only)",
+   "claims": [
+    {
+     "id": "assignment-filters-separate-platforms",
+     "says": "Assignment filters in Microsoft Intune scope Settings Catalog and compliance policies by device model or SKU so multi-session AVD policies do not apply to single-session Cloud PCs or physical desktops.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
+    },
+    {
+     "id": "provisioning-policy-sso",
+     "says": "Windows 365 provisioning policies support Microsoft Entra join with single sign-on enabled so users authenticate once with Microsoft Entra ID and Conditional Access.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
+    },
+    {
+     "id": "user-settings-least-privilege",
+     "says": "Windows 365 user settings policies control whether users receive local administrator rights on their Cloud PCs; leaving local administrator off enforces least privilege by default.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
+    },
+    {
+     "id": "restore-point-cadence",
+     "says": "Windows 365 user settings configure automatic point-in-time restore points at intervals from 4 to 24 hours so an administrator or user can roll back a Cloud PC before reprovisioning.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
+    },
+    {
+     "id": "anc-health-checks",
+     "says": "When Windows 365 provisioning policies use an Azure Network Connection instead of a Microsoft Hosted Network, Intune runs automated network, DNS and subnet health checks that must pass before Cloud PCs can provision.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
+    },
+    {
+     "id": "cloudpc-intune-compliance",
+     "says": "Provisioned Windows 365 Cloud PCs enroll automatically into Microsoft Intune as managed devices and evaluate assigned device compliance policies for Conditional Access.",
+     "kind": "published",
+     "state": {
+      "mapped": true,
+      "measurable": true,
+      "validated": false,
+      "disputed": false,
+      "helpWanted": false
+     },
+     "citedBy": [
+      "desktop-devops",
+      "intune"
+     ]
     }
    ]
   },
@@ -17388,6 +17592,10 @@
    "title": "a register of deployment dimensions and their baselines"
   },
   {
+   "id": "desktop-devops-scope",
+   "title": "Desktop DevOps across Azure Virtual Desktop, Windows 365 and Microsoft Intune"
+  },
+  {
    "id": "diagnostics-scope",
    "title": "what a troubleshooting and diagnostics assessment can read, and which part becomes a fact"
   },
@@ -17827,6 +18035,235 @@
     "c11.powerPlatform.enterprisePoliciesCount",
     "c11.powerPlatform.vnetInjectedSubnets"
    ]
+  },
+  {
+   "id": "asm-insights-rtt-target",
+   "title": "AVD Insights p95 round-trip latency stays under 150 ms",
+   "claims": [
+    "ref:avd-prerequisites#rtt-under-150",
+    "ref:avd-insights-use-cases#rtt-ideal-100-poor-200"
+   ],
+   "facts": [
+    "c11.insights.rttP95"
+   ]
+  },
+  {
+   "id": "asm-insights-input-delay-target",
+   "title": "AVD Insights p95 user input delay stays within the 100 ms acceptable band",
+   "claims": [
+    "ref:avd-insights-glossary#input-delay-bands",
+    "ref:avd-insights-use-cases#input-delay-host-100"
+   ],
+   "facts": [
+    "c11.insights.inputDelayP95"
+   ]
+  },
+  {
+   "id": "asm-insights-time-to-connect",
+   "title": "AVD Insights p95 time to connect stays under 30 seconds",
+   "claims": [
+    "ref:avd-insights-glossary#time-to-connect-stages",
+    "ref:avd-insights-workbooks#queries-define-measures"
+   ],
+   "facts": [
+    "c11.insights.timeToConnectP95"
+   ]
+  },
+  {
+   "id": "asm-insights-connection-reliability",
+   "title": "AVD Insights connection failure rate stays at or below 5 percent",
+   "claims": [
+    "ref:avd-insights-workbooks#queries-define-measures",
+    "ref:diagnostics-log-analytics#connection-states"
+   ],
+   "facts": [
+    "c11.insights.connectionFailureRate"
+   ]
+  },
+  {
+   "id": "asm-hosts-accelerated-networking",
+   "title": "Session host NICs enable accelerated networking",
+   "claims": [
+    "ref:review-checklists-avd#C01.13",
+    "ref:accelerated-networking#lower-latency-jitter-cpu"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.notAcceleratedNetworking"
+   ]
+  },
+  {
+   "id": "asm-hosts-encryption-at-host",
+   "title": "Session hosts enable encryption at host",
+   "claims": [
+    "ref:review-checklists-avd#G02.02",
+    "ref:disk-encryption-options#encryption-at-host"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.notEncryptionAtHost"
+   ]
+  },
+  {
+   "id": "asm-hosts-premium-os-disk",
+   "title": "Session hosts run on Premium SSD or ephemeral OS disks",
+   "claims": [
+    "ref:review-checklists-avd#H03.01",
+    "ref:avd-deploy-host-pool#premium-ssd-os-disk"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.nonPremiumOsDisk"
+   ]
+  },
+  {
+   "id": "asm-hosts-zone-redundant",
+   "title": "Session hosts are pinned to availability zones",
+   "claims": [
+    "ref:review-checklists-avd#A01.04",
+    "ref:waf-reliability-checklist#RE:05"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.unpinnedZones"
+   ]
+  },
+  {
+   "id": "asm-hostpool-diagnostics-enabled",
+   "title": "Host pools forward required diagnostic log categories to a workspace",
+   "claims": [
+    "ref:review-checklists-avd#E02.02",
+    "ref:review-checklists-avd#G03.05",
+    "ref:avd-insights#hostpool-diagnostics"
+   ],
+   "facts": [
+    "c11.hostPool.diagnosticsSetting"
+   ]
+  },
+  {
+   "id": "asm-hosts-insights-agent",
+   "title": "Session hosts have the Azure Monitor Agent and AVD Insights DCR associated",
+   "claims": [
+    "ref:review-checklists-avd#E02.01",
+    "ref:avd-insights#host-data-ama-dcr"
+   ],
+   "facts": [
+    "c11.hostPool.sessionHosts.monitoringAgent",
+    "c11.hostPool.sessionHosts.insightsDcr"
+   ]
+  },
+  {
+   "id": "asm-pooled-autoscale-attached",
+   "title": "Pooled host pools have an active AVD scaling plan attached",
+   "claims": [
+    "ref:review-checklists-avd#E01.04",
+    "ref:aprl-desktop-virtualization#499769ae-67c9-492e-9ca5-cfd4cece5209",
+    "ref:avd-autoscale#scales-to-save-cost"
+   ],
+   "facts": [
+    "c11.hostPool.type",
+    "c11.hostPool.scalingPlan.method"
+   ]
+  },
+  {
+   "id": "asm-hostpool-scheduled-agent-updates",
+   "title": "Host pools configure a maintenance window for scheduled agent updates",
+   "claims": [
+    "ref:review-checklists-avd#E01.10",
+    "ref:aprl-desktop-virtualization#979ff8be-5f3a-4d8e-9aa3-407ecdd6d6f7",
+    "ref:psrule-azure#AZR-000437"
+   ],
+   "facts": [
+    "c11.hostPool.agentUpdate.scheduled"
+   ]
+  },
+  {
+   "id": "asm-files-smb-multichannel",
+   "title": "Premium Azure Files profile storage enables SMB Multichannel",
+   "claims": [
+    "ref:review-checklists-avd#H01.02",
+    "ref:azure-files-smb#multichannel-ssd-only"
+   ],
+   "facts": [
+    "c11.storage.kind",
+    "c11.storage.smbMultichannel"
+   ]
+  },
+  {
+   "id": "asm-files-backup-protected",
+   "title": "Premium Azure Files profile storage is protected by Azure Backup",
+   "claims": [
+    "ref:review-checklists-avd#A03.02",
+    "ref:azure-files-backup#snapshot-and-vaulted"
+   ],
+   "facts": [
+    "c11.storage.kind",
+    "c11.storage.backupProtected"
+   ]
+  },
+  {
+   "id": "asm-intune-assignment-filters-separate-platforms",
+   "title": "Intune assignment filters separate multi-session AVD hosts, Cloud PCs and physical endpoints",
+   "claims": [
+    "ref:windows-365-intune#assignment-filters-separate-platforms",
+    "ref:intune-avd-multisession#settings-catalog-only"
+   ],
+   "facts": [
+    "c11.intune.multiSessionFilterPresent",
+    "c11.intune.cloudPcFilterPresent",
+    "c11.intune.unfilteredAllDevicesPolicies"
+   ]
+  },
+  {
+   "id": "asm-win365-sso-enabled",
+   "title": "Windows 365 provisioning policies enable Microsoft Entra single sign-on",
+   "claims": [
+    "ref:windows-365-intune#provisioning-policy-sso"
+   ],
+   "facts": [
+    "c11.intune.win365.provisioningPoliciesCount",
+    "c11.intune.win365.ssoEnabledOnAllPolicies"
+   ]
+  },
+  {
+   "id": "asm-win365-no-local-admin",
+   "title": "Windows 365 user settings policies disable local administrator rights on Cloud PCs",
+   "claims": [
+    "ref:windows-365-intune#user-settings-least-privilege"
+   ],
+   "facts": [
+    "c11.intune.win365.userSettingsCount",
+    "c11.intune.win365.localAdminDisabled"
+   ]
+  },
+  {
+   "id": "asm-win365-restore-points-configured",
+   "title": "Windows 365 user settings configure automatic point-in-time restore points every 12 hours or less",
+   "claims": [
+    "ref:windows-365-intune#restore-point-cadence"
+   ],
+   "facts": [
+    "c11.intune.win365.userSettingsCount",
+    "c11.intune.win365.restorePointFrequencyHoursMax"
+   ]
+  },
+  {
+   "id": "asm-win365-anc-healthy",
+   "title": "Windows 365 Azure Network Connections pass all health checks",
+   "claims": [
+    "ref:windows-365-intune#anc-health-checks"
+   ],
+   "facts": [
+    "c11.intune.win365.networkMode",
+    "c11.intune.win365.ancFailedCount"
+   ]
+  },
+  {
+   "id": "asm-win365-cloudpcs-compliant",
+   "title": "Intune-managed Windows 365 Cloud PCs have zero noncompliant devices",
+   "claims": [
+    "ref:windows-365-intune#cloudpc-intune-compliance",
+    "ref:intune-compliance#no-policy-default-compliant"
+   ],
+   "facts": [
+    "c11.intune.cloudPcManagedNoncompliant"
+   ]
   }
  ],
  "methods": [
@@ -17841,6 +18278,10 @@
   {
    "id": "collection",
    "title": "Collection method"
+  },
+  {
+   "id": "desktop-devops",
+   "title": "Desktop DevOps method"
   },
   {
    "id": "diagnostics",

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>avd-second-brain | avd-ops docs</title>
-<meta name="description" content="On top, the why: each estate's decisions, use cases and RAID log over its life, the family knowledge base, and the upper layers' contracts">
+<meta name="description" content="On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune">
 <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/avd-ops.css">
 <link rel="stylesheet" href="../../assets/avd-ops-shell.css">
@@ -32,31 +32,36 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#avd-second-brain" title="avd-second-brain"><span class="n">1</span><span class="t">avd-second-brain</span></a></li><li><a href="#what-it-does" title="What it does"><span class="n">2</span><span class="t">What it does</span></a></li><li><a href="#how-it-fits" title="How it fits"><span class="n">3</span><span class="t">How it fits</span></a></li><li><a href="#read-more-in-the-repo" title="Read more in the repo"><span class="n">4</span><span class="t">Read more in the repo</span></a></li></ol></nav>
 <section class="screen" id="avd-second-brain">
 <h1 tabindex="-1">avd-second-brain</h1>
-<p class="bl">The why behind every rule, kept over an estate&#39;s whole life. It never changes anything.</p>
+<p class="bl">Desktop DevOps intelligence and memory across AVD, Windows 365 and Intune. It never changes anything.</p>
 
 <details class="more"><summary>More</summary>
-<p>One memory across the AVD lifecycle: what each estate looked like, what broke, what was learned, and why each rule is what it is.</p>
+<p>One memory across the cloud desktop lifecycle: what each estate looked like across Azure Virtual Desktop, Windows 365 Cloud PCs and Microsoft Intune, what broke, what was learned, and why each rule and policy is what it is (<a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>).</p>
 <p>The repo is the source of truth: <a href="https://github.com/avd-ops/avd-second-brain">avd-ops/avd-second-brain</a>. This page says where it fits.</p>
 </details>
 </section>
 <section class="screen" id="what-it-does">
 <h2 tabindex="-1">What it does</h2>
-<p class="bl">A knowledge base, private vaults for each estate, and the contracts every repo uses.</p>
+<p class="bl">A Desktop DevOps knowledge base, private vaults for each estate, and the contracts every repo uses.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Lifecycle records (C18) and a RAID log (C25) for each environment: its use cases, every decision with what else was considered, and the change that carried it out (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0020-the-brain-is-the-why-layer.md">decision 0020</a>, <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0022-the-brain-keeps-the-raid-log.md">decision 0022</a>, scope in <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0024-the-brain-is-the-estate-brain.md">decision 0024</a>).</li>
+<li>A knowledge base of generalized Desktop DevOps facts: workload placement rules (pooled AVD vs. personal AVD vs. Windows 365 Enterprise vs. Frontline), Intune policy-as-code and assignment filter rules, app catalog, sizing calibration and shared runbooks.</li>
 <li>Estate vaults keep one customer&#39;s estate in that customer&#39;s own private repo. Tenant data never comes back here.</li>
-<li>Guidance learned across estates (sizing calibration, the app catalog, shared runbooks) and the family knowledge base.</li>
-<li>The schemas for the upper layers&#39; own formats. The foundation contracts and the fact register come from <a href="avd-assess.html">avd-assess</a>, copied byte for byte at a pin (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0021-foundation-contracts-live-in-avd-assess.md">decision 0021</a>).</li>
+<li>The contract registry and fact register (<code>C9</code>, <code>C10</code>, <code>C11</code>, <code>C14</code>, <code>C15</code>, <code>C18</code>, <code>C19</code>) that every repo boundary uses across AVD, Windows 365 and Intune.</li>
 <li>A docs consistency check every repo calls. Each repo&#39;s page lives here on avd-ops; the brain&#39;s old generated handbook is retired.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="how-it-fits">
 <h2 tabindex="-1">How it fits</h2>
-<p class="bl">It thinks for avd-swarm and reads from the two foundation repos.</p>
+<p class="bl">It thinks for avd-swarm and reads from the foundation repos across all five control planes.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
-<li>Thinks for <a href="avd-swarm.html">avd-swarm</a>, which acts; the brain never holds a write credential.</li>
-<li>Reads facts from <a href="avd-current-state.html">avd-current-state</a> and lessons from <a href="avd-landing-zone.html">avd-landing-zone</a>.</li>
+<li>Thinks for <a href="avd-swarm.html">avd-swarm</a>, which acts; the brain never holds a write credential (<a href="../decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>).</li>
+<li>Reads facts from <a href="avd-current-state.html">avd-current-state</a> and lessons from <a href="avd-landing-zone.html">avd-landing-zone</a> and <a href="avd-intune.html">avd-intune</a>.</li>
 </ul>
+</details>
 </section>
 <section class="screen" id="read-more-in-the-repo">
 <h2 tabindex="-1">Read more in the repo</h2>

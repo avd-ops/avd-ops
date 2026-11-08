@@ -28,9 +28,9 @@ Three repos each answer one question about an estate, and two more sit on top of
 
 The roles are set in [family roles](https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md).
 
-On top of those sits an intelligence and abstraction layer:
-[avd-second-brain](../repos/avd-second-brain.md) is the why over the environment's whole life, and
-[avd-swarm](../repos/avd-swarm.md) is the how of operating it.
+On top of those sits a Desktop DevOps intelligence and execution layer across AVD, Windows 365 and Intune ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)):
+[avd-second-brain](../repos/avd-second-brain.md) is the why and memory over the desktop estate's whole life, and
+[avd-swarm](../repos/avd-swarm.md) is the agentic operating layer that proposes GitHub-gated plans.
 
 Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
 that keeps working with no second brain and no avd-swarm.

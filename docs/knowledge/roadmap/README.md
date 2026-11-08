@@ -16,12 +16,12 @@ Where each repo stands today, in one line each.
 | [avd-assess](../repos/avd-assess.md) | Public: the methods, with sources pinned, observations growing, and five-plane standards specified ([decision 0010](../decisions/0010-expand-assess-and-current-state-across-five-control-planes.md)) |
 | [avd-landing-zone](../repos/avd-landing-zone.md) | Built: top-level orchestrator and deployment portal over the five control-plane repos ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 | [avd-entra](../repos/avd-entra.md) | Bootstrapped: Entra ID groups, Conditional Access and Entra Kerberos control plane |
-| [avd-intune](../repos/avd-intune.md) | Bootstrapped: Intune session-host MDM enrollment and Settings Catalog control plane |
+| [avd-intune](../repos/avd-intune.md) | Bootstrapped: Intune policy-as-code, assignment filters, session-host MDM enrollment and Windows 365 Cloud PC control plane ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)) |
 | [avd-m365](../repos/avd-m365.md) | Bootstrapped: greenfield M365, OneDrive Known Folder Move and Teams VDI control plane |
 | [avd-azure](../repos/avd-azure.md) | Bootstrapped: Azure ARM and Bicep infrastructure control plane |
 | [avd-power-platform](../repos/avd-power-platform.md) | Bootstrapped: Power Platform governance and Power Automate day-2 workflow control plane |
-| [avd-second-brain](../repos/avd-second-brain.md) | Built and growing: knowledge base, contracts and docs check |
-| [avd-swarm](../repos/avd-swarm.md) | Design and spike: the S1a spike runs; the write path is designed, not scheduled |
+| [avd-second-brain](../repos/avd-second-brain.md) | Built and growing: Desktop DevOps knowledge base, contracts and docs check across AVD, Windows 365 and Intune ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)) |
+| [avd-swarm](../repos/avd-swarm.md) | Design and spike: Desktop DevOps agents across AVD, Windows 365 and Intune; the S1a spike runs, the write path is designed ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)) |
 
 <!-- more -->
 
@@ -31,8 +31,8 @@ Each repo's own roadmap and build order are the source of truth.
 
 Three pages come next: a lab walkthrough, a glossary, and repo pages built from each README.
 
-- A walkthrough from an empty lab subscription to a validated landing zone.
-- A glossary of the terms the repos share.
+- [A walkthrough from an empty lab subscription to a validated landing zone](../getting-started/lab-walkthrough.md).
+- [A glossary of the terms the repos share](../concepts/glossary.md).
 - Per-repo pages rendered from each README at the commit pinned in `repos.json`.
 
 ## A family roadmap page (proposed)
