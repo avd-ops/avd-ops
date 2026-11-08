@@ -283,3 +283,19 @@ test('avd-ops names no project outside the family it shouldn\'t (repos.json bann
     assert.doesNotMatch(text, re, f);
   }
 });
+
+test('the architecture page renders logical, network, traffic and Bicep DAG diagrams with SVG, Mermaid and Draw.io exports (scripts/site/build-diagrams.mjs)', () => {
+  execFileSync(process.execPath, [join(root, 'scripts/site/build-diagrams.mjs'), '--check'], { stdio: 'pipe' });
+  const html = read('site/architecture.html');
+  for (const id of ['logical-diagram', 'network-diagram', 'traffic-diagram', 'dag-diagram']) {
+    assert.ok(html.includes(`id="${id}"`), `architecture.html has #${id}`);
+  }
+  for (const slug of ['avd-logical-control-planes', 'avd-network-topology', 'avd-traffic-flows', 'avd-bicep-dag']) {
+    for (const ext of ['svg', 'mmd', 'drawio']) {
+      const rel = `assets/diagrams/${slug}.${ext}`;
+      assert.ok(html.includes(`href="${rel}"`), `architecture.html links ${rel}`);
+      assert.ok(existsSync(join(root, 'site', rel)), `site/${rel} exists`);
+    }
+  }
+});
+

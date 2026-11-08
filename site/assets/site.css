@@ -60,6 +60,10 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-top{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.2}
 .d-ext{fill:var(--bg);stroke:var(--line-strong);stroke-width:1.2;stroke-dasharray:5 4}
 .d-tier{fill:var(--tier-soft);stroke:var(--tier);stroke-width:1.2;stroke-dasharray:5 4}
+.d-good{fill:var(--good-soft);stroke:var(--good);stroke-width:1.2}
+.d-caution{fill:var(--caution-soft);stroke:var(--caution);stroke-width:1.2}
+.d-info{fill:var(--info-soft);stroke:var(--info);stroke-width:1.2}
+.d-zone{fill:var(--sunken);stroke:var(--line);stroke-width:1.2}
 .d-ground{fill:var(--sunken);stroke:var(--line-strong);stroke-width:1.2}
 .d-pair{fill:none;stroke:var(--accent);stroke-width:1.2;stroke-dasharray:2 4}
 .d-edge{fill:none;stroke:currentColor;stroke-width:1.4}
@@ -72,7 +76,10 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-gname{fill:var(--fg);font:700 14px var(--display)}
 .d-gsub{fill:var(--muted);font:12px var(--body)}
 .d-mask{fill:var(--surface)}
-@media (max-width:44rem){.row2,.row3{grid-template-columns:minmax(0,1fr)}}
+.flows .actions{margin-top:var(--space-2)}
+.row5{display:grid;gap:var(--space-2);grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:64rem){.row5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:44rem){.row2,.row3,.row5{grid-template-columns:minmax(0,1fr)}}
 /* The docs (site/docs/, built from docs/knowledge/): one screen at a time (assets/docs.js), backlinks and the
    page graph (assets/graph.js). article.screens holds the "On this page" list, one section.screen per idea and
    the Back and Next bar. Without JavaScript the list is a table of contents and every screen shows in order;

@@ -1,0 +1,14 @@
+flowchart LR
+  User["End-User Device\nWindows App / Web Client\n+ avd-linecheck probe"]
+  Entra["Microsoft Entra ID & Intune\nConditional Access, MFA,\nEntra Kerberos TGT, MDM"]
+  Gateway["AVD Control Plane\nWorkspace Feed, Gateway\n& Connection Broker"]
+  Egress["NAT Gateway (Standalone)\nor Hub Firewall (Peered)\nOutbound 443 & UDP 3478"]
+  Host["Session Host VM\nsnet-session-hosts (10.100.0.0/23)\nNo Public IP · Reverse Connect"]
+  PEs["Private Endpoints\nsnet-private-endpoints (10.100.2.0/27)\nStorage (445), WVD (443), Key Vault (443)"]
+
+  User -->|1. OIDC + MFA| Entra
+  User -->|2. Feed & TLS 443| Gateway
+  Host -->|3. Reverse Connect TLS 443| Gateway
+  Host -->|4. SMB 445 FSLogix + WVD PE 443| PEs
+  Host -->|5. Outbound 443 / UDP 3478| Egress
+  Egress -->|6. Kerberos TGT / Intune MDM| Entra

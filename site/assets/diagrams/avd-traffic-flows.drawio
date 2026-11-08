@@ -1,0 +1,28 @@
+<mxfile host="avd-ops.dev" version="1.0">
+  <diagram id="AVD End-to-End Traffic Flows" name="AVD End-to-End Traffic Flows">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="user" value="End-User Device
+Windows App / Web Client + avd-linecheck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="60" width="220" height="100" as="geometry"/></mxCell>
+        <mxCell id="entra" value="Microsoft Entra ID &amp; Intune
+Conditional Access, MFA, Kerberos TGT, MDM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="240" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="gw" value="AVD Control Plane
+Workspace Feed, Gateway &amp; Broker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="360" y="60" width="240" height="100" as="geometry"/></mxCell>
+        <mxCell id="egress" value="NAT Gateway / Hub Firewall
+Outbound 443 &amp; UDP 3478 STUN/TURN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="360" y="240" width="240" height="110" as="geometry"/></mxCell>
+        <mxCell id="host" value="Session Host VM (10.100.0.0/23)
+RDAgent, FSLogix, AMA (No Public IP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="700" y="60" width="340" height="110" as="geometry"/></mxCell>
+        <mxCell id="pes" value="Private Endpoints (10.100.2.0/27)
+Storage PE (SMB 445), WVD PE (443), Key Vault PE (443)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="700" y="240" width="340" height="110" as="geometry"/></mxCell>
+        <mxCell id="e1" value="1. OIDC + MFA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="user" target="entra"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="2. Feed &amp; TLS 443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="user" target="gw"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="3. Reverse Connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="host" target="gw"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="4. SMB 445 + WVD PE 443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="host" target="pes"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="5. Outbound 443 / UDP 3478" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="host" target="egress"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="6. Kerberos / MDM" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="egress" target="entra"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

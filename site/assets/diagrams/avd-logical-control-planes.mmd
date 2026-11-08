@@ -1,0 +1,39 @@
+flowchart TB
+  subgraph Top["Desktop DevOps Intelligence & Gated Automation (Optional)"]
+    Brain["avd-second-brain\nKB, C18 Lifecycle, C9 Plans\n(Zero Write Credentials)"]
+    Swarm["avd-swarm\nHuman-Approved Execution,\nKill Switch, avd-buddy"]
+    SRE["Azure SRE Agent\n(Optional Add-on)"]
+  end
+
+  subgraph Foundation["Foundation: Method, Collection & Orchestration"]
+    Sources["Microsoft Sources\nLearn, WARA, AVD Checklist"]
+    Assess["avd-assess\nMethod, C19 Intake, C20 Rules"]
+    CS["avd-current-state\nRead-Only Collector & Validator\nC11 Facts, C21 Report"]
+    LZ["avd-landing-zone\nPortal-Guided Cloud Shell\nBicep Orchestrator"]
+    LC["avd-linecheck\nBrowser Client RTT Probe"]
+  end
+
+  subgraph Planes["Five Control Planes (Decision 0009)"]
+    CP1["1. avd-entra\nentra-manifest.json"]
+    CP2["2. avd-intune\nintune-manifest.json"]
+    CP3["3. avd-m365\nm365-manifest.json"]
+    CP4["4. avd-azure\nazure-outputs.json"]
+    CP5["5. avd-power-platform\npower-platform-manifest.json"]
+  end
+
+  Estate[("Target Estate: Azure Subscription, Entra ID, Intune, M365 & Power Platform")]
+
+  Sources -->|pinned guidance| Assess
+  Assess -->|C20 rules| CS
+  Assess -->|C19 intake| Brain
+  CS -->|C11 facts & C21 report| Brain
+  Brain -->|C14 target state| LZ
+  LZ -->|C17 run record| Brain
+  Brain -->|C9 plans| Swarm
+  Swarm -->|C10 outcomes| Brain
+  Swarm -.-> SRE
+  LC -.->|client RTT| LZ
+  LZ --> CP1 & CP2 & CP3 & CP4 & CP5
+  CP1 & CP2 & CP3 & CP4 & CP5 -->|deploys| Estate
+  CS -->|reads only| Estate
+  Swarm -->|approved plans only| Estate

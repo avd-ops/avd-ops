@@ -1,0 +1,19 @@
+flowchart LR
+  Mon["monitoring\nLAW + AVD Insights DCR + Alerts"]
+  Gov["governance\nPolicy, Defender, Budget"]
+  Net["network\nVNet, Subnets, NSGs, NAT GW"]
+  DNS["privateDns\nfile, vaultcore, wvd zones"]
+  KV["keyVault\nVault + PE + RBAC"]
+  Stg["storage (+backup)\nPremium Files + PE + RSV"]
+  CP["controlPlane\nHost Pools, App Groups, Workspaces, PEs"]
+  Hosts["sessionHosts (xN)\n1. VMs (Trusted Launch, Zones 1-3)\n2. AADLogin + AMA Extensions\n3. RunCmd: Configure-FSLogix\n4. RunCmd: Register-AvdAgent"]
+
+  Mon --> Gov
+  Mon --> Net
+  Net --> DNS
+  DNS --> KV
+  DNS --> Stg
+  DNS --> CP
+  KV --> Hosts
+  Stg --> Hosts
+  CP --> Hosts
