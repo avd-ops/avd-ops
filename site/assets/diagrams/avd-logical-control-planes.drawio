@@ -1,0 +1,51 @@
+<mxfile host="avd-ops.dev" version="1.0">
+  <diagram id="AVD Logical Control Planes" name="AVD Logical Control Planes">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="sources" value="Microsoft Sources
+(Learn, WARA, Checklist)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="200" height="70" as="geometry"/></mxCell>
+        <mxCell id="brain" value="avd-second-brain
+(KB, C18 Lifecycle, C9 Plans)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="320" y="40" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="swarm" value="avd-swarm
+(Human Gate, Kill Switch, avd-buddy)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="620" y="40" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="assess" value="avd-assess
+(Method, C19 Intake, C20 Rules)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="200" width="200" height="70" as="geometry"/></mxCell>
+        <mxCell id="cs" value="avd-current-state
+(Collector &amp; Validator, C11, C21)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="320" y="200" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="lz" value="avd-landing-zone
+(Portal &amp; Bicep Orchestrator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="620" y="200" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="lc" value="avd-linecheck
+(Browser RTT Probe)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="900" y="200" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="cp1" value="1. avd-entra
+(entra-manifest.json)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="350" width="180" height="65" as="geometry"/></mxCell>
+        <mxCell id="cp2" value="2. avd-intune
+(intune-manifest.json)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="250" y="350" width="180" height="65" as="geometry"/></mxCell>
+        <mxCell id="cp3" value="3. avd-m365
+(m365-manifest.json)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="460" y="350" width="180" height="65" as="geometry"/></mxCell>
+        <mxCell id="cp4" value="4. avd-azure
+(azure-outputs.json)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="670" y="350" width="180" height="65" as="geometry"/></mxCell>
+        <mxCell id="cp5" value="5. avd-power-platform
+(power-platform-manifest.json)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="880" y="350" width="200" height="65" as="geometry"/></mxCell>
+        <mxCell id="estate" value="Target Estate: Azure Subscription, Entra ID, Intune, Microsoft 365 &amp; Power Platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="490" width="1040" height="60" as="geometry"/></mxCell>
+        <mxCell id="e1" value="pinned" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="sources" target="assess"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="C20 rules" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="assess" target="cs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="C19 intake" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="assess" target="brain"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="C11 / C21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cs" target="brain"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="C14 target" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="brain" target="lz"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="C17 run" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="brain"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="C9 plans" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="brain" target="swarm"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="C10 outcomes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="swarm" target="brain"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="cp1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="cp2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="cp3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" value="orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="cp4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" value="orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="lz" target="cp5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" value="deploys" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cp4" target="estate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" value="reads only" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cs" target="estate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" value="approved plans" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="swarm" target="estate"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

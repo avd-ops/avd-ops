@@ -1,0 +1,40 @@
+flowchart LR
+  subgraph Sub["Subscription: Dedicated AVD Landing Zone (Policy, Defender, Budget, Activity Log -> LAW)"]
+    subgraph RGNet["rg-<prefix>-<env>-network · vnet-<prefix>-<env> (10.100.0.0/22)"]
+      subgraph SnetHosts["snet-session-hosts (10.100.0.0/23 · NSG: Deny Inbound)"]
+        SH1["Session Host 1 (Zone 1)"]
+        SH2["Session Host 2 (Zone 2)"]
+        SHN["Session Host N (Zone 3)"]
+      end
+      Egress["NAT Gateway (Standalone)\nor UDR 0.0.0.0/0 -> Hub FW"]
+      subgraph SnetPE["snet-private-endpoints (10.100.2.0/27 · Network Policies Enabled)"]
+        PEFile["PE: Storage (file)\nSMB 445"]
+        PEVault["PE: Key Vault (vault)\nHTTPS 443"]
+        PEWvd["PE: AVD (connection/feed)\nHTTPS 443"]
+      end
+      subgraph SnetJump["snet-jumpbox (10.100.2.32/28 · Opt-in) & Private DNS Zones"]
+        Jump["Operator Jumpbox + Bastion Developer"]
+        DNS["privatelink.file.core.windows.net\nprivatelink.vaultcore.azure.net\nprivatelink.wvd.microsoft.com"]
+      end
+    end
+
+    subgraph RGAvd["rg-<prefix>-<env>-avd & rg-hosts"]
+      Pool["Host Pools (Pooled / Personal)\nApp Groups · Workspaces · Scaling Plan"]
+    end
+
+    subgraph RGStorage["rg-<prefix>-<env>-storage"]
+      Files["Premium FileStorage (ZRS)\nShare: profiles · Entra Kerberos\nDaily RSV Backup"]
+    end
+
+    subgraph RGMgmt["rg-<prefix>-<env>-management"]
+      LAW["Log Analytics + AVD Insights DCR\nAction Group & Alerts"]
+      KV["Key Vault (Private Link · RBAC)\nBreak-Glass Secret"]
+    end
+  end
+
+  SnetHosts -->|Outbound 443| Egress
+  SnetHosts -->|SMB 445| PEFile
+  SnetHosts -->|HTTPS 443| PEWvd
+  PEFile -.->|Private Link| Files
+  PEVault -.->|Private Link| KV
+  PEWvd -.->|Private Link| Pool

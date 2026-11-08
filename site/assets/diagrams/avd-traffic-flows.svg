@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" role="img" aria-label="End-to-end session, Reverse Connect, RDP Shortpath, Entra Kerberos SMB and telemetry traffic flows.">
+<style>
+  svg{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#475569}
+  .d-box{fill:#ffffff;stroke:#94a3b8;stroke-width:1.2}
+  .d-top{fill:#eff6ff;stroke:#2563eb;stroke-width:1.2}
+  .d-ext{fill:#f8fafc;stroke:#94a3b8;stroke-width:1.2;stroke-dasharray:5 4}
+  .d-good{fill:#ecfdf5;stroke:#059669;stroke-width:1.2}
+  .d-caution{fill:#fffbeb;stroke:#d97706;stroke-width:1.2}
+  .d-info{fill:#f0f9ff;stroke:#0284c7;stroke-width:1.2}
+  .d-zone{fill:#f1f5f9;stroke:#cbd5e1;stroke-width:1.2}
+  .d-ground{fill:#f1f5f9;stroke:#94a3b8;stroke-width:1.2}
+  .d-pair{fill:none;stroke:#2563eb;stroke-width:1.2;stroke-dasharray:2 4}
+  .d-edge{fill:none;stroke:#475569;stroke-width:1.4}
+  .d-opt{fill:none;stroke:#475569;stroke-width:1.4;stroke-dasharray:5 4}
+  .d-head{fill:#475569}
+  .d-name{fill:#0f172a;font:700 14px system-ui,-apple-system,sans-serif}
+  .d-sub{fill:#475569;font:12px system-ui,-apple-system,sans-serif}
+  .d-lbl{fill:#0f172a;font:600 11.5px ui-monospace,SFMono-Regular,Consolas,monospace}
+  .d-band{fill:#2563eb;font:600 11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+  .d-gname{fill:#0f172a;font:700 14px system-ui,-apple-system,sans-serif}
+  .d-gsub{fill:#475569;font:12px system-ui,-apple-system,sans-serif}
+  .d-mask{fill:#ffffff}
+</style>
+<defs><marker id="ah-tf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="d-top" x="20" y="40" width="200" height="124" rx="8"/>
+<text class="d-name" x="120" y="74" text-anchor="middle">End-User Device</text>
+<text class="d-sub" x="120" y="96" text-anchor="middle">Windows App / Web Client</text>
+<text class="d-sub" x="120" y="116" text-anchor="middle">avd-linecheck browser probe</text>
+<text class="d-sub" x="120" y="136" text-anchor="middle">Office, branch or home</text>
+
+<rect class="d-box" x="20" y="280" width="200" height="140" rx="8"/>
+<text class="d-name" x="120" y="314" text-anchor="middle">Entra ID &amp; Intune</text>
+<text class="d-sub" x="120" y="336" text-anchor="middle">Conditional Access &amp; MFA</text>
+<text class="d-sub" x="120" y="356" text-anchor="middle">Entra Kerberos TGT</text>
+<text class="d-sub" x="120" y="376" text-anchor="middle">Intune compliance &amp; policy</text>
+<text class="d-sub" x="120" y="396" text-anchor="middle">M365 Apps licensing</text>
+
+<rect class="d-info" x="340" y="40" width="220" height="124" rx="8"/>
+<text class="d-name" x="450" y="74" text-anchor="middle">AVD Control Plane</text>
+<text class="d-sub" x="450" y="96" text-anchor="middle">Workspace feed &amp; gateway</text>
+<text class="d-sub" x="450" y="116" text-anchor="middle">Connection broker</text>
+<text class="d-sub" x="450" y="136" text-anchor="middle">Azure Front Door edge</text>
+
+<rect class="d-caution" x="340" y="280" width="220" height="140" rx="8"/>
+<text class="d-name" x="450" y="314" text-anchor="middle">NAT GW / Hub Firewall</text>
+<text class="d-sub" x="450" y="336" text-anchor="middle">Outbound HTTPS 443</text>
+<text class="d-sub" x="450" y="356" text-anchor="middle">UDP 3478 STUN / TURN</text>
+<text class="d-sub" x="450" y="376" text-anchor="middle">Required AVD &amp; M365 FQDNs</text>
+<text class="d-sub" x="450" y="396" text-anchor="middle">Zero inbound ports open</text>
+
+<rect class="d-top" x="680" y="40" width="420" height="164" rx="8"/>
+<text class="d-name" x="890" y="72" text-anchor="middle">Session Host VM (snet-session-hosts · 10.100.0.0/23)</text>
+<text class="d-sub" x="890" y="96" text-anchor="middle">No public IP · NSG blocks inbound internet</text>
+<text class="d-sub" x="890" y="116" text-anchor="middle">RDAgentBootLoader &amp; Remote Desktop stack</text>
+<text class="d-sub" x="890" y="136" text-anchor="middle">FSLogix Apps agent · Entra ID joined</text>
+<text class="d-sub" x="890" y="156" text-anchor="middle">Azure Monitor Windows Agent (AMA) → DCR</text>
+<text class="d-sub" x="890" y="176" text-anchor="middle">Trusted Launch · Encryption at Host</text>
+
+<rect class="d-good" x="680" y="280" width="420" height="140" rx="8"/>
+<text class="d-name" x="890" y="312" text-anchor="middle">Private Endpoints (snet-private-endpoints · 10.100.2.0/27)</text>
+<text class="d-sub" x="890" y="336" text-anchor="middle">Storage PE (file): SMB 445 → Premium FileStorage ZRS</text>
+<text class="d-sub" x="890" y="356" text-anchor="middle">Host Pool PE (connection): HTTPS 443 → privatelink.wvd</text>
+<text class="d-sub" x="890" y="376" text-anchor="middle">Workspace PE (feed/global): optional private feed discovery</text>
+<text class="d-sub" x="890" y="396" text-anchor="middle">Key Vault PE (vault): HTTPS 443 → break-glass secret</text>
+
+<path class="d-edge" d="M120,164 V278" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="128" y="226">1. OIDC + MFA</text>
+<path class="d-edge" d="M220,102 H338" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="279" y="92" text-anchor="middle">2. Feed &amp; TLS 443</text>
+<path class="d-edge" d="M680,102 H562" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="621" y="92" text-anchor="middle">3. Reverse Connect</text>
+<text class="d-lbl" x="621" y="120" text-anchor="middle">(outbound only)</text>
+<path class="d-edge" d="M890,204 V278" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="898" y="246">4. SMB 445 (FSLogix) + WVD PE 443</text>
+<path class="d-edge" d="M680,176 L562,296" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="598" y="226" text-anchor="end">5. Egress 443 / UDP 3478</text>
+<path class="d-edge" d="M340,350 H222" marker-end="url(#ah-tf)"/>
+<text class="d-lbl" x="281" y="340" text-anchor="middle">6. Kerberos / MDM</text>
+</svg>

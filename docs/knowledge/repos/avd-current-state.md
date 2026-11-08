@@ -30,7 +30,7 @@ It collects evidence, checks a deployment before and after across selected contr
 Its redacted facts feed the brain, and its validator and assessment portal check the five-plane landing zone.
 
 - Its C11 facts feed [avd-second-brain](avd-second-brain.md); avd-swarm sees them only as cited evidence from the brain.
-- The validator checks a [avd-landing-zone](avd-landing-zone.md) deployment before and after across [avd-entra](avd-entra.md), [avd-intune](avd-intune.md), [avd-m365](avd-m365.md), [avd-azure](avd-azure.md) and [avd-power-platform](avd-power-platform.md), and the assessment portal exports plane-grouped C24 remediation plans.
+- The validator checks a [avd-landing-zone](avd-landing-zone.md) deployment before and after across [avd-entra](avd-entra.md), [avd-intune](avd-intune.md), [avd-m365](avd-m365.md), [avd-azure](avd-azure.md) and [avd-power-platform](avd-power-platform.md), and the assessment portal renders an as-is control-plane and network diagram (exportable as SVG, Mermaid `.mmd` and Draw.io `.drawio`) alongside plane-grouped C24 remediation plans.
 
 ## Read more in the repo
 

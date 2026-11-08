@@ -25,7 +25,7 @@ A cloud-only, private-by-default landing zone with a deployment portal that conf
 - Configures every setting per host pool (sizing, load balancing, RDP properties, FSLogix profile size, autoscale, Encryption at Host, Intune, availability zones, and network access) with setting templates that apply to all or selected pools.
 - Full AVD Private Link (`connection` on host pools, `feed` and `global` on workspaces) and Private Endpoints for Azure Files and Key Vault, supporting both new and existing Private DNS zones per zone.
 - FSLogix on Premium Azure Files with Entra Kerberos and no storage keys; Azure Policy, Defender for Cloud and a budget that switches hosts off when it runs out.
-- A deployment portal in the browser that designs and prices the topology and walks you through Cloud Shell, one pasted output at a time.
+- A deployment portal in the browser that designs and prices the topology, renders a live target-state network and control-plane diagram (exportable as SVG, Mermaid `.mmd` and Draw.io `.drawio`), and walks you through Cloud Shell, one pasted output at a time.
 
 ## How it fits
 

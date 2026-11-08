@@ -50,6 +50,14 @@ repos that read a format keep a byte-identical copy pinned to a commit
 [contracts](https://github.com/avd-ops/avd-assess/blob/main/contracts/README.md) and avd-second-brain
 [contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md).
 
+## Architecture and network diagrams
+
+Reference and estate-specific diagrams export as SVG, Mermaid and Draw.io for design reviews and decision records.
+
+<!-- more -->
+
+The architecture page publishes four reference diagrams: the five-control-plane logical and contract flow, the `10.100.0.0/22` virtual network and Private Link subnet layout, the end-to-end session and FSLogix traffic paths, and the Bicep module dependency graph. Both the [avd-landing-zone](../repos/avd-landing-zone.md) deployment portal and the [avd-current-state](../repos/avd-current-state.md) assessment portal also generate live diagrams from your configured `C14` target topology or collected `C11`/`C21` assessment state and export them as `.svg`, `.mmd` (Mermaid) and `.drawio` (Draw.io XML) with zero tenant identifiers.
+
 ## The brain thinks, the swarm acts
 
 The brain can't change anything. Every change is a plan a person approves, with one kill switch.
