@@ -3,8 +3,8 @@
  "schema": "avd-ops-library/v1",
  "edition": {
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "79e2fc577d3abba39f94902ce0029d6e465dab58",
-  "date": "2026-11-07"
+  "commit": "004394b9328aa540d9b7f7488a0c749b4a18be60",
+  "date": "2026-11-08"
  },
  "references": [
   {
@@ -172,7 +172,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -187,7 +187,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -1806,7 +1806,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -5755,7 +5755,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -5783,7 +5783,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -7677,7 +7677,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": true,
       "disputed": false,
       "helpWanted": false
@@ -7705,7 +7705,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13064,7 +13064,7 @@
      "says": "Evaluate an ad-hoc mechanism to shut down personal session hosts (Cost, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -13078,7 +13078,7 @@
      "says": "Review and adopt the suggested tags for Azure Virtual Desktop (Cost, low).",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -14736,7 +14736,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -15750,7 +15750,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -15804,7 +15804,7 @@
      "kind": "guidance",
      "state": {
       "mapped": true,
-      "measurable": false,
+      "measurable": true,
       "validated": false,
       "disputed": false,
       "helpWanted": false
@@ -18263,6 +18263,69 @@
    ],
    "facts": [
     "c11.intune.cloudPcManagedNoncompliant"
+   ]
+  },
+  {
+   "id": "asm-personal-deallocation",
+   "title": "Personal host pools with Start VM on Connect have a scaling plan attached",
+   "claims": [
+    "ref:review-checklists-avd#E01.06",
+    "ref:start-vm-on-connect-faq#no-automatic-deallocation",
+    "ref:avd-autoscale#hibernate-personal"
+   ],
+   "facts": [
+    "c11.hostPool.type",
+    "c11.hostPool.startVmOnConnect",
+    "c11.hostPool.scalingPlan.method",
+    "c11.hostPool.sessionHosts.hibernation"
+   ]
+  },
+  {
+   "id": "asm-cost-allocation-tags",
+   "title": "Host pools and session hosts carry cost allocation tags",
+   "claims": [
+    "ref:review-checklists-avd#E01.07",
+    "ref:avd-tagging#tag-host-pools-first",
+    "ref:avd-tagging#cm-resource-parent"
+   ],
+   "facts": [
+    "c11.hostPool.costAllocationTag",
+    "c11.hostPool.sessionHosts.untaggedForCost"
+   ]
+  },
+  {
+   "id": "asm-cost-budget-action-group",
+   "title": "Subscriptions configure a cost budget wired to an action group",
+   "claims": [
+    "ref:waf-cost-optimization-checklist#CO:03",
+    "ref:cost-management-budgets#alerts-dont-stop",
+    "ref:cost-management-budgets#action-group-scopes"
+   ],
+   "facts": [
+    "c11.subscription.budgets.total",
+    "c11.subscription.budgets.withActionGroup"
+   ]
+  },
+  {
+   "id": "asm-cost-no-unattached-disks",
+   "title": "Subscriptions have zero unattached managed disk cost recommendations",
+   "claims": [
+    "ref:advisor-cost#unattached-disks",
+    "ref:waf-cost-optimization-checklist#CO:07"
+   ],
+   "facts": [
+    "c11.advisor.unattachedDisks"
+   ]
+  },
+  {
+   "id": "asm-cost-advisor-rightsize-reviewed",
+   "title": "Subscriptions review Azure Advisor VM right-size and shutdown cost recommendations",
+   "claims": [
+    "ref:advisor-cost#right-size-or-shutdown-vms",
+    "ref:waf-cost-optimization-checklist#CO:07"
+   ],
+   "facts": [
+    "c11.advisor.rightSizeVms"
    ]
   }
  ],
