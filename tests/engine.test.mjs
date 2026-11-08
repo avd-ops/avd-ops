@@ -142,6 +142,12 @@ test('runin: pwshFile, signInLines and the whole-block Bash rewrite', () => {
   assert.deepEqual(runin.signInLines('macos', 'bash', { azPowerShell: true, azCli: true }), [runin.SIGN_IN.azCliBash]);
   assert.deepEqual(runin.signInLines('macos', 'bash', { azPowerShell: true }), []);
   assert.equal(runin.SIGN_IN.azPowerShell, 'if (-not (Get-AzContext)) { Connect-AzAccount -UseDeviceAuthentication | Out-Null }');
+  assert.equal(runin.validCloud('usgov'), 'usgov');
+  assert.equal(runin.validCloud('commercial'), 'commercial');
+  assert.equal(runin.validCloud('other'), 'commercial');
+  assert.deepEqual(runin.signInLines('cloudshell', 'pwsh', { azPowerShell: true, azCli: true, cloud: 'usgov' }), []);
+  assert.deepEqual(runin.signInLines('windows', 'pwsh', { azPowerShell: true, azCli: true, cloud: 'usgov' }), [runin.SIGN_IN_USGOV.azPowerShell, runin.SIGN_IN_USGOV.azCliPwsh]);
+  assert.deepEqual(runin.signInLines('macos', 'bash', { azPowerShell: true, azCli: true, cloud: 'usgov' }), [runin.SIGN_IN_USGOV.azCliBash]);
   const block = "$repo = Join-Path $HOME 'x'\nSet-Location $repo";
   assert.equal(runin.forRunIn(block, { where: 'windows' }), block);
   assert.equal(runin.forRunIn(block, { where: 'cloudshell', shell: 'bash' }),
@@ -361,6 +367,9 @@ test('redact: the <kind-n> format is frozen, one number per distinct value, cont
 test('redact: public IDs, domains and the portal\'s own kept values stay readable', () => {
   const r = redact.redact(`Graph 00000003-0000-0000-c000-000000000000 role ${guid('d')} ${at('a', 'contoso.com')} sandbox`, { publicIds: [guid('d')], keepValues: ['sandbox'], extraTerms: ['sandbox'] });
   assert.equal(r.text, 'Graph 00000003-0000-0000-c000-000000000000 role ' + guid('d') + ' <email-1> sandbox');
+  const gov = redact.redact(`gov user ${at('ops', 'fabrikam.onmicrosoft.us')} on fabrikam.onmicrosoft.us and host wvd.azure.us storage core.usgovcloudapi.net`);
+  assert.equal(gov.text, 'gov user <email-1> on <tenant-1>.onmicrosoft.us and host wvd.azure.us storage core.usgovcloudapi.net');
+  assert.deepEqual(gov.counts, { email: 1, tenant: 1 });
 });
 
 test('redact: the operator\'s terms and settings, short ones as whole words only', () => {

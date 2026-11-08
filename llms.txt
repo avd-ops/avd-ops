@@ -56,6 +56,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0010. Expand avd-assess and avd-current-state natively across all five control planes](docs/knowledge/decisions/0010-expand-assess-and-current-state-across-five-control-planes.md): accepted
 - [0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)](docs/knowledge/decisions/0011-avd-benchmark-and-assess-corpus.md): proposed
 - [0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune](docs/knowledge/decisions/0012-desktop-devops-for-avd-win365-and-intune.md): accepted
+- [0013. Support Azure US Government and Microsoft 365 GCC High across all five control planes](docs/knowledge/decisions/0013-azure-us-government-and-gcc-high-support.md): accepted
 
 ## Related knowledge bases
 

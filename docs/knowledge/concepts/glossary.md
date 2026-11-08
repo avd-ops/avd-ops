@@ -14,7 +14,7 @@ One-line definitions of the shared terms, contract IDs, and safety rules across 
 
 Each term belongs to one repository or specification; follow the link for the schema or full rule.
 
-## Shared contracts (`C1`–`C25`)
+## Shared contracts (`C1`–`C26`)
 
 Versioned JSON contracts passed between repositories instead of shared code.
 
@@ -22,7 +22,7 @@ Versioned JSON contracts passed between repositories instead of shared code.
 
 | Term | What it is | Owner |
 |---|---|---|
-| **Contract registry (`C1`–`C25`)** | The catalog of versioned JSON schemas and examples that connect the family repos without runtime code coupling | [avd-second-brain contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md) |
+| **Contract registry (`C1`–`C26`)** | The catalog of versioned JSON schemas and examples that connect the family repos without runtime code coupling | [avd-second-brain contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md) |
 | **`C6` (`avd-knowledge-rule/v1`)** | Machine-readable sizing, threshold, and architecture rules harvested into the knowledge base | [avd-second-brain contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md) |
 | **`C9` (`avd-playbook-proposal/v1`)** | A surface-aware remediation or operational plan proposed by the brain for human approval in `avd-swarm`, carrying a `dataLossGuard` block | [avd-second-brain decision 0027](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0027-desktop-devops-across-avd-win365-and-intune.md) |
 | **`C10` (`avd-playbook-outcome/v1`)** | The redacted execution and verification outcome returned to the brain after `avd-swarm` runs or rejects an approved plan | [avd-second-brain contracts](https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md) |
@@ -37,6 +37,7 @@ Versioned JSON contracts passed between repositories instead of shared code.
 | **`C23` (`avd-assessment-review/v1`)** | The operator's recorded disposition (`fix`, `accept`, `defer`) and rationale for each assessment finding | [avd-current-state portal](https://github.com/avd-ops/avd-current-state/blob/main/docs/assessment-portal-spec.md) |
 | **`C24` (`avd-remediation-plan/v1`)** | An ordered remediation plan generated from an assessment report (`C21`), its review (`C23`), and the pinned method catalog | [avd-assess remediation method](https://github.com/avd-ops/avd-assess/blob/main/methods/remediation.md) |
 | **`C25` (`avd-benchmark-result/v1`)** | Pseudonymous Tier 1 (active synthetic) and Tier 2 (passive Log Analytics / Graph) performance benchmark percentiles (`p50`, `p90`, `p95`, `p99`) | [avd-assess benchmark contract](https://github.com/avd-ops/avd-assess/blob/main/contracts/schemas/benchmark-result.schema.json) |
+| **`C26` (`avd-cloud-environments/v1`)** | The canonical endpoint, Private DNS zone, region, and capability map for `commercial` (`AzureCloud`) and `usgov` (`AzureUSGovernment` / GCC High) across all five control planes | [decision 0013](../decisions/0013-azure-us-government-and-gcc-high-support.md) |
 
 ## Architecture, maturity, and governance terms
 
