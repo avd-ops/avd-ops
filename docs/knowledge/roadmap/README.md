@@ -31,8 +31,8 @@ Each repo's own roadmap and build order are the source of truth.
 
 Three pages come next: a lab walkthrough, a glossary, and repo pages built from each README.
 
-- A walkthrough from an empty lab subscription to a validated landing zone.
-- A glossary of the terms the repos share.
+- [A walkthrough from an empty lab subscription to a validated landing zone](../getting-started/lab-walkthrough.md).
+- [A glossary of the terms the repos share](../concepts/glossary.md).
 - Per-repo pages rendered from each README at the commit pinned in `repos.json`.
 
 ## A family roadmap page (proposed)
