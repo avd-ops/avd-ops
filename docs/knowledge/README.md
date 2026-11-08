@@ -19,7 +19,9 @@ add it to the topic page it belongs to instead of starting a new file.
 |---|---|---|
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | partial |
 | [getting-started/cloud-shell.md](getting-started/cloud-shell.md) | The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence | partial |
+| [getting-started/lab-walkthrough.md](getting-started/lab-walkthrough.md) | Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks | partial |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | partial |
+| [concepts/glossary.md](concepts/glossary.md) | One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term | partial |
 | [concepts/sandbox-batches.md](concepts/sandbox-batches.md) | How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence | partial |
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | partial |
 | [repos/avd-assess.md](repos/avd-assess.md) | Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed | partial |

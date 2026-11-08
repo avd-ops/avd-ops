@@ -9,6 +9,13 @@
    "section": true
   },
   {
+   "id": "concepts/glossary.md",
+   "title": "Glossary",
+   "url": "concepts/glossary.html",
+   "topic": "concepts",
+   "status": "partial"
+  },
+  {
    "id": "concepts/sandbox-batches.md",
    "title": "Sandbox batches",
    "url": "concepts/sandbox-batches.html",
@@ -118,6 +125,13 @@
    "id": "getting-started/cloud-shell.md",
    "title": "Working from Cloud Shell",
    "url": "getting-started/cloud-shell.html",
+   "topic": "getting-started",
+   "status": "partial"
+  },
+  {
+   "id": "getting-started/lab-walkthrough.md",
+   "title": "Lab walkthrough: empty subscription to validated landing zone",
+   "url": "getting-started/lab-walkthrough.html",
    "topic": "getting-started",
    "status": "partial"
   },
@@ -249,6 +263,18 @@
    "target": "decisions/0006-run-anywhere.md"
   },
   {
+   "source": "concepts/glossary.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "concepts/glossary.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "concepts/glossary.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
    "source": "concepts/sandbox-batches.md",
    "target": "getting-started/cloud-shell.md"
   },
@@ -355,6 +381,22 @@
   {
    "source": "getting-started/cloud-shell.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/lab-walkthrough.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
    "source": "repos/README.md",
@@ -695,6 +737,14 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "getting-started/lab-walkthrough.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "concepts/glossary.md"
   }
  ]
 }
