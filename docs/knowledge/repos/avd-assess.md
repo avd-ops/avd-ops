@@ -2,7 +2,7 @@
 title: "avd-assess"
 summary: "Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed"
 topic: repos
-status: partial
+status: verified
 last_reviewed: 2026-10-28
 ---
 

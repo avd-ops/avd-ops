@@ -46,7 +46,7 @@
 <li>Deploys multiple workspaces, Desktop and RemoteApp application groups, and Pooled or Personal host pools from Bicep.</li>
 <li>Configures full AVD Private Link (<code>connection</code>, <code>feed</code> and <code>global</code>) and Private Endpoints for Azure Files and Key Vault.</li>
 <li>Configures FSLogix on Premium Azure Files with Entra Kerberos and no storage keys, plus Azure Policy, Defender for Cloud and budget automation.</li>
-<li>Joins session hosts to Entra ID and enrolls them into <a href="avd-intune.html">avd-intune</a> via <code>AADLoginForWindows</code>.</li>
+<li>Joins session hosts to Entra ID with the Entra join extension (<code>AADLoginForWindows</code>) and enrolls them in Intune, where the <a href="avd-intune.html">avd-intune</a> profiles apply.</li>
 </ul>
 </section>
 <section class="screen" id="how-it-fits">
@@ -54,7 +54,7 @@
 <p class="bl">It is the Azure infrastructure stage orchestrated by avd-landing-zone and checked by avd-current-state.</p>
 <ul>
 <li>Invoked at a pinned commit by <a href="avd-landing-zone.html">avd-landing-zone</a> or run directly from Azure Cloud Shell.</li>
-<li>Binds application groups and RBAC to groups from <a href="avd-entra.html">avd-entra</a> and exports <code>azure-outputs.json</code> for <a href="avd-power-platform.html">avd-power-platform</a> and <a href="avd-current-state.html">avd-current-state</a>.</li>
+<li>Binds application groups and RBAC to the user and admin groups from <a href="avd-entra.html">avd-entra</a>, passed in as group IDs. Its handoff to <a href="avd-power-platform.html">avd-power-platform</a> and <a href="avd-current-state.html">avd-current-state</a> is <code>azure-outputs.json</code>, defined by its contract schema; <code>deploy.sh</code> doesn&#39;t write that file yet.</li>
 </ul>
 </section>
 <section class="screen" id="read-more-in-the-repo">

@@ -4,26 +4,28 @@
 
 errors:
   - id: bash-3-bad-substitution
-    symptom: "deploy.sh: line N: ${JUMPBOX_OS,,}: bad substitution (or mapfile: command not found)"
-    cause: macOS ships Bash 3.2; avd-landing-zone's deploy.sh uses Bash 4 features (lowercase expansion, mapfile).
-    fix: Run it from Azure Cloud Shell, or install a newer bash (Homebrew) and run it with that bash instead of /bin/bash.
-    source: decisions/0006-run-anywhere.md
-    applies_to: avd-landing-zone e66d866
-    status: unverified
+    symptom: "deploy.sh needs Bash 4 or later; this is Bash 3.2... (before the guard: deploy.sh: line N: ${JUMPBOX_OS,,}: bad substitution, or mapfile: command not found)"
+    cause: macOS ships Bash 3.2; avd-landing-zone's deploy.sh uses Bash 4 features (lowercase expansion, mapfile) and now stops at the top with a clear message instead of failing partway.
+    fix: Run it from Azure Cloud Shell, or install a newer bash (Homebrew) and run it with that bash instead of /bin/bash. avd-landing-zone CI runs both on macOS (stock bash must stop with the message; Homebrew bash runs the offline deploy scenario).
+    source: https://github.com/avd-ops/avd-landing-zone/blob/a0ca7c4/scripts/deploy/deploy.sh
+    applies_to: avd-landing-zone a0ca7c4
+    status: verified
     added: "2026-10-21"
   - id: sh-crlf-on-windows
     symptom: "$'\\r': command not found"
-    cause: A Windows checkout with core.autocrlf turned a .sh file's line endings into CRLF.
-    fix: Add `*.sh text eol=lf` to .gitattributes, or re-clone with `git config core.autocrlf input`.
-    source: decisions/0006-run-anywhere.md
-    status: unverified
+    cause: A Windows checkout with core.autocrlf turned a .sh file's line endings into CRLF, and Bash reads the carriage return as part of each command.
+    fix: Add `*.sh text eol=lf` to .gitattributes (avd-landing-zone has it, and its Windows CI runs deploy.sh in Git Bash from such a checkout), or re-clone with `git config core.autocrlf input`.
+    source: https://git-scm.com/docs/gitattributes#_eol
+    applies_to: avd-landing-zone a0ca7c4
+    status: verified
     added: "2026-10-21"
   - id: git-bash-resource-id-rewritten
     symptom: "az ... --ids fails with a resource ID that starts with C:/Program Files/Git/subscriptions/..."
     cause: Git Bash (MSYS) converts arguments that start with / into Windows paths.
-    fix: Set MSYS_NO_PATHCONV=1 before running the script, or run it from Cloud Shell.
-    source: decisions/0006-run-anywhere.md
-    status: unverified
+    fix: Set MSYS_NO_PATHCONV=1 before running the script, or run it from Cloud Shell. avd-landing-zone's deploy.sh exports it, and its Windows CI checks that resource IDs reach az unchanged.
+    source: https://github.com/avd-ops/avd-landing-zone/blob/a0ca7c4/build/tests/offline/Deploy.Scenario.ps1
+    applies_to: avd-landing-zone a0ca7c4, Git for Windows
+    status: verified
     added: "2026-10-21"
 
   - id: pinned-json-hash-crlf-on-windows
@@ -115,3 +117,59 @@ errors:
     status: verified
     added: "2026-10-27"
 
+  - id: kb-digest-issues-pile-up
+    symptom: "Weekly kb-digest issues stay open and pile up, and ticking items in one never becomes a pull request"
+    cause: kb-curator only opened issues; nothing closed an unworked digest, and kb-feedback acted on kb-accepted for the issue forms but not for digests.
+    fix: "A new digest closes older open digests with nothing ticked and no comments (`scripts/kb/digest.py supersede`); kb-accepted on a ticked digest adds its items to their pages and opens a PR that closes it (`digest.accept`). Ported from avd-second-brain #122."
+    source: curation.md
+    applies_to: scripts/kb (family format 1)
+    status: verified
+    added: "2026-10-29"
+  - id: kb-freshness-issue-never-closes
+    symptom: "The kb-freshness issue stays open with items that were fixed long ago"
+    cause: "The workflow ran its issue step only when `items != 0`, so a clean run never touched the open issue."
+    fix: "The issue step always runs and closes the open issue when the check finds nothing; run kb-freshness by hand after a fix to close it."
+    source: curation.md
+    applies_to: .github/workflows/kb-freshness.yml
+    status: verified
+    added: "2026-10-29"
+  - id: kb-expert-yield-false-positive-new-kb
+    symptom: "The freshness check says a tracked expert has \"nothing in the digests\" on a new KB, or right after the expert was added"
+    cause: Yield was counted over the whole 90-day window even when no digest, or none since the expert was scored, existed yet.
+    fix: "Count yield only over digests opened since the expert's `reviewed` date, and skip the expert when there are none."
+    source: curation.md
+    applies_to: scripts/kb/freshness.py
+    status: verified
+    added: "2026-10-29"
+  - id: feed-transient-http-500
+    symptom: "A digest lists a feed under \"Sources that failed this run\" with `HTTPError: HTTP Error 500`, and the next run works"
+    cause: The feed answered a transient 5xx and the fetcher had no retry.
+    fix: "`http_get` retries a 5xx once after a short wait; a 4xx still fails at once."
+    source: curation.md
+    applies_to: scripts/kb/sources.py
+    status: verified
+    added: "2026-10-29"
+  - id: kb-digest-merge-commit-noise
+    symptom: "Half of a digest's commit items are \"Merge pull request #N from ...\" or \"Merge remote-tracking branch\" lines"
+    cause: "`github_commits` listed every commit on the watched path, merge commits and dependency bumps included."
+    fix: "Commit sources drop titles that start with Merge pull request, Merge branch, Merge remote-tracking, Bump, or build(deps)/chore(deps) (from 2ndbrain)."
+    source: curation.md
+    applies_to: scripts/kb/sources.py
+    status: verified
+    added: "2026-10-29"
+  - id: kb-family-row-points-at-moved-kb
+    symptom: "The freshness check's Family alignment says a sibling \"couldn't read its family.yaml (HTTPError)\", and its two sources in sources.toml list nothing"
+    cause: "The sibling's knowledge base moved to another repo, but this KB's `family.yaml` row and `sources.toml` still named the old one, which has no `docs/knowledge/family.yaml`."
+    fix: "Point the row's `repo` and the sibling's sources at the repo that now holds its KB (Liquidware: nickprignano/liquidware-ninja), copying the focus and owns from the sibling's own row and leaving out anything private."
+    source: https://github.com/nickprignano/liquidware-ninja/blob/main/docs/knowledge/family.yaml
+    applies_to: docs/knowledge/family.yaml
+    status: verified
+    added: "2026-10-29"
+  - id: kb-freshness-marker-in-prose
+    symptom: "The freshness check counts \"1 claim(s) marked unverified\" on a page whose claims are all checked"
+    cause: "The inline-marker pattern (`\\*unverified`, `not yet reviewed`) also matches prose that explains the convention, such as \"mark it as *unverified*\"."
+    fix: "Put the marker in inline code when a page talks about it (`*unverified*`); the check strips code spans before counting."
+    source: https://github.com/avd-ops/avd-ops/blob/main/scripts/kb/freshness.py
+    applies_to: scripts/kb/freshness.py
+    status: verified
+    added: "2026-10-29"

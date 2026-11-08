@@ -2,8 +2,8 @@
 title: "Start here"
 summary: "What the AVD repos do, which one to open first, and how to try them safely in a lab"
 topic: getting-started
-status: partial
-last_reviewed: 2026-10-20
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # Start here

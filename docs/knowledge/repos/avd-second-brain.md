@@ -2,7 +2,7 @@
 title: "avd-second-brain"
 summary: "On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune"
 topic: repos
-status: partial
+status: verified
 last_reviewed: 2026-11-02
 ---
 

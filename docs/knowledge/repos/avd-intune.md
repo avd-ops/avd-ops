@@ -2,7 +2,7 @@
 title: "avd-intune"
 summary: "Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning"
 topic: repos
-status: partial
+status: verified
 last_reviewed: 2026-11-02
 ---
 

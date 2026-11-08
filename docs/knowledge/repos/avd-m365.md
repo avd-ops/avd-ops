@@ -2,8 +2,8 @@
 title: "avd-m365"
 summary: "Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-m365
@@ -23,8 +23,8 @@ It configures OneDrive, Teams VDI and Microsoft 365 Apps baselines for greenfiel
 <!-- more -->
 
 - Configures OneDrive Silent Account Configuration, Known Folder Move (`KFMSilentOptIn`, querying the tenant GUID dynamically at deploy time) and Files On-Demand sync rules stamped with `[avd-ops-<prefix>-<env>]`.
-- Applies Microsoft Teams VDI media optimization (`SlimCore`) and meeting policies.
-- Sets Microsoft 365 Apps Shared Computer Activation and Outlook caching defaults for FSLogix containers.
+- Applies Microsoft Teams VDI media optimization (`SlimCoreAndWebRtc`).
+- Sets Microsoft 365 Apps Shared Computer Activation, the Monthly Enterprise update channel and a three-month Outlook cache for FSLogix containers.
 - Checks required tenant SKUs in preflight without purchasing recurring commitments.
 - `Deploy-AvdM365.ps1` emits `m365-manifest.json` (`avd-ops-m365-manifest/v1`) and records `created: true|false` per policy ID in `m365-run-manifest.json` (`avd-ops-m365-run-manifest/v1`).
 - `Remove-AvdM365.ps1 -DiscardLastCopy` deletes only policies created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield policies untouched and gating teardown behind `-DiscardLastCopy`.

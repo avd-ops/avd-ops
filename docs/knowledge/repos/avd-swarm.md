@@ -2,7 +2,7 @@
 title: "avd-swarm"
 summary: "On top, Desktop DevOps execution: agents across AVD, Windows 365 and Intune that read freely and change nothing until a person approves the plan"
 topic: repos
-status: partial
+status: verified
 last_reviewed: 2026-11-02
 ---
 

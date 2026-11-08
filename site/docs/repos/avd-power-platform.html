@@ -46,7 +46,7 @@
 <details class="more"><summary>More</summary>
 <ul>
 <li>Deploys dedicated Power Platform environments (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Day-2 Automation</code>), strict DLP policies (<code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;] AVD Day-2 Automation Strict DLP Policy</code>), and Bicep <code>Microsoft.PowerPlatform/enterprisePolicies</code> for VNet subnet injection.</li>
-<li>Packs and imports source-controlled Power Automate solutions (<code>AvdDay2Automation</code>) wired to <code>avd-entra</code> user groups and <code>avd-azure</code> host pools for self-service access requests and approval-gated host drain, restart, and start-on-demand in Microsoft Teams.</li>
+<li>Packs and imports source-controlled Power Automate solutions (<code>AvdDay2Automation</code>) wired to <code>avd-entra</code> user groups and <code>avd-azure</code> host pools for self-service pool access requests (approved in Microsoft Teams) and an approval-gated session host drain and restart.</li>
 <li><code>Deploy-AvdPowerPlatform.ps1</code> emits <code>power-platform-manifest.json</code> (<code>avd-ops-power-platform-manifest/v1</code>) and records <code>created: true|false</code> per resource in <code>power-platform-run-manifest.json</code> (<code>avd-ops-power-platform-run-manifest/v1</code>).</li>
 <li><code>Remove-AvdPowerPlatform.ps1 -DiscardLastCopy</code> deletes only the DLP policy, environment, and enterprise policy created by the run (<code>created: true</code> and matching the <code>[avd-ops-&lt;prefix&gt;-&lt;env&gt;]</code> stamp), leaving pre-existing brownfield objects untouched and gating stateful teardown behind <code>-DiscardLastCopy</code>.</li>
 </ul>

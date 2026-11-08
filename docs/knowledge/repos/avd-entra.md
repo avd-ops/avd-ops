@@ -2,8 +2,8 @@
 title: "avd-entra"
 summary: "Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop"
 topic: repos
-status: partial
-last_reviewed: 2026-10-27
+status: verified
+last_reviewed: 2026-10-29
 ---
 
 # avd-entra
@@ -24,7 +24,7 @@ It prepares groups, Conditional Access and Entra Kerberos in Entra ID with zero 
 
 - Creates security groups stamped with `[avd-ops-<prefix>-<env>]` (`[avd-ops-<prefix>-<env>] AVD Users`, per-pool `[avd-ops-<prefix>-<env>] AVD Users (<pool>)`, `[avd-ops-<prefix>-<env>] AVD Admins`, `[avd-ops-<prefix>-<env>] AVD Break-Glass Exclude`) and dynamic session-host device groups (`[avd-ops-<prefix>-<env>] AVD Session Hosts`).
 - Deploys Conditional Access policies targeting Azure Virtual Desktop and Windows Cloud Login (`reportOnly` by default).
-- Completes the Microsoft Graph service principal and Entra Kerberos readiness steps for Premium Azure Files (FSLogix).
+- Optionally registers a public-client Microsoft Graph operator app with no secret (`-InitializeGraphApp`), and checks Entra Kerberos readiness for Premium Azure Files (FSLogix) when given the storage account.
 - Checks tenant license SKUs in preflight and seeds optional greenfield lab users without buying commitments.
 - `Deploy-AvdEntra.ps1` emits `entra-manifest.json` (`avd-ops-entra-manifest/v1`) and records `created: true|false` per object ID in `entra-run-manifest.json` (`avd-ops-entra-run-manifest/v1`).
 - `Remove-AvdEntra.ps1 -DiscardLastCopy` tears down only objects created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield objects untouched and gating stateful deletions behind `-DiscardLastCopy`.

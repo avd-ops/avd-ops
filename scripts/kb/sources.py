@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import json
 import os
+import re
+import time
 import tomllib
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -24,6 +27,9 @@ def _user_agent() -> str:
 
 USER_AGENT = _user_agent()
 GITHUB_API = "https://api.github.com"
+# Commit titles that never belong in a digest: merges and dependency bumps (from 2ndbrain; a bump
+# is Dependabot's "Bump <package> from <old> to <new>", so "Bump the minimum version" stays).
+NOISE = re.compile(r"^(Merge (pull request|branch|remote-tracking)|Bump \S+ from \S+ to |(build|chore)\(deps)", re.I)
 
 
 @dataclass
@@ -35,10 +41,22 @@ class Item:
     note: str = ""
 
 
+# A feed or API that answers 5xx (YouTube's feeds return a transient HTTP 500 now and then) gets
+# one more try after a short wait before the source counts as failed for this run.
+SERVER_ERROR_RETRIES = 1
+SERVER_ERROR_WAIT = 5.0
+
+
 def http_get(url: str, headers: dict | None = None) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.read()
+    for attempt in range(SERVER_ERROR_RETRIES + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as exc:
+            if exc.code < 500 or attempt == SERVER_ERROR_RETRIES:
+                raise
+            time.sleep(SERVER_ERROR_WAIT * (2 ** attempt))
 
 
 def github(path: str, params: dict | None = None):
@@ -96,6 +114,7 @@ def github_commits(src: dict, since: datetime) -> list[Item]:
             text=c["commit"]["message"],
         )
         for c in commits
+        if not NOISE.match(first_line(c["commit"]["message"]))
     ]
 
 

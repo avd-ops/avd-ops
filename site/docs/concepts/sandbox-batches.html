@@ -106,8 +106,11 @@ price) voids it, and the batch is built and approved again.</li>
 <ul>
 <li>Groups that use the same resource names run in sequence, with teardown evidence between them.
 Otherwise the second deploy collides with the first one&#39;s leftovers.</li>
-<li>The runner checks the cost gate again before each group. It stops on leftovers, a missed
+<li>Each group starts with a read-only health check (permissions, leftovers from an earlier run, the
+run store, the caps), and the runner checks the cost gate again. It stops on leftovers, a missed
 deadline or the monthly cap. Stopping is always safe, because nothing new is deployed.</li>
+<li>Before a group claims anything, it arms a deadline teardown on the run store, so a Cloud Shell
+that dies mid-run still leaves nothing billing (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0026-runs-check-and-clean-before-they-spend.md">brain decision 0026</a>).</li>
 </ul>
 </details>
 </section>
@@ -118,7 +121,7 @@ deadline or the monthly cap. Stopping is always safe, because nothing new is dep
 <details class="more"><summary>More</summary>
 <ul>
 <li>Before any teardown, every Keep path is archived to a run store outside the deployment, read back
-and hash-checked. If there&#39;s no run store, the group refuses to start
+and hash-checked. A group that keeps private output refuses to run without a run store
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0016-never-delete-the-last-copy.md">never delete the last copy</a>).</li>
 <li>Teardown removes everything the group deployed, then checks that nothing is left billing
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">never leave the meter running</a>).</li>

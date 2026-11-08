@@ -3,8 +3,9 @@ name: kb-feedback
 # Closes the loop from people using the KB back into it. When a maintainer labels a
 # "Knowledge base feedback", "Known error" or "Suggest an expert" issue kb-accepted, this turns the
 # issue form into a change to the KB's YAML data (field-reports.yaml,
-# troubleshooting/known-errors.yaml or experts.yaml),
-# validates it, and opens a pull request for review. The label is the review gate: issue text is
+# troubleshooting/known-errors.yaml or experts.yaml); on a kb-digest issue it adds the ticked items
+# to their pages (scripts/kb/digest.py). It validates the change and opens a pull request for
+# review. The label is the review gate: issue text is
 # untrusted, is only parsed as data, and nothing merges without a reviewed PR.
 #
 # Opening the PR needs "Allow GitHub Actions to create and approve pull requests" (Settings >
@@ -32,7 +33,8 @@ jobs:
       github.event.label.name == 'kb-accepted' &&
       (contains(github.event.issue.labels.*.name, 'kb-feedback') ||
        contains(github.event.issue.labels.*.name, 'kb-known-error') ||
-       contains(github.event.issue.labels.*.name, 'kb-source'))
+       contains(github.event.issue.labels.*.name, 'kb-source') ||
+       contains(github.event.issue.labels.*.name, 'kb-digest'))
     runs-on: ubuntu-latest
     outputs:
       paused: ${{ steps.gate.outputs.paused }}
@@ -63,10 +65,18 @@ jobs:
       - name: Turn the issue into a KB change
         id: change
         run: python3 scripts/kb/feedback.py --event "$GITHUB_EVENT_PATH" --body-file "$RUNNER_TEMP/pr-body.md"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - name: Regenerate and validate
+        # A digest pick can land on a page published at avd-ops.dev/docs, so the site is rebuilt and
+        # its tests (notice, links, banned names) run too.
         run: |
           python3 scripts/kb/build.py
           python3 scripts/kb/validate.py
+          npm ci
+          node scripts/site/build-docs.mjs
+          node --test "tests/*.test.mjs"
       - name: Push branch and open PR
         env:
           BRANCH: ${{ steps.change.outputs.branch }}
@@ -75,7 +85,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
-          git add docs/knowledge llms.txt
+          git add docs/knowledge llms.txt site/docs
           git commit -m "$TITLE"
           git push --force-with-lease origin "$BRANCH"
           if url=$(gh pr create --head "$BRANCH" --title "$TITLE" --body-file "$RUNNER_TEMP/pr-body.md"); then
