@@ -29,7 +29,7 @@
 </nav>
 <main id="main"><div class="col">
 <article class="screens">
-<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#glossary" title="Glossary"><span class="n">1</span><span class="t">Glossary</span></a></li><li><a href="#shared-contracts-c1c25" title="Shared contracts (C1–C25)"><span class="n">2</span><span class="t">Shared contracts (C1–C25)</span></a></li><li><a href="#architecture-maturity-and-governance-terms" title="Architecture, maturity, and governance terms"><span class="n">3</span><span class="t">Architecture, maturity, and governance terms</span></a></li></ol></nav>
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#glossary" title="Glossary"><span class="n">1</span><span class="t">Glossary</span></a></li><li><a href="#shared-contracts-c1c26" title="Shared contracts (C1–C26)"><span class="n">2</span><span class="t">Shared contracts (C1–C26)</span></a></li><li><a href="#architecture-maturity-and-governance-terms" title="Architecture, maturity, and governance terms"><span class="n">3</span><span class="t">Architecture, maturity, and governance terms</span></a></li></ol></nav>
 <section class="screen" id="glossary">
 <h1 tabindex="-1">Glossary</h1>
 <p class="bl">One-line definitions of the shared terms, contract IDs, and safety rules across the <code>avd-ops</code> family, each linked to the page that owns it.</p>
@@ -38,8 +38,8 @@
 <p>Each term belongs to one repository or specification; follow the link for the schema or full rule.</p>
 </details>
 </section>
-<section class="screen" id="shared-contracts-c1c25">
-<h2 tabindex="-1">Shared contracts (<code>C1</code>–<code>C25</code>)</h2>
+<section class="screen" id="shared-contracts-c1c26">
+<h2 tabindex="-1">Shared contracts (<code>C1</code>–<code>C26</code>)</h2>
 <p class="bl">Versioned JSON contracts passed between repositories instead of shared code.</p>
 
 <details class="more"><summary>More</summary>
@@ -54,7 +54,7 @@
 <tbody><tr>
 <td data-label="
 
-Term"><strong>Contract registry (<code>C1</code>–<code>C25</code>)</strong></td>
+Term"><strong>Contract registry (<code>C1</code>–<code>C26</code>)</strong></td>
 <td data-label="What it is">The catalog of versioned JSON schemas and examples that connect the family repos without runtime code coupling</td>
 <td data-label="Owner"><a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md">avd-second-brain contracts</a></td>
 </tr>
@@ -155,6 +155,13 @@ Term"><strong><code>C24</code> (<code>avd-remediation-plan/v1</code>)</strong></
 Term"><strong><code>C25</code> (<code>avd-benchmark-result/v1</code>)</strong></td>
 <td data-label="What it is">Pseudonymous Tier 1 (active synthetic) and Tier 2 (passive Log Analytics / Graph) performance benchmark percentiles (<code>p50</code>, <code>p90</code>, <code>p95</code>, <code>p99</code>)</td>
 <td data-label="Owner"><a href="https://github.com/avd-ops/avd-assess/blob/main/contracts/schemas/benchmark-result.schema.json">avd-assess benchmark contract</a></td>
+</tr>
+<tr>
+<td data-label="
+
+Term"><strong><code>C26</code> (<code>avd-cloud-environments/v1</code>)</strong></td>
+<td data-label="What it is">The canonical endpoint, Private DNS zone, region, and capability map for <code>commercial</code> (<code>AzureCloud</code>) and <code>usgov</code> (<code>AzureUSGovernment</code> / GCC High) across all five control planes</td>
+<td data-label="Owner"><a href="../decisions/0013-azure-us-government-and-gcc-high-support.html">decision 0013</a></td>
 </tr>
 </tbody></table></div>
 </details>

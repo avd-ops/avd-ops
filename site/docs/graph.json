@@ -107,6 +107,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0013-azure-us-government-and-gcc-high-support.md",
+   "title": "0013. Support Azure US Government and Microsoft 365 GCC High across all five control planes",
+   "url": "decisions/0013-azure-us-government-and-gcc-high-support.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -264,6 +271,10 @@
   },
   {
    "source": "concepts/glossary.md",
+   "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
+  },
+  {
+   "source": "concepts/glossary.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
   },
   {
@@ -293,6 +304,18 @@
   {
    "source": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md",
    "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0013-azure-us-government-and-gcc-high-support.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0013-azure-us-government-and-gcc-high-support.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0013-azure-us-government-and-gcc-high-support.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
    "source": "decisions/README.md",
@@ -341,6 +364,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
   },
   {
    "source": "getting-started/README.md",
@@ -697,6 +724,10 @@
   {
    "source": "roadmap/README.md",
    "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
   },
   {
    "source": "roadmap/README.md",
