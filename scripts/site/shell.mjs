@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const family = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8'));
 const portal = (name) => family.repos.find((r) => r.name === name)?.portal;
+const status = (name) => family.repos.find((r) => r.name === name)?.status;
 
 // The side list, the same on every page. Paths are relative to site/.
 export const GROUPS = [
@@ -19,8 +20,8 @@ export const GROUPS = [
   ['Record', [['Decisions', 'docs/decisions/index.html'], ['Graph', 'docs/graph.html'], ['Design system', 'design/index.html'], ['Credits', 'credits.html']]],
 ];
 
-// The switcher: the site, then the portals each repo publishes (repos.json "portal").
-export const SWITCHER = [['Docs', null], ['Deploy', portal('avd-landing-zone')], ['Assess', portal('avd-current-state')]];
+// The switcher: the site, then the portals each repo publishes (repos.json "portal" and "status").
+export const SWITCHER = [['Docs', null], ['Deploy', portal('avd-landing-zone')], ['Assess', portal('avd-current-state')], ['Status', status('avd-current-state')]];
 
 // The pieces the starters in templates/ share with the site (scripts/site/build-kit.mjs).
 export const brand = (href, src) => `<a class="brand" href="${href}"><img class="mark" src="${src}" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>`;
