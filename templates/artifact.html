@@ -161,10 +161,14 @@ footer.site{margin-top:3.5rem;padding-top:1.25rem;border-top:1px solid var(--lin
 .shell header.bar .iconbtn svg{width:20px;height:20px}
 .shell header.bar :focus-visible{outline-color:var(--shell-fg)}
 .shell header.bar .menu{display:none}
+.shell header.bar .tools .iconbtn.dev[aria-pressed="true"],.shell header.bar .tools .iconbtn.dev[aria-pressed="true"]:hover{background:var(--shell-hover);border-color:var(--brand);color:var(--brand)}
+.shell .dev-id{display:none}
+.shell.dev-on .dev-id{display:inline}
+.shell.dev-on .dev-off{display:none}
 .shell .theme .moon{display:none}
 :root[data-theme="dark"] .shell .theme .sun{display:none} :root[data-theme="dark"] .shell .theme .moon{display:block}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .shell .theme .sun{display:none}:root:not([data-theme="light"]) .shell .theme .moon{display:block}}
-html:not(.js) .shell .theme{display:none}
+html:not(.js) .shell .theme,html:not(.js) .shell .dev{display:none}
 
 /* Notice: a pill in the bar, beside the buttons, that opens to the full research-only notice under the bar. The
    whole text stays in the page. Wide screens show the full line, narrower ones "Not for production", phones the dot. */
@@ -261,8 +265,10 @@ html:not(.js) .shell .theme{display:none}
 (function () {
   var root = document.documentElement;
   var KEY = 'avd-ops-theme';
+  var DEV_KEY = 'avd-ops-devmode';
   root.classList.add('js');
   try { var saved = localStorage.getItem(KEY); if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved); } catch (e) { /* storage blocked */ }
+  try { var savedDev = localStorage.getItem(DEV_KEY); if (savedDev === 'on' || savedDev === 'off') root.setAttribute('data-dev', savedDev); } catch (e) { /* storage blocked */ }
 
   function isDark() {
     var t = root.getAttribute('data-theme');
@@ -270,7 +276,46 @@ html:not(.js) .shell .theme{display:none}
     try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { return false; }
   }
 
+  function isDev() {
+    return root.getAttribute('data-dev') === 'on';
+  }
+
+  function applyDev(on) {
+    root.setAttribute('data-dev', on ? 'on' : 'off');
+    var shells = document.querySelectorAll('.shell');
+    for (var i = 0; i < shells.length; i++) shells[i].classList.toggle('dev-on', on);
+    var devs = document.querySelectorAll('.shell .dev');
+    var msg = on ? 'Hide contract and decision IDs (dev mode on)' : 'Show contract and decision IDs (dev mode)';
+    for (var j = 0; j < devs.length; j++) {
+      devs[j].setAttribute('aria-pressed', on ? 'true' : 'false');
+      devs[j].setAttribute('aria-label', msg);
+      devs[j].setAttribute('title', msg);
+    }
+    var nodes = document.querySelectorAll('[data-dev-text][data-pub-text]');
+    for (var k = 0; k < nodes.length; k++) {
+      nodes[k].textContent = on ? nodes[k].getAttribute('data-dev-text') : nodes[k].getAttribute('data-pub-text');
+    }
+    try { window.dispatchEvent(new CustomEvent('avd-ops-devmode', { detail: { dev: on } })); } catch (e) { /* old browser */ }
+  }
+
+  window.AvdOpsDev = {
+    isOn: isDev,
+    set: function (on) {
+      var next = Boolean(on);
+      try { localStorage.setItem(DEV_KEY, next ? 'on' : 'off'); } catch (e) { /* storage blocked */ }
+      applyDev(next);
+    }
+  };
+
   function wire() {
+    applyDev(isDev());
+    var devs = document.querySelectorAll('.shell .dev');
+    for (var d = 0; d < devs.length; d++) {
+      devs[d].addEventListener('click', function () {
+        window.AvdOpsDev.set(!isDev());
+      });
+    }
+
     var theme = document.querySelector('.shell .theme');
     if (theme) {
       var label = function () { theme.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); };
@@ -340,14 +385,14 @@ html:not(.js) .shell .theme{display:none}
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="https://avd-ops.dev/index.html#contribute">Contribute</a>.</li></ul></div></details>
-<div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button></div></div></header>
+<div class="tools"><button class="iconbtn dev" type="button" aria-pressed="false" aria-label="Show contract and decision IDs (dev mode)" title="Show contract and decision IDs (dev mode)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5 3 10l3.5 3.5M13.5 6.5 17 10l-3.5 3.5M11.2 4.5 8.8 15.5"/></svg></button><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button></div></div></header>
 <div class="layout solo">
 <main id="main">
 <div class="col">
 <!-- page:start (replace from here to page:end with the page's own content) -->
 <h1>Page title</h1>
 <p class="lede">One sentence on what this page does and for whom.</p>
-<div class="chips"><span class="chip">C11</span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
+<div class="chips"><span class="chip">Estate Facts<span class="dev-id"> (C11)</span></span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
 <p><a class="cta" href="#start">Primary action</a><a class="cta ghost" href="https://avd-ops.dev/">avd-ops.dev</a></p>
 <h2 id="start">A section</h2>
 <div class="card"><p class="eyebrow">Card</p><p>A surface with a border, for one thing that stands apart. Status pills: <span class="status s-built">built</span> <span class="status s-design">design</span> <span class="status s-slice">slice</span></p></div>

@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, themeButton } from './shell.mjs';
+import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, devButton, themeButton } from './shell.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
@@ -25,7 +25,7 @@ export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+)
 const bar = (markSrc) => `${SKIP}
 <header class="bar"><div class="bar-in">${brand(SITE, markSrc)}
 ${NOTICE(SITE)}
-<div class="tools">${themeButton()}</div></div></header>`;
+<div class="tools">${devButton()}${themeButton()}</div></div></header>`;
 
 const foot = (own) => `<footer class="foot"><div class="in"><p>${own}</p>
 ${TRADEMARKS}
@@ -35,7 +35,7 @@ ${CREDIT}</div></footer>`;
 const SAMPLE = `<!-- page:start (replace from here to page:end with the page's own content) -->
 <h1>Page title</h1>
 <p class="lede">One sentence on what this page does and for whom.</p>
-<div class="chips"><span class="chip">C11</span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
+<div class="chips"><span class="chip">Estate Facts<span class="dev-id"> (C11)</span></span><span class="chip">PowerShell</span><span class="chip">Cloud Shell</span></div>
 <p><a class="cta" href="#start">Primary action</a><a class="cta ghost" href="${SITE}">avd-ops.dev</a></p>
 <h2 id="start">A section</h2>
 <div class="card"><p class="eyebrow">Card</p><p>A surface with a border, for one thing that stands apart. Status pills: <span class="status s-built">built</span> <span class="status s-design">design</span> <span class="status s-slice">slice</span></p></div>
