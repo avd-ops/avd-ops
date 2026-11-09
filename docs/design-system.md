@@ -23,6 +23,19 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 - **One screen at a time** (owner, 2026-10-21). A guided page shows one step that fills the screen, with Back and Next along the bottom, never a page of stacked panels. A docs page or a long section follows the same idea: one idea per screen, and the rest behind a `details.more` disclosure. If a screen needs scrolling to find its action, split it. On avd-ops.dev the docs do this from their Markdown: `build-docs.mjs` makes the title and each `##` section a screen (`article.screens` > `section.screen`, the step bars `nav.sc-steps`, the bar `nav.sc-nav`), the text after a `<!-- more -->` line goes behind `details.more`, and `assets/docs.js` shows one screen at a time; without JavaScript every screen shows in order (`site.css`).
 - **Bottom line first, in plain words, like a chat reply** (owner, 2026-10-21). Each screen opens with what to do or what happened, in one plain sentence, then the one action. Detail, reasons and caveats go behind "more". No walls of text: a paragraph over three lines is a sign it belongs behind "more" or on its own screen. A portal's answer to a paste starts with the verdict (`.reply .bl`), then one or two sentences, then the next button.
 - **The notice stays first.** Every page shows the research-only notice before its first section: the shell's notice in the brand bar (`details.notice`, a pill that opens to the full text, which stays in the page), or the `.warn` box on a page without the shell. Both portals put theirs in the bar in 2.4.1 (`p.disclaimer` is gone); a portal's footer keeps `footer.disclaimer`.
+- **Friendly contract and decision names in public UI.** Portals never lead with raw contract or decision codes (`C11`, `C14`, `C15`, `C19`, `C21`, `C23`, `C24`, `C25`, `Decision 0009`) in headings, buttons or dropzones. Lead with the canonical human name and wrap the internal code in `<span class="dev-id"> (C11)</span>` (or `data-pub-text` and `data-dev-text`) so it stays hidden until the operator toggles Developer Mode (`.iconbtn.dev`, persisted in `localStorage` under `avd-ops-devmode`).
+
+| Code | Public UI name | Dev Mode suffix |
+|---|---|---|
+| `C11` | Estate Facts | `(C11)` |
+| `C14` | Target Topology | `(C14)` |
+| `C15` | Fact Register | `(C15)` |
+| `C19` | Discovery Intake | `(C19)` |
+| `C21` | Assessment Report | `(C21)` |
+| `C23` | Finding Decisions | `(C23)` |
+| `C24` | Remediation Plan | `(C24)` |
+| `C25` | Benchmark Evidence | `(C25)` |
+| `Decision 0009` | Five-Plane Architecture | `(Decision 0009)` |
 
 ## Tokens
 
@@ -67,7 +80,8 @@ Private repos stay out of it: the starters brand a page as avd-ops and say every
 
 | Piece | What it is |
 |---|---|
-| `header.bar` | The brand bar, sticky, `--bar` tall (72px, 60px below 44rem), in `--shell` in both themes: the brand as in the horizontal lockup (the mark at 44px, the word avd-ops and the tagline "Deploy quietly" in `--brand`), then `nav.switcher` (Docs, Deploy, Assess; the current one carries `aria-current`), then the notice, the theme button and, below 64rem, the menu button. The tagline hides below 64rem, the word below 44rem and the mark below 24rem, so the bar fits a 360px phone (2.3.0). |
+| `header.bar` | The brand bar, sticky, `--bar` tall (72px, 60px below 44rem), in `--shell` in both themes: the brand as in the horizontal lockup (the mark at 44px, the word avd-ops and the tagline "Deploy quietly" in `--brand`), then `nav.switcher` (Docs, Deploy, Assess; the current one carries `aria-current`), then the notice, the optional Developer Mode button (`.iconbtn.dev`), the theme button (`.iconbtn.theme`) and, below 64rem, the menu button. The tagline hides below 64rem, the word below 44rem and the mark below 24rem, so the bar fits a 360px phone (2.3.0). |
+| `.iconbtn.dev`, `.dev-id`, `.dev-off` | The Developer Mode toggle (`devButton()` in `scripts/site/shell.mjs`). Off by default (`avd-ops-devmode` in `localStorage`). When active (`<html data-devmode="on">` and `.shell.dev-on`), `.dev-id` spans become visible, `.dev-off` spans hide, elements with `data-pub-text` and `data-dev-text` switch to their dev text, and `window.AvdOpsDev` (`{ isOn, set }`) dispatches `CustomEvent('avd-ops-devmode')`. |
 | `details.notice` | The research notice, inside the bar: a pill with the full line on wide screens, "Not for production" below 72rem and a round button with the warning dot (`--shell-warn`) below 44rem; a page from a 2.2.0 starter that keeps the notice under the bar still gets the row. It opens to the full text under the bar; a tap or click outside or Escape closes it (`theme.js`), and it scrolls on a short screen. The full text stays in the page (2.3.0; until 2.2.0 it was a row of its own under the bar). |
 | `.layout` > `nav.side` + `main` | The side list and the page, starting on the same line: the page's first element takes no top margin (2.3.0). Below 64rem the side list is a drawer the menu button opens (`body.drawer-open`, Escape or the backdrop closes it); without JavaScript it sits below the page. `main > .col` keeps text to the reading column; a page may use the full width (the home page's map, the architecture page). |
 | `footer.foot` | The license and trademark lines, the page's own line, and the credit line (`.credit`). |
