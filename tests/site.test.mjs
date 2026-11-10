@@ -262,6 +262,10 @@ test('the security page renders avd-assess\'s security review map at its pin, an
   for (const q of map.checklist) assert.ok(html.includes(`id="q-${q.id}"`), `question ${q.id} rendered`);
   // avd-assess's own files are linked at the locked commit, never at a branch.
   assert.ok(!/github\.com\/avd-ops\/avd-assess\/(blob|tree)\/main\//.test(html), 'no unpinned avd-assess link');
+  assert.match(read('.github/dependabot.yml'), /package-ecosystem:\s*"github-actions"/);
+  const sbom = JSON.parse(read('sbom.spdx.json'));
+  assert.equal(sbom.spdxVersion, 'SPDX-2.3');
+  assert.ok(Array.isArray(sbom.packages) && sbom.packages.length > 1);
 });
 
 test('repos.json lists every public repo with a docs page, and every page links its repo', () => {
