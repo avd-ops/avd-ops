@@ -10,9 +10,14 @@ on:
       - main
     paths:
       - 'site/**'
+      - 'roadmap.json'
       - 'llms.txt'
       - 'scripts/site/build-llms.mjs'
+      - 'scripts/site/build-roadmap.mjs'
+      - 'scripts/site/build-research.mjs'
       - '.github/workflows/pages.yml'
+  schedule:
+    - cron: '17 6 * * *'
   workflow_dispatch:
 
 permissions:

@@ -35,13 +35,13 @@ Three pages come next: a lab walkthrough, a glossary, and repo pages built from 
 - [A glossary of the terms the repos share](../concepts/glossary.md).
 - Per-repo pages rendered from each README at the commit pinned in `repos.json`.
 
-## A family roadmap page (proposed)
+## Family roadmap and research projects
 
-A public roadmap built from issues is designed, not built yet.
+The public roadmap and research projects pages are built from approved GitHub issues and `roadmap.json`.
 
 <!-- more -->
 
-A public roadmap across every repo is designed in [docs/roadmap-spec.md](../../roadmap-spec.md), not built. What the prior-art check found, for the next page like it:
+The public roadmap at [roadmap.html](https://avd-ops.dev/roadmap.html) and the research projects page at [research.html](https://avd-ops.dev/research.html) are built from `roadmap.json` and `site/data/issues.json` ([docs/roadmap-spec.md](../../roadmap-spec.md)). What the prior-art check found:
 
 - Open source roadmaps that hold up are built from issues: one public tracking issue per item, a status label, and done closes the issue with a link to what shipped ([GitHub's public roadmap](https://github.com/github/roadmap), [Kubernetes enhancements](https://github.com/kubernetes/enhancements)). Hand-written roadmap pages go stale (the [Backstage roadmap](https://backstage.io/docs/overview/roadmap/) names an update date already past).
 - Leave dates out. The roadmaps that give quarters also warn that dates move.

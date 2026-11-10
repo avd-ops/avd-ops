@@ -1,0 +1,179 @@
+{
+  "schema": "avd-ops-issues/v1",
+  "fetchedAt": "2026-11-09",
+  "issues": [
+    {
+      "repo": "avd-ops",
+      "number": 53,
+      "url": "https://github.com/avd-ops/avd-ops/issues/53",
+      "title": "Build the roadmap page",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-09",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "status:in-progress", "by": "nickprignano", "at": "2026-11-09T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-ops",
+      "number": 51,
+      "url": "https://github.com/avd-ops/avd-ops/issues/51",
+      "title": "Research projects page on avd-ops.dev",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-09",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "status:in-progress", "by": "nickprignano", "at": "2026-11-09T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-ops",
+      "number": 52,
+      "url": "https://github.com/avd-ops/avd-ops/issues/52",
+      "title": "Standards library on avd-ops.dev",
+      "state": "closed",
+      "stateReason": "completed",
+      "private": false,
+      "updatedAt": "2026-10-25",
+      "closedAt": "2026-10-25",
+      "lastTitleChange": null,
+      "closingPr": "https://github.com/avd-ops/avd-ops/pull/55",
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "status:done", "by": "nickprignano", "at": "2026-10-25T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "number": 61,
+      "url": "https://github.com/avd-ops/avd-assess/issues/61",
+      "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 2",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-08",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "status:planned", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-current-state",
+      "number": 67,
+      "url": "https://github.com/avd-ops/avd-current-state/issues/67",
+      "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 3",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-08",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "status:planned", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-landing-zone",
+      "number": 131,
+      "url": "https://github.com/avd-ops/avd-landing-zone/issues/131",
+      "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 4",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-08",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "status:exploring", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-second-brain",
+      "number": 138,
+      "url": "https://github.com/avd-ops/avd-second-brain/issues/138",
+      "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 2",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-11-08",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "labels": [
+        {"name": "roadmap", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"},
+        {"name": "status:planned", "by": "nickprignano", "at": "2026-11-08T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "number": 12,
+      "url": "https://github.com/avd-ops/avd-assess/issues/12",
+      "title": "Research request: published memory-per-user baseline for multi-session hosts",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-10-21",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "gap": "gap:sample-check",
+      "labels": [
+        {"name": "research-request", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "call-for-help", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"}
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "number": 14,
+      "url": "https://github.com/avd-ops/avd-assess/issues/14",
+      "title": "Research request: endpoint protection CPU and I/O overhead on pooled hosts",
+      "state": "open",
+      "stateReason": null,
+      "private": false,
+      "updatedAt": "2026-10-21",
+      "closedAt": null,
+      "lastTitleChange": null,
+      "closingPr": null,
+      "requester": null,
+      "gap": "gap:security-agents-scope",
+      "labels": [
+        {"name": "research-request", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "call-for-help", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"},
+        {"name": "accepted", "by": "nickprignano", "at": "2026-10-21T00:00:00Z"}
+      ]
+    }
+  ]
+}

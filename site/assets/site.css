@@ -278,3 +278,30 @@ figure.flows{margin:var(--space-4) 0 0}
 .standards .legend{display:grid;gap:var(--space-2)} .standards .legend div{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap}
 .standards .legend dt{flex:0 0 auto} .standards .legend dd{margin:0;color:var(--muted)}
 .standards .tbl td.mono{overflow-wrap:anywhere}
+
+/* Roadmap and research projects (roadmap.html, research.html) */
+.rm-maturity{display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:var(--space-2);margin:var(--space-3) 0 var(--space-4)}
+.rm-mat-card{display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;padding:var(--space-3)}
+.rm-mat-card b{font:700 .98rem var(--display)}
+.rm-role{font-size:.86rem;color:var(--muted)}
+.rm-jump{display:flex;flex-wrap:wrap;gap:var(--space-1);margin:var(--space-3) 0 var(--space-4)}
+.rm-jump .chip{font:500 .78rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.2rem var(--space-3);color:var(--muted);background:var(--surface);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+.rm-jump .chip:hover{border-color:var(--accent);color:var(--accent)}
+@media (pointer:coarse){.rm-jump .chip{min-height:var(--tap)}}
+.rm-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);align-items:start;margin:var(--space-4) 0}
+@media (max-width:64rem){.rm-board{grid-template-columns:minmax(0,1fr)}}
+.rm-col{background:var(--sunken);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3);display:grid;gap:var(--space-2);min-width:0}
+.rm-col h2{margin:0;font-size:1.15rem}
+.rm-sub{margin:0;font-size:.88rem;color:var(--muted)}
+.rm-list,.rm-done{display:grid;gap:var(--space-2);margin-top:var(--space-2)}
+.rm-card{display:grid;gap:.35rem;padding:var(--space-3)}
+.rm-card h3{margin:0;font-size:1rem}
+.rm-card p{margin:0;font-size:.92rem}
+.rm-top{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;font-size:.85rem}
+.rm-meta{font-size:.85rem;color:var(--muted)}
+.rm-foot{font-size:.82rem;color:var(--muted);margin-top:.15rem}
+.rm-empty{margin:0;color:var(--muted);font-size:.9rem}
+.rm-parked{margin-top:var(--space-5);border-top:1px solid var(--line);padding-top:var(--space-3)}
+.rm-parked>summary{cursor:pointer;font:700 1.1rem var(--display);min-height:var(--tap);display:inline-flex;align-items:center}
+.built{margin-top:var(--space-5);font-size:.88rem;color:var(--muted)}
+

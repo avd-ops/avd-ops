@@ -1,0 +1,20 @@
+{
+  "$schema": "avd-ops-roadmap/v1",
+  "approvers": ["nickprignano"],
+  "themes": [
+    {"id": "front-door", "title": "Front door", "summary": "One place to start, learn, review standards and contribute"},
+    {"id": "foundation", "title": "Foundation and standards", "summary": "Methodology, shared contracts, current-state collection and sovereign cloud parity"},
+    {"id": "control-planes", "title": "Control planes", "summary": "Declarative deployment across Entra, Intune, Microsoft 365, Azure and Power Platform"},
+    {"id": "intelligence", "title": "Intelligence and automation", "summary": "Desktop DevOps second brain and human-gated remediation swarm"}
+  ],
+  "items": [
+    {"issue": "https://github.com/avd-ops/avd-ops/issues/53", "theme": "front-door", "order": 1, "summary": "One public roadmap across the repos, built from approved issues with no dates."},
+    {"issue": "https://github.com/avd-ops/avd-ops/issues/51", "theme": "front-door", "order": 2, "summary": "One page listing accepted research questions across the public repos, with links to ask or help."},
+    {"issue": "https://github.com/avd-ops/avd-ops/issues/52", "theme": "front-door", "order": 3, "summary": "Render avd-assess methods, claims and sources like a paper with numbered citations and dispute links."},
+    {"issue": "https://github.com/avd-ops/avd-assess/issues/61", "theme": "foundation", "order": 1, "summary": "Add contract C26 (avd-cloud-environments/v1), sovereign pins, and GCC High checks to avd-assess."},
+    {"issue": "https://github.com/avd-ops/avd-current-state/issues/67", "theme": "foundation", "order": 2, "summary": "Add -Cloud usgov support to the current-state collector, validator and assessment portal."},
+    {"issue": "https://github.com/avd-ops/avd-landing-zone/issues/131", "theme": "control-planes", "order": 1, "summary": "Orchestrate Azure US Government and GCC High deployments across the five control planes."},
+    {"issue": "https://github.com/avd-ops/avd-second-brain/issues/138", "theme": "intelligence", "order": 1, "summary": "Add C26 cloud registry, sovereign workload placement rules and lessons to the second brain."}
+  ],
+  "parked": []
+}
