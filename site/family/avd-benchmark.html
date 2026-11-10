@@ -17,7 +17,7 @@
 <!-- shell:top -->
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
-<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://status.avd-ops.dev/portal/">Assess</a><a href="https://status.avd-ops.dev/status/">Status</a></nav>
+<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://assess.avd-ops.dev/portal/">Assess</a><a href="https://status.avd-ops.dev/status/">Status</a></nav>
 <details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
@@ -41,7 +41,7 @@ if (-not (Test-Path ~/avd-benchmark)) { git clone https://github.com/avd-ops/avd
 Set-Location ~/avd-benchmark; git checkout -q main; git pull -q --ff-only
 pwsh -NoLogo -File ./Invoke-AvdBenchmark.ps1 -ProfileId multisession-density -WorkloadClass medium -VmSku Standard_E4s_v5 -Mode OfflineFixture -OutputPath ./out</pre>
 <p>Full prerequisites and steps are in the <a href="https://github.com/avd-ops/avd-benchmark#readme">README</a>.</p>
-<h2>Read more</h2><ul><li><a href="https://github.com/avd-ops/avd-benchmark">Repository on GitHub</a></li><li><a href="../docs/repos/avd-benchmark.html">Repo guide</a></li><li><a href="https://github.com/avd-ops/avd-benchmark#contributing">Contributing</a></li></ul>
+<h2>Read more</h2><ul><li><a href="https://avd-ops.github.io/avd-benchmark/portal/">Open the Benchmark Explorer &amp; Runner Portal</a></li><li><a href="https://github.com/avd-ops/avd-benchmark">Repository on GitHub</a></li><li><a href="../docs/repos/avd-benchmark.html">Repo guide</a></li><li><a href="https://github.com/avd-ops/avd-benchmark#contributing">Contributing</a></li></ul>
 </div>
 </main>
 <!-- shell:foot -->
