@@ -2,8 +2,8 @@
 title: "Lab walkthrough: empty subscription to validated landing zone"
 summary: "Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks"
 topic: getting-started
-status: partial
-last_reviewed: 2026-11-08
+status: verified
+last_reviewed: 2026-11-11
 ---
 
 # Lab walkthrough: empty subscription to validated landing zone
