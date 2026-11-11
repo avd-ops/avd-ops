@@ -41,5 +41,6 @@ The repo has the full detail. Start here:
 
 <!-- more -->
 
+- [Benchmark Explorer & Runner Portal](https://avd-ops.github.io/avd-benchmark/portal/)
 - [README and quick start](https://github.com/avd-ops/avd-benchmark/blob/main/README.md)
 - [Benchmark platform specification](https://github.com/avd-ops/avd-ops/blob/main/docs/benchmark-platform-spec.md)
