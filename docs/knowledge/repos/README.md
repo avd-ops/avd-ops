@@ -3,12 +3,12 @@ title: "The repos"
 summary: "Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself"
 topic: repos
 status: verified
-last_reviewed: 2026-10-29
+last_reviewed: 2026-11-11
 ---
 
 # The repos
 
-Eleven public repos, each the source of truth for itself. Pick one to see where it fits.
+Thirteen public repos, each the source of truth for itself. Pick one to see where it fits.
 
 | Repo | Role |
 |---|---|
@@ -22,6 +22,8 @@ Eleven public repos, each the source of truth for itself. Pick one to see where 
 | [avd-power-platform](avd-power-platform.md) | Control plane: Power Platform and Power Automate day-2 workflows |
 | [avd-swarm](avd-swarm.md) | On top: Desktop DevOps agents across AVD, Windows 365 and Intune |
 | [avd-second-brain](avd-second-brain.md) | On top: Desktop DevOps intelligence and memory across AVD, Windows 365 and Intune |
+| [avd-benchmark](avd-benchmark.md) | Active Tier 1 benchmark harness and interactive explorer |
+| [avd-remediate](avd-remediate.md) | Troubleshooting, host-level telemetry collection and human-approved remediation workbench |
 | [avd-linecheck](avd-linecheck.md) | End-user browser network check |
 
 <!-- more -->

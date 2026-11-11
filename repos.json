@@ -16,6 +16,8 @@
     {"name": "avd-power-platform", "repo": "avd-ops/avd-power-platform", "branch": "main", "role": "Control plane: Power Platform and Power Automate day-2 workflows", "docs": "docs/knowledge/repos/avd-power-platform.md"},
     {"name": "avd-swarm", "repo": "avd-ops/avd-swarm", "branch": "main", "role": "On top: Desktop DevOps agents across AVD, Windows 365 and Intune", "docs": "docs/knowledge/repos/avd-swarm.md"},
     {"name": "avd-second-brain", "repo": "avd-ops/avd-second-brain", "branch": "main", "role": "On top: Desktop DevOps intelligence and memory across AVD, Windows 365 and Intune", "docs": "docs/knowledge/repos/avd-second-brain.md"},
+    {"name": "avd-benchmark", "repo": "avd-ops/avd-benchmark", "branch": "main", "role": "Active Tier 1 benchmark harness and interactive explorer", "docs": "docs/knowledge/repos/avd-benchmark.md"},
+    {"name": "avd-remediate", "repo": "avd-ops/avd-remediate", "branch": "main", "role": "Troubleshooting, host-level telemetry collection and human-approved remediation workbench", "docs": "docs/knowledge/repos/avd-remediate.md"},
     {"name": "avd-linecheck", "repo": "avd-ops/avd-linecheck", "branch": "main", "role": "End-user browser network check", "docs": "docs/knowledge/repos/avd-linecheck.md", "portal": "https://linecheck.avd-ops.dev/"},
     {"name": "avd-ops", "repo": "avd-ops/avd-ops", "branch": "main", "role": "Front door", "docs": "docs/knowledge/getting-started/README.md"}
   ]
