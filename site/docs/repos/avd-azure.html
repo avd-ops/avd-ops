@@ -54,7 +54,7 @@
 <p class="bl">It is the Azure infrastructure stage orchestrated by avd-landing-zone and checked by avd-current-state.</p>
 <ul>
 <li>Invoked at a pinned commit by <a href="avd-landing-zone.html">avd-landing-zone</a> or run directly from Azure Cloud Shell.</li>
-<li>Binds application groups and RBAC to the user and admin groups from <a href="avd-entra.html">avd-entra</a>, passed in as group IDs. Its handoff to <a href="avd-power-platform.html">avd-power-platform</a> and <a href="avd-current-state.html">avd-current-state</a> is <code>azure-outputs.json</code>, defined by its contract schema; <code>deploy.sh</code> doesn&#39;t write that file yet.</li>
+<li>Binds application groups and RBAC to the user and admin groups from <a href="avd-entra.html">avd-entra</a>, passed in as group IDs. Its handoff to <a href="avd-power-platform.html">avd-power-platform</a> and <a href="avd-current-state.html">avd-current-state</a> is <code>azure-outputs.json</code> (<code>--output-manifest</code> / <code>AVD_AZURE_OUTPUTS_PATH</code>), defined by its <code>avd-ops-azure-outputs/v1</code> contract schema.</li>
 </ul>
 </section>
 <section class="screen" id="read-more-in-the-repo">
