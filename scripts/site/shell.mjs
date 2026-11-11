@@ -15,7 +15,7 @@ const status = (name) => family.repos.find((r) => r.name === name)?.status;
 // The side list, the same on every page. Paths are relative to site/.
 export const GROUPS = [
   ['Start', [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Architecture', 'architecture.html'],
-    ['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Concepts', 'docs/concepts.html'], ['Roadmap', 'docs/roadmap.html']]],
+    ['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Roadmap', 'roadmap.html'], ['Research projects', 'research.html'], ['Concepts', 'docs/concepts.html'], ['Docs roadmap', 'docs/roadmap.html']]],
   ['Repos', [...family.repos.filter((r) => r.name !== 'avd-ops').map((r) => [r.name, `family/${r.name}.html`]), ['Repo guides', 'docs/repos/index.html']]],
   ['Record', [['Decisions', 'docs/decisions/index.html'], ['Graph', 'docs/graph.html'], ['Design system', 'design/index.html'], ['Credits', 'credits.html']]],
 ];

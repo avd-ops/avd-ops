@@ -72,6 +72,12 @@
     "dispute": "Something we publish may be wrong",
     "dispute:open": "Dispute received, not decided",
     "dispute:accepted": "We were wrong; a PR fixes it",
-    "dispute:rejected": "We keep the claim; reasons in the closing comment"
+    "dispute:rejected": "We keep the claim; reasons in the closing comment",
+    "roadmap": "On the public avd-ops roadmap (docs/roadmap-spec.md)",
+    "status:exploring": "Roadmap: exploring the question and prior art",
+    "status:planned": "Roadmap: decided and designed, not started",
+    "status:in-progress": "Roadmap: actively being worked on",
+    "status:done": "Roadmap: shipped",
+    "status:parked": "Roadmap: paused with a stated reason"
   }
 }

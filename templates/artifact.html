@@ -98,8 +98,15 @@ header.top nav a{text-decoration:none;color:var(--muted)} header.top nav a:hover
 .eyebrow{font:600 .88rem var(--body);color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:var(--space-1)}
 .chips .chip{font:500 .72rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.1rem var(--space-2);color:var(--muted);background:var(--bg)}
-.status:is(.s-built,.s-design,.s-slice){font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.15rem var(--space-2);border-radius:4px;align-self:flex-start}
+.status:is(.s-built,.s-design,.s-slice,.s-exploring,.s-planned,.s-in-progress,.s-done,.s-parked){font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.15rem var(--space-2);border-radius:4px;align-self:flex-start;display:inline-flex;align-items:center;gap:.3em;white-space:nowrap}
 .s-built{background:var(--s-built-bg);color:var(--s-built-fg)} .s-design{background:var(--s-design-bg);color:var(--s-design-fg)} .s-slice{background:var(--s-slice-bg);color:var(--s-slice-fg)}
+.s-exploring{background:var(--sunken);color:var(--muted);border:1px dashed var(--line-strong)} .s-exploring::before{content:"\25CB"}
+.s-planned{background:var(--info-soft);color:var(--info)} .s-planned::before{content:"\25D4"}
+.s-in-progress{background:var(--accent-soft);color:var(--accent)} .s-in-progress::before{content:"\25D1"}
+.s-done{background:var(--good-soft);color:var(--good)} .s-done::before{content:"\2713"}
+.s-parked{background:var(--sunken);color:var(--muted);border:1px solid var(--line)} .s-parked::before{content:"\2016"}
+.mark-badge:is(.m-proven,.m-pre-beta,.m-design){display:inline-block;font:600 .68rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:.1rem .45rem;border-radius:var(--pill);background:transparent;border:1px solid currentColor;white-space:nowrap}
+.m-proven{color:var(--good)} .m-pre-beta{color:var(--caution)} .m-design{color:var(--info)}
 
 /* Cards */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4);min-width:0}

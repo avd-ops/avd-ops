@@ -10,6 +10,7 @@
       "name": "avd-current-state",
       "repo": "avd-ops/avd-current-state",
       "branch": "main",
+      "maturity": "proven",
       "role": "What is there now",
       "docs": "docs/knowledge/repos/avd-current-state.md",
       "portal": "https://assess.avd-ops.dev/portal/",
@@ -19,6 +20,7 @@
       "name": "avd-assess",
       "repo": "avd-ops/avd-assess",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Foundation: what it should be",
       "docs": "docs/knowledge/repos/avd-assess.md"
     },
@@ -26,6 +28,7 @@
       "name": "avd-landing-zone",
       "repo": "avd-ops/avd-landing-zone",
       "branch": "master",
+      "maturity": "proven",
       "role": "How it's built and changed from here: orchestrator and portal",
       "docs": "docs/knowledge/repos/avd-landing-zone.md",
       "portal": "https://deploy.avd-ops.dev/portal/"
@@ -34,6 +37,7 @@
       "name": "avd-entra",
       "repo": "avd-ops/avd-entra",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Control plane: Entra ID identity, groups and Conditional Access",
       "docs": "docs/knowledge/repos/avd-entra.md"
     },
@@ -41,6 +45,7 @@
       "name": "avd-intune",
       "repo": "avd-ops/avd-intune",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Control plane: Intune policy-as-code, session-host enrollment and Windows 365 Cloud PCs",
       "docs": "docs/knowledge/repos/avd-intune.md"
     },
@@ -48,6 +53,7 @@
       "name": "avd-m365",
       "repo": "avd-ops/avd-m365",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Control plane: greenfield Microsoft 365, OneDrive and Teams VDI",
       "docs": "docs/knowledge/repos/avd-m365.md"
     },
@@ -55,6 +61,7 @@
       "name": "avd-azure",
       "repo": "avd-ops/avd-azure",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Control plane: Azure ARM and Bicep infrastructure",
       "docs": "docs/knowledge/repos/avd-azure.md"
     },
@@ -62,6 +69,7 @@
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Control plane: Power Platform and Power Automate day-2 workflows",
       "docs": "docs/knowledge/repos/avd-power-platform.md"
     },
@@ -69,6 +77,7 @@
       "name": "avd-swarm",
       "repo": "avd-ops/avd-swarm",
       "branch": "main",
+      "maturity": "design",
       "role": "On top: Desktop DevOps agents across AVD, Windows 365 and Intune",
       "docs": "docs/knowledge/repos/avd-swarm.md"
     },
@@ -76,6 +85,7 @@
       "name": "avd-second-brain",
       "repo": "avd-ops/avd-second-brain",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "On top: Desktop DevOps intelligence and memory across AVD, Windows 365 and Intune",
       "docs": "docs/knowledge/repos/avd-second-brain.md"
     },
@@ -83,6 +93,7 @@
       "name": "avd-benchmark",
       "repo": "avd-ops/avd-benchmark",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Active Tier 1 benchmark harness and interactive explorer",
       "docs": "docs/knowledge/repos/avd-benchmark.md",
       "portal": "https://avd-ops.github.io/avd-benchmark/portal/"
@@ -91,6 +102,7 @@
       "name": "avd-remediate",
       "repo": "avd-ops/avd-remediate",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Troubleshooting, host-level telemetry collection and human-approved remediation workbench",
       "docs": "docs/knowledge/repos/avd-remediate.md"
     },
@@ -98,6 +110,7 @@
       "name": "avd-linecheck",
       "repo": "avd-ops/avd-linecheck",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "End-user browser network check",
       "docs": "docs/knowledge/repos/avd-linecheck.md",
       "portal": "https://linecheck.avd-ops.dev/"
@@ -106,6 +119,7 @@
       "name": "avd-ops",
       "repo": "avd-ops/avd-ops",
       "branch": "main",
+      "maturity": "pre-beta",
       "role": "Front door",
       "docs": "docs/knowledge/getting-started/README.md"
     }
