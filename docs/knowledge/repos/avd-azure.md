@@ -3,7 +3,7 @@ title: "avd-azure"
 summary: "Control plane: cloud-native Azure ARM and Bicep infrastructure for Azure Virtual Desktop, Private Link, FSLogix Azure Files and session hosts"
 topic: repos
 status: verified
-last_reviewed: 2026-10-29
+last_reviewed: 2026-11-11
 ---
 
 # avd-azure
@@ -30,7 +30,7 @@ It deploys the Azure and AVD resource layer from Bicep with Private Link and Ent
 It is the Azure infrastructure stage orchestrated by avd-landing-zone and checked by avd-current-state.
 
 - Invoked at a pinned commit by [avd-landing-zone](avd-landing-zone.md) or run directly from Azure Cloud Shell.
-- Binds application groups and RBAC to the user and admin groups from [avd-entra](avd-entra.md), passed in as group IDs. Its handoff to [avd-power-platform](avd-power-platform.md) and [avd-current-state](avd-current-state.md) is `azure-outputs.json`, defined by its contract schema; `deploy.sh` doesn't write that file yet.
+- Binds application groups and RBAC to the user and admin groups from [avd-entra](avd-entra.md), passed in as group IDs. Its handoff to [avd-power-platform](avd-power-platform.md) and [avd-current-state](avd-current-state.md) is `azure-outputs.json` (`--output-manifest` / `AVD_AZURE_OUTPUTS_PATH`), defined by its `avd-ops-azure-outputs/v1` contract schema.
 
 ## Read more in the repo
 
