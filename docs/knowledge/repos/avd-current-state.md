@@ -3,7 +3,7 @@ title: "avd-current-state"
 summary: "What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts"
 topic: repos
 status: verified
-last_reviewed: 2026-11-09
+last_reviewed: 2026-11-11
 ---
 
 # avd-current-state
@@ -30,7 +30,7 @@ It collects evidence, checks a deployment before and after across selected contr
 Its redacted facts feed the brain, and its validator and assessment portal check the five-plane landing zone.
 
 - Its C11 facts feed [avd-second-brain](avd-second-brain.md); avd-swarm sees them only as cited evidence from the brain.
-- The validator checks a [avd-landing-zone](avd-landing-zone.md) deployment before and after across [avd-entra](avd-entra.md), [avd-intune](avd-intune.md), [avd-m365](avd-m365.md), [avd-azure](avd-azure.md) and [avd-power-platform](avd-power-platform.md), and the assessment portal (`https://status.avd-ops.dev/portal/`) and estate status dashboard (`https://status.avd-ops.dev/status/`) render five-plane posture, as-is diagrams (exportable as SVG, Mermaid `.mmd` and Draw.io `.drawio`) and plane-grouped C24 remediation plans.
+- The validator checks a [avd-landing-zone](avd-landing-zone.md) deployment before and after across [avd-entra](avd-entra.md), [avd-intune](avd-intune.md), [avd-m365](avd-m365.md), [avd-azure](avd-azure.md) and [avd-power-platform](avd-power-platform.md), and the assessment portal (`https://assess.avd-ops.dev/portal/`) and estate status dashboard (`https://status.avd-ops.dev/status/`) render five-plane posture, as-is diagrams (exportable as SVG, Mermaid `.mmd` and Draw.io `.drawio`) and plane-grouped C24 remediation plans.
 
 ## Read more in the repo
 
@@ -38,4 +38,4 @@ The repo has the full detail. Start here:
 
 - [README and quick start](https://github.com/avd-ops/avd-current-state/blob/main/README.md)
 - [Estate status dashboard](https://status.avd-ops.dev/status/)
-- [Assessment portal](https://status.avd-ops.dev/portal/)
+- [Assessment portal](https://assess.avd-ops.dev/portal/)

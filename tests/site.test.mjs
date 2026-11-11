@@ -99,7 +99,7 @@ test('every page opens in the one shell: same side list, switcher, notice and cr
   for (const f of pages) {
     const h = read(f);
     assert.equal(nav(h), first, `${f}: a different side list`);
-    assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/[^"]+">Deploy<\/a><a href="https:\/\/[^"]+">Assess<\/a><a href="https:\/\/status\.avd-ops\.dev\/status\/">Status<\/a><\/nav>/, `${f}: switcher`);
+    assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/deploy\.avd-ops\.dev\/portal\/">Deploy<\/a><a href="https:\/\/assess\.avd-ops\.dev\/portal\/">Assess<\/a><a href="https:\/\/status\.avd-ops\.dev\/status\/">Status<\/a><\/nav>/, `${f}: switcher`);
     assert.equal((h.match(/aria-current="page"/g) || []).length <= 1, true, `${f}: more than one current page`);
     assert.match((h.match(/<header class="bar">[\s\S]*?<\/header>/) || [''])[0], /<details class="notice">/, `${f}: the notice sits in the brand bar`);
     assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);
