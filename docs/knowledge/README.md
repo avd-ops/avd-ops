@@ -26,6 +26,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/](repos/README.md) | Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself | verified |
 | [repos/avd-assess.md](repos/avd-assess.md) | Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed | verified |
 | [repos/avd-azure.md](repos/avd-azure.md) | Control plane: cloud-native Azure ARM and Bicep infrastructure for Azure Virtual Desktop, Private Link, FSLogix Azure Files and session hosts | verified |
+| [repos/avd-benchmark.md](repos/avd-benchmark.md) | Active Tier 1 benchmark harness and interactive explorer: runs synthetic storage, logon storm, multi-session density, autoscale and BCDR profiles and validates C25 evidence | verified |
 | [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts | verified |
 | [repos/avd-entra.md](repos/avd-entra.md) | Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop | verified |
 | [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning | verified |
@@ -33,6 +34,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
 | [repos/avd-m365.md](repos/avd-m365.md) | Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines | verified |
 | [repos/avd-power-platform.md](repos/avd-power-platform.md) | Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop | verified |
+| [repos/avd-remediate.md](repos/avd-remediate.md) | Troubleshooting, host-level telemetry collection and human-approved remediation workbench across all five control planes | verified |
 | [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune | verified |
 | [repos/avd-swarm.md](repos/avd-swarm.md) | On top, Desktop DevOps execution: agents across AVD, Windows 365 and Intune that read freely and change nothing until a person approves the plan | verified |
 | [troubleshooting/](troubleshooting/README.md) | Errors hit in this project: symptom, cause, fix and source | verified |

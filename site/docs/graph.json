@@ -165,6 +165,13 @@
    "status": "verified"
   },
   {
+   "id": "repos/avd-benchmark.md",
+   "title": "avd-benchmark",
+   "url": "repos/avd-benchmark.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
    "id": "repos/avd-current-state.md",
    "title": "avd-current-state",
    "url": "repos/avd-current-state.html",
@@ -210,6 +217,13 @@
    "id": "repos/avd-power-platform.md",
    "title": "avd-power-platform",
    "url": "repos/avd-power-platform.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
+   "id": "repos/avd-remediate.md",
+   "title": "avd-remediate",
+   "url": "repos/avd-remediate.html",
    "topic": "repos",
    "status": "verified"
   },
@@ -467,6 +481,14 @@
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-benchmark.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-remediate.md"
+  },
+  {
+   "source": "repos/README.md",
    "target": "repos/avd-linecheck.md"
   },
   {
@@ -536,6 +558,26 @@
   {
    "source": "repos/avd-azure.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-benchmark.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
+  },
+  {
+   "source": "repos/avd-benchmark.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/avd-benchmark.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-benchmark.md",
+   "target": "repos/avd-remediate.md"
+  },
+  {
+   "source": "repos/avd-benchmark.md",
+   "target": "repos/avd-second-brain.md"
   },
   {
    "source": "repos/avd-current-state.md",
@@ -684,6 +726,30 @@
   {
    "source": "repos/avd-power-platform.md",
    "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-benchmark.md"
+  },
+  {
+   "source": "repos/avd-remediate.md",
+   "target": "repos/avd-landing-zone.md"
   },
   {
    "source": "repos/avd-second-brain.md",
