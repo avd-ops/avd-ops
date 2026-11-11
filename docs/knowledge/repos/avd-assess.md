@@ -3,7 +3,7 @@ title: "avd-assess"
 summary: "Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed"
 topic: repos
 status: verified
-last_reviewed: 2026-11-08
+last_reviewed: 2026-11-10
 ---
 
 # avd-assess
@@ -25,6 +25,7 @@ Methods across every pillar and control plane, each step pinned to a published s
 - It stores a claim ID and one line in its own words, never a source's text, and rolls check outcomes up into Well-Architected pillar scores (primary) and per-plane scores and coverage (secondary).
 - Every check and C24 remediation hint carries its `plane` (`azure`, `entra`, `intune`, `m365`, `power-platform`) so findings map directly to the control-plane repo that fixes them, including FinOps checks for pooled and personal scaling plans, cost allocation tags, budgets wired to action groups, and Azure Advisor unattached-disk and right-size findings alongside licensing and commitment intake fields.
 - Nothing in it calls Azure, Microsoft Graph or Power Platform, or runs a probe.
+- Its `evidence/<profile.id>/<id>.json` corpus holds validated, redacted Contract C25 (`avd-benchmark-result/v1`) benchmark records across all six profiles (`storage-fslogix-io`, `host-logon-storm`, `multisession-density`, `control-plane-autoscale`, `bcdr-profile-recovery` and `insights-observational`), settling previously untested observations with empirical percentile distributions.
 
 <!-- more -->
 
