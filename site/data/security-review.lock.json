@@ -1,7 +1,7 @@
 {
   "description": "site/data/security-review.json is a byte-identical copy of avd-assess's security-review.json (C20, avd-assess-security-review/v1) at commit; tests/site.test.mjs checks the hash. To update: copy the file from avd-assess at a new commit, then update commit and sha256 in the same PR, and rebuild the page (node scripts/site/build-security.mjs).",
   "source": "https://github.com/avd-ops/avd-assess",
-  "commit": "e212e7366d512967299be97ce940fc544112a88c",
+  "commit": "8875905528f36907cf397f508f1348c566222f3e",
   "path": "security-review.json",
   "sha256": "ca0a66b4901a568f8a3a50957bf6e315af3cc4cb4dfdde1a8bd45e30ee7518ea"
 }
