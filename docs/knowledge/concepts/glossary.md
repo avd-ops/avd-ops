@@ -2,8 +2,8 @@
 title: "Glossary"
 summary: "One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term"
 topic: concepts
-status: partial
-last_reviewed: 2026-11-08
+status: verified
+last_reviewed: 2026-11-11
 ---
 
 # Glossary

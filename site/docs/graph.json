@@ -13,7 +13,7 @@
    "title": "Glossary",
    "url": "concepts/glossary.html",
    "topic": "concepts",
-   "status": "partial"
+   "status": "verified"
   },
   {
    "id": "concepts/sandbox-batches.md",
@@ -140,7 +140,7 @@
    "title": "Lab walkthrough: empty subscription to validated landing zone",
    "url": "getting-started/lab-walkthrough.html",
    "topic": "getting-started",
-   "status": "partial"
+   "status": "verified"
   },
   {
    "id": "repos/README.md",

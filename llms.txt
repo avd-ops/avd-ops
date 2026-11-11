@@ -10,12 +10,12 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 
 ## Knowledge base
 
-- [Knowledge base](docs/knowledge/README.md): What this knowledge base is, how it's organised, and how to add to it safely (status: partial)
+- [Knowledge base](docs/knowledge/README.md): What this knowledge base is, how it's organised, and how to add to it safely (status: verified)
 - [Start here](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: verified)
 - [Working from Cloud Shell](docs/knowledge/getting-started/cloud-shell.md): The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence (status: verified)
-- [Lab walkthrough: empty subscription to validated landing zone](docs/knowledge/getting-started/lab-walkthrough.md): Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks (status: partial)
+- [Lab walkthrough: empty subscription to validated landing zone](docs/knowledge/getting-started/lab-walkthrough.md): Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks (status: verified)
 - [Concepts](docs/knowledge/concepts/README.md): The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture (status: verified)
-- [Glossary](docs/knowledge/concepts/glossary.md): One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term (status: partial)
+- [Glossary](docs/knowledge/concepts/glossary.md): One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term (status: verified)
 - [Sandbox batches](docs/knowledge/concepts/sandbox-batches.md): How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence (status: verified)
 - [The repos](docs/knowledge/repos/README.md): Each AVD repo, its lifecycle stage and where to read more; every repo is the source of truth for itself (status: verified)
 - [avd-assess](docs/knowledge/repos/avd-assess.md): Foundation, what it should be: an open AVD assessment methodology across all five control planes that links pinned published sources and adds what real runs observed (status: verified)
