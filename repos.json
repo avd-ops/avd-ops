@@ -25,6 +25,15 @@
       "docs": "docs/knowledge/repos/avd-assess.md"
     },
     {
+      "name": "avd-migrate",
+      "repo": "avd-ops/avd-migrate",
+      "branch": "main",
+      "maturity": "pre-beta",
+      "role": "Single-pool target-state baseline designer and manifest writer",
+      "docs": "docs/knowledge/repos/avd-migrate.md",
+      "portal": "https://migrate.avd-ops.dev/portal/"
+    },
+    {
       "name": "avd-landing-zone",
       "repo": "avd-ops/avd-landing-zone",
       "branch": "master",
