@@ -33,6 +33,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link | verified |
 | [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
 | [repos/avd-m365.md](repos/avd-m365.md) | Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines | verified |
+| [repos/avd-migrate.md](repos/avd-migrate.md) | Single-pool target-state baseline designer and C14 manifest writer: turns C11 facts, C19 intake and optional C27 measured usage into a single pooled desktop pool for avd-landing-zone | verified |
 | [repos/avd-power-platform.md](repos/avd-power-platform.md) | Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop | verified |
 | [repos/avd-remediate.md](repos/avd-remediate.md) | Troubleshooting, host-level telemetry collection and human-approved remediation workbench across all five control planes | verified |
 | [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune | verified |

@@ -214,6 +214,13 @@
    "status": "verified"
   },
   {
+   "id": "repos/avd-migrate.md",
+   "title": "avd-migrate",
+   "url": "repos/avd-migrate.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
    "id": "repos/avd-power-platform.md",
    "title": "avd-power-platform",
    "url": "repos/avd-power-platform.html",
@@ -446,6 +453,10 @@
   {
    "source": "repos/README.md",
    "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-migrate.md"
   },
   {
    "source": "repos/README.md",
@@ -706,6 +717,22 @@
   {
    "source": "repos/avd-m365.md",
    "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-migrate.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-migrate.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/avd-migrate.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-migrate.md",
+   "target": "repos/avd-second-brain.md"
   },
   {
    "source": "repos/avd-power-platform.md",
