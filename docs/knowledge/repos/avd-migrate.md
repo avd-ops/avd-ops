@@ -24,6 +24,7 @@ It sizes one baseline pooled desktop pool (`tp-01`, up to 180 session hosts in o
 
 - Reads pseudonymous `C11` (`avd-current-state-facts/v1`) from [avd-current-state](avd-current-state.md), `C19` (`avd-estate-intake/v1`) from [avd-assess](avd-assess.md), and optional 28-day `C27` (`avd-measured-usage/v1`) percentiles from `Export-AvdInsightsUsage.ps1`.
 - Auto-merges source host pools into a single baseline pooled desktop pool (`tp-01`, `Pooled`, `Desktop`), capping at 180 session hosts and 1,000 concurrent sessions with transparent `boundaryNotices` whenever multiple source pools or delivery types were flattened.
+- Supports a basic Tenant-to-Tenant (`T2T`) single-pool mode (`-MigrationMode BasicTenantToTenant` / `basic-t2t`) that sizes a clean `EntraOnly` destination pool (`tp-01`) and emits `t2t-checklist.json` (`avd-t2t-basic-checklist/v1`) covering manual user/group provisioning, fresh FSLogix profile creation (or OneDrive Known Folder Move), and destination-tenant `.bicepparam` binding.
 - Enforces `connect-src 'none'` in the browser portal (`site/portal/`) and scrubs pasted or uploaded files locally via `redact.js` before emitting `manifest.json` and `manifest.approval.json`.
 
 ## How it fits
