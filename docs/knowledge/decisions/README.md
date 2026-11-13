@@ -25,4 +25,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0011](0011-avd-benchmark-and-assess-corpus.md) | Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer) | Proposed |
 | [0012](0012-desktop-devops-for-avd-win365-and-intune.md) | Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune | Accepted |
 | [0013](0013-azure-us-government-and-gcc-high-support.md) | Support Azure US Government and Microsoft 365 GCC High across all five control planes | Accepted |
+| [0014](0014-add-avd-networking-connectivity-control-plane.md) | Add avd-networking as the Connectivity control-plane repo | Proposed |
 <!-- END GENERATED: decision-index -->
