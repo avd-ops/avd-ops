@@ -114,6 +114,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0014-add-avd-networking-connectivity-control-plane.md",
+   "title": "0014. Add avd-networking as the Connectivity control-plane repo",
+   "url": "decisions/0014-add-avd-networking-connectivity-control-plane.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -339,6 +346,18 @@
    "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
   {
+   "source": "decisions/0014-add-avd-networking-connectivity-control-plane.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0014-add-avd-networking-connectivity-control-plane.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "decisions/0014-add-avd-networking-connectivity-control-plane.md",
+   "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -389,6 +408,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0014-add-avd-networking-connectivity-control-plane.md"
   },
   {
    "source": "getting-started/README.md",
