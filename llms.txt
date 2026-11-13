@@ -23,6 +23,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [avd-benchmark](docs/knowledge/repos/avd-benchmark.md): Active Tier 1 benchmark harness and interactive explorer: runs synthetic storage, logon storm, multi-session density, autoscale and BCDR profiles and validates C25 evidence (status: verified)
 - [avd-current-state](docs/knowledge/repos/avd-current-state.md): What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts (status: verified)
 - [avd-entra](docs/knowledge/repos/avd-entra.md): Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop (status: verified)
+- [avd-hcl](docs/knowledge/repos/avd-hcl.md): Enterprise IaC: native Azure Virtual Desktop deployed and operated with Terraform and Packer (status: verified)
 - [avd-intune](docs/knowledge/repos/avd-intune.md): Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning (status: verified)
 - [avd-landing-zone](docs/knowledge/repos/avd-landing-zone.md): How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link (status: verified)
 - [avd-linecheck](docs/knowledge/repos/avd-linecheck.md): End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in (status: verified)
@@ -60,6 +61,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)](docs/knowledge/decisions/0011-avd-benchmark-and-assess-corpus.md): proposed
 - [0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune](docs/knowledge/decisions/0012-desktop-devops-for-avd-win365-and-intune.md): accepted
 - [0013. Support Azure US Government and Microsoft 365 GCC High across all five control planes](docs/knowledge/decisions/0013-azure-us-government-and-gcc-high-support.md): accepted
+- [0014. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0014-terraform-as-enterprise-iac-option.md): proposed
 
 ## Related knowledge bases
 

@@ -75,6 +75,14 @@
       "docs": "docs/knowledge/repos/avd-azure.md"
     },
     {
+      "name": "avd-hcl",
+      "repo": "avd-ops/avd-hcl",
+      "branch": "main",
+      "maturity": "pre-beta",
+      "role": "Enterprise IaC: native AVD with Terraform and Packer",
+      "docs": "docs/knowledge/repos/avd-hcl.md"
+    },
+    {
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "branch": "main",

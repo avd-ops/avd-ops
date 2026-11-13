@@ -29,6 +29,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-benchmark.md](repos/avd-benchmark.md) | Active Tier 1 benchmark harness and interactive explorer: runs synthetic storage, logon storm, multi-session density, autoscale and BCDR profiles and validates C25 evidence | verified |
 | [repos/avd-current-state.md](repos/avd-current-state.md) | What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts | verified |
 | [repos/avd-entra.md](repos/avd-entra.md) | Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop | verified |
+| [repos/avd-hcl.md](repos/avd-hcl.md) | Enterprise IaC: native Azure Virtual Desktop deployed and operated with Terraform and Packer | verified |
 | [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning | verified |
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link | verified |
 | [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
