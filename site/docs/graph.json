@@ -114,6 +114,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0014-terraform-as-enterprise-iac-option.md",
+   "title": "0014. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep",
+   "url": "decisions/0014-terraform-as-enterprise-iac-option.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -182,6 +189,13 @@
    "id": "repos/avd-entra.md",
    "title": "avd-entra",
    "url": "repos/avd-entra.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
+   "id": "repos/avd-hcl.md",
+   "title": "avd-hcl",
+   "url": "repos/avd-hcl.html",
    "topic": "repos",
    "status": "verified"
   },
@@ -291,6 +305,14 @@
    "target": "decisions/0006-run-anywhere.md"
   },
   {
+   "source": "concepts/README.md",
+   "target": "repos/avd-hcl.md"
+  },
+  {
+   "source": "concepts/README.md",
+   "target": "decisions/0014-terraform-as-enterprise-iac-option.md"
+  },
+  {
    "source": "concepts/glossary.md",
    "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
   },
@@ -337,6 +359,10 @@
   {
    "source": "decisions/0013-azure-us-government-and-gcc-high-support.md",
    "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "decisions/0014-terraform-as-enterprise-iac-option.md",
+   "target": "repos/avd-hcl.md"
   },
   {
    "source": "decisions/README.md",
@@ -389,6 +415,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0014-terraform-as-enterprise-iac-option.md"
   },
   {
    "source": "getting-started/README.md",
@@ -477,6 +507,10 @@
   {
    "source": "repos/README.md",
    "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-hcl.md"
   },
   {
    "source": "repos/README.md",
@@ -649,6 +683,26 @@
   {
    "source": "repos/avd-entra.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-hcl.md",
+   "target": "decisions/0014-terraform-as-enterprise-iac-option.md"
+  },
+  {
+   "source": "repos/avd-hcl.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/avd-hcl.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-hcl.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-hcl.md",
+   "target": "repos/avd-assess.md"
   },
   {
    "source": "repos/avd-intune.md",

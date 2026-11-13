@@ -133,12 +133,11 @@ there's nothing to record, and a pull request check asks for it. The format come
 [avd-second-brain's knowledge base](https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge).
 These docs use the same format.
 
-## What's out of scope
+## Toolchain lanes
 
-Bicep, PowerShell and native Microsoft tooling only. Anything else goes to another project.
+Bicep and PowerShell in the core control-plane repos; Terraform and Packer in `avd-hcl`.
 
 <!-- more -->
 
-The repos use Bicep, PowerShell and native Azure, Entra and Microsoft 365 tooling only. Asks outside that lane are referred elsewhere by
-avd-second-brain's lane rules
+The core deployment repos (`avd-landing-zone` and `avd-azure`) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, [avd-hcl](../repos/avd-hcl.md) provides the parallel HCL path ([decision 0014](../decisions/0014-terraform-as-enterprise-iac-option.md)), while keeping HCL out of the Bicep repos per avd-second-brain's lane rules
 ([decision 0012](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).
