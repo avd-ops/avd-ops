@@ -444,6 +444,10 @@
    "target": "decisions/0014-add-avd-networking-connectivity-control-plane.md"
   },
   {
+   "source": "decisions/README.md",
+   "target": "decisions/0015-add-avd-gcp-hybrid-control-plane.md"
+  },
+  {
    "source": "getting-started/README.md",
    "target": "decisions/0002-avd-ops-is-the-front-door.md"
   },

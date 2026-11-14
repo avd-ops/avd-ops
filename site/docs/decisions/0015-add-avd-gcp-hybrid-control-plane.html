@@ -36,7 +36,7 @@
 </section>
 <section class="screen" id="context-and-problem-statement">
 <h2 tabindex="-1">Context and Problem Statement</h2>
-<p class="bl">How should the family deploy and operate Azure Virtual Desktop (AVD) Hybrid session hosts on Google Cloud Platform without mixing GCP Terraform/Packer into the Azure Bicep control planes?</p>
+<p class="bl">How should the family deploy and operate Azure Virtual Desktop (AVD) Hybrid session hosts on Google Cloud Platform without mixing GCP infrastructure into the Azure Bicep control planes?</p>
 
 <details class="more"><summary>More</summary>
 <p>AVD Hybrid (GA September 2026) keeps the AVD brokering, workspace, and host-pool control plane in Azure while allowing session hosts to run on non-Azure infrastructure onboarded as Azure Arc-enabled servers with <code>Microsoft.AzureVirtualDesktop.CloudDeviceExtension</code>. Under <a href="0009-split-landing-zone-into-five-control-planes.html">decision 0009</a>, <a href="../repos/avd-azure.html">avd-azure</a> owns Azure-native Bicep infrastructure and <a href="../repos/avd-landing-zone.html">avd-landing-zone</a> orchestrates Azure control planes. Bicep cannot provision Google Cloud Compute Engine VMs, VPCs, Cloud NAT, or Google Cloud NetApp Volumes, and AVD Hybrid does not support Windows 10/11 Enterprise multi-session, AVD Autoscale, Start VM on Connect, or Azure VM power management. How should GCP-hosted AVD Hybrid infrastructure be structured?</p>
@@ -46,26 +46,26 @@
 <h2 tabindex="-1">Considered Options</h2>
 <p class="bl">Three options were weighed.</p>
 <ul>
-<li>Add <code>avd-gcp</code> as a dedicated Terraform + Packer repo for GCP Hybrid session hosts, emitting contract C32 (<code>avd-gcp-outputs/v1</code>)</li>
-<li>Add GCP Terraform modules directly inside <code>avd-hcl</code> alongside Azure-native Terraform</li>
+<li>Add <code>avd-gcp</code> as a dedicated declarative IaC and image-building repo for GCP Hybrid session hosts, emitting contract C32 (<code>avd-gcp-outputs/v1</code>)</li>
+<li>Add GCP modules directly inside an existing Azure-native repo</li>
 <li>Keep GCP session-host provisioning out of scope and require operators to onboard existing VMs manually</li>
 </ul>
 </section>
 <section class="screen" id="decision-outcome">
 <h2 tabindex="-1">Decision Outcome</h2>
-<p class="bl">Chosen option: &quot;Add <code>avd-gcp</code> as a dedicated Terraform + Packer repo for GCP Hybrid session hosts, emitting contract C32 (<code>avd-gcp-outputs/v1</code>)&quot;.</p>
+<p class="bl">Chosen option: &quot;Add <code>avd-gcp</code> as a dedicated declarative IaC and image-building repo for GCP Hybrid session hosts, emitting contract C32 (<code>avd-gcp-outputs/v1</code>)&quot;.</p>
 
 <details class="more"><summary>More</summary>
-<p>Why: keeping <code>avd-gcp</code> separate preserves <code>avd-azure</code>&#39;s Azure Bicep boundary and <code>avd-hcl</code>&#39;s Azure-native Terraform boundary, while giving AVD Hybrid a clean, repeatable GCP plane with its own offline <code>terraform test</code> suite and cost guardrails.</p>
+<p>Why: keeping <code>avd-gcp</code> separate preserves <code>avd-azure</code>&#39;s Azure Bicep boundary while giving AVD Hybrid a clean, repeatable GCP plane with its own offline validation suite and cost guardrails.</p>
 <ul>
-<li><strong>Scope of <code>avd-gcp</code>:</strong> GCP VPC and private subnet with Cloud Router + Cloud NAT (outbound-only TCP 443 to AVD and Azure Arc endpoints, optional outbound UDP 3478 for RDP Shortpath, no inbound RDP <code>3389</code> from the internet), Shielded Compute Engine session hosts (Secure Boot + vTPM), Packer golden image pipeline, optional Google Cloud NetApp Volumes (SMB) for FSLogix profile containers, Cloud Instance Schedules for power management, and idempotent Azure Arc + <code>CloudDeviceExtension</code> onboarding.</li>
+<li><strong>Scope of <code>avd-gcp</code>:</strong> GCP VPC and private subnet with Cloud Router + Cloud NAT (outbound-only TCP 443 to AVD and Azure Arc endpoints, optional outbound UDP 3478 for RDP Shortpath, no inbound RDP <code>3389</code> from the internet), Shielded Compute Engine session hosts (Secure Boot + vTPM), golden image templates, optional Google Cloud NetApp Volumes (SMB) for FSLogix profile containers, Cloud Instance Schedules for power management, and idempotent Azure Arc + <code>CloudDeviceExtension</code> onboarding.</li>
 <li><strong>MVP OS &amp; identity target:</strong> Single-session <strong>Windows 11 Enterprise</strong> with <strong>Entra ID join</strong> (no AD DS required), aligning with <code>avd-landing-zone</code>&#39;s cloud-native identity model. Windows Server 2022/2025 (AD DS / hybrid-joined with RDS CALs) remains a documented extension path.</li>
 <li><strong>No-idle-burn guardrail:</strong> <code>enable_fslogix_netapp</code> defaults to <code>false</code> in the <code>lab</code> profile to avoid minimum-capacity NetApp charges when testing, and Cloud Instance Schedules stop session hosts outside active hours.</li>
 <li><strong>Handoff contract:</strong> <code>avd-gcp</code> emits <code>gcp-outputs.json</code> (contract C32 <code>avd-gcp-outputs/v1</code>) for <code>avd-azure</code>, <code>avd-landing-zone</code>, and <code>avd-current-state</code>.</li>
 </ul>
 <h3 id="consequences">Consequences</h3>
 <ul>
-<li>Good, because GCP provider credentials, Terraform state, and Packer images stay isolated from Azure Bicep and Azure-native HCL repos.</li>
+<li>Good, because GCP provider credentials, state, and images stay isolated from Azure Bicep repos.</li>
 <li>Good, because AVD Hybrid constraints (single-session client OS, external power schedules, outbound-only Arc/AVD networking) are encoded explicitly in modules and tests.</li>
 <li>Bad, because <code>avd-assess</code> (contract C32) and <code>avd-current-state</code> must account for Arc-enabled GCP session hosts alongside Azure VMs.</li>
 </ul>
@@ -81,6 +81,8 @@
 <li><a href="0014-add-avd-networking-connectivity-control-plane.html">Decision 0014</a> establishes the pattern for adding sibling control-plane repos with a redacted output contract.</li>
 </ul>
 </details>
+<details class="more linked"><summary>Linked from one page</summary>
+<ul class="backlinks"><li><a href="index.html">Decision records</a></li></ul></details>
 </section>
 <nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0014-add-avd-networking-connectivity-control-plane.html" data-page="0014. Add avd-networking as the Connectivity control-plane repo">Back</a><span class="where">0015. Add avd-gcp as the GCP Hybrid session-host control-plane repo</span><a class="sc-next" hidden>Next</a></div></nav>
 </article>
