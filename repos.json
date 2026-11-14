@@ -75,6 +75,14 @@
       "docs": "docs/knowledge/repos/avd-azure.md"
     },
     {
+      "name": "avd-networking",
+      "repo": "avd-ops/avd-networking",
+      "branch": "main",
+      "maturity": "pre-beta",
+      "role": "Control plane: Platform Connectivity hub VNet, Firewall, DNS and gateways",
+      "docs": "docs/knowledge/repos/avd-networking.md"
+    },
+    {
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "branch": "main",

@@ -228,6 +228,13 @@
    "status": "verified"
   },
   {
+   "id": "repos/avd-networking.md",
+   "title": "avd-networking",
+   "url": "repos/avd-networking.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
    "id": "repos/avd-power-platform.md",
    "title": "avd-power-platform",
    "url": "repos/avd-power-platform.html",
@@ -583,6 +590,10 @@
   },
   {
    "source": "repos/avd-azure.md",
+   "target": "repos/avd-networking.md"
+  },
+  {
+   "source": "repos/avd-azure.md",
    "target": "repos/avd-entra.md"
   },
   {
@@ -756,6 +767,18 @@
   {
    "source": "repos/avd-migrate.md",
    "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-networking.md",
+   "target": "decisions/0014-add-avd-networking-connectivity-control-plane.md"
+  },
+  {
+   "source": "repos/avd-networking.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "repos/avd-networking.md",
+   "target": "repos/avd-landing-zone.md"
   },
   {
    "source": "repos/avd-power-platform.md",
