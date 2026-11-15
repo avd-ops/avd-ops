@@ -87,6 +87,7 @@
       "repo": "avd-ops/avd-hcl",
       "branch": "main",
       "maturity": "pre-beta",
+      "layer": "build",
       "role": "Enterprise IaC: native AVD with Terraform and Packer",
       "docs": "docs/knowledge/repos/avd-hcl.md"
     },

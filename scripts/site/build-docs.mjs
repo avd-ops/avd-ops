@@ -196,16 +196,23 @@ function build() {
   files.set('graph.json', `${JSON.stringify(graph, null, 1)}\n`);
   const { hubs } = graphHealth(graph);
   files.set('graph.html', shell({
-    url: 'graph.html', title: 'Graph', summary: 'Every docs page and the links between them', 
+    url: 'graph.html', title: 'Graph', summary: 'Every docs page and the links between them',
     content: `<h1>Graph</h1>
-<p class="lede">Every page in these docs and the links between them, the same graph Obsidian draws from the vault. Select a page to open it.</p>
+<p class="lede">Every published page in the vault (${graph.nodes.length} pages, ${graph.links.length} cross-references), drawn from the same relative Markdown links Obsidian reads. Hover a node to trace its neighbors, or select it to open the page.</p>
 <h2 id="map">Map</h2>
+<div class="graph-legend" aria-label="Node topic legend">
+  <span class="gl-item gl-start"><i></i>Getting started</span>
+  <span class="gl-item gl-repos"><i></i>Repositories</span>
+  <span class="gl-item gl-concepts"><i></i>Concepts</span>
+  <span class="gl-item gl-decisions"><i></i>Decisions</span>
+  <span class="gl-item gl-roadmap"><i></i>Roadmap</span>
+</div>
 <div class="graph" data-src="graph.json"><svg role="img" aria-label="Graph of the docs pages and their links"></svg></div>
 <h2 id="most-linked">Most linked</h2>
 <p>The pages most others link to. Check these first when something changes.</p>
 <ol>${hubs.map((h) => `<li><a href="${h.url}">${esc(h.title)}</a> (linked from ${h.linkedFrom})</li>`).join('')}</ol>
 <h2 id="pages">Pages</h2>
-<ul>${pages.map((p) => `<li><a href="${p.url}">${esc(p.title)}</a></li>`).join('')}</ul>
+<ul class="backlinks">${pages.map((p) => `<li><a href="${p.url}">${esc(p.title)}</a></li>`).join('')}</ul>
 <script src="../assets/graph.js" defer></script>`,
   }));
   return files;
