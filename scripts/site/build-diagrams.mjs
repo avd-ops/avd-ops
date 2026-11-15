@@ -15,13 +15,13 @@ const OUT_DIR = join(root, 'site/assets/diagrams');
 // the same classes take the live tokens from site.css; a standalone SVG or Draw.io file can't read a stylesheet,
 // so it takes the light values of the same tokens from brand/profile.json, and the exports never drift from the
 // brand. Solid boxes are built pieces, dashed boxes optional or outside, the accent marks the core path, a heavy
-// ground is the platform, and every label is in the brand's faces with system fallbacks.
+// ground is the platform, and names and notes in the display face (a sans fits the boxes where the mono would overflow), labels in the mono, with system fallbacks.
 const BRAND = JSON.parse(readFileSync(join(root, 'brand/profile.json'), 'utf8')).colors;
 const c = (t) => BRAND[t].light;
 const DISPLAY = '"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif';
 const MONO = '"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace';
 const STYLE_BLOCK = `<style>
-  svg{font-family:${MONO};background:${c('--bg')};color:${c('--muted')}}
+  svg{font-family:${MONO};background-color:${c('--raised')};background-image:linear-gradient(${c('--grid')} 1px,transparent 1px),linear-gradient(90deg,${c('--grid')} 1px,transparent 1px);background-size:24px 24px;color:${c('--muted')}}
   .d-box{fill:${c('--surface')};stroke:${c('--line-strong')};stroke-width:1.2}
   .d-top{fill:${c('--accent-soft')};stroke:${c('--accent')};stroke-width:1.2}
   .d-ext{fill:${c('--bg')};stroke:${c('--line-strong')};stroke-width:1.2;stroke-dasharray:5 4}
@@ -36,11 +36,11 @@ const STYLE_BLOCK = `<style>
   .d-opt{fill:none;stroke:${c('--muted')};stroke-width:1.4;stroke-dasharray:5 4}
   .d-head{fill:${c('--muted')}}
   .d-name{fill:${c('--fg')};font:700 14px ${DISPLAY}}
-  .d-sub{fill:${c('--muted')};font:12px ${MONO}}
+  .d-sub{fill:${c('--muted')};font:12px ${DISPLAY}}
   .d-lbl{fill:${c('--fg')};font:600 11.5px ${MONO}}
   .d-band{fill:${c('--accent')};font:600 11px ${MONO};letter-spacing:.08em}
   .d-gname{fill:${c('--fg')};font:700 14px ${DISPLAY}}
-  .d-gsub{fill:${c('--muted')};font:12px ${MONO}}
+  .d-gsub{fill:${c('--muted')};font:12px ${DISPLAY}}
   .d-mask{fill:${c('--surface')}}
 </style>`;
 // Draw.io's stock palette, mapped onto the same tokens.
@@ -488,7 +488,7 @@ function buildDrawioXml(name, cells, edges) {
     `        <mxCell id="${esc(c.id)}" value="${esc(c.label)}" style="${esc(onBrand(c.style || 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;'))}" vertex="1" parent="1"><mxGeometry x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" as="geometry"/></mxCell>`
   ).join('\n');
   const edgeXml = edges.map((e, idx) =>
-    `        <mxCell id="e${idx + 1}" value="${esc(e.label || '')}" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="${esc(e.from)}" target="${esc(e.to)}"><mxGeometry relative="1" as="geometry"/></mxCell>`
+    `        <mxCell id="e${idx + 1}" value="${esc(e.label || '')}" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=${c('--muted')};fontColor=${c('--fg')};fontFamily=IBM Plex Mono;" edge="1" parent="1" source="${esc(e.from)}" target="${esc(e.to)}"><mxGeometry relative="1" as="geometry"/></mxCell>`
   ).join('\n');
   return `<mxfile host="avd-ops.dev" version="1.0">
   <diagram id="${esc(name)}" name="${esc(name)}">
