@@ -3,9 +3,9 @@
  "schemaVersion": 1,
  "name": "avd-ops",
  "tagline": "Deploy quietly",
- "summary": "Quietly authoritative, precision-engineered tooling for Azure Virtual Desktop: a cool teal-tinted neutral hierarchy drawn with 1px hairlines, the logo's teal as the one accent, Schibsted Grotesk headings over IBM Plex Mono text, and every page bottom line first, in plain words.",
+ "summary": "The front door and shared look for the public Azure Virtual Desktop repos: one design system, one app shell, one logo.",
  "visibility": "public",
- "updated": "2026-11-15",
+ "updated": "2026-10-21",
  "sourceOfTruth": {
   "tokens": "site/assets/avd-ops.css",
   "shell": "site/assets/avd-ops-shell.css",
@@ -13,53 +13,38 @@
   "reference": "https://avd-ops.dev/design/"
  },
  "release": {
-  "version": "3.0.0",
-  "tag": "ds-v3.0.0",
+  "version": "2.7.0",
+  "tag": "ds-v2.7.0",
   "repo": "https://github.com/avd-ops/avd-ops"
  },
  "colors": {
   "--bg": {
-   "light": "#f5f7f7",
-   "dark": "#0a0f11"
+   "light": "#f4f6f9",
+   "dark": "#0f1620"
   },
   "--surface": {
    "light": "#ffffff",
-   "dark": "#10171a"
+   "dark": "#16202c"
   },
   "--sunken": {
-   "light": "#edf1f1",
-   "dark": "#0c1315"
-  },
-  "--raised": {
-   "light": "#fbfcfc",
-   "dark": "#151e22",
-   "use": "a plane lifted one step: the home page system figure, the graph, diagrams"
+   "light": "#eef2f6",
+   "dark": "#121b25"
   },
   "--fg": {
-   "light": "#0f1c1e",
-   "dark": "#e6eeee"
+   "light": "#152232",
+   "dark": "#e4ebf3"
   },
   "--muted": {
-   "light": "#4e5e62",
-   "dark": "#96a8ac"
+   "light": "#566578",
+   "dark": "#9aa9ba"
   },
   "--line": {
-   "light": "#dae1e2",
-   "dark": "#1f2a2e"
+   "light": "#d7dee8",
+   "dark": "#2a3646"
   },
   "--line-strong": {
-   "light": "#b8c3c5",
-   "dark": "#33434a"
-  },
-  "--hairline": {
-   "light": "#e7ecec",
-   "dark": "#172024",
-   "use": "1px structure inside a surface: table rows, list rows, dividers"
-  },
-  "--grid": {
-   "light": "#e3eaea",
-   "dark": "#141d21",
-   "use": "the faint drafting grid behind figures and diagrams"
+   "light": "#bfc9d6",
+   "dark": "#3a4859"
   },
   "--accent": {
    "light": "#0b7a6e",
@@ -67,21 +52,16 @@
    "use": "links, primary actions, selected rows, focus (the readable teal)"
   },
   "--accent-hover": {
-   "light": "#075f56",
+   "light": "#09635a",
    "dark": "#7fe0d2"
   },
   "--on-accent": {
    "light": "#ffffff",
-   "dark": "#06110f"
+   "dark": "#0b1520"
   },
   "--accent-soft": {
-   "light": "#e1f2ef",
-   "dark": "#0f2e2b"
-  },
-  "--accent-line": {
-   "light": "#a9dbd3",
-   "dark": "#1f5a52",
-   "use": "the accent as a hairline: optional borders, step rings, disclosure rules"
+   "light": "#e0f2ef",
+   "dark": "#123331"
   },
   "--focus": {
    "light": "#0b7a6e",
@@ -196,7 +176,7 @@
   },
   "--shell": {
    "light": "#0d1015",
-   "dark": "#070a0c",
+   "dark": "#070a0d",
    "use": "the brand bar, the same ink in both themes"
   },
   "--shell-fg": {
@@ -208,12 +188,12 @@
    "dark": "#93a6ad"
   },
   "--shell-line": {
-   "light": "#222b31",
-   "dark": "#1a2328"
+   "light": "#262f36",
+   "dark": "#1d262d"
   },
   "--shell-hover": {
-   "light": "#1a2329",
-   "dark": "#12191d"
+   "light": "#1b242a",
+   "dark": "#141c22"
   },
   "--shell-warn": {
    "light": "#e2b74a",
@@ -230,12 +210,12 @@
    "dark": "#14223a"
   },
   "--shadow-2": {
-   "light": "0 1px 2px rgba(15,28,30,.06),0 18px 40px -14px rgba(15,28,30,.22)",
-   "dark": "0 1px 2px rgba(0,0,0,.5),0 18px 40px -14px rgba(0,0,0,.7)"
+   "light": "0 2px 6px rgba(21,34,50,.08),0 12px 32px rgba(21,34,50,.10)",
+   "dark": "0 2px 6px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)"
   },
   "--shadow": {
-   "light": "0 1px 0 rgba(15,28,30,.04)",
-   "dark": "0 1px 0 rgba(0,0,0,.4)"
+   "light": "0 1px 2px rgba(21,34,50,.05),0 4px 16px rgba(21,34,50,.05)",
+   "dark": "0 1px 2px rgba(0,0,0,.35)"
   }
  },
  "roles": {
@@ -256,9 +236,7 @@
   "good": "--good",
   "caution": "--caution",
   "bad": "--bad",
-  "info": "--info",
-  "raised": "--raised",
-  "hairline": "--hairline"
+  "info": "--info"
  },
  "type": {
   "display": {
@@ -273,7 +251,7 @@
     "site/assets/fonts/schibsted-grotesk-latin-700-normal.woff2"
    ],
    "googleFonts": "Schibsted Grotesk",
-   "use": "headings and the hero, in the logo's own face, tracked tight (--track-display) on the --fs-* scale"
+   "use": "headings, in the logo's own face"
   },
   "body": {
    "family": "IBM Plex Mono",
@@ -290,7 +268,7 @@
     "site/assets/fonts/ibm-plex-mono-latin-700-normal.woff2"
    ],
    "googleFonts": "IBM Plex Mono",
-   "use": "running text at 15.5px, controls and labels in sentence case; figures tabular where they line up"
+   "use": "running text at 15.5px, controls and labels in sentence case"
   },
   "mono": {
    "family": "IBM Plex Mono",
@@ -331,27 +309,11 @@
    "googleFonts": "JetBrains Mono",
    "use": "the tagline Deploy quietly in the logo only",
    "case": "uppercase with wide letter-spacing"
-  },
-  "prose": {
-   "family": "Source Serif 4",
-   "fallback": "Georgia,\"Times New Roman\",serif",
-   "weights": [
-    400,
-    600
-   ],
-   "files": [
-    "site/assets/fonts/source-serif-4-latin-400-normal.woff2",
-    "site/assets/fonts/source-serif-4-latin-400-italic.woff2",
-    "site/assets/fonts/source-serif-4-latin-600-normal.woff2"
-   ],
-   "googleFonts": "Source Serif 4",
-   "use": "long reading text only: the standards library's articles and claims"
   }
  },
  "shape": {
   "--radius": "8px",
   "--radius-sm": "6px",
-  "--radius-xs": "4px",
   "--pill": "999px",
   "--space-1": ".25rem",
   "--space-2": ".5rem",
@@ -359,24 +321,12 @@
   "--space-4": "1rem",
   "--space-5": "1.5rem",
   "--space-6": "2.5rem",
-  "--space-7": "4rem",
   "--measure": "76rem",
   "--gutter": "16px",
   "--page": "76rem",
   "--side": "15rem",
   "--tap": "44px",
   "--radius-lg": "14px",
-  "--fs-xs": ".75rem",
-  "--fs-sm": ".8125rem",
-  "--fs-md": "1.0625rem",
-  "--fs-lg": "1.25rem",
-  "--fs-xl": "1.5625rem",
-  "--fs-2xl": "1.953rem",
-  "--fs-3xl": "clamp(2.25rem,1.55rem + 2.6vw,3.4rem)",
-  "--lh-tight": "1.08",
-  "--lh-snug": "1.3",
-  "--track-display": "-.024em",
-  "--track-label": ".01em",
   "--ease": "cubic-bezier(.2,.7,.2,1)",
   "--fast": "120ms",
   "--slow": "220ms"
@@ -547,9 +497,7 @@
    "American English.",
    "Plain, short sentences; say what a thing does, not how it is built.",
    "Say \"potentially paid\", never \"the product\".",
-   "Results always carry a word, never color alone.",
-   "Bottom line first, in plain words, like a chat reply; detail behind \"more\".",
-   "Sentence case everywhere; no all-caps labels except the tagline in the logo."
+   "Results always carry a word, never color alone."
   ]
  },
  "rules": [
@@ -563,9 +511,6 @@
   "Pages never load avd-ops.dev or a CDN at run time; repos take a pinned copy.",
   "No partner names on avd-ops.dev for now.",
   "Private repos don't use this brand.",
-  "Touch targets at least 44px; no sideways scroll at 390px; light and dark both designed.",
-  "Structure is drawn with 1px hairlines (--hairline, --line, --line-strong), not shadows; --shadow-2 only for things that float.",
-  "State always reads in a word and a shape (maturity rings, result pills); color only repeats it.",
-  "Diagrams use one language: solid boxes built, dashed optional or outside, the accent for the core path, a heavy ground for the platform."
+  "Touch targets at least 44px; no sideways scroll at 390px; light and dark both designed."
  ]
 }

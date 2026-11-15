@@ -99,7 +99,7 @@ test('every page opens in the one shell: same side list, switcher, notice and cr
   for (const f of pages) {
     const h = read(f);
     assert.equal(nav(h), first, `${f}: a different side list`);
-    assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/deploy\.avd-ops\.dev\/portal\/">Deploy<\/a><a href="https:\/\/assess\.avd-ops\.dev\/portal\/">Assess<\/a><a href="https:\/\/migrate\.avd-ops\.dev\/portal\/">Migrate<\/a><a href="https:\/\/status\.avd-ops\.dev\/status\/">Status<\/a><\/nav>/, `${f}: switcher`);
+    assert.match(h, /<nav class="switcher"[^>]*><a href="[^"]*index\.html" aria-current="true">Docs<\/a><a href="https:\/\/deploy\.avd-ops\.dev\/portal\/">Deploy<\/a><a href="https:\/\/assess\.avd-ops\.dev\/portal\/">Assess<\/a><a href="https:\/\/status\.avd-ops\.dev\/status\/">Status<\/a><\/nav>/, `${f}: switcher`);
     assert.equal((h.match(/aria-current="page"/g) || []).length <= 1, true, `${f}: more than one current page`);
     assert.match((h.match(/<header class="bar">[\s\S]*?<\/header>/) || [''])[0], /<details class="notice">/, `${f}: the notice sits in the brand bar`);
     assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);
@@ -130,22 +130,6 @@ test('touch targets in the shell are at least 44px and the side list fits a phon
   assert.match(base, /@media \(pointer:coarse\)\{\.segmented span\{min-height:var\(--tap\)\}\}/, 'segmented choices on touch');
   assert.match(css, /@media \(pointer:coarse\)\{\.shell \.side a\{min-height:var\(--tap\)\}/, 'side list rows on touch');
   assert.match(css, /width:min\(20rem,86vw\)/, 'drawer width');
-  assert.match(css, /@media \(pointer:coarse\)\{\.shell \.side a\{min-height:var\(--tap\)\} \.shell \.switcher a\{min-height:var\(--tap\)\}\}/, 'switcher tabs on touch');
-  assert.match(css, /@media \(max-width:60rem\)\{[\s\S]*?\.shell \.switcher a\{flex:1 1 0;min-height:var\(--tap\)/, 'switcher tabs on its own row on narrow screens');
-});
-
-test('the home page shows every public repo in its layer, with its maturity (scripts/site/shell.mjs LAYERS)', () => {
-  const home = read('site/index.html');
-  const matrix = (home.match(/<!-- family:matrix -->([\s\S]*?)<!-- \/family:matrix -->/) || [])[1] || '';
-  const figure = (home.match(/<!-- family:figure -->([\s\S]*?)<!-- \/family:figure -->/) || [])[1] || '';
-  assert.ok(matrix && figure, 'the matrix and the figure are written between their markers');
-  const side = (home.match(/<nav class="side"[\s\S]*?<\/nav>/) || [''])[0];
-  for (const t of ['Platform', 'Ecosystem', 'Governance and standards', 'System']) assert.ok(side.includes(`<p class="tier">${t}</p>`), `side list tier ${t}`);
-  for (const r of JSON.parse(read('repos.json')).repos.filter((x) => x.name !== 'avd-ops')) {
-    const section = (matrix.match(new RegExp(`<section class="lyr" id="layer-${r.layer}"[\\s\\S]*?</section>`)) || [''])[0];
-    assert.match(section, new RegExp(`href="family/${r.name}\\.html">${r.name}</a><span class="rl">[^<]+</span><span class="mark-badge m-${r.maturity}">`), `${r.name} in layer ${r.layer} as ${r.maturity}`);
-    assert.ok(figure.includes(`>${r.name.replace(/^avd-/, '')}</li>`), `${r.name} in the system figure`);
-  }
 });
 
 test('the design system manifest lists every vendored file with its hash (scripts/site/design-manifest.mjs)', () => {

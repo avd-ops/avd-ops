@@ -95,11 +95,3 @@ Links, open questions and what changed later.
 - Design system 2.7.0 (owner, 2026-10-22): text fills the box it sits in on desktop. `--measure`
   becomes the shell width (76rem), and the narrow caps on portal ledes, intros, step text and
   "+ more" and on the home hero are gone, so a paragraph ends where its card and divider end.
-- Design system 3.0.0 (owner's brand v3 brief, 2026-11-15): "Deploy quietly" as an identity. A
-  cool, teal-tinted neutral hierarchy with `--raised`, `--hairline`, `--grid` and `--accent-line`;
-  structure in hairlines, not shadows; one type scale (`--fs-*`) with tight display tracking and
-  tabular figures; the last all-caps pill labels go; maturity becomes a ring that fills. The switcher
-  gains Migrate and takes its own row of 44px tabs below 60rem; the side list is four tiers, with the
-  ecosystem grouped by architectural layer from `layer` in repos.json; the home page gets a system
-  figure and a layer matrix written from the same list. Major, because the side list markup and the
-  bar's height on narrow screens change for every page that vendors the shell.
