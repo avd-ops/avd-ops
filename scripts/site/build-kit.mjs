@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, devButton, themeButton } from './shell.mjs';
+import { NOTICE, CREDIT, SKIP, TRADEMARKS, brand, devButton, themeButton, customizeButton } from './shell.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const asset = (f) => readFileSync(join(root, 'site/assets', f), 'utf8');
@@ -25,7 +25,7 @@ export const VERSION = (BASE.match(/^\/\* avd-ops design system v(\d+\.\d+\.\d+)
 const bar = (markSrc) => `${SKIP}
 <header class="bar"><div class="bar-in">${brand(SITE, markSrc)}
 ${NOTICE(SITE)}
-<div class="tools">${devButton()}${themeButton()}</div></div></header>`;
+<div class="tools">${devButton()}${themeButton()}${customizeButton(`${SITE}design/index.html#customize`)}</div></div></header>`;
 
 const foot = (own) => `<footer class="foot"><div class="in"><p>${own}</p>
 ${TRADEMARKS}
