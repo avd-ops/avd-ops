@@ -176,8 +176,10 @@
       + '<div class="cust-pop-group"><span class="cust-pop-lbl">Appearance</span><div class="cust-pop-row">' + btnRow(modeItems, mode, 'mode') + '</div></div>'
       + '<div class="cust-pop-group"><span class="cust-pop-lbl">Color palette</span><div class="cust-pop-row">' + btnRow(paletteItems, cur.presetId, 'preset') + '</div></div>'
       + '<div class="cust-pop-group"><span class="cust-pop-lbl">Typography</span><div class="cust-pop-row">' + btnRow(fontItems, cur.fontId, 'font') + '</div></div>'
-      + '<div class="cust-pop-foot"><button class="cust-pop-save" type="button">Done</button><button class="cust-pop-opt" type="button" data-reset="1">Reset</button><a class="cust-pop-link" href="' + designHref + '">Full customizer &rarr;</a></div>';
+      + '<div class="cust-pop-foot"><button class="cust-pop-save" type="button">Done</button><button class="cust-pop-opt" type="button" data-reset="1">Reset</button><a class="cust-pop-link">Full customizer &rarr;</a></div>';
 
+    var link = pop.querySelector('.cust-pop-link');
+    if (link) link.setAttribute('href', /^\s*javascript:/i.test(designHref) ? 'design/index.html#customize' : designHref);
     shell.appendChild(pop);
 
     function syncPressed() {
