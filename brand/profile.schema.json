@@ -66,7 +66,7 @@
     },
     "shape": {
       "type": "object",
-      "description": "Radii, spacing, widths and motion by token name.",
+      "description": "Radii, spacing, widths, type scale and motion by token name.",
       "additionalProperties": { "type": "string" }
     },
     "assets": {

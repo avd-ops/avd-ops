@@ -1,6 +1,7 @@
 // Writes the shared app shell (scripts/site/shell.mjs) into the hand-written pages of site/ between their
 // markers: <!-- shell:head --> in <head>, <!-- shell:top --> after <body class="shell">, and
-// <!-- shell:foot --> before </body>. The page keeps its own <main>. The docs pages get the same shell
+// <!-- shell:foot --> before </body>, and the home page's <!-- family:figure --> and <!-- family:matrix -->. The
+// page keeps its own <main>. The docs pages get the same shell
 // from build-docs.mjs, so the whole site has one navigation.
 // Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.
 //
@@ -9,7 +10,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, realpathSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { shellHead, shellTop, shellFoot } from './shell.mjs';
+import { shellHead, shellTop, shellFoot, systemFigure, layerMatrix } from './shell.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const SITE = join(root, 'site');
@@ -25,7 +26,14 @@ export function applyShell(html, current) {
     if (!re.test(text)) throw new Error(`${current}: no <!-- shell:${name} --> markers`);
     return text.replace(re, () => `<!-- shell:${name} -->\n${body}\n<!-- /shell:${name} -->`);
   };
-  return put(put(put(html, 'head', shellHead(up)), 'top', shellTop(up, current)), 'foot', shellFoot(FOOT));
+  let out = put(put(put(html, 'head', shellHead(up)), 'top', shellTop(up, current)), 'foot', shellFoot(FOOT));
+  // The home page's system figure and layer matrix come from repos.json too (shell.mjs LAYERS), where a page has
+  // their markers.
+  for (const [name, body] of [['figure', systemFigure], ['matrix', layerMatrix]]) {
+    const re = new RegExp(`<!-- family:${name} -->[\\s\\S]*?<!-- /family:${name} -->`);
+    if (re.test(out)) out = out.replace(re, () => `<!-- family:${name} -->\n${body(up)}\n<!-- /family:${name} -->`);
+  }
+  return out;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
