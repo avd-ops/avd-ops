@@ -108,17 +108,23 @@ test('drop-in snippet loads adopter-theme.css after avd-ops.css and before shell
   assert.ok(baseIdx !== -1 && adopterIdx > baseIdx && shellIdx > adopterIdx);
 });
 
-test('site/design/index.html wires the customizer panel without inline styles', () => {
-  const html = read('site/design/index.html');
-  assert.match(html, /id="customizer-panel"/);
-  assert.match(html, /src="\.\.\/assets\/customizer\.js"/);
-  assert.doesNotMatch(html, /<style|style="/);
-});
-
-test('header bar includes gear customizer button next to theme toggle and theme.js wires first-time setup', () => {
+test('avd-ops.dev stays pure Brand v3 without customizer controls', () => {
   for (const f of ['site/index.html', 'site/design/index.html', 'templates/page.html', 'templates/artifact.html']) {
     const html = read(f);
-    assert.match(html, /class="iconbtn theme"[\s\S]*?class="iconbtn customize"/, `${f}: gear button next to theme toggle`);
+    assert.doesNotMatch(html, /class="iconbtn customize"/, `${f}: avd-ops.dev stays brand v3`);
+    assert.doesNotMatch(html, /id="customizer-panel"/, `${f}: customizer lives on avd-ops.app`);
+  }
+});
+
+test('avd-ops.app customizer page and hub include gear customizer button and theme.js wires first-time setup', async () => {
+  const { renderCustomizerHtml } = await import('../workers/app-router/src/customizer.mjs');
+  const { renderHubHtml } = await import('../workers/app-router/src/hub.mjs');
+  const custHtml = renderCustomizerHtml();
+  assert.match(custHtml, /id="customizer-panel"/);
+  assert.match(custHtml, /src="\/assets\/customizer\.js"/);
+  assert.doesNotMatch(custHtml, /<style|style="/);
+  for (const html of [custHtml, renderHubHtml()]) {
+    assert.match(html, /class="iconbtn theme"[\s\S]*?class="iconbtn customize"/, 'gear button next to theme toggle');
   }
   const themeJs = read('site/assets/theme.js');
   assert.match(themeJs, /avd-ops-adopter-theme/);

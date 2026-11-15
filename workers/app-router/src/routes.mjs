@@ -44,6 +44,13 @@ export const PORTAL_ROUTES = [
     title: 'Linecheck',
     repo: 'avd-linecheck',
     summary: 'Run the browser-only network reachability, RTT, jitter, and download check.'
+  },
+  {
+    prefix: '/customizer',
+    upstream: null,
+    title: 'Customizer',
+    repo: 'avd-ops',
+    summary: 'Customize color palettes, typography pairings, and brand marks, then export adopter-theme.css.'
   }
 ];
 
@@ -68,7 +75,16 @@ export function resolveTarget(url) {
     return { kind: 'proxy', targetUrl: `${ASSET_UPSTREAM}${rest}${search}` };
   }
 
+  if (pathname === '/customizer') {
+    return { kind: 'redirect', location: `/customizer/${search}` };
+  }
+
+  if (pathname === '/customizer/' || pathname === '/customizer/index.html') {
+    return { kind: 'customizer' };
+  }
+
   for (const route of PORTAL_ROUTES) {
+    if (!route.upstream) continue;
     if (pathname === route.prefix) {
       return { kind: 'redirect', location: `${route.prefix}/${search}` };
     }

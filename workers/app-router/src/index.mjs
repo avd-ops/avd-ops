@@ -4,6 +4,7 @@
 
 import { resolveTarget } from './routes.mjs';
 import { renderHubHtml } from './hub.mjs';
+import { renderCustomizerHtml } from './customizer.mjs';
 
 const SECURITY_HEADERS = {
   'x-content-type-options': 'nosniff',
@@ -34,6 +35,14 @@ export async function handleRequest(request, fetchImpl = fetch) {
 
   if (resolved.kind === 'hub') {
     const body = request.method === 'HEAD' ? null : renderHubHtml();
+    return new Response(body, {
+      status: 200,
+      headers: withSecurityHeaders({ 'cache-control': 'public, max-age=300' }, 'text/html; charset=utf-8')
+    });
+  }
+
+  if (resolved.kind === 'customizer') {
+    const body = request.method === 'HEAD' ? null : renderCustomizerHtml();
     return new Response(body, {
       status: 200,
       headers: withSecurityHeaders({ 'cache-control': 'public, max-age=300' }, 'text/html; charset=utf-8')

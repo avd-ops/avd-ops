@@ -208,7 +208,7 @@ Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js`
 
 Forks and adopters of `avd-ops` and its vendored portals (`avd-landing-zone`, `avd-current-state`, `avd-migrate`) can customize color palettes, typography pairings, and the `header.bar` brand slot without editing `avd-ops.css`, `avd-ops-shell.css`, or `avd-ops-portal.css`.
 
-- **Token-only override contract:** Generate `adopter-theme.css` on [avd-ops.dev/design/#customize](https://avd-ops.dev/design/#customize) and save it beside `avd-ops.css` in `assets/`. The file overrides only CSS custom properties in `:root`, `@media (prefers-color-scheme: dark)` (`:root:not([data-theme="light"])`), and `:root[data-theme="dark"]`, so core stylesheets remain untouched and upgradable against `design-system.lock.json`.
+- **Token-only override contract:** Generate `adopter-theme.css` at [avd-ops.app/customizer/](https://avd-ops.app/customizer/) and save it beside `avd-ops.css` in `assets/`. The file overrides only CSS custom properties in `:root`, `@media (prefers-color-scheme: dark)` (`:root:not([data-theme="light"])`), and `:root[data-theme="dark"]`, so core stylesheets remain untouched and upgradable against `design-system.lock.json`.
 - **Load order:** Link `assets/adopter-theme.css` immediately after `assets/avd-ops.css` and before `assets/avd-ops-portal.css` / `assets/avd-ops-shell.css`:
 
 ```html

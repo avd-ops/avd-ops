@@ -89,7 +89,7 @@
 
   try { var saved = localStorage.getItem(KEY); if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved); } catch (e) { /* storage blocked */ }
   try { var savedDev = localStorage.getItem(DEV_KEY); if (savedDev === 'on' || savedDev === 'off') root.setAttribute('data-dev', savedDev); } catch (e) { /* storage blocked */ }
-  applyAdopter(readAdopter());
+  if (typeof location !== 'undefined' && location.hostname === 'avd-ops.app') applyAdopter(readAdopter());
 
   function isDark() {
     var t = root.getAttribute('data-theme');
@@ -151,6 +151,7 @@
   function wireCustomizer(shell) {
     var gear = document.querySelector('.shell .customize');
     if (!gear || !shell) return;
+    applyAdopter(readAdopter());
     var pop = document.createElement('div');
     pop.className = 'cust-pop';
     pop.setAttribute('role', 'dialog');
@@ -179,7 +180,9 @@
 
     var rawHref = gear.getAttribute('data-design-href') || '';
     var depth = Math.min(4, (rawHref.match(/\.\.\//g) || []).length);
-    var safeHref = new Array(depth + 1).join('../') + 'design/index.html#customize';
+    var safeHref = (typeof location !== 'undefined' && location.hostname === 'avd-ops.app')
+      ? '/customizer/#customize'
+      : new Array(depth + 1).join('../') + 'design/index.html#customize';
     var link = pop.querySelector('.cust-pop-link');
     if (link) link.setAttribute('href', safeHref);
     shell.appendChild(pop);
