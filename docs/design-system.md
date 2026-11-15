@@ -203,3 +203,21 @@ TAG=ds-v3.0.0; rm -rf /tmp/avd-ops && git clone -q --depth 1 --branch "$TAG" htt
 ```
 
 Then link `assets/avd-ops.css`, `assets/avd-ops-shell.css` and `assets/theme.js` (relative to the page), drop the page's own `:root` palette and font faces, and keep only its own components. A portal page also links `assets/avd-ops-portal.css` and sets `class="portal shell"` on `<body>`. Bump in each repo with its own pull request, with before and after screenshots at 390, 820 and 1440 in both themes.
+
+## Adopter Theme Customizer (v4.0.0)
+
+Forks and adopters of `avd-ops` and its vendored portals (`avd-landing-zone`, `avd-current-state`, `avd-migrate`) can customize color palettes, typography pairings, and the `header.bar` brand slot without editing `avd-ops.css`, `avd-ops-shell.css`, or `avd-ops-portal.css`.
+
+- **Token-only override contract:** Generate `adopter-theme.css` on [avd-ops.dev/design/#customize](https://avd-ops.dev/design/#customize) and save it beside `avd-ops.css` in `assets/`. The file overrides only CSS custom properties in `:root`, `@media (prefers-color-scheme: dark)` (`:root:not([data-theme="light"])`), and `:root[data-theme="dark"]`, so core stylesheets remain untouched and upgradable against `design-system.lock.json`.
+- **Load order:** Link `assets/adopter-theme.css` immediately after `assets/avd-ops.css` and before `assets/avd-ops-portal.css` / `assets/avd-ops-shell.css`:
+
+```html
+<link rel="stylesheet" href="assets/avd-ops.css">
+<link rel="stylesheet" href="assets/adopter-theme.css">
+<link rel="stylesheet" href="assets/avd-ops-shell.css">
+```
+
+- **Zero external requests:** Font pairings use only the self-hosted `.woff2` files in `assets/fonts/` or system UI/mono/serif stacks; never load Google Fonts or external CDNs in pages or portals.
+- **WCAG AA guardrails:** Every built-in preset passes WCAG AA (4.5:1+ for `--accent` on `--bg` and `--surface`, `--on-accent` on `--accent`, and `--shell-fg` on `--shell`) in both Light and Dark themes, and custom color inputs report live contrast warnings.
+- **Required notices:** Keep `details.notice`, the MIT license notice, and `footer.foot` attribution intact.
+
