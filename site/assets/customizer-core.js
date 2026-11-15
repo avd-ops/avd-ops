@@ -322,12 +322,18 @@ export function sanitizeSvg(svgText) {
   if (typeof svgText !== 'string') return '';
   const trimmed = svgText.trim();
   if (!trimmed || !/<svg[\s>]/i.test(trimmed)) return '';
-  let clean = trimmed
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<foreignObject[\s\S]*?<\/foreignObject>/gi, '')
-    .replace(/\son[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
-    .replace(/(?:xlink:)?href\s*=\s*("javascript:[^"]*"|'javascript:[^']*')/gi, '')
-    .replace(/(?:xlink:)?href\s*=\s*("https?:[^"]*"|'https?:[^']*')/gi, '');
+  let clean = trimmed;
+  let prev;
+  do {
+    prev = clean;
+    clean = clean
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, '')
+      .replace(/<foreignObject\b[^>]*>[\s\S]*?<\/foreignObject\b[^>]*>/gi, '')
+      .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+      .replace(/(?:xlink:)?href\s*=\s*(?:"javascript:[^"]*"|'javascript:[^']*')/gi, '')
+      .replace(/(?:xlink:)?href\s*=\s*(?:"https?:[^"]*"|'https?:[^']*')/gi, '');
+  } while (clean !== prev);
+  if (/<script\b|<foreignObject\b|\son[a-z]+\s*=|javascript:/i.test(clean)) return '';
   return clean;
 }
 
