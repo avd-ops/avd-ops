@@ -234,6 +234,16 @@ html:not(.js) .shell .theme,html:not(.js) .shell .dev{display:none}
 .shell .side .tier{font:700 var(--fs-sm)/1.2 var(--display);letter-spacing:var(--track-label);color:var(--fg);margin:var(--space-5) 0 var(--space-1);padding:var(--space-3) .6rem 0;border-top:1px solid var(--hairline)}
 .shell .side .tier:first-child{margin-top:0;padding-top:0;border-top:0}
 .shell .side .group{font:500 var(--fs-xs) var(--body);color:var(--muted);margin:var(--space-2) 0 0;padding-left:.6rem}
+.shell .side details.side-group{margin:0}
+.shell .side details.side-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);min-height:34px;padding:0 .6rem;border-radius:var(--radius-sm);user-select:none;transition:background var(--fast) var(--ease)}
+.shell .side details.side-group>summary::-webkit-details-marker{display:none}
+.shell .side details.side-group>summary:hover{background:var(--sunken);color:var(--fg)}
+.shell .side details.side-group>summary::after{content:"";width:5px;height:5px;border:solid var(--muted);border-width:0 1.5px 1.5px 0;transform:rotate(-45deg);transition:transform var(--fast) var(--ease);flex:none;margin-left:2px}
+.shell .side details.side-group[open]>summary::after{transform:translateY(-1px) rotate(45deg)}
+.shell .side details.side-group .side-count{margin-left:auto;font:500 var(--fs-xs) var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.shell .side details.side-group.tier-group{margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--hairline)}
+.shell .side details.side-group.tier-group>summary.tier{margin:0;padding:0 .6rem;border-top:0}
+.shell .side details.side-group .side-links{display:grid;gap:2px;margin:2px 0 var(--space-2) .6rem;padding-left:var(--space-2);border-left:1px solid var(--hairline)}
 .shell .side a{display:flex;align-items:center;min-height:34px;padding:0 .6rem;border-radius:var(--radius-sm);color:var(--fg);text-decoration:none;font-size:.9rem;border-left:2px solid transparent}
 .shell .side a:hover{background:var(--sunken)}
 .shell .side a[aria-current]{background:var(--accent-soft);color:var(--accent-hover);font-weight:600;border-left-color:var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
@@ -612,6 +622,11 @@ html:not(.js) .shell .customize{display:none}
     var menu = document.querySelector('.shell .menu');
     var side = document.querySelector('.shell .side');
     var backdrop = document.querySelector('.shell .backdrop');
+    if (side) {
+      var active = side.querySelector('a[aria-current]');
+      var grp = active && active.closest('details.side-group');
+      if (grp) grp.open = true;
+    }
     if (!menu || !side) return;
     // The drawer class goes on the .shell element: the body on a page, a wrapper div in an artifact.
     var shell = menu.closest('.shell');
@@ -649,7 +664,7 @@ html:not(.js) .shell .customize{display:none}
 <div class="shell">
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><div class="bar-in"><a class="brand" href="https://avd-ops.dev/"><img class="mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImF2ZC1vcHMiPgogIDwhLS0gYXZkLW9wcyBtYXJrIHYzLjAuMDogc2hpZWxkIGhvbGRpbmcgYSBkZXNrdG9wIHdpdGggYSBjbG91ZCwgYW5kIHRoZSA+PCBvZiBhIHJlbW90ZSBzZXNzaW9uLCBjZW50ZXJlZCBzeW1tZXRyaWNhbGx5IG9uIHg9NTAuIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMWNhOTk4Ii8+CiAgPHBhdGggZD0iTTE3IDE0SDgzVjYzTDUwIDg2TDE3IDYzWiIgZmlsbD0iIzBkMTAxNSIvPgogIDxwYXRoIGQ9Ik0yMy41IDIwSDc2LjVWNTdIMjMuNVpNMjcgMjMuNVY1My41SDczVjIzLjVaIiBmaWxsPSIjMWNhOTk4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KICA8cGF0aCBkPSJNMzQgNDdMMzIgNDQuNVY0MS41TDM0LjUgMzlIMzhMMzkuNSAzNS41TDQyLjUgMzNINDZMNDggMzAuNUg1M0w1NiAzM0w1Ny41IDM2SDYxTDYzLjUgMzguNVY0MUw2NiA0M1Y0NUw2NCA0N1oiIGZpbGw9IiMxY2E5OTgiLz4KICA8cGF0aCBkPSJNNDcuNSA1N0g1Mi41VjYwLjVINTlWNjNINDFWNjAuNUg0Ny41WiIgZmlsbD0iIzFjYTk5OCIvPgogIDxwYXRoIGQ9Ik00MiA2OC41TDQ2LjUgNzJMNDIgNzUuNU01OCA2Nkw1Mi41IDcwLjVMNTggNzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFjYTk5OCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
-<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
+<details class="notice"><summary><strong class="long">Community research project. Use at your own risk. No warranty.</strong><strong class="short">Use at your own risk</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>

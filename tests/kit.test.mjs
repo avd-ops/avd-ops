@@ -22,7 +22,7 @@ test('both starters show the whole notice before the first section and end with 
   for (const f of ['templates/page.html', 'templates/artifact.html']) {
     const h = read(f);
     const top = h.split('<h2')[0];
-    for (const re of [/Personal project\. Research and learning only\. Not for production\. No warranty\./, /Not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty of any kind/, /Contributions and forks are welcome and encouraged\./]) {
+    for (const re of [/Community research project\. Use at your own risk\. No warranty\./, /Not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty of any kind/, /Contributions and forks are welcome and encouraged\./]) {
       assert.match(top, re, `${f} is missing ${re}`);
     }
     assert.match(h, /<p class="credit">A <a href="https:\/\/prignano\.ai\/">prignano\.ai<\/a> production<\/p>/, `${f}: credit line`);

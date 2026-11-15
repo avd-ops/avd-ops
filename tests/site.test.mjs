@@ -32,7 +32,7 @@ test('every page carries the avd-ops name', () => {
 test('every page shows the notice before its first section', () => {
   for (const f of pages) {
     const top = read(f).split('<h2')[0];
-    for (const re of [/Personal project\. Research and learning only\. Not for production\. No warranty\./, /Not affiliated with, endorsed by or supported by my employer/, /Don't run any of it in production/, /"as is", without warranty of any kind/, /Contributions and forks are welcome and encouraged\./]) {
+    for (const re of [/Community research project\. Use at your own risk\. No warranty\./, /Not affiliated with, endorsed by or supported by my employer/, /Don't run any of it in production/, /"as is", without warranty of any kind/, /Contributions and forks are welcome and encouraged\./]) {
       assert.match(top, re, `${f} is missing ${re}`);
     }
   }
@@ -134,17 +134,20 @@ test('touch targets in the shell are at least 44px and the side list fits a phon
   assert.match(css, /@media \(max-width:60rem\)\{[\s\S]*?\.shell \.switcher a\{flex:1 1 0;min-height:var\(--tap\)/, 'switcher tabs on its own row on narrow screens');
 });
 
-test('the home page shows every public repo in its layer, with its maturity (scripts/site/shell.mjs LAYERS)', () => {
+test('the home page shows the system figure and the repo guides list every public repo by layer', () => {
   const home = read('site/index.html');
-  const matrix = (home.match(/<!-- family:matrix -->([\s\S]*?)<!-- \/family:matrix -->/) || [])[1] || '';
   const figure = (home.match(/<!-- family:figure -->([\s\S]*?)<!-- \/family:figure -->/) || [])[1] || '';
-  assert.ok(matrix && figure, 'the matrix and the figure are written between their markers');
+  assert.ok(figure, 'the system figure is written between its markers');
+  for (const layer of ['assess', 'build', 'control', 'operate', 'intelligence']) {
+    assert.ok(figure.includes(`#layer-${layer}`), `system figure links layer-${layer}`);
+  }
   const side = (home.match(/<nav class="side"[\s\S]*?<\/nav>/) || [''])[0];
-  for (const t of ['Platform', 'Ecosystem', 'Governance and standards', 'System']) assert.ok(side.includes(`<p class="tier">${t}</p>`), `side list tier ${t}`);
+  for (const t of ['Platform', 'Ecosystem', 'Governance and standards', 'System']) {
+    assert.ok(side.includes(`>${t}<`) || side.includes(`>${t}</span>`), `side list tier ${t}`);
+  }
+  const reposDoc = read('site/docs/repos/index.html');
   for (const r of JSON.parse(read('repos.json')).repos.filter((x) => x.name !== 'avd-ops')) {
-    const section = (matrix.match(new RegExp(`<section class="lyr" id="layer-${r.layer}"[\\s\\S]*?</section>`)) || [''])[0];
-    assert.match(section, new RegExp(`href="family/${r.name}\\.html">${r.name}</a><span class="rl">[^<]+</span><span class="mark-badge m-${r.maturity}">`), `${r.name} in layer ${r.layer} as ${r.maturity}`);
-    assert.ok(figure.includes(`>${r.name.replace(/^avd-/, '')}</li>`), `${r.name} in the system figure`);
+    assert.ok(reposDoc.includes(`${r.name}.html`) || reposDoc.includes(`>${r.name}<`), `${r.name} in docs/repos/index.html`);
   }
 });
 

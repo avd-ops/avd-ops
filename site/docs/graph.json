@@ -577,7 +577,15 @@
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-benchmark.md"
+  },
+  {
+   "source": "repos/README.md",
    "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-hcl.md"
   },
   {
    "source": "repos/README.md",
@@ -597,23 +605,11 @@
   },
   {
    "source": "repos/README.md",
-   "target": "repos/avd-hcl.md"
+   "target": "repos/avd-networking.md"
   },
   {
    "source": "repos/README.md",
    "target": "repos/avd-power-platform.md"
-  },
-  {
-   "source": "repos/README.md",
-   "target": "repos/avd-swarm.md"
-  },
-  {
-   "source": "repos/README.md",
-   "target": "repos/avd-second-brain.md"
-  },
-  {
-   "source": "repos/README.md",
-   "target": "repos/avd-benchmark.md"
   },
   {
    "source": "repos/README.md",
@@ -622,6 +618,14 @@
   {
    "source": "repos/README.md",
    "target": "repos/avd-linecheck.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "repos/avd-second-brain.md"
   },
   {
    "source": "repos/README.md",

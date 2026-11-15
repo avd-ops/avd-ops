@@ -527,7 +527,7 @@
  "required": [
   {
    "id": "notice",
-   "text": "Personal project. Research and learning only. Not for production. No warranty. Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft. Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first. Provided \"as is\", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs. Contributions and forks are welcome and encouraged.",
+   "text": "Community research project. Use at your own risk. No warranty. Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft. Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first. Provided \"as is\", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs. Contributions and forks are welcome and encouraged.",
    "where": "before the first section: the notice in the shell's brand bar, which opens to the full text"
   },
   {

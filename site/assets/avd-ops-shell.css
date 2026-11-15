@@ -77,6 +77,16 @@ html:not(.js) .shell .theme,html:not(.js) .shell .dev{display:none}
 .shell .side .tier{font:700 var(--fs-sm)/1.2 var(--display);letter-spacing:var(--track-label);color:var(--fg);margin:var(--space-5) 0 var(--space-1);padding:var(--space-3) .6rem 0;border-top:1px solid var(--hairline)}
 .shell .side .tier:first-child{margin-top:0;padding-top:0;border-top:0}
 .shell .side .group{font:500 var(--fs-xs) var(--body);color:var(--muted);margin:var(--space-2) 0 0;padding-left:.6rem}
+.shell .side details.side-group{margin:0}
+.shell .side details.side-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);min-height:34px;padding:0 .6rem;border-radius:var(--radius-sm);user-select:none;transition:background var(--fast) var(--ease)}
+.shell .side details.side-group>summary::-webkit-details-marker{display:none}
+.shell .side details.side-group>summary:hover{background:var(--sunken);color:var(--fg)}
+.shell .side details.side-group>summary::after{content:"";width:5px;height:5px;border:solid var(--muted);border-width:0 1.5px 1.5px 0;transform:rotate(-45deg);transition:transform var(--fast) var(--ease);flex:none;margin-left:2px}
+.shell .side details.side-group[open]>summary::after{transform:translateY(-1px) rotate(45deg)}
+.shell .side details.side-group .side-count{margin-left:auto;font:500 var(--fs-xs) var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.shell .side details.side-group.tier-group{margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--hairline)}
+.shell .side details.side-group.tier-group>summary.tier{margin:0;padding:0 .6rem;border-top:0}
+.shell .side details.side-group .side-links{display:grid;gap:2px;margin:2px 0 var(--space-2) .6rem;padding-left:var(--space-2);border-left:1px solid var(--hairline)}
 .shell .side a{display:flex;align-items:center;min-height:34px;padding:0 .6rem;border-radius:var(--radius-sm);color:var(--fg);text-decoration:none;font-size:.9rem;border-left:2px solid transparent}
 .shell .side a:hover{background:var(--sunken)}
 .shell .side a[aria-current]{background:var(--accent-soft);color:var(--accent-hover);font-weight:600;border-left-color:var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
