@@ -22,10 +22,7 @@ test('resolveTarget routes root to hub and portal prefixes to upstreams', () => 
     targetUrl: 'https://avd-ops.dev/assets/avd-ops.css'
   });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer')), { kind: 'redirect', location: '/customizer/' });
-  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer/')), {
-    kind: 'proxy',
-    targetUrl: 'https://avd-ops.dev/design/'
-  });
+  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer/')), { kind: 'customizer' });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/unknown')), { kind: 'not_found' });
 });
 
@@ -41,6 +38,10 @@ test('handleRequest enforces read-only methods, strips cookies, and serves the h
   for (const r of PORTAL_ROUTES) {
     assert.ok(html.includes(`href="${r.prefix}/"`), `hub links ${r.prefix}/`);
   }
+
+  const custRes = await handleRequest(new Request('https://avd-ops.app/customizer/'));
+  assert.equal(custRes.status, 200);
+  assert.match(await custRes.text(), /id="customizer-panel"/);
 
   const proxyRes = await handleRequest(
     new Request('https://avd-ops.app/deploy/'),

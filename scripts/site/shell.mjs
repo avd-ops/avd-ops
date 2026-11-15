@@ -135,7 +135,7 @@ export function shellTop(up, current) {
 <header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
 <nav class="switcher" aria-label="avd-ops tools">${switcher}</nav>
 ${NOTICE(up)}
-<div class="tools">${themeButton()}${customizeButton(`${up}design/index.html#customize`)}<button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
+<div class="tools">${themeButton()}<button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side">${MENU}</button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
 ${side}
 </nav>`;
