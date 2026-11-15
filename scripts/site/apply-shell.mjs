@@ -26,7 +26,7 @@ export function applyShell(html, current) {
     if (!re.test(text)) throw new Error(`${current}: no <!-- shell:${name} --> markers`);
     return text.replace(re, () => `<!-- shell:${name} -->\n${body}\n<!-- /shell:${name} -->`);
   };
-  let out = put(put(put(html, 'head', shellHead(up)), 'top', shellTop(up, current)), 'foot', shellFoot(FOOT));
+  let out = put(put(put(html, 'head', shellHead(up)), 'top', shellTop(up, current)), 'foot', shellFoot(FOOT, up));
   // The home page's system figure and layer matrix come from repos.json too (shell.mjs LAYERS), where a page has
   // their markers.
   for (const [name, body] of [['figure', systemFigure], ['matrix', layerMatrix]]) {
