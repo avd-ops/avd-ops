@@ -112,11 +112,11 @@ figure.flows{margin:var(--space-4) 0 0}
 .d-opt{fill:none;stroke:currentColor;stroke-width:1.4;stroke-dasharray:5 4}
 .d-head{fill:currentColor}
 .d-name{fill:var(--fg);font:700 14px var(--display);letter-spacing:-.01em}
-.d-sub{fill:var(--muted);font:12px var(--body)}
+.d-sub{fill:var(--muted);font:12px var(--display)}
 .d-lbl{fill:var(--fg);font:600 11.5px var(--mono)}
 .d-band{fill:var(--accent);font:600 11px var(--mono);letter-spacing:.08em}
 .d-gname{fill:var(--fg);font:700 14px var(--display)}
-.d-gsub{fill:var(--muted);font:12px var(--body)}
+.d-gsub{fill:var(--muted);font:12px var(--display)}
 .d-mask{fill:var(--surface)}
 .flows .actions{margin-top:var(--space-2)}
 .row5{display:grid;gap:var(--space-2);grid-template-columns:repeat(5,minmax(0,1fr))}

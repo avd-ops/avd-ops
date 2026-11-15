@@ -23,15 +23,15 @@
 2. AADLogin + AMA
 3. Configure-FSLogix
 4. Register-AvdAgent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f2ef;strokeColor=#0b7a6e;fontStyle=1;fontFamily=IBM Plex Mono;" vertex="1" parent="1"><mxGeometry x="920" y="95" width="210" height="130" as="geometry"/></mxCell>
-        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mon" target="gov"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mon" target="net"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="net" target="dns"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dns" target="kv"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dns" target="stg"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dns" target="cp"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="kv" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="stg" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cp" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="mon" target="gov"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="mon" target="net"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="net" target="dns"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="dns" target="kv"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="dns" target="stg"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="dns" target="cp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="kv" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="stg" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4e5e62;fontColor=#0f1c1e;fontFamily=IBM Plex Mono;" edge="1" parent="1" source="cp" target="hosts"><mxGeometry relative="1" as="geometry"/></mxCell>
       </root>
     </mxGraphModel>
   </diagram>

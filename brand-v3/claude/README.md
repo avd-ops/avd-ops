@@ -36,13 +36,12 @@ Brand teal `#1ca998`, brand ink `#0d1015`, the accent `#0b7a6e` / `#3cc8b4`, the
 Side list `GROUPS`, four tiers:
 
 - **Platform:** Overview, Start here, Concepts, Architecture
-- **Ecosystem**, one group per architectural layer (`repos.json` `layer`, `shell.mjs` `LAYERS`):
+- **Ecosystem:** Repo guides first, then one group per architectural layer (`repos.json` `layer`, `shell.mjs` `LAYERS`):
   - Assess and plan: avd-current-state, avd-assess, avd-migrate, avd-benchmark
   - Build and change: avd-landing-zone
   - Control planes: avd-entra, avd-intune, avd-m365, avd-azure, avd-networking, avd-power-platform
   - Operate and support: avd-remediate, avd-linecheck
   - Intelligence, on top: avd-swarm, avd-second-brain
-  - Repo guides
 - **Governance and standards:** Security review, Standards library, Decisions, Roadmap, Docs roadmap, Research projects
 - **System:** Design system, Graph, Credits
 

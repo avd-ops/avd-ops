@@ -27,7 +27,7 @@
       var t = b.getAttribute('data-token'), v = val(t), out = b.querySelector('.v');
       var against = TEXT[t] === 1 ? '--bg' : TEXT[t];
       var r = against ? ratio(v, val(against)) : null;
-      out.textContent = v + (r ? ' ' + r.toFixed(1) + ':1 ' + (r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : 'large text') : '');
+      out.textContent = v + (r ? ' ' + r.toFixed(1) + ':1 ' + (r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'large text only' : 'fails') : '');
     });
   }
   document.addEventListener('click', function (e) {
@@ -38,7 +38,9 @@
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () { if (live) live.textContent = text; });
     else if (live) live.textContent = text;
   });
-  new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
   paint();
+  new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', paint);
+  else if (mq && mq.addListener) mq.addListener(paint);
 })();

@@ -25,6 +25,8 @@ export const LAYERS = [
 ];
 const OFF_LIST = new Set(['front-door']);
 const members = (id) => family.repos.filter((r) => r.layer === id);
+const title = (id) => LAYERS.find(([x]) => x === id)[1];
+const count = (rs) => `${rs.length} ${rs.length === 1 ? 'repo' : 'repos'}`;
 for (const r of family.repos) {
   if (!OFF_LIST.has(r.layer) && !LAYERS.some(([id]) => id === r.layer)) throw new Error(`repos.json: ${r.name} has layer "${r.layer}"; use one of ${LAYERS.map(([id]) => id).join(', ')}`);
 }
@@ -34,7 +36,7 @@ for (const r of family.repos) {
 // straight under its tier. Paths are relative to site/.
 export const GROUPS = [
   ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Concepts', 'docs/concepts.html'], ['Architecture', 'architecture.html']]]]],
-  ['Ecosystem', [...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])]), [null, [['Repo guides', 'docs/repos/index.html']]]]],
+  ['Ecosystem', [[null, [['Repo guides', 'docs/repos/index.html']]], ...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])])]],
   ['Governance and standards', [[null, [['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Decisions', 'docs/decisions/index.html'], ['Roadmap', 'roadmap.html'], ['Docs roadmap', 'docs/roadmap.html'], ['Research projects', 'research.html']]]]],
   ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Credits', 'credits.html']]]]],
 ];
@@ -52,18 +54,17 @@ const role = (r) => r.role.replace(/^(Control plane|On top|Foundation): /, '').r
 // build orchestrates, each block linking to its row in the matrix. Pure; apply-shell.mjs writes it between
 // <!-- family:figure --> markers.
 export function systemFigure(up) {
-  const block = (id, title, cls) => {
+  const block = (id, cls) => {
     const rs = members(id);
     const names = rs.map((r) => `<li><span class="dot m-${r.maturity}" aria-hidden="true"></span>${r.name.replace(/^avd-/, '')}</li>`).join('');
-    return `<a class="blk ${cls}" href="${up}index.html#layer-${id}"><span class="t">${title}</span><span class="n">${rs.length} ${rs.length === 1 ? 'repo' : 'repos'}</span><ul>${names}</ul></a>`;
+    return `<a class="blk ${cls}" href="${up}index.html#layer-${id}"><span class="t">${title(id)}</span><span class="n">${count(rs)}</span><ul>${names}</ul></a>`;
   };
-  const t = (id) => LAYERS.find(([x]) => x === id)[1];
   return `<figure class="sys" aria-label="The avd-ops system, by layer">
-<div class="sys-top">${block('intelligence', t('intelligence'), 'b-top')}</div>
+<div class="sys-top">${block('intelligence', 'b-top')}</div>
 <p class="sys-rule">Reads what the foundation emits. Dependencies point down, never up.</p>
-<div class="sys-flow">${block('assess', t('assess'), 'b-step')}${block('build', t('build'), 'b-step b-core')}${block('operate', t('operate'), 'b-step')}</div>
+<div class="sys-flow">${block('assess', 'b-step')}${block('build', 'b-step b-core')}${block('operate', 'b-step')}</div>
 <p class="sys-rule">The orchestrator deploys across five control planes and the network.</p>
-<div class="sys-base">${block('control', t('control'), 'b-base')}</div>
+<div class="sys-base">${block('control', 'b-base')}</div>
 <p class="sys-ground">Microsoft Azure, Entra, Intune and Microsoft 365</p>
 <figcaption><span class="dot m-proven" aria-hidden="true"></span>Proven <span class="dot m-pre-beta" aria-hidden="true"></span>Pre-beta <span class="dot m-design" aria-hidden="true"></span>Design</figcaption>
 </figure>`;
@@ -73,11 +74,11 @@ export function systemFigure(up) {
 // portal when it has one. apply-shell.mjs writes it between <!-- family:matrix --> markers.
 export function layerMatrix(up) {
   return `<div class="matrix">
-${LAYERS.map(([id, title, what]) => {
+${LAYERS.map(([id, name, what]) => {
     const rs = members(id);
     const rows = rs.map((r) => `<li><a class="rp" href="${up}family/${r.name}.html">${r.name}</a><span class="rl">${role(r)}</span>${badge(r.maturity)}${r.portal ? `<a class="go" href="${r.portal}" aria-label="Open the ${r.name} portal">Open the portal</a>` : '<span class="go none"></span>'}</li>`).join('\n');
     return `<section class="lyr" id="layer-${id}" aria-labelledby="lyr-${id}">
-<div class="lh"><h3 id="lyr-${id}">${title}</h3><p>${what}</p><p class="num">${rs.length} ${rs.length === 1 ? 'repo' : 'repos'}</p></div>
+<div class="lh"><h3 id="lyr-${id}">${name}</h3><p>${what}</p><p class="num">${count(rs)}</p></div>
 <ul class="lr">
 ${rows}
 </ul>

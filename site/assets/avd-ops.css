@@ -85,7 +85,7 @@ h1,h2,h3{font-family:var(--display);line-height:var(--lh-snug);text-wrap:balance
 h1{font-size:var(--fs-3xl);line-height:var(--lh-tight);margin:var(--space-6) 0 var(--space-3);letter-spacing:var(--track-display)}
 h2{font-size:var(--fs-xl);margin:2.75rem 0 var(--space-3);letter-spacing:-.012em} h3{font-size:var(--fs-md);margin:0 0 .35rem;letter-spacing:-.004em}
 /* Figures line up wherever they are compared: tables, pills, counts. */
-table,.num,.status,.mark-badge,.untested,meter{font-variant-numeric:tabular-nums}
+td,.num,.status,.mark-badge,.untested,meter{font-variant-numeric:tabular-nums}
 code,.mono{font-family:var(--mono);font-size:.9em}
 .prose{font-family:var(--prose);font-size:1.06rem;line-height:1.65}
 :not(pre)>code{background:var(--sunken);border:1px solid var(--line);border-radius:4px;padding:0 .3em}
