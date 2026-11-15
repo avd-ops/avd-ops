@@ -66,6 +66,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0015. Add avd-gcp as the GCP Hybrid session-host control-plane repo](docs/knowledge/decisions/0015-add-avd-gcp-hybrid-control-plane.md): proposed
 - [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
 - [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
+- [0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)](docs/knowledge/decisions/0018-split-project-site-and-public-demo-domains.md): accepted
 
 ## Related knowledge bases
 

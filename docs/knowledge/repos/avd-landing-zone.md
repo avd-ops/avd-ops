@@ -40,4 +40,4 @@ It pairs with avd-current-state and works without anything on top.
 The repo has the full detail. Start here:
 
 - [README and quick start](https://github.com/avd-ops/avd-landing-zone/blob/master/README.md)
-- [Deployment portal](https://deploy.avd-ops.dev/portal/)
+- [Deployment portal](https://avd-ops.app/deploy/)

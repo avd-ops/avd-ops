@@ -17,7 +17,7 @@
 <!-- shell:top -->
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><div class="bar-in"><a class="brand" href="index.html"><img class="mark" src="assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
-<nav class="switcher" aria-label="avd-ops tools"><a href="index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://assess.avd-ops.dev/portal/">Assess</a><a href="https://migrate.avd-ops.dev/portal/">Migrate</a><a href="https://status.avd-ops.dev/status/">Status</a></nav>
+<nav class="switcher" aria-label="avd-ops tools"><a href="index.html" aria-current="true">Docs</a><a href="https://avd-ops.app/deploy/">Deploy</a><a href="https://avd-ops.app/assess/">Assess</a><a href="https://avd-ops.app/migrate/">Migrate</a><a href="https://avd-ops.app/status/">Status</a></nav>
 <details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
@@ -36,7 +36,7 @@
 <div class="hero-copy">
 <h1 id="h-hero">Azure Virtual Desktop, from inventory to operations, as code you can read.</h1>
 <p class="lede">Read what an AVD environment is, decide what it should be, deploy a hardened landing zone, and run it with agents that change nothing until a person approves.</p>
-<div class="actions"><a class="cta" href="https://deploy.avd-ops.dev/portal/">Deploy a lab</a><a class="cta ghost" href="https://assess.avd-ops.dev/portal/">Assess an estate</a><a class="cta ghost" href="architecture.html">Read the architecture</a></div>
+<div class="actions"><a class="cta" href="https://avd-ops.app/">Try the public demo</a><a class="cta ghost" href="https://avd-ops.app/deploy/">Deploy a lab</a><a class="cta ghost" href="https://avd-ops.app/assess/">Assess an estate</a><a class="cta ghost" href="architecture.html">Read the architecture</a></div>
 <ul class="facts"><li>Bicep and PowerShell, run from Azure Cloud Shell</li><li>Read-only until a person approves the plan</li><li>Open source, under MIT</li></ul>
 </div>
 <!-- family:figure -->
@@ -58,7 +58,7 @@
 <div class="path"><h3>Evaluating it</h3><p>For architects deciding whether the approach holds up.</p>
 <ol><li><a href="architecture.html">See how the layers fit</a></li><li><a href="security.html">Check the security review</a></li><li><a href="standards/index.html">Read the standards it is measured against</a></li></ol></div>
 <div class="path"><h3>Running a lab</h3><p>For operators with a lab subscription and an afternoon.</p>
-<ol><li><a href="docs/index.html">Read what you need first</a></li><li><a href="https://deploy.avd-ops.dev/portal/">Deploy a lab from the portal</a></li><li><a href="https://assess.avd-ops.dev/portal/">Check what landed</a></li></ol></div>
+<ol><li><a href="docs/index.html">Read what you need first</a></li><li><a href="https://avd-ops.app/deploy/">Deploy a lab from the portal</a></li><li><a href="https://avd-ops.app/assess/">Check what landed</a></li></ol></div>
 <div class="path"><h3>Contributing</h3><p>For anyone who wants to fork it or send back a fix.</p>
 <ol><li><a href="docs/repos/index.html">Pick a repo from the guides</a></li><li><a href="docs/decisions/index.html">Read why it is built this way</a></li><li><a href="#contribute">Open an issue or a pull request</a></li></ol></div>
 </div>
@@ -72,16 +72,16 @@
 <section class="lyr" id="layer-assess" aria-labelledby="lyr-assess">
 <div class="lh"><h3 id="lyr-assess">Assess and plan</h3><p>What is there now, what it should be, and what moves.</p><p class="num">4 repos</p></div>
 <ul class="lr">
-<li><a class="rp" href="family/avd-current-state.html">avd-current-state</a><span class="rl">What is there now</span><span class="mark-badge m-proven">Proven</span><a class="go" href="https://assess.avd-ops.dev/portal/" aria-label="Open the avd-current-state portal">Open the portal</a></li>
+<li><a class="rp" href="family/avd-current-state.html">avd-current-state</a><span class="rl">What is there now</span><span class="mark-badge m-proven">Proven</span><a class="go" href="https://avd-ops.app/assess/" aria-label="Open the avd-current-state portal">Open the portal</a></li>
 <li><a class="rp" href="family/avd-assess.html">avd-assess</a><span class="rl">What it should be</span><span class="mark-badge m-pre-beta">Pre-beta</span><span class="go none"></span></li>
-<li><a class="rp" href="family/avd-migrate.html">avd-migrate</a><span class="rl">Single-pool target-state baseline designer and manifest writer</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://migrate.avd-ops.dev/portal/" aria-label="Open the avd-migrate portal">Open the portal</a></li>
-<li><a class="rp" href="family/avd-benchmark.html">avd-benchmark</a><span class="rl">Active Tier 1 benchmark harness and interactive explorer</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://avd-ops.github.io/avd-benchmark/portal/" aria-label="Open the avd-benchmark portal">Open the portal</a></li>
+<li><a class="rp" href="family/avd-migrate.html">avd-migrate</a><span class="rl">Single-pool target-state baseline designer and manifest writer</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://avd-ops.app/migrate/" aria-label="Open the avd-migrate portal">Open the portal</a></li>
+<li><a class="rp" href="family/avd-benchmark.html">avd-benchmark</a><span class="rl">Active Tier 1 benchmark harness and interactive explorer</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://avd-ops.app/benchmark/" aria-label="Open the avd-benchmark portal">Open the portal</a></li>
 </ul>
 </section>
 <section class="lyr" id="layer-build" aria-labelledby="lyr-build">
 <div class="lh"><h3 id="lyr-build">Build and change</h3><p>One orchestrator deploys the landing zone and every change after it.</p><p class="num">2 repos</p></div>
 <ul class="lr">
-<li><a class="rp" href="family/avd-landing-zone.html">avd-landing-zone</a><span class="rl">How it's built and changed from here: orchestrator and portal</span><span class="mark-badge m-proven">Proven</span><a class="go" href="https://deploy.avd-ops.dev/portal/" aria-label="Open the avd-landing-zone portal">Open the portal</a></li>
+<li><a class="rp" href="family/avd-landing-zone.html">avd-landing-zone</a><span class="rl">How it's built and changed from here: orchestrator and portal</span><span class="mark-badge m-proven">Proven</span><a class="go" href="https://avd-ops.app/deploy/" aria-label="Open the avd-landing-zone portal">Open the portal</a></li>
 <li><a class="rp" href="family/avd-hcl.html">avd-hcl</a><span class="rl">Enterprise IaC: native AVD with Terraform and Packer</span><span class="mark-badge m-pre-beta">Pre-beta</span><span class="go none"></span></li>
 </ul>
 </section>
@@ -100,7 +100,7 @@
 <div class="lh"><h3 id="lyr-operate">Operate and support</h3><p>Troubleshoot hosts and check the network a user connects from.</p><p class="num">2 repos</p></div>
 <ul class="lr">
 <li><a class="rp" href="family/avd-remediate.html">avd-remediate</a><span class="rl">Troubleshooting, host-level telemetry collection and human-approved remediation workbench</span><span class="mark-badge m-pre-beta">Pre-beta</span><span class="go none"></span></li>
-<li><a class="rp" href="family/avd-linecheck.html">avd-linecheck</a><span class="rl">End-user browser network check</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://linecheck.avd-ops.dev/" aria-label="Open the avd-linecheck portal">Open the portal</a></li>
+<li><a class="rp" href="family/avd-linecheck.html">avd-linecheck</a><span class="rl">End-user browser network check</span><span class="mark-badge m-pre-beta">Pre-beta</span><a class="go" href="https://avd-ops.app/linecheck/" aria-label="Open the avd-linecheck portal">Open the portal</a></li>
 </ul>
 </section>
 <section class="lyr" id="layer-intelligence" aria-labelledby="lyr-intelligence">

@@ -14,8 +14,8 @@
       "layer": "assess",
       "role": "What is there now",
       "docs": "docs/knowledge/repos/avd-current-state.md",
-      "portal": "https://assess.avd-ops.dev/portal/",
-      "status": "https://status.avd-ops.dev/status/"
+      "portal": "https://avd-ops.app/assess/",
+      "status": "https://avd-ops.app/status/"
     },
     {
       "name": "avd-assess",
@@ -34,7 +34,7 @@
       "layer": "assess",
       "role": "Single-pool target-state baseline designer and manifest writer",
       "docs": "docs/knowledge/repos/avd-migrate.md",
-      "portal": "https://migrate.avd-ops.dev/portal/"
+      "portal": "https://avd-ops.app/migrate/"
     },
     {
       "name": "avd-landing-zone",
@@ -44,7 +44,7 @@
       "layer": "build",
       "role": "How it's built and changed from here: orchestrator and portal",
       "docs": "docs/knowledge/repos/avd-landing-zone.md",
-      "portal": "https://deploy.avd-ops.dev/portal/"
+      "portal": "https://avd-ops.app/deploy/"
     },
     {
       "name": "avd-entra",
@@ -135,7 +135,7 @@
       "layer": "assess",
       "role": "Active Tier 1 benchmark harness and interactive explorer",
       "docs": "docs/knowledge/repos/avd-benchmark.md",
-      "portal": "https://avd-ops.github.io/avd-benchmark/portal/"
+      "portal": "https://avd-ops.app/benchmark/"
     },
     {
       "name": "avd-remediate",
@@ -154,7 +154,7 @@
       "layer": "operate",
       "role": "End-user browser network check",
       "docs": "docs/knowledge/repos/avd-linecheck.md",
-      "portal": "https://linecheck.avd-ops.dev/"
+      "portal": "https://avd-ops.app/linecheck/"
     },
     {
       "name": "avd-ops",

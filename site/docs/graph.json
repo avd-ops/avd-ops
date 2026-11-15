@@ -142,6 +142,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0018-split-project-site-and-public-demo-domains.md",
+   "title": "0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)",
+   "url": "decisions/0018-split-project-site-and-public-demo-domains.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -421,6 +428,14 @@
    "target": "repos/avd-hcl.md"
   },
   {
+   "source": "decisions/0018-split-project-site-and-public-demo-domains.md",
+   "target": "decisions/0002-avd-ops-is-the-front-door.md"
+  },
+  {
+   "source": "decisions/0018-split-project-site-and-public-demo-domains.md",
+   "target": "decisions/0005-one-app-shell-for-every-page.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -487,6 +502,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0017-platform-decisions-live-in-avd-ops.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0018-split-project-site-and-public-demo-domains.md"
   },
   {
    "source": "getting-started/README.md",
