@@ -11,28 +11,41 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const OUT_DIR = join(root, 'site/assets/diagrams');
 
+// The diagram language (docs/design-system.md, "Diagrams"), for the exported files. On the architecture page
+// the same classes take the live tokens from site.css; a standalone SVG or Draw.io file can't read a stylesheet,
+// so it takes the light values of the same tokens from brand/profile.json, and the exports never drift from the
+// brand. Solid boxes are built pieces, dashed boxes optional or outside, the accent marks the core path, a heavy
+// ground is the platform, and names and notes in the display face (a sans fits the boxes where the mono would overflow), labels in the mono, with system fallbacks.
+const BRAND = JSON.parse(readFileSync(join(root, 'brand/profile.json'), 'utf8')).colors;
+const c = (t) => BRAND[t].light;
+const DISPLAY = '"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif';
+const MONO = '"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace';
 const STYLE_BLOCK = `<style>
-  svg{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#475569}
-  .d-box{fill:#ffffff;stroke:#94a3b8;stroke-width:1.2}
-  .d-top{fill:#eff6ff;stroke:#2563eb;stroke-width:1.2}
-  .d-ext{fill:#f8fafc;stroke:#94a3b8;stroke-width:1.2;stroke-dasharray:5 4}
-  .d-good{fill:#ecfdf5;stroke:#059669;stroke-width:1.2}
-  .d-caution{fill:#fffbeb;stroke:#d97706;stroke-width:1.2}
-  .d-info{fill:#f0f9ff;stroke:#0284c7;stroke-width:1.2}
-  .d-zone{fill:#f1f5f9;stroke:#cbd5e1;stroke-width:1.2}
-  .d-ground{fill:#f1f5f9;stroke:#94a3b8;stroke-width:1.2}
-  .d-pair{fill:none;stroke:#2563eb;stroke-width:1.2;stroke-dasharray:2 4}
-  .d-edge{fill:none;stroke:#475569;stroke-width:1.4}
-  .d-opt{fill:none;stroke:#475569;stroke-width:1.4;stroke-dasharray:5 4}
-  .d-head{fill:#475569}
-  .d-name{fill:#0f172a;font:700 14px system-ui,-apple-system,sans-serif}
-  .d-sub{fill:#475569;font:12px system-ui,-apple-system,sans-serif}
-  .d-lbl{fill:#0f172a;font:600 11.5px ui-monospace,SFMono-Regular,Consolas,monospace}
-  .d-band{fill:#2563eb;font:600 11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
-  .d-gname{fill:#0f172a;font:700 14px system-ui,-apple-system,sans-serif}
-  .d-gsub{fill:#475569;font:12px system-ui,-apple-system,sans-serif}
-  .d-mask{fill:#ffffff}
+  svg{font-family:${MONO};background-color:${c('--raised')};background-image:linear-gradient(${c('--grid')} 1px,transparent 1px),linear-gradient(90deg,${c('--grid')} 1px,transparent 1px);background-size:24px 24px;color:${c('--muted')}}
+  .d-box{fill:${c('--surface')};stroke:${c('--line-strong')};stroke-width:1.2}
+  .d-top{fill:${c('--accent-soft')};stroke:${c('--accent')};stroke-width:1.2}
+  .d-ext{fill:${c('--bg')};stroke:${c('--line-strong')};stroke-width:1.2;stroke-dasharray:5 4}
+  .d-tier{fill:${c('--tier-soft')};stroke:${c('--tier')};stroke-width:1.2;stroke-dasharray:5 4}
+  .d-good{fill:${c('--good-soft')};stroke:${c('--good')};stroke-width:1.2}
+  .d-caution{fill:${c('--caution-soft')};stroke:${c('--caution')};stroke-width:1.2}
+  .d-info{fill:${c('--info-soft')};stroke:${c('--info')};stroke-width:1.2}
+  .d-zone{fill:${c('--sunken')};stroke:${c('--line')};stroke-width:1.2}
+  .d-ground{fill:${c('--sunken')};stroke:${c('--line-strong')};stroke-width:1.2}
+  .d-pair{fill:none;stroke:${c('--accent')};stroke-width:1.2;stroke-dasharray:2 4}
+  .d-edge{fill:none;stroke:${c('--muted')};stroke-width:1.4}
+  .d-opt{fill:none;stroke:${c('--muted')};stroke-width:1.4;stroke-dasharray:5 4}
+  .d-head{fill:${c('--muted')}}
+  .d-name{fill:${c('--fg')};font:700 14px ${DISPLAY}}
+  .d-sub{fill:${c('--muted')};font:12px ${DISPLAY}}
+  .d-lbl{fill:${c('--fg')};font:600 11.5px ${MONO}}
+  .d-band{fill:${c('--accent')};font:600 11px ${MONO};letter-spacing:.08em}
+  .d-gname{fill:${c('--fg')};font:700 14px ${DISPLAY}}
+  .d-gsub{fill:${c('--muted')};font:12px ${DISPLAY}}
+  .d-mask{fill:${c('--surface')}}
 </style>`;
+// Draw.io's stock palette, mapped onto the same tokens.
+const DRAWIO = { '#dae8fc': '--accent-soft', '#6c8ebf': '--accent', '#d5e8d4': '--good-soft', '#82b366': '--good', '#fff2cc': '--caution-soft', '#d6b656': '--caution', '#f5f5f5': '--sunken', '#666666': '--muted' };
+const onBrand = (style) => style.replace(/#[0-9a-f]{6}/gi, (h) => (DRAWIO[h.toLowerCase()] ? c(DRAWIO[h.toLowerCase()]) : h)) + (/fontFamily=/.test(style) ? '' : 'fontFamily=IBM Plex Mono;');
 
 export const INLINE_SVGS = {
   'avd-logical-control-planes': `<svg viewBox="0 0 1120 760" role="img" aria-label="Logical architecture and contract flows across the AVD repos and the five control planes.">
@@ -472,10 +485,10 @@ const MERMAID_FILES = {
 function buildDrawioXml(name, cells, edges) {
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const nodeXml = cells.map((c) =>
-    `        <mxCell id="${esc(c.id)}" value="${esc(c.label)}" style="${esc(c.style || 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;')}" vertex="1" parent="1"><mxGeometry x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" as="geometry"/></mxCell>`
+    `        <mxCell id="${esc(c.id)}" value="${esc(c.label)}" style="${esc(onBrand(c.style || 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;'))}" vertex="1" parent="1"><mxGeometry x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" as="geometry"/></mxCell>`
   ).join('\n');
   const edgeXml = edges.map((e, idx) =>
-    `        <mxCell id="e${idx + 1}" value="${esc(e.label || '')}" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="${esc(e.from)}" target="${esc(e.to)}"><mxGeometry relative="1" as="geometry"/></mxCell>`
+    `        <mxCell id="e${idx + 1}" value="${esc(e.label || '')}" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=${c('--muted')};fontColor=${c('--fg')};fontFamily=IBM Plex Mono;" edge="1" parent="1" source="${esc(e.from)}" target="${esc(e.to)}"><mxGeometry relative="1" as="geometry"/></mxCell>`
   ).join('\n');
   return `<mxfile host="avd-ops.dev" version="1.0">
   <diagram id="${esc(name)}" name="${esc(name)}">

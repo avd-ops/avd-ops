@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Design system | avd-ops</title>
+<title>Brand and design system | avd-ops</title>
 <meta name="description" content="The avd-ops design system: the tokens, type, shell and components every avd-ops page and portal shares, shown live in the current theme.">
 <!-- shell:head -->
 <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
@@ -17,7 +17,7 @@
 <!-- shell:top -->
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><div class="bar-in"><a class="brand" href="../index.html"><img class="mark" src="../assets/brand/mark.svg" alt="" width="44" height="44"><span class="name"><span class="word">avd-ops</span><span class="tag">Deploy quietly</span></span></a>
-<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://assess.avd-ops.dev/portal/">Assess</a><a href="https://status.avd-ops.dev/status/">Status</a></nav>
+<nav class="switcher" aria-label="avd-ops tools"><a href="../index.html" aria-current="true">Docs</a><a href="https://deploy.avd-ops.dev/portal/">Deploy</a><a href="https://assess.avd-ops.dev/portal/">Assess</a><a href="https://migrate.avd-ops.dev/portal/">Migrate</a><a href="https://status.avd-ops.dev/status/">Status</a></nav>
 <details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
@@ -25,62 +25,76 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div></details>
 <div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
-<p class="group">Start</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../architecture.html">Architecture</a><a href="../security.html">Security review</a><a href="../standards/index.html">Standards library</a><a href="../roadmap.html">Roadmap</a><a href="../research.html">Research projects</a><a href="../docs/concepts.html">Concepts</a><a href="../docs/roadmap.html">Docs roadmap</a>
-<p class="group">Repos</p><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-migrate.html">avd-migrate</a><a href="../family/avd-landing-zone.html">avd-landing-zone</a><a href="../family/avd-entra.html">avd-entra</a><a href="../family/avd-intune.html">avd-intune</a><a href="../family/avd-m365.html">avd-m365</a><a href="../family/avd-azure.html">avd-azure</a><a href="../family/avd-networking.html">avd-networking</a><a href="../family/avd-power-platform.html">avd-power-platform</a><a href="../family/avd-swarm.html">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a><a href="../family/avd-benchmark.html">avd-benchmark</a><a href="../family/avd-remediate.html">avd-remediate</a><a href="../family/avd-linecheck.html">avd-linecheck</a><a href="../docs/repos/index.html">Repo guides</a>
-<p class="group">Record</p><a href="../docs/decisions/index.html">Decisions</a><a href="../docs/graph.html">Graph</a><a href="../design/index.html" aria-current="page">Design system</a><a href="../credits.html">Credits</a>
+<p class="tier">Platform</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../docs/concepts.html">Concepts</a><a href="../architecture.html">Architecture</a>
+<p class="tier">Ecosystem</p><a href="../docs/repos/index.html">Repo guides</a><p class="group">Assess and plan</p><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-migrate.html">avd-migrate</a><a href="../family/avd-benchmark.html">avd-benchmark</a><p class="group">Build and change</p><a href="../family/avd-landing-zone.html">avd-landing-zone</a><p class="group">Control planes</p><a href="../family/avd-entra.html">avd-entra</a><a href="../family/avd-intune.html">avd-intune</a><a href="../family/avd-m365.html">avd-m365</a><a href="../family/avd-azure.html">avd-azure</a><a href="../family/avd-networking.html">avd-networking</a><a href="../family/avd-power-platform.html">avd-power-platform</a><p class="group">Operate and support</p><a href="../family/avd-remediate.html">avd-remediate</a><a href="../family/avd-linecheck.html">avd-linecheck</a><p class="group">Intelligence, on top</p><a href="../family/avd-swarm.html">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a>
+<p class="tier">Governance and standards</p><a href="../security.html">Security review</a><a href="../standards/index.html">Standards library</a><a href="../docs/decisions/index.html">Decisions</a><a href="../roadmap.html">Roadmap</a><a href="../docs/roadmap.html">Docs roadmap</a><a href="../research.html">Research projects</a>
+<p class="tier">System</p><a href="../design/index.html" aria-current="page">Design system</a><a href="../docs/graph.html">Graph</a><a href="../credits.html">Credits</a>
 </nav>
 <!-- /shell:top -->
-<main id="main">
+<main id="main" class="ds">
 <div class="col">
-<h1>Design system</h1>
-<p class="lede">The one look every avd-ops page and portal shares: tokens, type, the shell around each page, and the shared components. Everything below is drawn with the live stylesheets, so switch the theme in the bar to check both.</p>
-<p>How it is built and how another repo takes a pinned copy is in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">docs/design-system.md</a>.</p>
-<p>To start a new page or a Claude artifact in this look, copy a starter from <a href="https://github.com/avd-ops/avd-ops/tree/main/templates">templates/</a>: <code>page.html</code> for a repo, <code>artifact.html</code> for an artifact.</p>
+<h1>Brand and design system</h1>
+<p class="lede">One quiet, precise look for every avd-ops page and portal. Everything here is drawn with the live stylesheets: switch the theme in the bar and the values, contrast and examples follow.</p>
+<div class="ds-meta"><code>ds-v3.0.0</code><a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">Read the rules</a><a href="https://github.com/avd-ops/avd-ops/tree/main/templates">Copy a starter</a><a href="https://github.com/avd-ops/avd-ops/blob/main/brand/profile.json">Brand profile</a></div>
+<nav class="ds-toc" aria-label="On this page"><a href="#principles">Principles</a><a href="#color">Color</a><a href="#type">Type</a><a href="#space">Space and shape</a><a href="#shell">Shell</a><a href="#maturity">Maturity</a><a href="#components">Components</a><a href="#diagrams">Diagrams</a><a href="#brand">Logo</a></nav>
+
+<h2 id="principles">Principles</h2>
+<ul class="principles">
+<li><strong>Deploy quietly</strong>The interface stays out of the way of the work. Hairlines instead of shadows, one accent, and nothing that moves unless a person moved it.</li>
+<li><strong>Bottom line first</strong>Each screen opens with what to do or what happened, in one plain sentence. Detail waits behind "more".</li>
+<li><strong>Precision you can check</strong>Every color is a token with a light and a dark value that pass WCAG AA, every font is served from this site, and the tests hold both.</li>
+<li><strong>State in words and shape</strong>Results and maturity always carry a word and a shape; color only repeats them.</li>
+</ul>
 
 <h2 id="color">Color</h2>
-<p>Colors exist only as tokens, each with a light and a dark value. Results colors mean a result, never decoration; info marks work in progress.</p>
-<h3>Surfaces and text</h3>
-<div class="swatches"><div class="swatch"><i class="t-bg"></i><code>--bg</code></div><div class="swatch"><i class="t-surface"></i><code>--surface</code></div><div class="swatch"><i class="t-sunken"></i><code>--sunken</code></div><div class="swatch"><i class="t-fg"></i><code>--fg</code></div><div class="swatch"><i class="t-muted"></i><code>--muted</code></div><div class="swatch"><i class="t-line"></i><code>--line</code></div><div class="swatch"><i class="t-line-strong"></i><code>--line-strong</code></div></div>
-<h3>Accent and brand</h3>
-<div class="swatches"><div class="swatch"><i class="t-accent"></i><code>--accent</code></div><div class="swatch"><i class="t-accent-hover"></i><code>--accent-hover</code></div><div class="swatch"><i class="t-accent-soft"></i><code>--accent-soft</code></div><div class="swatch"><i class="t-on-accent"></i><code>--on-accent</code></div><div class="swatch"><i class="t-brand"></i><code>--brand</code></div><div class="swatch"><i class="t-brand-ink"></i><code>--brand-ink</code></div></div>
-<h3>Shell</h3>
-<div class="swatches"><div class="swatch"><i class="t-shell"></i><code>--shell</code></div><div class="swatch"><i class="t-shell-fg"></i><code>--shell-fg</code></div><div class="swatch"><i class="t-shell-muted"></i><code>--shell-muted</code></div><div class="swatch"><i class="t-shell-line"></i><code>--shell-line</code></div><div class="swatch"><i class="t-shell-hover"></i><code>--shell-hover</code></div><div class="swatch"><i class="t-shell-warn"></i><code>--shell-warn</code></div></div>
-<h3>Results</h3>
-<div class="swatches"><div class="swatch"><i class="t-good"></i><code>--good</code></div><div class="swatch"><i class="t-good-soft"></i><code>--good-soft</code></div><div class="swatch"><i class="t-caution"></i><code>--caution</code></div><div class="swatch"><i class="t-caution-soft"></i><code>--caution-soft</code></div><div class="swatch"><i class="t-bad"></i><code>--bad</code></div><div class="swatch"><i class="t-bad-soft"></i><code>--bad-soft</code></div><div class="swatch"><i class="t-info"></i><code>--info</code></div><div class="swatch"><i class="t-info-soft"></i><code>--info-soft</code></div></div>
-<h3>Notice and terminal</h3>
-<div class="swatches"><div class="swatch"><i class="t-warn-bg"></i><code>--warn-bg</code></div><div class="swatch"><i class="t-warn-line"></i><code>--warn-line</code></div><div class="swatch"><i class="t-warn-fg"></i><code>--warn-fg</code></div><div class="swatch"><i class="t-term-bg"></i><code>--term-bg</code></div><div class="swatch"><i class="t-term-text"></i><code>--term-text</code></div><div class="swatch"><i class="t-prompt"></i><code>--prompt</code></div></div>
+<p>Pick a swatch to copy its token. Each shows its value in the current theme and, for anything text sits on or is set in, its contrast against the page.</p>
+<p class="ds-live" aria-live="polite"></p>
+<h3>Surfaces</h3><p class="note">Four planes, from the page up. Most screens need only <code>--bg</code> and <code>--surface</code>.</p><div class="swatches"><button class="swatch" type="button" data-token="--bg"><i class="t-bg"></i><code>--bg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--surface"><i class="t-surface"></i><code>--surface</code><span class="v"></span></button><button class="swatch" type="button" data-token="--raised"><i class="t-raised"></i><code>--raised</code><span class="v"></span></button><button class="swatch" type="button" data-token="--sunken"><i class="t-sunken"></i><code>--sunken</code><span class="v"></span></button></div><h3>Text and hairlines</h3><p class="note">Text sits on two weights of gray; structure is drawn with three weights of 1px line, never with a shadow.</p><div class="swatches"><button class="swatch" type="button" data-token="--fg"><i class="t-fg"></i><code>--fg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--muted"><i class="t-muted"></i><code>--muted</code><span class="v"></span></button><button class="swatch" type="button" data-token="--hairline"><i class="t-hairline"></i><code>--hairline</code><span class="v"></span></button><button class="swatch" type="button" data-token="--line"><i class="t-line"></i><code>--line</code><span class="v"></span></button><button class="swatch" type="button" data-token="--line-strong"><i class="t-line-strong"></i><code>--line-strong</code><span class="v"></span></button><button class="swatch" type="button" data-token="--grid"><i class="t-grid"></i><code>--grid</code><span class="v"></span></button></div><h3>Accent and brand</h3><p class="note">The readable teal for links and actions, and the logo's own teal and ink for brand surfaces only.</p><div class="swatches"><button class="swatch" type="button" data-token="--accent"><i class="t-accent"></i><code>--accent</code><span class="v"></span></button><button class="swatch" type="button" data-token="--accent-hover"><i class="t-accent-hover"></i><code>--accent-hover</code><span class="v"></span></button><button class="swatch" type="button" data-token="--accent-soft"><i class="t-accent-soft"></i><code>--accent-soft</code><span class="v"></span></button><button class="swatch" type="button" data-token="--accent-line"><i class="t-accent-line"></i><code>--accent-line</code><span class="v"></span></button><button class="swatch" type="button" data-token="--on-accent"><i class="t-on-accent"></i><code>--on-accent</code><span class="v"></span></button><button class="swatch" type="button" data-token="--brand"><i class="t-brand"></i><code>--brand</code><span class="v"></span></button><button class="swatch" type="button" data-token="--brand-ink"><i class="t-brand-ink"></i><code>--brand-ink</code><span class="v"></span></button></div><h3>Shell</h3><p class="note">The brand bar's ink, the same in both themes.</p><div class="swatches"><button class="swatch" type="button" data-token="--shell"><i class="t-shell"></i><code>--shell</code><span class="v"></span></button><button class="swatch" type="button" data-token="--shell-fg"><i class="t-shell-fg"></i><code>--shell-fg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--shell-muted"><i class="t-shell-muted"></i><code>--shell-muted</code><span class="v"></span></button><button class="swatch" type="button" data-token="--shell-line"><i class="t-shell-line"></i><code>--shell-line</code><span class="v"></span></button><button class="swatch" type="button" data-token="--shell-hover"><i class="t-shell-hover"></i><code>--shell-hover</code><span class="v"></span></button><button class="swatch" type="button" data-token="--shell-warn"><i class="t-shell-warn"></i><code>--shell-warn</code><span class="v"></span></button></div><h3>Results</h3><p class="note">A result, never decoration. Each always carries its word.</p><div class="swatches"><button class="swatch" type="button" data-token="--good"><i class="t-good"></i><code>--good</code><span class="v"></span></button><button class="swatch" type="button" data-token="--good-soft"><i class="t-good-soft"></i><code>--good-soft</code><span class="v"></span></button><button class="swatch" type="button" data-token="--caution"><i class="t-caution"></i><code>--caution</code><span class="v"></span></button><button class="swatch" type="button" data-token="--caution-soft"><i class="t-caution-soft"></i><code>--caution-soft</code><span class="v"></span></button><button class="swatch" type="button" data-token="--bad"><i class="t-bad"></i><code>--bad</code><span class="v"></span></button><button class="swatch" type="button" data-token="--bad-soft"><i class="t-bad-soft"></i><code>--bad-soft</code><span class="v"></span></button><button class="swatch" type="button" data-token="--info"><i class="t-info"></i><code>--info</code><span class="v"></span></button><button class="swatch" type="button" data-token="--info-soft"><i class="t-info-soft"></i><code>--info-soft</code><span class="v"></span></button></div><h3>Notice and terminal</h3><div class="swatches"><button class="swatch" type="button" data-token="--warn-bg"><i class="t-warn-bg"></i><code>--warn-bg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--warn-line"><i class="t-warn-line"></i><code>--warn-line</code><span class="v"></span></button><button class="swatch" type="button" data-token="--warn-fg"><i class="t-warn-fg"></i><code>--warn-fg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--term-bg"><i class="t-term-bg"></i><code>--term-bg</code><span class="v"></span></button><button class="swatch" type="button" data-token="--term-text"><i class="t-term-text"></i><code>--term-text</code><span class="v"></span></button><button class="swatch" type="button" data-token="--prompt"><i class="t-prompt"></i><code>--prompt</code><span class="v"></span></button></div>
 
 <h2 id="type">Type</h2>
-<div class="specimen">
-<p class="eyebrow">Schibsted Grotesk, headings and the word in the logo</p>
-<p class="d1">Deploy quietly</p>
-<p class="d3">A heading at the third level</p>
-<p class="eyebrow">IBM Plex Mono, text, controls and code</p>
-<p class="lede">A lede states what a page is for in one or two sentences.</p>
-<p>Body text sits in a 46rem column, under 80 characters, at 15.5px with 1.7 line height.</p>
-<p><code>Set-Location ~/avd-landing-zone</code></p>
-<p class="eyebrow">The tagline in the logo is JetBrains Mono.</p>
-<p class="eyebrow">Source Serif 4, long reading text only (the standards library)</p>
-<p class="prose">A claim in our own words, one line, with its pinned source beside it.</p>
+<p>Four faces, each with one job, on one scale: a major third up from the 15.5px body.</p>
+<div class="type-grid">
+<div class="face"><p class="face-name">Schibsted Grotesk</p><p class="face-job">Headings and the word in the logo</p><p class="spec-display">Deploy quietly</p></div>
+<div class="face"><p class="face-name">IBM Plex Mono</p><p class="face-job">Text, controls, code and figures</p><p class="spec-mono">Set-Location ~/avd-landing-zone<br>0123456789 tabular</p></div>
+<div class="face"><p class="face-name">Source Serif 4</p><p class="face-job">Long reading text only</p><p class="spec-prose prose">A claim in our own words, one line, with its pinned source beside it.</p></div>
+<div class="face"><p class="face-name">JetBrains Mono</p><p class="face-job">The tagline in the logo only</p><p class="spec-tag">Deploy quietly</p></div>
+</div>
+<div class="scale">
+<div><code>--fs-3xl</code><span class="s-3xl">Page title</span></div>
+<div><code>--fs-2xl</code><span class="s-2xl">Screen title</span></div>
+<div><code>--fs-xl</code><span class="s-xl">Section heading</span></div>
+<div><code>--fs-lg</code><span class="s-lg">Lede and bottom line</span></div>
+<div><code>--fs-md</code><span class="s-md">Subheading</span></div>
+<div><code>15.5px</code><span class="s-base">Body text, under 80 characters a line</span></div>
+<div><code>--fs-sm</code><span class="s-sm">Notes, roles, captions</span></div>
+<div><code>--fs-xs</code><span class="s-xs">Pills, counts and figure labels</span></div>
 </div>
 
-<h2 id="shell">Shell</h2>
-<p>Every page opens in the same frame: the brand bar in the shell ink in both themes, with the brand as in the lockup (mark, word and tagline), the Docs, Deploy and Assess switcher, the research notice as a pill that opens to the full text, the theme button and, below 64rem, the menu button that opens the side list as a drawer. Controls on touch screens are at least 44px.</p>
-<div class="demo"><div class="bar-demo"><img src="../assets/brand/mark.svg" alt="">avd-ops</div></div>
+<h2 id="space">Space and shape</h2>
+<p>Seven steps of space and four radii. A radius grows with the object: controls, cards, then the panels that hold them.</p>
+<div class="spaces"><div><i class="sp-1"></i><code>--space-1</code></div><div><i class="sp-2"></i><code>--space-2</code></div><div><i class="sp-3"></i><code>--space-3</code></div><div><i class="sp-4"></i><code>--space-4</code></div><div><i class="sp-5"></i><code>--space-5</code></div><div><i class="sp-6"></i><code>--space-6</code></div><div><i class="sp-7"></i><code>--space-7</code></div></div>
+<div class="radii"><div class="r-xs"><code>--radius-xs</code><span>pills</span></div><div class="r-sm"><code>--radius-sm</code><span>controls</span></div><div class="r-md"><code>--radius</code><span>cards</span></div><div class="r-lg"><code>--radius-lg</code><span>panels</span></div></div>
 
-<h2 id="brand">Brand</h2>
-<p>The mark, and the lockup with the tagline for places outside the bar: light, dark and one color. The text in the lockups is outlined, so they look the same without the fonts installed.</p>
-<div class="demo paper"><img src="../assets/brand/lockup.svg" alt="avd-ops, deploy quietly" height="72"></div>
-<div class="demo inverse"><img src="../assets/brand/lockup-dark.svg" alt="avd-ops, deploy quietly" height="72"></div>
-<p>Every brand file (avatars, PNG exports, link preview images, the original concept) is in <a href="https://github.com/avd-ops/avd-ops/tree/main/brand">brand/</a>, with <code>profile.json</code>, the whole brand in one file for tools and Claude.</p>
+<h2 id="shell">Shell</h2>
+<p>Every page opens in the same frame: the brand bar in the shell ink in both themes, the Docs, Deploy, Assess, Migrate and Status switcher, the research notice as a pill that opens to the full text, and the side list in four tiers. Below 60rem the switcher takes its own row, each tab a 44px target; below 64rem the side list becomes a drawer.</p>
+<div class="demo"><div class="bar-demo"><img src="../assets/brand/mark.svg" alt="">avd-ops</div>
+<div class="side-demo"><p class="tier-d">Ecosystem</p><p class="group-d">Assess and plan</p><span>avd-current-state</span><span class="on">avd-assess</span><p class="group-d">Build and change</p><span>avd-landing-zone</span></div></div>
+
+<h2 id="maturity">Maturity</h2>
+<p>A ring that fills as a repo matures: empty for design, half for pre-beta, full for proven. The word always shows.</p>
+<div class="demo"><div class="row"><span class="mark-badge m-design">Design</span><span class="mark-badge m-pre-beta">Pre-beta</span><span class="mark-badge m-proven">Proven</span></div>
+<div class="row ds-dots"><span><span class="dot m-design"></span>In a dense list, the ring alone, with a legend</span></div></div>
 
 <h2 id="components">Components</h2>
 <h3>Actions</h3>
-<div class="demo"><div class="actions"><a class="cta" href="#components">Primary action</a><a class="cta ghost" href="#components">Secondary action</a></div></div>
+<div class="demo"><div class="actions"><a class="cta" href="#components">Deploy a lab</a><a class="cta ghost" href="#components">Read the architecture</a></div></div>
 <h3>Status and chips</h3>
-<div class="demo"><div class="row"><span class="status s-built">Built</span><span class="status s-design">Being specified</span><span class="status s-slice">Slice</span><span class="status s-exploring">Exploring</span><span class="status s-planned">Planned</span><span class="status s-in-progress">In progress</span><span class="status s-done">Done</span><span class="status s-parked">Parked</span></div><div class="row"><span class="mark-badge m-proven">Proven</span><span class="mark-badge m-pre-beta">Pre-beta</span><span class="mark-badge m-design">Design</span></div><div class="chips"><span class="chip">C11 facts</span><span class="chip">C14 target state</span></div></div>
+<div class="demo"><div class="row"><span class="status s-built">Built</span><span class="status s-design">Being specified</span><span class="status s-slice">Slice</span><span class="status s-exploring">Exploring</span><span class="status s-planned">Planned</span><span class="status s-in-progress">In progress</span><span class="status s-done">Done</span><span class="status s-parked">Parked</span></div><div class="chips"><span class="chip">Estate Facts<span class="dev-id"> (C11)</span></span><span class="chip">Target Topology<span class="dev-id"> (C14)</span></span></div></div>
 <h3>Results</h3>
 <div class="demo"><div class="result-demo good">Passed: each result carries its word, never color alone</div><div class="result-demo caution">Warning</div><div class="result-demo bad">Failed</div><div class="result-demo info">In progress</div></div>
+<h3>One screen at a time</h3>
+<div class="demo screens"><p class="bl">Deploy the lab, then paste the output here.</p><p>One idea per screen, the action right under it.</p>
+<details class="more"><summary>More</summary><p>The reasons and caveats wait here, so the screen keeps one idea.</p></details></div>
 <h3>Run in</h3>
 <div class="demo"><div class="runin" role="group" aria-labelledby="runin-demo"><span class="runin-title" id="runin-demo">Run the commands in</span>
 <div class="segmented" role="radiogroup" aria-label="Where"><label><input type="radio" name="demo-where" value="cloudshell" checked><span>Cloud Shell</span></label><label><input type="radio" name="demo-where" value="windows"><span>Windows</span></label><label><input type="radio" name="demo-where" value="macos"><span>macOS</span></label></div>
@@ -88,10 +102,30 @@
 <p><span class="untested">Not tested yet</span> <span class="requires">PowerShell 7.2, the Az modules</span></p></div>
 <h3>Card and table</h3>
 <div class="card"><p class="eyebrow">Card</p><p>A surface with a border, for one object that stands apart.</p></div>
-<div class="tbl"><table><thead><tr><th>Token</th><th>Use</th></tr></thead><tbody><tr><td><code>--tap</code></td><td>44px, the smallest touch target</td></tr><tr><td><code>--page</code></td><td>76rem, the shell's width</td></tr><tr><td><code>--measure</code></td><td>46rem, the reading column</td></tr></tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Token</th><th>Use</th></tr></thead><tbody><tr><td><code>--tap</code></td><td class="num">44px, the smallest touch target</td></tr><tr><td><code>--page</code></td><td class="num">76rem, the shell's width</td></tr><tr><td><code>--measure</code></td><td class="num">76rem, text fills its box (2.7.0)</td></tr></tbody></table></div>
 <p>The portal components (progress rail, stage panels, Cloud Shell blocks, paste box, outcome pills) are in <code>avd-ops-portal.css</code> and only apply on a portal page; they are listed in docs/design-system.md.</p>
+
+<h2 id="diagrams">Diagrams</h2>
+<p>One language for every drawing, on the page and in the exported files: solid boxes are built pieces, dashed ones optional or outside, the accent marks the core path, a heavy ground is the platform, on a faint drafting grid.</p>
+<figure class="flows"><div class="scroll"><svg viewBox="0 0 640 210" role="img" aria-label="The diagram language: an optional layer, a built piece on the core path, an outside source and the platform ground.">
+<defs><marker id="ah-ds" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="d-top" x="20" y="16" width="290" height="56" rx="8"/><text class="d-name" x="36" y="40">Optional layer</text><text class="d-sub" x="36" y="58">accent soft, reads only</text>
+<rect class="d-ext" x="330" y="16" width="290" height="56" rx="8"/><text class="d-name" x="346" y="40">Outside source</text><text class="d-sub" x="346" y="58">dashed, pinned, never a dependency</text>
+<rect class="d-box" x="20" y="100" width="290" height="56" rx="8"/><text class="d-name" x="36" y="124">Built piece</text><text class="d-sub" x="36" y="142">surface, strong hairline</text>
+<rect class="d-pair" x="14" y="94" width="302" height="68" rx="11"/>
+<path class="d-edge" d="M330 128 H600" marker-end="url(#ah-ds)"/><text class="d-lbl" x="340" y="120">contract, versioned</text>
+<path class="d-opt" d="M165 72 V100" marker-end="url(#ah-ds)"/>
+<rect class="d-ground" x="20" y="176" width="600" height="24" rx="4"/><text class="d-lbl" x="34" y="192">Platform ground</text>
+</svg></div></figure>
+
+<h2 id="brand">Logo</h2>
+<p>The mark, and the lockup with the tagline for places outside the bar: light, dark and one color. The text in the lockups is outlined, so they look the same without the fonts installed. Keep clear space of a quarter of the mark's height, and never redraw or recolor it.</p>
+<div class="demo paper"><img src="../assets/brand/lockup.svg" alt="avd-ops, deploy quietly" height="72"></div>
+<div class="demo inverse"><img src="../assets/brand/lockup-dark.svg" alt="avd-ops, deploy quietly" height="72"></div>
+<p>Every brand file (avatars, PNG exports, link preview images, the original concept) is in <a href="https://github.com/avd-ops/avd-ops/tree/main/brand">brand/</a>, with <code>profile.json</code>, the whole brand in one file for tools and Claude.</p>
 </div>
 </main>
+<script src="../assets/design.js" defer></script>
 <!-- shell:foot -->
 </div>
 <footer class="foot"><div class="in"><p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p>
