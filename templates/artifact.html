@@ -630,8 +630,11 @@ html:not(.js) .shell .customize{display:none}
     var backdrop = document.querySelector('.shell .backdrop');
     if (side) {
       var active = side.querySelector('a[aria-current]');
-      var grp = active && active.closest('details.side-group');
-      if (grp) grp.open = true;
+      var el = active && active.parentElement;
+      while (el && el !== side) {
+        if (el.matches && el.matches('details.side-group')) el.open = true;
+        el = el.parentElement;
+      }
     }
     if (!menu || !side) return;
     // The drawer class goes on the .shell element: the body on a page, a wrapper div in an artifact.

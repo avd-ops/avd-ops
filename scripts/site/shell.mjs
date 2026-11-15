@@ -129,13 +129,14 @@ export function shellTop(up, current) {
     : `<a href="${up}index.html" aria-current="true">${t}</a>`)).join('');
   const links = (items) => items.map(([t, href]) => `<a href="${up}${href}"${mark(href, current)}>${t}</a>`).join('');
   const side = GROUPS.map(([tier, groups]) => {
-    if (tier === 'Governance and standards' || tier === 'System') {
-      const items = groups.flatMap(([, xs]) => xs);
-      return `<details class="side-group tier-group"><summary class="tier">${tier}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`;
+    if (tier === 'Platform') {
+      return `<p class="tier">${tier}</p>${groups.map(([, items]) => links(items)).join('')}`;
     }
-    return `<p class="tier">${tier}</p>${groups.map(([g, items]) => (g
+    const total = groups.reduce((n, [, xs]) => n + xs.length, 0);
+    const inner = groups.map(([g, items]) => (g
       ? `<details class="side-group"><summary class="group">${g}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`
-      : links(items))).join('')}`;
+      : links(items))).join('');
+    return `<details class="side-group tier-group"><summary class="tier">${tier}<span class="side-count">${total}</span></summary><div class="side-links">${inner}</div></details>`;
   }).join('\n');
   return `${SKIP}
 <header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
