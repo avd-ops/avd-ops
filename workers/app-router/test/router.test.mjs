@@ -21,6 +21,11 @@ test('resolveTarget routes root to hub and portal prefixes to upstreams', () => 
     kind: 'proxy',
     targetUrl: 'https://avd-ops.dev/assets/avd-ops.css'
   });
+  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer')), { kind: 'redirect', location: '/customizer/' });
+  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer/')), {
+    kind: 'proxy',
+    targetUrl: 'https://avd-ops.dev/design/'
+  });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/unknown')), { kind: 'not_found' });
 });
 
@@ -55,6 +60,7 @@ test('handleRequest enforces read-only methods, strips cookies, and serves the h
 
 test('renderHubHtml stays clean of inline styles and banned terms', () => {
   const html = renderHubHtml();
+  assert.match(html, /class="iconbtn customize"/);
   assert.doesNotMatch(html, /<style|style="/);
   assert.doesNotMatch(html, /liquidware|nerdio|login ?vsi|goliath/i);
 });

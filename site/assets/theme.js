@@ -179,7 +179,9 @@
 
     var rawHref = gear.getAttribute('data-design-href') || '';
     var depth = Math.min(4, (rawHref.match(/\.\.\//g) || []).length);
-    var safeHref = new Array(depth + 1).join('../') + 'design/index.html#customize';
+    var safeHref = (typeof location !== 'undefined' && location.hostname === 'avd-ops.app')
+      ? '/customizer/#customize'
+      : new Array(depth + 1).join('../') + 'design/index.html#customize';
     var link = pop.querySelector('.cust-pop-link');
     if (link) link.setAttribute('href', safeHref);
     shell.appendChild(pop);

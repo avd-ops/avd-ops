@@ -44,6 +44,13 @@ export const PORTAL_ROUTES = [
     title: 'Linecheck',
     repo: 'avd-linecheck',
     summary: 'Run the browser-only network reachability, RTT, jitter, and download check.'
+  },
+  {
+    prefix: '/customizer',
+    upstream: 'https://avd-ops.dev/design',
+    title: 'Customizer',
+    repo: 'avd-ops',
+    summary: 'Customize color palettes, typography pairings, and brand marks, then export adopter-theme.css.'
   }
 ];
 
