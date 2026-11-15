@@ -12,7 +12,7 @@ A one-button browser network check for people who work on a virtual desktop, run
 
 <!-- more -->
 
-Published at [linecheck.avd-ops.dev](https://linecheck.avd-ops.dev/), it measures HTTPS reachability, regional round-trip latency, serial jitter, cold connection setup time and download sufficiency from the browser, then builds a scrubbed summary or JSON export a user can share with a helpdesk.
+Published at [avd-ops.app/linecheck/](https://avd-ops.app/linecheck/), it measures HTTPS reachability, regional round-trip latency, serial jitter, cold connection setup time and download sufficiency from the browser, then builds a scrubbed summary or JSON export a user can share with a helpdesk.
 
 The repo is the source of truth: [avd-ops/avd-linecheck](https://github.com/avd-ops/avd-linecheck). This page says where it fits.
 
@@ -41,6 +41,6 @@ The repo has the full detail. Start here:
 
 <!-- more -->
 
-- [Live network check portal](https://linecheck.avd-ops.dev/)
+- [Live network check portal](https://avd-ops.app/linecheck/)
 - [README and quick start](https://github.com/avd-ops/avd-linecheck/blob/main/README.md)
 - [Design specification](https://github.com/avd-ops/avd-linecheck/blob/main/docs/spec.md)

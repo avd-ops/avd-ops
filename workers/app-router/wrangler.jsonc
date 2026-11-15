@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "avd-ops-app",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-11-15",
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  },
+  "routes": [
+    {
+      "pattern": "avd-ops.app/*",
+      "zone_name": "avd-ops.app"
+    }
+  ]
+}
