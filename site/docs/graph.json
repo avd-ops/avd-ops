@@ -118,7 +118,7 @@
    "title": "0014. Add avd-networking as the Connectivity control-plane repo",
    "url": "decisions/0014-add-avd-networking-connectivity-control-plane.html",
    "topic": "decisions",
-   "status": "proposed"
+   "status": "accepted"
   },
   {
    "id": "decisions/0015-add-avd-gcp-hybrid-control-plane.md",
