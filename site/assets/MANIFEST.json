@@ -3,9 +3,9 @@
  "version": "3.0.0",
  "files": {
   "avd-ops.css": "1c1744dd6414eb297a13dfa05a13d6bb8a2339e9bd087ca000b6fc1dab50215d",
-  "avd-ops-shell.css": "07daea4b09d05b3be37ea5b3dfaa42dc936faa1517e6e29a60a64a19b309cdb1",
+  "avd-ops-shell.css": "f986ac7c3af785f7c43da7bcb822f3d3ff886d8fbbe811109c33109f0820f377",
   "avd-ops-portal.css": "5f3fef5c2fb3b020491c8dfbb62c212a0a0228d48fc481f115f2b1df44f6f257",
-  "theme.js": "306592e5a8d1dc84e28d9908830fd928438c6686ff9503598466ea87ea0e7738",
+  "theme.js": "845db4dc2e9ad394fa8f1d91343c09e68c845074d333c0a4e0b48ccec3f91fa1",
   "fonts/LICENSE": "7e343f1a469cab0e05e9bb274cfa5f48894413c0a863802de5e142fe26e2f860",
   "fonts/ibm-plex-mono-latin-400-italic.woff2": "78439db25c4237c6b986d7b8af12b894c6cd660666b9507ccb91263f8b4138b5",
   "fonts/ibm-plex-mono-latin-400-normal.woff2": "3c5a451f9ec27a354b0c2bcca636c6ec17a651281aabf29f8427e210a1d31e85",

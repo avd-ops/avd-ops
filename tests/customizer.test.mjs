@@ -114,3 +114,18 @@ test('site/design/index.html wires the customizer panel without inline styles', 
   assert.match(html, /src="\.\.\/assets\/customizer\.js"/);
   assert.doesNotMatch(html, /<style|style="/);
 });
+
+test('header bar includes gear customizer button next to theme toggle and theme.js wires first-time setup', () => {
+  for (const f of ['site/index.html', 'site/design/index.html', 'templates/page.html', 'templates/artifact.html']) {
+    const html = read(f);
+    assert.match(html, /class="iconbtn theme"[\s\S]*?class="iconbtn customize"/, `${f}: gear button next to theme toggle`);
+  }
+  const themeJs = read('site/assets/theme.js');
+  assert.match(themeJs, /avd-ops-adopter-theme/);
+  assert.match(themeJs, /avd-ops-adopter-setup/);
+  assert.match(themeJs, /First-time setup/);
+  assert.match(themeJs, /window\.AvdOpsTheme/);
+  for (const preset of PALETTE_PRESETS) {
+    assert.ok(themeJs.includes(`${preset.id}:`), `theme.js missing palette ${preset.id}`);
+  }
+});

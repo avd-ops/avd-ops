@@ -116,7 +116,8 @@ if (root) {
     }
   }
 
-  function update() {
+  let syncing = false;
+  function update(skipStore) {
     const cfg = currentConfig();
     const resolved = resolveThemeTokens(cfg);
     const css = generateAdopterCss(cfg);
@@ -125,6 +126,17 @@ if (root) {
     styleEl.textContent = isDefault ? '' : css;
     if (cssOutEl) cssOutEl.value = css;
     if (dropinOutEl) dropinOutEl.value = generateDropInSnippet();
+
+    if (!skipStore && window.AvdOpsTheme) {
+      syncing = true;
+      if (isDefault) window.AvdOpsTheme.reset();
+      else window.AvdOpsTheme.set({
+        presetId: state.presetId,
+        fontId: state.fontId,
+        customCss: state.customColors ? css : undefined,
+      });
+      syncing = false;
+    }
 
     renderWcag(evaluatePaletteContrast(resolved));
     updateBrandPreview();
@@ -285,6 +297,18 @@ if (root) {
     }
   });
 
-  syncInputsFromPreset('teal');
-  update();
+  const initial = window.AvdOpsTheme ? window.AvdOpsTheme.get() : { presetId: 'teal', fontId: 'grotesk-plex' };
+  syncInputsFromPreset(initial.presetId || 'teal');
+  state.fontId = initial.fontId || 'grotesk-plex';
+  presetInputs.forEach((i) => { i.checked = i.value === state.presetId; });
+  fontInputs.forEach((i) => { i.checked = i.value === state.fontId; });
+  document.addEventListener('avd-ops-adopter-theme', (e) => {
+    if (syncing || !e.detail) return;
+    syncInputsFromPreset(e.detail.presetId || 'teal');
+    state.fontId = e.detail.fontId || 'grotesk-plex';
+    presetInputs.forEach((i) => { i.checked = i.value === state.presetId; });
+    fontInputs.forEach((i) => { i.checked = i.value === state.fontId; });
+    update(true);
+  });
+  update(true);
 }
