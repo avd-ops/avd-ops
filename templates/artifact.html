@@ -258,10 +258,16 @@ html:not(.js) .shell .theme,html:not(.js) .shell .dev{display:none}
 
 /* Footer */
 .shell footer.foot{border-top:1px solid var(--line);background:var(--surface);font-size:.86rem;color:var(--muted)}
-.shell footer.foot .in{max-width:var(--page);margin:0 auto;padding-block:var(--space-5) calc(var(--space-6) + env(safe-area-inset-bottom,0px));display:grid;gap:var(--space-2);
+.shell footer.foot .in{max-width:var(--page);margin:0 auto;padding-block:var(--space-5) calc(var(--space-6) + env(safe-area-inset-bottom,0px));display:grid;gap:var(--space-4);
   padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 .shell footer.foot p{margin:0;max-width:var(--measure)}
-.shell footer.foot .credit{font:600 .8rem var(--mono);letter-spacing:.04em;color:var(--fg);margin-top:var(--space-2)}
+.shell footer.foot .foot-open{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.shell footer.foot .foot-open strong{display:block;font:700 var(--fs-lg)/1.25 var(--display);color:var(--fg);margin-bottom:var(--space-1)}
+.shell footer.foot .foot-open .actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.shell footer.foot .foot-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2) var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--hairline);font-size:var(--fs-xs)}
+.shell footer.foot .foot-meta>a{color:var(--muted);text-decoration:none}
+.shell footer.foot .foot-meta>a:hover{color:var(--fg);text-decoration:underline}
+.shell footer.foot .credit{font:600 .8rem var(--mono);letter-spacing:.04em;color:var(--fg);margin:0}
 .shell footer.foot .credit a{color:inherit}
 
 /* Touch screens get 44px rows in the side list and switcher. */
@@ -624,8 +630,11 @@ html:not(.js) .shell .customize{display:none}
     var backdrop = document.querySelector('.shell .backdrop');
     if (side) {
       var active = side.querySelector('a[aria-current]');
-      var grp = active && active.closest('details.side-group');
-      if (grp) grp.open = true;
+      var el = active && active.parentElement;
+      while (el && el !== side) {
+        if (el.matches && el.matches('details.side-group')) el.open = true;
+        el = el.parentElement;
+      }
     }
     if (!menu || !side) return;
     // The drawer class goes on the .shell element: the body on a page, a wrapper div in an artifact.

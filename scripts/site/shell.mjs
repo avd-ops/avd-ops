@@ -38,7 +38,7 @@ export const GROUPS = [
   ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Concepts', 'docs/concepts.html'], ['Architecture', 'architecture.html']]]]],
   ['Ecosystem', [[null, [['Repo guides', 'docs/repos/index.html']]], ...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])])]],
   ['Governance and standards', [[null, [['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Decisions', 'docs/decisions/index.html'], ['Roadmap', 'roadmap.html'], ['Docs roadmap', 'docs/roadmap.html'], ['Research projects', 'research.html']]]]],
-  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Credits', 'credits.html']]]]],
+  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
 ];
 
 // The switcher: the site, then the portals each repo publishes (repos.json "portal" and "status").
@@ -129,13 +129,14 @@ export function shellTop(up, current) {
     : `<a href="${up}index.html" aria-current="true">${t}</a>`)).join('');
   const links = (items) => items.map(([t, href]) => `<a href="${up}${href}"${mark(href, current)}>${t}</a>`).join('');
   const side = GROUPS.map(([tier, groups]) => {
-    if (tier === 'Governance and standards' || tier === 'System') {
-      const items = groups.flatMap(([, xs]) => xs);
-      return `<details class="side-group tier-group"><summary class="tier">${tier}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`;
+    if (tier === 'Platform') {
+      return `<p class="tier">${tier}</p>${groups.map(([, items]) => links(items)).join('')}`;
     }
-    return `<p class="tier">${tier}</p>${groups.map(([g, items]) => (g
+    const total = groups.reduce((n, [, xs]) => n + xs.length, 0);
+    const inner = groups.map(([g, items]) => (g
       ? `<details class="side-group"><summary class="group">${g}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`
-      : links(items))).join('')}`;
+      : links(items))).join('');
+    return `<details class="side-group tier-group"><summary class="tier">${tier}<span class="side-count">${total}</span></summary><div class="side-links">${inner}</div></details>`;
   }).join('\n');
   return `${SKIP}
 <header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
@@ -147,10 +148,12 @@ ${side}
 </nav>`;
 }
 
-export function shellFoot(extra) {
+export function shellFoot(_extra, up = '') {
   return `</div>
-<footer class="foot"><div class="in">${extra}
-${TRADEMARKS}
-${CREDIT}</div></footer>
+<footer class="foot" id="contribute"><div class="in">
+<div class="foot-open"><div><strong>Built in the open under MIT</strong><p>Fork a repo, run a lab, or open a pull request. See <a href="${up}credits.html#help-us">credits</a> for where research help is needed.</p></div>
+<div class="actions"><a class="cta" href="${up}docs/repos/index.html">Browse all 16 repos</a><a class="cta ghost" href="https://github.com/avd-ops">GitHub Organization</a></div></div>
+<div class="foot-meta"><a href="${up}legal.html">Legal notice &amp; trademarks</a>${CREDIT}</div>
+</div></footer>
 <button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>`;
 }

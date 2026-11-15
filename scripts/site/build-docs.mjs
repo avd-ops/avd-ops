@@ -155,7 +155,7 @@ ${shellTop(up, `docs/${url}`)}
 <main id="main"><div class="col">
 ${content}
 </div></main>
-${shellFoot(foot)}
+${shellFoot(foot, up)}
 </body>
 </html>
 `;
