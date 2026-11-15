@@ -36,7 +36,7 @@
 <h1>Brand and design system</h1>
 <p class="lede">One quiet, precise look for every avd-ops page and portal. Everything here is drawn with the live stylesheets: switch the theme in the bar and the values, contrast and examples follow.</p>
 <div class="ds-meta"><code>ds-v3.0.0</code><a href="https://github.com/avd-ops/avd-ops/blob/main/docs/design-system.md">Read the rules</a><a href="https://github.com/avd-ops/avd-ops/tree/main/templates">Copy a starter</a><a href="https://github.com/avd-ops/avd-ops/blob/main/brand/profile.json">Brand profile</a></div>
-<nav class="ds-toc" aria-label="On this page"><a href="#principles">Principles</a><a href="#color">Color</a><a href="#type">Type</a><a href="#space">Space and shape</a><a href="#shell">Shell</a><a href="#maturity">Maturity</a><a href="#components">Components</a><a href="#diagrams">Diagrams</a><a href="#brand">Logo</a></nav>
+<nav class="ds-toc" aria-label="On this page"><a href="#principles">Principles</a><a href="#customize">Customize</a><a href="#color">Color</a><a href="#type">Type</a><a href="#space">Space and shape</a><a href="#shell">Shell</a><a href="#maturity">Maturity</a><a href="#components">Components</a><a href="#diagrams">Diagrams</a><a href="#brand">Logo</a></nav>
 
 <h2 id="principles">Principles</h2>
 <ul class="principles">
@@ -45,6 +45,67 @@
 <li><strong>Precision you can check</strong>Every color is a token with a light and a dark value that pass WCAG AA, every font is served from this site, and the tests hold both.</li>
 <li><strong>State in words and shape</strong>Results and maturity always carry a word and a shape; color only repeats them.</li>
 </ul>
+
+<h2 id="customize">Customize for your fork</h2>
+<p>Adopter Theme Customizer (v4.0.0). Override only CSS custom properties in an optional <code>adopter-theme.css</code> layer loaded after <code>avd-ops.css</code>, keeping core stylesheets untouched and upgradable. Changes preview live across the bar, swatches, buttons, cards, badges, and theme toggle. The research-only notice, license, and attribution remain intact.</p>
+<div class="customizer" id="customizer-panel">
+<fieldset>
+<legend>1. Color palette</legend>
+<div class="cust-presets" role="radiogroup" aria-label="Palette presets">
+<label><input type="radio" name="cust-preset" value="teal" checked><span>avd-ops Teal (Default)</span></label>
+<label><input type="radio" name="cust-preset" value="cobalt"><span>Azure Cobalt</span></label>
+<label><input type="radio" name="cust-preset" value="slate"><span>Slate Monochrome</span></label>
+<label><input type="radio" name="cust-preset" value="forest"><span>Forest</span></label>
+<label><input type="radio" name="cust-preset" value="amber"><span>Amber</span></label>
+</div>
+<div class="cust-colors">
+<div class="cust-field"><label for="cust-accent-light">Light --accent</label><input id="cust-accent-light" type="color" value="#0b7a6e"></div>
+<div class="cust-field"><label for="cust-accent-dark">Dark --accent</label><input id="cust-accent-dark" type="color" value="#3cc8b4"></div>
+<div class="cust-field"><label for="cust-brand">--brand (logo/surface)</label><input id="cust-brand" type="color" value="#1ca998"></div>
+<div class="cust-field"><label for="cust-shell">--shell (brand bar)</label><input id="cust-shell" type="color" value="#0d1015"></div>
+</div>
+<div class="cust-wcag is-pass" id="cust-wcag" role="status" aria-live="polite"><strong>WCAG AA pass</strong></div>
+</fieldset>
+
+<fieldset>
+<legend>2. Typography pairing (zero external CDN)</legend>
+<div class="cust-presets" role="radiogroup" aria-label="Font pairings">
+<label><input type="radio" name="cust-font" value="grotesk-plex" checked><span>Grotesk + IBM Plex Mono (Default)</span></label>
+<label><input type="radio" name="cust-font" value="system-sans"><span>System Sans + System Mono</span></label>
+<label><input type="radio" name="cust-font" value="editorial-serif"><span>Editorial Serif + Mono</span></label>
+<label><input type="radio" name="cust-font" value="grotesk-sans"><span>Grotesk + System Sans</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>3. Logo and brand slot (44x44 mark in header.bar)</legend>
+<div class="cust-brand-grid">
+<div class="cust-field"><label for="cust-wordmark">Wordmark text</label><input id="cust-wordmark" type="text" value="avd-ops" maxlength="40"></div>
+<div class="cust-field"><label for="cust-tagline">Tagline (optional)</label><input id="cust-tagline" type="text" value="Deploy quietly" maxlength="60"></div>
+</div>
+<div class="cust-brand-grid">
+<div class="cust-field"><label for="cust-svg">Inline SVG mark (paste &lt;svg&gt;...&lt;/svg&gt;)</label><textarea id="cust-svg" placeholder="&lt;svg viewBox=&quot;0 0 44 44&quot; ...&gt;...&lt;/svg&gt;"></textarea></div>
+<div class="cust-field"><label for="cust-mark-file">Or choose local .svg / .png (never uploaded)</label><input id="cust-mark-file" type="file" accept=".svg,.png,image/svg+xml,image/png"></div>
+</div>
+<div class="cust-actions"><button class="cust-btn ghost" type="button" id="cust-reset">Reset to avd-ops defaults</button></div>
+</fieldset>
+
+<div class="cust-out">
+<div class="cust-actions">
+<span class="cust-copy"><button class="cust-btn" type="button" data-copy-target="adopter-css-out">Copy adopter-theme.css</button><span class="cust-tip" role="status"></span></span>
+<button class="cust-btn ghost" type="button" id="cust-download">Download adopter-theme.css</button>
+</div>
+<textarea id="adopter-css-out" class="cust-code" readonly aria-label="Generated adopter-theme.css"></textarea>
+</div>
+
+<div class="cust-out">
+<div class="cust-actions">
+<span class="cust-copy"><button class="cust-btn ghost" type="button" data-copy-target="adopter-dropin-out">Copy 3-line drop-in</button><span class="cust-tip" role="status"></span></span>
+<span class="note">For <code>templates/page.html</code> and vendored portals (<code>avd-landing-zone</code>, <code>avd-current-state</code>, <code>avd-migrate</code>). Load portals' <code>avd-ops-portal.css</code> before <code>avd-ops-shell.css</code>.</span>
+</div>
+<textarea id="adopter-dropin-out" class="cust-code cust-code-sm" readonly aria-label="Drop-in HTML snippet"></textarea>
+</div>
+</div>
 
 <h2 id="color">Color</h2>
 <p>Pick a swatch to copy its token. Each shows its value in the current theme and, for anything text sits on or is set in, its contrast against the page.</p>
@@ -126,6 +187,7 @@
 </div>
 </main>
 <script src="../assets/design.js" defer></script>
+<script type="module" src="../assets/customizer.js"></script>
 <!-- shell:foot -->
 </div>
 <footer class="foot"><div class="in"><p>This site is built from each repo's README. Something wrong? Open an issue or a pull request in the repo it came from.</p>

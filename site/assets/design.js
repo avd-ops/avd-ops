@@ -39,6 +39,7 @@
     else if (live) live.textContent = text;
   });
   paint();
+  document.addEventListener('avd-ops-customizer', paint);
   new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
   if (mq && mq.addEventListener) mq.addEventListener('change', paint);
