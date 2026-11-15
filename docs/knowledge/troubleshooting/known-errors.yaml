@@ -116,6 +116,14 @@ errors:
     applies_to: avd-ops portals
     status: verified
     added: "2026-10-27"
+  - id: tabular-nums-spaces-heading-punctuation
+    symptom: "Headings set in Schibsted Grotesk show a gap before every comma and period (\"Desktop , from\"), while body text looks right."
+    cause: "`font-variant-numeric:tabular-nums` turns on the font's `tnum` feature, and Schibsted Grotesk's `tnum` also gives commas and periods the fixed figure width, so punctuation in running text gets padded. Seen on the avd-ops.dev home page while building design system 3.0.0."
+    fix: "Keep `tabular-nums` off headings and running text; set it only where figures line up (tables, pills, counts, `.num`), as `avd-ops.css` does from 3.0.0. IBM Plex Mono is unaffected because every glyph is already fixed width."
+    source: decisions/0005-one-app-shell-for-every-page.md
+    applies_to: avd-ops design system 3.0.0
+    status: verified
+    added: "2026-11-15"
 
   - id: kb-digest-issues-pile-up
     symptom: "Weekly kb-digest issues stay open and pile up, and ticking items in one never becomes a pull request"

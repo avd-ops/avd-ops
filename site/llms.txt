@@ -23,11 +23,13 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [avd-benchmark](docs/knowledge/repos/avd-benchmark.md): Active Tier 1 benchmark harness and interactive explorer: runs synthetic storage, logon storm, multi-session density, autoscale and BCDR profiles and validates C25 evidence (status: verified)
 - [avd-current-state](docs/knowledge/repos/avd-current-state.md): What is there now: read-only PowerShell that collects an AVD environment across all five control planes, validates it and writes redacted C11 facts (status: verified)
 - [avd-entra](docs/knowledge/repos/avd-entra.md): Control plane: Entra ID security groups, dynamic session-host groups, Conditional Access and Entra Kerberos for Azure Virtual Desktop (status: verified)
+- [avd-hcl](docs/knowledge/repos/avd-hcl.md): Enterprise IaC: native Azure Virtual Desktop deployed and operated with Terraform and Packer (status: verified)
 - [avd-intune](docs/knowledge/repos/avd-intune.md): Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning (status: verified)
 - [avd-landing-zone](docs/knowledge/repos/avd-landing-zone.md): How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link (status: verified)
 - [avd-linecheck](docs/knowledge/repos/avd-linecheck.md): End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in (status: verified)
 - [avd-m365](docs/knowledge/repos/avd-m365.md): Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines (status: verified)
 - [avd-migrate](docs/knowledge/repos/avd-migrate.md): Single-pool target-state baseline designer and C14 manifest writer: turns C11 facts, C19 intake and optional C27 measured usage into a single pooled desktop pool for avd-landing-zone (status: verified)
+- [avd-networking](docs/knowledge/repos/avd-networking.md): Control plane: Platform Connectivity hub VNet, Azure Firewall, central Private DNS, DNS Private Resolver, gateways and Bastion (status: verified)
 - [avd-power-platform](docs/knowledge/repos/avd-power-platform.md): Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop (status: verified)
 - [avd-remediate](docs/knowledge/repos/avd-remediate.md): Troubleshooting, host-level telemetry collection and human-approved remediation workbench across all five control planes (status: verified)
 - [avd-second-brain](docs/knowledge/repos/avd-second-brain.md): On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune (status: verified)
@@ -60,6 +62,10 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0011. Split the benchmark platform between avd-assess (profiles and corpus) and avd-benchmark (harness and explorer)](docs/knowledge/decisions/0011-avd-benchmark-and-assess-corpus.md): proposed
 - [0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune](docs/knowledge/decisions/0012-desktop-devops-for-avd-win365-and-intune.md): accepted
 - [0013. Support Azure US Government and Microsoft 365 GCC High across all five control planes](docs/knowledge/decisions/0013-azure-us-government-and-gcc-high-support.md): accepted
+- [0014. Add avd-networking as the Connectivity control-plane repo](docs/knowledge/decisions/0014-add-avd-networking-connectivity-control-plane.md): accepted
+- [0015. Add avd-gcp as the GCP Hybrid session-host control-plane repo](docs/knowledge/decisions/0015-add-avd-gcp-hybrid-control-plane.md): proposed
+- [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
+- [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
 
 ## Related knowledge bases
 
