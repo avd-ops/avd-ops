@@ -28,4 +28,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0014](0014-add-avd-networking-connectivity-control-plane.md) | Add avd-networking as the Connectivity control-plane repo | Accepted |
 | [0015](0015-add-avd-gcp-hybrid-control-plane.md) | Add avd-gcp as the GCP Hybrid session-host control-plane repo | Proposed |
 | [0016](0016-terraform-as-enterprise-iac-option.md) | Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep | Proposed |
+| [0017](0017-platform-decisions-live-in-avd-ops.md) | Keep platform and cross-repo decisions in avd-ops, not avd-second-brain | Proposed |
 <!-- END GENERATED: decision-index -->
