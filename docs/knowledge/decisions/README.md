@@ -27,4 +27,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0013](0013-azure-us-government-and-gcc-high-support.md) | Support Azure US Government and Microsoft 365 GCC High across all five control planes | Accepted |
 | [0014](0014-add-avd-networking-connectivity-control-plane.md) | Add avd-networking as the Connectivity control-plane repo | Accepted |
 | [0015](0015-add-avd-gcp-hybrid-control-plane.md) | Add avd-gcp as the GCP Hybrid session-host control-plane repo | Proposed |
+| [0016](0016-terraform-as-enterprise-iac-option.md) | Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep | Proposed |
 <!-- END GENERATED: decision-index -->

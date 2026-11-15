@@ -8,7 +8,7 @@ last_reviewed: 2026-11-11
 
 # The repos
 
-Fourteen public repos, each the source of truth for itself. Pick one to see where it fits.
+Fifteen public repos, each the source of truth for itself. Pick one to see where it fits.
 
 | Repo | Role |
 |---|---|
@@ -20,6 +20,7 @@ Fourteen public repos, each the source of truth for itself. Pick one to see wher
 | [avd-intune](avd-intune.md) | Control plane: Intune policy-as-code, session-host enrollment and Windows 365 Cloud PCs |
 | [avd-m365](avd-m365.md) | Control plane: greenfield Microsoft 365, OneDrive and Teams VDI |
 | [avd-azure](avd-azure.md) | Control plane: Azure ARM and Bicep infrastructure |
+| [avd-hcl](avd-hcl.md) | Enterprise IaC: native AVD with Terraform and Packer |
 | [avd-power-platform](avd-power-platform.md) | Control plane: Power Platform and Power Automate day-2 workflows |
 | [avd-swarm](avd-swarm.md) | On top: Desktop DevOps agents across AVD, Windows 365 and Intune |
 | [avd-second-brain](avd-second-brain.md) | On top: Desktop DevOps intelligence and memory across AVD, Windows 365 and Intune |

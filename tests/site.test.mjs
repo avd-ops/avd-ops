@@ -149,9 +149,9 @@ test('relative links resolve to files in site/', () => {
   }
 });
 
-test('the site names no partner product and no HCL tooling (no Liquidware for now)', () => {
+test('the site names no partner product (no Liquidware for now)', () => {
   for (const f of [...pages, 'site/assets/site.css', 'site/assets/avd-ops-shell.css', 'site/assets/theme.js']) {
-    assert.doesNotMatch(read(f), /liquidware|nerdio|login ?vsi|goliath|terraform|packer|\.tf\b/i, f);
+    assert.doesNotMatch(read(f), /liquidware|nerdio|login ?vsi|goliath/i, f);
   }
 });
 
