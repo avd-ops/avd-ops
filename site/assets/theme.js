@@ -159,7 +159,6 @@
 
     var cur = window.AvdOpsTheme.get();
     var mode = (function () { try { return localStorage.getItem(KEY) || 'system'; } catch (e) { return 'system'; } }());
-    var designHref = gear.getAttribute('data-design-href') || 'design/index.html#customize';
 
     function btnRow(items, activeKey, attr) {
       return items.map(function (item) {
@@ -178,8 +177,11 @@
       + '<div class="cust-pop-group"><span class="cust-pop-lbl">Typography</span><div class="cust-pop-row">' + btnRow(fontItems, cur.fontId, 'font') + '</div></div>'
       + '<div class="cust-pop-foot"><button class="cust-pop-save" type="button">Done</button><button class="cust-pop-opt" type="button" data-reset="1">Reset</button><a class="cust-pop-link">Full customizer &rarr;</a></div>';
 
+    var rawHref = gear.getAttribute('data-design-href') || '';
+    var depth = Math.min(4, (rawHref.match(/\.\.\//g) || []).length);
+    var safeHref = new Array(depth + 1).join('../') + 'design/index.html#customize';
     var link = pop.querySelector('.cust-pop-link');
-    if (link) link.setAttribute('href', /^\s*javascript:/i.test(designHref) ? 'design/index.html#customize' : designHref);
+    if (link) link.setAttribute('href', safeHref);
     shell.appendChild(pop);
 
     function syncPressed() {
