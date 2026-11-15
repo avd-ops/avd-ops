@@ -23,7 +23,7 @@ A Desktop DevOps knowledge base, private vaults for each estate, and the contrac
 <!-- more -->
 
 - A knowledge base of generalized Desktop DevOps facts: workload placement rules (pooled AVD vs. personal AVD vs. Windows 365 Enterprise vs. Frontline), Intune policy-as-code and assignment filter rules, app catalog, sizing calibration and shared runbooks.
-- Estate vaults keep one customer's estate in that customer's own private repo. Tenant data never comes back here.
+- Estate vaults keep one adopter's estate in that adopter's own private repo. Tenant data never comes back here.
 - The contract registry and fact register (`C9`, `C10`, `C11`, `C14`, `C15`, `C18`, `C19`) that every repo boundary uses across AVD, Windows 365 and Intune.
 - A docs consistency check every repo calls. Each repo's page lives here on avd-ops; the brain's old generated handbook is retired.
 
