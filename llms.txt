@@ -65,6 +65,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0014. Add avd-networking as the Connectivity control-plane repo](docs/knowledge/decisions/0014-add-avd-networking-connectivity-control-plane.md): accepted
 - [0015. Add avd-gcp as the GCP Hybrid session-host control-plane repo](docs/knowledge/decisions/0015-add-avd-gcp-hybrid-control-plane.md): proposed
 - [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
+- [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
 
 ## Related knowledge bases
 

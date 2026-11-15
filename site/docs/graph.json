@@ -135,6 +135,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0017-platform-decisions-live-in-avd-ops.md",
+   "title": "0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain",
+   "url": "decisions/0017-platform-decisions-live-in-avd-ops.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -476,6 +483,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0016-terraform-as-enterprise-iac-option.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0017-platform-decisions-live-in-avd-ops.md"
   },
   {
    "source": "getting-started/README.md",

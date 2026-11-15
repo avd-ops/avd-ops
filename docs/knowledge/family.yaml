@@ -15,8 +15,8 @@ projects:
   repo: avd-ops/avd-ops
   kb_path: docs/knowledge
   role: member
-  focus: The front door for the AVD repos (avd-ops.dev), onboarding and user docs
-  owns: [onboarding and user-facing docs for the AVD repos, the avd-ops.dev site and design system, the list of family repos (repos.json)]
+  focus: The front door for the AVD repos (avd-ops.dev), onboarding, user docs, and platform governance decisions
+  owns: [onboarding and user-facing docs for the AVD repos, platform architecture and cross-repo governance decisions, the avd-ops.dev site and design system, the list of family repos (repos.json)]
   format_version: 1
 - id: 2ndbrain
   name: 2ndbrain
