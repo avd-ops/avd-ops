@@ -5,6 +5,23 @@ Every avd-ops logo and brand image, and the profile that describes them. Persona
 - [`profile.json`](profile.json) is the brand profile: colors for light and dark, type, every file below with what it is for, the starters, the lines every page carries, and the rules. The `brand-profile` Claude skill reads it before making anything for avd-ops. A test keeps it equal to the design system ([`docs/design-system.md`](../docs/design-system.md)), which stays the source of truth.
 - [`profile.schema.json`](profile.schema.json) is the profile's format. Nothing in it is specific to avd-ops, so any repo can keep a profile in the same shape at `brand/profile.json`.
 
+## The brand in one screen (3.0.0)
+
+**Deploy quietly.** Quietly authoritative, precision-engineered infrastructure tooling for Azure Virtual Desktop, written bottom line first, in plain words.
+
+| | Light | Dark | Job |
+|---|---|---|---|
+| Page `--bg` | #f5f7f7 | #0a0f11 | the ground, a cool gray tinted toward the teal |
+| Surface `--surface` | #ffffff | #10171a | the working plane |
+| Text `--fg` | #0f1c1e | #e6eeee | 16:1 on the page in both themes |
+| Accent `--accent` | #0b7a6e | #3cc8b4 | links and actions, the one accent |
+| Brand `--brand` | #1ca998 | #1ca998 | the logo's teal, brand surfaces only |
+| Ink `--brand-ink`, `--shell` | #0d1015 | #070a0c | the shield and the brand bar |
+
+Structure is drawn with 1px hairlines, not shadows. Type: Schibsted Grotesk for headings and the word, IBM Plex Mono for text and code, Source Serif 4 for long reading, JetBrains Mono for the tagline, on one scale. Every value, with what it is for, is in [`profile.json`](profile.json); the full system is in [`docs/design-system.md`](../docs/design-system.md) and live at [avd-ops.dev/design/](https://avd-ops.dev/design/).
+
+The mark and the lockups are unchanged in 3.0.0: the shield already carries the brand, and its proportions match the bar.
+
 ## Vector (use these first)
 
 In [`site/assets/brand/`](../site/assets/brand/), so pages and the repos that take a pinned copy have them too.
@@ -47,6 +64,6 @@ The 1024px tiles are the owner's originals. The rest are rendered from the vecto
 - Use the files; never redraw, recolor, stretch or add effects to the mark.
 - Clear space around the mark of at least a quarter of its height. Never smaller than 16px; below 24px use `favicon.svg`.
 - On light backgrounds use `mark.svg` or `lockup.svg`; on ink or darker, `lockup-dark.svg` or `mark-white.svg`.
-- The brand is always lowercase: avd-ops. The tagline is "Deploy quietly", set in uppercase mono in the lockups.
+- The brand is always lowercase: avd-ops. The tagline is "Deploy quietly", set in uppercase mono in the lockups, the one place the brand uses capitals.
 - Brand teal (`--brand`, #1ca998) is for brand surfaces; text and links use the accent.
 - Private repos don't use this brand.
