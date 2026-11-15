@@ -77,7 +77,7 @@ Only redacted facts leave an estate, and no public repo holds tenant data.
 <!-- more -->
 
 Collectors and validators read an estate; what leaves it is redacted: counts, public values and
-pseudonyms, never names or IDs. A customer's estate vault lives in that customer's private repo.
+pseudonyms, never names or IDs. An adopter's estate vault lives in that adopter's private repo.
 None of the public repos holds tenant data.
 
 ## Read first, change with approval
