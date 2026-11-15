@@ -139,5 +139,5 @@ Bicep and PowerShell in the core control-plane repos; Terraform and Packer in `a
 
 <!-- more -->
 
-The core deployment repos (`avd-landing-zone` and `avd-azure`) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, [avd-hcl](../repos/avd-hcl.md) provides the parallel HCL path ([decision 0014](../decisions/0014-terraform-as-enterprise-iac-option.md)), while keeping HCL out of the Bicep repos per avd-second-brain's lane rules
+The core deployment repos (`avd-landing-zone` and `avd-azure`) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, [avd-hcl](../repos/avd-hcl.md) provides the parallel HCL path ([decision 0016](../decisions/0016-terraform-as-enterprise-iac-option.md)), while keeping HCL out of the Bicep repos per avd-second-brain's lane rules
 ([decision 0012](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).

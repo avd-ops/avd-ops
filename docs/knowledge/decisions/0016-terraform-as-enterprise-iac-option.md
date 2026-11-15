@@ -4,7 +4,7 @@ date: 2026-11-13
 decision-makers: [maintainers]
 ---
 
-# 0014. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep
+# 0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep
 
 Terraform (`avd-hcl`) is the recommended enterprise IaC option alongside Bicep (`avd-landing-zone` and `avd-azure`), with each repo staying in its own toolchain lane.
 

@@ -30,6 +30,7 @@ It deploys the Azure and AVD resource layer from Bicep with Private Link and Ent
 It is the Azure infrastructure stage orchestrated by avd-landing-zone and checked by avd-current-state.
 
 - Invoked at a pinned commit by [avd-landing-zone](avd-landing-zone.md) or run directly from Azure Cloud Shell.
+- Consumes `networking-outputs.json` (C31) from [avd-networking](avd-networking.md) when running in `HubPeered` mode with a managed hub.
 - Binds application groups and RBAC to the user and admin groups from [avd-entra](avd-entra.md), passed in as group IDs. Its handoff to [avd-power-platform](avd-power-platform.md) and [avd-current-state](avd-current-state.md) is `azure-outputs.json` (`--output-manifest` / `AVD_AZURE_OUTPUTS_PATH`), defined by its `avd-ops-azure-outputs/v1` contract schema.
 
 ## Read more in the repo

@@ -12,7 +12,7 @@ Native Azure Virtual Desktop deployed and operated with Terraform and Packer—t
 
 <!-- more -->
 
-For enterprise platform teams, Terraform is the stronger IaC option: it orchestrates Azure alongside Entra ID, GitHub, DNS, monitoring, and multi-cloud or SaaS providers in one dependency graph, tracks explicit state for deterministic `plan` diffs and clean deletion, and standardizes on HCL and mature policy-as-code tooling ([decision 0014](../decisions/0014-terraform-as-enterprise-iac-option.md)).
+For enterprise platform teams, Terraform is the stronger IaC option: it orchestrates Azure alongside Entra ID, GitHub, DNS, monitoring, and multi-cloud or SaaS providers in one dependency graph, tracks explicit state for deterministic `plan` diffs and clean deletion, and standardizes on HCL and mature policy-as-code tooling ([decision 0016](../decisions/0016-terraform-as-enterprise-iac-option.md)).
 
 The repo is the source of truth: [avd-ops/avd-hcl](https://github.com/avd-ops/avd-hcl). This page says where it fits.
 

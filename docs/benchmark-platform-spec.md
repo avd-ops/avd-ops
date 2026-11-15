@@ -95,6 +95,8 @@ Every benchmark in the family is defined declaratively in `avd-assess/benchmarks
 
 Under [build or adopt](build-or-adopt.md), `avd-benchmark` adopts best-in-class permissive open-source micro-benchmarks (pinned by commit/SHA256) and pairs them with native PowerShell 7 guest and control-plane probes—requiring zero proprietary load-testing appliances or closed-source VDI agents:
 
+> **Prior art & optional BYO comparison (`EUC Score`):** [EUC Score Freeware](https://eucscore.com/freeware/) (`Simload Runner`, `Data Miner`) is tracked as prior art for persona-based synthetic workloads and endpoint telemetry capture. Because it is proprietary freeware (community use requires public results; commercial or >50-user orgs require a paid subscription), `avd-benchmark` never bundles or redistributes it, but operators running public-result lab batches can run it alongside `Invoke-AvdBenchmark.ps1` for side-by-side calibration.
+
 | Profile ID | What It Measures | Open-Source Tool / Probe | Claims & Observations Tested | Key Output Metrics (`C25`) |
 |---|---|---|---|---|
 | `storage-fslogix-io` | Profile share and local OS disk IOPS, throughput (MiB/s), and latency (p50/p95/p99) for VHDX mount, sequential logon read, and steady-state random 4K R/W | **Adopted:** [Microsoft `diskspd`](https://github.com/microsoft/diskspd) (MIT, pinned release + SHA256) + PowerShell VHDX mount timer | `obs:premium-ssd-os-disk-default`, `obs:encryption-at-host-by-default`, `obs:smb-channel-aes128-gcm-needed`, `ref:review-checklists-avd#H03.05` | `readIopsP50`, `readIopsP95`, `writeIopsP95`, `readLatencyMsP95`, `writeLatencyMsP99`, `vhdxAttachMsP95` |
