@@ -90,13 +90,14 @@ test('custom accent derivation warns when contrast drops below WCAG AA', () => {
   assert.equal(evaluatePaletteContrast(highContrast).ok, true);
 });
 
-test('sanitizeSvg strips scripts, event handlers, foreignObject, and external hrefs', () => {
+test('sanitizeSvg rejects scripts, event handlers, foreignObject, and external hrefs and accepts clean SVG', () => {
   const dirty = '<svg viewBox="0 0 44 44" onload="alert(1)"><script>evil()</script><foreignObject>x</foreignObject><a href="javascript:alert(2)"><rect width="44" height="44"/></a></svg>';
-  const clean = sanitizeSvg(dirty);
-  assert.doesNotMatch(clean, /<script|onload=|javascript:|<foreignObject/i);
-  assert.match(clean, /^<svg /);
-  const uri = svgToDataUri(dirty);
-  assert.match(uri, /^data:image\/svg\+xml;utf8,/);
+  assert.equal(sanitizeSvg(dirty), '');
+  assert.equal(svgToDataUri(dirty), null);
+
+  const safe = '<svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="8"/></svg>';
+  assert.equal(sanitizeSvg(safe), safe);
+  assert.match(svgToDataUri(safe), /^data:image\/svg\+xml;utf8,/);
 });
 
 test('drop-in snippet loads adopter-theme.css after avd-ops.css and before shell', () => {

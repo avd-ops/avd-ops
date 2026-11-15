@@ -321,20 +321,12 @@ export function evaluatePaletteContrast(resolved) {
 export function sanitizeSvg(svgText) {
   if (typeof svgText !== 'string') return '';
   const trimmed = svgText.trim();
-  if (!trimmed || !/<svg[\s>]/i.test(trimmed)) return '';
-  let clean = trimmed;
-  let prev;
-  do {
-    prev = clean;
-    clean = clean
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, '')
-      .replace(/<foreignObject\b[^>]*>[\s\S]*?<\/foreignObject\b[^>]*>/gi, '')
-      .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
-      .replace(/(?:xlink:)?href\s*=\s*(?:"javascript:[^"]*"|'javascript:[^']*')/gi, '')
-      .replace(/(?:xlink:)?href\s*=\s*(?:"https?:[^"]*"|'https?:[^']*')/gi, '');
-  } while (clean !== prev);
-  if (/<script\b|<foreignObject\b|\son[a-z]+\s*=|javascript:/i.test(clean)) return '';
-  return clean;
+  if (!trimmed || !/^<svg[\s>]/i.test(trimmed) || !/<\/svg\s*>$/i.test(trimmed)) return '';
+  // Reject any SVG containing scripts, foreignObject, inline event handlers, or external/javascript URIs.
+  if (/<(?:script|foreignObject)\b/i.test(trimmed)) return '';
+  if (/[\s/]on[a-z]+\s*=/i.test(trimmed)) return '';
+  if (/(?:xlink:)?href\s*=\s*["']?\s*(?:javascript:|https?:)/i.test(trimmed)) return '';
+  return trimmed;
 }
 
 export function svgToDataUri(svgText) {
