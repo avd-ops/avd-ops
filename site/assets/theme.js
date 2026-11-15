@@ -299,6 +299,11 @@
     var menu = document.querySelector('.shell .menu');
     var side = document.querySelector('.shell .side');
     var backdrop = document.querySelector('.shell .backdrop');
+    if (side) {
+      var active = side.querySelector('a[aria-current]');
+      var grp = active && active.closest('details.side-group');
+      if (grp) grp.open = true;
+    }
     if (!menu || !side) return;
     // The drawer class goes on the .shell element: the body on a page, a wrapper div in an artifact.
     var shell = menu.closest('.shell');

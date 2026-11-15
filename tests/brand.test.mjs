@@ -84,5 +84,5 @@ test('the starters carry what the profile requires', () => {
       for (const sentence of r.text.split(/(?<=\.) /)) assert.ok(h.includes(sentence), `${f} is missing: ${sentence}`);
     }
   }
-  assert.ok(notice.includes('Not for production'));
+  assert.ok(notice.includes('Use at your own risk'));
 });

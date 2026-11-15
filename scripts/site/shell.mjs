@@ -51,22 +51,20 @@ const badge = (m) => `<span class="mark-badge m-${m}">${MATURITY[m] || m}</span>
 const role = (r) => r.role.replace(/^(Control plane|On top|Foundation): /, '').replace(/^./, (c) => c.toUpperCase());
 
 // The home page's system figure: the optional layer on top, the lifecycle under it, and the control planes the
-// build orchestrates, each block linking to its row in the matrix. Pure; apply-shell.mjs writes it between
+// build orchestrates, each block linking to the repo guide or architecture. Pure; apply-shell.mjs writes it between
 // <!-- family:figure --> markers.
 export function systemFigure(up) {
-  const block = (id, cls) => {
+  const block = (id, cls, sub) => {
     const rs = members(id);
-    const names = rs.map((r) => `<li><span class="dot m-${r.maturity}" aria-hidden="true"></span>${r.name.replace(/^avd-/, '')}</li>`).join('');
-    return `<a class="blk ${cls}" href="${up}index.html#layer-${id}"><span class="t">${title(id)}</span><span class="n">${count(rs)}</span><ul>${names}</ul></a>`;
+    return `<a class="blk ${cls}" href="${up}docs/repos/index.html#layer-${id}"><span class="t">${title(id)}</span><span class="n">${count(rs)}</span><span class="sub">${sub}</span></a>`;
   };
   return `<figure class="sys" aria-label="The avd-ops system, by layer">
-<div class="sys-top">${block('intelligence', 'b-top')}</div>
+<div class="sys-top">${block('intelligence', 'b-top', 'Optional agents &amp; memory')}</div>
 <p class="sys-rule">Reads what the foundation emits. Dependencies point down, never up.</p>
-<div class="sys-flow">${block('assess', 'b-step')}${block('build', 'b-step b-core')}${block('operate', 'b-step')}</div>
+<div class="sys-flow">${block('assess', 'b-step', 'Inventory &amp; plan')}${block('build', 'b-step b-core', 'Bicep &amp; IaC')}${block('operate', 'b-step', 'Run &amp; verify')}</div>
 <p class="sys-rule">The orchestrator deploys across five control planes and the network.</p>
-<div class="sys-base">${block('control', 'b-base')}</div>
+<div class="sys-base">${block('control', 'b-base', 'Entra · Intune · M365 · Azure · Networking · Power Platform')}</div>
 <p class="sys-ground">Microsoft Azure, Entra, Intune and Microsoft 365</p>
-<figcaption><span class="dot m-proven" aria-hidden="true"></span>Proven <span class="dot m-pre-beta" aria-hidden="true"></span>Pre-beta <span class="dot m-design" aria-hidden="true"></span>Design</figcaption>
 </figure>`;
 }
 
@@ -97,7 +95,7 @@ export const devButton = () => `<button class="iconbtn dev" type="button" aria-p
 
 export const CREDIT = '<p class="credit">A <a href="https://prignano.ai/">prignano.ai</a> production</p>';
 
-export const NOTICE = (up) => `<details class="notice"><summary><strong class="long">Personal project. Research and learning only. Not for production. No warranty.</strong><strong class="short">Not for production</strong></summary>
+export const NOTICE = (up) => `<details class="notice"><summary><strong class="long">Community research project. Use at your own risk. No warranty.</strong><strong class="short">Use at your own risk</strong></summary>
 <div class="full"><ul><li>Built on my own time for research and learning. Not affiliated with, endorsed by or supported by my employer or Microsoft.</li>
 <li>Don't run any of it in production or against tenants that matter. Test in a dedicated lab subscription and tenant first.</li>
 <li>Provided "as is", without warranty of any kind, under each repo's license. You use it at your own risk and own the Azure charges it incurs.</li>
@@ -130,7 +128,15 @@ export function shellTop(up, current) {
     ? `<a href="${href}">${t}</a>`
     : `<a href="${up}index.html" aria-current="true">${t}</a>`)).join('');
   const links = (items) => items.map(([t, href]) => `<a href="${up}${href}"${mark(href, current)}>${t}</a>`).join('');
-  const side = GROUPS.map(([tier, groups]) => `<p class="tier">${tier}</p>${groups.map(([g, items]) => `${g ? `<p class="group">${g}</p>` : ''}${links(items)}`).join('')}`).join('\n');
+  const side = GROUPS.map(([tier, groups]) => {
+    if (tier === 'Governance and standards' || tier === 'System') {
+      const items = groups.flatMap(([, xs]) => xs);
+      return `<details class="side-group tier-group"><summary class="tier">${tier}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`;
+    }
+    return `<p class="tier">${tier}</p>${groups.map(([g, items]) => (g
+      ? `<details class="side-group"><summary class="group">${g}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`
+      : links(items))).join('')}`;
+  }).join('\n');
   return `${SKIP}
 <header class="bar"><div class="bar-in">${brand(`${up}index.html`, `${up}assets/brand/mark.svg`)}
 <nav class="switcher" aria-label="avd-ops tools">${switcher}</nav>
