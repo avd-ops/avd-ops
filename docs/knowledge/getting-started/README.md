@@ -34,7 +34,7 @@ Pick the row that matches what you want to do, and open that repo.
 | Run the estate through agents a person approves | [avd-swarm](../repos/avd-swarm.md) | Design and spike stage today |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
-New to the vocabulary? Read [concepts](../concepts/README.md) first.
+New to the vocabulary? Read [concepts](../concepts/README.md) first. Setting up a multi-subscription or cross-tenant lab? Follow the [multi-tenant lab bootstrap](multi-tenant-lab-bootstrap.md).
 
 ## Before you run anything
 

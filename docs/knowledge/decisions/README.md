@@ -30,4 +30,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0016](0016-terraform-as-enterprise-iac-option.md) | Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep | Proposed |
 | [0017](0017-platform-decisions-live-in-avd-ops.md) | Keep platform and cross-repo decisions in avd-ops, not avd-second-brain | Proposed |
 | [0018](0018-split-project-site-and-public-demo-domains.md) | Split project site (avd-ops.dev) and public demo hub (avd-ops.app) | Accepted |
+| [0019](0019-multi-subscription-multi-tenant-lab-topology.md) | Multi-subscription and multi-tenant AVD lab topology | Proposed |
 <!-- END GENERATED: decision-index -->

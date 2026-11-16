@@ -14,6 +14,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [Start here](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: verified)
 - [Working from Cloud Shell](docs/knowledge/getting-started/cloud-shell.md): The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence (status: verified)
 - [Lab walkthrough: empty subscription to validated landing zone](docs/knowledge/getting-started/lab-walkthrough.md): Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks (status: verified)
+- [Multi-tenant and multi-subscription lab bootstrap](docs/knowledge/getting-started/multi-tenant-lab-bootstrap.md): Bootstrap checklist for the 4-subscription ALZ primary tenant and secondary T2T Entra tenant at $0/mo idle cost (status: plan)
 - [Concepts](docs/knowledge/concepts/README.md): The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture (status: verified)
 - [Glossary](docs/knowledge/concepts/glossary.md): One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term (status: verified)
 - [Sandbox batches](docs/knowledge/concepts/sandbox-batches.md): How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence (status: verified)
@@ -67,6 +68,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
 - [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
 - [0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)](docs/knowledge/decisions/0018-split-project-site-and-public-demo-domains.md): accepted
+- [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): proposed
 
 ## Related knowledge bases
 

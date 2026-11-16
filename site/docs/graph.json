@@ -149,6 +149,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md",
+   "title": "0019. Multi-subscription and multi-tenant AVD lab topology",
+   "url": "decisions/0019-multi-subscription-multi-tenant-lab-topology.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -176,6 +183,13 @@
    "url": "getting-started/lab-walkthrough.html",
    "topic": "getting-started",
    "status": "verified"
+  },
+  {
+   "id": "getting-started/multi-tenant-lab-bootstrap.md",
+   "title": "Multi-tenant and multi-subscription lab bootstrap",
+   "url": "getting-started/multi-tenant-lab-bootstrap.html",
+   "topic": "getting-started",
+   "status": "plan"
   },
   {
    "id": "repos/README.md",
@@ -436,6 +450,18 @@
    "target": "decisions/0005-one-app-shell-for-every-page.md"
   },
   {
+   "source": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md",
+   "target": "decisions/0016-terraform-as-enterprise-iac-option.md"
+  },
+  {
+   "source": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md",
+   "target": "getting-started/multi-tenant-lab-bootstrap.md"
+  },
+  {
+   "source": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -508,6 +534,10 @@
    "target": "decisions/0018-split-project-site-and-public-demo-domains.md"
   },
   {
+   "source": "decisions/README.md",
+   "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
+  },
+  {
    "source": "getting-started/README.md",
    "target": "decisions/0002-avd-ops-is-the-front-door.md"
   },
@@ -530,6 +560,10 @@
   {
    "source": "getting-started/README.md",
    "target": "concepts/README.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/multi-tenant-lab-bootstrap.md"
   },
   {
    "source": "getting-started/README.md",
@@ -562,6 +596,26 @@
   {
    "source": "getting-started/lab-walkthrough.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "getting-started/multi-tenant-lab-bootstrap.md",
+   "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
+  },
+  {
+   "source": "getting-started/multi-tenant-lab-bootstrap.md",
+   "target": "repos/avd-hcl.md"
+  },
+  {
+   "source": "getting-started/multi-tenant-lab-bootstrap.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "getting-started/multi-tenant-lab-bootstrap.md",
+   "target": "decisions/0016-terraform-as-enterprise-iac-option.md"
+  },
+  {
+   "source": "getting-started/multi-tenant-lab-bootstrap.md",
+   "target": "concepts/sandbox-batches.md"
   },
   {
    "source": "repos/README.md",

@@ -20,6 +20,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | verified |
 | [getting-started/cloud-shell.md](getting-started/cloud-shell.md) | The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence | verified |
 | [getting-started/lab-walkthrough.md](getting-started/lab-walkthrough.md) | Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks | verified |
+| [getting-started/multi-tenant-lab-bootstrap.md](getting-started/multi-tenant-lab-bootstrap.md) | Bootstrap checklist for the 4-subscription ALZ primary tenant and secondary T2T Entra tenant at $0/mo idle cost | plan |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | verified |
 | [concepts/glossary.md](concepts/glossary.md) | One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term | verified |
 | [concepts/sandbox-batches.md](concepts/sandbox-batches.md) | How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence | verified |
