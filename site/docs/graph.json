@@ -156,6 +156,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0020-lza-bicepparam-starter-export.md",
+   "title": "0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export",
+   "url": "decisions/0020-lza-bicepparam-starter-export.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -462,6 +469,18 @@
    "target": "concepts/sandbox-batches.md"
   },
   {
+   "source": "decisions/0020-lza-bicepparam-starter-export.md",
+   "target": "decisions/0003-the-family-ends-at-its-contracts.md"
+  },
+  {
+   "source": "decisions/0020-lza-bicepparam-starter-export.md",
+   "target": "decisions/0016-terraform-as-enterprise-iac-option.md"
+  },
+  {
+   "source": "decisions/0020-lza-bicepparam-starter-export.md",
+   "target": "repos/avd-migrate.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -536,6 +555,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0020-lza-bicepparam-starter-export.md"
   },
   {
    "source": "getting-started/README.md",
@@ -938,6 +961,10 @@
    "target": "repos/avd-second-brain.md"
   },
   {
+   "source": "repos/avd-migrate.md",
+   "target": "decisions/0020-lza-bicepparam-starter-export.md"
+  },
+  {
    "source": "repos/avd-networking.md",
    "target": "decisions/0014-add-avd-networking-connectivity-control-plane.md"
   },
@@ -1044,6 +1071,14 @@
   {
    "source": "roadmap/README.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "repos/avd-migrate.md"
+  },
+  {
+   "source": "roadmap/README.md",
+   "target": "decisions/0020-lza-bicepparam-starter-export.md"
   },
   {
    "source": "roadmap/README.md",

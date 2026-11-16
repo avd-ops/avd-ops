@@ -69,6 +69,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
 - [0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)](docs/knowledge/decisions/0018-split-project-site-and-public-demo-domains.md): accepted
 - [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): proposed
+- [0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export](docs/knowledge/decisions/0020-lza-bicepparam-starter-export.md): accepted
 
 ## Related knowledge bases
 
