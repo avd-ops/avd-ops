@@ -34,7 +34,7 @@ It bridges [avd-current-state](avd-current-state.md) and [avd-assess](avd-assess
 <!-- more -->
 
 - Consumes pinned schemas and workload-tier rules from [avd-assess](avd-assess.md), [avd-current-state](avd-current-state.md), [avd-second-brain](avd-second-brain.md) and [avd-landing-zone](avd-landing-zone.md).
-- Emits `C14` (`avd-target-state/v1`) and `avd-target-approval/v1` files consumed directly by `ConvertFrom-AvdTargetState.ps1` in [avd-landing-zone](avd-landing-zone.md) (`avd-azure`, `avd-entra`, `avd-intune`, `avd-m365`, `avd-power-platform`).
+- Emits `C14` (`avd-target-state/v1`) and `avd-target-approval/v1` files consumed directly by `ConvertFrom-AvdTargetState.ps1` in [avd-landing-zone](avd-landing-zone.md) (`avd-azure`, `avd-entra`, `avd-intune`, `avd-m365`, `avd-power-platform`), plus an optional Microsoft AVD LZA `.bicepparam` starter export ([decision 0020](../decisions/0020-lza-bicepparam-starter-export.md)).
 
 ## Read more in the repo
 
