@@ -1,6 +1,6 @@
 # Azure Virtual Desktop on Azure Local (`azure-local`) Specification Across the Control Planes and Foundation
 
-Status: draft (2026-11-16, proposed; awaiting [decision](knowledge/decisions/README.md) and repo-level implementation).
+Status: accepted (2026-11-16, [decision 0023](knowledge/decisions/0023-azure-local-support.md)).
 
 Today the `avd-ops` family assumes session hosts run as Azure IaaS virtual machines (`Microsoft.Compute/virtualMachines`) in an Azure region, with FSLogix profiles on Azure Files / Azure NetApp Files and Azure-native VM power management. Right now, **AVD on Azure Local** appears only as an open extension point (`network.azure-local` in [network.md](../site/data/standards/methods/network.md#L33)), an unimplemented scope gap (`hybrid-scope`: *"what a hybrid and Azure Local assessment can judge, and where Azure Arc helps on-premises"*), and two pinned Microsoft Learn sources in `avd-assess` (`avd-azure-local` and `avd-azure-local-workload`).
 
@@ -22,9 +22,9 @@ This specification defines how the `avd-ops` family supports **Azure Virtual Des
 4. **Identity: native Entra ID join only (via Bicep/ARM/PowerShell, no AD DS in v1).**
    - The Azure portal adds Azure Local session hosts only to AD DS (including Entra hybrid join); native Entra ID join requires PowerShell or another programmatic deployment method (`avd-azure-local#entra-join-outside-portal`).
    - Aligning with `avd-landing-zone`'s cloud-native identity model, v1 supports **native Entra ID join only** (via Bicep/ARM/`Microsoft.HybridCompute/machines/extensions` and PowerShell provisioning scripts) and does not provision or join AD DS / Entra hybrid-joined hosts. `avd-current-state` still detects and reports AD DS / hybrid-joined Azure Local pools in brownfield estates.
-5. **Profile storage: on-premises SMB share instead of Azure Files.**
+5. **Profile storage: bring-your-own on-premises SMB share in v1.**
    - FSLogix profile containers on Azure Local use an **on-premises SMB share** — either a clustered file server on the Azure Local instance or an external SMB share on the same network for larger deployments (`avd-azure-local#local-smb-for-profiles`).
-   - When `hostPlacement == "azure-local"`, `avd-azure` skips Azure Files / Azure NetApp Files provisioning for that pool unless explicitly overridden, and `avd-assess` / `avd-current-state` evaluate profile storage against local SMB / NTFS / Kerberos readiness rather than `AADKERB` and Azure Files Private Endpoints.
+   - In v1, operators supply an existing SMB share path (`localSmbProfilePath`); `avd-azure` validates the path format and records it without automating clustered file server or SMB share provisioning on the Azure Local instance. `avd-azure` skips Azure Files / Azure NetApp Files provisioning for `azure-local` pools unless explicitly overridden, and `avd-assess` / `avd-current-state` evaluate profile storage against local SMB / NTFS / Kerberos readiness rather than `AADKERB` and Azure Files Private Endpoints.
 6. **Three-part pricing model in preflight.**
    - Running AVD on Azure Local carries three cost components: (1) user access rights (Microsoft 365 / RDS CAL), (2) the Azure Local service fee, and (3) the AVD for Azure Local fee per active vCPU (`avd-azure-local#three-part-pricing`).
    - `avd-landing-zone` preflight cost estimation separates Azure control-plane / monitoring spend from the Azure Local per-vCPU meter and marks hardware/service fees as operator-supplied or excluded from Azure Retail Prices API totals.
@@ -45,7 +45,8 @@ No new control-plane repository is required; Azure Local extends existing founda
 | **`C11`** (`facts.schema.json`) | `contracts/facts.schema.json` | Add per-host-pool `hostPlacement` (`"azure" \| "azure-local" \| "mixed"`), `azureLocal` inventory block (`clusters[]`, `customLocations[]`, `virtualMachineInstances[]`, `hybridComputeMachines[]`, `connectedMachineAgentVersion`, `imdsReachable`), and add `"azure-local-host"` to the `not-applicable` reason enum. |
 | **`C14`** (`target-state.schema.json`) | `contracts/target-state.schema.json` | Add per-pool `hostPlacement: "azure" \| "azure-local"`, `customLocationId`, `logicalNetworkId`, and `profileStorageType: "azure-files" \| "anf" \| "local-smb"`. |
 | **`C21`** (check results) | `contracts/check-results.schema.json` | Support `reason: "azure-local-host"` for `not-applicable` Azure-IaaS-only checks. |
-| **`C33`** (`avd-azure-local-outputs/v1`, optional) | `contracts/azure-local-outputs.schema.json` | If `avd-azure` splits Azure Local VM instance deployment into a dedicated stage manifest, emit `customLocationId`, `logicalNetworkId`, `vmInstanceIds[]`, and `hybridComputeMachineIds[]` for `avd-current-state` validation. |
+
+`avd-azure` emits Azure Local VM instance outputs (`customLocationId`, `logicalNetworkId`, `vmInstanceIds[]`, `hybridComputeMachineIds[]`) in an optional `azureLocal` block inside `azure-outputs.json` rather than introducing a separate `C33` contract.
 
 ---
 
@@ -85,9 +86,9 @@ No new control-plane repository is required; Azure Local extends existing founda
    - **Portal (`site/portal/`):** Add a **Host Placement** toggle (`Azure VMs` | `Azure Local (23H2+)`) per host pool. Selecting `Azure Local` reveals inputs for Custom Location ID, Arc Logical Network ID, Arc Gallery Image ID, and Local SMB FSLogix path, and hides Azure VM SKU / Availability Zone / Azure Files SKU pickers for that pool.
    - **Preflight (`Test-AvdLandingZoneReadiness.ps1`):** Verify the target Azure Local cluster is registered (`23H2` or later), the Custom Location and Logical Network exist, and the host pool does not mix Azure and Azure Local hosts. Calculate the three-part cost summary cleanly.
 
-### 3.4 `avd-hcl` (Terraform / Enterprise HCL)
+### 3.4 `avd-hcl` (Terraform / Enterprise HCL — Fast-Follow)
 
-- Add a parallel `azure_local` host-pool module using `azapi_resource` (or `azurerm_stack_hci_virtual_machine_instance` where supported by the pinned provider version) with the same `hostPlacement` contract, Custom Location inputs, and offline `terraform validate` / `tflint` checks.
+- Follow in a dedicated PR after `avd-azure` Bicep/AzAPI resource shapes are proven: add a parallel `azure_local` host-pool module using `azapi_resource` (or `azurerm_stack_hci_virtual_machine_instance` where supported by the pinned provider version) with the same `hostPlacement` contract, Custom Location inputs, and offline `terraform validate` / `tflint` checks.
 
 ### 3.5 `avd-intune`, `avd-m365`, `avd-linecheck`, `avd-second-brain`, and `avd-swarm`
 
@@ -103,14 +104,16 @@ No new control-plane repository is required; Azure Local extends existing founda
    - Update `C11`, `C14`, `C19`, `C21`, resolve `gap:hybrid-scope`, wire all 6 claims in `avd-azure-local.yaml` into `methods/*.md`, and pass `avd-assess` schema/link validation.
 2. **Phase 2 — Collection & Assessment (`avd-current-state`):**
    - Add Resource Graph queries for `Microsoft.AzureStackHCI/*` and `Microsoft.HybridCompute/machines`, plus Pester tests with mocked Azure Local payloads.
-3. **Phase 3 — Deployment & Portal (`avd-azure`, `avd-landing-zone`, `avd-hcl`):**
-   - Add `hostPlacement: "azure-local"` Bicep/AzAPI and Terraform modules, preflight checks, three-part cost output, and portal UI controls; verify with Bicep build, PSRule, `terraform validate`, and Pester/Node CI tests (`standing: guarded`).
+3. **Phase 3 — Deployment & Portal (`avd-azure`, `avd-landing-zone`, then `avd-hcl` fast-follow):**
+   - Add `hostPlacement: "azure-local"` Bicep/AzAPI modules, preflight checks, three-part cost output, and portal UI controls in `avd-azure` and `avd-landing-zone`; verify with Bicep build, PSRule, and Pester/Node CI tests (`standing: guarded`). Follow with `avd-hcl` Terraform support in a separate PR once Bicep/AzAPI shapes are proven.
 4. **Phase 4 — Live Sandbox Validation:**
    - Run a redacted end-to-end deployment and `avd-current-state` collection against a registered Azure Local 23H2+ instance to upgrade `security-review.yaml` claims from `standing: guarded` to `run`.
 
 ---
 
-## 5. Open Questions
+## 5. Resolved Design Decisions ([Decision 0023](knowledge/decisions/0023-azure-local-support.md))
 
-1. **Dedicated contract `C33` vs. extending `C11`/`C14`:** Should Azure Local VM instance outputs stay inside `avd-azure`'s existing `azure-outputs.json` or get a separate `C33` (`avd-azure-local-outputs/v1`) contract?
-2. **`avd-hcl` timing:** Should `avd-hcl` ship in Phase 3 alongside `avd-azure` Bicep, or follow in a fast-follow PR once the Bicep/AzAPI resource shapes are proven?
+1. **Identity in v1:** Native Entra ID join only (`AADLoginForWindows` via `Microsoft.HybridCompute/machines/extensions` / PowerShell); `avd-current-state` still detects brownfield AD DS / hybrid-joined pools.
+2. **Output contract:** Extend `avd-azure`'s existing `azure-outputs.json` with an optional `azureLocal` block (no new `C33` contract).
+3. **FSLogix SMB share in v1:** Bring-your-own existing SMB share path (`localSmbProfilePath`); validate format and reachability without automating cluster storage provisioning.
+4. **`avd-hcl` timing:** Fast-follow PR after `avd-azure` Bicep/AzAPI shapes are proven.

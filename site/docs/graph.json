@@ -177,6 +177,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0023-azure-local-support.md",
+   "title": "0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts",
+   "url": "decisions/0023-azure-local-support.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -511,6 +518,14 @@
    "target": "decisions/0017-platform-decisions-live-in-avd-ops.md"
   },
   {
+   "source": "decisions/0023-azure-local-support.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0023-azure-local-support.md",
+   "target": "decisions/0010-expand-assess-and-current-state-across-five-control-planes.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -597,6 +612,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0022-cua-external-executor-plumbing.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0023-azure-local-support.md"
   },
   {
    "source": "getting-started/README.md",
