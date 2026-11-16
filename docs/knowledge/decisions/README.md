@@ -32,4 +32,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0018](0018-split-project-site-and-public-demo-domains.md) | Split project site (avd-ops.dev) and public demo hub (avd-ops.app) | Accepted |
 | [0019](0019-multi-subscription-multi-tenant-lab-topology.md) | Multi-subscription and multi-tenant AVD lab topology | Proposed |
 | [0020](0020-lza-bicepparam-starter-export.md) | Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export | Accepted |
+| [0021](0021-euc-score-byo-output-adapter.md) | Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`) | Accepted |
 <!-- END GENERATED: decision-index -->

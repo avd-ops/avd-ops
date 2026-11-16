@@ -163,6 +163,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0021-euc-score-byo-output-adapter.md",
+   "title": "0021. Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`)",
+   "url": "decisions/0021-euc-score-byo-output-adapter.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -481,6 +488,10 @@
    "target": "repos/avd-migrate.md"
   },
   {
+   "source": "decisions/0021-euc-score-byo-output-adapter.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -559,6 +570,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0020-lza-bicepparam-starter-export.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0021-euc-score-byo-output-adapter.md"
   },
   {
    "source": "getting-started/README.md",
