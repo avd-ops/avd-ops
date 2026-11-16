@@ -6,7 +6,7 @@ decision-makers: [owner]
 
 # 0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts
 
-Support Azure Virtual Desktop on registered Azure Local 23H2+ instances (`hostPlacement: "azure-local"`) by extending existing foundation contracts, using native Entra ID join and bring-your-own on-premises SMB storage in v1, and guarding all paths offline in CI.
+Support AVD on registered Azure Local 23H2+ instances via `hostPlacement`, native Entra ID join, and existing SMB storage in v1.
 
 ## Context and Problem Statement
 
@@ -20,13 +20,13 @@ The family currently assumes all AVD session hosts run as Azure IaaS VMs (`Micro
 
 Three options were weighed.
 
-- Extend existing foundation contracts (`C11`, `C14`, `C19`, `C21`) and `avd-azure` / `avd-landing-zone` with `hostPlacement: "azure-local"`, native Entra ID join only, and bring-your-own SMB storage in v1 (with `avd-hcl` as a fast-follow PR)
+- Extend existing contracts (`C11`, `C14`, `C19`, `C21`) and `avd-azure` / `avd-landing-zone` with `hostPlacement`, native Entra ID join, and existing SMB storage in v1
 - Create a dedicated control-plane repository and new output contract (`C33`) specifically for Azure Local session hosts
 - Keep Azure Local as reference-only documentation and defer collection and deployment support indefinitely
 
 ## Decision Outcome
 
-Chosen option: "Extend existing foundation contracts (`C11`, `C14`, `C19`, `C21`) and `avd-azure` / `avd-landing-zone` with `hostPlacement: "azure-local"`, native Entra ID join only, and bring-your-own SMB storage in v1 (with `avd-hcl` as a fast-follow PR)".
+Chosen option: "Extend existing contracts (`C11`, `C14`, `C19`, `C21`) and `avd-azure` / `avd-landing-zone` with `hostPlacement`, native Entra ID join, and existing SMB storage in v1".
 
 <!-- more -->
 

@@ -33,7 +33,7 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0023-support-azure-virtual-desktop-on-azure-local-via-hostplacement-and-existing-contracts" title="0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts"><span class="n">1</span><span class="t">0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
 <section class="screen" id="0023-support-azure-virtual-desktop-on-azure-local-via-hostplacement-and-existing-contracts">
 <h1 tabindex="-1">0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts</h1>
-<p class="bl">Support Azure Virtual Desktop on registered Azure Local 23H2+ instances (<code>hostPlacement: &quot;azure-local&quot;</code>) by extending existing foundation contracts, using native Entra ID join and bring-your-own on-premises SMB storage in v1, and guarding all paths offline in CI.</p>
+<p class="bl">Support AVD on registered Azure Local 23H2+ instances via <code>hostPlacement</code>, native Entra ID join, and existing SMB storage in v1.</p>
 </section>
 <section class="screen" id="context-and-problem-statement">
 <h2 tabindex="-1">Context and Problem Statement</h2>
@@ -47,14 +47,14 @@
 <h2 tabindex="-1">Considered Options</h2>
 <p class="bl">Three options were weighed.</p>
 <ul>
-<li>Extend existing foundation contracts (<code>C11</code>, <code>C14</code>, <code>C19</code>, <code>C21</code>) and <code>avd-azure</code> / <code>avd-landing-zone</code> with <code>hostPlacement: &quot;azure-local&quot;</code>, native Entra ID join only, and bring-your-own SMB storage in v1 (with <code>avd-hcl</code> as a fast-follow PR)</li>
+<li>Extend existing contracts (<code>C11</code>, <code>C14</code>, <code>C19</code>, <code>C21</code>) and <code>avd-azure</code> / <code>avd-landing-zone</code> with <code>hostPlacement</code>, native Entra ID join, and existing SMB storage in v1</li>
 <li>Create a dedicated control-plane repository and new output contract (<code>C33</code>) specifically for Azure Local session hosts</li>
 <li>Keep Azure Local as reference-only documentation and defer collection and deployment support indefinitely</li>
 </ul>
 </section>
 <section class="screen" id="decision-outcome">
 <h2 tabindex="-1">Decision Outcome</h2>
-<p class="bl">Chosen option: &quot;Extend existing foundation contracts (<code>C11</code>, <code>C14</code>, <code>C19</code>, <code>C21</code>) and <code>avd-azure</code> / <code>avd-landing-zone</code> with <code>hostPlacement: &quot;azure-local&quot;</code>, native Entra ID join only, and bring-your-own SMB storage in v1 (with <code>avd-hcl</code> as a fast-follow PR)&quot;.</p>
+<p class="bl">Chosen option: &quot;Extend existing contracts (<code>C11</code>, <code>C14</code>, <code>C19</code>, <code>C21</code>) and <code>avd-azure</code> / <code>avd-landing-zone</code> with <code>hostPlacement</code>, native Entra ID join, and existing SMB storage in v1&quot;.</p>
 
 <details class="more"><summary>More</summary>
 <p>Why: Azure Local session hosts share the same Azure-hosted AVD control plane (<code>avd-azure</code>) and Bicep/AzAPI deployment pipeline as Azure-hosted pools, so extending existing contracts and modules avoids splitting the control plane or maintaining a redundant repository.</p>
