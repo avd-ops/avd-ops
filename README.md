@@ -10,6 +10,29 @@ The front door for the AVD repos, published at **<https://avd-ops.dev/>**: the o
 > - It is provided **"as is", without warranty of any kind**, under the [MIT License](LICENSE). You use it at your own risk.
 > - **Contributions and forks are welcome and encouraged.** See [Contributing](#contributing).
 
+## The family
+
+Sixteen public repos across five architectural layers, each the source of truth for itself ([docs/knowledge/repos/](docs/knowledge/repos/README.md)):
+
+| Layer | Repo | Role | Docs |
+|---|---|---|---|
+| Assess | [avd-current-state](https://github.com/avd-ops/avd-current-state#readme) | What is there now: read-only collector, validator, drift & `C11` facts | [page](docs/knowledge/repos/avd-current-state.md) |
+| Assess | [avd-assess](https://github.com/avd-ops/avd-assess#readme) | What it should be: pinned methods, `map.json`, `endpoints.json`, schemas | [page](docs/knowledge/repos/avd-assess.md) |
+| Assess | [avd-migrate](https://github.com/avd-ops/avd-migrate#readme) | Single-pool target-state baseline designer (`C14` manifest writer) | [page](docs/knowledge/repos/avd-migrate.md) |
+| Assess | [avd-benchmark](https://github.com/avd-ops/avd-benchmark#readme) | Active Tier 1 benchmark harness and explorer (`C25` evidence) | [page](docs/knowledge/repos/avd-benchmark.md) |
+| Build | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone#readme) | How it's built and changed from here: orchestrator & deploy portal | [page](docs/knowledge/repos/avd-landing-zone.md) |
+| Build | [avd-hcl](https://github.com/avd-ops/avd-hcl#readme) | Enterprise IaC: native AVD with Terraform and Packer | [page](docs/knowledge/repos/avd-hcl.md) |
+| Control | [avd-entra](https://github.com/avd-ops/avd-entra#readme) | Entra ID groups, Conditional Access, and Entra Kerberos | [page](docs/knowledge/repos/avd-entra.md) |
+| Control | [avd-intune](https://github.com/avd-ops/avd-intune#readme) | Intune policy-as-code, enrollment filters, and Windows 365 | [page](docs/knowledge/repos/avd-intune.md) |
+| Control | [avd-m365](https://github.com/avd-ops/avd-m365#readme) | Greenfield Microsoft 365, OneDrive KFM, and Teams VDI | [page](docs/knowledge/repos/avd-m365.md) |
+| Control | [avd-azure](https://github.com/avd-ops/avd-azure#readme) | Azure ARM and Bicep infrastructure, Private Link, and FSLogix | [page](docs/knowledge/repos/avd-azure.md) |
+| Control | [avd-networking](https://github.com/avd-ops/avd-networking#readme) | Platform Connectivity hub VNet, Firewall, Private DNS, and gateways | [page](docs/knowledge/repos/avd-networking.md) |
+| Control | [avd-power-platform](https://github.com/avd-ops/avd-power-platform#readme) | Power Platform environments, DLP policies, and day-2 workflows | [page](docs/knowledge/repos/avd-power-platform.md) |
+| Operate | [avd-remediate](https://github.com/avd-ops/avd-remediate#readme) | Troubleshooting, host telemetry collection, and gated remediation | [page](docs/knowledge/repos/avd-remediate.md) |
+| Operate | [avd-linecheck](https://github.com/avd-ops/avd-linecheck#readme) | End-user browser network check with zero sign-in | [page](docs/knowledge/repos/avd-linecheck.md) |
+| Intelligence | [avd-swarm](https://github.com/avd-ops/avd-swarm#readme) | Desktop DevOps agents across AVD, Windows 365, and Intune | [page](docs/knowledge/repos/avd-swarm.md) |
+| Intelligence | [avd-second-brain](https://github.com/avd-ops/avd-second-brain#readme) | Desktop DevOps intelligence, estate vaults, and contract registry | [page](docs/knowledge/repos/avd-second-brain.md) |
+
 ## Layout
 
 ```text
