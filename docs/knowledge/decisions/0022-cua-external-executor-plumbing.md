@@ -4,13 +4,13 @@ date: 2026-11-16
 decision-makers: [owner]
 ---
 
-# 0022. Define public CUA and external-executor plumbing across the AVD family
+# 0022. Define public CUA and external-executor plumbing across avd-ops
 
-Public AVD repositories define the generic plumbing for Computer-Use Agent (CUA) execution—isolated host pools in the foundation, an `external-executor` plan hook in `avd-swarm`, and `executor-evidence` records in `avd-second-brain`—while keeping private broker and policy-engine internals outside the family.
+Public `avd-ops` repositories define generic CUA plumbing (isolated host pools, `external-executor` plans, and `executor-evidence`) while keeping private brokers outside the family.
 
 ## Context and Problem Statement
 
-How should the public AVD family support UI-only tasks that require a Computer-Use Agent (CUA) without coupling public repositories to a private broker or violating the family contract boundary?
+How should `avd-ops` support UI-only CUA tasks without coupling public repos to a private broker?
 
 <!-- more -->
 
@@ -45,6 +45,10 @@ Why: keeping the extension points in the public contracts avoids maintaining div
 - Bad, because adopters who enable an external CUA executor must supply and govern their own runtime outside the public family.
 
 ## More Information
+
+Links and related platform decisions.
+
+<!-- more -->
 
 - Full plumbing specification: [docs/cua-executor-spec.md](../../cua-executor-spec.md).
 - Builds on [decision 0003](0003-the-family-ends-at-its-contracts.md), [decision 0012](0012-desktop-devops-for-avd-win365-and-intune.md), and [decision 0017](0017-platform-decisions-live-in-avd-ops.md).

@@ -33,5 +33,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0019](0019-multi-subscription-multi-tenant-lab-topology.md) | Multi-subscription and multi-tenant AVD lab topology | Proposed |
 | [0020](0020-lza-bicepparam-starter-export.md) | Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export | Accepted |
 | [0021](0021-euc-score-byo-output-adapter.md) | Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`) | Accepted |
-| [0022](0022-cua-external-executor-plumbing.md) | Define public CUA and external-executor plumbing across the AVD family | Proposed |
+| [0022](0022-cua-external-executor-plumbing.md) | Define public CUA and external-executor plumbing across avd-ops | Proposed |
 <!-- END GENERATED: decision-index -->
