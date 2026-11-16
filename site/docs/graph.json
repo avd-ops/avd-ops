@@ -170,6 +170,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0022-cua-external-executor-plumbing.md",
+   "title": "0022. Define public CUA and external-executor plumbing across avd-ops",
+   "url": "decisions/0022-cua-external-executor-plumbing.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -492,6 +499,18 @@
    "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
   },
   {
+   "source": "decisions/0022-cua-external-executor-plumbing.md",
+   "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
+  },
+  {
+   "source": "decisions/0022-cua-external-executor-plumbing.md",
+   "target": "decisions/0003-the-family-ends-at-its-contracts.md"
+  },
+  {
+   "source": "decisions/0022-cua-external-executor-plumbing.md",
+   "target": "decisions/0017-platform-decisions-live-in-avd-ops.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -574,6 +593,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0021-euc-score-byo-output-adapter.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0022-cua-external-executor-plumbing.md"
   },
   {
    "source": "getting-started/README.md",
