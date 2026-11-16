@@ -6,11 +6,11 @@ decision-makers: [owner]
 
 # 0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export
 
-Keep `avd-landing-zone` cloud-native and independent of Microsoft's Azure Virtual Desktop Landing Zone Accelerator (`Azure/avdaccelerator`), while offering an optional `C14`-to-`.bicepparam` starter export in `avd-migrate` for hybrid AD DS and brownfield estates.
+Keep `avd-landing-zone` cloud-native and independent of `Azure/avdaccelerator`, while offering an optional `C14`-to-`.bicepparam` starter export in `avd-migrate`.
 
 ## Context and Problem Statement
 
-Hybrid AD DS and brownfield teams sometimes need Microsoft's broader AVD Landing Zone Accelerator (LZA) rather than `avd-landing-zone`'s cloud-native-only deployment path, without losing the `avd-ops` sizing, assessment, and Day-2 operations stack.
+Hybrid AD DS and brownfield teams sometimes need Microsoft's AVD LZA without losing the `avd-ops` sizing and Day-2 stack.
 
 <!-- more -->
 
