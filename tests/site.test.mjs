@@ -9,6 +9,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { syncFamilyReadme } from '../scripts/build-family-readme.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => (statSync(join(root, d, f)).isDirectory() ? walk(`${d}/${f}`) : [`${d}/${f}`]));
@@ -190,6 +191,10 @@ test('README and LICENSE keep the community research notice', () => {
   for (const re of [/Community research project/, /Use at your own risk/, /not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty/, /forks are welcome/]) {
     assert.match(top, re, `README intro is missing ${re}`);
   }
+});
+
+test('README family table is generated from repos.json (scripts/build-family-readme.mjs --check)', () => {
+  assert.ok(syncFamilyReadme(true), 'README.md family table is out of date; run: node scripts/build-family-readme.mjs');
 });
 
 test('the docs are built from docs/knowledge and up to date (scripts/site/build-docs.mjs)', () => {
