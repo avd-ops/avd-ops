@@ -181,3 +181,19 @@ errors:
     applies_to: scripts/kb/freshness.py
     status: verified
     added: "2026-10-29"
+  - id: kb-build-crlf-breaks-build-docs
+    symptom: "`node scripts/site/build-docs.mjs` fails on Windows with `TypeError: Cannot read properties of undefined (reading 'title')` right after running `py -3 scripts/kb/build.py`."
+    cause: "`scripts/kb/build.py` writes CRLF (`\\r\\n`) line endings on Windows to regenerated files such as `docs/knowledge/decisions/README.md` and `llms.txt`, breaking `build-docs.mjs` screen splitting."
+    fix: "Normalize regenerated markdown files to LF (`\\n`) before running `node scripts/site/build-docs.mjs`."
+    source: https://github.com/avd-ops/avd-ops/blob/main/scripts/site/build-docs.mjs
+    applies_to: scripts/kb/build.py, scripts/site/build-docs.mjs
+    status: verified
+    added: "2026-11-16"
+  - id: site-test-bottom-line-length-limit
+    symptom: "CI `test` job fails in `tests/site.test.mjs` with `a bottom line is one or two short sentences, not N characters`."
+    cause: "The intro before `<!-- more -->` on a page or `##` section exceeded the `site.test.mjs` bottom-line character limit."
+    fix: "Keep every page intro and section bottom line to one or two short sentences and run `node --test \"tests/*.test.mjs\"` locally before pushing."
+    source: https://github.com/avd-ops/avd-ops/blob/main/tests/site.test.mjs
+    applies_to: docs/knowledge/, tests/site.test.mjs
+    status: verified
+    added: "2026-11-16"
