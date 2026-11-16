@@ -21,7 +21,7 @@ The repo is the source of truth: [avd-ops/avd-hcl](https://github.com/avd-ops/av
 It deploys native AVD infrastructure and golden images using HashiCorp community editions (Terraform and Packer) with Azure Key Vault and managed identities for secrets.
 
 - Provides modular Terraform roots for the platform, FSLogix storage, Key Vault, monitoring, AVD control plane, session hosts, and Compute Gallery.
-- Uses Packer with Windows Desktop Optimization Tool (WDOT) for golden image builds.
+- Uses Packer with Windows Desktop Optimization Tool (WDOT) and optional EUCPilots `Evergreen` and `VcRedist` steps (`install_evergreen`, `install_vcredist`) for golden image builds.
 - Keeps secrets out of Terraform state using ephemeral reads and write-only attributes.
 - Supports pooled or personal Entra-joined host pools, autoscale, Start VM on Connect, and blue/green host rotation.
 

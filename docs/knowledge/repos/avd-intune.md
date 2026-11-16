@@ -26,6 +26,7 @@ It configures Intune MDM enrollment, assignment filters, Settings Catalog baseli
 - Deploys standard Intune assignment filters (`avd-multisession`, `avd-personal`, `win365-cloudpc`, `physical-desktop`), Settings Catalog profiles (`FSLogix`, `Watermarking`, `ScreenCaptureProtection`, `SessionTimeLimits`, `DefenderVdiExclusions`) and device compliance policies stamped with `[avd-ops-<prefix>-<env>]`.
 - Optionally deploys declarative Windows 365 Cloud PC provisioning policies (`enableSingleSignOn: true`), user settings (`localAdminEnabled: false`, scheduled restore points) and Azure Network Connections when `-IncludeWin365` is enabled ([decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)).
 - Assigns Settings Catalog, compliance and Windows 365 policies to the groups from [avd-entra](avd-entra.md).
+- Resolves core host application versions, URIs and hashes (`profiles/apps/core-host-apps.json`) via `Sync-EvergreenApps.ps1` using EUCPilots `Evergreen` and `VcRedist` (system-context, required, device-group targeted), optionally invoked from `Deploy-AvdIntune.ps1 -SyncApps`.
 - `Deploy-AvdIntune.ps1` emits `intune-manifest.json` (`avd-ops-intune-manifest/v1`) and records `created: true|false` per policy ID in `intune-run-manifest.json` (`avd-ops-intune-run-manifest/v1`).
 - `Remove-AvdIntune.ps1 -DiscardLastCopy` deletes only policies created by the run (`created: true` and matching the `[avd-ops-<prefix>-<env>]` stamp), leaving pre-existing brownfield policies untouched and gating teardown behind `-DiscardLastCopy`.
 
