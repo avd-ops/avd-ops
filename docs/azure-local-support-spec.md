@@ -19,9 +19,9 @@ This specification defines how the `avd-ops` family supports **Azure Virtual Des
 3. **Supported OSes, RDP Shortpath, and Connected Machine agent.**
    - Supports Windows 10 and 11 Enterprise multi-session, single-session client, and Windows Server 2019 through 2025 on registered Azure Local 23H2+ instances, with RDP Shortpath and Azure Marketplace images (`avd-azure-local#multisession-and-shortpath`).
    - Session hosts on Azure Local run the **Azure Connected Machine agent** (`Microsoft.HybridCompute/machines`) to reach the Azure Instance Metadata Service (IMDS) endpoint that AVD requires (`avd-azure-local#connected-machine-agent`).
-4. **Identity: AD DS / Entra hybrid join and PowerShell/Bicep-driven native Entra ID join.**
+4. **Identity: native Entra ID join only (via Bicep/ARM/PowerShell, no AD DS in v1).**
    - The Azure portal adds Azure Local session hosts only to AD DS (including Entra hybrid join); native Entra ID join requires PowerShell or another programmatic deployment method (`avd-azure-local#entra-join-outside-portal`).
-   - `avd-azure` / `avd-landing-zone` support both `ADDS` / `EntraHybrid` and `EntraID` (via Bicep/ARM/PowerShell provisioning scripts) and record the chosen join mode in the stage manifest and `C11` facts.
+   - Aligning with `avd-landing-zone`'s cloud-native identity model, v1 supports **native Entra ID join only** (via Bicep/ARM/`Microsoft.HybridCompute/machines/extensions` and PowerShell provisioning scripts) and does not provision or join AD DS / Entra hybrid-joined hosts. `avd-current-state` still detects and reports AD DS / hybrid-joined Azure Local pools in brownfield estates.
 5. **Profile storage: on-premises SMB share instead of Azure Files.**
    - FSLogix profile containers on Azure Local use an **on-premises SMB share** — either a clustered file server on the Azure Local instance or an external SMB share on the same network for larger deployments (`avd-azure-local#local-smb-for-profiles`).
    - When `hostPlacement == "azure-local"`, `avd-azure` skips Azure Files / Azure NetApp Files provisioning for that pool unless explicitly overridden, and `avd-assess` / `avd-current-state` evaluate profile storage against local SMB / NTFS / Kerberos readiness rather than `AADKERB` and Azure Files Private Endpoints.
@@ -79,7 +79,7 @@ No new control-plane repository is required; Azure Local extends existing founda
    - Add an optional `hostPlacement` parameter (`'azure' | 'azure-local'`, default `'azure'`) on the session-host module.
    - When `hostPlacement == 'azure-local'`:
      - Accept `customLocationId`, `logicalNetworkId`, `galleryImageId` (Arc VM image), and `localSmbProfilePath`.
-     - Deploy `Microsoft.AzureStackHCI/virtualMachineInstances` (with `extendedLocation` pointing to `customLocationId`) and install the AVD agent / domain-join or Entra-join extension via `Microsoft.HybridCompute/machines/extensions`.
+     - Deploy `Microsoft.AzureStackHCI/virtualMachineInstances` (with `extendedLocation` pointing to `customLocationId`) and install the AVD agent + native Entra ID join extension (`AADLoginForWindows`) via `Microsoft.HybridCompute/machines/extensions` (or PowerShell provisioning script).
      - Skip Azure VNet session-host subnet, Azure Files / ANF profile storage, and Azure VM Availability Zone resources while keeping the Azure-hosted AVD host pool, application groups, workspace, Log Analytics / AVD Insights, and optional Private Link in Azure.
 2. **`avd-landing-zone` (Orchestrator, Preflight, and Portal):**
    - **Portal (`site/portal/`):** Add a **Host Placement** toggle (`Azure VMs` | `Azure Local (23H2+)`) per host pool. Selecting `Azure Local` reveals inputs for Custom Location ID, Arc Logical Network ID, Arc Gallery Image ID, and Local SMB FSLogix path, and hides Azure VM SKU / Availability Zone / Azure Files SKU pickers for that pool.
@@ -91,7 +91,7 @@ No new control-plane repository is required; Azure Local extends existing founda
 
 ### 3.5 `avd-intune`, `avd-m365`, `avd-linecheck`, `avd-second-brain`, and `avd-swarm`
 
-- **`avd-intune` & `avd-m365`:** Ensure assignment filters (`avd-multisession`, `avd-personal`) and M365 Apps / Teams VDI optimization policies apply cleanly to Arc-connected (`Microsoft.HybridCompute/machines`) Entra-joined and hybrid-joined session hosts.
+- **`avd-intune` & `avd-m365`:** Ensure assignment filters (`avd-multisession`, `avd-personal`) and M365 Apps / Teams VDI optimization policies apply cleanly to Arc-connected (`Microsoft.HybridCompute/machines`) native Entra-joined session hosts.
 - **`avd-linecheck`:** Add an optional local-gateway / RDP Shortpath UDP probe note when testing clients that connect over LAN/WAN to an Azure Local host pool (since data-plane traffic can stay local while brokering goes through Azure).
 - **`avd-second-brain` & `avd-swarm`:** Update reasoning and remediation playbooks so `hostPlacement == "azure-local"` never recommends migrating profiles to Azure Files or adding Azure IaaS VMs to an Azure Local host pool.
 
@@ -112,6 +112,5 @@ No new control-plane repository is required; Azure Local extends existing founda
 
 ## 5. Open Questions
 
-1. **Native Entra ID join automation:** Since the Azure portal only supports AD DS / Entra hybrid join for Azure Local session hosts, should `avd-azure` / `avd-landing-zone` support native Entra ID join in v1 via `Microsoft.HybridCompute/machines/extensions` + PowerShell, or restrict v1 to AD DS / Entra hybrid join and add native Entra ID join in v1.1?
-2. **Dedicated contract `C33` vs. extending `C11`/`C14`:** Should Azure Local VM instance outputs stay inside `avd-azure`'s existing `azure-outputs.json` or get a separate `C33` (`avd-azure-local-outputs/v1`) contract?
-3. **`avd-hcl` timing:** Should `avd-hcl` ship in Phase 3 alongside `avd-azure` Bicep, or follow in a fast-follow PR once the Bicep/AzAPI resource shapes are proven?
+1. **Dedicated contract `C33` vs. extending `C11`/`C14`:** Should Azure Local VM instance outputs stay inside `avd-azure`'s existing `azure-outputs.json` or get a separate `C33` (`avd-azure-local-outputs/v1`) contract?
+2. **`avd-hcl` timing:** Should `avd-hcl` ship in Phase 3 alongside `avd-azure` Bicep, or follow in a fast-follow PR once the Bicep/AzAPI resource shapes are proven?
