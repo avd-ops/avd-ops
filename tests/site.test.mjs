@@ -184,10 +184,10 @@ test('every command block stands alone in Cloud Shell (build/lessons/0015)', () 
   }
 });
 
-test('README and LICENSE keep the research-only notice', () => {
+test('README and LICENSE keep the community research notice', () => {
   assert.match(read('LICENSE'), /^MIT License[\s\S]*PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND/);
   const top = read('README.md').split('\n## ')[0];
-  for (const re of [/Personal project/, /Research and learning only/, /Not for production/, /not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty/, /forks are welcome/]) {
+  for (const re of [/Community research project/, /Use at your own risk/, /not affiliated with, endorsed by or supported by my employer/, /"as is", without warranty/, /forks are welcome/]) {
     assert.match(top, re, `README intro is missing ${re}`);
   }
 });

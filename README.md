@@ -3,10 +3,10 @@
 The front door for the AVD repos, published at **<https://avd-ops.dev/>**: the overview, one page for each public repo (avd-landing-zone, avd-current-state, avd-assess, avd-swarm, avd-second-brain), and the onboarding and user docs for all of them. Each repo stays the source of truth for itself; avd-ops explains how they fit together and links to them ([decision 0002](docs/knowledge/decisions/0002-avd-ops-is-the-front-door.md)).
 
 > [!WARNING]
-> **Personal project. Research and learning only. Not for production. No warranty.**
+> **Community research project. Use at your own risk. No warranty.**
 >
 > - This is my own personal project, built on my own time **for research and learning**. It is **not affiliated with, endorsed by or supported by my employer**, Liquidware or Microsoft, and it does not represent their views, products or guidance.
-> - **Do not run any of it in production** or against subscriptions and tenants that matter. Test it first in a dedicated lab subscription and tenant.
+> - Test it first in a dedicated lab subscription and tenant before using it in production; you are responsible for reviewing the code and validating it for your environment.
 > - It is provided **"as is", without warranty of any kind**, under the [MIT License](LICENSE). You use it at your own risk.
 > - **Contributions and forks are welcome and encouraged.** See [Contributing](#contributing).
 
@@ -38,10 +38,10 @@ Sixteen public repos across five architectural layers, each the source of truth 
 ```text
 docs/knowledge/            # the docs: a knowledge base in the 2ndbrain format, and an Obsidian vault
 site/                      # what GitHub Pages serves
-├── index.html             # the overview
-├── family/<repo>.html     # one page per public repo
-├── docs/                  # generated from docs/knowledge/: start here, concepts, repos, roadmap, decisions, graph
-└── assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css and graph.js for this site
+â”œâ”€â”€ index.html             # the overview
+â”œâ”€â”€ family/<repo>.html     # one page per public repo
+â”œâ”€â”€ docs/                  # generated from docs/knowledge/: start here, concepts, repos, roadmap, decisions, graph
+â””â”€â”€ assets/                # the avd-ops design system: avd-ops.css, fonts/, brand/ (the logo); site.css and graph.js for this site
 docs/family-roles.md       # the family convention: the foundation's three questions, the layer on top, and which way they depend
 docs/build-or-adopt.md     # the family convention: adopt an outside tool only if it's the best and open source, else build
 docs/design-system.md      # tokens, components, logo, and how other repos vendor assets/
@@ -89,4 +89,4 @@ Fork it, open an issue or a pull request. Run `npm ci`, `node --test "tests/*.te
 
 ## License and disclaimer
 
-[MIT](LICENSE). Personal project, not for production, provided as is, not affiliated with the author's employer, Liquidware or Microsoft.
+[MIT](LICENSE). Community research project, provided as is, use at your own risk, not affiliated with the author's employer, Liquidware or Microsoft.
