@@ -71,6 +71,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): proposed
 - [0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export](docs/knowledge/decisions/0020-lza-bicepparam-starter-export.md): accepted
 - [0021. Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`)](docs/knowledge/decisions/0021-euc-score-byo-output-adapter.md): accepted
+- [0022. Define public CUA and external-executor plumbing across the AVD family](docs/knowledge/decisions/0022-cua-external-executor-plumbing.md): proposed
 
 ## Related knowledge bases
 
