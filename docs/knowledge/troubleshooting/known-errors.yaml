@@ -197,3 +197,11 @@ errors:
     applies_to: docs/knowledge/, tests/site.test.mjs
     status: verified
     added: "2026-11-16"
+  - id: azl-nested-d-drive-collision
+    symptom: "`Bootstrap-NestedAzureLocal.ps1` fails on `Standard_E32ds_v5` with `New-Partition : The requested access path is already in use` (`StorageWMI 42002`)."
+    cause: "`d`-series Azure VMs mount Temporary Storage on `D:\\`, colliding with hardcoded `-DriveLetter D`, and `Install-WindowsFeature Hyper-V` requires a reboot before `New-VMSwitch`/`New-VM` can run."
+    fix: "Pick the first unused drive letter (`F`–`Z`) for the `NestedVMs` volume and register a startup scheduled task to finish Hyper-V switch/VM creation after reboot."
+    source: https://github.com/avd-ops/avd-ops/blob/main/labs/azure-local-nested/scripts/Bootstrap-NestedAzureLocal.ps1
+    applies_to: labs/azure-local-nested/scripts/Bootstrap-NestedAzureLocal.ps1
+    status: verified
+    added: "2026-11-17"
