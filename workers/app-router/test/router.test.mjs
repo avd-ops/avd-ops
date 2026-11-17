@@ -23,6 +23,11 @@ test('resolveTarget routes root to hub and portal prefixes to upstreams', () => 
   });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer')), { kind: 'redirect', location: '/customizer/' });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/customizer/')), { kind: 'customizer' });
+  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/assistant')), { kind: 'redirect', location: '/assistant/' });
+  assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/assistant/')), {
+    kind: 'proxy',
+    targetUrl: 'https://avd-ops.github.io/avd-swarm/'
+  });
   assert.deepEqual(resolveTarget(new URL('https://avd-ops.app/unknown')), { kind: 'not_found' });
 });
 

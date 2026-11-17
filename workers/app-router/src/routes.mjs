@@ -46,6 +46,13 @@ export const PORTAL_ROUTES = [
     summary: 'Run the browser-only network reachability, RTT, jitter, and download check.'
   },
   {
+    prefix: '/assistant',
+    upstream: 'https://avd-ops.github.io/avd-swarm',
+    title: 'Assistant',
+    repo: 'avd-swarm',
+    summary: 'Zero-token-first AVD operations assistant with Chief of Staff, Red Team, Guru, and Buddy modes.'
+  },
+  {
     prefix: '/customizer',
     upstream: null,
     title: 'Customizer',
