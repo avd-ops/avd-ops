@@ -1,0 +1,57 @@
+name: 'Board: sync'
+
+# Adds open issues and pull requests from the public family repos to the avd-ops org's project.
+# Only the project changes; no repo is written.
+# Signs in as the board-sync GitHub App: BOARD_APP_ID and BOARD_PROJECT_NUMBER variables and the
+# BOARD_APP_KEY secret; skips without them.
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BOARD_OWNER: avd-ops   # the org that owns the project and installs the app; scripts/board/repos.txt names the repos
+
+concurrency:
+  group: board-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check setup
+        id: setup
+        env:
+          APP_KEY: ${{ secrets.BOARD_APP_KEY }}
+          APP_ID: ${{ vars.BOARD_APP_ID }}
+          PROJECT: ${{ vars.BOARD_PROJECT_NUMBER }}
+        run: |
+          if [ -z "$APP_KEY" ] || [ -z "$APP_ID" ] || [ -z "$PROJECT" ]; then
+            echo '::notice::Board sync is not set up (BOARD_APP_ID, BOARD_APP_KEY or BOARD_PROJECT_NUMBER missing).'
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.setup.outputs.ready == 'true'
+      # A one-hour installation token for the avd-ops org; the app's own permissions cap it.
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2; pinned, it receives the app key
+        id: app
+        if: steps.setup.outputs.ready == 'true'
+        with:
+          app-id: ${{ vars.BOARD_APP_ID }}
+          private-key: ${{ secrets.BOARD_APP_KEY }}
+          owner: ${{ env.BOARD_OWNER }}
+      - name: Sync
+        if: steps.setup.outputs.ready == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          BOARD_PROJECT_NUMBER: ${{ vars.BOARD_PROJECT_NUMBER }}
+        run: ./scripts/board/Sync-ProjectBoard.ps1

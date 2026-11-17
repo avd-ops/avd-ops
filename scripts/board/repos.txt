@@ -1,0 +1,9 @@
+# Public repos in the avd-ops org whose open issues and pull requests go on the org project board.
+# A repo the token can't read is skipped with a warning and fails the run at the end.
+avd-ops/avd-landing-zone
+avd-ops/avd-current-state
+avd-ops/avd-assess
+avd-ops/avd-second-brain
+avd-ops/avd-swarm
+avd-ops/avd-liquidware
+avd-ops/avd-ops
