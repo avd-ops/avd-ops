@@ -34,6 +34,7 @@ It keeps [avd-current-state](avd-current-state.md) strictly control-plane and `R
 
 - Consumes pinned schemas and claims from [avd-assess](avd-assess.md), [avd-current-state](avd-current-state.md) and [avd-second-brain](avd-second-brain.md), and feeds native host-level telemetry into [avd-benchmark](avd-benchmark.md).
 - Bridges `C24` remediation plans directly to [avd-landing-zone](avd-landing-zone.md) (`avd-entra`, `avd-intune`, `avd-m365`, `avd-azure`, `avd-power-platform`) and [avd-swarm](avd-swarm.md), while writing unredacted incident bundles only to an adopter's private companion vault (`--vault`).
+- Unifies its docked assistant protocol, modes, and verdict guardrails with `avd-swarm`'s `avd-assistant` while staying `$0` offline-first locally ([decision 0025](../decisions/0025-unify-remediate-and-swarm-assistants.md)).
 
 ## Read more in the repo
 
