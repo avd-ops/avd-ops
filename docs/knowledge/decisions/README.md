@@ -35,4 +35,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0021](0021-euc-score-byo-output-adapter.md) | Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`) | Accepted |
 | [0022](0022-cua-external-executor-plumbing.md) | Define public CUA and external-executor plumbing across avd-ops | Proposed |
 | [0023](0023-azure-local-support.md) | Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts | Accepted |
+| [0024](0024-nested-azure-local-lab.md) | Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform | Proposed |
 <!-- END GENERATED: decision-index -->
