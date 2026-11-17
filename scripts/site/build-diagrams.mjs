@@ -69,7 +69,7 @@ export const INLINE_SVGS = {
 <rect class="d-top" x="640" y="54" width="220" height="90" rx="8"/>
 <text class="d-name" x="750" y="86" text-anchor="middle">avd-swarm</text>
 <text class="d-sub" x="750" y="106" text-anchor="middle">automates it</text>
-<text class="d-sub" x="750" y="122" text-anchor="middle">gate, kill switch, avd-buddy</text>
+<text class="d-sub" x="750" y="122" text-anchor="middle">gate, kill switch, avd-assistant</text>
 
 <rect class="d-ext" x="940" y="54" width="160" height="90" rx="8"/>
 <text class="d-name" x="1020" y="88" text-anchor="middle">Azure SRE Agent</text>
@@ -364,7 +364,7 @@ const MERMAID_FILES = {
   'avd-logical-control-planes': `flowchart TB
   subgraph Top["Desktop DevOps Intelligence & Gated Automation (Optional)"]
     Brain["avd-second-brain\\nKB, C18 Lifecycle, C9 Plans\\n(Zero Write Credentials)"]
-    Swarm["avd-swarm\\nHuman-Approved Execution,\\nKill Switch, avd-buddy"]
+    Swarm["avd-swarm\\nHuman-Approved Execution,\\nKill Switch, avd-assistant"]
     SRE["Azure SRE Agent\\n(Optional Add-on)"]
   end
 
@@ -511,7 +511,7 @@ const DRAWIO_FILES = {
     [
       { id: 'sources', label: 'Microsoft Sources\n(Learn, WARA, Checklist)', x: 40, y: 40, w: 200, h: 70, style: 'rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;' },
       { id: 'brain', label: 'avd-second-brain\n(KB, C18 Lifecycle, C9 Plans)', x: 320, y: 40, w: 220, h: 70, style: 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;' },
-      { id: 'swarm', label: 'avd-swarm\n(Human Gate, Kill Switch, avd-buddy)', x: 620, y: 40, w: 220, h: 70, style: 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;' },
+      { id: 'swarm', label: 'avd-swarm\n(Human Gate, Kill Switch, avd-assistant)', x: 620, y: 40, w: 220, h: 70, style: 'rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;' },
       { id: 'assess', label: 'avd-assess\n(Method, C19 Intake, C20 Rules)', x: 40, y: 200, w: 200, h: 70 },
       { id: 'cs', label: 'avd-current-state\n(Collector & Validator, C11, C21)', x: 320, y: 200, w: 220, h: 70 },
       { id: 'lz', label: 'avd-landing-zone\n(Portal & Bicep Orchestrator)', x: 620, y: 200, w: 220, h: 70 },

@@ -42,7 +42,7 @@
 <rect class="d-top" x="640" y="54" width="220" height="90" rx="8"/>
 <text class="d-name" x="750" y="86" text-anchor="middle">avd-swarm</text>
 <text class="d-sub" x="750" y="106" text-anchor="middle">automates it</text>
-<text class="d-sub" x="750" y="122" text-anchor="middle">gate, kill switch, avd-buddy</text>
+<text class="d-sub" x="750" y="122" text-anchor="middle">gate, kill switch, avd-assistant</text>
 
 <rect class="d-ext" x="940" y="54" width="160" height="90" rx="8"/>
 <text class="d-name" x="1020" y="88" text-anchor="middle">Azure SRE Agent</text>
