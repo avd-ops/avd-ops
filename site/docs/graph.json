@@ -191,6 +191,13 @@
    "status": "proposed"
   },
   {
+   "id": "decisions/0025-unify-remediate-and-swarm-assistants.md",
+   "title": "0025. Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers",
+   "url": "decisions/0025-unify-remediate-and-swarm-assistants.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -631,6 +638,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0024-nested-azure-local-lab.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0025-unify-remediate-and-swarm-assistants.md"
   },
   {
    "source": "getting-started/README.md",
@@ -1093,6 +1104,10 @@
    "target": "repos/avd-landing-zone.md"
   },
   {
+   "source": "repos/avd-remediate.md",
+   "target": "decisions/0025-unify-remediate-and-swarm-assistants.md"
+  },
+  {
    "source": "repos/avd-second-brain.md",
    "target": "decisions/0012-desktop-devops-for-avd-win365-and-intune.md"
   },
@@ -1119,6 +1134,14 @@
   {
    "source": "repos/avd-swarm.md",
    "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "repos/avd-swarm.md",
+   "target": "repos/avd-remediate.md"
+  },
+  {
+   "source": "repos/avd-swarm.md",
+   "target": "decisions/0025-unify-remediate-and-swarm-assistants.md"
   },
   {
    "source": "roadmap/README.md",

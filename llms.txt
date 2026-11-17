@@ -74,6 +74,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0022. Define public CUA and external-executor plumbing across avd-ops](docs/knowledge/decisions/0022-cua-external-executor-plumbing.md): proposed
 - [0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts](docs/knowledge/decisions/0023-azure-local-support.md): accepted
 - [0024. Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform](docs/knowledge/decisions/0024-nested-azure-local-lab.md): proposed
+- [0025. Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers](docs/knowledge/decisions/0025-unify-remediate-and-swarm-assistants.md): accepted
 
 ## Related knowledge bases
 

@@ -36,6 +36,7 @@ It only knows what the brain cites, and checks live state again before any chang
 
 - Gets estate facts across AVD, Windows 365 and Intune only from [avd-second-brain](avd-second-brain.md), as cited C11 and C12 evidence, and re-reads live state before any change.
 - Changes together with avd-second-brain (decision 0003 and [decision 0012](../decisions/0012-desktop-devops-for-avd-win365-and-intune.md)).
+- Shares `avd-assistant`'s 4-stage router, modes, and `Guru` playbook summaries with [avd-remediate](avd-remediate.md) ([decision 0025](../decisions/0025-unify-remediate-and-swarm-assistants.md)).
 
 ## Read more in the repo
 
