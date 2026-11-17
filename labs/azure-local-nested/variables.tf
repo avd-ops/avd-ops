@@ -220,6 +220,48 @@ variable "run_bootstrap" {
   default     = false
 }
 
+variable "hci_os_image_url" {
+  description = "Optional HTTPS/SAS URL to an Azure Stack HCI 23H2+ VHDX or ISO for hands-off nested VM provisioning."
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = var.hci_os_image_url == "" || can(regex("^https://", var.hci_os_image_url))
+    error_message = "hci_os_image_url must be empty or an https:// URL."
+  }
+}
+
+variable "nested_node_ip" {
+  description = "Static IPv4 address assigned to the nested Azure Local node inside the NAT subnet."
+  type        = string
+  default     = "192.168.100.10"
+}
+
+variable "arc_sp_app_id" {
+  description = "Optional Microsoft Entra Service Principal application ID for unattended azcmagent Arc registration."
+  type        = string
+  default     = ""
+}
+
+variable "arc_sp_secret" {
+  description = "Optional Microsoft Entra Service Principal secret for unattended azcmagent Arc registration."
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "arc_tenant_id" {
+  description = "Optional Microsoft Entra tenant ID for unattended azcmagent Arc registration (defaults to current client tenant)."
+  type        = string
+  default     = ""
+}
+
+variable "deploy_hci_cluster" {
+  description = "Declaratively create the Microsoft.AzureStackHCI/clusters resource in the lab resource group for hands-off cloud deployment."
+  type        = bool
+  default     = false
+}
+
 variable "tags" {
   description = "Additional tags merged onto all lab resources."
   type        = map(string)

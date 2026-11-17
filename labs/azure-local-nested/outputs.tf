@@ -38,6 +38,11 @@ output "expires_at" {
   value       = local.common_tags["expires_at"]
 }
 
+output "hci_cluster_id" {
+  description = "Resource ID of the Azure Local cluster resource when deploy_hci_cluster is true; null otherwise."
+  value       = var.deploy_hci_cluster ? azapi_resource.hci_cluster[0].id : null
+}
+
 output "env_exports" {
   description = "Shell export commands for avd-sandbox items 30 and 31."
   value = join("\n", compact([

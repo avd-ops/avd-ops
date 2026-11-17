@@ -205,3 +205,11 @@ errors:
     applies_to: labs/azure-local-nested/scripts/Bootstrap-NestedAzureLocal.ps1
     status: verified
     added: "2026-11-17"
+  - id: azl-nested-handsoff-unattend-and-arc
+    symptom: "Nested Azure Local lab requires manual ISO attachment, OOBE setup, and interactive `azcmagent connect` device login."
+    cause: "Stage 1 only created a blank Hyper-V VM shell without OS media injection, Unattend.xml, or PowerShell Direct Arc onboarding."
+    fix: "Support optional `hci_os_image_url` (VHDX with injected `Unattend.xml` or ISO), PowerShell Direct `azcmagent connect` with `protected_parameter` SP credentials, and `deploy_hci_cluster` in `labs/azure-local-nested`."
+    source: https://github.com/avd-ops/avd-ops/blob/main/labs/azure-local-nested/scripts/Bootstrap-NestedAzureLocal.ps1
+    applies_to: labs/azure-local-nested/
+    status: verified
+    added: "2026-11-17"
