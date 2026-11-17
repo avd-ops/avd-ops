@@ -64,7 +64,7 @@ Links, open questions and what changed later.
 <!-- more -->
 
 - [Design system](../../design-system.md) has the tokens, components, files and the copy steps.
-- The switcher leaves out avd-buddy until the app exists (owner, 2026-10-21).
+- The switcher leaves out avd-buddy (renamed to `avd-assistant` on 2026-11-17) until the app is published (owner, 2026-10-21).
 - The footer carries the owner's credit line, "A prignano.ai production" (owner, 2026-10-21).
 - Design system 2.3.0 (owner, 2026-10-21): the notice moved into the brand bar as a pill that opens
   to the full text under the bar, because a row of its own took too much space. The full text still

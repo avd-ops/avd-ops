@@ -9,7 +9,7 @@
         <mxCell id="brain" value="avd-second-brain
 (KB, C18 Lifecycle, C9 Plans)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f2ef;strokeColor=#0b7a6e;fontStyle=1;fontFamily=IBM Plex Mono;" vertex="1" parent="1"><mxGeometry x="320" y="40" width="220" height="70" as="geometry"/></mxCell>
         <mxCell id="swarm" value="avd-swarm
-(Human Gate, Kill Switch, avd-buddy)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f2ef;strokeColor=#0b7a6e;fontStyle=1;fontFamily=IBM Plex Mono;" vertex="1" parent="1"><mxGeometry x="620" y="40" width="220" height="70" as="geometry"/></mxCell>
+(Human Gate, Kill Switch, avd-assistant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f2ef;strokeColor=#0b7a6e;fontStyle=1;fontFamily=IBM Plex Mono;" vertex="1" parent="1"><mxGeometry x="620" y="40" width="220" height="70" as="geometry"/></mxCell>
         <mxCell id="assess" value="avd-assess
 (Method, C19 Intake, C20 Rules)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f2ef;strokeColor=#0b7a6e;fontStyle=1;fontFamily=IBM Plex Mono;" vertex="1" parent="1"><mxGeometry x="40" y="200" width="200" height="70" as="geometry"/></mxCell>
         <mxCell id="cs" value="avd-current-state
