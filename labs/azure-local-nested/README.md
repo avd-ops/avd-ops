@@ -41,6 +41,16 @@ terraform apply -var="location=centralus" -var="prefix=azl23h2" -var="run_bootst
 
 Attach the Azure Stack HCI 23H2+ ISO/VHDX to the `azl-node01` nested VM, complete OS installation, register with Azure Arc (`azcmagent`), and deploy the single-node Azure Local cluster + Arc Resource Bridge (`<prefix>-cl`).
 
+#### Hands-Off Mode (Zero ClickOps)
+
+Pass `hci_os_image_url` (HTTPS/SAS URL to a sysprepped Azure Stack HCI 23H2+ VHDX or ISO), `arc_sp_app_id`, `arc_sp_secret`, and `deploy_hci_cluster = true` to stage `Unattend.xml`, boot `azl-node01`, run `azcmagent connect` over PowerShell Direct, and provision the `Microsoft.AzureStackHCI/clusters` resource without manual GUI steps:
+
+```bash
+terraform apply -var="location=centralus" -var="prefix=azl23h2" -var="run_bootstrap=true" \
+  -var="hci_os_image_url=https://..." -var="arc_sp_app_id=..." -var="arc_sp_secret=..." \
+  -var="deploy_hci_cluster=true"
+```
+
 ### Stage 2: Provision Arc Logical Network & Gallery Image and Export BYO Inputs
 
 ```bash

@@ -1,4 +1,10 @@
 mock_provider "azurerm" {
+  mock_data "azurerm_client_config" {
+    defaults = {
+      subscription_id = "00000000-0000-0000-0000-000000000000"
+      tenant_id       = "00000000-0000-0000-0000-000000000000"
+    }
+  }
   mock_resource "azurerm_resource_group" {
     defaults = {
       id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-azl23h2-azl-lab"
@@ -161,5 +167,31 @@ run "rejects_wildcard_rdp_cidr" {
 
   expect_failures = [
     var.allowed_rdp_cidr,
+  ]
+}
+
+run "handsoff_cluster_and_https_image_url" {
+  command = apply
+
+  variables {
+    deploy_hci_cluster = true
+    hci_os_image_url   = "https://example.invalid/azl23h2.vhdx"
+  }
+
+  assert {
+    condition     = length(azapi_resource.hci_cluster) == 1 && output.hci_cluster_id != null
+    error_message = "deploy_hci_cluster = true must create the Microsoft.AzureStackHCI/clusters resource."
+  }
+}
+
+run "rejects_non_https_hci_os_image_url" {
+  command = plan
+
+  variables {
+    hci_os_image_url = "http://example.invalid/azl23h2.vhdx"
+  }
+
+  expect_failures = [
+    var.hci_os_image_url,
   ]
 }

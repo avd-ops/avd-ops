@@ -45,6 +45,8 @@ locals {
   )
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "time_static" "created" {}
 
 resource "random_password" "host_admin" {
@@ -244,7 +246,74 @@ resource "azurerm_virtual_machine_run_command" "bootstrap" {
     value = var.smb_share_name
   }
 
+  parameter {
+    name  = "HciOsImageUrl"
+    value = var.hci_os_image_url
+  }
+
+  parameter {
+    name  = "NestedNodeIp"
+    value = var.nested_node_ip
+  }
+
+  parameter {
+    name  = "ArcTenantId"
+    value = var.arc_tenant_id != "" ? var.arc_tenant_id : (var.tenant_id != "" ? var.tenant_id : data.azurerm_client_config.current.tenant_id)
+  }
+
+  parameter {
+    name  = "ArcSubscriptionId"
+    value = var.subscription_id != "" ? var.subscription_id : data.azurerm_client_config.current.subscription_id
+  }
+
+  parameter {
+    name  = "ResourceGroupName"
+    value = azurerm_resource_group.lab.name
+  }
+
+  parameter {
+    name  = "Location"
+    value = azurerm_resource_group.lab.location
+  }
+
+  protected_parameter {
+    name  = "NestedAdminPassword"
+    value = local.effective_admin_password
+  }
+
+  protected_parameter {
+    name  = "ArcSpAppId"
+    value = var.arc_sp_app_id
+  }
+
+  protected_parameter {
+    name  = "ArcSpSecret"
+    value = var.arc_sp_secret
+  }
+
   depends_on = [azurerm_virtual_machine_data_disk_attachment.s2d_data]
+}
+
+resource "azapi_resource" "hci_cluster" {
+  count     = var.deploy_hci_cluster ? 1 : 0
+  type      = "Microsoft.AzureStackHCI/clusters@2024-04-01"
+  name      = "${var.prefix}-cluster"
+  parent_id = azurerm_resource_group.lab.id
+  location  = azurerm_resource_group.lab.location
+  tags      = local.common_tags
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  body = {
+    properties = {
+      desiredProperties = {
+        windowsServerSubscription = "Disabled"
+        diagnosticLevel           = "Basic"
+      }
+    }
+  }
 }
 
 resource "azapi_resource" "logical_network" {
