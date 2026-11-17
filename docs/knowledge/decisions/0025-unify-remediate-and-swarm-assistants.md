@@ -6,7 +6,7 @@ decision-makers: [owner]
 
 # 0025. Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers
 
-`avd-remediate` adopts `avd-assistant`'s 4-stage deterministic-first router, modes, and brand while staying `$0` offline-first locally, and `avd-swarm`'s `Guru` mode indexes `avd-remediate` playbook summaries without hosting or executing local probes.
+`avd-remediate` adopts `avd-assistant`'s 4-stage router, modes, and brand offline-first, while `avd-swarm`'s `Guru` mode indexes playbook summaries.
 
 ## Context and Problem Statement
 
