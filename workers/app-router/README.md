@@ -14,6 +14,7 @@ Routes `https://avd-ops.app/` as the unified public demo hub on static Contoso s
 | `/status/*` | `https://avd-ops.github.io/avd-current-state/status/*` |
 | `/benchmark/*` | `https://avd-ops.github.io/avd-benchmark/portal/*` |
 | `/linecheck/*` | `https://avd-ops.github.io/avd-linecheck/*` |
+| `/assistant/*` | `https://avd-ops.github.io/avd-swarm/*` |
 
 ## Test and deploy
 
