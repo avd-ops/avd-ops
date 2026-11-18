@@ -33,6 +33,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-hcl.md](repos/avd-hcl.md) | Enterprise IaC: native Azure Virtual Desktop deployed and operated with Terraform and Packer | verified |
 | [repos/avd-intune.md](repos/avd-intune.md) | Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning | verified |
 | [repos/avd-landing-zone.md](repos/avd-landing-zone.md) | How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link | verified |
+| [repos/avd-learn.md](repos/avd-learn.md) | Ground-up AVD foundations dataset, CLI and installable PWA mapped to AZ-104 and AZ-140 | verified |
 | [repos/avd-linecheck.md](repos/avd-linecheck.md) | End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in | verified |
 | [repos/avd-m365.md](repos/avd-m365.md) | Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines | verified |
 | [repos/avd-migrate.md](repos/avd-migrate.md) | Single-pool target-state baseline designer and C14 manifest writer: turns C11 facts, C19 intake and optional C27 measured usage into a single pooled desktop pool for avd-landing-zone | verified |

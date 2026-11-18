@@ -8,7 +8,7 @@ last_reviewed: 2026-11-11
 
 # The repos
 
-Sixteen public repos across five architectural layers, each the source of truth for itself. Pick one to see where it fits.
+Seventeen public repos across five architectural layers, each the source of truth for itself. Pick one to see where it fits.
 
 ## Assess and plan {#layer-assess}
 
@@ -20,6 +20,7 @@ What is there now, what it should be, and what moves.
 | [avd-assess](avd-assess.md) | What it should be, and why | Pre-beta | — |
 | [avd-migrate](avd-migrate.md) | Single-pool target-state baseline designer and manifest writer | Pre-beta | [avd-ops.app/migrate](https://avd-ops.app/migrate/) |
 | [avd-benchmark](avd-benchmark.md) | Active Tier 1 benchmark harness and interactive explorer | Pre-beta | [avd-ops.app/benchmark](https://avd-ops.app/benchmark/) |
+| [avd-learn](avd-learn.md) | Ground-up AVD foundations dataset, CLI and installable PWA mapped to AZ-104 and AZ-140 | Pre-beta | [avd-ops.github.io/avd-learn/site](https://avd-ops.github.io/avd-learn/site/) |
 
 ## Build and change {#layer-build}
 

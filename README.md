@@ -21,6 +21,7 @@ Sixteen public repos across five architectural layers, each the source of truth 
 | Assess | [avd-assess](https://github.com/avd-ops/avd-assess#readme) | Foundation: what it should be | [page](docs/knowledge/repos/avd-assess.md) |
 | Assess | [avd-migrate](https://github.com/avd-ops/avd-migrate#readme) | Single-pool target-state baseline designer and manifest writer | [page](docs/knowledge/repos/avd-migrate.md) |
 | Assess | [avd-benchmark](https://github.com/avd-ops/avd-benchmark#readme) | Active Tier 1 benchmark harness and interactive explorer | [page](docs/knowledge/repos/avd-benchmark.md) |
+| Assess | [avd-learn](https://github.com/avd-ops/avd-learn#readme) | Ground-up AVD foundations dataset, CLI and installable PWA mapped to AZ-104 and AZ-140 | [page](docs/knowledge/repos/avd-learn.md) |
 | Build | [avd-landing-zone](https://github.com/avd-ops/avd-landing-zone#readme) | How it's built and changed from here: orchestrator and portal | [page](docs/knowledge/repos/avd-landing-zone.md) |
 | Build | [avd-hcl](https://github.com/avd-ops/avd-hcl#readme) | Enterprise IaC: native AVD with Terraform and Packer | [page](docs/knowledge/repos/avd-hcl.md) |
 | Control | [avd-entra](https://github.com/avd-ops/avd-entra#readme) | Control plane: Entra ID identity, groups and Conditional Access | [page](docs/knowledge/repos/avd-entra.md) |
