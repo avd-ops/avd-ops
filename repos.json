@@ -157,6 +157,16 @@
       "portal": "https://avd-ops.app/linecheck/"
     },
     {
+      "name": "avd-learn",
+      "repo": "avd-ops/avd-learn",
+      "branch": "main",
+      "maturity": "pre-beta",
+      "layer": "assess",
+      "role": "Ground-up AVD foundations dataset, CLI and installable PWA mapped to AZ-104 and AZ-140",
+      "docs": "docs/knowledge/repos/avd-learn.md",
+      "portal": "https://avd-ops.github.io/avd-learn/site/"
+    },
+    {
       "name": "avd-ops",
       "repo": "avd-ops/avd-ops",
       "branch": "main",
