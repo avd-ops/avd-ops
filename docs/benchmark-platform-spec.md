@@ -199,7 +199,7 @@ To keep `avd-ops.dev/standards/` focused on paper-like reading and citation whil
 
 ### 5.1 Interactive Benchmark Explorer & Runner Portal (`avd-benchmark` GitHub Pages)
 
-Just as `avd-landing-zone` hosts the Deployment Portal (`deploy.avd-ops.dev/portal/`), `avd-current-state` hosts the Assessment Portal, and `avd-linecheck` hosts the Linecheck Portal (`linecheck.avd-ops.dev/`), **`avd-benchmark` hosts the Benchmark Portal** using the vendored `avd-ops` design system (`avd-ops.css`, `avd-ops-shell.css`, `avd-ops-portal.css`, `theme.js`):
+Just as `avd-landing-zone` hosts the Deployment Portal (`avd-ops.app/deploy/`), `avd-current-state` hosts the Assessment Portal, and `avd-linecheck` hosts the Linecheck Portal (`avd-ops.app/linecheck/`), **`avd-benchmark` hosts the Benchmark Portal** using the vendored `avd-ops` design system (`avd-ops.css`, `avd-ops-shell.css`, `avd-ops-portal.css`, `theme.js`):
 
 1. **Compare Tab (OpenBenchmarking Explorer):**
    - Reads the pinned `benchmarks/corpus.json` and `benchmarks/profiles.yaml` from `avd-assess` (static JSON, zero runtime backend).
