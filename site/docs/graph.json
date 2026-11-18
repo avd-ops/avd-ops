@@ -205,6 +205,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "title": "0027. Separate helpdesk simulator kit and normalized ticket-adapter boundary",
+   "url": "decisions/0027-helpdesk-simulator-and-ticket-adapter.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/0027-open-source-rpa-workload-engine.md",
    "title": "0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark",
    "url": "decisions/0027-open-source-rpa-workload-engine.html",
@@ -573,6 +580,30 @@
    "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
   },
   {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "repos/avd-remediate.md"
+  },
+  {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "repos/avd-linecheck.md"
+  },
+  {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "repos/avd-power-platform.md"
+  },
+  {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "repos/avd-swarm.md"
+  },
+  {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "decisions/0025-unify-remediate-and-swarm-assistants.md"
+  },
+  {
+   "source": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md",
+   "target": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md"
+  },
+  {
    "source": "decisions/0027-open-source-rpa-workload-engine.md",
    "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
   },
@@ -687,6 +718,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0027-helpdesk-simulator-and-ticket-adapter.md"
   },
   {
    "source": "decisions/README.md",
