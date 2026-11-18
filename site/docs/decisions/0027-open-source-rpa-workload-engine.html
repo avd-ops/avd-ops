@@ -33,23 +33,25 @@
 <nav class="sc-steps" aria-label="On this page"><ol><li><a href="#0027-adopt-flaui-net-framework-48-for-open-source-rpa-workloads-in-avd-benchmark" title="0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark"><span class="n">1</span><span class="t">0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark</span></a></li><li><a href="#context-and-problem-statement" title="Context and Problem Statement"><span class="n">2</span><span class="t">Context and Problem Statement</span></a></li><li><a href="#considered-options" title="Considered Options"><span class="n">3</span><span class="t">Considered Options</span></a></li><li><a href="#decision-outcome" title="Decision Outcome"><span class="n">4</span><span class="t">Decision Outcome</span></a></li><li><a href="#more-information" title="More Information"><span class="n">5</span><span class="t">More Information</span></a></li></ol></nav>
 <section class="screen" id="0027-adopt-flaui-net-framework-48-for-open-source-rpa-workloads-in-avd-benchmark">
 <h1 tabindex="-1">0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark</h1>
-<p class="bl"><code>avd-benchmark</code> adopts MIT-licensed FlaUI (<code>FlaUI.UIA3</code> targeting in-box <code>.NET Framework 4.8</code>) for deterministic in-session GUI workloads under a dedicated <code>rpa-ui-responsiveness</code> <code>C25</code> profile.</p>
+<p class="bl"><code>avd-benchmark</code> adopts MIT-licensed FlaUI (<code>net48</code>) under the <code>in-session-uia</code> category token for sandboxed <code>rpa-ui-responsiveness</code> <code>C25</code> benchmarks.</p>
 </section>
 <section class="screen" id="context-and-problem-statement">
 <h2 tabindex="-1">Context and Problem Statement</h2>
 <p class="bl">How should <code>avd-benchmark</code> simulate interactive Windows desktop UI workloads without proprietary VDI load-testing tools or golden-image bloat?</p>
 
 <details class="more"><summary>More</summary>
-<p><code>avd-benchmark</code> currently uses native PowerShell background worker processes for <code>multisession-density</code> (<a href="0011-avd-benchmark-and-assess-corpus.html">decision 0011</a>) and optionally ingests host-side PerfMon CSVs from EUC Score (<a href="0021-euc-score-byo-output-adapter.html">decision 0021</a>). Background workers do not exercise real desktop window creation or UI Automation trees, while EUC Score&#39;s Community terms restrict commercial and &gt;50-user environments. What open-source GUI/RPA engine should <code>avd-benchmark</code> adopt for native, zero-EULA-restriction UI responsiveness benchmarking, and how does it fit <code>C25</code>?</p>
+<p><code>avd-benchmark</code> currently uses native PowerShell background worker processes for <code>multisession-density</code> (<a href="0011-avd-benchmark-and-assess-corpus.html">decision 0011</a>) and optionally ingests host-side PerfMon CSVs from EUC Score (<a href="0021-euc-score-byo-output-adapter.html">decision 0021</a>). Background workers do not exercise real desktop window creation or UI Automation trees, while EUC Score&#39;s Community terms restrict commercial and &gt;50-user environments. Running <code>python3 scripts/kb/prior_art.py &quot;open source rpa workload benchmark&quot;</code> found no existing family KB entry. What open-source GUI/RPA engine should <code>avd-benchmark</code> adopt for native, zero-EULA-restriction UI responsiveness benchmarking, and how should it fit <code>C25</code>?</p>
 </details>
 </section>
 <section class="screen" id="considered-options">
 <h2 tabindex="-1">Considered Options</h2>
-<p class="bl">Four options were weighed.</p>
+<p class="bl">Six options were weighed.</p>
 <ul>
-<li><strong>Adopt FlaUI (<code>FlaUI.UIA3</code>, MIT) targeting in-box <code>.NET Framework 4.8</code> (<code>net48</code>)</strong> as a SHA-256-verified worker binary orchestrated by Windows PowerShell 5.1 under a dedicated <code>rpa-ui-responsiveness</code> <code>C25</code> profile</li>
-<li><strong>Adopt pywinauto (BSD-3-Clause) or Robot Framework + <code>RPA.Windows</code> (Apache-2.0)</strong>, requiring Python and pip dependencies on every session host</li>
+<li><strong>Adopt FlaUI (<code>FlaUI.UIA3</code>, MIT) targeting in-box <code>.NET Framework 4.8</code> (<code>net48</code>)</strong> as a NuGet-locked, CI-attested, SHA-256-verified multi-file bundle orchestrated by Windows PowerShell 5.1 against a self-contained open-source Win32/WPF fixture app in <code>SandboxBatch</code> mode, using category token <code>in-session-uia</code> in <code>C25</code> and keeping FlaUI attribution in <code>credits.json</code> and <code>avd-assess</code> references</li>
+<li><strong>Use in-box <code>.NET Framework</code> <code>UIAutomationClient</code> directly from Windows PowerShell 5.1</strong> with zero external binaries, requiring custom COM retry/pattern and tree-walking wrappers</li>
+<li><strong>Build our own custom UIA COM wrapper</strong> from scratch instead of adopting FlaUI</li>
 <li><strong>Adopt Playwright (Apache-2.0)</strong> on guest session hosts, requiring <code>150–300 MB</code> runtime browser downloads incompatible with <code>defaultOutboundAccess: false</code></li>
+<li><strong>Adopt pywinauto (BSD-3-Clause) or Robot Framework + <code>RPA.Windows</code> (Apache-2.0)</strong>, requiring Python and pip dependencies on every session host</li>
 <li><strong>Adopt AutoIt or SikuliX</strong> using pixel/coordinate matching, which is closed-source (AutoIt) or breaks across DPI and codec scaling</li>
 </ul>
 </section>
@@ -58,22 +60,22 @@
 <p class="bl">Chosen option: <strong>&quot;Adopt FlaUI (<code>FlaUI.UIA3</code>, MIT) targeting in-box <code>.NET Framework 4.8</code> (<code>net48</code>)&quot;</strong>.</p>
 
 <details class="more"><summary>More</summary>
-<p>Why: FlaUI uses Microsoft UI Automation (<code>UIA3</code>) semantic locators (<code>AutomationId</code>, <code>Name</code>, <code>ControlType</code>) that survive DPI and resolution changes, targets the <code>.NET Framework 4.8</code> runtime already present on Windows 11 24H2 AVD images without installing Python or PowerShell 7, and carries a clean MIT license under <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/build-or-adopt.md">build or adopt</a>.</p>
+<p>Why: FlaUI uses Microsoft UI Automation (<code>UIA3</code>) semantic locators (<code>AutomationId</code>, <code>Name</code>, <code>ControlType</code>) that survive DPI and resolution changes, targets the <code>.NET Framework 4.8</code> runtime already present on Windows 11 24H2 AVD images without installing Python or PowerShell 7, avoids writing and maintaining custom raw COM UIA wrappers, and carries a clean MIT license under <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/build-or-adopt.md">build or adopt</a>.</p>
 <h3 id="consequences">Consequences</h3>
 <ul>
-<li>Good, because session hosts stay clean (no Python, Java, or Playwright binary downloads) and <code>rpa-ui-responsiveness</code> results never contaminate <code>multisession-density</code> baselines in <code>avd-assess/benchmarks/corpus.json</code>.</li>
-<li>Good, because all <code>C25</code> extensions (<code>appLaunchMs</code>, <code>windowReadyMs</code>, <code>actionLatencyMs</code>, <code>saveCloseMs</code>, <code>stepSuccessRatePct</code>, and <code>extensions.rpa</code>) are backward-compatible additions to <code>avd-benchmark-result/v1</code>.</li>
-<li>Bad, because Windows UIA requires actively connected, unlocked RDP/AVD sessions from an external driver VM (<code>RemoteDesktop_SuppressWhenMinimized=2</code>), Windows Job Object watchdogs to bound hung cross-process COM RPC calls, and explicit <code>startVmOnConnect</code> / <code>avd-benchmark-pool=true</code> spend and blast-radius gates.</li>
+<li>Good, because session hosts stay clean (no Python, Java, or Playwright binary downloads), <code>rpa-ui-responsiveness</code> results never mix into <code>multisession-density</code> in <code>avd-benchmark/site/portal/corpus.json</code>, and <code>C25</code> stays category-named (<code>in-session-uia</code>) without needing a naming exception like <a href="0021-euc-score-byo-output-adapter.html">decision 0021</a>.</li>
+<li>Good, because <code>C25</code> additions (<code>appLaunchMs</code>, <code>windowReadyMs</code>, <code>actionLatencyMs</code>, <code>saveCloseMs</code>, <code>stepSuccessRatePct</code>, <code>stepTimeoutRatePct</code>, <code>extensions.rpa</code>, and <code>source: &quot;fixture&quot;</code>) are additive for old records while keeping <code>avd-assess</code> in charge of profile and persona step definitions.</li>
+<li>Bad, because new <code>rpa-ui-responsiveness</code> records require a coordinated re-pin of all four <code>C25</code> consumers (<code>avd-assess</code>, <code>avd-benchmark</code>, <code>avd-current-state</code>, <code>avd-second-brain</code>) before emission, and v1 requires <code>SandboxBatch</code> mode with an external Windows driver VM, Key Vault-backed batch test accounts, Job Object watchdogs, and a pre-flight lab run.</li>
 </ul>
 </details>
 </section>
 <section class="screen" id="more-information">
 <h2 tabindex="-1">More Information</h2>
-<p class="bl">Related architecture, red-team review, and CUA boundaries.</p>
+<p class="bl">Related architecture, Fable red-team review, and CUA boundaries.</p>
 
 <details class="more"><summary>More</summary>
 <ul>
-<li>Full architecture, Windows 11 24H2 session mechanics, and the 11-finding Fable red-team review: <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/rpa-workload-spec.md">docs/rpa-workload-spec.md</a>.</li>
+<li>Full architecture, driver VM, identity/secrets, Job Object containment, and the 18-finding Fable red-team review: <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/rpa-workload-spec.md">docs/rpa-workload-spec.md</a>.</li>
 <li>Companion CUA governance boundary: <a href="0022-cua-external-executor-plumbing.html">decision 0022</a>.</li>
 </ul>
 </details>
