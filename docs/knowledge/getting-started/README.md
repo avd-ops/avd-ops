@@ -30,8 +30,9 @@ Pick the row that matches what you want to do, and open that repo.
 | You want to | Start with | Then |
 |---|---|---|
 | See what an existing AVD environment holds, read-only | [avd-current-state](../repos/avd-current-state.md) | Feed its redacted facts to [avd-second-brain](../repos/avd-second-brain.md) |
-| Deploy a new, cloud-native AVD landing zone | [avd-landing-zone](../repos/avd-landing-zone.md) | Check it with [avd-current-state](../repos/avd-current-state.md)'s validator |
-| Run the estate through agents a person approves | [avd-swarm](../repos/avd-swarm.md) | Design and spike stage today |
+| Deploy and validate a dev AVD landing zone | [Lab walkthrough](lab-walkthrough.md) | Store history in an [estate vault](estate-vault.md) |
+| Stand up a private estate vault and harvest runbooks | [Estate vault walkthrough](estate-vault.md) | Troubleshoot with [avd-remediate and avd-swarm](remediate-and-swarm.md) |
+| Troubleshoot or run agents in a lab | [avd-remediate and avd-swarm](remediate-and-swarm.md) | [avd-swarm](../repos/avd-swarm.md) design and spike docs |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
 New to the vocabulary? Read [concepts](../concepts/README.md) first. Setting up a multi-subscription or cross-tenant lab? Follow the [multi-tenant lab bootstrap](multi-tenant-lab-bootstrap.md).

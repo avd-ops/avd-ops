@@ -241,6 +241,13 @@
    "status": "verified"
   },
   {
+   "id": "getting-started/estate-vault.md",
+   "title": "Stand up and use an estate vault",
+   "url": "getting-started/estate-vault.html",
+   "topic": "getting-started",
+   "status": "unverified"
+  },
+  {
    "id": "getting-started/lab-walkthrough.md",
    "title": "Lab walkthrough: empty subscription to validated landing zone",
    "url": "getting-started/lab-walkthrough.html",
@@ -253,6 +260,13 @@
    "url": "getting-started/multi-tenant-lab-bootstrap.html",
    "topic": "getting-started",
    "status": "plan"
+  },
+  {
+   "id": "getting-started/remediate-and-swarm.md",
+   "title": "Stand up avd-remediate and avd-swarm in a lab",
+   "url": "getting-started/remediate-and-swarm.html",
+   "topic": "getting-started",
+   "status": "unverified"
   },
   {
    "id": "repos/README.md",
@@ -741,7 +755,15 @@
   },
   {
    "source": "getting-started/README.md",
-   "target": "repos/avd-landing-zone.md"
+   "target": "getting-started/lab-walkthrough.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/estate-vault.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/remediate-and-swarm.md"
   },
   {
    "source": "getting-started/README.md",
@@ -770,6 +792,18 @@
   {
    "source": "getting-started/cloud-shell.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/estate-vault.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/estate-vault.md",
+   "target": "repos/avd-second-brain.md"
+  },
+  {
+   "source": "getting-started/estate-vault.md",
+   "target": "getting-started/cloud-shell.md"
   },
   {
    "source": "getting-started/lab-walkthrough.md",
