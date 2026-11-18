@@ -44,3 +44,12 @@ Canonical portal URLs and the Cloudflare Worker router live in this repository.
 
 - [repos.json](../../../repos.json) defines the canonical portal URLs (`https://avd-ops.app/...`) consumed by `scripts/site/shell.mjs`.
 - `workers/app-router/` contains the Cloudflare Worker source, `wrangler.jsonc`, and unit tests.
+
+## Implementation Lessons
+
+Completing the move across all seven proxied portals surfaced four operational requirements:
+
+- **Routing is only half the move:** Upstream portals keep their own hardcoded `<nav class="switcher">`, in-page cross-links (`linecheck`, `assistant`), and hostname checks (`avd-swarm`'s `buddy/app/app.js` static simulation gate). Each repo's portal HTML and scripts must be updated alongside `workers/app-router/` so navigation does not bounce back to retired `*.avd-ops.dev` subdomains or `avd-ops.github.io`.
+- **Every proxied repo needs GitHub Pages enabled and a `pages.yml` workflow:** Adding a route to `workers/app-router/src/routes.mjs` returns a GitHub Pages `404` (`avd-migrate`, `avd-benchmark`) until the upstream repo enables Pages (`build_type=workflow`) and publishes `site/` via `.github/workflows/pages.yml`.
+- **Deleting `site/CNAME` does not clear GitHub Pages `cname`:** Actions-based Pages deployments store the custom domain in repository settings (`PUT /repos/{owner}/{repo}/pages` with `cname=""`), so `avd-ops.github.io/...` continues 301-redirecting to the old subdomain until cleared via the Pages API and removed from Cloudflare DNS.
+- **Audit shell parity across every portal together:** Comparing all portals against `scripts/site/shell.mjs` in one pass caught missing switcher tabs (`Migrate` and `Status` on `deploy`; `Migrate` on `assess` and `status`), a missing `<header class="bar">` (`migrate`), and duplicate `.warn` banners below the header (`status`, `migrate`).
