@@ -8,9 +8,11 @@ last_reviewed: 2026-11-15
 
 # Multi-tenant and multi-subscription lab bootstrap
 
-Set up the 4-subscription ALZ hub-and-spoke lab and secondary T2T Entra ID tenant at \$0/mo idle cost, separating Portal steps from Terraform automation.
+Set up a single-tenant or 4-subscription ALZ hub-and-spoke lab (with an optional secondary T2T Entra ID tenant) at \$0/mo idle cost, separating Portal steps from Terraform automation.
 
 <!-- more -->
+
+> **Single-tenant default:** All of `avd-ops` deploys into a **single Azure / Entra ID tenant** (and can start in a single subscription). The secondary Entra tenant (`t2t-lab`) below is **optional**—only needed if you are testing cross-tenant (T2T), Azure Lighthouse, or cross-tenant Private Link boundaries.
 
 This runbook implements [decision 0019](../decisions/0019-multi-subscription-multi-tenant-lab-topology.md). It uses Terraform ([avd-hcl](../repos/avd-hcl.md)) as the primary IaC standard for cross-provider orchestration across Azure, Entra ID, Lighthouse, Policy, and Budgets, while keeping Bicep ([avd-landing-zone](../repos/avd-landing-zone.md)) in its own lane per [decision 0016](../decisions/0016-terraform-as-enterprise-iac-option.md). Never commit tenant, subscription, or object IDs to any repository.
 

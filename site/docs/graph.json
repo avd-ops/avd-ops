@@ -198,6 +198,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md",
+   "title": "0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting",
+   "url": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -544,6 +551,14 @@
    "target": "decisions/0023-azure-local-support.md"
   },
   {
+   "source": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md",
+   "target": "decisions/0018-split-project-site-and-public-demo-domains.md"
+  },
+  {
+   "source": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md",
+   "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -642,6 +657,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0025-unify-remediate-and-swarm-assistants.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md"
   },
   {
    "source": "getting-started/README.md",

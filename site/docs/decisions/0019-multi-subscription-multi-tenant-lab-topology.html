@@ -68,8 +68,8 @@
 <li><code>decommissioned</code>: Empty holding group for retired or quarantined subscriptions.</li>
 </ul>
 <p>Note on scope: Management Groups, RBAC inheritance, and Azure Policy can be tested with 1 subscription, while 3–4 subscriptions are required to test simultaneous hub-and-spoke peering, central DNS/logging, and subscription vending. Paid hub components (Azure Firewall, Bastion, session hosts) are deployed on demand for a run and torn down afterward so the standing idle cost remains $0/mo.</p>
-<h3 id="secondary-entra-tenant--t2t--multitenant-testing-0mo-base-cost">Secondary Entra Tenant — T2T &amp; Multitenant Testing ($0/mo base cost)</h3>
-<p>A separate Microsoft Entra ID tenant with 1 Pay-As-You-Go subscription validates cross-tenant scenarios:</p>
+<h3 id="secondary-entra-tenant-optional--t2t--multitenant-testing-0mo-base-cost">Secondary Entra Tenant (Optional) — T2T &amp; Multitenant Testing ($0/mo base cost)</h3>
+<p>All of <code>avd-ops</code> deploys into a <strong>single Azure / Entra ID tenant</strong> by default. Only when validating cross-tenant scenarios, add a separate Microsoft Entra ID tenant with 1 Pay-As-You-Go subscription:</p>
 <ul>
 <li>Azure Lighthouse delegations (<code>Microsoft.ManagedServices</code>).</li>
 <li>Entra Cross-Tenant Access Settings and B2B guest policies.</li>
@@ -110,8 +110,8 @@
 <li>Enterprise IaC positioning: <a href="0016-terraform-as-enterprise-iac-option.html">decision 0016</a>.</li>
 <li>Sandbox cost and batch guardrails: <a href="../concepts/sandbox-batches.html">sandbox batches</a>.</li>
 </ul>
-<details class="more linked"><summary>Linked from 2 pages</summary>
-<ul class="backlinks"><li><a href="index.html">Decision records</a></li><li><a href="../getting-started/multi-tenant-lab-bootstrap.html">Multi-tenant and multi-subscription lab bootstrap</a></li></ul></details>
+<details class="more linked"><summary>Linked from 3 pages</summary>
+<ul class="backlinks"><li><a href="0026-github-free-limits-and-near-zero-azure-hosting.html">0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting</a></li><li><a href="index.html">Decision records</a></li><li><a href="../getting-started/multi-tenant-lab-bootstrap.html">Multi-tenant and multi-subscription lab bootstrap</a></li></ul></details>
 </section>
 <nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="0018-split-project-site-and-public-demo-domains.html" data-page="0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)">Back</a><span class="where">0019. Multi-subscription and multi-tenant AVD lab topology</span><a class="sc-next" href="0020-lza-bicepparam-starter-export.html" data-page="0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export">Next<span class="pg">: 0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export</span></a></div></nav>
 </article>

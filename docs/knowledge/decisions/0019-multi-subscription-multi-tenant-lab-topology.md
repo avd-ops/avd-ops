@@ -44,9 +44,9 @@ The primary tenant uses a standard ALZ Management Group hierarchy:
 
 Note on scope: Management Groups, RBAC inheritance, and Azure Policy can be tested with 1 subscription, while 3–4 subscriptions are required to test simultaneous hub-and-spoke peering, central DNS/logging, and subscription vending. Paid hub components (Azure Firewall, Bastion, session hosts) are deployed on demand for a run and torn down afterward so the standing idle cost remains \$0/mo.
 
-### Secondary Entra Tenant — T2T & Multitenant Testing (\$0/mo base cost)
+### Secondary Entra Tenant (Optional) — T2T & Multitenant Testing (\$0/mo base cost)
 
-A separate Microsoft Entra ID tenant with 1 Pay-As-You-Go subscription validates cross-tenant scenarios:
+All of `avd-ops` deploys into a **single Azure / Entra ID tenant** by default. Only when validating cross-tenant scenarios, add a separate Microsoft Entra ID tenant with 1 Pay-As-You-Go subscription:
 
 - Azure Lighthouse delegations (`Microsoft.ManagedServices`).
 - Entra Cross-Tenant Access Settings and B2B guest policies.
