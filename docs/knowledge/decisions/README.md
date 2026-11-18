@@ -30,7 +30,7 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0016](0016-terraform-as-enterprise-iac-option.md) | Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep | Proposed |
 | [0017](0017-platform-decisions-live-in-avd-ops.md) | Keep platform and cross-repo decisions in avd-ops, not avd-second-brain | Proposed |
 | [0018](0018-split-project-site-and-public-demo-domains.md) | Split project site (avd-ops.dev) and public demo hub (avd-ops.app) | Accepted |
-| [0019](0019-multi-subscription-multi-tenant-lab-topology.md) | Multi-subscription and multi-tenant AVD lab topology | Proposed |
+| [0019](0019-multi-subscription-multi-tenant-lab-topology.md) | Multi-subscription and multi-tenant AVD lab topology | Accepted |
 | [0020](0020-lza-bicepparam-starter-export.md) | Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export | Accepted |
 | [0021](0021-euc-score-byo-output-adapter.md) | Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`) | Accepted |
 | [0022](0022-cua-external-executor-plumbing.md) | Define public CUA and external-executor plumbing across avd-ops | Proposed |
@@ -38,5 +38,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0024](0024-nested-azure-local-lab.md) | Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform | Proposed |
 | [0025](0025-unify-remediate-and-swarm-assistants.md) | Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers | Accepted |
 | [0026](0026-github-free-limits-and-near-zero-azure-hosting.md) | Call out GitHub Free private-repo limits and allow near-zero Azure page hosting | Accepted |
-| [0027](0027-open-source-rpa-workload-engine.md) | Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark | Proposed |
+| [0027](0027-open-source-rpa-workload-engine.md) | Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark | Accepted |
 <!-- END GENERATED: decision-index -->
