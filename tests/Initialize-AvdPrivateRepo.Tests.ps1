@@ -69,6 +69,27 @@ Describe 'Initialize-AvdPrivateRepo' {
         }
     }
 
+    It 'skips vault/ when .brain/state.json already exists at the repo root' {
+        $tmp = Join-Path ([IO.Path]::GetTempPath()) ("avd-private-rootvault-" + [guid]::NewGuid().ToString('N'))
+        try {
+            $brainDir = Join-Path $tmp '.brain'
+            New-Item -ItemType Directory -Path $brainDir -Force | Out-Null
+            Set-Content -LiteralPath (Join-Path $brainDir 'state.json') -Value '{}' -Encoding utf8NoBOM
+
+            Initialize-PrivateRepoLayout -TargetPath $tmp
+
+            Test-Path -LiteralPath (Join-Path $tmp 'vault') | Should -BeFalse
+            foreach ($dir in @('runs', 'config', 'swarm', (Join-Path '.github' 'workflows'))) {
+                Test-Path -LiteralPath (Join-Path $tmp $dir '.gitkeep') | Should -BeTrue
+            }
+        }
+        finally {
+            if (Test-Path -LiteralPath $tmp) {
+                Remove-Item -LiteralPath $tmp -Recurse -Force
+            }
+        }
+    }
+
     It 'makes no filesystem changes under -WhatIf' {
         $tmp = Join-Path ([IO.Path]::GetTempPath()) ("avd-private-whatif-" + [guid]::NewGuid().ToString('N'))
         Initialize-PrivateRepoLayout -TargetPath $tmp -WhatIf
