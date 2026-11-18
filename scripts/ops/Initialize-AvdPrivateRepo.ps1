@@ -94,13 +94,16 @@ function Initialize-PrivateRepoLayout {
         [switch]$ForceWrite
     )
 
+    $hasRootVault = Test-Path -LiteralPath (Join-Path $TargetPath (Join-Path '.brain' 'state.json'))
     $folders = @(
         'runs',
-        'vault',
         'config',
         'swarm',
         (Join-Path '.github' 'workflows')
     )
+    if (-not $hasRootVault) {
+        $folders = @('runs', 'vault', 'config', 'swarm', (Join-Path '.github' 'workflows'))
+    }
 
     foreach ($rel in $folders) {
         $dir = Join-Path $TargetPath $rel
