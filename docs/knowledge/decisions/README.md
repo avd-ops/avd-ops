@@ -38,5 +38,6 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0024](0024-nested-azure-local-lab.md) | Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform | Proposed |
 | [0025](0025-unify-remediate-and-swarm-assistants.md) | Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers | Accepted |
 | [0026](0026-github-free-limits-and-near-zero-azure-hosting.md) | Call out GitHub Free private-repo limits and allow near-zero Azure page hosting | Accepted |
+| [0027](0027-helpdesk-simulator-and-ticket-adapter.md) | Separate helpdesk simulator kit and normalized ticket-adapter boundary | Proposed |
 | [0027](0027-open-source-rpa-workload-engine.md) | Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark | Accepted |
 <!-- END GENERATED: decision-index -->
