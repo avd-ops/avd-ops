@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2026-11-17
 decision-makers: [owner]
 ---
@@ -64,5 +64,6 @@ Related companion-repo limits and topology decisions.
 <!-- more -->
 
 - Private companion repo limits and setup: [Your private companion repo](../../private-companion-repo.md).
+- Near-\$0 Azure Static Web Apps Free starter: [Azure static-pages template](../../../templates/azure-static-pages/README.md).
 - Public site vs. demo hub split: [decision 0018](0018-split-project-site-and-public-demo-domains.md).
 - Lab topology and \$0/mo idle cost guardrails: [decision 0019](0019-multi-subscription-multi-tenant-lab-topology.md).

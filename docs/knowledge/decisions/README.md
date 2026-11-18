@@ -37,5 +37,5 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0023](0023-azure-local-support.md) | Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts | Accepted |
 | [0024](0024-nested-azure-local-lab.md) | Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform | Proposed |
 | [0025](0025-unify-remediate-and-swarm-assistants.md) | Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers | Accepted |
-| [0026](0026-github-free-limits-and-near-zero-azure-hosting.md) | Call out GitHub Free private-repo limits and allow near-zero Azure page hosting | Proposed |
+| [0026](0026-github-free-limits-and-near-zero-azure-hosting.md) | Call out GitHub Free private-repo limits and allow near-zero Azure page hosting | Accepted |
 <!-- END GENERATED: decision-index -->

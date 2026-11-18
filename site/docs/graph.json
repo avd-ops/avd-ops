@@ -202,7 +202,7 @@
    "title": "0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting",
    "url": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.html",
    "topic": "decisions",
-   "status": "proposed"
+   "status": "accepted"
   },
   {
    "id": "decisions/README.md",
