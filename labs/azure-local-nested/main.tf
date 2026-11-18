@@ -246,9 +246,12 @@ resource "azurerm_virtual_machine_run_command" "bootstrap" {
     value = var.smb_share_name
   }
 
-  parameter {
-    name  = "HciOsImageUrl"
-    value = var.hci_os_image_url
+  dynamic "parameter" {
+    for_each = var.hci_os_image_url != "" ? [1] : []
+    content {
+      name  = "HciOsImageUrl"
+      value = var.hci_os_image_url
+    }
   }
 
   parameter {
@@ -273,7 +276,7 @@ resource "azurerm_virtual_machine_run_command" "bootstrap" {
 
   parameter {
     name  = "Location"
-    value = azurerm_resource_group.lab.location
+    value = var.hci_location
   }
 
   protected_parameter {
@@ -281,14 +284,20 @@ resource "azurerm_virtual_machine_run_command" "bootstrap" {
     value = local.effective_admin_password
   }
 
-  protected_parameter {
-    name  = "ArcSpAppId"
-    value = var.arc_sp_app_id
+  dynamic "protected_parameter" {
+    for_each = var.arc_sp_app_id != "" ? [1] : []
+    content {
+      name  = "ArcSpAppId"
+      value = var.arc_sp_app_id
+    }
   }
 
-  protected_parameter {
-    name  = "ArcSpSecret"
-    value = var.arc_sp_secret
+  dynamic "protected_parameter" {
+    for_each = var.arc_sp_secret != "" ? [1] : []
+    content {
+      name  = "ArcSpSecret"
+      value = var.arc_sp_secret
+    }
   }
 
   depends_on = [azurerm_virtual_machine_data_disk_attachment.s2d_data]
@@ -299,7 +308,7 @@ resource "azapi_resource" "hci_cluster" {
   type      = "Microsoft.AzureStackHCI/clusters@2024-04-01"
   name      = "${var.prefix}-cluster"
   parent_id = azurerm_resource_group.lab.id
-  location  = azurerm_resource_group.lab.location
+  location  = var.hci_location
   tags      = local.common_tags
 
   identity {
@@ -321,7 +330,7 @@ resource "azapi_resource" "logical_network" {
   type      = "Microsoft.AzureStackHCI/logicalNetworks@2024-01-01"
   name      = local.logical_network_name
   parent_id = azurerm_resource_group.lab.id
-  location  = azurerm_resource_group.lab.location
+  location  = var.hci_location
   tags      = local.common_tags
 
   body = {
@@ -371,7 +380,7 @@ resource "azapi_resource" "gallery_image" {
   type      = "Microsoft.AzureStackHCI/galleryImages@2024-01-01"
   name      = local.gallery_image_name
   parent_id = azurerm_resource_group.lab.id
-  location  = azurerm_resource_group.lab.location
+  location  = var.hci_location
   tags      = local.common_tags
 
   body = {

@@ -43,6 +43,11 @@ output "hci_cluster_id" {
   value       = var.deploy_hci_cluster ? azapi_resource.hci_cluster[0].id : null
 }
 
+output "hci_location" {
+  description = "Azure region used for Azure Local control-plane resources (Arc, cluster, Custom Location, Logical Network, Gallery Image)."
+  value       = var.hci_location
+}
+
 output "env_exports" {
   description = "Shell export commands for avd-sandbox items 30 and 31."
   value = join("\n", compact([
