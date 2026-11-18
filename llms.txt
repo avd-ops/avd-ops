@@ -69,7 +69,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
 - [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
 - [0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)](docs/knowledge/decisions/0018-split-project-site-and-public-demo-domains.md): accepted
-- [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): proposed
+- [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): accepted
 - [0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export](docs/knowledge/decisions/0020-lza-bicepparam-starter-export.md): accepted
 - [0021. Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`)](docs/knowledge/decisions/0021-euc-score-byo-output-adapter.md): accepted
 - [0022. Define public CUA and external-executor plumbing across avd-ops](docs/knowledge/decisions/0022-cua-external-executor-plumbing.md): proposed
@@ -77,7 +77,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0024. Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform](docs/knowledge/decisions/0024-nested-azure-local-lab.md): proposed
 - [0025. Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers](docs/knowledge/decisions/0025-unify-remediate-and-swarm-assistants.md): accepted
 - [0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting](docs/knowledge/decisions/0026-github-free-limits-and-near-zero-azure-hosting.md): accepted
-- [0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark](docs/knowledge/decisions/0027-open-source-rpa-workload-engine.md): proposed
+- [0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark](docs/knowledge/decisions/0027-open-source-rpa-workload-engine.md): accepted
 
 ## Related knowledge bases
 
