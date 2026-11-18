@@ -205,6 +205,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0027-open-source-rpa-workload-engine.md",
+   "title": "0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark",
+   "url": "decisions/0027-open-source-rpa-workload-engine.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -559,6 +566,18 @@
    "target": "decisions/0019-multi-subscription-multi-tenant-lab-topology.md"
   },
   {
+   "source": "decisions/0027-open-source-rpa-workload-engine.md",
+   "target": "decisions/0011-avd-benchmark-and-assess-corpus.md"
+  },
+  {
+   "source": "decisions/0027-open-source-rpa-workload-engine.md",
+   "target": "decisions/0021-euc-score-byo-output-adapter.md"
+  },
+  {
+   "source": "decisions/0027-open-source-rpa-workload-engine.md",
+   "target": "decisions/0022-cua-external-executor-plumbing.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -661,6 +680,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0027-open-source-rpa-workload-engine.md"
   },
   {
    "source": "getting-started/README.md",
