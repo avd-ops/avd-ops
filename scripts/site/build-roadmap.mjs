@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, existsSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { applyShell } from './apply-shell.mjs';
+import { LAYERS } from './shell.mjs';
 import { submissionUrl } from '../../submissions/links.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
@@ -56,6 +57,13 @@ export function resolveRoadmap(reposDoc, roadmapDoc, issuesDoc, { now = '2026-11
     if (!p.reason) throw new Error(`roadmap.json: parked item ${p.issue} needs a reason`);
     if (bannedRe.test(p.reason)) throw new Error(`roadmap.json: parked reason for ${p.issue} names banned term`);
     parkedByUrl.set(p.issue, p);
+  }
+  const repoOverrides = roadmapDoc.repos || {};
+  for (const [name, meta] of Object.entries(repoOverrides)) {
+    if (!publicRepos.has(name)) throw new Error(`roadmap.json: repos.${name} is not a repos.json repo`);
+    for (const field of ['stage', 'status', 'backlog']) {
+      if (meta?.[field] && bannedRe.test(meta[field])) throw new Error(`roadmap.json: repos.${name}.${field} names banned term`);
+    }
   }
 
   const dropped = [];
@@ -109,6 +117,7 @@ export function resolveRoadmap(reposDoc, roadmapDoc, issuesDoc, { now = '2026-11
     resolved.push({
       url: iss.url,
       repo: iss.repo,
+      layer: repoMeta.layer || 'front-door',
       maturity: repoMeta.maturity || 'pre-beta',
       number: iss.number,
       title: iss.title,
@@ -138,10 +147,32 @@ export function resolveRoadmap(reposDoc, roadmapDoc, issuesDoc, { now = '2026-11
     return String(b.updatedAt).localeCompare(String(a.updatedAt));
   });
 
+  const reposSummary = reposDoc.repos.map((r) => {
+    const ov = repoOverrides[r.name] || {};
+    const itemsForRepo = resolved.filter((i) => i.repo === r.name);
+    return {
+      name: r.name,
+      repo: r.repo,
+      layer: r.layer,
+      maturity: r.maturity || 'pre-beta',
+      stage: ov.stage || null,
+      status: ov.status || r.role,
+      backlog: ov.backlog || null,
+      portal: r.portal || null,
+      counts: {
+        now: itemsForRepo.filter((i) => i.column === 'now').length,
+        next: itemsForRepo.filter((i) => i.column === 'next').length,
+        later: itemsForRepo.filter((i) => i.column === 'later').length,
+        done: itemsForRepo.filter((i) => i.column === 'done').length,
+      },
+    };
+  });
+
   return {
     schema: 'avd-ops-roadmap-resolved/v1',
     asOf: issuesDoc.fetchedAt,
     themes: roadmapDoc.themes || [],
+    repos: reposSummary,
     items: resolved,
     dropped,
   };
@@ -165,7 +196,7 @@ export function buildRoadmapHtml(reposDoc, roadmapDoc, issuesDoc, routingDoc) {
     const shippedLine = item.closingPr ? ` &middot; ${link(item.closingPr, 'Shipped PR')}` : '';
     const communityLine = item.communityRequest ? `<p class="rm-meta">From a community request${item.requester ? ` (@${esc(item.requester)})` : ''}.</p>` : '';
     const parkedLine = item.parkedReason ? `<p class="rm-meta">Paused: ${esc(item.parkedReason)}</p>` : '';
-    return `<article class="card rm-card" id="item-${esc(item.repo)}-${item.number}" data-repo="${esc(item.repo)}">
+    return `<article class="card rm-card" id="item-${esc(item.repo)}-${item.number}" data-repo="${esc(item.repo)}" data-layer="${esc(item.layer)}" data-theme="${esc(item.theme)}">
 <div class="rm-top">${repoLink(item.repo)} ${matMark(item.maturity)} ${statusPill(item)}</div>
 <h3><a href="${esc(item.url)}">${esc(item.title)}</a></h3>
 ${item.summary ? `<p>${esc(item.summary)}</p>` : ''}
@@ -178,7 +209,7 @@ ${provenLine}${communityLine}${parkedLine}
   const colBlock = (id, title, sub, col) => {
     const list = colItems(col);
     return `<section class="rm-col" id="col-${id}">
-<h2>${esc(title)} <span class="mono">(${list.length})</span></h2>
+<h2>${esc(title)} <span class="mono rm-col-count" data-total="${list.length}">(${list.length})</span></h2>
 <p class="rm-sub">${esc(sub)}</p>
 <div class="rm-list">
 ${list.length ? list.map(renderCard).join('\n') : '<p class="rm-empty">Nothing in this column right now.</p>'}
@@ -186,29 +217,79 @@ ${list.length ? list.map(renderCard).join('\n') : '<p class="rm-empty">Nothing i
 </section>`;
   };
 
+  const allLayers = [...LAYERS, ['front-door', 'Front door', 'The website, onboarding docs and cross-repo governance.']];
+  const renderRepoCard = (r) => {
+    const totalItems = r.counts.now + r.counts.next + r.counts.later + r.counts.done;
+    const countBits = [];
+    if (r.counts.now) countBits.push(`${r.counts.now} now`);
+    if (r.counts.next) countBits.push(`${r.counts.next} next`);
+    if (r.counts.later) countBits.push(`${r.counts.later} later`);
+    if (r.counts.done) countBits.push(`${r.counts.done} done`);
+    const issuesUrl = `https://github.com/${r.repo}/issues`;
+    const portalLink = r.portal ? `<a href="${esc(r.portal)}">Portal</a>` : '';
+    const filterBtn = totalItems
+      ? `<button class="chip rm-filter-repo" type="button" data-filter-repo="${esc(r.name)}">${esc(countBits.join(' · '))}</button>`
+      : '';
+    return `<article class="card rm-repo-card" id="${esc(r.name)}" data-layer="${esc(r.layer)}">
+<div class="rm-top">${repoLink(r.name)} ${matMark(r.maturity)}${r.stage ? `<span class="rm-stage">${esc(r.stage)}</span>` : ''}</div>
+<p class="rm-status"><b>Status:</b> ${esc(r.status)}</p>
+${r.backlog ? `<p class="rm-backlog"><b>Backlog:</b> ${esc(r.backlog)}</p>` : ''}
+<p class="rm-links">${filterBtn}<a href="${esc(issuesUrl)}">Issues</a>${portalLink ? ` &middot; ${portalLink}` : ''}</p>
+</article>`;
+  };
+  const layerSections = allLayers.map(([id, title, what]) => {
+    const rs = data.repos.filter((r) => r.layer === id);
+    if (!rs.length) return '';
+    return `<section class="rm-layer" id="layer-${esc(id)}">
+<div class="rm-layer-head"><h3>${esc(title)} <span class="mono">(${rs.length})</span></h3><p>${esc(what)}</p></div>
+<div class="rm-repo-grid">
+${rs.map(renderRepoCard).join('\n')}
+</div>
+</section>`;
+  }).filter(Boolean).join('\n');
+
   const doneList = colItems('done');
   const parkedList = colItems('parked');
   const featUrl = submissionUrl(routingDoc, reposDoc, { type: 'feature', area: 'unsure' });
   const resUrl = submissionUrl(routingDoc, reposDoc, { type: 'research-request', area: 'other' });
 
   const content = `<p class="eyebrow">Roadmap</p>
-<h1>What is being built, explored and shipped across the repos.</h1>
-<p class="lede">Direction, not a promise. No dates. Anything here can move, pause or stop. This is not a complete list of the work; each repo's issues are.</p>
-<p>Every item below is a public GitHub issue approved with the <span class="mono">roadmap</span> and <span class="mono">accepted</span> labels, plus a <span class="mono">status:*</span> label. Snapshot as of <span class="mono">${esc(data.asOf)}</span>.</p>
+<h1>Backlog and status across the avd-ops project.</h1>
+<p class="lede">Where each of the ${reposDoc.repos.length} repositories stands today, what is in its backlog, and what is being built, explored and shipped. Direction, not a promise. No dates.</p>
+<p>Every board item below is a public GitHub issue approved with the <span class="mono">roadmap</span> and <span class="mono">accepted</span> labels, plus a <span class="mono">status:*</span> label. Snapshot as of <span class="mono">${esc(data.asOf)}</span>.</p>
 
-<h2 id="maturity">Repo maturity</h2>
-<p>Maturity is separate from task progress: an in-progress item in a design-stage repo is still early design work.</p>
-<div class="rm-maturity">
-${reposDoc.repos.map((r) => `<div class="card rm-mat-card" id="${esc(r.name)}"><b>${repoLink(r.name)}</b>${matMark(r.maturity || 'pre-beta')}<span class="rm-role">${esc(r.role)}</span></div>`).join('\n')}
+<nav class="rm-jump" aria-label="Page sections">
+<a class="chip" href="#repos">Repo status &amp; backlog (${reposDoc.repos.length})</a>
+<a class="chip" href="#board">Feature board (${data.items.length})</a>
+<a class="chip" href="#col-now">Now (${colItems('now').length})</a>
+<a class="chip" href="#col-next">Next (${colItems('next').length})</a>
+<a class="chip" href="#col-later">Later (${colItems('later').length})</a>
+<a class="chip" href="#recently-done">Recently done (${doneList.length})</a>
+</nav>
+
+<h2 id="repos">Repo status &amp; backlog</h2>
+<p>Maturity is separate from task progress: an in-progress item in a design-stage repo is still early design work. Select any repo with board items to filter the feature board below, or open its GitHub issues for the full backlog.</p>
+<div class="rm-layers">
+${layerSections}
 </div>
 
-<nav class="rm-jump" aria-label="Columns and repositories">
-<a class="chip" href="#col-now">Now</a>
-<a class="chip" href="#col-next">Next</a>
-<a class="chip" href="#col-later">Later</a>
-<a class="chip" href="#recently-done">Recently done</a>
-${reposDoc.repos.map((r) => `<a class="chip" href="#${esc(r.name)}">${esc(r.name)}</a>`).join('\n')}
-</nav>
+<h2 id="board">Feature board</h2>
+<div class="rm-filters" data-rm-filters>
+<div class="rm-filter-row" role="group" aria-label="Filter by layer">
+<span class="rm-filter-label">Layer</span>
+<button class="chip rm-chip-btn" type="button" data-filter-layer="all" aria-pressed="true">All layers</button>
+${allLayers.map(([id, title]) => `<button class="chip rm-chip-btn" type="button" data-filter-layer="${esc(id)}" aria-pressed="false">${esc(title)}</button>`).join('\n')}
+</div>
+<div class="rm-filter-row" role="group" aria-label="Filter by theme">
+<span class="rm-filter-label">Theme</span>
+<button class="chip rm-chip-btn" type="button" data-filter-theme="all" aria-pressed="true">All themes</button>
+${(roadmapDoc.themes || []).map((t) => `<button class="chip rm-chip-btn" type="button" data-filter-theme="${esc(t.id)}" aria-pressed="false">${esc(t.title)}</button>`).join('\n')}
+</div>
+<div class="rm-filter-status" hidden>
+<span class="rm-filter-summary" data-filter-summary></span>
+<button class="chip rm-chip-btn" type="button" data-filter-reset>Clear filters</button>
+</div>
+</div>
 
 <div class="rm-board">
 ${colBlock('now', 'Now', 'In progress: someone is actively working on it.', 'now')}
@@ -216,7 +297,7 @@ ${colBlock('next', 'Next', 'Planned: decided and designed, not started yet.', 'n
 ${colBlock('later', 'Later', 'Exploring: looking at the question and prior art before deciding.', 'later')}
 </div>
 
-<h2 id="recently-done">Recently done (${doneList.length})</h2>
+<h2 id="recently-done">Recently done <span class="mono rm-col-count" data-total="${doneList.length}">(${doneList.length})</span></h2>
 <p>Closed as completed in the last 90 days. Older shipped items stay in each repo's closed <span class="mono">roadmap</span> issues.</p>
 <div class="rm-done">
 ${doneList.length ? doneList.map(renderCard).join('\n') : '<p class="rm-empty">No roadmap items closed in the last 90 days.</p>'}
@@ -244,8 +325,9 @@ ${parkedList.length ? parkedList.map(renderCard).join('\n') : '<p class="rm-empt
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Roadmap | avd-ops</title>
-<meta name="description" content="Public roadmap across the avd-ops repositories: what is in progress, planned, exploring and recently done, with repo maturity marks and no dates.">
+<meta name="description" content="Public roadmap across the avd-ops repositories: repo status, backlog, what is in progress, planned, exploring and recently done, with maturity marks and no dates.">
 <!-- shell:head --><!-- /shell:head -->
+<script src="assets/roadmap.js" defer></script>
 </head>
 <body class="shell">
 <!-- Generated by scripts/site/build-roadmap.mjs from roadmap.json and site/data/issues.json. Do not edit; rebuild instead. -->

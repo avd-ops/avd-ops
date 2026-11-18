@@ -393,6 +393,24 @@ figure.flows{margin:var(--space-4) 0 0}
 .rm-mat-card{display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;padding:var(--space-3)}
 .rm-mat-card b{font:700 .98rem var(--display)}
 .rm-role{font-size:.86rem;color:var(--muted)}
+.rm-layers{display:grid;gap:var(--space-4);margin:var(--space-3) 0 var(--space-5)}
+.rm-layer{display:grid;gap:var(--space-2)}
+.rm-layer-head h3{margin:0;font-size:1.1rem}
+.rm-layer-head p{margin:.15rem 0 0;font-size:.9rem;color:var(--muted)}
+.rm-repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:var(--space-2)}
+.rm-repo-card{display:grid;gap:.4rem;padding:var(--space-3);align-content:start}
+.rm-repo-card p{margin:0;font-size:.88rem}
+.rm-stage{font:500 .75rem var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:var(--pill);padding:.1rem .5rem;background:var(--sunken)}
+.rm-status,.rm-backlog{color:var(--fg)}
+.rm-links{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:.15rem;font-size:.82rem;color:var(--muted)}
+.rm-filters{display:grid;gap:var(--space-2);margin:var(--space-3) 0;padding:var(--space-3);background:var(--sunken);border:1px solid var(--line);border-radius:var(--radius-lg)}
+.rm-filter-row{display:flex;flex-wrap:wrap;gap:var(--space-1);align-items:center}
+.rm-filter-label{font:600 .78rem var(--mono);color:var(--muted);min-width:3.8rem}
+.rm-filter-status{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;font-size:.86rem;color:var(--muted)}
+.rm-chip-btn,.rm-filter-repo{font:500 .78rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.2rem var(--space-3);color:var(--muted);background:var(--surface);cursor:pointer;min-height:32px;display:inline-flex;align-items:center}
+.rm-chip-btn:hover,.rm-filter-repo:hover{border-color:var(--accent);color:var(--accent)}
+.rm-chip-btn[aria-pressed="true"],.rm-filter-repo[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--bg)}
+@media (pointer:coarse){.rm-chip-btn,.rm-filter-repo{min-height:var(--tap)}}
 .rm-jump{display:flex;flex-wrap:wrap;gap:var(--space-1);margin:var(--space-3) 0 var(--space-4)}
 .rm-jump .chip{font:500 .78rem var(--mono);border:1px solid var(--line);border-radius:var(--pill);padding:.2rem var(--space-3);color:var(--muted);background:var(--surface);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
 .rm-jump .chip:hover{border-color:var(--accent);color:var(--accent)}

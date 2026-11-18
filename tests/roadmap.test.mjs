@@ -158,6 +158,33 @@ test('roadmap rejects banned terms in titles or summaries and rejects URLs outsi
     items: [{ issue: 'https://github.com/someone-else/other-repo/issues/1', summary: 'Outside family' }],
   };
   assert.throws(() => resolveRoadmap(reposDoc, badCurated, issuesDoc), /not an issue or PR in a repos\.json repo/);
+
+  const badRepoOverride = {
+    ...roadmapDoc,
+    repos: {
+      ...roadmapDoc.repos,
+      'avd-ops': { stage: 'Active', status: 'Uses terraform', backlog: 'More' },
+    },
+  };
+  assert.throws(() => resolveRoadmap(reposDoc, badRepoOverride, issuesDoc), /banned term/);
+
+  const unknownRepoOverride = {
+    ...roadmapDoc,
+    repos: {
+      'not-a-repo': { stage: 'Active', status: 'Unknown', backlog: 'None' },
+    },
+  };
+  assert.throws(() => resolveRoadmap(reposDoc, unknownRepoOverride, issuesDoc), /not a repos\.json repo/);
+});
+
+test('roadmap renders repo status and backlog for every repo in repos.json grouped by layer', () => {
+  const html = buildRoadmapHtml(reposDoc, roadmapDoc, issuesDoc, routingDoc).html;
+  for (const r of reposDoc.repos) {
+    assert.ok(roadmapDoc.repos[r.name], `roadmap.json has repo status/backlog for ${r.name}`);
+    assert.match(html, new RegExp(`id="${r.name}"`), `roadmap.html has card for ${r.name}`);
+  }
+  assert.match(html, /data-rm-filters/);
+  assert.match(html, /assets\/roadmap\.js/);
 });
 
 test('research projects page shows only accepted research-request issues and links the submission intake', () => {
