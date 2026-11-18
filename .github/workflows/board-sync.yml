@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v4
         if: steps.setup.outputs.ready == 'true'
       # A one-hour installation token for the avd-ops org; the app's own permissions cap it.
-      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2; pinned, it receives the app key
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v2.2.2; pinned, it receives the app key
         id: app
         if: steps.setup.outputs.ready == 'true'
         with:
