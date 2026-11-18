@@ -23,10 +23,301 @@
       "summary": "Desktop DevOps second brain and human-gated remediation swarm"
     }
   ],
+  "repos": [
+    {
+      "name": "avd-current-state",
+      "repo": "avd-ops/avd-current-state",
+      "layer": "assess",
+      "maturity": "proven",
+      "stage": "Live / Proven",
+      "status": "Read-only PowerShell collector, validator, and redacted C11 facts snapshot across all five control planes.",
+      "backlog": "Add -Cloud usgov support (C26), signed collector release, and unified endpoint probe map.",
+      "portal": "https://avd-ops.app/assess/",
+      "counts": {
+        "now": 0,
+        "next": 1,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-assess",
+      "repo": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "stage": "Built",
+      "status": "Open AVD assessment methodology across five control planes, pinned sources, and C25/C26 contracts.",
+      "backlog": "Expand GCC High checks (C26), benchmark corpus coverage, and sovereign pin verification.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 1,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-migrate",
+      "repo": "avd-ops/avd-migrate",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "stage": "Built",
+      "status": "Offline single-pool C14 baseline designer and manifest writer portal at avd-ops.app/migrate/.",
+      "backlog": "Optional LZA .bicepparam starter export and multi-pool migration planning.",
+      "portal": "https://avd-ops.app/migrate/",
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-landing-zone",
+      "repo": "avd-ops/avd-landing-zone",
+      "layer": "build",
+      "maturity": "proven",
+      "stage": "Live / Proven",
+      "status": "Top-level orchestrator and deployment portal at avd-ops.app/deploy/ across the control-plane repos.",
+      "backlog": "Azure US Government & GCC High orchestration (C26), autoscale power-role validation, and Private Link NSG guards.",
+      "portal": "https://avd-ops.app/deploy/",
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 1,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-entra",
+      "repo": "avd-ops/avd-entra",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Declarative Microsoft Graph templates and Cloud Shell scripts for AVD groups, Conditional Access, and Entra Kerberos.",
+      "backlog": "Validate greenfield and brownfield Entra Kerberos flows and sovereign cloud endpoints.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-intune",
+      "repo": "avd-ops/avd-intune",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Intune policy-as-code, assignment filters, session-host MDM enrollment, and Windows 365 Cloud PC profiles.",
+      "backlog": "Expand baseline policy packs, drift detection, and Windows 365 Cloud PC parity.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-m365",
+      "repo": "avd-ops/avd-m365",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Greenfield Microsoft 365, OneDrive Known Folder Move, and Teams VDI optimization control plane.",
+      "backlog": "Add Teams VDI optimization verification and automated M365 tenant readiness checks.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-azure",
+      "repo": "avd-ops/avd-azure",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Cloud-native Azure Bicep engine for AVD host pools, workspaces, FSLogix Azure Files, and Private Link.",
+      "backlog": "Sovereign cloud parameters, GPU session host SKU templates, and nested Azure Local lab support.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-hcl",
+      "repo": "avd-ops/avd-hcl",
+      "layer": "build",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Enterprise IaC path for native AVD infrastructure alongside the Bicep orchestrator.",
+      "backlog": "Align module outputs with shared contracts and add end-to-end lab validation.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-networking",
+      "repo": "avd-ops/avd-networking",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Platform Connectivity hub VNet, Azure Firewall, central Private DNS, DNS Private Resolver, gateways, and Bastion.",
+      "backlog": "AVD Private Link NSG port rules, hub-peered bypass routes, and multi-region hub templates.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-power-platform",
+      "repo": "avd-ops/avd-power-platform",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Power Platform governance, DLP policies, and approval-gated Power Automate day-2 workflows.",
+      "backlog": "Expand self-service access flows and day-2 host lifecycle automation.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-swarm",
+      "repo": "avd-ops/avd-swarm",
+      "layer": "intelligence",
+      "maturity": "design",
+      "stage": "Design & spike",
+      "status": "Desktop DevOps agents across AVD, Windows 365, and Intune; S1a spike runs with human-gated write design.",
+      "backlog": "Wire external executor plumbing, approval gates, and helpdesk ticket adapter (ADR 0027).",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-second-brain",
+      "repo": "avd-ops/avd-second-brain",
+      "layer": "intelligence",
+      "maturity": "pre-beta",
+      "stage": "Built",
+      "status": "Desktop DevOps knowledge base, contract registry, and cross-repo docs consistency checks.",
+      "backlog": "Add C26 cloud registry, sovereign workload placement rules, and automated freshness sweeps.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 1,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-benchmark",
+      "repo": "avd-ops/avd-benchmark",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "stage": "Active",
+      "status": "Tier 1 synthetic benchmark harness (storage, logon storm, density, autoscale, BCDR) and C25 explorer.",
+      "backlog": "FlaUI workload engine, automated Tier 1 run evidence, and expanded explorer comparisons.",
+      "portal": "https://avd-ops.app/benchmark/",
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-remediate",
+      "repo": "avd-ops/avd-remediate",
+      "layer": "operate",
+      "maturity": "pre-beta",
+      "stage": "Active",
+      "status": "5-step guided troubleshooting portal, read-only diagnostic probes, and human-gated remediation workbench.",
+      "backlog": "Expand host telemetry collectors, BYO-LLM diagnostic adapters, and remediation runbooks.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-linecheck",
+      "repo": "avd-ops/avd-linecheck",
+      "layer": "operate",
+      "maturity": "pre-beta",
+      "stage": "Active",
+      "status": "End-user browser network check portal at avd-ops.app/linecheck/ measuring latency and endpoint reachability.",
+      "backlog": "Companion local log-bundle script and unified probe map shared with avd-current-state.",
+      "portal": "https://avd-ops.app/linecheck/",
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-learn",
+      "repo": "avd-ops/avd-learn",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "stage": "Active",
+      "status": "Ground-up AVD foundations dataset, CLI, and installable PWA mapped to AZ-104 and AZ-140.",
+      "backlog": "Expand interactive lab scenarios, AZ-140 study modules, and cross-links to avd-ops standards.",
+      "portal": "https://avd-ops.github.io/avd-learn/site/",
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
+      "name": "avd-ops",
+      "repo": "avd-ops/avd-ops",
+      "layer": "front-door",
+      "maturity": "pre-beta",
+      "stage": "Active",
+      "status": "Front-door site (avd-ops.dev), standards library, security review, architecture diagrams, and onboarding docs.",
+      "backlog": "Automated issue-board sync, operator walkthroughs, and cross-repo roadmap coverage.",
+      "portal": null,
+      "counts": {
+        "now": 2,
+        "next": 0,
+        "later": 0,
+        "done": 1
+      }
+    }
+  ],
   "items": [
     {
       "url": "https://github.com/avd-ops/avd-ops/issues/53",
       "repo": "avd-ops",
+      "layer": "front-door",
       "maturity": "pre-beta",
       "number": 53,
       "title": "Build the roadmap page",
@@ -48,6 +339,7 @@
     {
       "url": "https://github.com/avd-ops/avd-ops/issues/51",
       "repo": "avd-ops",
+      "layer": "front-door",
       "maturity": "pre-beta",
       "number": 51,
       "title": "Research projects page on avd-ops.dev",
@@ -69,6 +361,7 @@
     {
       "url": "https://github.com/avd-ops/avd-ops/issues/52",
       "repo": "avd-ops",
+      "layer": "front-door",
       "maturity": "pre-beta",
       "number": 52,
       "title": "Standards library on avd-ops.dev",
@@ -90,6 +383,7 @@
     {
       "url": "https://github.com/avd-ops/avd-assess/issues/61",
       "repo": "avd-assess",
+      "layer": "assess",
       "maturity": "pre-beta",
       "number": 61,
       "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 2",
@@ -111,6 +405,7 @@
     {
       "url": "https://github.com/avd-ops/avd-current-state/issues/67",
       "repo": "avd-current-state",
+      "layer": "assess",
       "maturity": "proven",
       "number": 67,
       "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 3",
@@ -132,6 +427,7 @@
     {
       "url": "https://github.com/avd-ops/avd-landing-zone/issues/131",
       "repo": "avd-landing-zone",
+      "layer": "build",
       "maturity": "proven",
       "number": 131,
       "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 4",
@@ -153,6 +449,7 @@
     {
       "url": "https://github.com/avd-ops/avd-second-brain/issues/138",
       "repo": "avd-second-brain",
+      "layer": "intelligence",
       "maturity": "pre-beta",
       "number": 138,
       "title": "Handoff: Azure US Government & Microsoft 365 GCC High (usgov) - Phase 2",
