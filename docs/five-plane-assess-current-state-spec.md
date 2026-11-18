@@ -285,7 +285,7 @@ When `avd-current-state`'s assessment portal generates a C24 remediation plan:
    - Displays both the five **Well-Architected pillar scores** (primary) and the five **Control-plane scores & coverage** (secondary).
    - Shows why any uncollected plane is `unknown` or `not-applicable` (from `planesCollected` and intake answers).
 3. **Plane-grouped Remediation Plan (C24):**
-   - Groups Fix items by control plane (`entra`, `intune`, `m365`, `azure`, `power-platform`) and exports a C24 remediation plan that `avd-landing-zone`'s deployment portal (`deploy.avd-ops.dev/portal/`) can import directly.
+   - Groups Fix items by control plane (`entra`, `intune`, `m365`, `azure`, `power-platform`) and exports a C24 remediation plan that `avd-landing-zone`'s deployment portal (`avd-ops.app/deploy/`) can import directly.
 
 ---
 
