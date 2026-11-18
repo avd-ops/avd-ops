@@ -41,13 +41,17 @@ out up front:
 
 ## Create it once
 
-In Cloud Shell, with the GitHub CLI signed in to your account:
+Run the bootstrap script from Azure Cloud Shell (or PowerShell 7+ locally) with the GitHub CLI
+signed in to your account. It creates `avd-private` (or verifies an existing repo is private) and
+scaffolds `runs/`, `vault/`, `config/`, `swarm/`, `.github/workflows/`, `.gitignore`, and
+`README.md`:
 
-```bash
-# Azure Cloud Shell (bash): one private companion repo, owned by you.
+```powershell
+if (-not (Test-Path ~/avd-ops/.git)) { git clone https://github.com/avd-ops/avd-ops.git ~/avd-ops }
+Set-Location ~/avd-ops; git checkout -q main; git pull -q --ff-only
 gh auth status || gh auth login
-gh repo create avd-private --private --description "Private run records and estate vault for my AVD sandbox"
-gh repo view avd-private --json visibility --jq .visibility   # must print PRIVATE
+./scripts/ops/Initialize-AvdPrivateRepo.ps1 -RepoName avd-private -WhatIf
+./scripts/ops/Initialize-AvdPrivateRepo.ps1 -RepoName avd-private
 ```
 
 Pick any name. Scripts that write to it read its visibility first and refuse a repo that isn't
