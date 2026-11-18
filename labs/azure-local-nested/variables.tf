@@ -11,13 +11,36 @@ variable "tenant_id" {
 }
 
 variable "location" {
-  description = "Azure region for the nested Azure Local lab host. Defaults to centralus to align with avd-sandbox ADR-0006."
+  description = "Azure region for the nested Azure Local host VM. Defaults to centralus to align with avd-sandbox ADR-0006."
   type        = string
   default     = "centralus"
 
   validation {
     condition     = length(trimspace(var.location)) > 0
     error_message = "location must be non-empty."
+  }
+}
+
+variable "hci_location" {
+  description = "Azure region for Azure Local control-plane resources (Microsoft.AzureStackHCI/clusters, Arc, Custom Location, Logical Network, Gallery Image). centralus is not supported by Microsoft.AzureStackHCI/clusters; defaults to eastus."
+  type        = string
+  default     = "eastus"
+
+  validation {
+    condition = contains([
+      "eastus",
+      "southcentralus",
+      "australiaeast",
+      "uksouth",
+      "ukwest",
+      "germanywestcentral",
+      "westeurope",
+      "southeastasia",
+      "canadacentral",
+      "japaneast",
+      "centralindia",
+    ], var.hci_location)
+    error_message = "hci_location must be a region supported by Microsoft.AzureStackHCI/clusters (e.g., eastus or southcentralus)."
   }
 }
 

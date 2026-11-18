@@ -179,8 +179,8 @@ run "handsoff_cluster_and_https_image_url" {
   }
 
   assert {
-    condition     = length(azapi_resource.hci_cluster) == 1 && output.hci_cluster_id != null
-    error_message = "deploy_hci_cluster = true must create the Microsoft.AzureStackHCI/clusters resource."
+    condition     = length(azapi_resource.hci_cluster) == 1 && output.hci_cluster_id != null && azapi_resource.hci_cluster[0].location == "eastus"
+    error_message = "deploy_hci_cluster = true must create the Microsoft.AzureStackHCI/clusters resource in hci_location (default eastus)."
   }
 }
 
@@ -193,5 +193,17 @@ run "rejects_non_https_hci_os_image_url" {
 
   expect_failures = [
     var.hci_os_image_url,
+  ]
+}
+
+run "rejects_unsupported_hci_location" {
+  command = plan
+
+  variables {
+    hci_location = "centralus"
+  }
+
+  expect_failures = [
+    var.hci_location,
   ]
 }

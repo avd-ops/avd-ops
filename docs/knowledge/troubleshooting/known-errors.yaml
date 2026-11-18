@@ -213,3 +213,11 @@ errors:
     applies_to: labs/azure-local-nested/
     status: verified
     added: "2026-11-17"
+  - id: azl-cluster-region-and-runcommand-empty-param
+    symptom: "`Microsoft.AzureStackHCI/clusters` fails in `centralus` with `LocationNotAvailableForResourceType`, and `azurerm_virtual_machine_run_command` fails when `parameter`/`protected_parameter` receives an empty string."
+    cause: "Azure Local (`Microsoft.AzureStackHCI/clusters`) is only available in select regions (`eastus`, `southcentralus` in US), and `azurerm_virtual_machine_run_command` rejects empty-string parameter values."
+    fix: "Separate `hci_location` (default `eastus`) from host VM `location` (`centralus`), and wrap optional `parameter` / `protected_parameter` blocks in `dynamic` blocks."
+    source: https://github.com/avd-ops/avd-ops/blob/main/labs/azure-local-nested/main.tf
+    applies_to: labs/azure-local-nested/main.tf, labs/azure-local-nested/variables.tf
+    status: verified
+    added: "2026-11-17"
