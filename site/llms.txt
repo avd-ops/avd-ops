@@ -13,7 +13,10 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [Knowledge base](docs/knowledge/README.md): What this knowledge base is, how it's organised, and how to add to it safely (status: verified)
 - [Start here](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: verified)
 - [Working from Cloud Shell](docs/knowledge/getting-started/cloud-shell.md): The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence (status: verified)
+- [Stand up and use an estate vault](docs/knowledge/getting-started/estate-vault.md): Create a private companion repo, initialize an adopter estate vault with avd-second-brain, ingest avd-current-state packages, and harvest generalized findings (status: unverified)
 - [Lab walkthrough: empty subscription to validated landing zone](docs/knowledge/getting-started/lab-walkthrough.md): Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks (status: verified)
+- [Multi-tenant and multi-subscription lab bootstrap](docs/knowledge/getting-started/multi-tenant-lab-bootstrap.md): Bootstrap checklist for the 4-subscription ALZ primary tenant and secondary T2T Entra tenant at $0/mo idle cost (status: plan)
+- [Stand up avd-remediate and avd-swarm in a lab](docs/knowledge/getting-started/remediate-and-swarm.md): Launch the avd-remediate local troubleshooting portal against an estate vault, and run the spend-guarded avd-swarm S1a spike in a dedicated lab (status: unverified)
 - [Concepts](docs/knowledge/concepts/README.md): The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture (status: verified)
 - [Glossary](docs/knowledge/concepts/glossary.md): One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term (status: verified)
 - [Sandbox batches](docs/knowledge/concepts/sandbox-batches.md): How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence (status: verified)
@@ -26,6 +29,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [avd-hcl](docs/knowledge/repos/avd-hcl.md): Enterprise IaC: native Azure Virtual Desktop deployed and operated with Terraform and Packer (status: verified)
 - [avd-intune](docs/knowledge/repos/avd-intune.md): Control plane: Microsoft Intune policy-as-code, session-host enrollment, assignment filters and Windows 365 Cloud PC provisioning (status: verified)
 - [avd-landing-zone](docs/knowledge/repos/avd-landing-zone.md): How it's built and changed from here: a cloud-native AVD landing zone and deployment portal for multiple pools, workspaces and Private Link (status: verified)
+- [avd-learn](docs/knowledge/repos/avd-learn.md): Ground-up AVD foundations dataset, CLI and installable PWA mapped to AZ-104 and AZ-140 (status: verified)
 - [avd-linecheck](docs/knowledge/repos/avd-linecheck.md): End-user browser network check: measures reachability, regional latency, jitter, setup overhead and download sufficiency from the user's device with zero sign-in (status: verified)
 - [avd-m365](docs/knowledge/repos/avd-m365.md): Control plane: greenfield Microsoft 365 tenant, OneDrive Known Folder Move, Teams VDI optimization and M365 Apps baselines (status: verified)
 - [avd-migrate](docs/knowledge/repos/avd-migrate.md): Single-pool target-state baseline designer and C14 manifest writer: turns C11 facts, C19 intake and optional C27 measured usage into a single pooled desktop pool for avd-landing-zone (status: verified)
@@ -66,6 +70,17 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0015. Add avd-gcp as the GCP Hybrid session-host control-plane repo](docs/knowledge/decisions/0015-add-avd-gcp-hybrid-control-plane.md): proposed
 - [0016. Position Terraform (avd-hcl) as the enterprise IaC option alongside Bicep](docs/knowledge/decisions/0016-terraform-as-enterprise-iac-option.md): proposed
 - [0017. Keep platform and cross-repo decisions in avd-ops, not avd-second-brain](docs/knowledge/decisions/0017-platform-decisions-live-in-avd-ops.md): proposed
+- [0018. Split project site (avd-ops.dev) and public demo hub (avd-ops.app)](docs/knowledge/decisions/0018-split-project-site-and-public-demo-domains.md): accepted
+- [0019. Multi-subscription and multi-tenant AVD lab topology](docs/knowledge/decisions/0019-multi-subscription-multi-tenant-lab-topology.md): accepted
+- [0020. Frontend Microsoft AVD LZA via an optional C14-to-bicepparam starter export](docs/knowledge/decisions/0020-lza-bicepparam-starter-export.md): accepted
+- [0021. Allow EUC Score as a named BYO output-adapter provenance (`euc-score-byo`)](docs/knowledge/decisions/0021-euc-score-byo-output-adapter.md): accepted
+- [0022. Define public CUA and external-executor plumbing across avd-ops](docs/knowledge/decisions/0022-cua-external-executor-plumbing.md): proposed
+- [0023. Support Azure Virtual Desktop on Azure Local via hostPlacement and existing contracts](docs/knowledge/decisions/0023-azure-local-support.md): accepted
+- [0024. Provide an optional nested Azure Local 23H2+ lab prerequisite in Terraform](docs/knowledge/decisions/0024-nested-azure-local-lab.md): proposed
+- [0025. Unify the avd-remediate and avd-swarm assistants at the protocol, UX, and corpus layers](docs/knowledge/decisions/0025-unify-remediate-and-swarm-assistants.md): accepted
+- [0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting](docs/knowledge/decisions/0026-github-free-limits-and-near-zero-azure-hosting.md): accepted
+- [0027. Separate helpdesk simulator kit and normalized ticket-adapter boundary](docs/knowledge/decisions/0027-helpdesk-simulator-and-ticket-adapter.md): proposed
+- [0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark](docs/knowledge/decisions/0027-open-source-rpa-workload-engine.md): accepted
 
 ## Related knowledge bases
 
