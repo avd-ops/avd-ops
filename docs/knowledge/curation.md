@@ -3,7 +3,7 @@ title: "Keeping the knowledge base current"
 summary: "How the KB stays current: the weekly digest, the prior-art check, the feedback loop, the freshness check and family alignment"
 topic: curation
 status: verified
-last_reviewed: 2026-10-19
+last_reviewed: 2026-11-18
 ---
 
 # Keeping the knowledge base current
@@ -185,3 +185,10 @@ requests that touch the KB. It runs `validate.py` (front matter and YAML against
 links and anchors, email and public-IP patterns, and the family checks), checks the generated
 tables and `llms.txt` are up to date (`build.py --check`), and runs the KB scripts' unit tests.
 Secrets are caught by gitleaks in [`secrets.yml`](../../.github/workflows/secrets.yml), on every PR.
+
+For published site artifacts, [`tests/site.test.mjs`](../../tests/site.test.mjs) scans all text
+files under `site/` (`.html`, `.css`, `.js`, `.json`, `.txt`) rather than only HTML pages—non-HTML
+outputs like `site/llms.txt` (generated from [family.yaml](family.yaml)) otherwise bypass HTML-only
+checks. Third-party vendor and product references are gated with word boundaries against an explicit
+`APPROVED_NAMES` allowlist covering upstream sources of truth, adopted OSS tools in
+[`credits.json`](../../credits.json), and approved toolset or BYO vendors.
