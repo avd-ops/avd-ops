@@ -269,6 +269,13 @@
    "status": "verified"
   },
   {
+   "id": "getting-started/migrate-and-benchmark.md",
+   "title": "Size with avd-migrate, benchmark with avd-benchmark, and check client networks",
+   "url": "getting-started/migrate-and-benchmark.html",
+   "topic": "getting-started",
+   "status": "unverified"
+  },
+  {
    "id": "getting-started/multi-tenant-lab-bootstrap.md",
    "title": "Multi-tenant and multi-subscription lab bootstrap",
    "url": "getting-started/multi-tenant-lab-bootstrap.html",
@@ -844,6 +851,10 @@
   },
   {
    "source": "getting-started/README.md",
+   "target": "getting-started/migrate-and-benchmark.md"
+  },
+  {
+   "source": "getting-started/README.md",
    "target": "repos/avd-swarm.md"
   },
   {
@@ -897,6 +908,14 @@
   {
    "source": "getting-started/lab-walkthrough.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "getting-started/migrate-and-benchmark.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/migrate-and-benchmark.md",
+   "target": "repos/avd-linecheck.md"
   },
   {
    "source": "getting-started/multi-tenant-lab-bootstrap.md",
