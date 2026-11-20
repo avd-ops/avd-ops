@@ -416,13 +416,21 @@ class CaptureTests(unittest.TestCase):
         self.assertTrue(ok)
 
     def test_pr_fails_without_kb_change(self):
-        ok, msg = capture_check.pr_verdict(["app.py"], [], "", "me", self.KB)
+        ok, msg = capture_check.pr_verdict(["app.py"], [], "", "me", self.KB, pr_number=42)
         self.assertFalse(ok)
-        self.assertIn("no-kb", msg)
+        self.assertIn("No KB entry:", msg)
+        self.assertIn("gh pr edit 42", msg)
 
     def test_pr_no_kb_needs_a_reason(self):
         self.assertFalse(capture_check.pr_verdict(["app.py"], ["no-kb"], "", "me", self.KB)[0])
         self.assertTrue(capture_check.pr_verdict(["app.py"], ["no-kb"], "No KB entry: typo fix", "me", self.KB)[0])
+        self.assertTrue(capture_check.pr_verdict(["app.py"], [], "No KB entry: typo fix", "me", self.KB)[0])
+
+    def test_repo_capture_ignore_skips_site_and_sbom(self):
+        cfg = capture_check.load_config(capture_check.ROOT)
+        ok, _ = capture_check.pr_verdict(["site/index.html", "site/docs/curation.html", "sbom.spdx.json"],
+                                         [], "", "me", cfg)
+        self.assertTrue(ok)
 
     def test_pr_kb_link_only_to_a_listed_kb(self):
         good = "KB: https://github.com/owner/brain/pull/3"
