@@ -48,9 +48,9 @@
       "I started avd-ops in June 2026 as one Azure Virtual Desktop landing zone, built on my own time to see how far a cloud-native deployment could go as code.",
       "Every real run that broke something became a lesson and a guard, and those lessons grew into the other repos: an inventory, an assessment method, agents a person approves, and a memory of what each deployment taught.",
       "It's still a personal research project: only avd-landing-zone is proven on real deployments, and the rest is being built in the open.",
-      "None of it is a solo act: it's 100% pair programmed with my buddy Claude."
+      "None of it is a solo act: it's built through AI pair programming."
     ],
-    "pair": {"name": "Claude", "url": "https://claude.com/claude-code", "text": "pair programmer on every repo, through Claude Code: Claude writes and reviews alongside me, and every change lands through a pull request I merge."},
+    "pair": {"name": "AI pair programming", "text": "coding agents write and review alongside me on every repo, and every change lands through a pull request I merge."},
     "maintainers": [{"name": "Nick Prignano", "github": "nickprignano", "role": "Author and maintainer"}],
     "experts": {"url": "https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/experts.md", "text": "The subject matter experts the knowledge base follows are chosen and scored by a published method, with evidence for every score."}
   },
