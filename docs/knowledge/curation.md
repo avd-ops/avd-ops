@@ -196,3 +196,9 @@ outputs like `site/llms.txt` (generated from [family.yaml](family.yaml)) otherwi
 checks. Third-party vendor and product references are gated with word boundaries against an explicit
 `APPROVED_NAMES` allowlist covering upstream sources of truth, adopted OSS tools in
 [`credits.json`](../../credits.json), and approved toolset or BYO vendors.
+
+When adding generated site pages or automated digests (such as [`scripts/site/build-blog.mjs`](../../scripts/site/build-blog.mjs) and [`scripts/site/draft-blog.mjs`](../../scripts/site/draft-blog.mjs)):
+
+- **Keep npm-dependent builders out of `pages.yml`.** [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) deploys `site/` without running `npm ci`, so scripts that import packages like `marked` belong in PR builds and `--check` tests rather than the Pages deploy job.
+- **Escape generated YAML frontmatter with `JSON.stringify`.** Replacing quotes with `\"` alone triggers CodeQL's incomplete string escaping alert because backslashes are left unescaped; `JSON.stringify` produces a valid, escaped double-quoted YAML scalar.
+- **Use synthetic placeholders in sanitizer tests.** [`tests/site.test.mjs`](../../tests/site.test.mjs) scans all tracked and untracked text files (including `tests/*.test.mjs`) for `repos.json` banned terms, so sanitizer unit tests must never embed literal banned strings.

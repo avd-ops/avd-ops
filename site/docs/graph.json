@@ -219,6 +219,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0029-platform-release-standard.md",
+   "title": "0029. Platform release standard and central release notes on avd-ops.dev",
+   "url": "decisions/0029-platform-release-standard.html",
+   "topic": "decisions",
+   "status": "accepted"
+  },
+  {
    "id": "decisions/README.md",
    "title": "Decision records",
    "url": "decisions/index.html",
@@ -630,6 +637,14 @@
    "target": "decisions/0022-cua-external-executor-plumbing.md"
   },
   {
+   "source": "decisions/0029-platform-release-standard.md",
+   "target": "decisions/0008-code-signing.md"
+  },
+  {
+   "source": "decisions/0029-platform-release-standard.md",
+   "target": "decisions/0017-platform-decisions-live-in-avd-ops.md"
+  },
+  {
    "source": "decisions/README.md",
    "target": "decisions/0001-adopt-the-2ndbrain-format.md"
   },
@@ -740,6 +755,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0027-open-source-rpa-workload-engine.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0029-platform-release-standard.md"
   },
   {
    "source": "getting-started/README.md",
