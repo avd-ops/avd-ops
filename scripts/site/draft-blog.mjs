@@ -97,11 +97,11 @@ export function formatDigestMarkdown({ date, items, banned = [] }) {
   const summary = clean(`Daily digest for ${date}: ${counts.join(', ')} across ${repos.join(', ')}.`);
   const lines = [
     '---',
-    `title: "Daily update: ${date}"`,
-    `date: "${date}"`,
-    `summary: "${summary.replace(/"/g, '\\"')}"`,
-    `repos: [${repos.map((r) => `"${r}"`).join(', ')}]`,
-    `tags: [${tags.map((t) => `"${t}"`).join(', ')}]`,
+    `title: ${JSON.stringify(`Daily update: ${date}`)}`,
+    `date: ${JSON.stringify(date)}`,
+    `summary: ${JSON.stringify(summary)}`,
+    `repos: [${repos.map((r) => JSON.stringify(r)).join(', ')}]`,
+    `tags: [${tags.map((t) => JSON.stringify(t)).join(', ')}]`,
     '---',
     '',
     `Summary of public updates merged, released, or recorded across the **avd-ops** repositories on **${date}**.`,
