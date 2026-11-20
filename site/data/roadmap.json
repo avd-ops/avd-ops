@@ -185,6 +185,22 @@
       }
     },
     {
+      "name": "avd-security",
+      "repo": "avd-ops/avd-security",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "stage": "Bootstrapped",
+      "status": "Defender for Cloud plans, Azure Policy baselines, Sentinel AVD KQL detections, and schema-validated posture scoring.",
+      "backlog": "Pin avd-security contracts in avd-assess, wire live C11 fact consumption, and add usgov C19 policy parity.",
+      "portal": null,
+      "counts": {
+        "now": 0,
+        "next": 0,
+        "later": 0,
+        "done": 0
+      }
+    },
+    {
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "layer": "control",

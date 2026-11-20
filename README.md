@@ -29,6 +29,7 @@ Sixteen public repos across five architectural layers, each the source of truth 
 | Control | [avd-m365](https://github.com/avd-ops/avd-m365#readme) | Control plane: greenfield Microsoft 365, OneDrive and Teams VDI | [page](docs/knowledge/repos/avd-m365.md) |
 | Control | [avd-azure](https://github.com/avd-ops/avd-azure#readme) | Control plane: Azure ARM and Bicep infrastructure | [page](docs/knowledge/repos/avd-azure.md) |
 | Control | [avd-networking](https://github.com/avd-ops/avd-networking#readme) | Control plane: Platform Connectivity hub VNet, Firewall, DNS and gateways | [page](docs/knowledge/repos/avd-networking.md) |
+| Control | [avd-security](https://github.com/avd-ops/avd-security#readme) | Security control plane: Defender for Cloud, Sentinel KQL detections, Azure Policy baselines, and posture scoring | [page](docs/knowledge/repos/avd-security.md) |
 | Control | [avd-power-platform](https://github.com/avd-ops/avd-power-platform#readme) | Control plane: Power Platform and Power Automate day-2 workflows | [page](docs/knowledge/repos/avd-power-platform.md) |
 | Operate | [avd-remediate](https://github.com/avd-ops/avd-remediate#readme) | Troubleshooting, host-level telemetry collection and human-approved remediation workbench | [page](docs/knowledge/repos/avd-remediate.md) |
 | Operate | [avd-linecheck](https://github.com/avd-ops/avd-linecheck#readme) | End-user browser network check | [page](docs/knowledge/repos/avd-linecheck.md) |

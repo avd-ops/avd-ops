@@ -78,6 +78,11 @@
       "status": "Platform Connectivity hub VNet, Azure Firewall, central Private DNS, DNS Private Resolver, gateways, and Bastion.",
       "backlog": "AVD Private Link NSG port rules, hub-peered bypass routes, and multi-region hub templates."
     },
+    "avd-security": {
+      "stage": "Bootstrapped",
+      "status": "Defender for Cloud plans, Azure Policy baselines, Sentinel AVD KQL detections, and schema-validated posture scoring.",
+      "backlog": "Pin avd-security contracts in avd-assess, wire live C11 fact consumption, and add usgov C19 policy parity."
+    },
     "avd-power-platform": {
       "stage": "Bootstrapped",
       "status": "Power Platform governance, DLP policies, and approval-gated Power Automate day-2 workflows.",

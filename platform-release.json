@@ -95,6 +95,15 @@
       "releaseUrl": null
     },
     {
+      "name": "avd-security",
+      "repo": "avd-ops/avd-security",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "layer": "control",
