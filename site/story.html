@@ -36,9 +36,11 @@
 <h1>The story behind avd-ops</h1>
 <p class="lede">Six years of looking for a simple, approachable, open way to build Azure Virtual Desktop from the ground up—and keep it running like a well-oiled machine.</p>
 
-<h2 id="citrix-to-cloud">From Citrix to cloud VDI</h2>
-<p>I started out as a Citrix engineer, learning the craft of virtual desktops the hard way: sizing host pools, chasing logon times, tuning storage, and keeping every layer predictable so end users just got a fast, reliable desktop.</p>
-<p>I pivoted early to cloud VDI and caught the Windows Virtual Desktop (WVD) wave before it was even renamed Azure Virtual Desktop (AVD). Moving to the cloud solved some old infrastructure headaches, but it brought a new set of challenges across identity, networking, Intune, Microsoft 365, and Azure itself.</p>
+<h2 id="citrix-to-cloud">From Citrix and RDS to cloud VDI</h2>
+<p>I spent 10 years in the trenches of VDI built on RDS and Citrix before I pivoted to the cloud, learning the craft of virtual desktops the hard way: sizing host pools, chasing logon times, tuning storage, and keeping every layer predictable so end users just got a fast, reliable desktop.</p>
+<p>I pivoted early to cloud VDI in 2017, helping enterprises move from Citrix and Horizon to Amazon WorkSpaces back when nobody thought that was a good idea besides people like me and AWS. From there, I caught the Windows Virtual Desktop (WVD) wave before it was even renamed Azure Virtual Desktop (AVD). Moving to the cloud solved some old infrastructure headaches, but it brought a new set of challenges across identity, networking, Intune, Microsoft 365, and Azure itself.</p>
+<p>At the same time, the licensing and platform constraints Microsoft placed around running Windows in the cloud—such as Windows 11 Enterprise multi-session and, for years, where Microsoft 365 Apps were supported—redirected a huge share of cloud VDI consumption and use cases to Azure. Because the AVD entitlement is already bundled into common Microsoft 365 licensing, the economics become a race to zero on management overhead. That is one of the core design principles <code>avd-ops</code> is built around: keep the tooling and control plane near-free to run.</p>
+<p>The other design principle is to remove as much ClickOps as possible while making IaC and CLI operations approachable—and even enjoyable—for VDI admins and people who otherwise would never open a terminal unless the helpdesk asked them to.</p>
 
 <h2 id="six-years">Six years searching for a simpler, open path</h2>
 <p>For the last six years, I kept running into the same gap: it was hard to find a simple, approachable, open solution for building AVD from the ground up—and even harder to find one that stayed useful after day one.</p>
