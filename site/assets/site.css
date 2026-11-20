@@ -469,4 +469,14 @@ figure.flows{margin:var(--space-4) 0 0}
 .blog-post h2{margin:var(--space-3) 0 0}
 .blog-post ul,.blog-post ol{margin:0;padding-left:1.35rem;display:grid;gap:var(--space-1)}
 
+/* Metrics & leaderboard (metrics.html) */
+.mx-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));gap:var(--space-2);margin:var(--space-3) 0 var(--space-4)}
+.mx-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3);margin:var(--space-3) 0 var(--space-4)}
+@media (max-width:56rem){.mx-podium{grid-template-columns:minmax(0,1fr)}}
+.mx-podium-card{border-top:2px solid var(--accent)}
+.mx-rank{font:700 .85rem var(--mono);color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--pill);padding:.1rem .55rem;font-variant-numeric:tabular-nums}
+.mx-ci-pass{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.mx-ci-fail{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.rm-repo-card progress{width:100%;height:.45rem;accent-color:var(--accent)}
+
 

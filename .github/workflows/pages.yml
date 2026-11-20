@@ -19,6 +19,8 @@ on:
       - 'scripts/site/build-research.mjs'
       - 'scripts/site/fetch-releases.mjs'
       - 'scripts/site/build-releases.mjs'
+      - 'scripts/site/fetch-metrics.mjs'
+      - 'scripts/site/build-metrics.mjs'
       - '.github/workflows/pages.yml'
   schedule:
     - cron: '17 6 * * *'
@@ -60,6 +62,8 @@ jobs:
           node scripts/site/build-research.mjs
           node scripts/site/fetch-releases.mjs
           node scripts/site/build-releases.mjs
+          node scripts/site/fetch-metrics.mjs
+          node scripts/site/build-metrics.mjs
       - name: Include canonical llms.txt
         run: node scripts/site/build-llms.mjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
