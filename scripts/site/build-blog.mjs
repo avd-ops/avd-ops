@@ -34,8 +34,29 @@ export function parseFrontMatter(raw) {
   return { meta, body: m ? raw.slice(m[0].length) : raw };
 }
 
+export function inferAutoTags(slug, body) {
+  const tags = new Set();
+  if (slug.includes('weekly-digest')) tags.add('weekly-digest');
+  else if (slug.includes('daily-update')) tags.add('daily-digest');
+  if (/^##\s+Releases\b/m.test(body)) tags.add('release');
+  if (/^##\s+Features\b/m.test(body)) tags.add('features');
+  if (/^##\s+Findings\b/m.test(body)) tags.add('findings');
+  if (/^##\s+Fixes\b/m.test(body)) tags.add('fixes');
+  if (!tags.size) tags.add('note');
+  return [...tags];
+}
+
+export function inferAutoRepos(body, knownRepos) {
+  const found = [];
+  for (const name of knownRepos) {
+    if (new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(body)) found.push(name);
+  }
+  return found;
+}
+
 export function loadPosts(srcDir = SRC_DIR) {
   if (!existsSync(srcDir)) return [];
+  const knownRepos = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8')).repos.map((r) => r.name);
   const posts = [];
   for (const file of readdirSync(srcDir).sort()) {
     if (!file.endsWith('.md') || file === 'README.md') continue;
@@ -46,8 +67,8 @@ export function loadPosts(srcDir = SRC_DIR) {
     const date = meta.date || (dateMatch ? dateMatch[1] : '1970-01-01');
     const title = meta.title || (body.match(/^# (.+)$/m) || [, slug])[1];
     const summary = meta.summary || '';
-    const repos = Array.isArray(meta.repos) ? meta.repos : [];
-    const tags = Array.isArray(meta.tags) ? meta.tags : [];
+    const repos = Array.isArray(meta.repos) && meta.repos.length ? meta.repos : inferAutoRepos(body, knownRepos);
+    const tags = Array.isArray(meta.tags) && meta.tags.length ? meta.tags : inferAutoTags(slug, body);
     const cleanBody = body.replace(/^# .+\r?\n+/, '');
     const htmlBody = marked.parse(cleanBody, { gfm: true });
     posts.push({ file, slug, url: `${slug}.html`, date, title, summary, repos, tags, htmlBody });
@@ -83,11 +104,33 @@ ${bodyHtml}
 }
 
 export function buildIndexHtml(posts) {
+  const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
+  const allRepos = [...new Set(posts.flatMap((p) => p.repos))].sort();
+
+  const filtersHtml = posts.length
+    ? `<div class="rm-filters" data-blog-filters>
+<div class="rm-filter-row" role="group" aria-label="Filter by tag">
+<span class="rm-filter-label">Tag</span>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="all" aria-pressed="true">All tags</button>
+${allTags.map((t) => `<button class="chip rm-chip-btn" type="button" data-filter-tag="${esc(t)}" aria-pressed="false">${esc(t)}</button>`).join('\n')}
+</div>
+<div class="rm-filter-row" role="group" aria-label="Filter by repo">
+<span class="rm-filter-label">Repo</span>
+<button class="chip rm-chip-btn" type="button" data-filter-repo="all" aria-pressed="true">All repos</button>
+${allRepos.map((r) => `<button class="chip rm-chip-btn mono" type="button" data-filter-repo="${esc(r)}" aria-pressed="false">${esc(r)}</button>`).join('\n')}
+</div>
+<div class="rm-filter-status" hidden>
+<span class="rm-filter-summary" data-filter-summary></span>
+<button class="chip rm-chip-btn" type="button" data-filter-reset>Clear filters</button>
+</div>
+</div>`
+    : '';
+
   const cards = posts.length
     ? posts.map((p) => {
         const repoChips = p.repos.map((r) => `<span class="chip mono">${esc(r)}</span>`).join(' ');
         const tagChips = p.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join(' ');
-        return `<article class="card rm-card" id="post-${esc(p.slug)}">
+        return `<article class="card rm-card" id="post-${esc(p.slug)}" data-blog-card data-tags="${esc(p.tags.join(','))}" data-repos="${esc(p.repos.join(','))}">
 <div class="rm-top"><span class="chip mono">${esc(p.date)}</span>${repoChips ? ` ${repoChips}` : ''}${tagChips ? ` ${tagChips}` : ''}</div>
 <h3><a href="${esc(p.url)}">${esc(p.title)}</a></h3>
 ${p.summary ? `<p>${esc(p.summary)}</p>` : ''}
@@ -97,10 +140,11 @@ ${p.summary ? `<p>${esc(p.summary)}</p>` : ''}
 
   const bodyHtml = `<p class="eyebrow">Blog &amp; updates</p>
 <h1>Major updates, features and findings across avd-ops.</h1>
-<p class="lede">Daily digests drafted from public releases, merged pull requests, accepted issues and decision records across the avd-ops repositories, plus deeper engineering notes.</p>
+<p class="lede">Weekly digests drafted from public releases, merged pull requests, accepted issues and decision records across the avd-ops repositories, plus deeper engineering notes.</p>
 <p><a class="chip" href="feed.xml">Atom feed (feed.xml)</a></p>
 <section aria-labelledby="blog-posts-heading">
 <h2 id="blog-posts-heading">Posts</h2>
+${filtersHtml}
 <div class="rm-list">
 ${cards}
 </div>
@@ -108,9 +152,9 @@ ${cards}
 
   return wrapPage({
     title: 'Blog & updates',
-    description: 'Daily digests of major updates, features and findings across the avd-ops repositories.',
+    description: 'Weekly digests of major updates, features and findings across the avd-ops repositories.',
     current: 'blog/index.html',
-    extraHead: '<link rel="alternate" type="application/atom+xml" title="avd-ops blog" href="feed.xml">\n',
+    extraHead: '<link rel="alternate" type="application/atom+xml" title="avd-ops blog" href="feed.xml">\n<script src="../assets/blog.js" defer></script>\n',
     bodyHtml,
   });
 }
