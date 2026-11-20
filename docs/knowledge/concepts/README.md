@@ -3,7 +3,7 @@ title: "Concepts"
 summary: "The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture"
 topic: concepts
 status: verified
-last_reviewed: 2026-10-29
+last_reviewed: 2026-11-20
 ---
 
 # Concepts
@@ -141,3 +141,11 @@ Bicep and PowerShell in the core control-plane repos; Terraform and Packer in `a
 
 The core deployment repos (`avd-landing-zone` and `avd-azure`) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, [avd-hcl](../repos/avd-hcl.md) provides the parallel HCL path ([decision 0016](../decisions/0016-terraform-as-enterprise-iac-option.md)), while keeping HCL out of the Bicep repos per avd-second-brain's lane rules
 ([decision 0012](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).
+
+## Time zones and time sync
+
+Windows time zone IDs govern Azure schedules, `fEnableTimeZoneRedirection` follows the user, and `W32Time` keeps clocks aligned.
+
+<!-- more -->
+
+Intake (`intake.workingHours.timeZone`) uses IANA time zone names, while Azure scaling plans, auto-shutdown schedules, and `target-state` manifests use DST-aware Windows time zone IDs; `avd-landing-zone` refuses deployment on mismatch. Golden images and `avd-intune`'s multi-session baseline enable `fEnableTimeZoneRedirection = 1` so sessions reflect the client's local time zone, and `W32Time` stays protected from WDOT (`NT5DS` for AD-joined hosts, `VMICTimeProvider` or `NTP` for Entra-joined hosts). See [avd-assess](https://github.com/avd-ops/avd-assess/blob/main/dimensions.yaml) and [avd-second-brain's operations guide](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/operations/README.md).
