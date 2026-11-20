@@ -1,0 +1,79 @@
+name: blog-digest
+
+# Daily digest of releases, merged pull requests, accepted findings and decision records across
+# the public repos in repos.json. Writes docs/blog/YYYY-MM-DD-daily-update.md, rebuilds site/blog/,
+# runs the site test suite, and opens a pull request for review before publishing.
+#
+# Needs "Allow GitHub Actions to create and approve pull requests" in Settings > Actions > General.
+
+on:
+  schedule:
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'UTC date to summarize (YYYY-MM-DD, defaults to yesterday)'
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: blog-digest
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Draft daily digest
+        id: draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_DATE: ${{ inputs.date }}
+        run: |
+          if [ -n "$INPUT_DATE" ]; then
+            TARGET_DATE="$INPUT_DATE"
+          else
+            TARGET_DATE=$(date -u -d 'yesterday' +%F)
+          fi
+          echo "date=$TARGET_DATE" >> "$GITHUB_OUTPUT"
+          node scripts/site/draft-blog.mjs --date "$TARGET_DATE"
+          if [ -f "docs/blog/${TARGET_DATE}-daily-update.md" ] && [ -n "$(git status --porcelain docs/blog/)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build blog and run tests
+        if: steps.draft.outputs.changed == 'true'
+        run: |
+          node scripts/site/build-blog.mjs
+          node --test "tests/*.test.mjs"
+      - name: Open pull request
+        if: steps.draft.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_DATE: ${{ steps.draft.outputs.date }}
+        run: |
+          BRANCH="blog/digest-${TARGET_DATE}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add docs/blog/ site/blog/
+          git commit -m "blog: daily digest ${TARGET_DATE}"
+          git push -f origin "$BRANCH"
+          if gh pr list --head "$BRANCH" --state open --json number --jq 'length' | grep -qx '0'; then
+            gh pr create \
+              --title "blog: daily digest ${TARGET_DATE}" \
+              --body "Automated daily digest for \`${TARGET_DATE}\` across the public \`avd-ops\` repositories.\n\nNo KB entry: automated daily blog digest generated from public repo activity." \
+              --label "no-kb" || \
+            gh pr create \
+              --title "blog: daily digest ${TARGET_DATE}" \
+              --body "Automated daily digest for \`${TARGET_DATE}\` across the public \`avd-ops\` repositories.\n\nNo KB entry: automated daily blog digest generated from public repo activity."
+          fi
