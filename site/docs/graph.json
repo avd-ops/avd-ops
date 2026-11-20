@@ -403,6 +403,13 @@
    "status": "verified"
   },
   {
+   "id": "repos/avd-security.md",
+   "title": "avd-security",
+   "url": "repos/avd-security.html",
+   "topic": "repos",
+   "status": "verified"
+  },
+  {
    "id": "repos/avd-swarm.md",
    "title": "avd-swarm",
    "url": "repos/avd-swarm.html",
@@ -961,6 +968,10 @@
   },
   {
    "source": "repos/README.md",
+   "target": "repos/avd-security.md"
+  },
+  {
+   "source": "repos/README.md",
    "target": "repos/avd-power-platform.md"
   },
   {
@@ -1342,6 +1353,34 @@
   {
    "source": "repos/avd-second-brain.md",
    "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "decisions/0028-add-avd-security.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-networking.md"
+  },
+  {
+   "source": "repos/avd-security.md",
+   "target": "repos/avd-azure.md"
   },
   {
    "source": "repos/avd-swarm.md",

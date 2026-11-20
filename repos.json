@@ -101,6 +101,15 @@
       "docs": "docs/knowledge/repos/avd-networking.md"
     },
     {
+      "name": "avd-security",
+      "repo": "avd-ops/avd-security",
+      "branch": "main",
+      "maturity": "pre-beta",
+      "layer": "control",
+      "role": "Security control plane: Defender for Cloud, Sentinel KQL detections, Azure Policy baselines, and posture scoring",
+      "docs": "docs/knowledge/repos/avd-security.md"
+    },
+    {
       "name": "avd-power-platform",
       "repo": "avd-ops/avd-power-platform",
       "branch": "main",

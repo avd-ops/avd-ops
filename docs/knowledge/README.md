@@ -43,6 +43,7 @@ add it to the topic page it belongs to instead of starting a new file.
 | [repos/avd-power-platform.md](repos/avd-power-platform.md) | Control plane: Power Platform environments, DLP policies and Power Automate day-2 workflows for Azure Virtual Desktop | verified |
 | [repos/avd-remediate.md](repos/avd-remediate.md) | Troubleshooting, host-level telemetry collection and human-approved remediation workbench across all five control planes | verified |
 | [repos/avd-second-brain.md](repos/avd-second-brain.md) | On top, Desktop DevOps intelligence: the knowledge base, contract registry and fact register across AVD, Windows 365 and Intune | verified |
+| [repos/avd-security.md](repos/avd-security.md) | Security control plane: Defender for Cloud, Sentinel KQL detections, Azure Policy baselines, and posture scoring | verified |
 | [repos/avd-swarm.md](repos/avd-swarm.md) | On top, Desktop DevOps execution: agents across AVD, Windows 365 and Intune that read freely and change nothing until a person approves the plan | verified |
 | [troubleshooting/](troubleshooting/README.md) | Errors hit in this project: symptom, cause, fix and source | verified |
 | [roadmap/](roadmap/README.md) | Where each AVD repo is today and what these docs will cover next | plan |

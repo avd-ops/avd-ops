@@ -42,6 +42,7 @@ Identity, devices, Microsoft 365, Azure, the network and day-2 workflows, as cod
 | [avd-m365](avd-m365.md) | Greenfield Microsoft 365, OneDrive and Teams VDI | Pre-beta |
 | [avd-azure](avd-azure.md) | Azure ARM and Bicep infrastructure | Pre-beta |
 | [avd-networking](avd-networking.md) | Platform Connectivity hub VNet, Firewall, DNS and gateways | Pre-beta |
+| [avd-security](avd-security.md) | Defender for Cloud, Sentinel KQL detections, Azure Policy baselines, and posture scoring | Pre-beta |
 | [avd-power-platform](avd-power-platform.md) | Power Platform and Power Automate day-2 workflows | Pre-beta |
 
 ## Operate and support {#layer-operate}
