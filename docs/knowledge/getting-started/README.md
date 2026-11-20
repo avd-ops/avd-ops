@@ -32,6 +32,7 @@ Pick the row that matches what you want to do, and open that repo.
 | See what an existing AVD environment holds, read-only | [avd-current-state](../repos/avd-current-state.md) | Feed its redacted facts to [avd-second-brain](../repos/avd-second-brain.md) |
 | Deploy and validate a dev AVD landing zone | [Lab walkthrough](lab-walkthrough.md) | Store history in an [estate vault](estate-vault.md) |
 | Stand up a private estate vault and harvest runbooks | [Estate vault walkthrough](estate-vault.md) | Troubleshoot with [avd-remediate and avd-swarm](remediate-and-swarm.md) |
+| Size a target pool, benchmark hosts, or check client networks | [Migrate, benchmark, and linecheck](migrate-and-benchmark.md) | Deploy with [Lab walkthrough](lab-walkthrough.md) |
 | Troubleshoot or run agents in a lab | [avd-remediate and avd-swarm](remediate-and-swarm.md) | [avd-swarm](../repos/avd-swarm.md) design and spike docs |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
