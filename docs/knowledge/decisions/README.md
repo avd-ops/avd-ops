@@ -40,5 +40,6 @@ the family numbers its own decisions; refer to a sibling's as `<project> 0012`, 
 | [0026](0026-github-free-limits-and-near-zero-azure-hosting.md) | Call out GitHub Free private-repo limits and allow near-zero Azure page hosting | Accepted |
 | [0027](0027-helpdesk-simulator-and-ticket-adapter.md) | Separate helpdesk simulator kit and normalized ticket-adapter boundary | Proposed |
 | [0027](0027-open-source-rpa-workload-engine.md) | Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark | Accepted |
+| [0028](0028-add-avd-security.md) | Add avd-security for AVD security control plane, posture verification, and detection | Proposed |
 | [0029](0029-platform-release-standard.md) | Platform release standard and central release notes on avd-ops.dev | Accepted |
 <!-- END GENERATED: decision-index -->
