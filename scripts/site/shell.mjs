@@ -35,10 +35,10 @@ for (const r of family.repos) {
 // standards, and the system itself. Each tier holds groups of [label, path]; a group without a title sits
 // straight under its tier. Paths are relative to site/.
 export const GROUPS = [
-  ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Concepts', 'docs/concepts.html'], ['Architecture', 'architecture.html']]]]],
+  ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['Concepts', 'docs/concepts.html'], ['Architecture', 'architecture.html'], ['Blog', 'blog/index.html']]]]],
   ['Ecosystem', [[null, [['Repo guides', 'docs/repos/index.html']]], ...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])])]],
   ['Governance and standards', [[null, [['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Decisions', 'docs/decisions/index.html'], ['Roadmap', 'roadmap.html'], ['Docs roadmap', 'docs/roadmap.html'], ['Research projects', 'research.html']]]]],
-  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
+  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Story', 'story.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
 ];
 
 // The switcher: the site, then the portals each repo publishes (repos.json "portal" and "status").

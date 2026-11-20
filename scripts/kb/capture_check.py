@@ -10,8 +10,8 @@ Two modes, both git-only and stdlib-only, so a repo without the KB scripts can c
 
   python3 scripts/kb/capture_check.py pr --base origin/main
       The kb-capture PR check. Reads the pull request from $GITHUB_EVENT_PATH and fails when code
-      changed without a KB change, unless the PR has the `no-kb` label and a "No KB entry:" line,
-      or (in a repo without a KB) a `KB: <link>` to a KB repo it feeds.
+      changed without a KB change, unless the PR body has a "No KB entry: <reason>" line (with or
+      without the `no-kb` label), or (in a repo without a KB) a `KB: <link>` to a KB repo it feeds.
 
 Settings come from docs/knowledge/kb.toml in a repo with a KB, or .claude/kb-capture.toml in one
 without:
@@ -162,7 +162,8 @@ def run_hook(stdin=sys.stdin, root: Path = ROOT) -> int:
     return 0
 
 
-def pr_verdict(files: list[str], labels: list[str], body: str, author: str, cfg: dict) -> tuple[bool, str]:
+def pr_verdict(files: list[str], labels: list[str], body: str, author: str, cfg: dict,
+               pr_number: int | str | None = None) -> tuple[bool, str]:
     """(passes, message) for a pull request."""
     if author in BOT_AUTHORS:
         return True, f"Opened by {author}: family automation is exempt."
@@ -174,15 +175,20 @@ def pr_verdict(files: list[str], labels: list[str], body: str, author: str, cfg:
     for url, repo in KB_LINK.findall(body or ""):
         if repo.lower() in cfg["kb_repos"]:
             return True, f"Lesson recorded at {url}."
-    if NO_KB_LABEL in labels:
-        if NO_KB_REASON.search(body or ""):
+    if NO_KB_REASON.search(body or ""):
+        if NO_KB_LABEL in labels:
             return True, "Labelled no-kb, with a reason."
-        return False, "Labelled no-kb but the PR body has no 'No KB entry: <reason>' line."
+        return True, "No KB entry reason provided in the PR body."
+    target = f" {pr_number}" if pr_number is not None else ""
+    edit_cmd = f'gh pr edit{target} --body "<existing body>\\n\\nNo KB entry: <reason>"'
+    if NO_KB_LABEL in labels:
+        return False, (f"Labelled no-kb but the PR body has no 'No KB entry: <reason>' line. "
+                       f"Add it with: {edit_cmd}")
     where = ("a change under docs/knowledge/" if cfg["has_kb"]
              else "a 'KB: <link>' line to the lesson in " + (", ".join(cfg["kb_repos"]) or "the KB this repo feeds"))
     return False, (f"{len(code)} file(s) changed outside the knowledge base without {where} "
-                   "(decision 0011). Record the lesson, or add the no-kb label and a "
-                   "'No KB entry: <reason>' line to the PR body.")
+                   f"(decision 0011). Record the lesson, or add a 'No KB entry: <reason>' line to "
+                   f"the PR body: {edit_cmd}")
 
 
 def run_pr(base: str, root: Path = ROOT) -> int:
@@ -192,7 +198,8 @@ def run_pr(base: str, root: Path = ROOT) -> int:
         pr = json.loads(Path(event_path).read_text(encoding="utf-8")).get("pull_request", {})
     files = git("diff", "--name-only", f"{base}...HEAD", root=root)
     ok, msg = pr_verdict(files, [lb["name"] for lb in pr.get("labels", [])], pr.get("body") or "",
-                         (pr.get("user") or {}).get("login", ""), load_config(root))
+                         (pr.get("user") or {}).get("login", ""), load_config(root),
+                         pr_number=pr.get("number"))
     print(msg if ok else f"::error::{msg}")
     return 0 if ok else 1
 

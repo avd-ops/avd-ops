@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>avd-ops blog</title>
+  <subtitle>Major updates, features and findings across the avd-ops repositories.</subtitle>
+  <link href="https://avd-ops.dev/blog/feed.xml" rel="self"/>
+  <link href="https://avd-ops.dev/blog/"/>
+  <id>https://avd-ops.dev/blog/</id>
+  <updated>2026-11-20T00:00:00Z</updated>
+  <entry>
+    <title>Launching the avd-ops auto-blog</title>
+    <link href="https://avd-ops.dev/blog/2026-11-20-auto-blog-launch.html"/>
+    <id>https://avd-ops.dev/blog/2026-11-20-auto-blog-launch.html</id>
+    <updated>2026-11-20T00:00:00Z</updated>
+    <summary>Daily digests of releases, merged pull requests, accepted findings and decision records across the avd-ops repositories, drafted as pull requests for review.</summary>
+    <content type="html">&lt;p&gt;We added an automated daily blog at &lt;strong&gt;avd-ops.dev/blog/&lt;/strong&gt; to track major updates, features, fixes, and findings across the public &lt;strong&gt;avd-ops&lt;/strong&gt; repositories.&lt;/p&gt;
+&lt;h2&gt;How it works&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Daily collection&lt;/strong&gt;: A scheduled GitHub Actions workflow (&lt;code&gt;blog-digest.yml&lt;/code&gt;) queries the public repositories listed in &lt;code&gt;repos.json&lt;/code&gt; for releases, non-bot merged pull requests, closed accepted issues, and new decision records from the previous UTC day.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PR-drafted review&lt;/strong&gt;: When notable activity is found, &lt;code&gt;scripts/site/draft-blog.mjs&lt;/code&gt; writes a Markdown digest under &lt;code&gt;docs/blog/&lt;/code&gt; and &lt;code&gt;scripts/site/build-blog.mjs&lt;/code&gt; renders &lt;code&gt;site/blog/&lt;/code&gt; and the Atom feed (&lt;code&gt;site/blog/feed.xml&lt;/code&gt;). The workflow opens a pull request so every post goes through CI checks and human review before publishing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Manual deep dives&lt;/strong&gt;: Standalone Markdown posts in &lt;code&gt;docs/blog/&lt;/code&gt; render alongside the automated daily digests, so engineering findings and architecture notes live in one feed.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
+</feed>

@@ -12,6 +12,8 @@ on:
       - 'site/**'
       - 'roadmap.json'
       - 'llms.txt'
+      - 'docs/blog/**'
+      - 'scripts/site/build-blog.mjs'
       - 'scripts/site/build-llms.mjs'
       - 'scripts/site/build-roadmap.mjs'
       - 'scripts/site/build-research.mjs'
@@ -48,6 +50,7 @@ jobs:
           node scripts/site/fetch-issues.mjs
           node scripts/site/build-roadmap.mjs
           node scripts/site/build-research.mjs
+          node scripts/site/build-blog.mjs
       - name: Include canonical llms.txt
         run: node scripts/site/build-llms.mjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

@@ -169,13 +169,17 @@ Code that changes without a KB entry loses what was learned, so two checks ask f
   for the lesson, or for one line saying why there's none. `capture_hook` in [kb.toml](kb.toml)
   sets it to `block`, `warn` (a reminder only) or `off`.
 - **PR check.** [`.github/workflows/kb-capture.yml`](../../.github/workflows/kb-capture.yml) fails a
-  pull request that changes code without changing `docs/knowledge/`, unless it has the `no-kb`
-  label and a `No KB entry: <reason>` line in its body. It reruns when the label or body changes.
-  PRs from the family's automation are exempt.
+  pull request that changes code without changing `docs/knowledge/`, unless its body has a
+  `No KB entry: <reason>` line (the `no-kb` label is optional). Requiring both a manual `no-kb`
+  label and the body line caused routine CI failures on PRs that already included `No KB entry:`,
+  so the body line alone now satisfies the bypass; if it still fails, the error prints the exact
+  `gh pr edit` command. It reruns when the label or body changes. PRs from the family's automation
+  are exempt.
 - **A repo without its own KB** puts `capture_hook` and `kb_repos` in `.claude/kb-capture.toml`
   and passes with a `KB: <link>` line to the lesson in one of those KB repos.
 
-Paths in `capture_ignore` (and `llms.txt` and lockfiles) don't count as code.
+Paths in `capture_ignore` (`site/**` and `sbom.spdx.json` in [`kb.toml`](kb.toml), plus
+`llms.txt` and lockfiles by default) don't count as code.
 
 ## Checks on every change (`kb-validate`)
 

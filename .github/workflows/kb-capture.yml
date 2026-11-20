@@ -2,9 +2,9 @@ name: kb-capture
 
 # Decision 0011: a pull request that changes code must carry what was learned. It passes when it
 # changes docs/knowledge/, links the lesson with a `KB: <link>` line (repos without their own KB),
-# or has the no-kb label and a "No KB entry: <reason>" line in its body. PRs from the family's own
-# automation are exempt. It reruns when labels or the body change, so no new push is needed.
-# Like kb-validate, it always runs: directives and KB_PAUSED don't pause it.
+# or has a "No KB entry: <reason>" line in its body (the `no-kb` label is optional). PRs from the
+# family's own automation are exempt. It reruns when labels or the body change, so no new push is
+# needed. Like kb-validate, it always runs: directives and KB_PAUSED don't pause it.
 
 on:
   pull_request:
