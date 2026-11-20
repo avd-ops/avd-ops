@@ -1,0 +1,170 @@
+{
+  "schema": "avd-ops-platform-release/v1",
+  "platformVersion": "2026.11.0",
+  "cadence": "patch-tuesday-plus-7",
+  "releasedAt": "2026-11-20",
+  "repos": [
+    {
+      "name": "avd-current-state",
+      "repo": "avd-ops/avd-current-state",
+      "layer": "assess",
+      "maturity": "proven",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-assess",
+      "repo": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tag": "v4.0.0",
+      "publishedAt": "2026-11-18",
+      "releaseUrl": "https://github.com/avd-ops/avd-assess/releases/tag/v4.0.0"
+    },
+    {
+      "name": "avd-migrate",
+      "repo": "avd-ops/avd-migrate",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-landing-zone",
+      "repo": "avd-ops/avd-landing-zone",
+      "layer": "build",
+      "maturity": "proven",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-entra",
+      "repo": "avd-ops/avd-entra",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-intune",
+      "repo": "avd-ops/avd-intune",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-m365",
+      "repo": "avd-ops/avd-m365",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-azure",
+      "repo": "avd-ops/avd-azure",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-hcl",
+      "repo": "avd-ops/avd-hcl",
+      "layer": "build",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-networking",
+      "repo": "avd-ops/avd-networking",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-power-platform",
+      "repo": "avd-ops/avd-power-platform",
+      "layer": "control",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-swarm",
+      "repo": "avd-ops/avd-swarm",
+      "layer": "intelligence",
+      "maturity": "design",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-second-brain",
+      "repo": "avd-ops/avd-second-brain",
+      "layer": "intelligence",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-benchmark",
+      "repo": "avd-ops/avd-benchmark",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-remediate",
+      "repo": "avd-ops/avd-remediate",
+      "layer": "operate",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-linecheck",
+      "repo": "avd-ops/avd-linecheck",
+      "layer": "operate",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-learn",
+      "repo": "avd-ops/avd-learn",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tag": null,
+      "publishedAt": null,
+      "releaseUrl": null
+    },
+    {
+      "name": "avd-ops",
+      "repo": "avd-ops/avd-ops",
+      "layer": "front-door",
+      "maturity": "pre-beta",
+      "tag": "pe-v1.0.0",
+      "publishedAt": "2026-10-22",
+      "releaseUrl": "https://github.com/avd-ops/avd-ops/releases/tag/pe-v1.0.0"
+    }
+  ]
+}

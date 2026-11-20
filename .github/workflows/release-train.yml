@@ -1,0 +1,53 @@
+name: release-train
+
+# Monthly release-train readiness check on Patch Tuesday + 7 days (3rd Tuesday of each month).
+# Runs unit tests and audits all public repos in repos.json for unreleased commits,
+# CHANGELOG.md coverage, and release workflows, posting a deduplicated tracking issue.
+
+on:
+  schedule:
+    - cron: '0 13 * * 2' # Tuesdays 13:00 UTC (07:00 CST); script guards for 3rd Tuesday (day 15..21)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Run even if today is not Patch Tuesday + 7 days'
+        type: boolean
+        required: false
+        default: true
+  pull_request:
+    paths:
+      - scripts/ops/release_train.py
+      - scripts/ops/test_release_train.py
+      - .github/workflows/release-train.yml
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: release-train
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Run release-train unit tests
+        run: python3 -m unittest discover -s scripts/ops
+      - name: Run monthly release-train readiness audit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/ops/release_train.py --repos-file repos.json --manifest platform-release.json --force --dry-run >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            python3 scripts/ops/release_train.py --repos-file repos.json --manifest platform-release.json --force --post-issue "${{ github.repository }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            python3 scripts/ops/release_train.py --repos-file repos.json --manifest platform-release.json --check-day --post-issue "${{ github.repository }}" >> "$GITHUB_STEP_SUMMARY"
+          fi

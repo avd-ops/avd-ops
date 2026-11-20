@@ -17,9 +17,13 @@ on:
       - 'scripts/site/build-llms.mjs'
       - 'scripts/site/build-roadmap.mjs'
       - 'scripts/site/build-research.mjs'
+      - 'scripts/site/fetch-releases.mjs'
+      - 'scripts/site/build-releases.mjs'
       - '.github/workflows/pages.yml'
   schedule:
     - cron: '17 6 * * *'
+  repository_dispatch:
+    types: [release-published]
   workflow_dispatch:
 
 permissions:
@@ -43,13 +47,15 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Refresh issues, roadmap and research pages
+      - name: Refresh issues, roadmap, research and release notes pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node scripts/site/fetch-issues.mjs
           node scripts/site/build-roadmap.mjs
           node scripts/site/build-research.mjs
+          node scripts/site/fetch-releases.mjs
+          node scripts/site/build-releases.mjs
       - name: Include canonical llms.txt
         run: node scripts/site/build-llms.mjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

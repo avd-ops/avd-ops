@@ -1,0 +1,1512 @@
+{
+  "schema": "avd-ops-releases/v1",
+  "fetchedAt": "2026-11-20",
+  "releases": [
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v4.0.0",
+      "name": "avd-assess 4.0.0",
+      "prerelease": false,
+      "publishedAt": "2026-11-18",
+      "publishedAtRaw": "2026-11-18T22:26:56Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v4.0.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 4.0.0, built from `bb35da95f283b26a4c47677a51cc3c0253414524`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-4.0.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nRequired bump over 3.1.0: **major**.\n\n## Breaking\n\n- contracts/schemas/benchmark-result.schema.json#/properties/extensions: additional properties now refused\n\n## Added\n\n- gaps/ui-step-latency.md added\n- contracts/fact-register.json: ID c11.azureLocal.clusters added (/facts/*/id)\n- contracts/fact-register.json: ID c11.azureLocal.clustersRegistered23h2Plus added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.hostPlacement added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.arcAgentDisconnected added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.arcConnected added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.azureLocalHosts added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.cloudDeviceExtensionFailed added (/facts/*/id)\n- contracts/fact-register.json: ID intake.hostPlacement added (/facts/*/id)\n- contracts/fact-register.json: ID intake.profileStorageType added (/facts/*/id)\n- contracts/schemas/assessment.schema.json#/properties/results/items/properties/reason: enum value 'azure-local-host' added\n- contracts/schemas/benchmark-result.schema.json#/properties/extensions: property 'generator' added\n- contracts/schemas/benchmark-result.schema.json#/properties/extensions: property 'rpa' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'actionLatencyMs' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'appLaunchMs' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'saveCloseMs' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'stepSuccessRatePct' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'stepTimeoutRatePct' added\n- contracts/schemas/benchmark-result.schema.json#/properties/metrics: property 'windowReadyMs' added\n- contracts/schemas/benchmark-result.schema.json#/properties/profile: property 'manifestCommit' added\n- contracts/schemas/benchmark-result.schema.json#/properties/profile/properties/id: enum value 'rpa-ui-responsiveness' added\n- contracts/schemas/benchmark-result.schema.json#/properties/source: enum value 'fixture' added\n- contracts/schemas/benchmark-result.schema.json#/$defs/distribution: property 'n' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'azureLocal' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'hostPlacement' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'arcAgentDisconnected' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'arcConnected' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'azureLocalHosts' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'cloudDeviceExtensionFailed' added\n- contracts/schemas/current-state-facts.schema.json#/$defs/planeCollectionState/properties/reason: enum value 'azure-local-host' added\n- contracts/schemas/intake.schema.json#/: property 'azureLocal' added\n- contracts/schemas/intake.schema.json#/: property 'hostPlacement' added\n- contracts/schemas/intake.schema.json#/: property 'profileStorageType' added\n- index.json: ID ui-step-latency added (/gaps/*/id)\n- map.json: ID rpa-ui-responsiveness added (/benchmarks/*/id)\n\n## Other\n\n- gaps/hybrid-scope.md: content changed (no ID, field or method change found)\n- methods/network.md: content changed (no ID, field or method change found)",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 6414,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 10093,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6893,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2853,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 7279,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-4.0.0.zip",
+          "size": 467791,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/avd-assess-4.0.0.zip"
+        },
+        {
+          "name": "benchmark-result.example.json",
+          "size": 1807,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/benchmark-result.example.json"
+        },
+        {
+          "name": "benchmark-result.schema.json",
+          "size": 10975,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/benchmark-result.schema.json"
+        },
+        {
+          "name": "catalog.example.json",
+          "size": 2263,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/catalog.example.json"
+        },
+        {
+          "name": "check-catalog.schema.json",
+          "size": 12927,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/check-catalog.schema.json"
+        },
+        {
+          "name": "cloud-environments.json",
+          "size": 10614,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/cloud-environments.json"
+        },
+        {
+          "name": "cloud-environments.schema.json",
+          "size": 10049,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/cloud-environments.schema.json"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 29136,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 39815,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 90892,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/fact-register.schema.json"
+        },
+        {
+          "name": "gcp-outputs.example.json",
+          "size": 586,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/gcp-outputs.example.json"
+        },
+        {
+          "name": "gcp-outputs.schema.json",
+          "size": 2878,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/gcp-outputs.schema.json"
+        },
+        {
+          "name": "gpu-skus.schema.json",
+          "size": 1970,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/gpu-skus.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 456849,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 1419,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 14811,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 4786,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 293751,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/map.json"
+        },
+        {
+          "name": "measured-usage.example.json",
+          "size": 1325,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/measured-usage.example.json"
+        },
+        {
+          "name": "measured-usage.schema.json",
+          "size": 5324,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/measured-usage.schema.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 4011,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 113418,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/method.json"
+        },
+        {
+          "name": "networking-outputs.example.json",
+          "size": 1520,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/networking-outputs.example.json"
+        },
+        {
+          "name": "networking-outputs.schema.json",
+          "size": 2827,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/networking-outputs.schema.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5884,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 84098,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 12772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/SHA256SUMS"
+        },
+        {
+          "name": "source-inventory.example.json",
+          "size": 659,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/source-inventory.example.json"
+        },
+        {
+          "name": "source-inventory.schema.json",
+          "size": 3572,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/source-inventory.schema.json"
+        },
+        {
+          "name": "verify-report.example.json",
+          "size": 940,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/verify-report.example.json"
+        },
+        {
+          "name": "verify-report.schema.json",
+          "size": 5202,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/verify-report.schema.json"
+        },
+        {
+          "name": "wave-plan.example.json",
+          "size": 725,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/wave-plan.example.json"
+        },
+        {
+          "name": "wave-plan.schema.json",
+          "size": 3376,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v4.0.0/wave-plan.schema.json"
+        }
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v3.1.0",
+      "name": "avd-assess 3.1.0",
+      "prerelease": false,
+      "publishedAt": "2026-11-17",
+      "publishedAtRaw": "2026-11-17T00:02:42Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v3.1.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 3.1.0, built from `1520836d7dd9d18c84c2fd87f040810f84932741`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-3.1.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nRequired bump over 3.0.0: **minor**.\n\n## Added\n\n- contracts/fact-register.json: ID c11.intune.isolatedFilterPresent added (/facts/*/id)\n- contracts/schemas/cloud-environments.schema.json#/$defs/cloudProfileBody: property 'oidcAudience' added\n- contracts/schemas/cloud-environments.schema.json#/$defs/environmentEntry: property 'oidcAudience' added\n- contracts/schemas/cloud-environments.schema.json#/$defs/powerPlatformEndpoints: property 'flowEndpoint' added\n- contracts/schemas/cloud-environments.schema.json#/$defs/powerPlatformEndpoints: property 'powerPlatformSuffix' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'isolatedFilterPresent' added\n- contracts/schemas/networking-outputs.schema.json#/: property 'expressRouteGatewayResourceId' added\n- contracts/schemas/networking-outputs.schema.json#/: property 'firewallMode' added\n- contracts/schemas/networking-outputs.schema.json#/: property 'vpnGatewayResourceId' added\n- index.json: ID az-rest-bap-unknown-audience added (/observations/*/id)\n- index.json: ID gcp-hybrid-mig-and-registration-token added (/observations/*/id)\n- index.json: ID hub-firewall-entra-join-fqdns added (/observations/*/id)\n- index.json: ID win11-patchmode-automatic-by-os added (/observations/*/id)\n\n## Other\n\n- README.md: content changed (no ID, field or method change found)\n- contracts/cloud-environments.json: content changed (no ID, field or method change found)\n- contracts/examples/assess/networking-outputs.example.json: content changed (no ID, field or method change found)\n- gaps/network-scope.md: content changed (no ID, field or method change found)\n- methods/desktop-devops.md: content changed (no ID, field or method change found)\n- methods/network.md: content changed (no ID, field or method change found)",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 6414,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 10093,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6893,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2853,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 7259,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-3.1.0.zip",
+          "size": 464944,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/avd-assess-3.1.0.zip"
+        },
+        {
+          "name": "benchmark-result.example.json",
+          "size": 1807,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/benchmark-result.example.json"
+        },
+        {
+          "name": "benchmark-result.schema.json",
+          "size": 9349,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/benchmark-result.schema.json"
+        },
+        {
+          "name": "catalog.example.json",
+          "size": 2263,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/catalog.example.json"
+        },
+        {
+          "name": "check-catalog.schema.json",
+          "size": 12927,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/check-catalog.schema.json"
+        },
+        {
+          "name": "cloud-environments.json",
+          "size": 10614,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/cloud-environments.json"
+        },
+        {
+          "name": "cloud-environments.schema.json",
+          "size": 10049,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/cloud-environments.schema.json"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 27712,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 39556,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 88001,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/fact-register.schema.json"
+        },
+        {
+          "name": "gcp-outputs.example.json",
+          "size": 586,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/gcp-outputs.example.json"
+        },
+        {
+          "name": "gcp-outputs.schema.json",
+          "size": 2878,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/gcp-outputs.schema.json"
+        },
+        {
+          "name": "gpu-skus.schema.json",
+          "size": 1970,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/gpu-skus.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 456728,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 1419,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 13990,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 4786,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 289653,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/map.json"
+        },
+        {
+          "name": "measured-usage.example.json",
+          "size": 1325,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/measured-usage.example.json"
+        },
+        {
+          "name": "measured-usage.schema.json",
+          "size": 5324,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/measured-usage.schema.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 4011,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 113418,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/method.json"
+        },
+        {
+          "name": "networking-outputs.example.json",
+          "size": 1520,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/networking-outputs.example.json"
+        },
+        {
+          "name": "networking-outputs.schema.json",
+          "size": 2827,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/networking-outputs.schema.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5884,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 84098,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 12682,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/SHA256SUMS"
+        },
+        {
+          "name": "source-inventory.example.json",
+          "size": 659,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/source-inventory.example.json"
+        },
+        {
+          "name": "source-inventory.schema.json",
+          "size": 3572,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/source-inventory.schema.json"
+        },
+        {
+          "name": "verify-report.example.json",
+          "size": 940,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/verify-report.example.json"
+        },
+        {
+          "name": "verify-report.schema.json",
+          "size": 5202,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/verify-report.schema.json"
+        },
+        {
+          "name": "wave-plan.example.json",
+          "size": 725,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/wave-plan.example.json"
+        },
+        {
+          "name": "wave-plan.schema.json",
+          "size": 3376,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.1.0/wave-plan.schema.json"
+        }
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v3.0.0",
+      "name": "avd-assess 3.0.0",
+      "prerelease": false,
+      "publishedAt": "2026-11-15",
+      "publishedAtRaw": "2026-11-15T05:52:27Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v3.0.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 3.0.0, built from `c8ca035682e46c3327a10ae28bcb665dbb6abd45`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-3.0.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nRequired bump over 2.1.0: **major**.\n\n## Breaking\n\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts/properties/zones: $ref '#/$defs/countMap' -> '#/$defs/count'\n\n## Method\n\n- method changed: scores can move (version 7 -> 10)\n\n## Deprecated\n\n- index.json: ID caf-avd-assess deprecated (replaced by None)\n- index.json: ID caf-avd-bcdr deprecated (replaced by None)\n- index.json: ID caf-avd-deploy deprecated (replaced by None)\n- index.json: ID caf-avd-identity deprecated (replaced by None)\n- index.json: ID caf-avd-innovate deprecated (replaced by None)\n- index.json: ID caf-avd-management deprecated (replaced by None)\n- index.json: ID caf-avd-network deprecated (replaced by None)\n- index.json: ID caf-avd-platform-automation deprecated (replaced by None)\n- index.json: ID caf-avd-poc deprecated (replaced by None)\n- index.json: ID caf-avd-security-governance deprecated (replaced by None)\n- security-review.json: ID actions-sha-pinning deprecated (replaced by lz-actions-pinned)\n- security-review.json: ID dependency-updates deprecated (replaced by lz-actions-pinned)\n- security-review.json: ID secret-scan-everywhere deprecated (replaced by secret-scan)\n- security-review.json: ID security-policy deprecated (replaced by family-licenses)\n- security-review.json: ID threat-models deprecated (replaced by None)\n\n## Added\n\n- contracts/cloud-environments.json added\n- contracts/examples/assess/gcp-outputs.example.json added\n- contracts/examples/assess/measured-usage.example.json added\n- contracts/examples/assess/networking-outputs.example.json added\n- contracts/examples/assess/source-inventory.example.json added\n- contracts/examples/assess/verify-report.example.json added\n- contracts/examples/assess/wave-plan.example.json added\n- contracts/schemas/cloud-environments.schema.json added\n- contracts/schemas/gcp-outputs.schema.json added\n- contracts/schemas/gpu-skus.schema.json added\n- contracts/schemas/measured-usage.schema.json added\n- contracts/schemas/networking-outputs.schema.json added\n- contracts/schemas/source-inventory.schema.json added\n- contracts/schemas/verify-report.schema.json added\n- contracts/schemas/wave-plan.schema.json added\n- gaps/hybrid-scope.md added\n- gaps/migration-readiness.md added\n- gaps/scale-and-sharding.md added\n- contracts/fact-register.json: ID c11.advisor.commitmentRecommendations added (/facts/*/id)\n- contracts/fact-register.json: ID c11.cloud added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.graphicsDiagnosticsEnabled added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.gpuComputeSkus added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.gpuDriverMissing added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.gpuHosts added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.gpuMaxSessionOver25 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.gpuRetiredSkus added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.runningHostFloor added (/facts/*/id)\n- contracts/fact-register.json: ID c12.group.perUser.gpuRequired added (/facts/*/id)\n- contracts/fact-register.json: ID c12.group.perUser.needsLocalAdmin added (/facts/*/id)\n- contracts/fact-register.json: ID c12.group.perUser.steadyStateIopsP95 added (/facts/*/id)\n- contracts/fact-register.json: ID c12.group.profile.dailyChurnPercent added (/facts/*/id)\n- contracts/fact-register.json: ID c12.group.sharedBackendIds added (/facts/*/id)\n- contracts/fact-register.json: ID intake.cloud added (/facts/*/id)\n- contracts/fact-register.json: ID intake.complianceProfile added (/facts/*/id)\n- contracts/schemas/assessment.schema.json#/properties/results/items: property 'reason' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'cloud' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/advisor: property 'commitmentRecommendations' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'graphicsDiagnosticsEnabled' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'imageRegions' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'imageSource' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/insights: property 'runningHostFloor' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'backupProtected' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'edrMissing' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'gpuComputeSkus' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'gpuDriverMissing' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'gpuHosts' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'gpuMaxSessionOver25' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'gpuRetiredSkus' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'notReplicated' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'replicated' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'vulnerabilityFindings' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/network: property 'hostPublicRdp' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/storageAccounts/items: property 'backupTier' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/storageAccounts/items: property 'lastBackupJob' added\n- contracts/schemas/current-state-facts.schema.json#/$defs/planeCollectionState/properties/reason: enum value 'unsupported-in-cloud' added\n- contracts/schemas/intake.schema.json#/: property 'cloud' added\n- contracts/schemas/intake.schema.json#/: property 'complianceProfile' added\n- contracts/schemas/intake.schema.json#/: property 'profileData' added\n- contracts/schemas/intake.schema.json#/: property 'recoveryDependencies' added\n- contracts/schemas/intake.schema.json#/: property 'recoveryPoint' added\n- contracts/schemas/intake.schema.json#/: property 'recoveryTime' added\n- contracts/schemas/intake.schema.json#/: property 'regionRecovery' added\n- index.json: ID hybrid-scope added (/gaps/*/id)\n- index.json: ID migration-readiness added (/gaps/*/id)\n- index.json: ID scale-and-sharding added (/gaps/*/id)\n- index.json: ID usgov-capability-gaps-not-applicable added (/observations/*/id)\n- index.json: ID usgov-itar-redirection-default added (/observations/*/id)\n- index.json: ID arc-servers-overview#ama-and-extensions added (/references/*/claims/*/id)\n- index.json: ID arc-servers-overview#azure-resource-projection added (/references/*/claims/*/id)\n- index.json: ID arc-servers-run-command#agent-script-execution added (/references/*/claims/*/id)\n- index.json: ID arc-servers-run-command#free-control-plane added (/references/*/claims/*/id)\n- index.json: ID avd-azure-local#connected-machine-agent added (/references/*/claims/*/id)\n- index.json: ID avd-azure-local#entra-join-outside-portal added (/references/*/claims/*/id)\n- index.json: ID avd-azure-local#local-smb-for-profiles added (/references/*/claims/*/id)\n- index.json: ID avd-azure-local#multisession-and-shortpath added (/references/*/claims/*/id)\n- index.json: ID avd-azure-local#three-part-pricing added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-deploy#arc-and-avd-endpoints added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-deploy#cloud-device-extension added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-deploy#hostpool-identity-reader added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-deploy#join-types-by-os added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-overview#arc-enabled-hosts added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-overview#hybrid-licensing added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-overview#no-client-multisession added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-overview#no-platform-lifecycle added (/references/*/claims/*/id)\n- index.json: ID avd-hybrid-overview#supported-os added (/references/*/claims/*/id)\n- index.json: ID azure-government-avd#fips-tls-baseline added (/references/*/claims/*/id)\n- index.json: ID azure-government-avd#usgov-feature-parity-gaps added (/references/*/claims/*/id)\n- index.json: ID azure-government-avd#usgov-portal-and-arm added (/references/*/claims/*/id)\n- index.json: ID azure-government-avd#usgov-regions added (/references/*/claims/*/id)\n- index.json: ID azure-government-private-link#usgov-private-dns-zones added (/references/*/claims/*/id)\n- index.json: ID entra-kerberos-usgov#usgov-kerberos-endpoints added (/references/*/claims/*/id)\n- index.json: ID intune-usgov-endpoints#graph-usgov-endpoint added (/references/*/claims/*/id)\n- index.json: ID power-platform-usgov#usgov-bap-dataverse-endpoints added (/references/*/claims/*/id)\n- index.json: ID teams-vdi-gov#webrtc-supported-mmr-unsupported added (/references/*/claims/*/id)\n- index.json: ID win365-gov#anc-required-no-mhn added (/references/*/claims/*/id)\n- index.json: ID win365-gov#cross-cloud-anc added (/references/*/claims/*/id)\n- index.json: ID arc-servers-overview added (/references/*/id)\n- index.json: ID arc-servers-run-command added (/references/*/id)\n- index.json: ID avd-hybrid-deploy added (/references/*/id)\n- index.json: ID avd-hybrid-overview added (/references/*/id)\n- index.json: ID azure-government-avd added (/references/*/id)\n- index.json: ID azure-government-private-link added (/references/*/id)\n- index.json: ID entra-kerberos-usgov added (/references/*/id)\n- index.json: ID intune-usgov-endpoints added (/references/*/id)\n- index.json: ID power-platform-usgov added (/references/*/id)\n- index.json: ID teams-vdi-gov added (/references/*/id)\n- index.json: ID win365-gov added (/references/*/id)\n- map.json: ID hybrid.arc-inventory-and-run-command added (/dimensions/*/id)\n- map.json: ID hybrid.arc-registration added (/dimensions/*/id)\n- map.json: ID hybrid.host-platform added (/dimensions/*/id)\n- map.json: ID hybrid.identity-and-join added (/dimensions/*/id)\n- map.json: ID hybrid.licensing-and-cost added (/dimensions/*/id)\n- map.json: ID hybrid.lifecycle-and-power added (/dimensions/*/id)\n- map.json: ID hybrid.os-and-session-model added (/dimensions/*/id)\n- map.json: ID security.tripwires added (/dimensions/*/id)\n- method.json: ID asm-cost-commitment-floor-reviewed added (/checks/*/id)\n- method.json: ID asm-gov-allowed-locations added (/checks/*/id)\n- method.json: ID asm-gov-fips-tls-baseline added (/checks/*/id)\n- method.json: ID asm-gov-itar-redirection-lockdown added (/checks/*/id)\n- method.json: ID asm-gov-private-dns-zones added (/checks/*/id)\n- method.json: ID asm-gpu-driver-extension added (/checks/*/id)\n- method.json: ID asm-gpu-graphics-diagnostics added (/checks/*/id)\n- method.json: ID asm-gpu-grid-session-cap added (/checks/*/id)\n- method.json: ID asm-gpu-no-compute-skus added (/checks/*/id)\n- method.json: ID asm-gpu-no-retired-skus added (/checks/*/id)\n- method.json: ID asm-hosts-edr-present added (/checks/*/id)\n- method.json: ID asm-hosts-no-public-rdp added (/checks/*/id)\n- method.json: ID asm-hosts-vulnerability-assessment added (/checks/*/id)\n- method.json: ID asm-hosts-zone-spread added (/checks/*/id)\n- method.json: ID asm-image-replicated added (/checks/*/id)\n- method.json: ID asm-personal-hosts-replicated added (/checks/*/id)\n- method.json: ID asm-pooled-hosts-not-backed-up added (/checks/*/id)\n- method.json: ID asm-profile-backup-offsite added (/checks/*/id)\n- method.json: ID asm-profile-backup-ran added (/checks/*/id)\n- security-review.json: ID governance-spend#usgov-cloud-profile added (/areas/*/claims/*/id)\n\n## Other\n\n- contracts/README.md: content changed (no ID, field or method change found)\n- endpoints.json: content changed (no ID, field or method change found)\n- gaps/README.md: content changed (no ID, field or method change found)\n- gaps/commitment-floor.md: content changed (no ID, field or method change found)\n- gaps/finops-scope.md: content changed (no ID, field or method change found)\n- gaps/intake.md: content changed (no ID, field or method change found)\n- gaps/reliability-scope.md: content changed (no ID, field or method change found)\n- gaps/security-agents-scope.md: content changed (no ID, field or method change found)\n- ref:activity-log: pin refreshed, same claims\n- ref:app-attach: pin refreshed, same claims\n- ref:arch-private-link-hub-spoke: pin refreshed, same claims\n- ref:autoscale-faq: pin refreshed, same claims\n- ref:autoscale-plan: pin refreshed, same claims\n- ref:availability-zones: pin refreshed, same claims\n- ref:avd-authentication: pin refreshed, same claims\n- ref:avd-autoscale: pin refreshed, same claims\n- ref:avd-data-locations: pin refreshed, same claims\n- ref:avd-deploy-host-pool: pin refreshed, same claims\n- ref:avd-entra-joined-hosts: pin refreshed, same claims\n- ref:avd-language-packs: pin refreshed, same claims\n- ref:avd-licensing: pin refreshed, same claims\n- ref:avd-multimedia-redirection: pin refreshed, same claims\n- ref:avd-multiregion-bcdr: pin refreshed, same claims\n- ref:avd-prerequisites: pin refreshed, same claims\n- ref:avd-private-link: pin refreshed, same claims\n- ref:avd-private-link-setup: pin refreshed, same claims\n- ref:avd-required-fqdn: pin refreshed, same claims\n- ref:avd-service-resilience: pin refreshed, same claims\n- ref:avd-sessionhost-get-api: pin refreshed, same claims\n- ref:avd-sso: pin refreshed, same claims\n- ref:avd-update-methods: pin refreshed, same claims\n- ref:azure-mcp: pin refreshed, same claims\n- ref:commitment-choice: pin refreshed, same claims\n- ref:disk-encryption-options: pin refreshed, same claims\n- ref:files-backup-portal: pin refreshed, same claims\n- ref:files-backup-support: pin refreshed, same claims\n- ref:firewall-fqdn-tags: pin refreshed, same claims\n- ref:fslogix-configuration-examples: pin refreshed, same claims\n- ref:fslogix-entra-profile: pin refreshed, same claims\n- ref:fslogix-settings: pin refreshed, same claims\n- ref:fslogix-settings-reference: pin refreshed, same claims\n- ref:gsa-known-limitations: pin refreshed, same claims\n- ref:intune-avd-multisession: pin refreshed, same claims\n- ref:intune-reports: pin refreshed, same claims\n- ref:multimedia-redirection: pin refreshed, same claims\n- ref:rdp-multipath: pin refreshed, same claims\n- ref:rdp-printer-redirection: pin refreshed, same claims\n- ref:rdp-properties: pin refreshed, same claims\n- ref:rdp-redirection: pin refreshed, same claims\n- ref:rdp-shortpath: pin refreshed, same claims\n- ref:rdp-traffic-optimization: pin refreshed, same claims\n- ref:remoteapp-publish: pin refreshed, same claims\n- ref:savings-plans: pin refreshed, same claims\n- ref:service-tags: pin refreshed, same claims\n- ref:start-vm-on-connect: pin refreshed, same claims\n- ref:teams-on-avd: pin refreshed, same claims\n- ref:thin-clients: pin refreshed, same claims\n- ref:vnet-flow-logs: pin refreshed, same claims\n- ref:windows-365-intune: pin refreshed, same claims\n- ref:windows-app-basic: pin refreshed, same claims\n- ref:windows-app-get-started: pin refreshed, same claims\n- ref:windows-app-platforms: pin refreshed, same claims\n- ref:zero-trust-avd: pin refreshed, same claims\n- methods/desktop-devops.md: content changed (no ID, field or method change found)\n- methods/finops.md: content changed (no ID, field or method change found)\n- methods/intune.md: content changed (no ID, field or method change found)\n- methods/security.md: content changed (no ID, field or method change found)\n- tests/public-ids.txt: content changed (no ID, field or method change found)\n- tools/AvdAssessBundle.psm1: content changed (no ID, field or method change found)\n- tools/avd_assess_bundle.py: content changed (no ID, field or method change found)",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 6414,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 10093,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6893,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2853,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 7259,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-3.0.0.zip",
+          "size": 462562,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/avd-assess-3.0.0.zip"
+        },
+        {
+          "name": "benchmark-result.example.json",
+          "size": 1807,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/benchmark-result.example.json"
+        },
+        {
+          "name": "benchmark-result.schema.json",
+          "size": 9349,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/benchmark-result.schema.json"
+        },
+        {
+          "name": "catalog.example.json",
+          "size": 2263,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/catalog.example.json"
+        },
+        {
+          "name": "check-catalog.schema.json",
+          "size": 12927,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/check-catalog.schema.json"
+        },
+        {
+          "name": "cloud-environments.json",
+          "size": 9942,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/cloud-environments.json"
+        },
+        {
+          "name": "cloud-environments.schema.json",
+          "size": 9717,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/cloud-environments.schema.json"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 27656,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 39554,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 87723,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/fact-register.schema.json"
+        },
+        {
+          "name": "gcp-outputs.example.json",
+          "size": 586,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/gcp-outputs.example.json"
+        },
+        {
+          "name": "gcp-outputs.schema.json",
+          "size": 2878,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/gcp-outputs.schema.json"
+        },
+        {
+          "name": "gpu-skus.schema.json",
+          "size": 1970,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/gpu-skus.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 453795,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 1419,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 13990,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 4786,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 289653,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/map.json"
+        },
+        {
+          "name": "measured-usage.example.json",
+          "size": 1325,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/measured-usage.example.json"
+        },
+        {
+          "name": "measured-usage.schema.json",
+          "size": 5324,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/measured-usage.schema.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 4011,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 113418,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/method.json"
+        },
+        {
+          "name": "networking-outputs.example.json",
+          "size": 1415,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/networking-outputs.example.json"
+        },
+        {
+          "name": "networking-outputs.schema.json",
+          "size": 2475,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/networking-outputs.schema.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5884,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 84098,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 12682,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/SHA256SUMS"
+        },
+        {
+          "name": "source-inventory.example.json",
+          "size": 659,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/source-inventory.example.json"
+        },
+        {
+          "name": "source-inventory.schema.json",
+          "size": 3572,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/source-inventory.schema.json"
+        },
+        {
+          "name": "verify-report.example.json",
+          "size": 940,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/verify-report.example.json"
+        },
+        {
+          "name": "verify-report.schema.json",
+          "size": 5202,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/verify-report.schema.json"
+        },
+        {
+          "name": "wave-plan.example.json",
+          "size": 725,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/wave-plan.example.json"
+        },
+        {
+          "name": "wave-plan.schema.json",
+          "size": 3376,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v3.0.0/wave-plan.schema.json"
+        }
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v2.1.0",
+      "name": "avd-assess 2.1.0",
+      "prerelease": false,
+      "publishedAt": "2026-11-08",
+      "publishedAtRaw": "2026-11-08T21:48:08Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v2.1.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 2.1.0, built from `9f94db23988f5f8f05442eb58467affcd2e5ec45`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-2.1.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nRequired bump over 2.0.0: **minor**.\n\n## Method\n\n- method changed: scores can move (version 5 -> 7)\n\n## Deprecated\n\n- security-review.json: ID ci-read-only-guard deprecated (replaced by cs-reader-only)\n- security-review.json: ID graph-scope-per-purpose deprecated (replaced by cs-graph-readonly)\n\n## Added\n\n- contracts/examples/assess/benchmark-result.example.json added\n- contracts/schemas/benchmark-result.schema.json added\n- gaps/desktop-devops-scope.md added\n- methods/desktop-devops.md added\n- contracts/fact-register.json: ID c11.advisor.rightSizeVms added (/facts/*/id)\n- contracts/fact-register.json: ID c11.advisor.unattachedDisks added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.skuWin365Available added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.costAllocationTag added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.nonPremiumOsDisk added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.notAcceleratedNetworking added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.notEncryptionAtHost added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.unpinnedZones added (/facts/*/id)\n- contracts/fact-register.json: ID c11.hostPool.sessionHosts.untaggedForCost added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.connectionFailureRate added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.fslogixReadIopsP95 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.inputDelayP95 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.rttP50 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.rttP95 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.insights.timeToConnectP95 added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.assignmentFiltersCount added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.cloudPcFilterPresent added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.cloudPcManagedCompliant added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.cloudPcManagedNoncompliant added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.multiSessionFilterPresent added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.unfilteredAllDevicesPolicies added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.ancCountByHealth added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.ancFailedCount added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.cloudPcCountByStatus added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.customImagesReady added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.localAdminDisabled added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.networkMode added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.provisioningPoliciesCount added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.restorePointFrequencyHoursMax added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.ssoEnabledOnAllPolicies added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.win365.userSettingsCount added (/facts/*/id)\n- contracts/fact-register.json: ID c11.subscription.budgets.total added (/facts/*/id)\n- contracts/fact-register.json: ID c11.subscription.budgets.withActionGroup added (/facts/*/id)\n- contracts/fact-register.json: ID intake.avdScope added (/facts/*/id)\n- contracts/fact-register.json: ID intake.computeCommitments added (/facts/*/id)\n- contracts/fact-register.json: ID intake.userLicense added (/facts/*/id)\n- contracts/fact-register.json: ID intake.userSentiment added (/facts/*/id)\n- contracts/fact-register.json: ID intake.win365Scope added (/facts/*/id)\n- contracts/schemas/assess-map.schema.json#/: property 'benchmarks' added\n- contracts/schemas/current-state-facts.schema.json#/properties/entra: property 'skuWin365Available' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'assignmentFiltersCount' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'cloudPcFilterPresent' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'cloudPcManagedCompliant' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'cloudPcManagedNoncompliant' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'multiSessionFilterPresent' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'unfilteredAllDevicesPolicies' added\n- contracts/schemas/current-state-facts.schema.json#/properties/intune: property 'win365' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items: property 'advisor' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items: property 'budgets' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'agentUpdate' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'costAllocationTag' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'diagnosticsSetting' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'insights' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'scalingPlan' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'acceleratedNetworking' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'encryptionAtHost' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'hibernation' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'insightsDcr' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'monitoringAgent' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'nonPremiumOsDisk' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'notAcceleratedNetworking' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'notEncryptionAtHost' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'osDiskTypes' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'unpinnedZones' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'untaggedForCost' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'zones' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/storageAccounts/items: property 'backupProtected' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/storageAccounts/items: property 'smbMultichannel' added\n- contracts/schemas/intake.schema.json#/: property 'avdScope' added\n- contracts/schemas/intake.schema.json#/: property 'computeCommitments' added\n- contracts/schemas/intake.schema.json#/: property 'userLicense' added\n- contracts/schemas/intake.schema.json#/: property 'userNetworks' added\n- contracts/schemas/intake.schema.json#/: property 'userSentiment' added\n- contracts/schemas/intake.schema.json#/: property 'win365Scope' added\n- index.json: ID desktop-devops-scope added (/gaps/*/id)\n- index.json: ID sandbox-standing-meter-tradeoffs added (/observations/*/id)\n- index.json: ID avd-security-guide#no-administrator-protection added (/references/*/claims/*/id)\n- index.json: ID azure-mcp#all-mode-per-tool-allowlist added (/references/*/claims/*/id)\n- index.json: ID azure-mcp#read-only-flag added (/references/*/claims/*/id)\n- index.json: ID azure-mcp#typed-vs-cli-wrapper added (/references/*/claims/*/id)\n- index.json: ID review-checklists-avd#C02.01 added (/references/*/claims/*/id)\n- index.json: ID review-checklists-avd#C02.02 added (/references/*/claims/*/id)\n- index.json: ID review-checklists-avd#G03.01 added (/references/*/claims/*/id)\n- index.json: ID review-checklists-avd#G03.02 added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#anc-health-checks added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#assignment-filters-separate-platforms added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#cloudpc-intune-compliance added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#provisioning-policy-sso added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#restore-point-cadence added (/references/*/claims/*/id)\n- index.json: ID windows-365-intune#user-settings-least-privilege added (/references/*/claims/*/id)\n- index.json: ID azure-mcp added (/references/*/id)\n- index.json: ID windows-365-intune added (/references/*/id)\n- ref:avd-update-methods#hotpatch: the claim's words changed\n- ref:avd-whats-new#multipath-ga: the claim's words changed\n- ref:context-based-redirections#full-desktop-only: the claim's words changed\n- ref:review-checklists-avd#D01.03: the claim's words changed\n- ref:review-checklists-avd#D01.04: the claim's words changed\n- map.json: ID bcdr-profile-recovery added (/benchmarks/*/id)\n- map.json: ID control-plane-autoscale added (/benchmarks/*/id)\n- map.json: ID host-logon-storm added (/benchmarks/*/id)\n- map.json: ID insights-observational added (/benchmarks/*/id)\n- map.json: ID multisession-density added (/benchmarks/*/id)\n- map.json: ID storage-fslogix-io added (/benchmarks/*/id)\n- map.json: ID cost.advisor added (/dimensions/*/id)\n- map.json: ID cost.commitments added (/dimensions/*/id)\n- map.json: ID cost.licensing added (/dimensions/*/id)\n- map.json: ID cost.tagging added (/dimensions/*/id)\n- method.json: ID asm-cost-advisor-rightsize-reviewed added (/checks/*/id)\n- method.json: ID asm-cost-allocation-tags added (/checks/*/id)\n- method.json: ID asm-cost-budget-action-group added (/checks/*/id)\n- method.json: ID asm-cost-no-unattached-disks added (/checks/*/id)\n- method.json: ID asm-files-backup-protected added (/checks/*/id)\n- method.json: ID asm-files-smb-multichannel added (/checks/*/id)\n- method.json: ID asm-hostpool-diagnostics-enabled added (/checks/*/id)\n- method.json: ID asm-hostpool-scheduled-agent-updates added (/checks/*/id)\n- method.json: ID asm-hosts-accelerated-networking added (/checks/*/id)\n- method.json: ID asm-hosts-encryption-at-host added (/checks/*/id)\n- method.json: ID asm-hosts-insights-agent added (/checks/*/id)\n- method.json: ID asm-hosts-premium-os-disk added (/checks/*/id)\n- method.json: ID asm-hosts-zone-redundant added (/checks/*/id)\n- method.json: ID asm-insights-connection-reliability added (/checks/*/id)\n- method.json: ID asm-insights-input-delay-target added (/checks/*/id)\n- method.json: ID asm-insights-rtt-target added (/checks/*/id)\n- method.json: ID asm-insights-time-to-connect added (/checks/*/id)\n- method.json: ID asm-intune-assignment-filters-separate-platforms added (/checks/*/id)\n- method.json: ID asm-personal-deallocation added (/checks/*/id)\n- method.json: ID asm-pooled-autoscale-attached added (/checks/*/id)\n- method.json: ID asm-win365-anc-healthy added (/checks/*/id)\n- method.json: ID asm-win365-cloudpcs-compliant added (/checks/*/id)\n- method.json: ID asm-win365-no-local-admin added (/checks/*/id)\n- method.json: ID asm-win365-restore-points-configured added (/checks/*/id)\n- method.json: ID asm-win365-sso-enabled added (/checks/*/id)\n\n## Other\n\n- README.md: content changed (no ID, field or method change found)\n- contracts/README.md: content changed (no ID, field or method change found)\n- contracts/examples/assess/intake.example.json: content changed (no ID, field or method change found)\n- contracts/examples/assess/map.example.json: content changed (no ID, field or method change found)\n- endpoints.json: content changed (no ID, field or method change found)\n- gaps/README.md: content changed (no ID, field or method change found)\n- gaps/baseline-profile.md: content changed (no ID, field or method change found)\n- gaps/checklist-mapping.md: content changed (no ID, field or method change found)\n- gaps/client-network.md: content changed (no ID, field or method change found)\n- gaps/diagnostics-scope.md: content changed (no ID, field or method change found)\n- gaps/error-code-map.md: content changed (no ID, field or method change found)\n- gaps/evidence-intake.md: content changed (no ID, field or method change found)\n- gaps/finops-scope.md: content changed (no ID, field or method change found)\n- gaps/insights-facts.md: content changed (no ID, field or method change found)\n- gaps/intake.md: content changed (no ID, field or method change found)\n- gaps/intune-scope.md: content changed (no ID, field or method change found)\n- gaps/workload-benchmark.md: content changed (no ID, field or method change found)\n- ref:activity-log: pin refreshed, same claims\n- ref:arch-avd-design-guide: pin refreshed, same claims\n- ref:availability-zones: pin refreshed, same claims\n- ref:avd-gis-workload-example: pin refreshed, same claims\n- ref:avd-multiregion-bcdr: pin refreshed, same claims\n- ref:avd-security-guide: pin refreshed, same claims\n- ref:azure-files-networking: pin refreshed, same claims\n- ref:azure-files-smb: pin refreshed, same claims\n- ref:azure-files-vdi: pin refreshed, same claims\n- ref:files-backup-support: pin refreshed, same claims\n- ref:files-monitoring-alerts: pin refreshed, same claims\n- ref:mdm-wins-over-gp: pin refreshed, same claims\n- ref:policy-built-ins: pin refreshed, same claims\n- ref:rdp-multipath: pin refreshed, same claims\n- ref:rdp-shortpath: pin refreshed, same claims\n- methods/collection.md: content changed (no ID, field or method change found)\n- methods/diagnostics.md: content changed (no ID, field or method change found)\n- methods/finops.md: content changed (no ID, field or method change found)\n- methods/intune.md: content changed (no ID, field or method change found)\n- tools/AvdAssessBundle.psm1: content changed (no ID, field or method change found)\n- tools/avd_assess_bundle.py: content changed (no ID, field or method change found)",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 6414,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 10093,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6893,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2853,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 7170,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-2.1.0.zip",
+          "size": 426338,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/avd-assess-2.1.0.zip"
+        },
+        {
+          "name": "benchmark-result.example.json",
+          "size": 1807,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/benchmark-result.example.json"
+        },
+        {
+          "name": "benchmark-result.schema.json",
+          "size": 9349,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/benchmark-result.schema.json"
+        },
+        {
+          "name": "catalog.example.json",
+          "size": 2263,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/catalog.example.json"
+        },
+        {
+          "name": "check-catalog.schema.json",
+          "size": 12927,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/check-catalog.schema.json"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 24597,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 33549,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 82647,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/fact-register.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 431377,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 1419,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 12195,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 4786,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 277363,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/map.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 4011,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 89571,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/method.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5884,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 70850,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 10708,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.1.0/SHA256SUMS"
+        }
+      ]
+    },
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v2.0.0",
+      "name": "avd-assess 2.0.0",
+      "prerelease": false,
+      "publishedAt": "2026-10-27",
+      "publishedAtRaw": "2026-10-27T22:48:42Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v2.0.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 2.0.0, built from `5c5696cc5050ba216dbe6a8268a4c0a7592b177d`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-2.0.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nRequired bump over 1.0.0: **major**.\n\n## Breaking\n\n- contracts/schemas/assess-method.schema.json#/properties/checks/items: 'plane' became required\n- contracts/schemas/assess-security-review.schema.json#/properties/gaps/items/properties/issue: pattern '^https://github\\\\.com/avd-ops/[a-z-]+/issues/\\\\d+$' -> '^https://github\\\\.com/avd-ops/[a-z0-9-]+/issues/\\\\d+$'\n- contracts/schemas/assess-security-review.schema.json#/$defs/evidence/properties/url: pattern '^https://github\\\\.com/avd-ops/[a-z-]+/blob/[0-9a-f]{40}/' -> '^https://github\\\\.com/avd-ops/[a-z0-9-]+/blob/[0-9a-f]{40}/'\n- contracts/schemas/remediation-plan.schema.json#/properties/items/items: 'plane' became required\n\n## Method\n\n- method changed: scores can move (version 4 -> 5)\n\n## Added\n\n- contracts/examples/checks/catalog.example.json added\n- contracts/schemas/check-catalog.schema.json added\n- gaps/m365-scope.md added\n- gaps/power-platform-scope.md added\n- methods/entra.md added\n- methods/m365.md added\n- methods/power-platform.md added\n- contracts/fact-register.json: ID c11.entra.caAvdBreakGlassExcluded added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.caAvdRequiresCompliantDevice added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.caAvdRequiresMfa added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.caAvdSignInFrequencyConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.caPoliciesTargetingAvd added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.dynamicHostGroups added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.kerberosStoragePrincipalsReady added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.skuAvdEligibleAvailable added (/facts/*/id)\n- contracts/fact-register.json: ID c11.entra.userGroupsAssigned added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.fslogixProfileConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.mdmAutoEnrollmentScope added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.multiSessionCatalogProfiles added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.multiSessionUpdateRingAssigned added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.rdpShortpathConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.intune.sessionTimeLimitsConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.m365AppsSharedComputerActivation added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.mmrConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.oneDriveFilesOnDemandEnabled added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.oneDriveKfmState added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.oneDriveSilentConfigEnabled added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.outlookCachedModeConfigured added (/facts/*/id)\n- contracts/fact-register.json: ID c11.m365.teamsMediaOptimizationState added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.avdDay2FlowsActive added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.avdDay2SolutionsDeployed added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.dedicatedEnvironments added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.dlpDefaultGroupClassification added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.dlpPoliciesCoveringAvdEnv added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.enterprisePoliciesCount added (/facts/*/id)\n- contracts/fact-register.json: ID c11.powerPlatform.vnetInjectedSubnets added (/facts/*/id)\n- contracts/fact-register.json: ID intake.m365PlaneScope added (/facts/*/id)\n- contracts/fact-register.json: ID intake.powerPlatformPlaneScope added (/facts/*/id)\n- contracts/schemas/assess-method.schema.json#/properties/checks/items: property 'plane' added\n- contracts/schemas/assess-method.schema.json#/properties/collection/items/properties/from: enum value 'graph-rest' added\n- contracts/schemas/assess-method.schema.json#/properties/collection/items/properties/from: enum value 'bap-rest' added\n- contracts/schemas/assess-method.schema.json#/properties/collection/items/properties/from: enum value 'dataverse-rest' added\n- contracts/schemas/assess-method.schema.json#/properties/collection/items/properties/from: enum value 'teams-ps' added\n- contracts/schemas/assess-method.schema.json#/properties/collection/items/properties/from: enum value 'pac-cli' added\n- contracts/schemas/assess-method.schema.json#/$defs/remediation: property 'plane' added\n- contracts/schemas/assess-method.schema.json#/$defs/remediation/properties/code: enum value 'remove-orphaned-devices' added\n- contracts/schemas/assess-security-review.schema.json#/$defs/repo: enum value 'avd-entra' added\n- contracts/schemas/assess-security-review.schema.json#/$defs/repo: enum value 'avd-intune' added\n- contracts/schemas/assess-security-review.schema.json#/$defs/repo: enum value 'avd-m365' added\n- contracts/schemas/assess-security-review.schema.json#/$defs/repo: enum value 'avd-azure' added\n- contracts/schemas/assess-security-review.schema.json#/$defs/repo: enum value 'avd-power-platform' added\n- contracts/schemas/assessment.schema.json#/: property 'planes' added\n- contracts/schemas/assessment.schema.json#/properties/pillars/items: property 'notApplicable' added\n- contracts/schemas/assessment.schema.json#/properties/results/items: property 'plane' added\n- contracts/schemas/assessment.schema.json#/$defs/outcome: enum value 'not-applicable' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'entra' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'intune' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'm365' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'planesCollected' added\n- contracts/schemas/current-state-facts.schema.json#/: property 'powerPlatform' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items: property 'powerPlatform' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'directUserAssignments' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'entraSso' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items: property 'intuneOrphans' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'domainJoined' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'entraJoined' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneBaselineApplied' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneCompliant' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneConfigErrors' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneEnrollRequested' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneManaged' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneNoncompliant' added\n- contracts/schemas/current-state-facts.schema.json#/properties/subscriptions/items/properties/hostPools/items/properties/sessionHosts: property 'intuneSyncStale' added\n- contracts/schemas/intake.schema.json#/: property 'm365PlaneScope' added\n- contracts/schemas/intake.schema.json#/: property 'powerPlatformPlaneScope' added\n- contracts/schemas/remediation-plan.schema.json#/properties/items/items: property 'plane' added\n- contracts/schemas/remediation-plan.schema.json#/properties/items/items/properties/change: property 'plane' added\n- contracts/schemas/remediation-plan.schema.json#/properties/items/items/properties/change/properties/code: enum value 'remove-orphaned-devices' added\n- index.json: ID m365-scope added (/gaps/*/id)\n- index.json: ID power-platform-scope added (/gaps/*/id)\n- index.json: ID power-role-at-resource-group-scope added (/observations/*/id)\n- index.json: ID avd-multimedia-redirection#mmr-browser-video added (/references/*/claims/*/id)\n- index.json: ID onedrive-vdi#files-on-demand-vdi added (/references/*/claims/*/id)\n- index.json: ID onedrive-vdi#per-machine-install added (/references/*/claims/*/id)\n- index.json: ID onedrive-vdi#silent-config-and-kfm added (/references/*/claims/*/id)\n- index.json: ID power-platform-dlp#connector-groups added (/references/*/claims/*/id)\n- index.json: ID power-platform-dlp#default-group-blocked added (/references/*/claims/*/id)\n- index.json: ID power-platform-dlp#environment-coverage added (/references/*/claims/*/id)\n- index.json: ID power-platform-vnet#delegated-subnet-egress added (/references/*/claims/*/id)\n- index.json: ID power-platform-vnet#enterprise-policy-subnet added (/references/*/claims/*/id)\n- index.json: ID troubleshoot-autoscale#role-scope-containing-pool added (/references/*/claims/*/id)\n- index.json: ID avd-multimedia-redirection added (/references/*/id)\n- index.json: ID onedrive-vdi added (/references/*/id)\n- index.json: ID power-platform-dlp added (/references/*/id)\n- index.json: ID power-platform-vnet added (/references/*/id)\n- index.json: ID troubleshoot-autoscale added (/references/*/id)\n- method.json: ID asm-entra-ca-avd-mfa added (/checks/*/id)\n- method.json: ID asm-entra-ca-break-glass-excluded added (/checks/*/id)\n- method.json: ID asm-entra-files-kerberos-ready added (/checks/*/id)\n- method.json: ID asm-entra-no-direct-user-rbac added (/checks/*/id)\n- method.json: ID asm-entra-sso-enabled added (/checks/*/id)\n- method.json: ID asm-intune-fslogix-catalog-profile added (/checks/*/id)\n- method.json: ID asm-intune-hosts-compliant added (/checks/*/id)\n- method.json: ID asm-intune-hosts-managed added (/checks/*/id)\n- method.json: ID asm-intune-no-orphaned-devices added (/checks/*/id)\n- method.json: ID asm-intune-secure-by-default added (/checks/*/id)\n- method.json: ID asm-m365-onedrive-kfm added (/checks/*/id)\n- method.json: ID asm-m365-shared-computer-activation added (/checks/*/id)\n- method.json: ID asm-m365-teams-vdi-optimization added (/checks/*/id)\n- method.json: ID asm-pp-dedicated-environment added (/checks/*/id)\n- method.json: ID asm-pp-dlp-blocks-unapproved added (/checks/*/id)\n- method.json: ID asm-pp-vnet-enterprise-policy added (/checks/*/id)\n- security-review.json: ID governance-spend#pp-dlp-baseline added (/areas/*/claims/*/id)\n- security-review.json: ID hosts#intune-host-profiles added (/areas/*/claims/*/id)\n- security-review.json: ID hosts#m365-vdi-baseline added (/areas/*/claims/*/id)\n- security-review.json: ID identity-access#cs-graph-readonly added (/areas/*/claims/*/id)\n- security-review.json: ID identity-access#entra-ca-groups added (/areas/*/claims/*/id)\n- security-review.json: ID network#azure-plane-network added (/areas/*/claims/*/id)\n- security-review.json: ID network#pp-vnet-enterprise-policy added (/areas/*/claims/*/id)\n\n## Other\n\n- README.md: content changed (no ID, field or method change found)\n- contracts/README.md: content changed (no ID, field or method change found)\n- contracts/examples/assess/assessment.example.json: content changed (no ID, field or method change found)\n- contracts/examples/assess/intake.example.json: content changed (no ID, field or method change found)\n- contracts/examples/assess/method.example.json: content changed (no ID, field or method change found)\n- contracts/examples/assess/plan.example.json: content changed (no ID, field or method change found)\n- gaps/identity-scope.md: content changed (no ID, field or method change found)\n- gaps/intune-scope.md: content changed (no ID, field or method change found)\n- gaps/remediation-plan.md: content changed (no ID, field or method change found)\n- gaps/scoring.md: content changed (no ID, field or method change found)\n- map.json: content changed (no ID, field or method change found)\n- methods/assessment.md: content changed (no ID, field or method change found)\n- methods/intune.md: content changed (no ID, field or method change found)\n- methods/remediation.md: content changed (no ID, field or method change found)\n- methods/scoring.md: content changed (no ID, field or method change found)",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 5498,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 10093,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6893,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2853,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 7170,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-2.0.0.zip",
+          "size": 398420,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/avd-assess-2.0.0.zip"
+        },
+        {
+          "name": "catalog.example.json",
+          "size": 2263,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/catalog.example.json"
+        },
+        {
+          "name": "check-catalog.schema.json",
+          "size": 12927,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/check-catalog.schema.json"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 18826,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 32271,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 71429,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/fact-register.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 424071,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 599,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 7994,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 3976,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 258197,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/map.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 4011,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 51488,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/method.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1772,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5884,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 69070,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 10286,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v2.0.0/SHA256SUMS"
+        }
+      ]
+    },
+    {
+      "repo": "avd-ops",
+      "repoFull": "avd-ops/avd-ops",
+      "layer": "front-door",
+      "maturity": "pre-beta",
+      "tagName": "pe-v1.0.0",
+      "name": "pe-v1.0.0",
+      "prerelease": true,
+      "publishedAt": "2026-10-22",
+      "publishedAtRaw": "2026-10-22T00:48:44Z",
+      "url": "https://github.com/avd-ops/avd-ops/releases/tag/pe-v1.0.0",
+      "author": "nickprignano",
+      "body": "See docs/portal-engine-spec.md",
+      "assets": []
+    },
+    {
+      "repo": "avd-assess",
+      "repoFull": "avd-ops/avd-assess",
+      "layer": "assess",
+      "maturity": "pre-beta",
+      "tagName": "v1.0.0",
+      "name": "avd-assess 1.0.0",
+      "prerelease": false,
+      "publishedAt": "2026-10-22",
+      "publishedAtRaw": "2026-10-22T00:44:38Z",
+      "url": "https://github.com/avd-ops/avd-assess/releases/tag/v1.0.0",
+      "author": "github-actions[bot]",
+      "body": "avd-assess 1.0.0, built from `052c6ea36250ecc8624d258de360fe4072729683`. Personal project, not for production, as is; not affiliated with the author's employer or Microsoft.\n\nCheck before use: `gh attestation verify avd-assess-1.0.0.zip -R avd-ops/avd-assess`, then pin the SHA-256 of `datapackage.json` (docs/distribution-spec.md section 9).\n\nFirst release.",
+      "assets": [
+        {
+          "name": "assess-bundle.schema.json",
+          "size": 3546,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-bundle.schema.json"
+        },
+        {
+          "name": "assess-endpoints.schema.json",
+          "size": 8678,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-endpoints.schema.json"
+        },
+        {
+          "name": "assess-index.schema.json",
+          "size": 7561,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-index.schema.json"
+        },
+        {
+          "name": "assess-map.schema.json",
+          "size": 5498,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-map.schema.json"
+        },
+        {
+          "name": "assess-method.schema.json",
+          "size": 9802,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-method.schema.json"
+        },
+        {
+          "name": "assess-security-review.schema.json",
+          "size": 6813,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assess-security-review.schema.json"
+        },
+        {
+          "name": "assessment-review.schema.json",
+          "size": 3856,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assessment-review.schema.json"
+        },
+        {
+          "name": "assessment.example.json",
+          "size": 2224,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assessment.example.json"
+        },
+        {
+          "name": "assessment.schema.json",
+          "size": 5696,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/assessment.schema.json"
+        },
+        {
+          "name": "avd-assess-1.0.0.zip",
+          "size": 376036,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/avd-assess-1.0.0.zip"
+        },
+        {
+          "name": "cost.example.json",
+          "size": 1174,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/cost.example.json"
+        },
+        {
+          "name": "current-state-facts.schema.json",
+          "size": 14392,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/current-state-facts.schema.json"
+        },
+        {
+          "name": "datapackage.json",
+          "size": 30319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/datapackage.json"
+        },
+        {
+          "name": "endpoints.example.json",
+          "size": 4643,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/endpoints.example.json"
+        },
+        {
+          "name": "endpoints.json",
+          "size": 28449,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/endpoints.json"
+        },
+        {
+          "name": "fact-register.json",
+          "size": 62361,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/fact-register.json"
+        },
+        {
+          "name": "fact-register.schema.json",
+          "size": 5424,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/fact-register.schema.json"
+        },
+        {
+          "name": "index.example.json",
+          "size": 5904,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/index.example.json"
+        },
+        {
+          "name": "index.json",
+          "size": 416653,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/index.json"
+        },
+        {
+          "name": "intake.example.json",
+          "size": 526,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/intake.example.json"
+        },
+        {
+          "name": "intake.schema.json",
+          "size": 7493,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/intake.schema.json"
+        },
+        {
+          "name": "map.example.json",
+          "size": 3976,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/map.example.json"
+        },
+        {
+          "name": "map.json",
+          "size": 257996,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/map.json"
+        },
+        {
+          "name": "method.example.json",
+          "size": 3963,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/method.example.json"
+        },
+        {
+          "name": "method.json",
+          "size": 26647,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/method.json"
+        },
+        {
+          "name": "plan.example.json",
+          "size": 1622,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/plan.example.json"
+        },
+        {
+          "name": "remediation-plan.schema.json",
+          "size": 5638,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/remediation-plan.schema.json"
+        },
+        {
+          "name": "review.example.json",
+          "size": 532,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/review.example.json"
+        },
+        {
+          "name": "run-cost.schema.json",
+          "size": 3998,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/run-cost.schema.json"
+        },
+        {
+          "name": "run-journal.schema.json",
+          "size": 3308,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/run-journal.schema.json"
+        },
+        {
+          "name": "run-record.schema.json",
+          "size": 5016,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/run-record.schema.json"
+        },
+        {
+          "name": "run-use-cases.json",
+          "size": 1319,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/run-use-cases.json"
+        },
+        {
+          "name": "run.example.json",
+          "size": 1798,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/run.example.json"
+        },
+        {
+          "name": "schema.json",
+          "size": 6050,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/schema.json"
+        },
+        {
+          "name": "security-review.json",
+          "size": 56428,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/security-review.json"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 9626,
+          "downloadUrl": "https://github.com/avd-ops/avd-assess/releases/download/v1.0.0/SHA256SUMS"
+        }
+      ]
+    }
+  ]
+}
