@@ -1,0 +1,42 @@
+name: org-sweep
+
+# Weekly mechanical PR, CI, and GitHub metrics sweep across all public repos in repos.json.
+# Opens a single deduplicated digest issue in avd-ops/avd-ops when actionable items exist,
+# and closes untouched prior digests. On pull requests touching this script or workflow,
+# runs in dry-run mode and writes the scorecard to the job summary.
+
+on:
+  schedule:
+    - cron: "31 6 * * 1" # Mondays 06:31 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - scripts/ops/org_sweep.py
+      - scripts/ops/test_org_sweep.py
+      - .github/workflows/org-sweep.yml
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Run org_sweep unit tests
+        run: python3 -m unittest discover -s scripts/ops
+      - name: Run org-wide PR & metrics sweep
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 scripts/ops/org_sweep.py --repos-file repos.json --dry-run >> "$GITHUB_STEP_SUMMARY"
+          else
+            python3 scripts/ops/org_sweep.py --repos-file repos.json --post-issue "${{ github.repository }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
