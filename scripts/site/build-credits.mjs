@@ -12,11 +12,8 @@ import { applyShell } from './apply-shell.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const OUT = 'site/credits.html';
 const data = JSON.parse(readFileSync(join(root, 'credits.json'), 'utf8'));
-const { repos } = JSON.parse(readFileSync(join(root, 'repos.json'), 'utf8'));
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const repoOf = new Map(repos.map((r) => [r.name, r.repo]));
-const gh = (name) => `https://github.com/${repoOf.get(name)}`;
 const link = (url, text) => `<a href="${esc(url)}">${esc(text)}</a>`;
 
 
@@ -33,10 +30,9 @@ const cards = (items) => `<div class="credit-cards">
 ${items.map((i) => `<div class="card"><h3>${link(i.url, i.title)}</h3><p>${esc(i.text)}</p></div>`).join('\n')}
 </div>`;
 
-const p = data.people;
-const content = `<h1>Built on other people's work, and giving it back.</h1>
-<p class="lede">The open-source projects, sources and people the avd-ops repos stand on, and how research help flows both ways: what we send upstream, and where you can help us.</p>
-<p>Listing a project here credits it; it doesn't mean the project endorses avd-ops. Licenses are what each repo's license file said on ${esc(data.checked)}. Where we use a source, we link it and say what we use it for in our own words.</p>
+const content = `<h1>Credits</h1>
+<p class="lede">The open-source projects, tools, and sources avd-ops builds on—and how help flows both ways. Looking for why this project exists? Read <a href="story.html">the story behind avd-ops</a>.</p>
+<p>Listing a project here credits it; it doesn't mean the project endorses avd-ops. Licenses are what each repo's license file said on ${esc(data.checked)}.</p>
 <h2 id="adopted">Open source we build on</h2>
 <p>Adopted because each is the best at its job and open source (<a href="https://github.com/${data.org}/avd-ops/blob/main/docs/build-or-adopt.md">build or adopt</a>), and pinned to a release or commit where it runs.</p>
 ${table(data.adopted, ['Project', 'What we use it for', 'License', 'Used in'], (r) => [link(r.url, r.name), esc(r.job), `<span class="mono">${esc(r.license)}</span>`, `<div class="chips">${where(r.in)}</div>`])}
@@ -47,23 +43,18 @@ ${table(data.tooling, ['Project', 'What we use it for', 'License'], (r) => [link
 ${table(data.prior_art, ['Project', 'What we learned', 'License'], (r) => [link(r.url, r.name), esc(r.why), `<span class="mono">${esc(r.license)}</span>`])}
 <h2 id="sources">Sources we read</h2>
 <p>${esc(data.references.text)} ${link(data.references.url, 'See the pinned references')}.</p>
-<h2 id="people">People</h2>
-<div class="card origin"><h3>Where it started</h3>
-<p>${p.origin.map(esc).join(' ')}</p>
-<p class="sig">${p.maintainers.map((m) => `${esc(m.name)}, ${link(`https://github.com/${m.github}`, `@${m.github}`)}`).join('; ')}</p></div>
+<h2 id="contributors">Contributors and experts</h2>
 <ul>
-${p.maintainers.map((m) => `<li><strong>${esc(m.name)}</strong> (${link(`https://github.com/${m.github}`, `@${m.github}`)}), ${esc(m.role.toLowerCase())}.</li>`).join('\n')}
-<li><strong>${link(p.pair.url, p.pair.name)}</strong>, ${esc(p.pair.text)}</li>
-<li>Everyone who has opened an issue or a pull request: see each repo's contributors on GitHub, ${repos.filter((r) => r.name !== 'avd-ops').map((r) => link(`${gh(r.name)}/graphs/contributors`, r.name)).join(', ')} and ${link(`${gh('avd-ops')}/graphs/contributors`, 'avd-ops')}.</li>
-<li>${esc(p.experts.text)} ${link(p.experts.url, 'Read the method and the list')}.</li>
+<li>Everyone who has opened an issue or a pull request across the ${link(`https://github.com/${data.org}`, `${data.org} repos`)}.</li>
+<li>${esc(data.experts.text)} ${link(data.experts.url, 'Read the method and the list')}.</li>
 </ul>
 <h2 id="give-back">What we send upstream</h2>
 <p>When a real run finds something only an upstream project can fix, we write it down with the evidence and offer it back. A person reviews every draft and files it under their own account; no agent posts upstream.</p>
 ${cards(data.give_back)}
 <h2 id="help-us">Help us</h2>
-<p>Research help is as welcome as code. Each of these is a GitHub issue or a pull request in the <a href="https://github.com/${data.org}">${esc(data.org)}</a> repos. Issues are public, so keep tenant data, names, IDs and secrets out of them.</p>
+<p>Research help is as welcome as code. Each of these is a GitHub issue or pull request in the <a href="https://github.com/${data.org}">${esc(data.org)}</a> repos. Issues are public, so keep tenant data, names, IDs, and secrets out of them.</p>
 ${cards(data.help_wanted)}
-<p>${repos.filter((r) => r.name !== 'avd-ops').map((r, i) => `<a class="cta${i ? ' ghost' : ''}" href="${gh(r.name)}/issues">${esc(r.name)} issues</a>`).join('')}</p>`;
+<p class="actions"><a class="cta" href="https://github.com/${data.org}">Browse ${esc(data.org)} on GitHub</a><a class="cta ghost" href="docs/repos/index.html">Repo guides</a></p>`;
 
 // The shell (brand bar, notice, side list, footer) comes from shell.mjs through apply-shell's markers,
 // so this page matches the hand-written ones and apply-shell --check passes on it.
