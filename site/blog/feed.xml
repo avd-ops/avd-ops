@@ -7,6 +7,28 @@
   <id>https://avd-ops.dev/blog/</id>
   <updated>2026-11-20T00:00:00Z</updated>
   <entry>
+    <title>Daily update: 2026-11-20</title>
+    <link href="https://avd-ops.dev/blog/2026-11-20-daily-update.html"/>
+    <id>https://avd-ops.dev/blog/2026-11-20-daily-update.html</id>
+    <updated>2026-11-20T00:00:00Z</updated>
+    <summary>Daily digest for 2026-11-20: 6 feature updates, 1 fix across avd-ops.</summary>
+    <content type="html">&lt;p&gt;Summary of public updates merged, released, or recorded across the &lt;strong&gt;avd-ops&lt;/strong&gt; repositories on &lt;strong&gt;2026-11-20&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;Features and updates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/176&quot;&gt;docs(site): broaden credits and checklist to AI pair programming (#176)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/180&quot;&gt;docs(story): add 2017 Citrix/Horizon to Amazon WorkSpaces pivot context (#180)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/173&quot;&gt;docs(kb): record roadmap backlog and pages refresh lessons (#173)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/179&quot;&gt;feat(ops): add reusable org-wide PR, CI, and metrics sweep (#179)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/177&quot;&gt;feat: add PR-drafted daily auto-blog across avd-ops repos (#177)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/175&quot;&gt;feat(site): simplify credits page and add story page (#175)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Fixes and hardening&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;avd-ops&lt;/code&gt;&lt;/strong&gt;: &lt;a href=&quot;https://github.com/avd-ops/avd-ops/pull/178&quot;&gt;fix(kb): ignore generated site outputs and allow No KB entry body bypass (#178)&lt;/a&gt; (merged PR)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
     <title>Launching the avd-ops auto-blog</title>
     <link href="https://avd-ops.dev/blog/2026-11-20-auto-blog-launch.html"/>
     <id>https://avd-ops.dev/blog/2026-11-20-auto-blog-launch.html</id>
