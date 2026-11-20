@@ -219,6 +219,13 @@
    "status": "accepted"
   },
   {
+   "id": "decisions/0028-add-avd-security.md",
+   "title": "0028. Add avd-security for AVD security control plane, posture verification, and detection",
+   "url": "decisions/0028-add-avd-security.html",
+   "topic": "decisions",
+   "status": "proposed"
+  },
+  {
    "id": "decisions/0029-platform-release-standard.md",
    "title": "0029. Platform release standard and central release notes on avd-ops.dev",
    "url": "decisions/0029-platform-release-standard.html",
@@ -637,6 +644,46 @@
    "target": "decisions/0022-cua-external-executor-plumbing.md"
   },
   {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-networking.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "repos/avd-remediate.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "decisions/0013-azure-us-government-and-gcc-high-support.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "decisions/0028-add-avd-security.md",
+   "target": "decisions/0014-add-avd-networking-connectivity-control-plane.md"
+  },
+  {
    "source": "decisions/0029-platform-release-standard.md",
    "target": "decisions/0008-code-signing.md"
   },
@@ -755,6 +802,10 @@
   {
    "source": "decisions/README.md",
    "target": "decisions/0027-open-source-rpa-workload-engine.md"
+  },
+  {
+   "source": "decisions/README.md",
+   "target": "decisions/0028-add-avd-security.md"
   },
   {
    "source": "decisions/README.md",
