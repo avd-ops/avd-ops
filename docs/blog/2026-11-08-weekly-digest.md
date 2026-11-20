@@ -1,0 +1,112 @@
+---
+title: "Weekly digest: 2026-11-02 to 2026-11-08"
+date: "2026-11-08"
+summary: "Weekly digest (2026-11-02 to 2026-11-08): 1 release, 76 feature updates, 2 findings, 12 fixes across 10 repos."
+repos: ["avd-assess", "avd-current-state", "avd-entra", "avd-hcl", "avd-intune", "avd-landing-zone", "avd-linecheck", "avd-ops", "avd-second-brain", "avd-swarm"]
+tags: ["weekly-digest", "release", "features", "findings", "fixes"]
+---
+
+Summary of public updates merged, released, or recorded across the **avd-ops** repositories for **2026-11-02 to 2026-11-08**.
+
+## Releases
+
+- **`avd-assess`** (2026-11-08): [v2.1.0 — avd-assess 2.1.0](https://github.com/avd-ops/avd-assess/releases/tag/v2.1.0) (release)
+
+## Features and updates
+
+- **`avd-assess`** (2026-11-02): [feat: add Desktop DevOps (Windows 365 and Intune) contracts, facts, claims, and checks (#52)](https://github.com/avd-ops/avd-assess/pull/52) (merged PR)
+- **`avd-current-state`** (2026-11-02): [feat: collect Intune assignment filters and Windows 365 Cloud PC facts (C11) and pin avd-assess v2.1.0 (#63)](https://github.com/avd-ops/avd-current-state/pull/63) (merged PR)
+- **`avd-entra`** (2026-11-02): [feat: add Windows 365 groups (-IncludeWin365) and Conditional Access app ID (#3)](https://github.com/avd-ops/avd-entra/pull/3) (merged PR)
+- **`avd-intune`** (2026-11-02): [feat: add platform assignment filters and Windows 365 Cloud PC policies (-IncludeWin365) (#3)](https://github.com/avd-ops/avd-intune/pull/3) (merged PR)
+- **`avd-ops`** (2026-11-02): [docs: specify Desktop DevOps across AVD, Windows 365 and Intune (decision 0012) (#85)](https://github.com/avd-ops/avd-ops/pull/85) (merged PR)
+- **`avd-second-brain`** (2026-11-02): [feat: add Desktop DevOps (AVD, Windows 365, and Intune) contracts, pins, and MADR 0027 (#131)](https://github.com/avd-ops/avd-second-brain/pull/131) (merged PR)
+- **`avd-swarm`** (2026-11-02): [feat: add Desktop DevOps allowlists, runbooks, and data-loss gate guard (D1) (#51)](https://github.com/avd-ops/avd-swarm/pull/51) (merged PR)
+- **`avd-assess`** (2026-11-03): [feat: add ref:azure-mcp claims and cite typed read-only MCP in collection and diagnostics methods (#54)](https://github.com/avd-ops/avd-assess/pull/54) (merged PR)
+- **`avd-assess`** (2026-11-03): [docs: add Desktop DevOps methodology writeup for AVD, Windows 365 and Intune (#53)](https://github.com/avd-ops/avd-assess/pull/53) (merged PR)
+- **`avd-current-state`** (2026-11-03): [feat(reader): add Desktop Virtualization Reader role and Get-AvdReaderMcpConfig helper (#64)](https://github.com/avd-ops/avd-current-state/pull/64) (merged PR)
+- **`avd-landing-zone`** (2026-11-03): [feat(ops): add standalone read-only New-AvdMcpConfig.ps1 helper (#129)](https://github.com/avd-ops/avd-landing-zone/pull/129) (merged PR)
+- **`avd-landing-zone`** (2026-11-03): [feat(ops): add Move-AvdStandingRegion.ps1 to move standing resources between regions (#128)](https://github.com/avd-ops/avd-landing-zone/pull/128) (merged PR)
+- **`avd-second-brain`** (2026-11-03): [docs(kb): record Azure MCP metering and microsoft/mcp vs azure-api-mcp guidance (#133)](https://github.com/avd-ops/avd-second-brain/pull/133) (merged PR)
+- **`avd-swarm`** (2026-11-03): [feat: add read-only MCP config generator and optional az-cli-mcp adapter (#52)](https://github.com/avd-ops/avd-swarm/pull/52) (merged PR)
+- **`avd-assess`** (2026-11-05): [AGENTS.md: switch to the hub's "How to make a change" wording (#49)](https://github.com/avd-ops/avd-assess/pull/49) (merged PR)
+- **`avd-assess`** (2026-11-08): [feat(method): promote reliability and security posture facts and checks (v8) (#65)](https://github.com/avd-ops/avd-assess/pull/65) (merged PR)
+- **`avd-assess`** (2026-11-08): [feat(contracts): build intake.userNetworks, intake.reportedSymptoms and intake.userSentiment in C15/C19 (#63)](https://github.com/avd-ops/avd-assess/pull/63) (merged PR)
+- **`avd-assess`** (2026-11-08): [docs(diagnostics): capture hybrid RAG telemetry boundary and column_ifexists KQL guard (#62)](https://github.com/avd-ops/avd-assess/pull/62) (merged PR)
+- **`avd-assess`** (2026-11-08): [docs(finops): record nonproduction sandbox standing-meter tradeoffs (#60)](https://github.com/avd-ops/avd-assess/pull/60) (merged PR)
+- **`avd-assess`** (2026-11-08): [docs(references): record verified @azure/mcp virtualdesktop tool names (#59)](https://github.com/avd-ops/avd-assess/pull/59) (merged PR)
+- **`avd-assess`** (2026-11-08): [feat: build out FinOps facts, intake fields, checks, and dimension rows (#58)](https://github.com/avd-ops/avd-assess/pull/58) (merged PR)
+- **`avd-assess`** (2026-11-08): [Close the issue-to-PR loop: pin drift issue closes when clean, evidence issues become PRs (#51)](https://github.com/avd-ops/avd-assess/pull/51) (merged PR)
+- **`avd-current-state`** (2026-11-08): [feat(portal): add as-is assessment architecture diagram preview and SVG/Mermaid/Draw.io exports (#70)](https://github.com/avd-ops/avd-current-state/pull/70) (merged PR)
+- **`avd-current-state`** (2026-11-08): [feat(assess): vendor method v8, extract DR/security C11 facts and validate tripwires (#69)](https://github.com/avd-ops/avd-current-state/pull/69) (merged PR)
+- **`avd-current-state`** (2026-11-08): [feat(portal): aggregate avd-linecheck sentiment into C19 intake and surface perceived-vs-measured signal (#68)](https://github.com/avd-ops/avd-current-state/pull/68) (merged PR)
+- **`avd-current-state`** (2026-11-08): [feat: collect FinOps C11 facts (hibernation, cost tags, budgets, Advisor) and pin avd-assess method v7 (#66)](https://github.com/avd-ops/avd-current-state/pull/66) (merged PR)
+- **`avd-current-state`** (2026-11-08): [Read-only guard: POST allowlist with reasons and a self-test; drift sample skips until the reader is set up (#62)](https://github.com/avd-ops/avd-current-state/pull/62) (merged PR)
+- **`avd-current-state`** (2026-11-08): [AGENTS.md: switch to the hub's "How to make a change" wording (#60)](https://github.com/avd-ops/avd-current-state/pull/60) (merged PR)
+- **`avd-hcl`** (2026-11-08): [Phase 3: Day 2 operations, image gallery stage, and Packer golden image (#17)](https://github.com/avd-ops/avd-hcl/pull/17) (merged PR)
+- **`avd-landing-zone`** (2026-11-08): [feat(portal,docs): add live C14 architecture diagram preview and SVG/Mermaid/Draw.io exports (#133)](https://github.com/avd-ops/avd-landing-zone/pull/133) (merged PR)
+- **`avd-landing-zone`** (2026-11-08): [feat(dr,security): add opt-in estate tripwire Bicep plumbing and DR drill modes (#132)](https://github.com/avd-ops/avd-landing-zone/pull/132) (merged PR)
+- **`avd-landing-zone`** (2026-11-08): [feat(control-planes): sync Desktop DevOps pins, wire -IncludeWin365, and add threat model & SECURITY.md (#130)](https://github.com/avd-ops/avd-landing-zone/pull/130) (merged PR)
+- **`avd-landing-zone`** (2026-11-08): [Image build closes its own failure issues and skips until set up; resolve the open issues that need no sandbox run (#127)](https://github.com/avd-ops/avd-landing-zone/pull/127) (merged PR)
+- **`avd-linecheck`** (2026-11-08): [AGENTS.md: switch to the hub's "How to make a change" wording (#14)](https://github.com/avd-ops/avd-linecheck/pull/14) (merged PR)
+- **`avd-ops`** (2026-11-08): [feat(site,docs): add architecture, network, traffic flow, and Bicep DAG diagrams with SVG/Mermaid/Draw.io exports (#90)](https://github.com/avd-ops/avd-ops/pull/90) (merged PR)
+- **`avd-ops`** (2026-11-08): [feat: add Azure US Government / GCC High spec (decision 0013) and portal engine v1.2.0 (#89)](https://github.com/avd-ops/avd-ops/pull/89) (merged PR)
+- **`avd-ops`** (2026-11-08): [feat(standards): pin avd-assess 004394b with FinOps facts, checks, and intake fields (#88)](https://github.com/avd-ops/avd-ops/pull/88) (merged PR)
+- **`avd-ops`** (2026-11-08): [docs,security: add lab walkthrough, shared glossary, and SHA-pinned workflow actions (#87)](https://github.com/avd-ops/avd-ops/pull/87) (merged PR)
+- **`avd-ops`** (2026-11-08): [Close the issue-to-PR loop for KB digests and freshness; verify every partial page (#83)](https://github.com/avd-ops/avd-ops/pull/83) (merged PR)
+- **`avd-ops`** (2026-11-08): [AGENTS.md: switch to the hub's "How to make a change" wording (#82)](https://github.com/avd-ops/avd-ops/pull/82) (merged PR)
+- **`avd-ops`** (2026-11-08): [docs: specify benchmark platform (decision 0011) and pin avd-assess b0875cd (#81)](https://github.com/avd-ops/avd-ops/pull/81) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record Cloud Shell MSI token audience, keepalive polling, and gpt-4o-mini deprecation lessons (#149)](https://github.com/avd-ops/avd-second-brain/pull/149) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record DR & security facts, KQL hunts, tripwires and drill modes (#148)](https://github.com/avd-ops/avd-second-brain/pull/148) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record S1a Cloud Shell sandbox batch and Graph device-code lessons (#147)](https://github.com/avd-ops/avd-second-brain/pull/147) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record avd-buddy PWA and Container App build lessons (#146)](https://github.com/avd-ops/avd-second-brain/pull/146) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [chore(pins): re-pin avd-assess contracts to v2.1.0 (#145)](https://github.com/avd-ops/avd-second-brain/pull/145) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [feat(vault): ingest intake userSentiment and surface Perceived vs. Measured feedback (#144)](https://github.com/avd-ops/avd-second-brain/pull/144) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(agents): record 3-tier keyless Azure OpenAI fallback ladder for unattended S1a batch runs (#143)](https://github.com/avd-ops/avd-second-brain/pull/143) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record offline RAG citation evals and specialist routing lessons (#142)](https://github.com/avd-ops/avd-second-brain/pull/142) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): capture Concierge and 3-leg hybrid RAG PoC lessons learned (#141)](https://github.com/avd-ops/avd-second-brain/pull/141) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [feat(concierge): add v1 deterministic Concierge read service for search and C11 facts (#140)](https://github.com/avd-ops/avd-second-brain/pull/140) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record near-free Container App hosting and Easy Auth for avd-buddy (#139)](https://github.com/avd-ops/avd-second-brain/pull/139) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record sandbox RAG and operations memory cost floor in FinOps KB (#137)](https://github.com/avd-ops/avd-second-brain/pull/137) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): record verified Azure MCP tool names and centralus Bicep/PS5.1 lessons (#136)](https://github.com/avd-ops/avd-second-brain/pull/136) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [docs(kb): capture FinOps assessment lessons and pin avd-assess 004394b contracts (#135)](https://github.com/avd-ops/avd-second-brain/pull/135) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB: lessons from closing avd-assess's issue-to-PR loop (#130)](https://github.com/avd-ops/avd-second-brain/pull/130) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB: four lessons from closing the issue-to-PR loop in avd-ops (#129)](https://github.com/avd-ops/avd-second-brain/pull/129) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB known error: a scheduled workflow fails on unset secrets and opens issues nothing closes (#128)](https://github.com/avd-ops/avd-second-brain/pull/128) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB known errors: inline pwsh run blocks that never parse; tracking issues with no clean branch (#127)](https://github.com/avd-ops/avd-second-brain/pull/127) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB: read-only guard and drift sample setup lessons (avd-current-state #62) (#126)](https://github.com/avd-ops/avd-second-brain/pull/126) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [KB: check runner issues for removed runbooks, and when to retry a runbook call (#125)](https://github.com/avd-ops/avd-second-brain/pull/125) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [AGENTS.md: switch to the hub's "How to make a change" wording (#124)](https://github.com/avd-ops/avd-second-brain/pull/124) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(buddy): add optional browser Web Speech API voice chat (#70)](https://github.com/avd-ops/avd-swarm/pull/70) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(security): add 7 AVD KQL hunting queries to catalog and allowlist (#68)](https://github.com/avd-ops/avd-swarm/pull/68) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(buddy): set up buddy.avd-ops.dev demo, fix avatar SVG XML comment, and add sandbox tarball runtime (#65)](https://github.com/avd-ops/avd-swarm/pull/65) (merged PR)
+- **`avd-swarm`** (2026-11-08): [ci(pages): publish avd-buddy public demo simulation to GitHub Pages (#63)](https://github.com/avd-ops/avd-swarm/pull/63) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(buddy): build installable PWA shell, public demo sim, and Container App host (#62)](https://github.com/avd-ops/avd-swarm/pull/62) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(s1a): add keyless Azure OpenAI 3-tier model fallback ladder and unattended batch mode (#61)](https://github.com/avd-ops/avd-swarm/pull/61) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(agents): wire cost-and-licensing and intune-policy specialists (#60)](https://github.com/avd-ops/avd-swarm/pull/60) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(evals): add offline 3-leg RAG and citation evaluation suite (#59)](https://github.com/avd-ops/avd-swarm/pull/59) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(rag): wire 3-leg hybrid sandbox RAG tools, KQL catalog queries, and citation verifier (#57)](https://github.com/avd-ops/avd-swarm/pull/57) (merged PR)
+- **`avd-swarm`** (2026-11-08): [docs: host avd-buddy on scale-to-zero Container App with Easy Auth (decision 0010) (#56)](https://github.com/avd-ops/avd-swarm/pull/56) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(governance): align virtualdesktop allowlists and runbooks with @azure/mcp tool names (#54)](https://github.com/avd-ops/avd-swarm/pull/54) (merged PR)
+- **`avd-swarm`** (2026-11-08): [feat(gate,sandbox): add sandbox skill, gate live re-read & approve workflow, and SECURITY.md (#53)](https://github.com/avd-ops/avd-swarm/pull/53) (merged PR)
+- **`avd-swarm`** (2026-11-08): [Check runner: close issues for removed runbooks, retry the agent API once on 502/503 (#50)](https://github.com/avd-ops/avd-swarm/pull/50) (merged PR)
+- **`avd-swarm`** (2026-11-08): [AGENTS.md: switch to the hub's "How to make a change" wording (#49)](https://github.com/avd-ops/avd-swarm/pull/49) (merged PR)
+
+## Findings and decisions
+
+- **`avd-ops`** (2026-11-02): [0012. Position avd-second-brain and avd-swarm as Desktop DevOps for AVD, Windows 365 and Intune](https://github.com/avd-ops/avd-ops/blob/main/docs/knowledge/decisions/0012-desktop-devops-for-avd-win365-and-intune.md) (Decision record)
+- **`avd-ops`** (2026-11-08): [0013. Support Azure US Government and Microsoft 365 GCC High across all five control planes](https://github.com/avd-ops/avd-ops/blob/main/docs/knowledge/decisions/0013-azure-us-government-and-gcc-high-support.md) (Decision record)
+
+## Fixes and hardening
+
+- **`avd-assess`** (2026-11-05): [Security review map: close the Graph scope gap, narrow the run-evidence gap, re-pin avd-landing-zone (#50)](https://github.com/avd-ops/avd-assess/pull/50) (merged PR)
+- **`avd-assess`** (2026-11-08): [fix(security-review): mark closed gaps as deprecated since 2.1.0 for bundle gate (#64)](https://github.com/avd-ops/avd-assess/pull/64) (merged PR)
+- **`avd-assess`** (2026-11-08): [Security review map: close the ci-read-only-guard gap (#57)](https://github.com/avd-ops/avd-assess/pull/57) (merged PR)
+- **`avd-assess`** (2026-11-08): [Security review map: re-pin avd-landing-zone to the merge of PR #127 (#56)](https://github.com/avd-ops/avd-assess/pull/56) (merged PR)
+- **`avd-assess`** (2026-11-08): [security: add CI secret scan and pin all workflow actions by SHA (#55)](https://github.com/avd-ops/avd-assess/pull/55) (merged PR)
+- **`avd-current-state`** (2026-11-08): [security: add SECURITY.md, docs/threat-model.md, CI secret scan, and SHA-pinned actions (#65)](https://github.com/avd-ops/avd-current-state/pull/65) (merged PR)
+- **`avd-current-state`** (2026-11-08): [Fix the local collector bundle test on Linux and macOS (#61)](https://github.com/avd-ops/avd-current-state/pull/61) (merged PR)
+- **`avd-second-brain`** (2026-11-08): [security: add SECURITY.md, pin workflow actions by SHA, and link swarm gate in KB (#134)](https://github.com/avd-ops/avd-second-brain/pull/134) (merged PR)
+- **`avd-swarm`** (2026-11-08): [fix(s1a): add 15s keepalive polling and handle Cloud Shell MSI token proxy (#69)](https://github.com/avd-ops/avd-swarm/pull/69) (merged PR)
+- **`avd-swarm`** (2026-11-08): [fix(s1a): pass repoCommit to main.bicep in Start-Spike.ps1 and add Bicep param test (#66)](https://github.com/avd-ops/avd-swarm/pull/66) (merged PR)
+- **`avd-swarm`** (2026-11-08): [fix(s1a): show Connect-MgGraph device code and skip Graph sign-in on empty teardown (#64)](https://github.com/avd-ops/avd-swarm/pull/64) (merged PR)
+- **`avd-swarm`** (2026-11-08): [fix(kql): guard WVDConnections transport columns with column_ifexists (#58)](https://github.com/avd-ops/avd-swarm/pull/58) (merged PR)
