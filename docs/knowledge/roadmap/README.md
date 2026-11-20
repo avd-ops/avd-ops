@@ -3,7 +3,7 @@ title: "Roadmap"
 summary: "Where each AVD repo is today and what these docs will cover next"
 topic: roadmap
 status: plan
-last_reviewed: 2026-10-27
+last_reviewed: 2026-11-18
 ---
 
 # Roadmap
@@ -48,6 +48,8 @@ The public roadmap at [roadmap.html](https://avd-ops.dev/roadmap.html) and the r
 - Leave dates out. The roadmaps that give quarters also warn that dates move.
 - Say maturity apart from progress (Kubernetes' alpha, beta, stable). Here that is proven, pre-beta and design, so an item in progress in a design-stage repo can't read as nearly ready.
 - Issue titles are written by whoever opened the issue: a generated page shows only approved items, checks who added the approval label, and pulls an item whose title changed after approval.
+- Pairing the issue board with curated `repos` status and backlog summaries in `roadmap.json` (grouped by architectural layer, with client-side layer/theme/repo filters in `site/assets/roadmap.js`) ensures every repository in `repos.json` is visible even when only a few repos have `accepted` roadmap issues.
+- Running `fetch-issues.mjs`, `build-roadmap.mjs`, and `build-research.mjs` in `.github/workflows/pages.yml` keeps `avd-ops.dev/roadmap` and `avd-ops.dev/research` current on every push and daily schedule, while keeping the committed `site/data/issues.json` as an offline fallback.
 
 ## A one-button network check for desktop users (proposed)
 

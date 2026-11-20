@@ -133,6 +133,8 @@ Repo"><a href="repos/avd-swarm.html">avd-swarm</a></td>
 <li>Leave dates out. The roadmaps that give quarters also warn that dates move.</li>
 <li>Say maturity apart from progress (Kubernetes&#39; alpha, beta, stable). Here that is proven, pre-beta and design, so an item in progress in a design-stage repo can&#39;t read as nearly ready.</li>
 <li>Issue titles are written by whoever opened the issue: a generated page shows only approved items, checks who added the approval label, and pulls an item whose title changed after approval.</li>
+<li>Pairing the issue board with curated <code>repos</code> status and backlog summaries in <code>roadmap.json</code> (grouped by architectural layer, with client-side layer/theme/repo filters in <code>site/assets/roadmap.js</code>) ensures every repository in <code>repos.json</code> is visible even when only a few repos have <code>accepted</code> roadmap issues.</li>
+<li>Running <code>fetch-issues.mjs</code>, <code>build-roadmap.mjs</code>, and <code>build-research.mjs</code> in <code>.github/workflows/pages.yml</code> keeps <code>avd-ops.dev/roadmap</code> and <code>avd-ops.dev/research</code> current on every push and daily schedule, while keeping the committed <code>site/data/issues.json</code> as an offline fallback.</li>
 </ul>
 </details>
 </section>
