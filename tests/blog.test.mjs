@@ -61,4 +61,14 @@ test('draft-blog sanitizes banned terms and partner names and formats Markdown',
   assert.match(md, /## Features and updates/);
   assert.match(md, /## Findings and decisions/);
   assert.match(md, /## Fixes and hardening/);
+
+  const weeklyMd = formatDigestMarkdown({
+    start: '2026-11-13',
+    end: '2026-11-19',
+    items: [
+      { date: '2026-11-15', repo: 'avd-ops', kind: 'features', title: 'Add blog (#99)', url: 'https://github.com/avd-ops/avd-ops/pull/99', note: 'merged PR' },
+    ],
+  });
+  assert.match(weeklyMd, /title: "Weekly digest: 2026-11-13 to 2026-11-19"/);
+  assert.match(weeklyMd, /tags: \["weekly-digest", "features"\]/);
 });
