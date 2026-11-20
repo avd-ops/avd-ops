@@ -7,7 +7,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isBotOrNoisePr, classifyPr, sanitizeText, formatDigestMarkdown } from '../scripts/site/draft-blog.mjs';
-import { loadPosts, buildFeedXml } from '../scripts/site/build-blog.mjs';
+import { loadPosts, buildFeedXml, inferAutoTags, inferAutoRepos } from '../scripts/site/build-blog.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -71,4 +71,8 @@ test('draft-blog sanitizes banned terms and partner names and formats Markdown',
   });
   assert.match(weeklyMd, /title: "Weekly digest: 2026-11-13 to 2026-11-19"/);
   assert.match(weeklyMd, /tags: \["weekly-digest", "features"\]/);
+
+  assert.deepEqual(inferAutoTags('2026-11-19-weekly-digest', '## Releases\n## Fixes\n'), ['weekly-digest', 'release', 'fixes']);
+  assert.deepEqual(inferAutoTags('2026-11-21-deep-dive', 'Plain prose note.'), ['note']);
+  assert.deepEqual(inferAutoRepos('Updated avd-assess and avd-ops.', ['avd-assess', 'avd-ops', 'avd-learn']), ['avd-assess', 'avd-ops']);
 });

@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Blog &amp; updates | avd-ops</title>
-<meta name="description" content="Daily digests of major updates, features and findings across the avd-ops repositories.">
+<meta name="description" content="Weekly digests of major updates, features and findings across the avd-ops repositories.">
 <link rel="alternate" type="application/atom+xml" title="avd-ops blog" href="feed.xml">
+<script src="../assets/blog.js" defer></script>
 <!-- shell:head -->
 <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/avd-ops.css">
@@ -36,72 +37,111 @@
 <main id="main" class="roadmap">
 <p class="eyebrow">Blog &amp; updates</p>
 <h1>Major updates, features and findings across avd-ops.</h1>
-<p class="lede">Daily digests drafted from public releases, merged pull requests, accepted issues and decision records across the avd-ops repositories, plus deeper engineering notes.</p>
+<p class="lede">Weekly digests drafted from public releases, merged pull requests, accepted issues and decision records across the avd-ops repositories, plus deeper engineering notes.</p>
 <p><a class="chip" href="feed.xml">Atom feed (feed.xml)</a></p>
 <section aria-labelledby="blog-posts-heading">
 <h2 id="blog-posts-heading">Posts</h2>
+<div class="rm-filters" data-blog-filters>
+<div class="rm-filter-row" role="group" aria-label="Filter by tag">
+<span class="rm-filter-label">Tag</span>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="all" aria-pressed="true">All tags</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="announcement" aria-pressed="false">announcement</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="automation" aria-pressed="false">automation</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="features" aria-pressed="false">features</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="findings" aria-pressed="false">findings</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="fixes" aria-pressed="false">fixes</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="release" aria-pressed="false">release</button>
+<button class="chip rm-chip-btn" type="button" data-filter-tag="weekly-digest" aria-pressed="false">weekly-digest</button>
+</div>
+<div class="rm-filter-row" role="group" aria-label="Filter by repo">
+<span class="rm-filter-label">Repo</span>
+<button class="chip rm-chip-btn" type="button" data-filter-repo="all" aria-pressed="true">All repos</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-assess" aria-pressed="false">avd-assess</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-azure" aria-pressed="false">avd-azure</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-benchmark" aria-pressed="false">avd-benchmark</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-current-state" aria-pressed="false">avd-current-state</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-entra" aria-pressed="false">avd-entra</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-hcl" aria-pressed="false">avd-hcl</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-intune" aria-pressed="false">avd-intune</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-landing-zone" aria-pressed="false">avd-landing-zone</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-learn" aria-pressed="false">avd-learn</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-linecheck" aria-pressed="false">avd-linecheck</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-m365" aria-pressed="false">avd-m365</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-migrate" aria-pressed="false">avd-migrate</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-networking" aria-pressed="false">avd-networking</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-ops" aria-pressed="false">avd-ops</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-power-platform" aria-pressed="false">avd-power-platform</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-remediate" aria-pressed="false">avd-remediate</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-second-brain" aria-pressed="false">avd-second-brain</button>
+<button class="chip rm-chip-btn mono" type="button" data-filter-repo="avd-swarm" aria-pressed="false">avd-swarm</button>
+</div>
+<div class="rm-filter-status" hidden>
+<span class="rm-filter-summary" data-filter-summary></span>
+<button class="chip rm-chip-btn" type="button" data-filter-reset>Clear filters</button>
+</div>
+</div>
 <div class="rm-list">
-<article class="card rm-card" id="post-2026-11-20-daily-update">
+<article class="card rm-card" id="post-2026-11-20-daily-update" data-blog-card data-tags="features,fixes" data-repos="avd-ops">
 <div class="rm-top"><span class="chip mono">2026-11-20</span> <span class="chip mono">avd-ops</span> <span class="chip">features</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-11-20-daily-update.html">Daily update: 2026-11-20</a></h3>
 <p>Daily digest for 2026-11-20: 6 feature updates, 1 fix across avd-ops.</p>
 </article>
-<article class="card rm-card" id="post-2026-11-20-auto-blog-launch">
+<article class="card rm-card" id="post-2026-11-20-auto-blog-launch" data-blog-card data-tags="announcement,automation" data-repos="avd-ops">
 <div class="rm-top"><span class="chip mono">2026-11-20</span> <span class="chip mono">avd-ops</span> <span class="chip">announcement</span> <span class="chip">automation</span></div>
 <h3><a href="2026-11-20-auto-blog-launch.html">Launching the avd-ops auto-blog</a></h3>
 <p>Daily digests of releases, merged pull requests, accepted findings and decision records across the avd-ops repositories, drafted as pull requests for review.</p>
 </article>
-<article class="card rm-card" id="post-2026-11-19-weekly-digest">
+<article class="card rm-card" id="post-2026-11-19-weekly-digest" data-blog-card data-tags="weekly-digest,release,features,findings,fixes" data-repos="avd-assess,avd-azure,avd-benchmark,avd-current-state,avd-entra,avd-hcl,avd-intune,avd-landing-zone,avd-learn,avd-linecheck,avd-m365,avd-migrate,avd-networking,avd-ops,avd-power-platform,avd-remediate,avd-second-brain,avd-swarm">
 <div class="rm-top"><span class="chip mono">2026-11-19</span> <span class="chip mono">avd-assess</span> <span class="chip mono">avd-azure</span> <span class="chip mono">avd-benchmark</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-entra</span> <span class="chip mono">avd-hcl</span> <span class="chip mono">avd-intune</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-learn</span> <span class="chip mono">avd-linecheck</span> <span class="chip mono">avd-m365</span> <span class="chip mono">avd-migrate</span> <span class="chip mono">avd-networking</span> <span class="chip mono">avd-ops</span> <span class="chip mono">avd-power-platform</span> <span class="chip mono">avd-remediate</span> <span class="chip mono">avd-second-brain</span> <span class="chip mono">avd-swarm</span> <span class="chip">weekly-digest</span> <span class="chip">release</span> <span class="chip">features</span> <span class="chip">findings</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-11-19-weekly-digest.html">Weekly digest: 2026-11-16 to 2026-11-19</a></h3>
 <p>Weekly digest (2026-11-16 to 2026-11-19): 2 releases, 181 feature updates, 9 findings, 36 fixes across 18 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-11-15-weekly-digest">
+<article class="card rm-card" id="post-2026-11-15-weekly-digest" data-blog-card data-tags="weekly-digest,release,features,findings,fixes" data-repos="avd-assess,avd-azure,avd-benchmark,avd-current-state,avd-entra,avd-hcl,avd-intune,avd-landing-zone,avd-linecheck,avd-m365,avd-migrate,avd-networking,avd-ops,avd-power-platform,avd-remediate,avd-second-brain,avd-swarm">
 <div class="rm-top"><span class="chip mono">2026-11-15</span> <span class="chip mono">avd-assess</span> <span class="chip mono">avd-azure</span> <span class="chip mono">avd-benchmark</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-entra</span> <span class="chip mono">avd-hcl</span> <span class="chip mono">avd-intune</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-linecheck</span> <span class="chip mono">avd-m365</span> <span class="chip mono">avd-migrate</span> <span class="chip mono">avd-networking</span> <span class="chip mono">avd-ops</span> <span class="chip mono">avd-power-platform</span> <span class="chip mono">avd-remediate</span> <span class="chip mono">avd-second-brain</span> <span class="chip mono">avd-swarm</span> <span class="chip">weekly-digest</span> <span class="chip">release</span> <span class="chip">features</span> <span class="chip">findings</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-11-15-weekly-digest.html">Weekly digest: 2026-11-09 to 2026-11-15</a></h3>
 <p>Weekly digest (2026-11-09 to 2026-11-15): 1 release, 164 feature updates, 6 findings, 16 fixes across 17 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-11-08-weekly-digest">
+<article class="card rm-card" id="post-2026-11-08-weekly-digest" data-blog-card data-tags="weekly-digest,release,features,findings,fixes" data-repos="avd-assess,avd-current-state,avd-entra,avd-hcl,avd-intune,avd-landing-zone,avd-linecheck,avd-ops,avd-second-brain,avd-swarm">
 <div class="rm-top"><span class="chip mono">2026-11-08</span> <span class="chip mono">avd-assess</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-entra</span> <span class="chip mono">avd-hcl</span> <span class="chip mono">avd-intune</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-linecheck</span> <span class="chip mono">avd-ops</span> <span class="chip mono">avd-second-brain</span> <span class="chip mono">avd-swarm</span> <span class="chip">weekly-digest</span> <span class="chip">release</span> <span class="chip">features</span> <span class="chip">findings</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-11-08-weekly-digest.html">Weekly digest: 2026-11-02 to 2026-11-08</a></h3>
 <p>Weekly digest (2026-11-02 to 2026-11-08): 1 release, 76 feature updates, 2 findings, 12 fixes across 10 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-11-01-weekly-digest">
+<article class="card rm-card" id="post-2026-11-01-weekly-digest" data-blog-card data-tags="weekly-digest,release,features,findings,fixes" data-repos="avd-assess,avd-azure,avd-benchmark,avd-current-state,avd-entra,avd-intune,avd-landing-zone,avd-linecheck,avd-m365,avd-ops,avd-power-platform,avd-second-brain">
 <div class="rm-top"><span class="chip mono">2026-11-01</span> <span class="chip mono">avd-assess</span> <span class="chip mono">avd-azure</span> <span class="chip mono">avd-benchmark</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-entra</span> <span class="chip mono">avd-intune</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-linecheck</span> <span class="chip mono">avd-m365</span> <span class="chip mono">avd-ops</span> <span class="chip mono">avd-power-platform</span> <span class="chip mono">avd-second-brain</span> <span class="chip">weekly-digest</span> <span class="chip">release</span> <span class="chip">features</span> <span class="chip">findings</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-11-01-weekly-digest.html">Weekly digest: 2026-10-26 to 2026-11-01</a></h3>
 <p>Weekly digest (2026-10-26 to 2026-11-01): 1 release, 53 feature updates, 3 findings, 2 fixes across 12 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-10-25-weekly-digest">
+<article class="card rm-card" id="post-2026-10-25-weekly-digest" data-blog-card data-tags="weekly-digest,release,features,findings,fixes" data-repos="avd-assess,avd-current-state,avd-hcl,avd-landing-zone,avd-linecheck,avd-ops,avd-second-brain,avd-swarm">
 <div class="rm-top"><span class="chip mono">2026-10-25</span> <span class="chip mono">avd-assess</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-hcl</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-linecheck</span> <span class="chip mono">avd-ops</span> <span class="chip mono">avd-second-brain</span> <span class="chip mono">avd-swarm</span> <span class="chip">weekly-digest</span> <span class="chip">release</span> <span class="chip">features</span> <span class="chip">findings</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-10-25-weekly-digest.html">Weekly digest: 2026-10-19 to 2026-10-25</a></h3>
 <p>Weekly digest (2026-10-19 to 2026-10-25): 2 releases, 328 feature updates, 8 findings, 3 fixes across 8 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-10-18-weekly-digest">
+<article class="card rm-card" id="post-2026-10-18-weekly-digest" data-blog-card data-tags="weekly-digest,features" data-repos="avd-current-state,avd-landing-zone,avd-second-brain,avd-swarm">
 <div class="rm-top"><span class="chip mono">2026-10-18</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-landing-zone</span> <span class="chip mono">avd-second-brain</span> <span class="chip mono">avd-swarm</span> <span class="chip">weekly-digest</span> <span class="chip">features</span></div>
 <h3><a href="2026-10-18-weekly-digest.html">Weekly digest: 2026-10-12 to 2026-10-18</a></h3>
 <p>Weekly digest (2026-10-12 to 2026-10-18): 28 feature updates across 4 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-10-11-weekly-digest">
+<article class="card rm-card" id="post-2026-10-11-weekly-digest" data-blog-card data-tags="weekly-digest,features,fixes" data-repos="avd-landing-zone">
 <div class="rm-top"><span class="chip mono">2026-10-11</span> <span class="chip mono">avd-landing-zone</span> <span class="chip">weekly-digest</span> <span class="chip">features</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-10-11-weekly-digest.html">Weekly digest: 2026-10-05 to 2026-10-11</a></h3>
 <p>Weekly digest (2026-10-05 to 2026-10-11): 3 feature updates, 1 fix across 1 repo.</p>
 </article>
-<article class="card rm-card" id="post-2026-10-04-weekly-digest">
+<article class="card rm-card" id="post-2026-10-04-weekly-digest" data-blog-card data-tags="weekly-digest,features,fixes" data-repos="avd-current-state,avd-landing-zone">
 <div class="rm-top"><span class="chip mono">2026-10-04</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-landing-zone</span> <span class="chip">weekly-digest</span> <span class="chip">features</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-10-04-weekly-digest.html">Weekly digest: 2026-09-28 to 2026-10-04</a></h3>
 <p>Weekly digest (2026-09-28 to 2026-10-04): 32 feature updates, 1 fix across 2 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-09-27-weekly-digest">
+<article class="card rm-card" id="post-2026-09-27-weekly-digest" data-blog-card data-tags="weekly-digest,features" data-repos="avd-current-state,avd-landing-zone">
 <div class="rm-top"><span class="chip mono">2026-09-27</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-landing-zone</span> <span class="chip">weekly-digest</span> <span class="chip">features</span></div>
 <h3><a href="2026-09-27-weekly-digest.html">Weekly digest: 2026-09-21 to 2026-09-27</a></h3>
 <p>Weekly digest (2026-09-21 to 2026-09-27): 4 feature updates across 2 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-09-20-weekly-digest">
+<article class="card rm-card" id="post-2026-09-20-weekly-digest" data-blog-card data-tags="weekly-digest,features,fixes" data-repos="avd-current-state,avd-hcl,avd-landing-zone">
 <div class="rm-top"><span class="chip mono">2026-09-20</span> <span class="chip mono">avd-current-state</span> <span class="chip mono">avd-hcl</span> <span class="chip mono">avd-landing-zone</span> <span class="chip">weekly-digest</span> <span class="chip">features</span> <span class="chip">fixes</span></div>
 <h3><a href="2026-09-20-weekly-digest.html">Weekly digest: 2026-09-14 to 2026-09-20</a></h3>
 <p>Weekly digest (2026-09-14 to 2026-09-20): 2 feature updates, 1 fix across 3 repos.</p>
 </article>
-<article class="card rm-card" id="post-2026-07-12-weekly-digest">
+<article class="card rm-card" id="post-2026-07-12-weekly-digest" data-blog-card data-tags="weekly-digest,features" data-repos="avd-hcl">
 <div class="rm-top"><span class="chip mono">2026-07-12</span> <span class="chip mono">avd-hcl</span> <span class="chip">weekly-digest</span> <span class="chip">features</span></div>
 <h3><a href="2026-07-12-weekly-digest.html">Weekly digest: 2026-07-06 to 2026-07-12</a></h3>
 <p>Weekly digest (2026-07-06 to 2026-07-12): 7 feature updates across 1 repo.</p>
