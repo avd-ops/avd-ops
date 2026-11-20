@@ -19,7 +19,8 @@
     {"name": "AzFileDiagnostics", "url": "https://github.com/Azure-Samples/azure-files-samples", "license": "MIT", "job": "Validates outbound SMB port 445 connectivity and Azure Files permissions for FSLogix profile shares", "in": ["avd-remediate"]},
     {"name": "FederalAVD", "url": "https://github.com/Azure/FederalAVD", "license": "MIT", "job": "Modular AVD reference for Commercial and Azure US Government cloud parity", "in": ["avd-landing-zone", "avd-azure"]},
     {"name": "Winget-AutoUpdate (WAU)", "url": "https://github.com/Romanitho/Winget-AutoUpdate", "license": "MIT", "job": "Automated WinGet application updates for persistent desktops and Windows 365 Cloud PCs", "in": ["avd-intune"]},
-    {"name": "Azure Monitor Community", "url": "https://github.com/microsoft/AzureMonitorCommunity", "license": "MIT", "job": "Community KQL queries and workbook patterns extending AVD Insights telemetry", "in": ["avd-assess", "avd-remediate"]}
+    {"name": "Azure Monitor Community", "url": "https://github.com/microsoft/AzureMonitorCommunity", "license": "MIT", "job": "Community KQL queries and workbook patterns extending AVD Insights telemetry", "in": ["avd-assess", "avd-remediate"]},
+    {"name": "Azure Sentinel", "url": "https://github.com/Azure/Azure-Sentinel", "license": "MIT", "job": "Upstream KQL analytics and hunting patterns for AVD sign-in, session, and host detections", "in": ["avd-security"]}
   ],
   "tooling": [
     {"name": "Bicep", "url": "https://github.com/Azure/bicep", "license": "MIT", "job": "Infrastructure as code for every template"},
