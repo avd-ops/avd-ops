@@ -255,6 +255,13 @@
    "status": "verified"
   },
   {
+   "id": "getting-started/control-planes.md",
+   "title": "Control-plane modules",
+   "url": "getting-started/control-planes.html",
+   "topic": "getting-started",
+   "status": "unverified"
+  },
+  {
    "id": "getting-started/estate-vault.md",
    "title": "Stand up and use an estate vault",
    "url": "getting-started/estate-vault.html",
@@ -286,6 +293,13 @@
    "id": "getting-started/remediate-and-swarm.md",
    "title": "Stand up avd-remediate and avd-swarm in a lab",
    "url": "getting-started/remediate-and-swarm.html",
+   "topic": "getting-started",
+   "status": "unverified"
+  },
+  {
+   "id": "getting-started/standards-and-learning.md",
+   "title": "Standards and learning",
+   "url": "getting-started/standards-and-learning.html",
    "topic": "getting-started",
    "status": "unverified"
   },
@@ -859,6 +873,18 @@
   },
   {
    "source": "getting-started/README.md",
+   "target": "getting-started/control-planes.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "getting-started/standards-and-learning.md"
+  },
+  {
+   "source": "getting-started/README.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "getting-started/README.md",
    "target": "concepts/README.md"
   },
   {
@@ -880,6 +906,46 @@
   {
    "source": "getting-started/cloud-shell.md",
    "target": "repos/avd-current-state.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-landing-zone.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "getting-started/lab-walkthrough.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-entra.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-intune.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-m365.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-azure.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-networking.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-security.md"
+  },
+  {
+   "source": "getting-started/control-planes.md",
+   "target": "repos/avd-power-platform.md"
   },
   {
    "source": "getting-started/estate-vault.md",
@@ -936,6 +1002,14 @@
   {
    "source": "getting-started/multi-tenant-lab-bootstrap.md",
    "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/standards-and-learning.md",
+   "target": "repos/avd-assess.md"
+  },
+  {
+   "source": "getting-started/standards-and-learning.md",
+   "target": "repos/avd-learn.md"
   },
   {
    "source": "repos/README.md",

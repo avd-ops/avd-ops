@@ -19,11 +19,13 @@ add it to the topic page it belongs to instead of starting a new file.
 |---|---|---|
 | [getting-started/](getting-started/README.md) | What the AVD repos do, which one to open first, and how to try them safely in a lab | verified |
 | [getting-started/cloud-shell.md](getting-started/cloud-shell.md) | The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence | verified |
+| [getting-started/control-planes.md](getting-started/control-planes.md) | How the modular control-plane repos (Entra, Intune, M365, Azure, networking, security, and Power Platform) compose behind avd-landing-zone | unverified |
 | [getting-started/estate-vault.md](getting-started/estate-vault.md) | Create a private companion repo, initialize an adopter estate vault with avd-second-brain, ingest avd-current-state packages, and harvest generalized findings | unverified |
 | [getting-started/lab-walkthrough.md](getting-started/lab-walkthrough.md) | Take an empty lab subscription to a deployed Azure Virtual Desktop landing zone and validate it with avd-current-state using self-contained Cloud Shell blocks | verified |
 | [getting-started/migrate-and-benchmark.md](getting-started/migrate-and-benchmark.md) | Generate a single-pool target-state manifest offline with avd-migrate, run an offline or lab benchmark with avd-benchmark, and collect client network verdicts with avd-linecheck | unverified |
 | [getting-started/multi-tenant-lab-bootstrap.md](getting-started/multi-tenant-lab-bootstrap.md) | Bootstrap checklist for the 4-subscription ALZ primary tenant and secondary T2T Entra tenant at $0/mo idle cost | plan |
 | [getting-started/remediate-and-swarm.md](getting-started/remediate-and-swarm.md) | Launch the avd-remediate local troubleshooting portal against an estate vault, and run the spend-guarded avd-swarm S1a spike in a dedicated lab | unverified |
+| [getting-started/standards-and-learning.md](getting-started/standards-and-learning.md) | How avd-assess holds the shared standards and contracts, and how avd-learn walks through them interactively | unverified |
 | [concepts/](concepts/README.md) | The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture | verified |
 | [concepts/glossary.md](concepts/glossary.md) | One-line definitions of the terms and contracts the AVD repos share, with links to the repo or doc that owns each term | verified |
 | [concepts/sandbox-batches.md](concepts/sandbox-batches.md) | How test runs that cost money are queued, priced, approved once at an exact total, run one after another, and torn down with evidence | verified |
