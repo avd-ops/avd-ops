@@ -34,6 +34,8 @@ Pick the row that matches what you want to do, and open that repo.
 | Stand up a private estate vault and harvest runbooks | [Estate vault walkthrough](estate-vault.md) | Troubleshoot with [avd-remediate and avd-swarm](remediate-and-swarm.md) |
 | Size a target pool, benchmark hosts, or check client networks | [Migrate, benchmark, and linecheck](migrate-and-benchmark.md) | Deploy with [Lab walkthrough](lab-walkthrough.md) |
 | Troubleshoot or run agents in a lab | [avd-remediate and avd-swarm](remediate-and-swarm.md) | [avd-swarm](../repos/avd-swarm.md) design and spike docs |
+| Inspect or run individual control-plane repos | [Control-plane modules](control-planes.md) | [Lab walkthrough](lab-walkthrough.md) |
+| Read the assessment standards or guided learning path | [Standards and learning](standards-and-learning.md) | [avd-assess](../repos/avd-assess.md) |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
 New to the vocabulary? Read [concepts](../concepts/README.md) first. Setting up a multi-subscription or cross-tenant lab? Follow the [multi-tenant lab bootstrap](multi-tenant-lab-bootstrap.md).
