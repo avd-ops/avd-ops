@@ -36,17 +36,19 @@ Why: A lightweight reusable workflow plus one central aggregator gives every rep
 
 Every public repository in `repos.json` follows these release rules:
 
-1. **SemVer tags on the default branch:** Release tags use `vMAJOR.MINOR.PATCH` (or `<component>-vMAJOR.MINOR.PATCH` in multi-artifact repos such as `avd-ops` for `ds-v*` and `pe-v*`), tagged on commits that are ancestors of `main` (or `master` in `avd-landing-zone`), protected by owner-only tag rulesets.
-2. **Pre-release gates:** CI tests pass at the tagged commit, and generated release notes pass a leak scan before publishing.
-3. **Immutable draft-then-publish with provenance:** Releases are created as drafts with `--verify-tag`, attached artifacts carry `.sha256` checksums and `actions/attest-build-provenance` attestations, and the release is published only after all uploads succeed.
-4. **Keep a Changelog:** Repositories maintain `CHANGELOG.md` in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format, promoting `## Unreleased` entries into `## [X.Y.Z] - YYYY-MM-DD` on release.
+1. **SemVer tags on the default branch:** Release tags use `vMAJOR.MINOR.PATCH` (or `vMAJOR.MINOR.PATCH-prerelease` for pre-releases, and `<component>-vMAJOR.MINOR.PATCH` in multi-artifact repos such as `avd-ops` for `ds-v*` and `pe-v*`), tagged on commits that are ancestors of `main` (or `master` in `avd-landing-zone`), protected by owner-only tag rulesets.
+2. **Pre-release code and tags:** Day-to-day changes merge to `main` (`master` in `avd-landing-zone`) and accumulate under `## Unreleased` in `CHANGELOG.md` without moving `platform-release.json`. When an explicit pre-release is needed (`-alpha.N`, `-beta.N`, `-rc.N`), `reusable-release.yml` detects `-` in the tag, passes `--prerelease` to `gh release create`, and `avd-ops.dev/releases.html` labels it `Pre-release` while keeping `platform-release.json` pinned to stable `/releases/latest` tags.
+3. **Pre-release gates:** CI tests pass at the tagged commit, and generated release notes pass a leak scan before publishing.
+4. **Immutable draft-then-publish with provenance:** Releases are created as drafts with `--verify-tag`, attached artifacts carry `.sha256` checksums and `actions/attest-build-provenance` attestations, and the release is published only after all uploads succeed.
+5. **Keep a Changelog:** Repositories maintain `CHANGELOG.md` in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format, keeping entries under `## Unreleased` during pre-releases and promoting `## Unreleased` into `## [X.Y.Z] - YYYY-MM-DD` on stable release.
 
 ### 2. Reusable workflow vs. specialized workflows
 
-Standard repositories call `avd-ops/avd-ops/.github/workflows/reusable-release.yml@main` from `.github/workflows/release.yml` after their own test/build job. Repositories with specialized release pipelines keep them while aligning to the same gates:
+Standard repositories call `avd-ops/avd-ops/.github/workflows/reusable-release.yml@main` from `.github/workflows/release.yml` after their own test/build job. Repositories with specialized release pipelines or stricter workflow guards keep them while aligning to the same gates:
 
-- **`avd-assess`** keeps `release.yml` (bundle determinism, schema diffing, deprecation gate, and dual Python/PowerShell verifiers).
+- **`avd-assess`** keeps `release.yml` (bundle determinism, schema diffing, deprecation gate, dual Python/PowerShell verifiers, and strict 3-part SemVer without `-rc` suffixes).
 - **`avd-current-state`** keeps `release-local.yml` (Windows runner for Azure Artifact Signing of `avd_current_state_local.ps1`), adding `main`-ancestry verification and release-note leak scanning.
+- **`avd-swarm`** keeps a standalone `contents: write`-only `release.yml` (no `id-token: write`, SHA-pinned actions) to satisfy its `W1` workflow guard while running the same SemVer, ancestry, leak-scan, and draft-then-publish gates.
 
 ### 3. Monthly release train cadence (Patch Tuesday + 7 days) and BOM
 
@@ -58,7 +60,7 @@ A single platform release train runs monthly on **Patch Tuesday + 7 days** (the 
 
 ### Consequences
 
-- Good, because adopters get one release notes feed and coverage matrix across all 18 public repositories on `avd-ops.dev`.
+- Good, because adopters get one release notes feed and coverage matrix across all 19 public repositories on `avd-ops.dev`.
 - Good, because any repository can adopt SemVer, provenance attestation, and leak-scanned release notes with a minimal caller workflow.
 - Bad, because each sibling repository still needs its own caller workflow PR and `v*` tag ruleset enabled by the owner.
 
