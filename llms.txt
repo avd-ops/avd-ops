@@ -85,7 +85,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 - [0026. Call out GitHub Free private-repo limits and allow near-zero Azure page hosting](docs/knowledge/decisions/0026-github-free-limits-and-near-zero-azure-hosting.md): accepted
 - [0027. Separate helpdesk simulator kit and normalized ticket-adapter boundary](docs/knowledge/decisions/0027-helpdesk-simulator-and-ticket-adapter.md): proposed
 - [0027. Adopt FlaUI (.NET Framework 4.8) for open-source RPA workloads in avd-benchmark](docs/knowledge/decisions/0027-open-source-rpa-workload-engine.md): accepted
-- [0028. Add avd-security for AVD security control plane, posture verification, and detection](docs/knowledge/decisions/0028-add-avd-security.md): proposed
+- [0028. Add avd-security for AVD security control plane, posture verification, and detection](docs/knowledge/decisions/0028-add-avd-security.md): accepted
 - [0029. Platform release standard and central release notes on avd-ops.dev](docs/knowledge/decisions/0029-platform-release-standard.md): accepted
 
 ## Related knowledge bases

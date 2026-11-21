@@ -223,7 +223,7 @@
    "title": "0028. Add avd-security for AVD security control plane, posture verification, and detection",
    "url": "decisions/0028-add-avd-security.html",
    "topic": "decisions",
-   "status": "proposed"
+   "status": "accepted"
   },
   {
    "id": "decisions/0029-platform-release-standard.md",
