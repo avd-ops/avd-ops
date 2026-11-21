@@ -41,36 +41,39 @@
 </section>
 <section class="screen" id="1-identity-endpoints-and-m365-productivity">
 <h2 tabindex="-1">1. Identity, endpoints, and M365 productivity</h2>
+<p class="bl">Run Entra ID, Intune, and Microsoft 365 Apps baselines before session hosts register.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong><a href="../repos/avd-entra.html">avd-entra</a>:</strong> Creates security groups, user/admin RBAC assignments, and Conditional Access baselines before hosts register.</li>
 <li><strong><a href="../repos/avd-intune.html">avd-intune</a>:</strong> Deploys VDI-tuned Windows 11 settings catalog, Defender AV/ASR/FSLogix exclusions, compliance policies, and platform assignment filters (<code>avd-multisession</code>, <code>avd-personal</code>).</li>
 <li><strong><a href="../repos/avd-m365.html">avd-m365</a>:</strong> Applies Microsoft 365 Apps shared computer activation, OneDrive Known Folder Move, and Teams VDI media optimization policies.</li>
 </ul>
-
-<details class="more"><summary>More</summary>
 </details>
 </section>
 <section class="screen" id="2-azure-infrastructure-networking-and-security">
 <h2 tabindex="-1">2. Azure infrastructure, networking, and security</h2>
+<p class="bl">Deploy the AVD host pool, hub-and-spoke networking, and subscription security controls in Azure.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong><a href="../repos/avd-azure.html">avd-azure</a>:</strong> Deploys the Bicep/AzAPI AVD control plane (host pool, application groups, workspace, scaling plan, FSLogix storage, and Azure or <code>azure-local</code> session hosts).</li>
 <li><strong><a href="../repos/avd-networking.html">avd-networking</a>:</strong> Stands up hub-and-spoke VNets, Private DNS zones, Azure Firewall/NVA egress, and private endpoints when deploying into a hub topology.</li>
 <li><strong><a href="../repos/avd-security.html">avd-security</a>:</strong> Configures Microsoft Defender for Cloud, Key Vault posture, and security baselines across the AVD subscription.</li>
 </ul>
-
-<details class="more"><summary>More</summary>
 </details>
 </section>
 <section class="screen" id="3-power-platform-governance">
 <h2 tabindex="-1">3. Power Platform governance</h2>
+<p class="bl">Isolate Power Platform connectors and DLP policies for AVD user sessions.</p>
+
+<details class="more"><summary>More</summary>
 <ul>
 <li><strong><a href="../repos/avd-power-platform.html">avd-power-platform</a>:</strong> Applies Power Platform DLP policies and environment isolation when VDI users access Power Apps or Power Automate inside AVD sessions.</li>
 </ul>
-
-<details class="more"><summary>More</summary>
-<pre><code class="language-powershell"># Inspect any control-plane repo from Cloud Shell (read-only)
-git clone https://github.com/avd-ops/avd-azure.git ~/avd-azure
-Get-ChildItem ~/avd-azure
+<pre><code class="language-powershell">if (-not (Test-Path ~/avd-azure/.git)) { git clone https://github.com/avd-ops/avd-azure.git ~/avd-azure }
+Set-Location ~/avd-azure; git checkout -q main; git pull -q --ff-only
+Get-ChildItem
 </code></pre>
 </details>
 <details class="more linked"><summary>Linked from one page</summary>
