@@ -3,7 +3,7 @@ title: "avd-networking"
 summary: "Control plane: Platform Connectivity hub VNet, Azure Firewall, central Private DNS, DNS Private Resolver, gateways and Bastion"
 topic: repos
 status: verified
-last_reviewed: 2026-11-13
+last_reviewed: 2026-11-22
 ---
 
 # avd-networking
@@ -22,6 +22,8 @@ It deploys the Connectivity subscription layer independently from AVD workload s
 
 - Deploys the Hub VNet (`GatewaySubnet`, `AzureFirewallSubnet`, `AzureBastionSubnet`, DNS Private Resolver subnets) with `defaultOutboundAccess: false`.
 - Configures Azure Firewall (`Basic` in `lab`, `Standard` or `Premium` with multi-PIP SNAT scaling in `enterprise`) and Firewall Policy rules aligned with `avd-assess` required endpoints.
+- Provides an opt-in, low-cost **Open-Source Linux Hub NVA** (`parameters/oss-nva-lab.bicepparam`, `deployOssNva = true`) for lab and sandbox egress (`Standard_B1s` running `nftables`, `squid-openssl` SNI peek-and-splice with `host_verify_strict on`, and `dnsmasq`, emitting C31 `firewallMode: 'nva'`). Single-VM lab SLA (~$14–16/month always-on vs. ~$290+/month for Azure Firewall Basic; see [avd-second-brain decision 0029](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0029-open-source-hub-nva-lab-option.md)).
+- Includes a portable `avd-egress-policy/v1` policy (`policy/egress-policy.json`), multi-target compiler (`ConvertTo-AvdEgressConfig.ps1` for `oss-nva`, `azure-firewall`, and `palo-alto` PAN-OS EDL), and unified Day-2 operator CLI (`Invoke-AvdEgressOps.ps1` for `Status`, `ApplyPolicy`, `Capture`, and `Upgrade`).
 - Deploys central Private DNS zones (`file`, `keyVault`, `avd`, `avdGlobal`) for `commercial` and `usgov` plus optional DNS Private Resolver.
 - Provides `Add-SpokeLink.ps1` for two-phase cross-subscription peering and Private DNS VNet linking.
 
