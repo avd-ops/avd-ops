@@ -179,7 +179,8 @@ Tenant">Secondary</td>
 <details class="more"><summary>More</summary>
 <ul>
 <li><strong>Entra Free ($0/mo):</strong> Covers Azure Lighthouse delegations, basic B2B guest collaboration, multitenant app registrations and admin consent, and cross-tenant Private Link approvals.</li>
-<li><strong>Entra ID P1 (1–2 licenses, or M365 Dev E5 if eligible):</strong> Required for Conditional Access policies, Privileged Identity Management (PIM), and granular Cross-Tenant Access Settings (MFA/compliant-device trust across tenants).</li>
+<li><strong>Entra ID P1 / M365 Business Premium (1–2 licenses, or M365 Dev E5 if eligible):</strong> Required for Conditional Access policies, Privileged Identity Management (PIM), Intune MDM enrollment, and granular Cross-Tenant Access Settings (MFA/compliant-device trust across tenants).</li>
+<li><strong>Month-to-month meter-off guardrail:</strong> When purchasing a temporary seat in <code>admin.microsoft.com</code>, always select <strong>Monthly commitment + Monthly billing</strong> and immediately set <strong>Recurring billing = Off</strong> (<code>Billing -&gt; Your products</code>) so the tenant reverts to Entra Free ($0/mo) automatically at month-end. Check <code>GET https://graph.microsoft.com/v1.0/subscribedSkus</code> during preflight and teardown to flag any active paid SKU.</li>
 </ul>
 </details>
 <details class="more linked"><summary>Linked from 2 pages</summary>
