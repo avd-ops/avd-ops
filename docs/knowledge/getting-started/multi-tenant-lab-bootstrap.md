@@ -62,7 +62,7 @@ Everything after the three Portal steps is 100% scriptable and repeatable across
 
 <!-- more -->
 
-Use Terraform (`avd-hcl`), PowerShell, or Azure CLI (`az`) to provision and maintain:
+Use Terraform (`avd-hcl`)—or Bicep (`avd-landing-zone` / `avd-networking`) paired with PowerShell/Microsoft Graph (`avd-entra`) for Bicep-only shops—to provision and maintain:
 
 - **Management Group tree:** Create `platform`, `platform/connectivity`, `platform/management`, `landing-zones`, `sandbox`, and `decommissioned` under the Tenant Root Group.
 - **Subscription vending & placement:** Create subscriptions via `azurerm_subscription` / `az account alias create` (MCA) and associate each with its target Management Group.

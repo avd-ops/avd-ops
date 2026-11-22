@@ -148,7 +148,7 @@ Tenant">Secondary</td>
 <p class="bl">Everything after the three Portal steps is 100% scriptable and repeatable across environments.</p>
 
 <details class="more"><summary>More</summary>
-<p>Use Terraform (<code>avd-hcl</code>), PowerShell, or Azure CLI (<code>az</code>) to provision and maintain:</p>
+<p>Use Terraform (<code>avd-hcl</code>)—or Bicep (<code>avd-landing-zone</code> / <code>avd-networking</code>) paired with PowerShell/Microsoft Graph (<code>avd-entra</code>) for Bicep-only shops—to provision and maintain:</p>
 <ul>
 <li><strong>Management Group tree:</strong> Create <code>platform</code>, <code>platform/connectivity</code>, <code>platform/management</code>, <code>landing-zones</code>, <code>sandbox</code>, and <code>decommissioned</code> under the Tenant Root Group.</li>
 <li><strong>Subscription vending &amp; placement:</strong> Create subscriptions via <code>azurerm_subscription</code> / <code>az account alias create</code> (MCA) and associate each with its target Management Group.</li>
