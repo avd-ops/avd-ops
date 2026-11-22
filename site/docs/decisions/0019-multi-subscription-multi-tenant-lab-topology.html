@@ -84,7 +84,11 @@
 </ul>
 <p>Scriptable vs. one-time Portal boundary:</p>
 <ul>
-<li><strong>100% scriptable (Terraform / PowerShell / Azure CLI):</strong> Management Group tree, subscription placement, MG-scoped RBAC and OIDC federated credentials, resource provider registrations, Azure Budgets, Policy assignments, Azure Lighthouse delegations, Cross-Tenant Access Settings, and vCPU quota requests.</li>
+<li><strong>100% scriptable (Terraform / Bicep + PowerShell / Azure CLI):</strong><ul>
+<li><strong>Terraform (<code>avd-hcl</code>):</strong> Management Group tree, subscription vending/placement, MG-scoped RBAC and OIDC federated credentials, resource provider registrations, Azure Budgets, Policy assignments, Azure Lighthouse delegations, Cross-Tenant Access Settings (<code>msgraph</code>), hub-to-spoke peering, and quota requests.</li>
+<li><strong>Bicep-only shops (<code>avd-landing-zone</code> / <code>avd-networking</code> / <code>avd-entra</code>):</strong> Bicep (<code>targetScope = &#39;tenant&#39;</code>, <code>&#39;managementGroup&#39;</code>, <code>&#39;subscription&#39;</code>) handles Management Groups (<code>Microsoft.Management/managementGroups</code>), MCA subscription vending (<code>Microsoft.Subscription/aliases</code>), Budgets (<code>Microsoft.Consumption/budgets</code>), Lighthouse (<code>Microsoft.ManagedServices/*</code>), and hub-spoke peering (<code>avd-networking</code>), paired with PowerShell/Microsoft Graph (<code>avd-entra</code>) for Cross-Tenant Access Settings and OIDC.</li>
+</ul>
+</li>
 <li><strong>One-time Portal steps:</strong> Secondary Entra tenant creation (CAPTCHA), Tenant Root Group elevation toggle (<code>User Access Administrator</code>), and initial subscription creation if on MOSA.</li>
 </ul>
 <p>Spend and quota guardrails:</p>

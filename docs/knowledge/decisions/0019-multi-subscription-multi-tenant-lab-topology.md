@@ -63,7 +63,9 @@ Check the billing agreement type with `az billing account list` before automatin
 
 Scriptable vs. one-time Portal boundary:
 
-- **100% scriptable (Terraform / PowerShell / Azure CLI):** Management Group tree, subscription placement, MG-scoped RBAC and OIDC federated credentials, resource provider registrations, Azure Budgets, Policy assignments, Azure Lighthouse delegations, Cross-Tenant Access Settings, and vCPU quota requests.
+- **100% scriptable (Terraform / Bicep + PowerShell / Azure CLI):**
+  - **Terraform (`avd-hcl`):** Management Group tree, subscription vending/placement, MG-scoped RBAC and OIDC federated credentials, resource provider registrations, Azure Budgets, Policy assignments, Azure Lighthouse delegations, Cross-Tenant Access Settings (`msgraph`), hub-to-spoke peering, and quota requests.
+  - **Bicep-only shops (`avd-landing-zone` / `avd-networking` / `avd-entra`):** Bicep (`targetScope = 'tenant'`, `'managementGroup'`, `'subscription'`) handles Management Groups (`Microsoft.Management/managementGroups`), MCA subscription vending (`Microsoft.Subscription/aliases`), Budgets (`Microsoft.Consumption/budgets`), Lighthouse (`Microsoft.ManagedServices/*`), and hub-spoke peering (`avd-networking`), paired with PowerShell/Microsoft Graph (`avd-entra`) for Cross-Tenant Access Settings and OIDC.
 - **One-time Portal steps:** Secondary Entra tenant creation (CAPTCHA), Tenant Root Group elevation toggle (`User Access Administrator`), and initial subscription creation if on MOSA.
 
 Spend and quota guardrails:
