@@ -126,7 +126,7 @@ Tenant">Secondary</td>
 <p>Run <code>az billing account list</code> in an authenticated shell and check <code>agreementType</code>:</p>
 <ul>
 <li><strong>Microsoft Customer Agreement (<code>MicrosoftCustomerAgreement</code>):</strong> Preferred. Offers $0 minimum spend and credit-card Pay-As-You-Go via the business/org signup flow, and supports programmatic subscription vending via Terraform <code>azurerm_subscription</code> or <code>az account alias create</code>.</li>
-<li><strong>Subscription cap increase:</strong> New credit-card MCA accounts start with a cap of 1–5 subscriptions. Open a free <strong>Billing Support</strong> ticket in the Azure Portal to raise the cap to at least 5 subscriptions before vending the full topology.</li>
+<li><strong>Subscription cap increase &amp; 24h rate limit:</strong> New credit-card MCA accounts start with a default cap of <strong>5 subscriptions</strong> and a <strong>1 new subscription per 24 hours</strong> rate limit. Attempting to vend multiple <code>azurerm_subscription</code> resources in parallel hits the 24h throttle and hangs until Terraform&#39;s 30-minute <code>AliasCreate</code> timeout. Vend subscriptions one per 24 hours (using <code>-target</code>), and open a free <strong>Billing Support</strong> ticket (explicitly titled as a billing subscription-count limit, not VM quota, to avoid auto-duplicate closure) to raise the cap past 5 for <code>t2t-lab</code>.</li>
 <li><strong>Legacy MOSA (<code>MicrosoftOnlineServicesAgreement</code>):</strong> Does not support programmatic subscription vending (<code>az account alias create</code>). If your account is MOSA, create the initial subscriptions manually in the Azure Portal or open a new MCA billing account.</li>
 </ul>
 </details>
@@ -137,7 +137,7 @@ Tenant">Secondary</td>
 
 <details class="more"><summary>More</summary>
 <ol>
-<li><strong>Create the secondary Microsoft Entra ID tenant:</strong> Entra tenant creation enforces an interactive CAPTCHA in the Azure Portal (<code>Microsoft Entra ID -&gt; Manage tenants -&gt; Create</code>).</li>
+<li><strong>Create the secondary Microsoft Entra ID tenant:</strong> Entra tenant creation enforces an interactive CAPTCHA in the Azure Portal (<code>Microsoft Entra ID -&gt; Manage tenants -&gt; Create</code>). Choose <strong>Governed Workforce</strong> (not External), and anchor it to a pre-created empty Resource Group in <code>platform-management</code> (the Portal form requires an existing RG; it costs $0/mo and can be deleted after <code>t2t-lab</code> is attached).</li>
 <li><strong>Enable Tenant Root Group elevation:</strong> Temporarily toggle <code>Access management for Azure resources</code> in the Entra Properties blade to grant <code>User Access Administrator</code> at <code>/</code> so your bootstrap identity or service principal can assign MG-scoped RBAC. Toggle it back off once Terraform/CLI bootstrap completes.</li>
 <li><strong>Create initial subscription(s) if on MOSA:</strong> Only required if <code>az billing account list</code> reports <code>MicrosoftOnlineServicesAgreement</code> instead of <code>MicrosoftCustomerAgreement</code>.</li>
 </ol>
