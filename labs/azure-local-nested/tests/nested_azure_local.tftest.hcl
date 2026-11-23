@@ -96,8 +96,8 @@ run "stage1_provisions_host_with_spend_guards_and_byo_outputs" {
   }
 
   assert {
-    condition     = azurerm_resource_group.lab.tags["ttl_hours"] == "8" && azurerm_resource_group.lab.tags["auto_teardown"] == "true"
-    error_message = "Resource group must carry ttl_hours and auto_teardown tags."
+    condition     = azurerm_resource_group.lab.tags["ttl_hours"] == "8" && azurerm_resource_group.lab.tags["auto_teardown"] == "true" && azurerm_resource_group.lab.tags["expire-on"] == "2026-11-17T20:00:00Z" && !contains(keys(azurerm_resource_group.lab.tags), "batch-id")
+    error_message = "Resource group must carry ttl_hours, auto_teardown, and expire-on tags (and omit batch-id when unset)."
   }
 
   assert {
@@ -206,4 +206,18 @@ run "rejects_unsupported_hci_location" {
   expect_failures = [
     var.hci_location,
   ]
+}
+
+run "stamps_batch_id_and_expire_on_tags" {
+  command = apply
+
+  variables {
+    batch_id  = "b20261123-1400"
+    ttl_hours = 4
+  }
+
+  assert {
+    condition     = azurerm_resource_group.lab.tags["expire-on"] == "2026-11-17T16:00:00Z" && azurerm_resource_group.lab.tags["batch-id"] == "b20261123-1400"
+    error_message = "Resource group must carry expire-on matching ttl_hours and lowercase batch-id when batch_id is set."
+  }
 }

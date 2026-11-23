@@ -285,6 +285,17 @@ variable "deploy_hci_cluster" {
   default     = false
 }
 
+variable "batch_id" {
+  description = "Optional lowercase batch identifier (e.g., bYYYYMMDD-HHMM or run ID) stamped onto the resource group and resources as batch-id."
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = trimspace(var.batch_id) == "" || can(regex("^[a-z0-9][a-z0-9_-]*$", lower(trimspace(var.batch_id))))
+    error_message = "batch_id must be empty or a lowercase alphanumeric/hyphen/underscore identifier."
+  }
+}
+
 variable "tags" {
   description = "Additional tags merged onto all lab resources."
   type        = map(string)
