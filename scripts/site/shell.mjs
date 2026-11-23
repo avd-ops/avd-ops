@@ -35,7 +35,7 @@ for (const r of family.repos) {
 // standards, and the system itself. Each tier holds groups of [label, path]; a group without a title sits
 // straight under its tier. Paths are relative to site/.
 export const GROUPS = [
-  ['Platform', [[null, [['Overview', 'index.html'], ['Get started', 'docs/index.html'], ['Architecture', 'architecture.html'], ['Blog', 'blog/index.html']]]]],
+  ['Overview', [[null, [['Get started', 'index.html'], ['Architecture', 'architecture.html'], ['Blog', 'blog/index.html']]]]],
   ['Ecosystem', [[null, [['Repo guides', 'docs/repos/index.html']]], ...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])])]],
   ['Governance and standards', [[null, [['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Decisions', 'docs/decisions/index.html'], ['Roadmap', 'roadmap.html'], ['Docs roadmap', 'docs/roadmap.html'], ['Research projects', 'research.html']]]]],
   ['System', [[null, [['First principles', 'docs/concepts.html'], ['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Story', 'story.html'], ['Release notes', 'releases.html'], ['Metrics', 'metrics.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
@@ -129,9 +129,6 @@ export function shellTop(up, current) {
     : `<a href="${up}index.html" aria-current="true">${t}</a>`)).join('');
   const links = (items) => items.map(([t, href]) => `<a href="${up}${href}"${mark(href, current)}>${t}</a>`).join('');
   const side = GROUPS.map(([tier, groups]) => {
-    if (tier === 'Platform') {
-      return `<p class="tier">${tier}</p>${groups.map(([, items]) => links(items)).join('')}`;
-    }
     const total = groups.reduce((n, [, xs]) => n + xs.length, 0);
     const inner = groups.map(([g, items]) => (g
       ? `<details class="side-group"><summary class="group">${g}<span class="side-count">${items.length}</span></summary><div class="side-links">${links(items)}</div></details>`

@@ -306,6 +306,15 @@
         if (el.matches && el.matches('details.side-group')) el.open = true;
         el = el.parentElement;
       }
+      var tierGroups = side.querySelectorAll('details.side-group.tier-group');
+      for (var t = 0; t < tierGroups.length; t++) {
+        tierGroups[t].addEventListener('toggle', function () {
+          if (!this.open) return;
+          for (var u = 0; u < tierGroups.length; u++) {
+            if (tierGroups[u] !== this && tierGroups[u].open) tierGroups[u].open = false;
+          }
+        });
+      }
     }
     if (!menu || !side) return;
     // The drawer class goes on the .shell element: the body on a page, a wrapper div in an artifact.

@@ -67,3 +67,17 @@ Optional agents and memory. The foundation never needs them.
 
 The list lives in [repos.json](https://github.com/avd-ops/avd-ops/blob/main/repos.json), which the site
 and the family check both read ([decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)).
+
+## Walkthroughs and guides
+
+Step-by-step walkthroughs for running the repos in a lab, from Cloud Shell setup to troubleshooting.
+
+<!-- more -->
+
+- [Working from Cloud Shell](../getting-started/cloud-shell.md) and [Cloud Shell and its alternatives](../getting-started/shell-options.md)
+- [Lab walkthrough](../getting-started/lab-walkthrough.md) and [multi-tenant lab bootstrap](../getting-started/multi-tenant-lab-bootstrap.md)
+- [Control-plane modules](../getting-started/control-planes.md)
+- [Estate vault walkthrough](../getting-started/estate-vault.md)
+- [Migrate, benchmark, and linecheck](../getting-started/migrate-and-benchmark.md)
+- [avd-remediate and avd-swarm](../getting-started/remediate-and-swarm.md)
+- [Standards and learning](../getting-started/standards-and-learning.md)

@@ -240,14 +240,6 @@
    "section": true
   },
   {
-   "id": "getting-started/README.md",
-   "title": "Get started",
-   "url": "index.html",
-   "topic": "getting-started",
-   "status": "verified",
-   "section": true
-  },
-  {
    "id": "getting-started/cloud-shell.md",
    "title": "Working from Cloud Shell",
    "url": "getting-started/cloud-shell.html",
@@ -868,70 +860,6 @@
    "target": "decisions/0029-platform-release-standard.md"
   },
   {
-   "source": "getting-started/README.md",
-   "target": "decisions/0002-avd-ops-is-the-front-door.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "repos/avd-current-state.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "repos/avd-second-brain.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/lab-walkthrough.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/estate-vault.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/remediate-and-swarm.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/migrate-and-benchmark.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "repos/avd-swarm.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/control-planes.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/standards-and-learning.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "repos/avd-assess.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "concepts/README.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/multi-tenant-lab-bootstrap.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/cloud-shell.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "getting-started/shell-options.md"
-  },
-  {
-   "source": "getting-started/README.md",
-   "target": "concepts/sandbox-batches.md"
-  },
-  {
    "source": "getting-started/cloud-shell.md",
    "target": "getting-started/shell-options.md"
   },
@@ -1174,6 +1102,42 @@
   {
    "source": "repos/README.md",
    "target": "decisions/0009-split-landing-zone-into-five-control-planes.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/shell-options.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/lab-walkthrough.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/multi-tenant-lab-bootstrap.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/control-planes.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/estate-vault.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/migrate-and-benchmark.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/remediate-and-swarm.md"
+  },
+  {
+   "source": "repos/README.md",
+   "target": "getting-started/standards-and-learning.md"
   },
   {
    "source": "repos/avd-assess.md",

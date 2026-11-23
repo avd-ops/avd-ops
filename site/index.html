@@ -25,7 +25,7 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="index.html#contribute">Contribute</a>.</li></ul></div></details>
 <div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
-<p class="tier">Platform</p><a href="index.html" aria-current="page">Overview</a><a href="docs/index.html">Get started</a><a href="architecture.html">Architecture</a><a href="blog/index.html">Blog</a>
+<details class="side-group tier-group"><summary class="tier">Overview<span class="side-count">3</span></summary><div class="side-links"><a href="index.html" aria-current="page">Get started</a><a href="architecture.html">Architecture</a><a href="blog/index.html">Blog</a></div></details>
 <details class="side-group tier-group"><summary class="tier">Ecosystem<span class="side-count">19</span></summary><div class="side-links"><a href="docs/repos/index.html">Repo guides</a><details class="side-group"><summary class="group">Assess and plan<span class="side-count">5</span></summary><div class="side-links"><a href="family/avd-current-state.html">avd-current-state</a><a href="family/avd-assess.html">avd-assess</a><a href="family/avd-migrate.html">avd-migrate</a><a href="family/avd-benchmark.html">avd-benchmark</a><a href="family/avd-learn.html">avd-learn</a></div></details><details class="side-group"><summary class="group">Build and change<span class="side-count">2</span></summary><div class="side-links"><a href="family/avd-landing-zone.html">avd-landing-zone</a><a href="family/avd-hcl.html">avd-hcl</a></div></details><details class="side-group"><summary class="group">Control planes<span class="side-count">7</span></summary><div class="side-links"><a href="family/avd-entra.html">avd-entra</a><a href="family/avd-intune.html">avd-intune</a><a href="family/avd-m365.html">avd-m365</a><a href="family/avd-azure.html">avd-azure</a><a href="family/avd-networking.html">avd-networking</a><a href="family/avd-security.html">avd-security</a><a href="family/avd-power-platform.html">avd-power-platform</a></div></details><details class="side-group"><summary class="group">Operate and support<span class="side-count">2</span></summary><div class="side-links"><a href="family/avd-remediate.html">avd-remediate</a><a href="family/avd-linecheck.html">avd-linecheck</a></div></details><details class="side-group"><summary class="group">Intelligence, on top<span class="side-count">2</span></summary><div class="side-links"><a href="family/avd-swarm.html">avd-swarm</a><a href="family/avd-second-brain.html">avd-second-brain</a></div></details></div></details>
 <details class="side-group tier-group"><summary class="tier">Governance and standards<span class="side-count">6</span></summary><div class="side-links"><a href="security.html">Security review</a><a href="standards/index.html">Standards library</a><a href="docs/decisions/index.html">Decisions</a><a href="roadmap.html">Roadmap</a><a href="docs/roadmap.html">Docs roadmap</a><a href="research.html">Research projects</a></div></details>
 <details class="side-group tier-group"><summary class="tier">System<span class="side-count">8</span></summary><div class="side-links"><a href="docs/concepts.html">First principles</a><a href="design/index.html">Design system</a><a href="docs/graph.html">Graph</a><a href="story.html">Story</a><a href="releases.html">Release notes</a><a href="metrics.html">Metrics</a><a href="credits.html">Credits</a><a href="legal.html">Legal notice</a></div></details>
@@ -37,7 +37,7 @@
 <p class="hero-eyebrow">Open-source AVD operations</p>
 <h1 id="h-hero">Azure Virtual Desktop, from inventory to operations, as code.</h1>
 <p class="lede">Read what an estate is, deploy a hardened landing zone, and operate with agents that change nothing until a person approves.</p>
-<div class="actions"><a class="cta" href="https://avd-ops.app/">Try the live demo</a><a class="cta ghost" href="docs/index.html">Read the docs</a><a class="cta ghost" href="blog/index.html">Latest updates</a></div>
+<div class="actions"><a class="cta" href="https://avd-ops.app/">Try the live demo</a><a class="cta ghost" href="docs/repos/index.html">Read the docs</a><a class="cta ghost" href="blog/index.html">Latest updates</a></div>
 <ul class="facts"><li>Bicep and PowerShell from Azure Cloud Shell</li><li>Read-only until a person approves</li><li>Open source under MIT</li></ul>
 </div>
 <!-- family:figure -->
@@ -82,6 +82,35 @@
 <li><strong>Read first, approve changes</strong><span>Collectors and agents read freely; every estate change requires human approval and a kill switch.</span></li>
 <li><strong>Tenant data stays with the tenant</strong><span>Public repos hold generalized patterns only. Estate facts stay in your own private repository.</span></li>
 <li><strong>Every number traces to evidence</strong><span>Sizing and rules carry a reason, measured observations, and commit-level citations.</span></li>
+</ul>
+</section>
+
+<section id="start-here" aria-labelledby="h-start">
+<h2 id="h-start">Pick your starting point</h2>
+<p>Pick the row that matches what you want to do, and open that walkthrough or repo.</p>
+<div class="tbl"><table class="stacked">
+<thead><tr><th>You want to</th><th>Start with</th><th>Then</th></tr></thead>
+<tbody>
+<tr><td data-label="You want to">See what an existing AVD environment holds, read-only</td><td data-label="Start with"><a href="docs/repos/avd-current-state.html">avd-current-state</a></td><td data-label="Then">Feed its redacted facts to <a href="docs/repos/avd-second-brain.html">avd-second-brain</a></td></tr>
+<tr><td data-label="You want to">Deploy and validate a dev AVD landing zone</td><td data-label="Start with"><a href="docs/getting-started/lab-walkthrough.html">Lab walkthrough</a></td><td data-label="Then">Store history in an <a href="docs/getting-started/estate-vault.html">estate vault</a></td></tr>
+<tr><td data-label="You want to">Stand up a private estate vault and harvest runbooks</td><td data-label="Start with"><a href="docs/getting-started/estate-vault.html">Estate vault walkthrough</a></td><td data-label="Then">Troubleshoot with <a href="docs/getting-started/remediate-and-swarm.html">avd-remediate and avd-swarm</a></td></tr>
+<tr><td data-label="You want to">Size a target pool, benchmark hosts, or check client networks</td><td data-label="Start with"><a href="docs/getting-started/migrate-and-benchmark.html">Migrate, benchmark, and linecheck</a></td><td data-label="Then">Deploy with <a href="docs/getting-started/lab-walkthrough.html">Lab walkthrough</a></td></tr>
+<tr><td data-label="You want to">Troubleshoot or run agents in a lab</td><td data-label="Start with"><a href="docs/getting-started/remediate-and-swarm.html">avd-remediate and avd-swarm</a></td><td data-label="Then"><a href="docs/repos/avd-swarm.html">avd-swarm</a> design and spike docs</td></tr>
+<tr><td data-label="You want to">Inspect or run individual control-plane repos</td><td data-label="Start with"><a href="docs/getting-started/control-planes.html">Control-plane modules</a></td><td data-label="Then"><a href="docs/getting-started/lab-walkthrough.html">Lab walkthrough</a></td></tr>
+<tr><td data-label="You want to">Read the assessment standards or guided learning path</td><td data-label="Start with"><a href="docs/getting-started/standards-and-learning.html">Standards and learning</a></td><td data-label="Then"><a href="docs/repos/avd-assess.html">avd-assess</a></td></tr>
+<tr><td data-label="You want to">Learn what past deployments taught</td><td data-label="Start with"><a href="docs/repos/avd-second-brain.html">avd-second-brain</a></td><td data-label="Then">Its knowledge base</td></tr>
+</tbody>
+</table></div>
+<p>New to the vocabulary? Read <a href="docs/concepts.html">first principles</a> first. Setting up a multi-subscription or cross-tenant lab? Follow the <a href="docs/getting-started/multi-tenant-lab-bootstrap.html">multi-tenant lab bootstrap</a>.</p>
+</section>
+
+<section class="guardrails" aria-labelledby="h-before">
+<h2 id="h-before">Before you run anything</h2>
+<ul>
+<li><strong>Use a throwaway lab subscription and tenant.</strong> Every repo assumes a dedicated lab environment.</li>
+<li><strong>Run from Azure Cloud Shell (PowerShell).</strong> Each quick start is one self-contained block; see <a href="docs/getting-started/cloud-shell.html">working from Cloud Shell</a> or <a href="docs/getting-started/shell-options.html">Cloud Shell and its alternatives</a>.</li>
+<li><strong>Expect Azure charges and tear down when done.</strong> See <a href="docs/concepts/sandbox-batches.html">sandbox batches</a> for how paid test runs are approved and cleaned up.</li>
+<li><strong>Never paste a secret</strong> into chat, an issue, or a pull request. Scripts use managed identities or prompt locally.</li>
 </ul>
 </section>
 </main>
