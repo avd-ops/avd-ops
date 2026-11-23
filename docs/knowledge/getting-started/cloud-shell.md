@@ -61,6 +61,8 @@ Cloud Shell forgets everything, so where a run stands comes from Azure and anyth
   and the scripts say how to check on them.
 - **Anything you need to keep goes somewhere durable before the session ends.** That means a
   mounted `~/clouddrive`, a download, or the run store (next section).
+- **Hitting the limits?** What Cloud Shell keeps, and when to use GitHub Codespaces, a small VM or
+  your own PC instead, is in [Cloud Shell and its alternatives](shell-options.md).
 
 ## Session state, logs and resuming
 
