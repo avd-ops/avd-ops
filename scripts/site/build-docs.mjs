@@ -22,7 +22,7 @@ const REPO = 'https://github.com/avd-ops/avd-ops/blob/main/';
 const PUBLISHED = [/^getting-started\//, /^concepts\//, /^repos\//, /^roadmap\//, /^decisions\/(README|\d{4}-[\w-]+)\.md$/];
 // The KB sections: each is a root of the docs graph, reached from the side list (shell.mjs GROUPS).
 // In the side list's order, which is also the order Next walks through the docs.
-const SECTIONS = [['Start here', 'getting-started/README.md'], ['Concepts', 'concepts/README.md'], ['Roadmap', 'roadmap/README.md'],
+const SECTIONS = [['Start here', 'getting-started/README.md'], ['First principles', 'concepts/README.md'], ['Roadmap', 'roadmap/README.md'],
   ['Repos', 'repos/README.md'], ['Decisions', 'decisions/README.md']];
 
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => {
@@ -203,7 +203,7 @@ function build() {
 <div class="graph-legend" aria-label="Node topic legend">
   <span class="gl-item gl-start"><i></i>Getting started</span>
   <span class="gl-item gl-repos"><i></i>Repositories</span>
-  <span class="gl-item gl-concepts"><i></i>Concepts</span>
+  <span class="gl-item gl-concepts"><i></i>First principles</span>
   <span class="gl-item gl-decisions"><i></i>Decisions</span>
   <span class="gl-item gl-roadmap"><i></i>Roadmap</span>
 </div>

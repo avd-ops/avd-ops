@@ -176,9 +176,14 @@ figure.flows{margin:var(--space-4) 0 0}
 .screens .sc-next:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:var(--on-accent)}
 .screens .sc-nav a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .screens.paged .screen:not(.on){display:none}
-.screens.paged .screen{min-height:calc(100dvh - var(--bar) - 15rem)}
+.screens.paged .screen{min-height:0}
 .screens.paged .screen+.screen{margin-top:0}
-.screens.paged .sc-steps ol{display:flex;gap:4px;padding:0;margin:0 0 var(--space-5);list-style:none}
+.screens.paged .sc-steps ol{display:flex;gap:4px;padding:0;margin:0 0 var(--space-4);list-style:none}
+.screens.paged .screen>h1,.screens.paged .screen>h2{font-size:clamp(1.6rem,1.2rem + 1.5vw,2.2rem);margin-bottom:var(--space-2)}
+.screens.paged .bl{font-size:var(--fs-md);margin-bottom:var(--space-3)}
+.screens.paged .screen>p:not(.bl),.screens.paged .screen>ul{margin:0 0 var(--space-3);line-height:1.55}
+.screens.paged .tbl{margin:var(--space-3) 0}
+.screens.paged th,.screens.paged td{padding:.4rem .65rem;font-size:.88rem;line-height:1.45}
 .screens.paged .sc-steps li{flex:1;min-width:0}
 .screens.paged .sc-steps a{display:flex;align-items:center;height:28px;text-decoration:none}
 .screens.paged .sc-steps a::before{content:"";display:block;width:100%;height:4px;border-radius:2px;background:var(--line-strong)}
@@ -187,7 +192,7 @@ figure.flows{margin:var(--space-4) 0 0}
 .screens.paged .sc-steps a[aria-current="step"]::before{background:var(--accent);height:6px;border-radius:3px}
 .screens.paged .sc-steps a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .screens.paged .sc-steps .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.screens.paged .sc-nav{position:sticky;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);margin-top:var(--space-5);
+.screens.paged .sc-nav{position:sticky;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);margin-top:var(--space-4);
   padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (pointer:coarse){.screens.paged .sc-steps a{height:var(--tap)}}
 @media (max-width:44rem){.screens .sc-nav .where,.screens .sc-nav .pg{display:none} .screens .sc-nav a{max-width:none;flex:1 1 0;text-align:center}}
