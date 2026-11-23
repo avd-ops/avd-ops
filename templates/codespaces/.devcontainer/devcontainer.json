@@ -1,0 +1,20 @@
+// Personal project, not for production, provided as is; not affiliated with the author's employer or Microsoft.
+// A GitHub Codespaces setup for working with the AVD repos: PowerShell 7, Azure CLI with Bicep,
+// GitHub CLI and the test modules. Copy this .devcontainer folder into a repo you own.
+// Guide: https://avd-ops.dev/docs/getting-started/shell-codespaces.html
+{
+  "name": "avd-ops workstation",
+  "image": "mcr.microsoft.com/devcontainers/base:1-ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/powershell:2": { "modules": "Az.Accounts,Az.Resources,Microsoft.Graph.Authentication,Pester,PSScriptAnalyzer" },
+    "ghcr.io/devcontainers/features/azure-cli:1": { "installBicep": true },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "hostRequirements": { "cpus": 2 },
+  "customizations": {
+    "vscode": {
+      "settings": { "terminal.integrated.defaultProfile.linux": "pwsh" },
+      "extensions": ["ms-vscode.powershell", "ms-azuretools.vscode-bicep"]
+    }
+  }
+}

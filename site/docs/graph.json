@@ -297,6 +297,34 @@
    "status": "unverified"
   },
   {
+   "id": "getting-started/shell-cloud-shell-storage.md",
+   "title": "Keep your files in Cloud Shell",
+   "url": "getting-started/shell-cloud-shell-storage.html",
+   "topic": "getting-started",
+   "status": "partial"
+  },
+  {
+   "id": "getting-started/shell-codespaces.md",
+   "title": "Run the AVD repos in GitHub Codespaces",
+   "url": "getting-started/shell-codespaces.html",
+   "topic": "getting-started",
+   "status": "partial"
+  },
+  {
+   "id": "getting-started/shell-options.md",
+   "title": "Cloud Shell and its alternatives",
+   "url": "getting-started/shell-options.html",
+   "topic": "getting-started",
+   "status": "partial"
+  },
+  {
+   "id": "getting-started/shell-small-vm.md",
+   "title": "A small Linux VM as your shell",
+   "url": "getting-started/shell-small-vm.html",
+   "topic": "getting-started",
+   "status": "partial"
+  },
+  {
    "id": "getting-started/standards-and-learning.md",
    "title": "Standards and learning",
    "url": "getting-started/standards-and-learning.html",
@@ -897,7 +925,15 @@
   },
   {
    "source": "getting-started/README.md",
+   "target": "getting-started/shell-options.md"
+  },
+  {
+   "source": "getting-started/README.md",
    "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/cloud-shell.md",
+   "target": "getting-started/shell-options.md"
   },
   {
    "source": "getting-started/cloud-shell.md",
@@ -1002,6 +1038,58 @@
   {
    "source": "getting-started/multi-tenant-lab-bootstrap.md",
    "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/shell-cloud-shell-storage.md",
+   "target": "getting-started/shell-options.md"
+  },
+  {
+   "source": "getting-started/shell-cloud-shell-storage.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/shell-cloud-shell-storage.md",
+   "target": "getting-started/shell-codespaces.md"
+  },
+  {
+   "source": "getting-started/shell-codespaces.md",
+   "target": "getting-started/shell-options.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "getting-started/cloud-shell.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "getting-started/shell-cloud-shell-storage.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "getting-started/shell-codespaces.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "getting-started/shell-small-vm.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "decisions/0006-run-anywhere.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "decisions/0026-github-free-limits-and-near-zero-azure-hosting.md"
+  },
+  {
+   "source": "getting-started/shell-options.md",
+   "target": "concepts/sandbox-batches.md"
+  },
+  {
+   "source": "getting-started/shell-small-vm.md",
+   "target": "getting-started/shell-options.md"
+  },
+  {
+   "source": "getting-started/shell-small-vm.md",
+   "target": "getting-started/cloud-shell.md"
   },
   {
    "source": "getting-started/standards-and-learning.md",
