@@ -35,10 +35,10 @@ for (const r of family.repos) {
 // standards, and the system itself. Each tier holds groups of [label, path]; a group without a title sits
 // straight under its tier. Paths are relative to site/.
 export const GROUPS = [
-  ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['First principles', 'docs/concepts.html'], ['Architecture', 'architecture.html'], ['Blog', 'blog/index.html'], ['Release notes', 'releases.html'], ['Metrics', 'metrics.html']]]]],
+  ['Platform', [[null, [['Overview', 'index.html'], ['Start here', 'docs/index.html'], ['First principles', 'docs/concepts.html'], ['Architecture', 'architecture.html'], ['Blog', 'blog/index.html']]]]],
   ['Ecosystem', [[null, [['Repo guides', 'docs/repos/index.html']]], ...LAYERS.map(([id, title]) => [title, members(id).map((r) => [r.name, `family/${r.name}.html`])])]],
   ['Governance and standards', [[null, [['Security review', 'security.html'], ['Standards library', 'standards/index.html'], ['Decisions', 'docs/decisions/index.html'], ['Roadmap', 'roadmap.html'], ['Docs roadmap', 'docs/roadmap.html'], ['Research projects', 'research.html']]]]],
-  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Story', 'story.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
+  ['System', [[null, [['Design system', 'design/index.html'], ['Graph', 'docs/graph.html'], ['Story', 'story.html'], ['Release notes', 'releases.html'], ['Metrics', 'metrics.html'], ['Credits', 'credits.html'], ['Legal notice', 'legal.html']]]]],
 ];
 
 // The switcher: the site, then the portals each repo publishes (repos.json "portal" and "status").
@@ -152,7 +152,7 @@ export function shellFoot(_extra, up = '') {
   return `</div>
 <footer class="foot" id="contribute"><div class="in">
 <div class="foot-open"><div><strong>Built in the open under MIT</strong><p>Fork a repo, run a lab, or open a pull request. See <a href="${up}credits.html#help-us">credits</a> for where research help is needed.</p></div>
-<div class="actions"><a class="cta" href="${up}docs/repos/index.html">Browse all 16 repos</a><a class="cta ghost" href="https://github.com/avd-ops">GitHub Organization</a></div></div>
+<div class="actions"><a class="cta" href="${up}docs/repos/index.html">Browse all ${family.repos.length} repos</a><a class="cta ghost" href="https://github.com/avd-ops">GitHub Organization</a></div></div>
 <div class="foot-meta"><a href="${up}legal.html">Legal notice &amp; trademarks</a>${CREDIT}</div>
 </div></footer>
 <button class="backdrop" type="button" tabindex="-1" aria-label="Close the pages list"></button>`;
