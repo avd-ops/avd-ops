@@ -8,7 +8,8 @@ missing, shows which subscription you're in, and reminds you that the session en
 20 minutes without input.
 
 - `Install-CloudShellProfile.ps1` copies `cloudshell-profile.ps1` to `~/.config/avd-ops/` and adds
-  one line to your PowerShell profile that runs the copy. Run it again to refresh the copy.
+  one line to your PowerShell profile that runs the copy. Running it again keeps your copy;
+  `-Refresh` replaces it with the template.
 - `cloudshell-profile.ps1` is the start-up script. Edit `$AvdOpsModules` in your copy to change the
   module list.
 

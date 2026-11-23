@@ -51,8 +51,9 @@ session, installs missing modules and shows your subscription.
 The script warns you when there's no `~/clouddrive` (an ephemeral session that keeps nothing),
 installs the PowerShell modules you list for your user if they're missing (Pester and
 PSScriptAnalyzer to start with), shows which subscription you're in, and reminds you about the
-timeout. The installer copies it to `~/.config/avd-ops/`, so you run what you read; edit that copy to
-change the module list. Source:
+timeout. The installer copies it to `~/.config/avd-ops/` once and never overwrites that copy, so a
+later update can't change your start-up; edit the copy to change the module list, or run the
+installer with `-Refresh` to start over from the template. Source:
 [templates/cloud-shell](https://github.com/avd-ops/avd-ops/tree/main/templates/cloud-shell).
 
 ```powershell
@@ -70,7 +71,8 @@ Close Cloud Shell and open it again. You should see the avd-ops lines before you
 
 <!-- more -->
 
-- **Expected:** a line naming your subscription and the 20-minute reminder. A yellow warning means
+- **Expected:** a line naming your subscription (or saying none is selected yet) and the 20-minute
+  reminder. A yellow warning means
   the session is ephemeral and step 1 didn't take.
 - **Turn it off:** open `$PROFILE.CurrentUserAllHosts` with `code` and delete the line that ends
   with `# avd-ops Cloud Shell start-up`.

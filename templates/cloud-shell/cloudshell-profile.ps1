@@ -5,11 +5,14 @@
 # Cloud Shell opens. Edit the copy to change what it does; delete the avd-ops line in $PROFILE to
 # turn it off. Guide: https://avd-ops.dev/docs/getting-started/shell-options.html
 
-# The PowerShell modules your work needs beyond what Cloud Shell ships. Installed for your user only.
-$AvdOpsModules = @('Pester', 'PSScriptAnalyzer')
+# Runs in its own scope, so none of its variables are left in your session.
+& {
+    # The PowerShell modules your work needs beyond what Cloud Shell ships. Installed for your user only.
+    $AvdOpsModules = @('Pester', 'PSScriptAnalyzer')
 
-# Cloud Shell sets ACC_LOCATION. Anywhere else, do nothing.
-if ($env:ACC_LOCATION) {
+    # Cloud Shell sets ACC_LOCATION. Anywhere else, do nothing.
+    if (-not $env:ACC_LOCATION) { return }
+
     if (-not (Test-Path -LiteralPath (Join-Path $HOME 'clouddrive'))) {
         Write-Host 'avd-ops: no ~/clouddrive, so this looks like an ephemeral session. Nothing saved here survives it.' -ForegroundColor Yellow
     }
@@ -24,7 +27,8 @@ if ($env:ACC_LOCATION) {
         }
     }
 
-    $ctx = Get-AzContext -ErrorAction SilentlyContinue
+    $ctx = if (Get-Command Get-AzContext -ErrorAction SilentlyContinue) { Get-AzContext -ErrorAction SilentlyContinue }
     if ($ctx) { Write-Host "avd-ops: Azure subscription '$($ctx.Subscription.Name)'. Check it before anything writes." }
+    else { Write-Host 'avd-ops: no Azure subscription selected yet. Check it with Get-AzContext before anything writes.' }
     Write-Host 'avd-ops: this session ends after 20 minutes without input. Long runs belong in Azure, not in this shell.'
 }
