@@ -16,7 +16,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const MATURITY = { proven: 'Proven', 'pre-beta': 'Pre-beta', design: 'Design' };
 
 function repoGuideHref(repoName) {
-  return repoName === 'avd-ops' ? 'docs/index.html' : `family/${repoName}.html`;
+  return repoName === 'avd-ops' ? 'index.html' : `family/${repoName}.html`;
 }
 
 function ciChip(conclusion) {

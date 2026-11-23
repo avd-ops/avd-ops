@@ -19,10 +19,10 @@ const REPO = 'https://github.com/avd-ops/avd-ops/blob/main/';
 
 // The reader-facing topics are published; the KB's own upkeep pages (its README, curation, experts,
 // troubleshooting) stay in the repo and are linked on GitHub.
-const PUBLISHED = [/^getting-started\//, /^concepts\//, /^repos\//, /^roadmap\//, /^decisions\/(README|\d{4}-[\w-]+)\.md$/];
+const PUBLISHED = [/^getting-started\/(?!README\.md$).+/, /^concepts\//, /^repos\//, /^roadmap\//, /^decisions\/(README|\d{4}-[\w-]+)\.md$/];
 // The KB sections: each is a root of the docs graph, reached from the side list (shell.mjs GROUPS).
 // In the side list's order, which is also the order Next walks through the docs.
-const SECTIONS = [['Get started', 'getting-started/README.md'], ['First principles', 'concepts/README.md'], ['Roadmap', 'roadmap/README.md'],
+const SECTIONS = [['First principles', 'concepts/README.md'], ['Roadmap', 'roadmap/README.md'],
   ['Repos', 'repos/README.md'], ['Decisions', 'decisions/README.md']];
 
 const walk = (d) => readdirSync(join(root, d)).flatMap((f) => {

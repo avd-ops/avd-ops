@@ -143,7 +143,7 @@ test('the home page shows the system figure and the repo guides list every publi
     assert.ok(figure.includes(`#layer-${layer}`), `system figure links layer-${layer}`);
   }
   const side = (home.match(/<nav class="side"[\s\S]*?<\/nav>/) || [''])[0];
-  for (const t of ['Platform', 'Ecosystem', 'Governance and standards', 'System']) {
+  for (const t of ['Overview', 'Ecosystem', 'Governance and standards', 'System']) {
     assert.ok(side.includes(`>${t}<`) || side.includes(`>${t}</span>`), `side list tier ${t}`);
   }
   const reposDoc = read('site/docs/repos/index.html');
@@ -198,7 +198,7 @@ test('README family table is generated from repos.json (scripts/build-family-rea
 });
 
 test('the docs are built from docs/knowledge and up to date (scripts/site/build-docs.mjs)', () => {
-  assert.ok(pages.includes('site/docs/index.html') && pages.includes('site/docs/graph.html'), 'docs home and graph');
+  assert.ok(pages.includes('site/docs/repos/index.html') && pages.includes('site/docs/graph.html'), 'docs repos index and graph');
   execFileSync(process.execPath, [join(root, 'scripts/site/build-docs.mjs'), '--check'], { stdio: 'pipe' });
   const graph = JSON.parse(read('site/docs/graph.json'));
   const ids = new Set(graph.nodes.map((n) => n.id));

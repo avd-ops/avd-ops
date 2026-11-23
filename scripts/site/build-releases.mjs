@@ -27,7 +27,7 @@ function formatBytes(bytes) {
 }
 
 function repoGuideHref(repoName) {
-  return repoName === 'avd-ops' ? 'docs/index.html' : `family/${repoName}.html`;
+  return repoName === 'avd-ops' ? 'index.html' : `family/${repoName}.html`;
 }
 
 export function buildReleasesHtml(reposDoc, releasesDoc, platformDoc = null) {
