@@ -45,6 +45,8 @@ Use a throwaway lab, run from Cloud Shell, tear down when you're done, and never
 - Use a lab subscription and tenant you can throw away. Every repo assumes it.
 - Run from Azure Cloud Shell (PowerShell). Each repo's quick start is one block you paste there; the
   conventions behind that are in [working from Cloud Shell](cloud-shell.md).
+  If its 20-minute timeout or lost sessions get in your way, see
+  [Cloud Shell and its alternatives](shell-options.md).
 - Expect Azure charges and tear down when you're done. The repos that deploy say how, and
   [sandbox batches](../concepts/sandbox-batches.md) is how several paid test runs are approved and run.
 - Never paste a secret into chat, an issue or a pull request. The scripts read secrets with managed
