@@ -33,14 +33,18 @@ locals {
     }
   }
 
+  expires_at = timeadd(time_static.created.rfc3339, "${var.ttl_hours}h")
+
   common_tags = merge(
     {
       purpose       = "azure-local-nested-lab"
       avd_ops_lab   = "azure-local-23h2"
       ttl_hours     = tostring(var.ttl_hours)
-      expires_at    = timeadd(time_static.created.rfc3339, "${var.ttl_hours}h")
+      expires_at    = local.expires_at
+      "expire-on"   = local.expires_at
       auto_teardown = "true"
     },
+    trimspace(var.batch_id) != "" ? { "batch-id" = lower(trimspace(var.batch_id)) } : {},
     var.tags,
   )
 }
