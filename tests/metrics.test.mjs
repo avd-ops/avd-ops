@@ -50,6 +50,10 @@ test('buildMetricsHtml renders scoreboard, podium, layers, and all repos', () =>
   const metricsDoc = JSON.parse(readFileSync(join(root, 'site/data/metrics.json'), 'utf8'));
   const html = buildMetricsHtml(metricsDoc);
 
+  assert.match(html, /data-metrics-lede/);
+  assert.match(html, /data-metrics-kpis/);
+  assert.match(html, /data-metrics-podium/);
+  assert.match(html, /data-metrics-layers/);
   assert.match(html, /data-metrics-filters/);
   assert.match(html, /Top 3 repositories/);
   for (const r of reposDoc.repos) {

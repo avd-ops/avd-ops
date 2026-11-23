@@ -32,7 +32,7 @@ export function buildMetricsHtml(metricsDoc) {
   const layerLabels = new Map(LAYERS.map(([id, label]) => [id, label]));
   layerLabels.set('front-door', 'Front door');
 
-  const kpisHtml = `<div class="mx-kpis">
+  const kpisHtml = `<div class="mx-kpis" data-metrics-kpis>
 <article class="card rm-mat-card"><span class="rm-role">Platform XP (30d)</span><b>${esc(totals.totalScore ?? 0)} XP</b></article>
 <article class="card rm-mat-card"><span class="rm-role">Merged PRs (30d)</span><b>${esc(totals.mergedPrs30d ?? 0)}</b></article>
 <article class="card rm-mat-card"><span class="rm-role">Commits (30d)</span><b>${esc(totals.commits30d ?? 0)}</b></article>
@@ -43,7 +43,7 @@ export function buildMetricsHtml(metricsDoc) {
 
   const top3 = repos.slice(0, 3);
   const podiumHtml = top3.length
-    ? `<div class="mx-podium">
+    ? `<div class="mx-podium" data-metrics-podium>
 ${top3.map((r) => {
         const badgeHtml = (r.badges || []).map((b) => `<span class="chip">${esc(b)}</span>`).join(' ');
         return `<article class="card rm-card mx-podium-card">
@@ -57,7 +57,7 @@ ${top3.map((r) => {
     : '<p>No repository activity recorded yet.</p>';
 
   const maxLayerScore = Math.max(1, ...layers.map((l) => l.score));
-  const layersHtml = `<div class="rm-repo-grid">
+  const layersHtml = `<div class="rm-repo-grid" data-metrics-layers>
 ${layers.map((l) => `<article class="card rm-repo-card">
 <div class="rm-top"><span class="mx-rank">#${esc(l.rank)}</span> <strong>${esc(layerLabels.get(l.layer) || l.layer)}</strong> <span class="chip mono">${esc(l.score)} XP</span></div>
 <progress max="${esc(maxLayerScore)}" value="${esc(l.score)}"></progress>
@@ -104,7 +104,7 @@ ${allLayers.map((l) => `<button class="chip rm-chip-btn" type="button" data-filt
 
   const bodyHtml = `<p class="eyebrow">Activity &amp; leaderboard</p>
 <h1>Platform activity and repo leaderboard.</h1>
-<p class="lede">Live 30-day engineering velocity, release cadence, and CI health across all ${esc(totals.repos ?? repos.length)} public repositories in <code>repos.json</code> (snapshot as of ${esc(metricsDoc.fetchedAt || 'unknown')}).</p>
+<p class="lede" data-metrics-lede>Live 30-day engineering velocity, release cadence, and CI health across all ${esc(totals.repos ?? repos.length)} public repositories in <code>repos.json</code> (snapshot as of ${esc(metricsDoc.fetchedAt || 'unknown')}).</p>
 <section aria-labelledby="metrics-kpi-heading">
 <h2 id="metrics-kpi-heading">Platform scoreboard</h2>
 ${kpisHtml}
