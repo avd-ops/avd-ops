@@ -1,12 +1,12 @@
 ---
-title: "Start here"
+title: "Get started"
 summary: "What the AVD repos do, which one to open first, and how to try them safely in a lab"
 topic: getting-started
 status: verified
 last_reviewed: 2026-11-23
 ---
 
-# Start here
+# Get started
 
 Open-source Bicep and PowerShell that build, check and run an Azure Virtual Desktop estate, all from
 Azure Cloud Shell. Try it in a lab you can throw away.

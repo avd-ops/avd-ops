@@ -11,7 +11,7 @@ contribute, open a KB feedback or known-error issue; changes land only through r
 ## Knowledge base
 
 - [Knowledge base](docs/knowledge/README.md): What this knowledge base is, how it's organised, and how to add to it safely (status: verified)
-- [Start here](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: verified)
+- [Get started](docs/knowledge/getting-started/README.md): What the AVD repos do, which one to open first, and how to try them safely in a lab (status: verified)
 - [Working from Cloud Shell](docs/knowledge/getting-started/cloud-shell.md): The conventions every AVD repo follows for Azure Cloud Shell: one self-contained block, pinned sources, nothing kept in the shell, one sign-in, redact before sharing, tear down with evidence (status: verified)
 - [Control-plane modules](docs/knowledge/getting-started/control-planes.md): How the modular control-plane repos (Entra, Intune, M365, Azure, networking, security, and Power Platform) compose behind avd-landing-zone (status: unverified)
 - [Stand up and use an estate vault](docs/knowledge/getting-started/estate-vault.md): Create a private companion repo, initialize an adopter estate vault with avd-second-brain, ingest avd-current-state packages, and harvest generalized findings (status: unverified)
