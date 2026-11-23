@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Concepts | avd-ops docs</title>
+<title>First principles | avd-ops docs</title>
 <meta name="description" content="The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture">
 <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/avd-ops.css">
@@ -23,21 +23,17 @@
 <li><strong>Contributions and forks are welcome and encouraged.</strong> See <a href="../index.html#contribute">Contribute</a>.</li></ul></div></details>
 <div class="tools"><button class="iconbtn theme" type="button" aria-label="Switch theme"><svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.4A7 7 0 0 1 7.6 3.5a7 7 0 1 0 8.9 8.9Z"/></svg></button><button class="iconbtn menu" type="button" aria-label="Pages" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14"/></svg></button></div></div></header>
 <div class="layout"><nav class="side" id="side" aria-label="Pages">
-<p class="tier">Platform</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../docs/concepts.html" aria-current="page">Concepts</a><a href="../architecture.html">Architecture</a><a href="../blog/index.html">Blog</a><a href="../releases.html">Release notes</a><a href="../metrics.html">Metrics</a>
+<p class="tier">Platform</p><a href="../index.html">Overview</a><a href="../docs/index.html">Start here</a><a href="../docs/concepts.html" aria-current="page">First principles</a><a href="../architecture.html">Architecture</a><a href="../blog/index.html">Blog</a><a href="../releases.html">Release notes</a><a href="../metrics.html">Metrics</a>
 <details class="side-group tier-group"><summary class="tier">Ecosystem<span class="side-count">19</span></summary><div class="side-links"><a href="../docs/repos/index.html">Repo guides</a><details class="side-group"><summary class="group">Assess and plan<span class="side-count">5</span></summary><div class="side-links"><a href="../family/avd-current-state.html">avd-current-state</a><a href="../family/avd-assess.html">avd-assess</a><a href="../family/avd-migrate.html">avd-migrate</a><a href="../family/avd-benchmark.html">avd-benchmark</a><a href="../family/avd-learn.html">avd-learn</a></div></details><details class="side-group"><summary class="group">Build and change<span class="side-count">2</span></summary><div class="side-links"><a href="../family/avd-landing-zone.html">avd-landing-zone</a><a href="../family/avd-hcl.html">avd-hcl</a></div></details><details class="side-group"><summary class="group">Control planes<span class="side-count">7</span></summary><div class="side-links"><a href="../family/avd-entra.html">avd-entra</a><a href="../family/avd-intune.html">avd-intune</a><a href="../family/avd-m365.html">avd-m365</a><a href="../family/avd-azure.html">avd-azure</a><a href="../family/avd-networking.html">avd-networking</a><a href="../family/avd-security.html">avd-security</a><a href="../family/avd-power-platform.html">avd-power-platform</a></div></details><details class="side-group"><summary class="group">Operate and support<span class="side-count">2</span></summary><div class="side-links"><a href="../family/avd-remediate.html">avd-remediate</a><a href="../family/avd-linecheck.html">avd-linecheck</a></div></details><details class="side-group"><summary class="group">Intelligence, on top<span class="side-count">2</span></summary><div class="side-links"><a href="../family/avd-swarm.html">avd-swarm</a><a href="../family/avd-second-brain.html">avd-second-brain</a></div></details></div></details>
 <details class="side-group tier-group"><summary class="tier">Governance and standards<span class="side-count">6</span></summary><div class="side-links"><a href="../security.html">Security review</a><a href="../standards/index.html">Standards library</a><a href="../docs/decisions/index.html">Decisions</a><a href="../roadmap.html">Roadmap</a><a href="../docs/roadmap.html">Docs roadmap</a><a href="../research.html">Research projects</a></div></details>
 <details class="side-group tier-group"><summary class="tier">System<span class="side-count">5</span></summary><div class="side-links"><a href="../design/index.html">Design system</a><a href="../docs/graph.html">Graph</a><a href="../story.html">Story</a><a href="../credits.html">Credits</a><a href="../legal.html">Legal notice</a></div></details>
 </nav>
 <main id="main"><div class="col">
 <article class="screens">
-<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#concepts" title="Concepts"><span class="n">1</span><span class="t">Concepts</span></a></li><li><a href="#three-questions-three-repos-and-a-layer-on-top" title="Three questions, three repos, and a layer on top"><span class="n">2</span><span class="t">Three questions, three repos, and a layer on top</span></a></li><li><a href="#contracts-not-shared-code" title="Contracts, not shared code"><span class="n">3</span><span class="t">Contracts, not shared code</span></a></li><li><a href="#architecture-and-network-diagrams" title="Architecture and network diagrams"><span class="n">4</span><span class="t">Architecture and network diagrams</span></a></li><li><a href="#the-brain-thinks-the-swarm-acts" title="The brain thinks, the swarm acts"><span class="n">5</span><span class="t">The brain thinks, the swarm acts</span></a></li><li><a href="#tenant-data-stays-with-the-tenant" title="Tenant data stays with the tenant"><span class="n">6</span><span class="t">Tenant data stays with the tenant</span></a></li><li><a href="#read-first-change-with-approval" title="Read first, change with approval"><span class="n">7</span><span class="t">Read first, change with approval</span></a></li><li><a href="#keep-the-last-copy-stop-the-meter" title="Keep the last copy, stop the meter"><span class="n">8</span><span class="t">Keep the last copy, stop the meter</span></a></li><li><a href="#runs-anywhere" title="Runs anywhere"><span class="n">9</span><span class="t">Runs anywhere</span></a></li><li><a href="#knowledge-capture" title="Knowledge capture"><span class="n">10</span><span class="t">Knowledge capture</span></a></li><li><a href="#toolchain-lanes" title="Toolchain lanes"><span class="n">11</span><span class="t">Toolchain lanes</span></a></li><li><a href="#time-zones-and-time-sync" title="Time zones and time sync"><span class="n">12</span><span class="t">Time zones and time sync</span></a></li></ol></nav>
-<section class="screen" id="concepts">
-<h1 tabindex="-1">Concepts</h1>
+<nav class="sc-steps" aria-label="On this page"><ol><li><a href="#first-principles" title="First principles"><span class="n">1</span><span class="t">First principles</span></a></li><li><a href="#three-questions-three-repos-and-a-layer-on-top" title="Three questions, three repos, and a layer on top"><span class="n">2</span><span class="t">Three questions, three repos, and a layer on top</span></a></li><li><a href="#contracts-not-shared-code" title="Contracts, not shared code"><span class="n">3</span><span class="t">Contracts, not shared code</span></a></li><li><a href="#architecture-and-network-diagrams" title="Architecture and network diagrams"><span class="n">4</span><span class="t">Architecture and network diagrams</span></a></li><li><a href="#the-brain-thinks-the-swarm-acts" title="The brain thinks, the swarm acts"><span class="n">5</span><span class="t">The brain thinks, the swarm acts</span></a></li><li><a href="#tenant-data-stays-with-the-tenant" title="Tenant data stays with the tenant"><span class="n">6</span><span class="t">Tenant data stays with the tenant</span></a></li><li><a href="#read-first-change-with-approval" title="Read first, change with approval"><span class="n">7</span><span class="t">Read first, change with approval</span></a></li><li><a href="#keep-the-last-copy-stop-the-meter" title="Keep the last copy, stop the meter"><span class="n">8</span><span class="t">Keep the last copy, stop the meter</span></a></li><li><a href="#runs-anywhere" title="Runs anywhere"><span class="n">9</span><span class="t">Runs anywhere</span></a></li><li><a href="#knowledge-capture" title="Knowledge capture"><span class="n">10</span><span class="t">Knowledge capture</span></a></li><li><a href="#toolchain-lanes" title="Toolchain lanes"><span class="n">11</span><span class="t">Toolchain lanes</span></a></li><li><a href="#time-zones-and-time-sync" title="Time zones and time sync"><span class="n">12</span><span class="t">Time zones and time sync</span></a></li></ol></nav>
+<section class="screen" id="first-principles">
+<h1 tabindex="-1">First principles</h1>
 <p class="bl">A handful of ideas run through every repo. Each screen here is the short version, with a link to the full one.</p>
-
-<details class="more"><summary>More</summary>
-<p>Each idea is explained in full in the repo that owns it; this page is the short version with the links.</p>
-</details>
 </section>
 <section class="screen" id="three-questions-three-repos-and-a-layer-on-top">
 <h2 tabindex="-1">Three questions, three repos, and a layer on top</h2>
@@ -72,21 +68,16 @@ Question">What it should be, and why</td>
 <td data-label="Role">The map and the dictionary</td>
 </tr>
 </tbody></table></div>
-
-<details class="more"><summary>More</summary>
 <p>The roles are set in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md">family roles</a>.</p>
 <p>On top of those sits a Desktop DevOps intelligence and execution layer across AVD, Windows 365 and Intune (<a href="decisions/0012-desktop-devops-for-avd-win365-and-intune.html">decision 0012</a>):
 <a href="repos/avd-second-brain.html">avd-second-brain</a> is the why and memory over the desktop estate&#39;s whole life, and
 <a href="repos/avd-swarm.html">avd-swarm</a> is the agentic operating layer that proposes GitHub-gated plans.</p>
 <p>Dependencies point down, never up: avd-landing-zone and avd-current-state are a self-contained pair
 that keeps working with no second brain and no avd-swarm.</p>
-</details>
 </section>
 <section class="screen" id="contracts-not-shared-code">
 <h2 tabindex="-1">Contracts, not shared code</h2>
 <p class="bl">The repos hand each other versioned, redacted files, never each other&#39;s code.</p>
-
-<details class="more"><summary>More</summary>
 <p>The repos pass versioned, redacted files to each other instead of importing each other&#39;s code.
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact
 register and so on) and one JSON Schema. avd-assess holds the foundation contracts (C11, C15 and
@@ -95,52 +86,37 @@ repos that read a format keep a byte-identical copy pinned to a commit
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0021-foundation-contracts-live-in-avd-assess.md">brain decision 0021</a>). See avd-assess
 <a href="https://github.com/avd-ops/avd-assess/blob/main/contracts/README.md">contracts</a> and avd-second-brain
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/contracts.md">contracts</a>.</p>
-</details>
 </section>
 <section class="screen" id="architecture-and-network-diagrams">
 <h2 tabindex="-1">Architecture and network diagrams</h2>
 <p class="bl">Reference and estate-specific diagrams export as SVG, Mermaid and Draw.io for design reviews and decision records.</p>
-
-<details class="more"><summary>More</summary>
 <p>The architecture page publishes four reference diagrams: the five-control-plane logical and contract flow, the <code>10.100.0.0/22</code> virtual network and Private Link subnet layout, the end-to-end session and FSLogix traffic paths, and the Bicep module dependency graph. Both the <a href="repos/avd-landing-zone.html">avd-landing-zone</a> deployment portal and the <a href="repos/avd-current-state.html">avd-current-state</a> assessment portal also generate live diagrams from your configured <code>C14</code> target topology or collected <code>C11</code>/<code>C21</code> assessment state and export them as <code>.svg</code>, <code>.mmd</code> (Mermaid) and <code>.drawio</code> (Draw.io XML) with zero tenant identifiers.</p>
-</details>
 </section>
 <section class="screen" id="the-brain-thinks-the-swarm-acts">
 <h2 tabindex="-1">The brain thinks, the swarm acts</h2>
 <p class="bl">The brain can&#39;t change anything. Every change is a plan a person approves, with one kill switch.</p>
-
-<details class="more"><summary>More</summary>
 <p>avd-second-brain never holds a write credential. Every change to an estate is a plan that
 avd-swarm proposes, a person approves in a GitHub environment, and a governance gate checks against
 live state. One layered kill switch stops it, and only the owner resets it. See
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0003-brain-thinks-swarm-acts.md">decision 0003</a>
 and <a href="https://github.com/avd-ops/avd-swarm/blob/main/docs/governance.md">avd-swarm&#39;s governance</a>.</p>
-</details>
 </section>
 <section class="screen" id="tenant-data-stays-with-the-tenant">
 <h2 tabindex="-1">Tenant data stays with the tenant</h2>
 <p class="bl">Only redacted facts leave an estate, and no public repo holds tenant data.</p>
-
-<details class="more"><summary>More</summary>
 <p>Collectors and validators read an estate; what leaves it is redacted: counts, public values and
 pseudonyms, never names or IDs. An adopter&#39;s estate vault lives in that adopter&#39;s private repo.
 None of the public repos holds tenant data.</p>
-</details>
 </section>
 <section class="screen" id="read-first-change-with-approval">
 <h2 tabindex="-1">Read first, change with approval</h2>
 <p class="bl">Reading is free. Changing anything in the cloud waits for a person&#39;s yes.</p>
-
-<details class="more"><summary>More</summary>
 <p>Scripts and agents read freely. Anything that creates, changes or deletes cloud resources runs only
 after a person approves it, and every sandbox run comes with a cost estimate and a teardown.</p>
-</details>
 </section>
 <section class="screen" id="keep-the-last-copy-stop-the-meter">
 <h2 tabindex="-1">Keep the last copy, stop the meter</h2>
 <p class="bl">A teardown keeps your data and leaves nothing billing, unless you say otherwise.</p>
-
-<details class="more"><summary>More</summary>
 <p>Teardown removes what a redeploy recreates and keeps the data. Logs and teardown proof go to one run
 store outside the deployment, kept by default (<code>-TeardownLogs Keep</code>), and deleting data with no
 checked copy elsewhere needs <code>-DiscardLastCopy</code>, which <code>-Force</code> never implies
@@ -153,53 +129,40 @@ recorded with their cancel windows, never bought by a script
 <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0017-never-leave-the-meter-running.md">decision 0017</a>).
 Your own copies go to a separate
 <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/private-companion-repo.md">private companion repo</a>.</p>
-</details>
 </section>
 <section class="screen" id="runs-anywhere">
 <h2 tabindex="-1">Runs anywhere</h2>
 <p class="bl">Every script runs from either Cloud Shell prompt, and on Windows, macOS and Linux.</p>
-
-<details class="more"><summary>More</summary>
 <p>Every operator script runs from either Cloud Shell prompt, PowerShell or Bash, and anything a person
 runs on their own machine runs on Windows, macOS and Linux. PowerShell 7 is the baseline; each tool
 is written once and every command comes in a PowerShell and a Bash form that call it. Each repo
 lists, per script, which of those are proven by a test or a real run, and the portals offer only
 those. See <a href="decisions/0006-run-anywhere.html">decision 0006</a>; the rule, the audit and the
 gaps are in <a href="https://github.com/avd-ops/avd-ops/blob/main/docs/run-anywhere.md">run anywhere</a>.</p>
-</details>
 </section>
 <section class="screen" id="knowledge-capture">
 <h2 tabindex="-1">Knowledge capture</h2>
 <p class="bl">Every change records what it taught, or says why there&#39;s nothing to record.</p>
-
-<details class="more"><summary>More</summary>
 <p>Each repo records what a change taught in a knowledge base in the shared format, or says why
 there&#39;s nothing to record, and a pull request check asks for it. The format comes from the
 <a href="https://github.com/nickprignano/2ndbrain">2ndbrain</a> template; the AVD lessons live in
 <a href="https://github.com/avd-ops/avd-second-brain/tree/main/docs/knowledge">avd-second-brain&#39;s knowledge base</a>.
 These docs use the same format.</p>
-</details>
 </section>
 <section class="screen" id="toolchain-lanes">
 <h2 tabindex="-1">Toolchain lanes</h2>
 <p class="bl">Bicep and PowerShell in the core control-plane repos; Terraform and Packer in <code>avd-hcl</code>.</p>
-
-<details class="more"><summary>More</summary>
 <p>The core deployment repos (<code>avd-landing-zone</code> and <code>avd-azure</code>) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, <a href="repos/avd-hcl.html">avd-hcl</a> provides the parallel HCL path (<a href="decisions/0016-terraform-as-enterprise-iac-option.html">decision 0016</a>), while keeping HCL out of the Bicep repos per avd-second-brain&#39;s lane rules
 (<a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md">decision 0012</a>).</p>
-</details>
 </section>
 <section class="screen" id="time-zones-and-time-sync">
 <h2 tabindex="-1">Time zones and time sync</h2>
 <p class="bl">Windows time zone IDs govern Azure schedules, <code>fEnableTimeZoneRedirection</code> follows the user, and <code>W32Time</code> keeps clocks aligned.</p>
-
-<details class="more"><summary>More</summary>
 <p>Intake (<code>intake.workingHours.timeZone</code>) uses IANA time zone names, while Azure scaling plans, auto-shutdown schedules, and <code>target-state</code> manifests use DST-aware Windows time zone IDs; <code>avd-landing-zone</code> refuses deployment on mismatch. Golden images and <code>avd-intune</code>&#39;s multi-session baseline enable <code>fEnableTimeZoneRedirection = 1</code> so sessions reflect the client&#39;s local time zone, and <code>W32Time</code> stays protected from WDOT (<code>NT5DS</code> for AD-joined hosts, <code>VMICTimeProvider</code> or <code>NTP</code> for Entra-joined hosts). See <a href="https://github.com/avd-ops/avd-assess/blob/main/dimensions.yaml">avd-assess</a> and <a href="https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/operations/README.md">avd-second-brain&#39;s operations guide</a>.</p>
-</details>
 <details class="more linked"><summary>Linked from one page</summary>
 <ul class="backlinks"><li><a href="index.html">Start here</a></li></ul></details>
 </section>
-<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="getting-started/standards-and-learning.html" data-page="Standards and learning">Back</a><span class="where">Concepts</span><a class="sc-next" href="concepts/glossary.html" data-page="Glossary">Next<span class="pg">: Glossary</span></a></div></nav>
+<nav class="sc-nav" aria-label="Back and next"><div class="in"><a class="sc-back" href="getting-started/standards-and-learning.html" data-page="Standards and learning">Back</a><span class="where">First principles</span><a class="sc-next" href="concepts/glossary.html" data-page="Glossary">Next<span class="pg">: Glossary</span></a></div></nav>
 </article>
 <script src="../assets/docs.js" defer></script>
 </div></main>

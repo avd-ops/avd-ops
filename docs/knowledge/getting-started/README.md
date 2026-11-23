@@ -3,15 +3,13 @@ title: "Start here"
 summary: "What the AVD repos do, which one to open first, and how to try them safely in a lab"
 topic: getting-started
 status: verified
-last_reviewed: 2026-10-29
+last_reviewed: 2026-11-23
 ---
 
 # Start here
 
 Open-source Bicep and PowerShell that build, check and run an Azure Virtual Desktop estate, all from
 Azure Cloud Shell. Try it in a lab you can throw away.
-
-<!-- more -->
 
 avd-ops is the front door for these repos: they take an Azure Virtual Desktop estate from inventory
 to operations. These pages explain how the repos fit together. Each repo stays the source of truth
@@ -38,13 +36,11 @@ Pick the row that matches what you want to do, and open that repo.
 | Read the assessment standards or guided learning path | [Standards and learning](standards-and-learning.md) | [avd-assess](../repos/avd-assess.md) |
 | Learn what past deployments taught | [avd-second-brain](../repos/avd-second-brain.md) | Its knowledge base |
 
-New to the vocabulary? Read [concepts](../concepts/README.md) first. Setting up a multi-subscription or cross-tenant lab? Follow the [multi-tenant lab bootstrap](multi-tenant-lab-bootstrap.md).
+New to the vocabulary? Read [first principles](../concepts/README.md) first. Setting up a multi-subscription or cross-tenant lab? Follow the [multi-tenant lab bootstrap](multi-tenant-lab-bootstrap.md).
 
 ## Before you run anything
 
 Use a throwaway lab, run from Cloud Shell, tear down when you're done, and never paste a secret.
-
-<!-- more -->
 
 - Use a lab subscription and tenant you can throw away. Every repo assumes it.
 - Run from Azure Cloud Shell (PowerShell). Each repo's quick start is one block you paste there; the
@@ -57,8 +53,6 @@ Use a throwaway lab, run from Cloud Shell, tear down when you're done, and never
 ## Contributing
 
 Fork any repo and open an issue or a pull request in the repo that owns the change.
-
-<!-- more -->
 
 These pages only link. A page here that is wrong or out of date is a pull request to
 [avd-ops](https://github.com/avd-ops/avd-ops).

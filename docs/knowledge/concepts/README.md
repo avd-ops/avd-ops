@@ -1,18 +1,14 @@
 ---
-title: "Concepts"
+title: "First principles"
 summary: "The ideas the AVD repos share: lifecycle stages, contracts, read-first agents, tenant data boundaries and knowledge capture"
 topic: concepts
 status: verified
-last_reviewed: 2026-11-20
+last_reviewed: 2026-11-23
 ---
 
-# Concepts
+# First principles
 
 A handful of ideas run through every repo. Each screen here is the short version, with a link to the full one.
-
-<!-- more -->
-
-Each idea is explained in full in the repo that owns it; this page is the short version with the links.
 
 ## Three questions, three repos, and a layer on top
 
@@ -23,8 +19,6 @@ Three repos each answer one question about an estate, and two more sit on top of
 | How it's built and changed from here | [avd-landing-zone](../repos/avd-landing-zone.md) | The deployment orchestrator and portal (over `avd-entra`, `avd-intune`, `avd-m365`, `avd-azure` and `avd-power-platform`, [decision 0009](../decisions/0009-split-landing-zone-into-five-control-planes.md)) |
 | What is there now | [avd-current-state](../repos/avd-current-state.md) | The collector and validator |
 | What it should be, and why | [avd-assess](../repos/avd-assess.md) | The map and the dictionary |
-
-<!-- more -->
 
 The roles are set in [family roles](https://github.com/avd-ops/avd-ops/blob/main/docs/family-roles.md).
 
@@ -39,8 +33,6 @@ that keeps working with no second brain and no avd-swarm.
 
 The repos hand each other versioned, redacted files, never each other's code.
 
-<!-- more -->
-
 The repos pass versioned, redacted files to each other instead of importing each other's code.
 Each format has a number (C6 knowledge, C11 current-state facts, C14 target state, C15 the fact
 register and so on) and one JSON Schema. avd-assess holds the foundation contracts (C11, C15 and
@@ -54,15 +46,11 @@ repos that read a format keep a byte-identical copy pinned to a commit
 
 Reference and estate-specific diagrams export as SVG, Mermaid and Draw.io for design reviews and decision records.
 
-<!-- more -->
-
 The architecture page publishes four reference diagrams: the five-control-plane logical and contract flow, the `10.100.0.0/22` virtual network and Private Link subnet layout, the end-to-end session and FSLogix traffic paths, and the Bicep module dependency graph. Both the [avd-landing-zone](../repos/avd-landing-zone.md) deployment portal and the [avd-current-state](../repos/avd-current-state.md) assessment portal also generate live diagrams from your configured `C14` target topology or collected `C11`/`C21` assessment state and export them as `.svg`, `.mmd` (Mermaid) and `.drawio` (Draw.io XML) with zero tenant identifiers.
 
 ## The brain thinks, the swarm acts
 
 The brain can't change anything. Every change is a plan a person approves, with one kill switch.
-
-<!-- more -->
 
 avd-second-brain never holds a write credential. Every change to an estate is a plan that
 avd-swarm proposes, a person approves in a GitHub environment, and a governance gate checks against
@@ -74,8 +62,6 @@ and [avd-swarm's governance](https://github.com/avd-ops/avd-swarm/blob/main/docs
 
 Only redacted facts leave an estate, and no public repo holds tenant data.
 
-<!-- more -->
-
 Collectors and validators read an estate; what leaves it is redacted: counts, public values and
 pseudonyms, never names or IDs. An adopter's estate vault lives in that adopter's private repo.
 None of the public repos holds tenant data.
@@ -84,16 +70,12 @@ None of the public repos holds tenant data.
 
 Reading is free. Changing anything in the cloud waits for a person's yes.
 
-<!-- more -->
-
 Scripts and agents read freely. Anything that creates, changes or deletes cloud resources runs only
 after a person approves it, and every sandbox run comes with a cost estimate and a teardown.
 
 ## Keep the last copy, stop the meter
 
 A teardown keeps your data and leaves nothing billing, unless you say otherwise.
-
-<!-- more -->
 
 Teardown removes what a redeploy recreates and keeps the data. Logs and teardown proof go to one run
 store outside the deployment, kept by default (`-TeardownLogs Keep`), and deleting data with no
@@ -112,8 +94,6 @@ Your own copies go to a separate
 
 Every script runs from either Cloud Shell prompt, and on Windows, macOS and Linux.
 
-<!-- more -->
-
 Every operator script runs from either Cloud Shell prompt, PowerShell or Bash, and anything a person
 runs on their own machine runs on Windows, macOS and Linux. PowerShell 7 is the baseline; each tool
 is written once and every command comes in a PowerShell and a Bash form that call it. Each repo
@@ -125,8 +105,6 @@ gaps are in [run anywhere](https://github.com/avd-ops/avd-ops/blob/main/docs/run
 
 Every change records what it taught, or says why there's nothing to record.
 
-<!-- more -->
-
 Each repo records what a change taught in a knowledge base in the shared format, or says why
 there's nothing to record, and a pull request check asks for it. The format comes from the
 [2ndbrain](https://github.com/nickprignano/2ndbrain) template; the AVD lessons live in
@@ -137,15 +115,11 @@ These docs use the same format.
 
 Bicep and PowerShell in the core control-plane repos; Terraform and Packer in `avd-hcl`.
 
-<!-- more -->
-
 The core deployment repos (`avd-landing-zone` and `avd-azure`) use Bicep, PowerShell, and native Azure, Entra, and Microsoft 365 tooling only. For enterprise estates that prefer Terraform and Packer, [avd-hcl](../repos/avd-hcl.md) provides the parallel HCL path ([decision 0016](../decisions/0016-terraform-as-enterprise-iac-option.md)), while keeping HCL out of the Bicep repos per avd-second-brain's lane rules
 ([decision 0012](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/decisions/0012-family-format-project-lanes.md)).
 
 ## Time zones and time sync
 
 Windows time zone IDs govern Azure schedules, `fEnableTimeZoneRedirection` follows the user, and `W32Time` keeps clocks aligned.
-
-<!-- more -->
 
 Intake (`intake.workingHours.timeZone`) uses IANA time zone names, while Azure scaling plans, auto-shutdown schedules, and `target-state` manifests use DST-aware Windows time zone IDs; `avd-landing-zone` refuses deployment on mismatch. Golden images and `avd-intune`'s multi-session baseline enable `fEnableTimeZoneRedirection = 1` so sessions reflect the client's local time zone, and `W32Time` stays protected from WDOT (`NT5DS` for AD-joined hosts, `VMICTimeProvider` or `NTP` for Entra-joined hosts). See [avd-assess](https://github.com/avd-ops/avd-assess/blob/main/dimensions.yaml) and [avd-second-brain's operations guide](https://github.com/avd-ops/avd-second-brain/blob/main/docs/knowledge/operations/README.md).
